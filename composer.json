@@ -1,4 +1,7 @@
 {
+    "config":{
+        "secure-http":false
+    },
     "repositories": [
         {
         "type": "composer",
@@ -6,7 +9,8 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "4.7.*"
+        "johnpbloch/wordpress": "4.7.*",
+        "wpackagist-plugin/tainacan":"*"
     },
     "extra": {
         "wordpress-install-dir": "wp"
