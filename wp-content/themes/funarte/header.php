@@ -5,13 +5,13 @@
 	</head>
 
 	<body>
-		<!-- MENU DE ACESSIBILIDADE
+		<!-- MENU DE ACESSIBILIDADE -->
 		<div class="accessibility-bar">
-			<nav class="accessibility-bar__container">
+			<nav class="container">
 				<ul class="accessibility-shortcuts" role="menubar">
 					<li role="menuitem"><a href="#content" accesskey="c"><span>c</span> Ir para o conteúdo</a></li>
-					<li role="menuitem"><a href="#tainacan-navigation-menu" accesskey="m"><span>m</span> Ir para o menu</a></li>
-					<li role="menuitem"><a href="#tainacan-search-header" accesskey="b"><span>b</span> Ir para a busca</a></li>
+					<li role="menuitem"><a href="#funarte-navigation-menu" accesskey="m"><span>m</span> Ir para o menu</a></li>
+					<li role="menuitem"><a href="#s" accesskey="b"><span>b</span> Ir para a busca</a></li>
 					<li role="menuitem"><a href="#footer" accesskey="r"><span>r</span> Ir para o rodapé</a></li>
 				</ul>
 
@@ -28,7 +28,7 @@
 					</li>
 				</ul>
 			</nav>
-		</div> -->
+		</div>
 
 		<!-- AVISO DE ERRO CASO O JS ESTEJA DESATIVADO OU NÃO ESTEJA FUNCIONANDO -->
 		<noscript>
@@ -47,12 +47,12 @@
 			<span>Seu navegador não tem suporte a JavaScript ou o mesmo está desativado.</span>
 		</noscript>
 
-		<header role="banner" class="site-header">
+		<header role="banner" class="header">
 			<div class="container">
-				<div class="site-header__row">
+				<div class="header__row">
 					<h1><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte.jpg'; ?>" alt="Funarte - Fundação Nacional de Artes"></a></h1>
 
-					<nav class="navbar navbar-expand-lg navbar-light navigation-menu" role="navigation">
+					<nav id="funarte-navigation-menu" class="navbar navbar-expand-lg navbar-light navigation-menu" role="navigation">
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
