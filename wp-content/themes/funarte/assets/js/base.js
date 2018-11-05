@@ -4,9 +4,64 @@ $(document).ready(function() {
 	base.acessibilidade.ativarAltoContraste();
 	base.busca.manipular();
 	base.jsNaoObstrusivo.ativar();
+
+	base.carrossel.iniciar();
 });
 
 var base = {
+	carrossel: {
+		iniciar: function() {
+			var $carousel = $('.highlights-carousel');
+			$carousel.find('ul').slick({
+				speed: 1000,
+				infinite: true,
+				slidesToShow: 1,
+				autoplay: false,
+				autoplaySpeed: 3000,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+				dots: true,
+				// responsive: [
+				// 	{
+				// 		breakpoint: 1600,
+				// 		settings: {
+				// 			slidesToShow: 5,
+				// 			slidesToScroll: 1
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 1400,
+				// 		settings: {
+				// 			slidesToShow: 4,
+				// 			slidesToScroll: 1
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 1100,
+				// 		settings: {
+				// 			slidesToShow: 3,
+				// 			slidesToScroll: 2
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 860,
+				// 		settings: {
+				// 			slidesToShow: 2,
+				// 			slidesToScroll: 2
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 580,
+				// 		settings: {
+				// 			slidesToShow: 1,
+				// 			slidesToScroll: 1
+				// 		}
+				// 	}
+				// ]
+			});
+		}
+	},
+
 	acessibilidade: {
 		iniciar: function() {
 			accessibilityCounter = 0;

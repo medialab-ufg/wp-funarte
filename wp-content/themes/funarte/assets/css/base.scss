@@ -73,7 +73,10 @@ form legend {
 	height: 32px;
 	margin: 0;
 }
-.header h1 img { display: block; }
+.header h1 img {
+	margin: -14px 0 0 -8px;
+	display: block;
+}
 
 /* MENU DE NAVEGAÇÃO */
 
@@ -128,7 +131,7 @@ form legend {
 
 .areas-list {
 	width: 100%;
-	margin: 0;
+	margin: 0 0 54px;
 	padding: 0;
 	list-style: none;
 	display: flex;
@@ -254,6 +257,116 @@ form legend {
 }
 
 /***
+* CONTEÚDO
+***/
+
+/* CARROSSEL DE DESTAQUES */
+
+.highlights-carousel {
+	margin-bottom: 100px;
+	position: relative;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			padding: 0 50px 65px 0;
+			position: relative;
+		}
+
+		img {
+			width: 100%;
+			display: block;
+		}
+	}
+
+	&:after {
+		content: "";
+		width: 470px;
+		height: 150px;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		display: block;
+		z-index: -2;
+		background-color: $verde-1;
+	}
+}
+.highlights-carousel__caption {
+	padding: 6px 20px 14px;
+	position: absolute;
+	right: 85px;
+	bottom: 20px;
+	background-color: #f1f1f1;
+
+	strong {
+		font-family: 'Sansita', sans-serif;
+		font-size: 1.3rem;
+		text-align: right;
+		display: block;
+	}
+
+	span {
+		margin-top: -4px;
+		font-size: 1.2rem;
+		text-align: right;
+		display: block;
+	}
+}
+.highlights-carousel__control {
+	width: 50px;
+	height: 85px;
+	position: absolute;
+	right: 0;
+	bottom: 65px;
+	z-index: 2;
+
+	button {
+		font-size: 32px;
+		color: $branco;
+		cursor: pointer;
+		position: absolute;
+		left: 50%;
+		border: none;
+		background: none;
+		transform: translate(-50%,0);
+	}
+	.control__prev { top: 45px; }
+	.control__next { top: 12px; }
+}
+ul.slick-dots {
+	width: 50px;
+	height: auto;
+	padding-bottom: 30px;
+	position: absolute;
+	right: 0;
+	bottom: 150px;
+
+	li {
+		width: 100%;
+		height: auto;
+		margin: 0;
+		padding: 0 10px;
+		display: block;
+
+		button {
+			width: 14px;
+			height: 14px;
+			display: block;
+			background-color: $cinza-3;
+
+			&:before { content: ""; }
+		}
+
+		& + li { margin-top: 10px; }
+
+		&.slick-active button { background-color: $verde-1; }
+	}
+}
+
+/***
 * RODAPÉ
 ***/
 
@@ -261,6 +374,10 @@ form legend {
 	width: 100%;
 	padding: 44px 0 50px;
 	background-color: $verde-1;
+}
+.logo-footer {
+	margin: -5px 0 -8px -3px;
+	display: block;
 }
 .footer__columns {
 	margin-bottom: 40px;
@@ -299,6 +416,15 @@ form legend {
 	}
 }
 
+@media (max-width: 767px) {
+	.footer__columns { display: block; }
+	.columns__column-a,
+	.columns__column-b { max-width: none; }
+	.columns__column-a + .columns__column-a,
+	.columns__column-a + .columns__column-b,
+	.columns__column-b + .columns__column-a { margin-top: 20px; }
+}
+
 /* FORMULÁRIO DO RODAPÉ */
 
 .form-newsletter {
@@ -326,6 +452,7 @@ form legend {
 		right: 0;
 		border: none;
 		background: none;
+		transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 
 		i {
 			font-size: 24px;
@@ -334,6 +461,12 @@ form legend {
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%,-50%);
+		}
+
+		&:hover,
+		&:focus {
+			color: $verde-1;
+			background-color: $branco;
 		}
 	}
 }
@@ -486,6 +619,9 @@ body.js .accessibility-options {
 	background-color: $preto;
 }
 
+@media screen and (min-width: 992px) {
+	.accessibility-bar .container { max-width: 950px; }
+}
 @media screen and (max-width: 800px) {
 	.accessibility-bar .container {
 		padding: 20px;

@@ -55,6 +55,7 @@
 					</ul>
 				</div>
 			</div>
+			<img class="logo-footer" src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte_ministerio_cultura.png'; ?>" alt="Funarte - Fundação Nacional de Artes - Ministério da Cultura">
 		</div>
 	</footer>
 
