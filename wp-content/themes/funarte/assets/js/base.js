@@ -6,9 +6,28 @@ $(document).ready(function() {
 	base.jsNaoObstrusivo.ativar();
 
 	base.carrossel.iniciar();
+	base.noticias.visualizar();
 });
 
 var base = {
+	noticias: {
+		visualizar: function() {
+			$('.box-news__load').on('click',function() {
+				var $this = $(this),
+					$lista = $this
+								.siblings('.visible:last')
+								.next('ul');
+
+				if ($lista.length > 0) {
+					$lista
+					.addClass('visible');
+				} else {
+					$this.addClass('hidden');
+				}
+			});
+		}
+	},
+
 	carrossel: {
 		iniciar: function() {
 			var $carousel = $('.highlights-carousel');
@@ -17,6 +36,8 @@ var base = {
 				speed: 1000,
 				fade: true,
 				infinite: true,
+				autoplay: false,
+				autoplaySpeed: 2000,
 				slidesToShow: 1,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),

@@ -55,8 +55,85 @@
 		</div>
 	</div>
 
+	<section class="box-news">
+		<div class="container">
+			<h2 class="title-1 mb-44">Notícias</h2>
+
+			<ul class="visible">
+				<li class="color-artes-visuais">
+					<a href="#" class="link-area">Artes visuais</a>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
+					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+					<a href="#" class="box-news__more">Ler mais</a>
+				</li>
+				<li class="color-danca">
+					<a href="#" class="link-area">Dança</a>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_002.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
+					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+					<a href="#" class="box-news__more">Ler mais</a>
+				</li>
+				<li class="color-circo">
+					<a href="#" class="link-area">Circo</a>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
+					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+					<a href="#" class="box-news__more">Ler mais</a>
+				</li>
+			</ul>
+			<ul>
+				<li class="color-artes-visuais">
+					<a href="#" class="link-area">Artes visuais</a>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
+					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+					<a href="#" class="box-news__more">Ler mais</a>
+				</li>
+				<li class="color-danca">
+					<a href="#" class="link-area">Dança</a>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_002.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
+					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+					<a href="#" class="box-news__more">Ler mais</a>
+				</li>
+				<li class="color-circo">
+					<a href="#" class="link-area">Circo</a>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
+					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+					<a href="#" class="box-news__more">Ler mais</a>
+				</li>
+			</ul>
+			<ul>
+				<li class="color-artes-visuais">
+					<a href="#" class="link-area">Artes visuais</a>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
+					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+					<a href="#" class="box-news__more">Ler mais</a>
+				</li>
+				<li class="color-danca">
+					<a href="#" class="link-area">Dança</a>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_002.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
+					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+					<a href="#" class="box-news__more">Ler mais</a>
+				</li>
+				<li class="color-circo">
+					<a href="#" class="link-area">Circo</a>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
+					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
+					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
+					<a href="#" class="box-news__more">Ler mais</a>
+				</li>
+			</ul>
+
+			<button type="button" class="box-news__load"><i class="mdi mdi-chevron-down"></i></button>
+		</div>
+	</section>
+
 	<div class="container">
-		<h2 class="title-1">Notícias</h2>
 		<h2 class="title-1">Agenda Cultural</h2>
 		<h2 class="title-1">Acervo</h2>
 	</div>

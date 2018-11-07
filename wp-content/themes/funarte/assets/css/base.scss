@@ -64,11 +64,206 @@ form legend {
 	line-height: 1.8rem;
 	border-left: 6px solid $verde-1;
 }
+.news-title {
+	margin-bottom: 13px;
+	font-family: 'Sansita', sans-serif;
+	font-size: 1.4rem;
+	color: $cinza-6;
+	display: block;
+}
 
 /* SESSÕES COLORIDAS */
 
 .color-row {
 	background-color: $verde-1;
+}
+.link-area {
+	padding: 5px 15px 1px;
+	font-size: .9rem;
+	color: $cinza-6;
+	text-transform: uppercase;
+	display: inline-block;
+	position: absolute;
+	top: 21px;
+	left: 70px;
+	background-color: $cinza-1;
+
+	&:after {
+		content: "";
+		width: 14px;
+		height: 21px;
+		display: block;
+		position: absolute;
+		left: -14px;
+		bottom: 0;
+		background-color: $cinza-6;
+	}
+}
+.box-news {
+	.color-funarte {
+		.link-area,
+		.box-news__more {
+			color: $verde-1;
+
+			&:after { background-color: $verde-1; }
+		}
+	}
+	.color-circo {
+		.link-area,
+		.box-news__more {
+			color: $vermelho-1;
+
+			&:after { background-color: $vermelho-1; }
+		}
+	}
+	.color-musica {
+		.link-area,
+		.box-news__more {
+			color: $laranja-1;
+
+			&:after { background-color: $laranja-1; }
+		}
+	}
+	.color-danca {
+		.link-area,
+		.box-news__more {
+			color: $amarelo-1;
+
+			&:after { background-color: $amarelo-1; }
+		}
+	}
+	.color-literatura {
+		.link-area,
+		.box-news__more {
+			color: $limao-1;
+
+			&:after { background-color: $limao-1; }
+		}
+	}
+	.color-artes-visuais {
+		.link-area,
+		.box-news__more {
+			color: $azul-1;
+
+			&:after { background-color: $azul-1; }
+		}
+	}
+	.color-artes-integradas {
+		.link-area,
+		.box-news__more {
+			color: $roxo-1;
+
+			&:after { background-color: $roxo-1; }
+		}
+	}
+	.color-teatro {
+		.link-area,
+		.box-news__more {
+			color: $rosa-1;
+
+			&:after { background-color: $rosa-1; }
+		}
+	}
+}
+
+/* BOXES */
+
+.box-news {
+	width: 100%;
+	padding: 0 0 45px;
+	position: relative;
+	overflow: hidden;
+
+	&:after {
+		width: 100%;
+		height: 100%;
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 220px;
+		background-color: $cinza-2;
+		z-index: -1;
+	}
+
+	ul {
+		max-height: 0;
+		margin: 0 -30px;
+		padding: 0;
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		list-style-type: none;
+		overflow: hidden;
+		transition: max-height 1000ms ease-in-out;
+
+		&:first-of-type,
+		&.visible { max-height: 5000px; }
+
+		li {
+			width: 33.33%;
+			padding: 36px 30px 22px;
+			position: relative;
+		}
+
+		img {
+			width: 100%;
+			margin-bottom: 13px;
+			display: block;
+		}
+
+		span {
+			font-size: .9rem;
+			color: $cinza-6;
+			line-height: 1rem;
+			display: block;
+		}
+	}
+}
+.box-news__more {
+	margin-top: 30px;
+	font-size: .9rem;
+	color: $cinza-6;
+	line-height: 1rem;
+	display: inline-block;
+}
+.box-news__load {
+	width: 30px;
+	height: 30px;
+	margin: 21px auto 0;
+	line-height: 30px;
+	color: $branco;
+	cursor: pointer;
+	display: block;
+	position: relative;
+	border: none;
+	background-color: $verde-1;
+	transform: scale(1);
+	z-index: 2;
+	transition: transform 200ms ease-in-out, height 200ms ease-in-out, margin 200ms ease-in-out, z-index 0s 200ms ease-in-out;
+
+	&.hidden {
+		height: 0;
+		margin: 0 auto;
+		transform: scale(0);
+		z-index: -2;
+	}
+
+	i {
+		height: 30px;
+		line-height: 30px;
+		font-size: 35px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+}
+
+@media screen and (max-width:768px) {
+	.box-news ul li { width: 50%; }
+}
+@media screen and (max-width:478px) {
+	.box-news ul li { width: 100%; }
 }
 
 /***
@@ -554,6 +749,7 @@ ul.social-media-list {
 * MARGENS
 ***/
 
+.mb-44 { margin-bottom: 44px; }
 .mb-60 { margin-bottom: 60px; }
 
 /***
