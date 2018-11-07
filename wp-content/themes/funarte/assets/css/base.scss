@@ -54,6 +54,23 @@ form legend {
 	clip: rect(0,0,0,0);
 }
 
+/* TÍTULOS */
+
+.title-1 {
+	padding: 0 0 9px 10px;
+	font-family: 'Sansita', sans-serif;
+	font-size: 1.9rem;
+	color: $cinza-6;
+	line-height: 1.8rem;
+	border-left: 6px solid $verde-1;
+}
+
+/* SESSÕES COLORIDAS */
+
+.color-row {
+	background-color: $verde-1;
+}
+
 /***
 * CABEÇALHO
 ***/
@@ -295,6 +312,7 @@ form legend {
 	}
 }
 .highlights-carousel__caption {
+	margin-left: 35px;
 	padding: 6px 20px 14px;
 	position: absolute;
 	right: 85px;
@@ -339,10 +357,12 @@ form legend {
 ul.slick-dots {
 	width: 50px;
 	height: auto;
-	padding-bottom: 30px;
+	max-height: 256px;
+	padding: 10px 0 30px;
 	position: absolute;
 	right: 0;
 	bottom: 150px;
+	overflow: hidden;
 
 	li {
 		width: 100%;
@@ -363,6 +383,54 @@ ul.slick-dots {
 		& + li { margin-top: 10px; }
 
 		&.slick-active button { background-color: $verde-1; }
+	}
+}
+@media screen and (max-width:767px) {
+	.highlights-carousel:after { display: none; }
+	.highlights-carousel ul li { padding: 0; }
+	.highlights-carousel__caption {
+		margin: 0;
+		position: static;
+		right: auto;
+		bottom: auto;
+	}
+	ul.slick-dots {
+		width: auto;
+		padding: 0;
+		max-height: none;
+		display: flex;
+		right: 50%;
+		bottom: -20px;
+		transform: translate(50%,0);
+
+		li {
+			margin: 0;
+			padding: 0;
+
+			& + li { margin: 0 0 0 10px; }
+		}
+	}
+	.highlights-carousel__control {
+		width: 0;
+		height: 0;
+		position: static;
+		right: auto;
+		bottom: auto;
+
+		button {
+			left: auto;
+			z-index: 2;
+			transform: translate(0,-50%);
+			background-color: $verde-1;
+		}
+		.control__prev {
+			top: 50%;
+			left: 10px;
+		}
+		.control__next {
+			top: 50%;
+			right: 10px;
+		}
 	}
 }
 
@@ -481,6 +549,12 @@ ul.social-media-list {
 
 	i { font-size: 24px; }
 }
+
+/***
+* MARGENS
+***/
+
+.mb-60 { margin-bottom: 60px; }
 
 /***
 * GRID
