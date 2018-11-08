@@ -55,10 +55,11 @@
 		</div>
 	</div>
 
-	<section class="box-news">
+	<section class="box-news mb-100">
 		<div class="container">
 			<h2 class="title-1 mb-44">Notícias</h2>
 
+			<!-- SÓ A PRIMEIRA UL VEM COM A CLASSE VISIBLE -->
 			<ul class="visible">
 				<li class="color-artes-visuais">
 					<a href="#" class="link-area">Artes visuais</a>
@@ -129,13 +130,41 @@
 				</li>
 			</ul>
 
-			<button type="button" class="box-news__load"><i class="mdi mdi-chevron-down"></i></button>
+			<a href="#" class="box-news__load"><i class="mdi mdi-chevron-down"></i><i class="mdi mdi-plus"></i><span class="sr-only">Ver mais</span></a>
 		</div>
 	</section>
 
 	<div class="container">
-		<h2 class="title-1">Agenda Cultural</h2>
-		<h2 class="title-1">Acervo</h2>
+		<section class="box-schedule mb-100">
+			<h2 class="title-1">Agenda Cultural</h2>
+		</section>
+
+		<section class="box-collection mb-100">
+			<h2 class="title-1">Acervo</h2>
+
+			<ul>
+				<li class="color-circo">
+					<a href="#" class="link-area">Circo</a>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis</p>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_001.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis">
+				</li>
+				<li class="color-literatura">
+					<a href="#" class="link-area">Literatura</a>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
+				</li>
+				<li class="color-artes-visuais">
+					<a href="#" class="link-area">Artes visuais</a>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_003.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
+				</li>
+				<li class="color-teatro">
+					<a href="#" class="link-area">Teatro</a>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_004.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
+				</li>
+			</ul>
+		</section>
 	</div>
 </main>
 

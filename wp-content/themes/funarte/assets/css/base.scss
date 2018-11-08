@@ -78,14 +78,13 @@ form legend {
 	background-color: $verde-1;
 }
 .link-area {
+	margin-left: 14px;
 	padding: 5px 15px 1px;
 	font-size: .9rem;
 	color: $cinza-6;
 	text-transform: uppercase;
 	display: inline-block;
-	position: absolute;
-	top: 21px;
-	left: 70px;
+	position: relative;
 	background-color: $cinza-1;
 
 	&:after {
@@ -99,71 +98,45 @@ form legend {
 		background-color: $cinza-6;
 	}
 }
-.box-news {
-	.color-funarte {
-		.link-area,
-		.box-news__more {
-			color: $verde-1;
+.color-funarte .link-area {
+	color: $verde-1;
 
-			&:after { background-color: $verde-1; }
-		}
-	}
-	.color-circo {
-		.link-area,
-		.box-news__more {
-			color: $vermelho-1;
+	&:after { background-color: $verde-1; }
+}
+.color-circo .link-area {
+	color: $vermelho-1;
 
-			&:after { background-color: $vermelho-1; }
-		}
-	}
-	.color-musica {
-		.link-area,
-		.box-news__more {
-			color: $laranja-1;
+	&:after { background-color: $vermelho-1; }
+}
+.color-musica .link-area {
+	color: $laranja-1;
 
-			&:after { background-color: $laranja-1; }
-		}
-	}
-	.color-danca {
-		.link-area,
-		.box-news__more {
-			color: $amarelo-1;
+	&:after { background-color: $laranja-1; }
+}
+.color-danca .link-area {
+	color: $amarelo-1;
 
-			&:after { background-color: $amarelo-1; }
-		}
-	}
-	.color-literatura {
-		.link-area,
-		.box-news__more {
-			color: $limao-1;
+	&:after { background-color: $amarelo-1; }
+}
+.color-literatura .link-area {
+	color: $limao-1;
 
-			&:after { background-color: $limao-1; }
-		}
-	}
-	.color-artes-visuais {
-		.link-area,
-		.box-news__more {
-			color: $azul-1;
+	&:after { background-color: $limao-1; }
+}
+.color-artes-visuais .link-area {
+	color: $azul-1;
 
-			&:after { background-color: $azul-1; }
-		}
-	}
-	.color-artes-integradas {
-		.link-area,
-		.box-news__more {
-			color: $roxo-1;
+	&:after { background-color: $azul-1; }
+}
+.color-artes-integradas .link-area {
+	color: $roxo-1;
 
-			&:after { background-color: $roxo-1; }
-		}
-	}
-	.color-teatro {
-		.link-area,
-		.box-news__more {
-			color: $rosa-1;
+	&:after { background-color: $roxo-1; }
+}
+.color-teatro .link-area {
+	color: $rosa-1;
 
-			&:after { background-color: $rosa-1; }
-		}
-	}
+	&:after { background-color: $rosa-1; }
 }
 
 /* BOXES */
@@ -184,6 +157,21 @@ form legend {
 		background-color: $cinza-2;
 		z-index: -1;
 	}
+
+	.link-area {
+		position: absolute;
+		top: 21px;
+		left: 56px;
+	}
+
+	.color-funarte .box-news__more { color: $verde-1; }
+	.color-circo .box-news__more { color: $vermelho-1; }
+	.color-musica .box-news__more { color: $laranja-1; }
+	.color-danca .box-news__more { color: $amarelo-1; }
+	.color-literatura .box-news__more { color: $limao-1; }
+	.color-artes-visuais .box-news__more { color: $azul-1; }
+	.color-artes-integradas .box-news__more { color: $roxo-1; }
+	.color-teatro .box-news__more { color: $rosa-1; }
 
 	ul {
 		max-height: 0;
@@ -235,18 +223,11 @@ form legend {
 	cursor: pointer;
 	display: block;
 	position: relative;
+	overflow: hidden;
 	border: none;
 	background-color: $verde-1;
-	transform: scale(1);
-	z-index: 2;
-	transition: transform 200ms ease-in-out, height 200ms ease-in-out, margin 200ms ease-in-out, z-index 0s 200ms ease-in-out;
 
-	&.hidden {
-		height: 0;
-		margin: 0 auto;
-		transform: scale(0);
-		z-index: -2;
-	}
+	.mdi-plus { opacity: 0; }
 
 	i {
 		height: 30px;
@@ -255,7 +236,19 @@ form legend {
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%) rotate(0deg);
+		transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+	}
+
+	&:hover,
+	&:focus { color: $branco; }
+
+	&.active {
+		.mdi-plus { opacity: 1; }
+		.mdi-chevron-down { opacity: 0; }
+		i {
+			transform: translate(-50%,-50%) rotate(2160deg);
+		}
 	}
 }
 
@@ -264,6 +257,20 @@ form legend {
 }
 @media screen and (max-width:478px) {
 	.box-news ul li { width: 100%; }
+}
+
+/* BOX DE ACERVO */
+
+.box-collection ul {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	list-style: none;
+
+	img {
+		width: 100%;
+		display: block;
+	}
 }
 
 /***
@@ -359,31 +366,35 @@ form legend {
 	transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
 }
 
-.areas-list__vermelho-1 {
+.areas-list__funarte {
+	color: $verde-1;
+	border-top: 4px solid $verde-1;
+}
+.areas-list__circo {
 	color: $vermelho-1;
 	border-top: 4px solid $vermelho-1;
 }
-.areas-list__rosa-1 {
+.areas-list__teatro {
 	color: $rosa-1;
 	border-top: 4px solid $rosa-1;
 }
-.areas-list__amarelo-1 {
+.areas-list__danca {
 	color: $amarelo-1;
 	border-top: 4px solid $amarelo-1;
 }
-.areas-list__laranja-1 {
+.areas-list__musica {
 	color: $laranja-1;
 	border-top: 4px solid $laranja-1;
 }
-.areas-list__roxo-1 {
+.areas-list__artes-integradas {
 	color: $roxo-1;
 	border-top: 4px solid $roxo-1;
 }
-.areas-list__azul-1 {
+.areas-list__artes-visuais {
 	color: $azul-1;
 	border-top: 4px solid $azul-1;
 }
-.areas-list__limao-1 {
+.areas-list__literatura {
 	color: $limao-1;
 	border-top: 4px solid $limao-1;
 }
@@ -396,27 +407,30 @@ form legend {
 	color: $branco;
 	text-decoration: none;
 }
-.areas-list__vermelho-1:hover,
-.areas-list__vermelho-1:focus,
-.areas-list__vermelho-1.active { background-color: $vermelho-1; }
-.areas-list__rosa-1:hover,
-.areas-list__rosa-1:focus,
-.areas-list__rosa-1.active { background-color: $rosa-1; }
-.areas-list__amarelo-1:hover,
-.areas-list__amarelo-1:focus,
-.areas-list__amarelo-1.active { background-color: $amarelo-1; }
-.areas-list__laranja-1:hover,
-.areas-list__laranja-1:focus,
-.areas-list__laranja-1.active { background-color: $laranja-1; }
-.areas-list__roxo-1:hover,
-.areas-list__roxo-1:focus,
-.areas-list__roxo-1.active { background-color: $roxo-1; }
-.areas-list__azul-1:hover,
-.areas-list__azul-1:focus,
-.areas-list__azul-1.active { background-color: $azul-1; }
-.areas-list__limao-1:hover,
-.areas-list__limao-1:focus,
-.areas-list__limao-1.active { background-color: $limao-1; }
+.areas-list__funarte:hover,
+.areas-list__funarte:focus,
+.areas-list__funarte.active { background-color: $verde-1; }
+.areas-list__circo:hover,
+.areas-list__circo:focus,
+.areas-list__circo.active { background-color: $vermelho-1; }
+.areas-list__teatro:hover,
+.areas-list__teatro:focus,
+.areas-list__teatro.active { background-color: $rosa-1; }
+.areas-list__danca:hover,
+.areas-list__danca:focus,
+.areas-list__danca.active { background-color: $amarelo-1; }
+.areas-list__musica:hover,
+.areas-list__musica:focus,
+.areas-list__musica.active { background-color: $laranja-1; }
+.areas-list__artes-integradas:hover,
+.areas-list__artes-integradas:focus,
+.areas-list__artes-integradas.active { background-color: $roxo-1; }
+.areas-list__artes-visuais:hover,
+.areas-list__artes-visuais:focus,
+.areas-list__artes-visuais.active { background-color: $azul-1; }
+.areas-list__literatura:hover,
+.areas-list__literatura:focus,
+.areas-list__literatura.active { background-color: $limao-1; }
 
 /* CAMPO DE BUSCA */
 
@@ -751,6 +765,7 @@ ul.social-media-list {
 
 .mb-44 { margin-bottom: 44px; }
 .mb-60 { margin-bottom: 60px; }
+.mb-100 { margin-bottom: 100px; }
 
 /***
 * GRID

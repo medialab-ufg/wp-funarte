@@ -14,15 +14,16 @@ var base = {
 		visualizar: function() {
 			$('.box-news__load').on('click',function() {
 				var $this = $(this),
-					$lista = $this
-								.siblings('.visible:last')
-								.next('ul');
+					$proxima = $this.siblings('ul.visible:last').next('ul');
 
-				if ($lista.length > 0) {
-					$lista
-					.addClass('visible');
-				} else {
-					$this.addClass('hidden');
+				if ($proxima.length > 0) {
+					$proxima.addClass('visible');
+
+					if ($proxima.next('ul').length == 0) {
+						$this.addClass('active');
+					}
+
+					return false;
 				}
 			});
 		}

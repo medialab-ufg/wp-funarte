@@ -74,13 +74,13 @@
 				</div>
 
 				<ul class="areas-list">
-					<li><a class="areas-list__vermelho-1" href="#">Circo</a></li>
-					<li><a class="areas-list__rosa-1" href="#">Teatro</a></li>
-					<li><a class="areas-list__amarelo-1 active" href="#">Dança</a></li>
-					<li><a class="areas-list__laranja-1" href="#">Música</a></li>
-					<li><a class="areas-list__roxo-1" href="#">Artes integradas</a></li>
-					<li><a class="areas-list__azul-1" href="#">Artes visuais</a></li>
-					<li><a class="areas-list__limao-1" href="#">Literatura</a></li>
+					<li><a class="areas-list__circo" href="#">Circo</a></li>
+					<li><a class="areas-list__teatro" href="#">Teatro</a></li>
+					<li><a class="areas-list__danca active" href="#">Dança</a></li>
+					<li><a class="areas-list__musica" href="#">Música</a></li>
+					<li><a class="areas-list__artes-integradas" href="#">Artes integradas</a></li>
+					<li><a class="areas-list__artes-visuais" href="#">Artes visuais</a></li>
+					<li><a class="areas-list__literatura" href="#">Literatura</a></li>
 				</ul>
 			</div>
 		</header>
