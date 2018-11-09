@@ -5,7 +5,8 @@ $(document).ready(function() {
 	base.busca.manipular();
 	base.jsNaoObstrusivo.ativar();
 
-	base.carrossel.iniciar();
+	base.carrossel.iniciarDestaques();
+	base.carrossel.iniciarAcervo();
 	base.noticias.visualizar();
 });
 
@@ -30,7 +31,7 @@ var base = {
 	},
 
 	carrossel: {
-		iniciar: function() {
+		iniciarDestaques: function() {
 			var $carousel = $('.highlights-carousel');
 
 			$carousel.find('ul').slick({
@@ -44,6 +45,36 @@ var base = {
 				nextArrow: $carousel.find('.control__next'),
 				dots: true,
 				adaptiveHeight: true
+			});
+		},
+
+		iniciarAcervo: function() {
+			var $carousel = $('.collection-carousel');
+
+			$carousel.find('ul').slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+				adaptiveHeight: true,
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 586,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
 			});
 		}
 	},
