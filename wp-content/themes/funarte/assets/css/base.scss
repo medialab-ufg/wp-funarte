@@ -64,6 +64,12 @@ form legend {
 	line-height: 1.8rem;
 	border-left: 6px solid $verde-1;
 }
+.title-2 {
+	font-family: 'Sansita', sans-serif;
+	font-weight: 700;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+}
 .news-title {
 	margin-bottom: 13px;
 	font-family: 'Sansita', sans-serif;
@@ -261,7 +267,7 @@ form legend {
 
 /* BOX DE ACERVO */
 
-.collection-carousel {
+.carousel-collection {
 	width: 100%;
 	position: relative;
 
@@ -303,7 +309,7 @@ form legend {
 			min-height: 432px;
 			padding: 0 5px;
 
-			&.collection-carousel__reverse {
+			&.carousel-collection__reverse {
 				display: flex;
 				flex-direction: column-reverse;
 
@@ -318,7 +324,7 @@ form legend {
 
 }
 
-.collection-carousel__control {
+.carousel-collection__control {
 	width: 30px;
 	height: 65px;
 	position: absolute;
@@ -352,34 +358,34 @@ form legend {
 	.control__prev { bottom: 0; }
 }
 
-.collection-carousel__wrapper {
+.carousel-collection__wrapper {
 	width: 100%;
 	position: relative;
 }
 
 @media screen and (max-width:1199px) {
-	.collection-carousel ul li { min-height: 390px; }
+	.carousel-collection ul li { min-height: 390px; }
 }
 @media screen and (max-width:991px) {
-	.collection-carousel ul li { min-height: 342px; }
+	.carousel-collection ul li { min-height: 342px; }
 }
 @media screen and (max-width:767px) {
-	.collection-carousel ul li {
+	.carousel-collection ul li {
 		width: 50%;
 		min-height: 396px;
 	}
 }
 @media screen and (max-width:585px) {
-	.collection-carousel ul {
+	.carousel-collection ul {
 		padding: 0;
 		justify-content: center;
 	}
-	.collection-carousel ul li {
+	.carousel-collection ul li {
 		width: 100%;
 		min-height: auto;
 		margin-bottom: 30px;
 	}
-	.collection-carousel ul li.collection-carousel__reverse {
+	.carousel-collection ul li.carousel-collection__reverse {
 		flex-direction: column;
 
 		.link-area {
@@ -388,7 +394,7 @@ form legend {
 		}
 		p { margin: 0 0 20px; }
 	}
-	.collection-carousel .collection-carousel__control {
+	.carousel-collection .carousel-collection__control {
 		height: 0;
 		position: static;
 		left: auto;
@@ -622,7 +628,7 @@ form legend {
 
 /* CARROSSEL DE DESTAQUES */
 
-.highlights-carousel {
+.carousel-highlights {
 	margin-bottom: 100px;
 	position: relative;
 
@@ -654,7 +660,7 @@ form legend {
 		background-color: $verde-1;
 	}
 }
-.highlights-carousel__caption {
+.carousel-highlights__caption {
 	margin-left: 35px;
 	padding: 6px 20px 14px;
 	position: absolute;
@@ -676,7 +682,7 @@ form legend {
 		display: block;
 	}
 }
-.highlights-carousel__control {
+.carousel-highlights__control {
 	width: 50px;
 	height: 85px;
 	position: absolute;
@@ -729,9 +735,9 @@ ul.slick-dots {
 	}
 }
 @media screen and (max-width:767px) {
-	.highlights-carousel:after { display: none; }
-	.highlights-carousel ul li { padding: 0; }
-	.highlights-carousel__caption {
+	.carousel-highlights:after { display: none; }
+	.carousel-highlights ul li { padding: 0; }
+	.carousel-highlights__caption {
 		margin: 0;
 		position: static;
 		right: auto;
@@ -753,7 +759,7 @@ ul.slick-dots {
 			& + li { margin: 0 0 0 10px; }
 		}
 	}
-	.highlights-carousel__control {
+	.carousel-highlights__control {
 		width: 0;
 		height: 0;
 		position: static;
@@ -773,6 +779,72 @@ ul.slick-dots {
 		.control__next {
 			top: 50%;
 			right: 10px;
+		}
+	}
+}
+
+/* CARROSSEL DE EVENTOS */
+
+.carousel-schedule {
+	ul {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		list-style: none;
+	}
+
+	li {
+		position: relative;
+	}
+
+	.title-2 { padding: 0 0 0 80px; }
+	.color-funarte {
+		.title-2,
+		.carousel-schedule__date strong { color: $verde-1; }
+	}
+	.color-circo {
+		.title-2,
+		.carousel-schedule__date strong { color: $vermelho-1; }
+	}
+	.color-musica {
+		.title-2,
+		.carousel-schedule__date strong { color: $laranja-1; }
+	}
+	.color-danca {
+		.title-2,
+		.carousel-schedule__date strong { color: $amarelo-1; }
+	}
+	.color-literatura {
+		.title-2,
+		.carousel-schedule__date strong { color: $limao-1; }
+	}
+	.color-artes-visuais {
+		.title-2,
+		.carousel-schedule__date strong { color: $azul-1; }
+	}
+	.color-artes-integradas {
+		.title-2,
+		.carousel-schedule__date strong { color: $roxo-1; }
+	}
+	.color-teatro {
+		.title-2,
+		.carousel-schedule__date strong { color: $rosa-1; }
+	}
+
+	.carousel-schedule__date {
+
+		strong {
+			width: 50px;
+			height: 50px;
+			font-size: 27px;
+			text-align: center;
+			line-height: 50px;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+			background-color: $preto;
 		}
 	}
 }

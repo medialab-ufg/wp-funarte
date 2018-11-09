@@ -4,36 +4,36 @@
 
 <main role="main">
 	<div class="container">
-		<section class="highlights-carousel">
-			<div class="highlights-carousel__control">
+		<section class="carousel-highlights">
+			<div class="carousel-highlights__control">
 				<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
 				<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
 			</div>
 			<ul>
 				<li>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/carrossel_001.jpg'; ?>" alt="Coleção exemplo">
-					<div class="highlights-carousel__caption">
+					<div class="carousel-highlights__caption">
 						<strong>Coleção exemplo</strong>
 						<span>Título de item exemplo da coleção exemplo</span>
 					</div>
 				</li>
 				<li>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/carrossel_002.jpg'; ?>" alt="Coleção exemplo 2">
-					<div class="highlights-carousel__caption">
+					<div class="carousel-highlights__caption">
 						<strong>Coleção exemplo 2</strong>
 						<span>Título de item exemplo da coleção exemploTítulo de item exemplo da coleção exemplo</span>
 					</div>
 				</li>
 				<li>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/carrossel_003.jpg'; ?>" alt="Coleção exemplo 3">
-					<div class="highlights-carousel__caption">
+					<div class="carousel-highlights__caption">
 						<strong>Coleção exemplo 3</strong>
 						<span>Título de item exemplo da coleção exemploTítulo de item exemplo da coleção exemploTítulo de item exemplo da coleção exemplo</span>
 					</div>
 				</li>
 				<li>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/carrossel_004.jpg'; ?>" alt="Coleção exemplo 4">
-					<div class="highlights-carousel__caption">
+					<div class="carousel-highlights__caption">
 						<strong>Coleção exemplo 4</strong>
 						<span>Título de item exemplo da coleção exemploTítulo de item exemplo da coleção exemploTítulo de item exemplo da coleção exemploTítulo de item exemplo da coleção exemplo</span>
 					</div>
@@ -135,15 +135,44 @@
 	</section>
 
 	<div class="container">
-		<section class="box-schedule mb-100">
+		<section class="carousel-schedule mb-100">
 			<h2 class="title-1">Agenda Cultural</h2>
+
+			<div class="carousel-schedule__wrapper">
+				<div class="carousel-schedule__control">
+					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
+				</div>
+				<ul>
+					<li class="color-teatro">
+						<h3 class="title-2">Festival de música regional</h3>
+						<span class="carousel-schedule__date">Set<strong>29</strong></span>
+						<hr>
+						<span class="carousel-schedule__time">das 13 às 17 horas</span>
+						<span class="carousel-schedule__local">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
+						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg'; ?>" alt="Festival de música regional">
+						<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
+						<a href="#" class="carousel-schedule__more">Ler mais</a>
+					</li>
+					<li class="color-musica">
+						<h3 class="title-2">Festival de música regional</h3>
+						<span class="carousel-schedule__date">Set<strong>30</strong></span>
+						<hr>
+						<span class="carousel-schedule__time">das 13 às 17 horas</span>
+						<span class="carousel-schedule__local">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
+						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg'; ?>" alt="Festival de música regional">
+						<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
+						<a href="#" class="carousel-schedule__more">Ler mais</a>
+					</li>
+				</ul>
+			</div>
 		</section>
 
-		<section class="collection-carousel mb-100">
+		<section class="carousel-collection mb-100">
 			<h2 class="title-1 mb-65">Acervo</h2>
 
-			<div class="collection-carousel__wrapper">
-				<div class="collection-carousel__control">
+			<div class="carousel-collection__wrapper">
+				<div class="carousel-collection__control">
 					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
 					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
 				</div>
@@ -153,7 +182,7 @@
 						<p>Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_001.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
-					<li class="color-literatura collection-carousel__reverse">
+					<li class="color-literatura carousel-collection__reverse">
 						<a href="#" class="link-area">Literatura</a>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
@@ -163,7 +192,7 @@
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_003.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
-					<li class="color-teatro collection-carousel__reverse">
+					<li class="color-teatro carousel-collection__reverse">
 						<a href="#" class="link-area">Teatro</a>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_004.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
@@ -173,7 +202,7 @@
 						<p>Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_001.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
-					<li class="color-literatura collection-carousel__reverse">
+					<li class="color-literatura carousel-collection__reverse">
 						<a href="#" class="link-area">Literatura</a>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
@@ -183,12 +212,12 @@
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_003.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
-					<li class="color-teatro collection-carousel__reverse">
+					<li class="color-teatro carousel-collection__reverse">
 						<a href="#" class="link-area">Teatro</a>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_004.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
-					<li class="color-literatura collection-carousel__reverse">
+					<li class="color-literatura carousel-collection__reverse">
 						<a href="#" class="link-area">Literatura</a>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">

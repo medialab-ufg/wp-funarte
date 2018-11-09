@@ -32,7 +32,7 @@ var base = {
 
 	carrossel: {
 		iniciarDestaques: function() {
-			var $carousel = $('.highlights-carousel');
+			var $carousel = $('.carousel-highlights');
 
 			$carousel.find('ul').slick({
 				speed: 1000,
@@ -49,7 +49,7 @@ var base = {
 		},
 
 		iniciarAcervo: function() {
-			var $carousel = $('.collection-carousel');
+			var $carousel = $('.carousel-collection');
 
 			$carousel.find('ul').slick({
 				speed: 1000,
