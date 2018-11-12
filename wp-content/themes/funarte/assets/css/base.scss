@@ -54,6 +54,18 @@ form legend {
 	clip: rect(0,0,0,0);
 }
 
+/* ICONES NO CSS */
+
+.icon-css:after {
+	display: inline-block;
+	font: normal normal normal 24px/1 "Material Design Icons";
+	font-size: inherit;
+	text-rendering: auto;
+	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
 /* TÍTULOS */
 
 .title-1 {
@@ -70,6 +82,12 @@ form legend {
 	font-size: 1.2rem;
 	text-transform: uppercase;
 }
+.title-3 {
+	font-weight: 700;
+	font-family: 'Sansita', sans-serif;
+	font-size: 1.4rem;
+	color: $cinza-6;
+}
 .news-title {
 	margin-bottom: 13px;
 	font-family: 'Sansita', sans-serif;
@@ -80,9 +98,6 @@ form legend {
 
 /* SESSÕES COLORIDAS */
 
-.color-row {
-	background-color: $verde-1;
-}
 .link-area {
 	margin-left: 14px;
 	padding: 5px 15px 1px;
@@ -104,45 +119,91 @@ form legend {
 		background-color: $cinza-6;
 	}
 }
-.color-funarte .link-area {
-	color: $verde-1;
+.link-more {
+	margin-top: 42px;
+	padding: 0 13px 0 0;
+	font-size: .9rem;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
 
-	&:after { background-color: $verde-1; }
+	&:after {
+		content: "\f35f";
+		font: normal normal normal 24px/1 "Material Design Icons";
+		font-size: 23px;
+		text-rendering: auto;
+		line-height: inherit;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		display: inline-block;
+		position: absolute;
+		top: -5px;
+		right: -8px;
+	}
 }
-.color-circo .link-area {
-	color: $vermelho-1;
+.color-funarte {
+	.link-area {
+		color: $verde-1;
 
-	&:after { background-color: $vermelho-1; }
+		&:after { background-color: $verde-1; }
+	}
+	.link-more { color: $verde-1; }
 }
-.color-musica .link-area {
-	color: $laranja-1;
+.color-circo {
+	.link-area {
+		color: $vermelho-1;
 
-	&:after { background-color: $laranja-1; }
+		&:after { background-color: $vermelho-1; }
+	}
+	.link-more { color: $vermelho-1; }
 }
-.color-danca .link-area {
-	color: $amarelo-1;
+.color-musica {
+	.link-area {
+		color: $laranja-1;
 
-	&:after { background-color: $amarelo-1; }
+		&:after { background-color: $laranja-1; }
+	}
+	.link-more { color: $laranja-1; }
 }
-.color-literatura .link-area {
-	color: $limao-1;
+.color-danca {
+	.link-area {
+		color: $amarelo-1;
 
-	&:after { background-color: $limao-1; }
+		&:after { background-color: $amarelo-1; }
+	}
+	.link-more { color: $amarelo-1; }
 }
-.color-artes-visuais .link-area {
-	color: $azul-1;
+.color-literatura {
+	.link-area {
+		color: $limao-1;
 
-	&:after { background-color: $azul-1; }
+		&:after { background-color: $limao-1; }
+	}
+	.link-more { color: $limao-1; }
 }
-.color-artes-integradas .link-area {
-	color: $roxo-1;
+.color-artes-visuais {
+	.link-area {
+		color: $azul-1;
 
-	&:after { background-color: $roxo-1; }
+		&:after { background-color: $azul-1; }
+	}
+	.link-more { color: $azul-1; }
 }
-.color-teatro .link-area {
-	color: $rosa-1;
+.color-artes-integradas {
+	.link-area {
+		color: $roxo-1;
 
-	&:after { background-color: $rosa-1; }
+		&:after { background-color: $roxo-1; }
+	}
+	.link-more { color: $roxo-1; }
+}
+.color-teatro {
+	.link-area {
+		color: $rosa-1;
+
+		&:after { background-color: $rosa-1; }
+	}
+	.link-more { color: $rosa-1; }
 }
 
 /* BOXES */
@@ -265,7 +326,31 @@ form legend {
 	.box-news ul li { width: 100%; }
 }
 
-/* BOX DE ACERVO */
+.box-highlight {
+
+	img {
+		margin: 84px 0 35px -32%;
+		display: block;
+		border: 7px solid $branco;
+	}
+
+	.link-area { margin-bottom: 33px; }
+
+	.title-3 { margin-bottom: 15px; }
+
+	p {
+		margin: 0;
+		font-size: .9rem;
+		color: $cinza-6;
+		line-height: 1rem;
+	}
+}
+
+/***
+* CARROSSEIS
+***/
+
+/* CARROSSEL DE ACERVO */
 
 .carousel-collection {
 	width: 100%;
@@ -786,52 +871,115 @@ ul.slick-dots {
 /* CARROSSEL DE EVENTOS */
 
 .carousel-schedule {
+	.title-1 {
+		position: relative;
+		z-index: 2;
+	}
+
 	ul {
-		margin: 0;
-		padding: 0;
+		margin: 0 -50px;
+		padding: 0 0 0 80px;
 		display: flex;
 		list-style: none;
 	}
 
 	li {
+		width: 30%;
+		max-width: 400px;
+		padding: 203px 50px 30px 130px;
 		position: relative;
 	}
 
-	.title-2 { padding: 0 0 0 80px; }
+	.carousel-schedule__wrapper,
+	.carousel-schedule__body {
+		width: 100%;
+		position: relative;
+	}
+	.carousel-schedule__wrapper {
+		margin-top: -50px;
+
+		&:after {
+			content: "";
+			width: 9999999px;
+			height: 80%;
+			position: absolute;
+			bottom: 0;
+			right: 30%;
+			background-color: $cinza-2;
+			z-index: -1;
+		}
+	}
+
+	.title-2 {
+		min-height: 46px;
+		margin-left: -80px;
+		padding-left: 80px;
+	}
+	hr {
+		width: 100%;
+		height: 4px;
+		margin: 30px 0;
+		display: block;
+	}
 	.color-funarte {
 		.title-2,
-		.carousel-schedule__date strong { color: $verde-1; }
+		.carousel-schedule__date strong,
+		.carousel-schedule__more { color: $verde-1; }
+		hr { background-color: $verde-1; }
 	}
 	.color-circo {
 		.title-2,
-		.carousel-schedule__date strong { color: $vermelho-1; }
+		.carousel-schedule__date strong,
+		.carousel-schedule__more { color: $vermelho-1; }
+		hr { background-color: $vermelho-1; }
 	}
 	.color-musica {
 		.title-2,
-		.carousel-schedule__date strong { color: $laranja-1; }
+		.carousel-schedule__date strong,
+		.carousel-schedule__more { color: $laranja-1; }
+		hr { background-color: $laranja-1; }
 	}
 	.color-danca {
 		.title-2,
-		.carousel-schedule__date strong { color: $amarelo-1; }
+		.carousel-schedule__date strong,
+		.carousel-schedule__more { color: $amarelo-1; }
+		hr { background-color: $amarelo-1; }
 	}
 	.color-literatura {
 		.title-2,
-		.carousel-schedule__date strong { color: $limao-1; }
+		.carousel-schedule__date strong,
+		.carousel-schedule__more { color: $limao-1; }
+		hr { background-color: $limao-1; }
 	}
 	.color-artes-visuais {
 		.title-2,
-		.carousel-schedule__date strong { color: $azul-1; }
+		.carousel-schedule__date strong,
+		.carousel-schedule__more { color: $azul-1; }
+		hr { background-color: $azul-1; }
 	}
 	.color-artes-integradas {
 		.title-2,
-		.carousel-schedule__date strong { color: $roxo-1; }
+		.carousel-schedule__date strong,
+		.carousel-schedule__more { color: $roxo-1; }
+		hr { background-color: $roxo-1; }
 	}
 	.color-teatro {
 		.title-2,
-		.carousel-schedule__date strong { color: $rosa-1; }
+		.carousel-schedule__date strong,
+		.carousel-schedule__more { color: $rosa-1; }
+		hr { background-color: $rosa-1; }
 	}
 
 	.carousel-schedule__date {
+		width: 50px;
+		padding: 0 0 50px;
+		color: $cinza-6;
+		text-transform: uppercase;
+		text-align: center;
+		display: block;
+		position: absolute;
+		top: -31px;
+		left: -80px;
 
 		strong {
 			width: 50px;
@@ -841,10 +989,168 @@ ul.slick-dots {
 			line-height: 50px;
 			display: block;
 			position: absolute;
-			top: 0;
+			bottom: 0;
 			left: 0;
 			border-radius: 50%;
-			background-color: $preto;
+			background-color: $branco;
+		}
+	}
+
+	img,
+	p { display: none; }
+
+	.carousel-schedule__time,
+	.carousel-schedule__local {
+		padding: 0 0 0 25px;
+		font-size: .8rem;
+		color: $cinza-6;
+		line-height: .9rem;
+		display: block;
+		position: relative;
+
+		&:after {
+			content: "\f34e";
+			font-size: 24px;
+			position: absolute;
+			top: -3px;
+			left: 0;
+		}
+	}
+
+	.carousel-schedule__time {
+		margin-bottom: 25px;
+
+		&:after {
+			content: "\f150";
+			font-size: 20px;
+			top: 0;
+		}
+	}
+
+	.carousel-schedule__more {
+		margin-top: 42px;
+		padding: 0 13px 0 0;
+		font-size: .9rem;
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+
+		&:after {
+			content: "\f35f";
+			font-size: 23px;
+			position: absolute;
+			top: -5px;
+			right: -8px;
+		}
+	}
+
+	/* SEGUNDO ITEM */
+
+	li.active {
+		width: 70%;
+		max-width: 840px;
+		padding: 203px 50px 40px;
+
+		.title-2 {
+			width: 40%;
+			margin-left: 0;
+		}
+
+		&.color-funarte .carousel-schedule__date strong {
+			color: $branco;
+			background-color: $verde-1;
+		}
+		&.color-circo .carousel-schedule__date strong {
+			color: $branco;
+			background-color: $vermelho-1;
+		}
+		&.color-musica .carousel-schedule__date strong {
+			color: $branco;
+			background-color: $laranja-1;
+		}
+		&.color-danca .carousel-schedule__date strong {
+			color: $branco;
+			background-color: $amarelo-1;
+		}
+		&.color-literatura .carousel-schedule__date strong {
+			color: $branco;
+			background-color: $limao-1;
+		}
+		&.color-artes-visuais .carousel-schedule__date strong {
+			color: $branco;
+			background-color: $azul-1;
+		}
+		&.color-artes-integradas .carousel-schedule__date strong {
+			color: $branco;
+			background-color: $roxo-1;
+		}
+		&.color-teatro .carousel-schedule__date strong {
+			color: $branco;
+			background-color: $rosa-1;
+		}
+
+		.carousel-schedule__date { left: 0; }
+
+		img {
+			display: block;
+			position: absolute;
+			top: -198px;
+			right: 0;
+		}
+
+		p {
+			margin: 0;
+			font-size: .9rem;
+			color: $cinza-6;
+			line-height: 1rem;
+			display: block;
+		}
+
+		hr { width: 70%; }
+
+		.carousel-schedule__row {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+		.carousel-schedule__column-1 {
+			width: 39%;
+			padding-left: 80px;
+		}
+		.carousel-schedule__column-2 {
+			width: 42%;
+			padding-right: 50px;
+		}
+	}
+}
+.carousel-schedule__control {
+	width: 30px;
+	height: 65px;
+	position: absolute;
+	left: 15px;
+	bottom: 150px;
+	z-index: 2;
+
+	button {
+		width: 30px;
+		height: 30px;
+		font-size: 32px;
+		color: $branco;
+		cursor: pointer;
+		position: absolute;
+		left: 0;
+		overflow: hidden;
+		border: none;
+		background-color: $verde-1;
+
+		&.control__next { top: 0; }
+		&.control__prev { bottom: 0; }
+
+		i {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
 		}
 	}
 }

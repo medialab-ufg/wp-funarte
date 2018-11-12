@@ -7,6 +7,7 @@ $(document).ready(function() {
 
 	base.carrossel.iniciarDestaques();
 	base.carrossel.iniciarAcervo();
+	base.carrossel.iniciarAgenda();
 	base.noticias.visualizar();
 });
 
@@ -75,6 +76,37 @@ var base = {
 						}
 					}
 				]
+			});
+		},
+
+		iniciarAgenda: function() {
+			var $carousel = $('.carousel-schedule');
+
+			$carousel.find('ul').slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+				//adaptiveHeight: true,
+				variableWidth: true,
+				// responsive: [
+				// 	{
+				// 		breakpoint: 768,
+				// 		settings: {
+				// 			slidesToShow: 2,
+				// 			slidesToScroll: 2
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 586,
+				// 		settings: {
+				// 			slidesToShow: 1,
+				// 			slidesToScroll: 1
+				// 		}
+				// 	}
+				// ]
 			});
 		}
 	},
