@@ -2,27 +2,38 @@
 * VARIÁVEIS
 ***/
 
+/* Cor da area Funarte */
 $verde-1: #2f9187;
 $verde-2: #2e6e6a;
 
+/* Cor da area Multicategoria */
+$verde-3: #2D6D6A;
+
+/* Cor da area Circo */
 $vermelho-1: #a62838;
 $vermelho-2: #b73753;
 
+/* Cor da area Musica */
 $laranja-1: #d65529;
 $laranja-2: #ea5a3d;
 
+/* Cor da area Danca */
 $amarelo-1: #c18423;
 $amarelo-2: #ce8f34;
 
+/* Cor da area Literatura */
 $limao-1: #64a62e;
 $limao-2: #74b535;
 
+/* Cor da area Artes Visuais */
 $azul-1: #3a417b;
 $azul-2: #485187;
 
+/* Cor da area Artes Integradas */
 $roxo-1: #5e2c73;
 $roxo-2: #693684;
 
+/* Cor da area Teatro */
 $rosa-1: #ad3463;
 $rosa-2: #b23f6e;
 
@@ -69,6 +80,7 @@ form legend {
 /* TÍTULOS */
 
 .title-1 {
+	margin: 0;
 	padding: 0 0 9px 10px;
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.9rem;
@@ -77,16 +89,26 @@ form legend {
 	border-left: 6px solid $verde-1;
 }
 .title-2 {
+	margin: 0;
 	font-family: 'Sansita', sans-serif;
 	font-weight: 700;
 	font-size: 1.2rem;
 	text-transform: uppercase;
 }
 .title-3 {
+	margin: 0;
 	font-weight: 700;
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.4rem;
 	color: $cinza-6;
+}
+.title-4 {
+	margin: 0;
+	font-weight: 700;
+	font-family: 'Sansita', sans-serif;
+	font-size: 1.2rem;
+	color: $branco;
+	line-height: 1.4rem;
 }
 .news-title {
 	margin-bottom: 13px;
@@ -98,24 +120,70 @@ form legend {
 
 /* SESSÕES COLORIDAS */
 
-.link-area {
-	margin-left: 14px;
-	padding: 5px 15px 1px;
-	font-size: .9rem;
-	color: $cinza-6;
-	text-transform: uppercase;
-	display: inline-block;
-	position: relative;
-	background-color: $cinza-1;
+// .link-area {
+// 	margin-left: 14px;
+// 	padding: 5px 15px 1px;
+// 	font-size: .9rem;
+// 	color: $cinza-6;
+// 	text-transform: uppercase;
+// 	display: inline-block;
+// 	position: relative;
+// 	background-color: $cinza-1;
 
-	&:after {
-		content: "";
-		width: 14px;
-		height: 21px;
-		display: block;
-		position: absolute;
-		left: -14px;
-		bottom: 0;
+// 	&:after {
+// 		content: "";
+// 		width: 14px;
+// 		height: 21px;
+// 		display: block;
+// 		position: absolute;
+// 		left: -14px;
+// 		bottom: 0;
+// 		background-color: $cinza-6;
+// 	}
+
+// 	span {
+// 		padding: 4px 10px 1px;
+// 		font-size: .7rem;
+// 		color: $branco;
+// 		white-space: nowrap;
+// 		display: block;
+// 		position: absolute;
+// 		left: 100%;
+// 		bottom: 0;
+// 		background-color: $cinza-6;
+// 	}
+// }
+.link-area {
+	padding: 0 0 0 15px;
+	display: flex;
+	align-items: flex-end;
+
+	a {
+		padding: 5px 15px 1px;
+		font-size: .9rem;
+		color: $cinza-6;
+		text-transform: uppercase;
+		display: inline-block;
+		position: relative;
+		background-color: $cinza-1;
+
+		&:after {
+			content: "";
+			width: 15px;
+			height: 21px;
+			position: absolute;
+			left: -15px;
+			bottom: 0;
+			background-color: $cinza-6;
+		}
+	}
+
+	span {
+		padding: 4px 15px 1px;
+		font-size: .7rem;
+		color: $branco;
+		text-transform: uppercase;
+		display: inline-block;
 		background-color: $cinza-6;
 	}
 }
@@ -143,67 +211,66 @@ form legend {
 }
 .color-funarte {
 	.link-area {
-		color: $verde-1;
-
-		&:after { background-color: $verde-1; }
+		a:after,
+		span { background-color: $verde-1; }
 	}
 	.link-more { color: $verde-1; }
 }
 .color-circo {
 	.link-area {
-		color: $vermelho-1;
-
-		&:after { background-color: $vermelho-1; }
+		a:after,
+		span { background-color: $vermelho-1; }
 	}
 	.link-more { color: $vermelho-1; }
 }
 .color-musica {
 	.link-area {
-		color: $laranja-1;
-
-		&:after { background-color: $laranja-1; }
+		a:after,
+		span { background-color: $laranja-1; }
 	}
 	.link-more { color: $laranja-1; }
 }
 .color-danca {
 	.link-area {
-		color: $amarelo-1;
-
-		&:after { background-color: $amarelo-1; }
+		a:after,
+		span { background-color: $amarelo-1; }
 	}
 	.link-more { color: $amarelo-1; }
 }
 .color-literatura {
 	.link-area {
-		color: $limao-1;
-
-		&:after { background-color: $limao-1; }
+		a:after,
+		span { background-color: $limao-1; }
 	}
 	.link-more { color: $limao-1; }
 }
 .color-artes-visuais {
 	.link-area {
-		color: $azul-1;
-
-		&:after { background-color: $azul-1; }
+		a:after,
+		span { background-color: $azul-1; }
 	}
 	.link-more { color: $azul-1; }
 }
 .color-artes-integradas {
 	.link-area {
-		color: $roxo-1;
-
-		&:after { background-color: $roxo-1; }
+		a:after,
+		span { background-color: $roxo-1; }
 	}
 	.link-more { color: $roxo-1; }
 }
 .color-teatro {
 	.link-area {
-		color: $rosa-1;
-
-		&:after { background-color: $rosa-1; }
+		a:after,
+		span { background-color: $rosa-1; }
 	}
 	.link-more { color: $rosa-1; }
+}
+.color-multicategoria {
+	.link-area {
+		a:after,
+		span { background-color: $verde-3; }
+	}
+	.link-more { color: $verde-3; }
 }
 
 /* BOXES */
@@ -230,15 +297,6 @@ form legend {
 		top: 21px;
 		left: 56px;
 	}
-
-	.color-funarte .box-news__more { color: $verde-1; }
-	.color-circo .box-news__more { color: $vermelho-1; }
-	.color-musica .box-news__more { color: $laranja-1; }
-	.color-danca .box-news__more { color: $amarelo-1; }
-	.color-literatura .box-news__more { color: $limao-1; }
-	.color-artes-visuais .box-news__more { color: $azul-1; }
-	.color-artes-integradas .box-news__more { color: $roxo-1; }
-	.color-teatro .box-news__more { color: $rosa-1; }
 
 	ul {
 		max-height: 0;
@@ -273,13 +331,6 @@ form legend {
 			display: block;
 		}
 	}
-}
-.box-news__more {
-	margin-top: 30px;
-	font-size: .9rem;
-	color: $cinza-6;
-	line-height: 1rem;
-	display: inline-block;
 }
 .box-news__load {
 	width: 30px;
@@ -326,12 +377,32 @@ form legend {
 	.box-news ul li { width: 100%; }
 }
 
+.box-notices-highlight {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+
+	&:after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		right: 53%;
+		bottom: -57px;
+		background-color: $verde-1;
+		z-index: -1;
+	}
+}
+
 .box-highlight {
+	padding: 0 0 20px;
 
 	img {
-		margin: 84px 0 35px -32%;
+		margin: 0 0 35px -32%;
+		padding: 84px 0 0;
 		display: block;
 		border: 7px solid $branco;
+		background-color: $branco;
 	}
 
 	.link-area { margin-bottom: 33px; }
@@ -346,9 +417,97 @@ form legend {
 	}
 }
 
+@media screen and (max-width:1200px) {
+	.box-notices-highlight:after { display: none; }
+	.box-highlight img {
+		width: 100%;
+		margin: 0 0 35px;
+		padding: 13px 0 0;
+		border: none;
+	}
+}
+
 /***
 * CARROSSEIS
 ***/
+
+/* CARROSSEL DE EDITAIS */
+
+.carousel-notices {
+	.carousel-notices__wrapper {
+		width: 100%;
+		padding-bottom: 102px;
+		position: relative;
+	}
+	.carousel-notices__control {
+		width: 30px;
+		height: 65px;
+		position: absolute;
+		left: 0;
+		bottom: 10px;
+		z-index: 9;
+
+		button {
+			width: 30px;
+			height: 30px;
+			padding: 0;
+			font-size: 35px;
+			color: $verde-1;
+			cursor: pointer;
+			position: absolute;
+			left: 0;
+			overflow: hidden;
+			border: none;
+			background-color: $cinza-1;
+
+			&.control__prev { top: 0; }
+			&.control__next { bottom: 0; }
+
+			i {
+				position: absolute;
+				top: -10px;
+				left: 50%;
+				transform: translate(-50%,0);
+			}
+		}
+	}
+
+	ul {
+		margin: 0;
+		padding: 0 200px 0 0;
+		list-style: none;
+	}
+
+	li {
+		min-height: 151px;
+		padding-bottom: 30px;
+	}
+
+	.link-area { margin-bottom: 10px; }
+
+	.link-more {
+		margin-top: 10px;
+		color: $branco;
+	}
+}
+
+@media screen and (max-width:1200px) {
+	.carousel-notices ul { padding: 0 40px 0 0; }
+}
+@media screen and (max-width:768px) {
+	.carousel-notices {
+		.carousel-notices__wrapper {
+			margin-bottom: 30px;
+			padding: 20px 20px 60px;
+			background-color: $verde-1;
+		}
+		.carousel-notices__control {
+			left: 20px;
+			bottom: 20px;
+		}
+		ul { padding: 0; }
+	}
+}
 
 /* CARROSSEL DE ACERVO */
 
@@ -923,50 +1082,42 @@ ul.slick-dots {
 	}
 	.color-funarte {
 		.title-2,
-		.carousel-schedule__date strong,
-		.carousel-schedule__more { color: $verde-1; }
+		.carousel-schedule__date strong { color: $verde-1; }
 		hr { background-color: $verde-1; }
 	}
 	.color-circo {
 		.title-2,
-		.carousel-schedule__date strong,
-		.carousel-schedule__more { color: $vermelho-1; }
+		.carousel-schedule__date strong { color: $vermelho-1; }
 		hr { background-color: $vermelho-1; }
 	}
 	.color-musica {
 		.title-2,
-		.carousel-schedule__date strong,
-		.carousel-schedule__more { color: $laranja-1; }
+		.carousel-schedule__date strong { color: $laranja-1; }
 		hr { background-color: $laranja-1; }
 	}
 	.color-danca {
 		.title-2,
-		.carousel-schedule__date strong,
-		.carousel-schedule__more { color: $amarelo-1; }
+		.carousel-schedule__date strong { color: $amarelo-1; }
 		hr { background-color: $amarelo-1; }
 	}
 	.color-literatura {
 		.title-2,
-		.carousel-schedule__date strong,
-		.carousel-schedule__more { color: $limao-1; }
+		.carousel-schedule__date strong { color: $limao-1; }
 		hr { background-color: $limao-1; }
 	}
 	.color-artes-visuais {
 		.title-2,
-		.carousel-schedule__date strong,
-		.carousel-schedule__more { color: $azul-1; }
+		.carousel-schedule__date strong { color: $azul-1; }
 		hr { background-color: $azul-1; }
 	}
 	.color-artes-integradas {
 		.title-2,
-		.carousel-schedule__date strong,
-		.carousel-schedule__more { color: $roxo-1; }
+		.carousel-schedule__date strong { color: $roxo-1; }
 		hr { background-color: $roxo-1; }
 	}
 	.color-teatro {
 		.title-2,
-		.carousel-schedule__date strong,
-		.carousel-schedule__more { color: $rosa-1; }
+		.carousel-schedule__date strong { color: $rosa-1; }
 		hr { background-color: $rosa-1; }
 	}
 
@@ -1024,23 +1175,6 @@ ul.slick-dots {
 			content: "\f150";
 			font-size: 20px;
 			top: 0;
-		}
-	}
-
-	.carousel-schedule__more {
-		margin-top: 42px;
-		padding: 0 13px 0 0;
-		font-size: .9rem;
-		display: inline-block;
-		position: relative;
-		overflow: hidden;
-
-		&:after {
-			content: "\f35f";
-			font-size: 23px;
-			position: absolute;
-			top: -5px;
-			right: -8px;
 		}
 	}
 
@@ -1275,6 +1409,7 @@ ul.social-media-list {
 * MARGENS
 ***/
 
+.mb-30 { margin-bottom: 30px; }
 .mb-44 { margin-bottom: 44px; }
 .mb-60 { margin-bottom: 60px; }
 .mb-65 { margin-bottom: 65px; }

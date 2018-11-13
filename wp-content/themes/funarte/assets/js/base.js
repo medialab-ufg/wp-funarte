@@ -8,6 +8,7 @@ $(document).ready(function() {
 	base.carrossel.iniciarDestaques();
 	base.carrossel.iniciarAcervo();
 	base.carrossel.iniciarAgenda();
+	base.carrossel.iniciarEditais();
 	base.noticias.visualizar();
 });
 
@@ -91,6 +92,38 @@ var base = {
 				nextArrow: $carousel.find('.control__next'),
 				//adaptiveHeight: true,
 				variableWidth: true,
+				// responsive: [
+				// 	{
+				// 		breakpoint: 768,
+				// 		settings: {
+				// 			slidesToShow: 2,
+				// 			slidesToScroll: 2
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 586,
+				// 		settings: {
+				// 			slidesToShow: 1,
+				// 			slidesToScroll: 1
+				// 		}
+				// 	}
+				// ]
+			});
+		},
+
+		iniciarEditais: function() {
+			var $carousel = $('.carousel-notices');
+
+			$carousel.find('ul').slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				vertical: true,
+				adaptiveHeight: true,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+				//adaptiveHeight: true,
 				// responsive: [
 				// 	{
 				// 		breakpoint: 768,
