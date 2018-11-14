@@ -90,24 +90,18 @@ var base = {
 				slidesToScroll: 1,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
-				//adaptiveHeight: true,
+				adaptiveHeight: true,
 				variableWidth: true,
-				// responsive: [
-				// 	{
-				// 		breakpoint: 768,
-				// 		settings: {
-				// 			slidesToShow: 2,
-				// 			slidesToScroll: 2
-				// 		}
-				// 	},
-				// 	{
-				// 		breakpoint: 586,
-				// 		settings: {
-				// 			slidesToShow: 1,
-				// 			slidesToScroll: 1
-				// 		}
-				// 	}
-				// ]
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1,
+							variableWidth: false
+						}
+					}
+				]
 			});
 		},
 
@@ -123,23 +117,13 @@ var base = {
 				adaptiveHeight: true,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
-				//adaptiveHeight: true,
-				// responsive: [
-				// 	{
-				// 		breakpoint: 768,
-				// 		settings: {
-				// 			slidesToShow: 2,
-				// 			slidesToScroll: 2
-				// 		}
-				// 	},
-				// 	{
-				// 		breakpoint: 586,
-				// 		settings: {
-				// 			slidesToShow: 1,
-				// 			slidesToScroll: 1
-				// 		}
-				// 	}
-				// ]
+			})
+			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+				if (nextSlide < currentSlide) {
+					$carousel.addClass('reverse');
+				} else {
+					$carousel.removeClass('reverse');
+				}
 			});
 		}
 	},

@@ -1,4 +1,5 @@
 	<footer role="contentinfo" class="footer">
+		<a href="#footer" id="footer" name="footer" class="sr-only">Início do rodapé</a>
 		<div class="container">
 			<div class="footer__columns">
 				<div class="columns__column-a links-list">
