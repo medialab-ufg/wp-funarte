@@ -1,7 +1,7 @@
 <?php
 namespace funarte;
 
-class Edital {
+class Evento {
 	use PostType;
 
 	protected function init() {
@@ -9,9 +9,9 @@ class Edital {
 	}
 
 	public function register_post_type() {
-		$POST_TYPE = "edital";
-		$POST_TYPE_NAME_PLURAL = "Editais";
-		$POST_TYPE_NAME_SINGULAR = "Edital";
+		$POST_TYPE = "evento";
+		$POST_TYPE_NAME_PLURAL = "Eventos";
+		$POST_TYPE_NAME_SINGULAR = "Evento";
 
 		$post_type_labels = array(
 			'edit_item' => 'Editar',
@@ -34,7 +34,7 @@ class Edital {
 			'rewrite' => true,
 			'query_var' => true,
 			'can_export' => true,
-			'has_archive' => false,
+			'has_archive' => true,
 			'show_in_menu' => true,
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
@@ -46,4 +46,4 @@ class Edital {
 	}
 }
 
-Edital::get_instance();
+Evento::get_instance();
