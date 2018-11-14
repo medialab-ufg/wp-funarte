@@ -32,3 +32,4 @@ require_once get_template_directory() . '/assets/lib/class-wp-bootstrap-navwalke
 require_once('inc/traits/post_type.php');
 require_once('inc/post_types/edital/edital.php');
 require_once('inc/post_types/agenda/agenda.php');
+require_once('inc/post_types/evento/evento.php');
