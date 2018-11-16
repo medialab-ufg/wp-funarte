@@ -52,7 +52,8 @@
 				<div class="header__row">
 					<h1><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte.png'; ?>" alt="Funarte - Fundação Nacional de Artes"></a></h1>
 
-					<nav id="funarte-navigation-menu" class="navbar navbar-expand-lg navbar-light navigation-menu" role="navigation">
+					<a href="#funarte-navigation-menu" id="funarte-navigation-menu" name="funarte-navigation-menu" class="sr-only">Início do menu de navegação</a>
+					<nav class="navbar navbar-expand-lg navbar-light navigation-menu" role="navigation">
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
@@ -74,13 +75,13 @@
 				</div>
 
 				<ul class="areas-list">
-					<li><a class="areas-list__circo" href="#">Circo</a></li>
-					<li><a class="areas-list__teatro" href="#">Teatro</a></li>
-					<li><a class="areas-list__danca active" href="#">Dança</a></li>
-					<li><a class="areas-list__musica" href="#">Música</a></li>
-					<li><a class="areas-list__artes-integradas" href="#">Artes integradas</a></li>
-					<li><a class="areas-list__artes-visuais" href="#">Artes visuais</a></li>
-					<li><a class="areas-list__literatura" href="#">Literatura</a></li>
+					<li><a class="color-circo" href="#">Circo</a></li>
+					<li><a class="color-teatro" href="#">Teatro</a></li>
+					<li><a class="color-danca active" href="#">Dança</a></li>
+					<li><a class="color-musica" href="#">Música</a></li>
+					<li><a class="color-artes-integradas" href="#">Artes integradas</a></li>
+					<li><a class="color-artes-visuais" href="#">Artes visuais</a></li>
+					<li><a class="color-literatura" href="#">Literatura</a></li>
 				</ul>
 			</div>
 		</header>

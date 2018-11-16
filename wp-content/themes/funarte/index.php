@@ -3,6 +3,7 @@
 ?>
 
 <main role="main">
+	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container">
 		<section class="carousel-highlights">
 			<div class="carousel-highlights__control">
@@ -87,6 +88,14 @@
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
 									<a href="#" class="link-more">Ler mais</a>
 								</li>
+								<li class="color-artes-integradas">
+									<div class="link-area">
+										<a href="#">Artes integradas</a>
+										<span>Inscrições abertas</span>
+									</div>
+									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
+									<a href="#" class="link-more">Ler mais</a>
+								</li>
 								<li class="color-danca">
 									<div class="link-area">
 										<a href="#">Dança</a>
@@ -95,10 +104,10 @@
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
 									<a href="#" class="link-more">Ler mais</a>
 								</li>
-								<li class="color-artes-integradas">
+								<li class="color-multicategoria">
 									<div class="link-area">
-										<a href="#">Artes integradas</a>
-										<span>Inscrições abertas</span>
+										<a href="#">Multicategoria</a>
+										<span>Resultados</span>
 									</div>
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
 									<a href="#" class="link-more">Ler mais</a>
@@ -130,14 +139,6 @@
 								<li class="color-circo">
 									<div class="link-area">
 										<a href="#">Circo</a>
-										<span>Resultados</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li class="color-multicategoria">
-									<div class="link-area">
-										<a href="#">Multicategoria</a>
 										<span>Resultados</span>
 									</div>
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
@@ -271,6 +272,7 @@
 				</div>
 				<ul>
 					<li class="color-teatro">
+						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg'; ?>" alt="Festival de música regional">
 						<div class="carousel-schedule__body">
 							<h3 class="title-2">Festival de música regional</h3>
 							<span class="carousel-schedule__date">Set<strong>29</strong></span>
@@ -280,7 +282,6 @@
 									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
 									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg'; ?>" alt="Festival de música regional">
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
 									<a href="#" class="link-more">Ler mais</a>
@@ -289,6 +290,7 @@
 						</div>
 					</li>
 					<li class="color-musica active">
+						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg'; ?>" alt="Festival de música regional">
 						<div class="carousel-schedule__body">
 							<h3 class="title-2">Festival de música regional</h3>
 							<span class="carousel-schedule__date">Set<strong>30</strong></span>
@@ -298,7 +300,6 @@
 									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
 									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg'; ?>" alt="Festival de música regional">
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
 									<a href="#" class="link-more">Ler mais</a>
@@ -307,6 +308,7 @@
 						</div>
 					</li>
 					<li class="color-teatro">
+						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg'; ?>" alt="Festival de música regional">
 						<div class="carousel-schedule__body">
 							<h3 class="title-2">Festival de música regional</h3>
 							<span class="carousel-schedule__date">Set<strong>29</strong></span>
@@ -316,7 +318,6 @@
 									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
 									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg'; ?>" alt="Festival de música regional">
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
 									<a href="#" class="link-more">Ler mais</a>
@@ -325,6 +326,7 @@
 						</div>
 					</li>
 					<li class="color-musica active">
+						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg'; ?>" alt="Festival de música regional">
 						<div class="carousel-schedule__body">
 							<h3 class="title-2">Festival de música regional</h3>
 							<span class="carousel-schedule__date">Set<strong>30</strong></span>
@@ -334,7 +336,6 @@
 									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
 									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg'; ?>" alt="Festival de música regional">
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
 									<a href="#" class="link-more">Ler mais</a>
@@ -343,6 +344,7 @@
 						</div>
 					</li>
 					<li class="color-teatro">
+						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg'; ?>" alt="Festival de música regional">
 						<div class="carousel-schedule__body">
 							<h3 class="title-2">Festival de música regional</h3>
 							<span class="carousel-schedule__date">Set<strong>29</strong></span>
@@ -352,7 +354,6 @@
 									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
 									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg'; ?>" alt="Festival de música regional">
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
 									<a href="#" class="link-more">Ler mais</a>

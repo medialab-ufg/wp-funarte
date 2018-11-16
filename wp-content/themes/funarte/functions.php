@@ -9,6 +9,7 @@ function extra_files() {
 	wp_enqueue_style('theme-style', get_stylesheet_uri(), null, microtime());
 	wp_enqueue_style('slick-theme-style', get_theme_file_uri() . '/assets/css/plugins/slick-theme.css', null, microtime());
 	wp_enqueue_style('slick-style', get_theme_file_uri() . '/assets/css/plugins/slick.css', null, microtime());
+	wp_enqueue_style('material-design-icons-cdn-style', '//cdn.materialdesignicons.com/2.8.94/css/materialdesignicons.min.css', null, microtime());
 	wp_enqueue_style('main-style', get_theme_file_uri() . '/assets/css/base.min.css', null, microtime());
 
 	// Javascript
