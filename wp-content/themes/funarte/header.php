@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<?php wp_head(); ?>
 	</head>
 
@@ -32,18 +34,6 @@
 
 		<!-- AVISO DE ERRO CASO O JS ESTEJA DESATIVADO OU NÃO ESTEJA FUNCIONANDO -->
 		<noscript>
-			<style>
-				noscript {
-					margin: 0;
-					padding: 12px 15px;
-					font-size: 18px;
-					color: #000;
-					text-align: center;
-					display: block;
-					background-color: #FFC107;
-				}
-			</style>
-
 			<span>Seu navegador não tem suporte a JavaScript ou o mesmo está desativado.</span>
 		</noscript>
 

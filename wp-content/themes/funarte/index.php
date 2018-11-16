@@ -325,7 +325,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="color-musica active">
+					<li class="color-musica">
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg'; ?>" alt="Festival de música regional">
 						<div class="carousel-schedule__body">
 							<h3 class="title-2">Festival de música regional</h3>
