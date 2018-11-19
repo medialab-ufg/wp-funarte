@@ -4,6 +4,7 @@ $(document).ready(function() {
 	base.acessibilidade.ativarAltoContraste();
 	base.busca.manipular();
 	base.jsNaoObstrusivo.ativar();
+	base.menu.manipular();
 
 	base.carrossel.iniciarDestaques();
 	base.carrossel.iniciarAcervo();
@@ -13,6 +14,14 @@ $(document).ready(function() {
 });
 
 var base = {
+	menu: {
+		manipular: function() {
+			$('.navbar-toggler').on('click',function() {
+				$(this).siblings('.menu-wrapper').toggleClass('active');
+			});
+		}
+	},
+
 	noticias: {
 		visualizar: function() {
 			$('.box-news__load').on('click',function() {
@@ -102,6 +111,21 @@ var base = {
 						}
 					}
 				]
+			})
+			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+				if (nextSlide > currentSlide) {
+					$carousel
+						.find('.active')
+						.removeClass('active')
+						.next('li')
+						.addClass('active');
+				} else {
+					$carousel
+						.find('.active')
+						.removeClass('active')
+						.prev('li')
+						.addClass('active');
+				}
 			});
 		},
 
@@ -171,48 +195,26 @@ var base = {
 
 	busca: {
 		manipular: function() {
-			/*
-			 * BOTÃO DE EXIBIÇÃO DO FORMULÁRIO DE BUSCA
-			*/
-			jQuery('.tainacan-search-button').on('click',function() {
-				var _elementoPai = jQuery(this).parents('.input-group');
+			var $box = $('.box-searchform');
 
-				if (!_elementoPai.hasClass('hover')) {
-					_elementoPai.addClass('hover');
-
-					return false;
-				} else {
-					if (jQuery('#tainacan-search-header').val() == '') {
-						_elementoPai.removeClass('hover');
-
-						return false;
-					}
-				}
+			$('#s').on('focus',function() {
+				$box.addClass('active');
 			});
 
-			jQuery('#tainacan-search-header').on({
-				'focus': function() {
-					jQuery(this).parents('.input-group').addClass('hover');
-				},
-				'blur': function() {
-					jQuery(this).parents('.input-group').removeClass('hover');
-				}
+			$('#searchsubmit').on('blur',function() {
+				$box.removeClass('active');
 			});
 
-			/*
-			 * AO CLICAR EM QUALQUER LUGAR DA PÁGINA, O CAMPO DE BUSCA ABERTO É FECHADO
-			*/
-			var _formBusca = jQuery('.tainacan-search-form'),
-				_formBuscaFilho = _formBusca.find('.input-group');
+			$('.searchform-button').on('click',function() {
+				$box.toggleClass('active');
+			});
 
-			_formBusca.on('click',function(e) {
+			$box.on('click',function(e) {
 				e.stopPropagation();
 			});
 
-			jQuery('body').on('click',function() {
-				if (_formBuscaFilho.hasClass('hover')) {
-					_formBuscaFilho.removeClass('hover');
-				}
+			$('body,.searchcancel').on('click',function() {
+				$box.removeClass('active');
 			});
 		}
 	},
