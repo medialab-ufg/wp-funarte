@@ -51,64 +51,8 @@ class Licitacao {
 		register_post_type($this->POST_TYPE, $post_type_args);
 	}
 
-	public function register_taxonomy() {
-		// $this->register_taxonomy_tag();
-		// $this->register_taxonomy_modalidade_licitacao();
+	public function register_taxonomy() {	
 	}
-
-	private function register_taxonomy_tag() {
-		$labels = array(
-			'name' =>'TAG',
-			'singular_name' => 'TAGS',
-			'search_items' => 'Buscar TAG',
-			'all_items' => 'Todas as TAGS',
-			'parent_item' => 'TAG',
-			'parent_item_colon' => 'TAG Acima:',
-			'edit_item' => 'Editar TAG',
-			'update_item' => 'Atualizar TAG',
-			'add_new_item' => 'Adicionar Nova TAG',
-			'new_item_name' => 'Novo nome de TAG',
-		);
-		register_taxonomy(
-			"post_tag",
-			$this->POST_TYPE,
-			array(
-				'hierarchical' => true,
-				'labels' => $labels,
-				'show_ui' => true,
-				'query_var' => true,
-				'rewrite' => false
-			)
-		);
-	}
-
-	private function register_taxonomy_modalidade_licitacao() {
-		$labels = array(
-			'name' =>'Modalidade de licitações',
-			'singular_name' => 'Modalidade de licitação',
-			'search_items' => 'Buscar Modalidade de licitações',
-			'all_items' => 'Todas as Modalidades de licitações',
-			'parent_item' => 'Modalidade de licitações',
-			'parent_item_colon' => 'Modalidade de licitação Acima:',
-			'edit_item' => 'Editar Modalidade de licitação',
-			'update_item' => 'Atualizar Modalidade de licitação',
-			'add_new_item' => 'Adicionar Nova Modalidade de licitação',
-			'new_item_name' => 'Novo nome de Modalidade de licitação',
-		);
-		register_taxonomy(
-			"modalidade",
-			$this->POST_TYPE,
-			array(
-				'hierarchical' => true,
-				'labels' => $labels,
-				'show_ui' => true,
-				'query_var' => true,
-				'rewrite' => false
-			)
-		);
-	}
-
-	
 
 }
 
