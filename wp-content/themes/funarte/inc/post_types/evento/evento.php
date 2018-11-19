@@ -145,17 +145,18 @@ class Evento {
 			'add_new_item' => 'Adicionar Novo Edital',
 			'new_item_name' => 'Novo nome do Edital',
 		);
-		register_taxonomy(
-			"editais",
-			"evento",
-			array(
-				'hierarchical' => true,
-				'labels' => $labels,
-				'show_ui' => true,
-				'query_var' => true,
-				'rewrite' => false
-			)
-		);
+		register_taxonomy_for_object_type( 'editais', 'evento' );
+		// register_taxonomy(
+		// 	"editais",
+		// 	"evento",
+		// 	array(
+		// 		'hierarchical' => true,
+		// 		'labels' => $labels,
+		// 		'show_ui' => true,
+		// 		'query_var' => true,
+		// 		'rewrite' => false
+		// 	)
+		// );
 	}
 
 	private function register_taxonomy_categorias_espacos_culturais() {

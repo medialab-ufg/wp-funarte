@@ -1,8 +1,10 @@
 <?php
 namespace funarte;
 
-class Edital {
+class Licitacao {
 	use PostType;
+
+	private $POST_TYPE = "licitacao";
 
 	protected function init() {
 		add_action('init', array( &$this, "register_post_type" ));
@@ -10,9 +12,8 @@ class Edital {
 	}
 
 	public function register_post_type() {
-		$POST_TYPE = "edital";
-		$POST_TYPE_NAME_PLURAL = "Editais";
-		$POST_TYPE_NAME_SINGULAR = "Edital";
+		$POST_TYPE_NAME_PLURAL = "Licitações";
+		$POST_TYPE_NAME_SINGULAR = "Licitação";
 
 		$post_type_labels = array(
 			'edit_item' => 'Editar',
@@ -43,13 +44,12 @@ class Edital {
 			'exclude_from_search' => true
 		);
 
-		register_post_type($POST_TYPE, $post_type_args);
+		register_post_type($this->POST_TYPE, $post_type_args);
 	}
 
 	public function register_taxonomy() {
 		$this->register_taxonomy_tag();
-		$this->register_taxonomy_categorias();
-		$this->register_taxonomy_categorias_edital();
+		$this->register_taxonomy_modalidade_licitacao();
 	}
 
 	private function register_taxonomy_tag() {
@@ -67,7 +67,7 @@ class Edital {
 		);
 		register_taxonomy(
 			"post_tag",
-			"edital",
+			$this->POST_TYPE,
 			array(
 				'hierarchical' => true,
 				'labels' => $labels,
@@ -78,22 +78,22 @@ class Edital {
 		);
 	}
 
-	private function register_taxonomy_categorias() {
+	private function register_taxonomy_modalidade_licitacao() {
 		$labels = array(
-			'name' =>'Categorias',
-			'singular_name' => 'Categoria',
-			'search_items' => 'Buscar Categoria',
-			'all_items' => 'Todas as Categorias',
-			'parent_item' => 'Categoria',
-			'parent_item_colon' => 'Categoria Acima:',
-			'edit_item' => 'Editar Categoria',
-			'update_item' => 'Atualizar Categoria',
-			'add_new_item' => 'Adicionar Novo Categoria',
-			'new_item_name' => 'Novo nome da Categoria',
+			'name' =>'Modalidade de licitações',
+			'singular_name' => 'Modalidade de licitação',
+			'search_items' => 'Buscar Modalidade de licitações',
+			'all_items' => 'Todas as Modalidades de licitações',
+			'parent_item' => 'Modalidade de licitações',
+			'parent_item_colon' => 'Modalidade de licitação Acima:',
+			'edit_item' => 'Editar Modalidade de licitação',
+			'update_item' => 'Atualizar Modalidade de licitação',
+			'add_new_item' => 'Adicionar Nova Modalidade de licitação',
+			'new_item_name' => 'Novo nome de Modalidade de licitação',
 		);
 		register_taxonomy(
-			"category",
-			"edital",
+			"modalidade",
+			$this->POST_TYPE,
 			array(
 				'hierarchical' => true,
 				'labels' => $labels,
@@ -104,31 +104,8 @@ class Edital {
 		);
 	}
 
-	private function register_taxonomy_categorias_edital() {
-		$labels = array(
-			'name' =>'Editais',
-			'singular_name' => 'Edital',
-			'search_items' => 'Buscar Edital',
-			'all_items' => 'Todas as Editais',
-			'parent_item' => 'Edital',
-			'parent_item_colon' => 'Edital Acima:',
-			'edit_item' => 'Editar Edital',
-			'update_item' => 'Atualizar Edital',
-			'add_new_item' => 'Adicionar Novo Edital',
-			'new_item_name' => 'Novo nome do Edital',
-		);
-		register_taxonomy(
-			"editais",
-			"edital",
-			array(
-				'hierarchical' => true,
-				'labels' => $labels,
-				'show_ui' => true,
-				'query_var' => true,
-				'rewrite' => false
-			)
-		);
-	}
+	
+
 }
 
-Edital::get_instance();
+Licitacao::get_instance();
