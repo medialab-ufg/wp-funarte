@@ -2,7 +2,7 @@
 namespace funarte;
 
 class AreaInteresse {
-	use PostType;
+	use Singleton;
 
 	private $POST_TYPE = "area-de-interesse";
 
@@ -41,7 +41,11 @@ class AreaInteresse {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true
+			'exclude_from_search' => true,
+			'taxonomies' => [
+				taxCategoria::get_instance()->get_name(),
+				taxTag::get_instance()->get_name()
+			]
 		);
 
 		register_post_type($this->POST_TYPE, $post_type_args);

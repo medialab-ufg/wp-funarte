@@ -2,7 +2,7 @@
 namespace funarte;
 
 class Estrutura {
-	use PostType;
+	use Singleton;
 
 	private $POST_TYPE = "estrutura";
 
@@ -41,7 +41,10 @@ class Estrutura {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true
+			'exclude_from_search' => true,
+			'taxonomies' => [
+				taxEstrutura::get_instance()->get_name()
+			]
 		);
 
 		register_post_type($this->POST_TYPE, $post_type_args);

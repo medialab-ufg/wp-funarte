@@ -28,8 +28,18 @@ register_nav_menus( array(
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/assets/lib/class-wp-bootstrap-navwalker.php';
 
-//includes
-require_once('inc/traits/post_type.php');
+require_once('inc/traits/singleton.php');
+//includes - taxonomy
+require_once('inc/taxonomy/identidade-visual.php');
+require_once('inc/taxonomy/categoria_edital.php');
+require_once('inc/taxonomy/espaco_cultural.php');
+require_once('inc/taxonomy/categoria.php');
+require_once('inc/taxonomy/estrutura.php');
+require_once('inc/taxonomy/licitacao.php');
+require_once('inc/taxonomy/regional.php');
+require_once('inc/taxonomy/tag.php');
+
+//includes - post type
 require_once('inc/post_types/edital/edital.php');
 require_once('inc/post_types/agenda/agenda.php');
 require_once('inc/post_types/evento/evento.php');
@@ -41,5 +51,5 @@ require_once('inc/post_types/destaque_home/destaque_home.php');
 require_once('inc/post_types/edicao_online/edicao_online.php');
 require_once('inc/post_types/area_interesse/area_interesse.php');
 require_once('inc/post_types/nova_aquisicao/nova_aquisicao.php');
-require_once('inc/post_types/identidade_visual/identidade_visual.php');
 require_once('inc/post_types/espaco_cultural/espaco_cultural.php');
+require_once('inc/post_types/identidade_visual/identidade_visual.php');

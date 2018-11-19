@@ -2,7 +2,7 @@
 namespace funarte;
 
 class Edital {
-	use PostType;
+	use Singleton;
 
 	protected function init() {
 		add_action('init', array( &$this, "register_post_type" ));
@@ -40,16 +40,21 @@ class Edital {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true
+			'exclude_from_search' => true,
+			'taxonomies' => [
+				taxCategoria::get_instance()->get_name(),
+				taxEditais::get_instance()->get_name(),
+				taxTag::get_instance()->get_name()
+			]
 		);
 
 		register_post_type($POST_TYPE, $post_type_args);
 	}
 
 	public function register_taxonomy() {
-		$this->register_taxonomy_tag();
-		$this->register_taxonomy_categorias();
-		$this->register_taxonomy_categorias_edital();
+		// $this->register_taxonomy_tag();
+		// $this->register_taxonomy_categorias();
+		// $this->register_taxonomy_categorias_edital();
 	}
 
 	private function register_taxonomy_tag() {

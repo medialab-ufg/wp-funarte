@@ -2,7 +2,7 @@
 namespace funarte;
 
 class EdicaoOnline {
-	use PostType;
+	use Singleton;
 
 	private $POST_TYPE = "edicao-online";
 

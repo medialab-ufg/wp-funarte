@@ -2,11 +2,10 @@
 namespace funarte;
 
 class Agenda {
-	use PostType;
+	use Singleton;
 
 	protected function init() {
 		add_action('init', array( &$this, "register_post_type" ));
-		add_action('init', array( &$this, "register_taxonomy" ));
 	}
 
 	public function register_post_type() {
@@ -40,151 +39,18 @@ class Agenda {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true
+			'exclude_from_search' => true,
+			'taxonomies' => [
+				taxEspacosCulturais::get_instance()->get_name(),
+				taxCategoria::get_instance()->get_name(),
+				taxRegional::get_instance()->get_name(),
+				taxEditais::get_instance()->get_name(),
+				taxTag::get_instance()->get_name()
+			]
 		);
 
 		register_post_type($POST_TYPE, $post_type_args);
 	}
-
-	public function register_taxonomy() {
-		$this->register_taxonomy_tag();
-		$this->register_taxonomy_regionais();
-		$this->register_taxonomy_categorias();
-		$this->register_taxonomy_categorias_edital();
-		$this->register_taxonomy_categorias_espacos_culturais();
-	}
-
-	private function register_taxonomy_regionais() {
-		$labels = array(
-			'name' =>'Categorias de regionais',
-			'singular_name' => 'Categorias de regionais',
-			'search_items' => 'Buscar Categorias de regionais',
-			'all_items' => 'Todas as Categorias de regionais',
-			'parent_item' => 'Categorias de regionais Acima',
-			'parent_item_colon' => 'Categorias de regionais Acima:',
-			'edit_item' => 'Editar Categorias de regionais',
-			'update_item' => 'Atualizar Categorias de regionais',
-			'add_new_item' => 'Adicionar Nova Categorias de regionais',
-			'new_item_name' => 'Novo nome de Categorias de regionais',
-		);
-		register_taxonomy(
-			"regionais",
-			"agenda",
-			array(
-				'hierarchical' => true,
-				'labels' => $labels,
-				'show_ui' => true,
-				'query_var' => true,
-				'rewrite' => false
-			)
-		);
-	}
-
-	private function register_taxonomy_tag() {
-		$labels = array(
-			'name' =>'TAG',
-			'singular_name' => 'TAGS',
-			'search_items' => 'Buscar TAG',
-			'all_items' => 'Todas as TAGS',
-			'parent_item' => 'TAG',
-			'parent_item_colon' => 'TAG Acima:',
-			'edit_item' => 'Editar TAG',
-			'update_item' => 'Atualizar TAG',
-			'add_new_item' => 'Adicionar Nova TAG',
-			'new_item_name' => 'Novo nome de TAG',
-		);
-		register_taxonomy(
-			"post_tag",
-			"agenda",
-			array(
-				'hierarchical' => true,
-				'labels' => $labels,
-				'show_ui' => true,
-				'query_var' => true,
-				'rewrite' => false
-			)
-		);
-	}
-
-	private function register_taxonomy_categorias() {
-		$labels = array(
-			'name' =>'Categorias',
-			'singular_name' => 'Categoria',
-			'search_items' => 'Buscar Categoria',
-			'all_items' => 'Todas as Categorias',
-			'parent_item' => 'Categoria',
-			'parent_item_colon' => 'Categoria Acima:',
-			'edit_item' => 'Editar Categoria',
-			'update_item' => 'Atualizar Categoria',
-			'add_new_item' => 'Adicionar Novo Categoria',
-			'new_item_name' => 'Novo nome da Categoria',
-		);
-		register_taxonomy(
-			"category",
-			"agenda",
-			array(
-				'hierarchical' => true,
-				'labels' => $labels,
-				'show_ui' => true,
-				'query_var' => true,
-				'rewrite' => false
-			)
-		);
-	}
-
-	private function register_taxonomy_categorias_edital() {
-		$labels = array(
-			'name' =>'Editais',
-			'singular_name' => 'Edital',
-			'search_items' => 'Buscar Edital',
-			'all_items' => 'Todas as Editais',
-			'parent_item' => 'Edital',
-			'parent_item_colon' => 'Edital Acima:',
-			'edit_item' => 'Editar Edital',
-			'update_item' => 'Atualizar Edital',
-			'add_new_item' => 'Adicionar Novo Edital',
-			'new_item_name' => 'Novo nome do Edital',
-		);
-		register_taxonomy_for_object_type( 'editais', 'evento' );
-		// register_taxonomy(
-		// 	"editais",
-		// 	"agenda",
-		// 	array(
-		// 		'hierarchical' => true,
-		// 		'labels' => $labels,
-		// 		'show_ui' => true,
-		// 		'query_var' => true,
-		// 		'rewrite' => false
-		// 	)
-		// );
-	}
-
-	private function register_taxonomy_categorias_espacos_culturais() {
-		$labels = array(
-			'name' =>'Espaços Culturais',
-			'singular_name' => 'Espaço Cultural',
-			'search_items' => 'Buscar Espaço Cultural',
-			'all_items' => 'Todas as Espaços Culturais',
-			'parent_item' => 'Espaço Cultural',
-			'parent_item_colon' => 'Espaço Cultural Acima:',
-			'edit_item' => 'Editar Espaço Cultural',
-			'update_item' => 'Atualizar Espaço Cultural',
-			'add_new_item' => 'Adicionar Novo Espaço Cultural',
-			'new_item_name' => 'Novo nome do Espaço Cultural',
-		);
-		register_taxonomy(
-			"espacos-culturais",
-			"agenda",
-			array(
-				'hierarchical' => true,
-				'labels' => $labels,
-				'show_ui' => true,
-				'query_var' => true,
-				'rewrite' => false
-			)
-		);
-	}
-
 }
 
 Agenda::get_instance();

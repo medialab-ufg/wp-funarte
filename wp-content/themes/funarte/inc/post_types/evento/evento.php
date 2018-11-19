@@ -2,7 +2,7 @@
 namespace funarte;
 
 class Evento {
-	use PostType;
+	use Singleton;
 
 	protected function init() {
 		add_action('init', array( &$this, "register_post_type" ));
@@ -47,11 +47,11 @@ class Evento {
 	}
 
 	public function register_taxonomy() {
-		$this->register_taxonomy_tag();
-		$this->register_taxonomy_regionais();
-		$this->register_taxonomy_categorias();
-		$this->register_taxonomy_categorias_edital();
-		$this->register_taxonomy_categorias_espacos_culturais();
+		// $this->register_taxonomy_tag();
+		// $this->register_taxonomy_regionais();
+		// $this->register_taxonomy_categorias();
+		// $this->register_taxonomy_categorias_edital();
+		// $this->register_taxonomy_categorias_espacos_culturais();
 	}
 
 	private function register_taxonomy_regionais() {

@@ -2,7 +2,7 @@
 namespace funarte;
 
 class Licitacao {
-	use PostType;
+	use Singleton;
 
 	private $POST_TYPE = "licitacao";
 
@@ -41,15 +41,19 @@ class Licitacao {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true
+			'exclude_from_search' => true,
+			'taxonomies' => [
+				taxTag::get_instance()->get_name(),
+				taxLicitacao::get_instance()->get_name()
+			]
 		);
 
 		register_post_type($this->POST_TYPE, $post_type_args);
 	}
 
 	public function register_taxonomy() {
-		$this->register_taxonomy_tag();
-		$this->register_taxonomy_modalidade_licitacao();
+		// $this->register_taxonomy_tag();
+		// $this->register_taxonomy_modalidade_licitacao();
 	}
 
 	private function register_taxonomy_tag() {
