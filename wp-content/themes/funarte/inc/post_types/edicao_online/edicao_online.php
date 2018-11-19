@@ -1,17 +1,19 @@
 <?php
 namespace funarte;
 
-class Agenda {
+class EdicaoOnline {
 	use Singleton;
+
+	private $POST_TYPE = "edicao-online";
 
 	protected function init() {
 		add_action('init', array( &$this, "register_post_type" ));
+		add_action('init', array( &$this, "register_taxonomy" ));
 	}
 
 	public function register_post_type() {
-		$POST_TYPE = "agenda";
-		$POST_TYPE_NAME_PLURAL = "Agendas";
-		$POST_TYPE_NAME_SINGULAR = "Agenda";
+		$POST_TYPE_NAME_PLURAL = "Edições Online";
+		$POST_TYPE_NAME_SINGULAR = "Edição Online";
 
 		$post_type_labels = array(
 			'edit_item' => 'Editar',
@@ -39,18 +41,15 @@ class Agenda {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true,
-			'taxonomies' => [
-				taxEspacosCulturais::get_instance()->get_name(),
-				taxCategoria::get_instance()->get_name(),
-				taxRegional::get_instance()->get_name(),
-				taxEditais::get_instance()->get_name(),
-				taxTag::get_instance()->get_name()
-			]
+			'exclude_from_search' => true
 		);
 
-		register_post_type($POST_TYPE, $post_type_args);
+		register_post_type($this->POST_TYPE, $post_type_args);
+	}
+
+	public function register_taxonomy() {
+		
 	}
 }
 
-Agenda::get_instance();
+EdicaoOnline::get_instance();

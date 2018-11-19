@@ -1,7 +1,7 @@
 <?php
 namespace funarte;
 
-trait PostType {
+trait Singleton {
 
 	protected static $instance;
 
