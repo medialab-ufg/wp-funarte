@@ -4,6 +4,7 @@ $(document).ready(function() {
 	base.acessibilidade.ativarAltoContraste();
 	base.busca.manipular();
 	base.jsNaoObstrusivo.ativar();
+	base.menu.manipular();
 
 	base.carrossel.iniciarDestaques();
 	base.carrossel.iniciarAcervo();
@@ -13,6 +14,14 @@ $(document).ready(function() {
 });
 
 var base = {
+	menu: {
+		manipular: function() {
+			$('.navbar-toggler').on('click',function() {
+				$(this).siblings('.menu-wrapper').toggleClass('active');
+			});
+		}
+	},
+
 	noticias: {
 		visualizar: function() {
 			$('.box-news__load').on('click',function() {
@@ -194,7 +203,6 @@ var base = {
 
 			$('#searchsubmit').on('blur',function() {
 				$box.removeClass('active');
-				$('.areas-list').find('a:first').focus();
 			});
 
 			$('.searchform-button').on('click',function() {

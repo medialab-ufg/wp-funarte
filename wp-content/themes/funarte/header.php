@@ -44,34 +44,39 @@
 
 					<a href="#funarte-navigation-menu" id="funarte-navigation-menu" name="funarte-navigation-menu" class="sr-only">Início do menu de navegação</a>
 					<nav class="navbar navbar-expand-lg navbar-light navigation-menu" role="navigation">
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+						<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
+							<i class="mdi mdi-close"></i>
 						</button>
-						<?php
-							wp_nav_menu( array(
-								'theme_location'    => 'principal',
-								'depth'             => 2,
-								'container'         => 'div',
-								'container_class'   => 'collapse navbar-collapse',
-								'container_id'      => 'bs-example-navbar-collapse-1',
-								'menu_class'        => 'nav navbar-nav',
-								'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-								'walker'            => new WP_Bootstrap_Navwalker(),
-							) );
-						?>
+
+						<div class="menu-wrapper">
+							<?php
+								wp_nav_menu( array(
+									'theme_location'    => 'principal',
+									'depth'             => 2,
+									'container'         => 'div',
+									'container_class'   => 'collapse navbar-collapse',
+									'container_id'      => 'bs-example-navbar-collapse-1',
+									'menu_class'        => 'nav navbar-nav',
+									'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+									'walker'            => new WP_Bootstrap_Navwalker(),
+								) );
+							?>
+
+							<ul class="areas-list">
+								<li><a class="color-circo" href="#">Circo</a></li>
+								<li><a class="color-teatro" href="#">Teatro</a></li>
+								<li><a class="color-danca active" href="#">Dança</a></li>
+								<li><a class="color-musica" href="#">Música</a></li>
+								<li><a class="color-artes-integradas" href="#">Artes integradas</a></li>
+								<li><a class="color-artes-visuais" href="#">Artes visuais</a></li>
+								<li><a class="color-literatura" href="#">Literatura</a></li>
+							</ul>
+						</div>
 					</nav>
 
 					<?php get_search_form(); ?>
 				</div>
 
-				<ul class="areas-list">
-					<li><a class="color-circo" href="#">Circo</a></li>
-					<li><a class="color-teatro" href="#">Teatro</a></li>
-					<li><a class="color-danca active" href="#">Dança</a></li>
-					<li><a class="color-musica" href="#">Música</a></li>
-					<li><a class="color-artes-integradas" href="#">Artes integradas</a></li>
-					<li><a class="color-artes-visuais" href="#">Artes visuais</a></li>
-					<li><a class="color-literatura" href="#">Literatura</a></li>
-				</ul>
 			</div>
 		</header>

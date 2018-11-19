@@ -666,7 +666,6 @@ noscript {
 
 .header__row {
 	width: 100%;
-	margin-bottom: 23px;
 	display: flex;
 	position: relative;
 }
@@ -680,6 +679,9 @@ noscript {
 		width: 132px;
 		height: 32px;
 		margin: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
 
 		img {
 			margin: -14px 0 0 -8px;
@@ -691,9 +693,12 @@ noscript {
 /* MENU DE NAVEGAÇÃO */
 
 .navigation-menu {
-	width: 68%;
-	margin: -4px 0 0 10%;
+	width: 100%;
+	margin: 0;
 	padding: 0;
+	display: block;
+
+	.navbar-collapse { margin: -4px 10% 0 20%; }
 
 	ul {
 		width: 100%;
@@ -729,10 +734,113 @@ noscript {
 		color: #303030;
 		transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
 	}
+
+	/* LISTA DE ÁREAS DO SITE */
+
+	.areas-list {
+		width: 100%;
+		margin: 32px 0 54px;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+
+		li { flex-grow: 1; }
+
+		a {
+			min-height: 50px;
+			padding: 8px 10px;
+			font-size: 1.1rem;
+			text-align: center;
+			display: block;
+			border-top: 4px solid $cinza-6;
+			transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+
+			&.color-funarte {
+				color: $verde-1;
+				border-color: $verde-1;
+
+				&:hover,
+				&:focus,
+				&.active { background-color: $verde-1; }
+			}
+			&.color-circo {
+				color: $vermelho-1;
+				border-color: $vermelho-1;
+
+				&:hover,
+				&:focus,
+				&.active { background-color: $vermelho-1; }
+			}
+			&.color-teatro {
+				color: $rosa-1;
+				border-color: $rosa-1;
+
+				&:hover,
+				&:focus,
+				&.active { background-color: $rosa-1; }
+			}
+			&.color-danca {
+				color: $amarelo-1;
+				border-color: $amarelo-1;
+
+				&:hover,
+				&:focus,
+				&.active { background-color: $amarelo-1; }
+			}
+			&.color-musica {
+				color: $laranja-1;
+				border-color: $laranja-1;
+
+				&:hover,
+				&:focus,
+				&.active { background-color: $laranja-1; }
+			}
+			&.color-artes-integradas {
+				color: $roxo-1;
+				border-color: $roxo-1;
+
+				&:hover,
+				&:focus,
+				&.active { background-color: $roxo-1; }
+			}
+			&.color-artes-visuais {
+				color: $azul-1;
+				border-color: $azul-1;
+
+				&:hover,
+				&:focus,
+				&.active { background-color: $azul-1; }
+			}
+			&.color-literatura {
+				color: $limao-1;
+				border-color: $limao-1;
+
+				&:hover,
+				&:focus,
+				&.active { background-color: $limao-1; }
+			}
+
+			&:hover,
+			&:focus,
+			&.active {
+				color: $branco;
+				text-decoration: none;
+			}
+		}
+	}
 }
 
 @media screen and (max-width:991px) {
-	.header__row { display: block; }
+	.header h1 {
+		position: static;
+		top: auto;
+		left: auto;
+	}
+	.header__row {
+		margin-bottom: 54px;
+		display: block;
+	}
 	.navigation-menu {
 		width: auto;
 		margin: 0;
@@ -740,8 +848,61 @@ noscript {
 		top: 0;
 		right: 0;
 
+		.menu-wrapper {
+			width: 315px;
+			height: 100% !important;
+			margin: 0;
+			padding: 12px 0 0 0;
+			position: fixed;
+			top: 0;
+			right: 0;
+			overflow-y: auto;
+			border-left: 5px solid $verde-1;
+			box-shadow: 0px 0px 51px 0px rgba(0,0,0,0.1);
+			background-color: $branco;
+			transform: translate(100%,0);
+			transition: transform 200ms ease-in-out;
+			z-index: 999999;
+
+			&.active { transform: translate(0,0); }
+
+			&:after {
+				content: "";
+				width: 100%;
+				height: 100%;
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				background-color: rgba(255,255,255,.7);
+				z-index: -1;
+			}
+		}
+
+		li + li { margin-top: 25px; }
+
 		.navbar-toggler {
+			position: fixed;
+			top: 0;
+			right: 0;
 			border: none;
+			z-index: 9999999;
+
+			span { display: none; }
+			i {
+				font-size: 30px;
+				color: $preto;
+				display: block;
+			}
+
+			&.collapsed {
+				position: static;
+				top: auto;
+				right: auto;
+
+				span { display: block; }
+				i { display: none; }
+			}
 
 			.navbar-toggler-icon {
 				background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='#2f2f2f' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>");
@@ -749,119 +910,25 @@ noscript {
 		}
 
 		.navbar-collapse {
-			height: 100% !important;
-			position: fixed;
-			top: 120px;
-			right: 0;
-			z-index: 999999;
-			background-color: $branco;
-			box-shadow: 0px 0px 51px 0px rgba(0,0,0,0.1);
-			transform: translate(100%,0);
-			transition: transform 200ms ease-in-out;
-
-			&.show { transform: translate(0,0); }
+			height: auto !important;
+			margin: -4px 0 0;
+			padding-left: 32px;
 		}
 
-		ul {
-			width: 315px;
-			height: 100%;
-			padding: 0 0 0 32px;
-			justify-content: flex-start;
-			border-left: 5px solid $verde-1;
-		}
-	}
-}
+		.areas-list {
+			margin: 32px 0 0;
+			display: block;
+			border-top: 1px solid $cinza-2;
 
-/* LISTA DE ÁREAS DO SITE */
+			li + li { margin: 0; }
 
-.areas-list {
-	width: 100%;
-	margin: 0 0 54px;
-	padding: 0;
-	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
-
-	li { flex-grow: 1; }
-
-	a {
-		min-height: 50px;
-		padding: 8px 10px;
-		font-size: 1.1rem;
-		text-align: center;
-		display: block;
-		transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
-
-		&.color-funarte {
-			color: $verde-1;
-			border-top: 4px solid $verde-1;
-
-			&:hover,
-			&:focus,
-			&.active { background-color: $verde-1; }
-		}
-		&.color-circo {
-			color: $vermelho-1;
-			border-top: 4px solid $vermelho-1;
-
-			&:hover,
-			&:focus,
-			&.active { background-color: $vermelho-1; }
-		}
-		&.color-teatro {
-			color: $rosa-1;
-			border-top: 4px solid $rosa-1;
-
-			&:hover,
-			&:focus,
-			&.active { background-color: $rosa-1; }
-		}
-		&.color-danca {
-			color: $amarelo-1;
-			border-top: 4px solid $amarelo-1;
-
-			&:hover,
-			&:focus,
-			&.active { background-color: $amarelo-1; }
-		}
-		&.color-musica {
-			color: $laranja-1;
-			border-top: 4px solid $laranja-1;
-
-			&:hover,
-			&:focus,
-			&.active { background-color: $laranja-1; }
-		}
-		&.color-artes-integradas {
-			color: $roxo-1;
-			border-top: 4px solid $roxo-1;
-
-			&:hover,
-			&:focus,
-			&.active { background-color: $roxo-1; }
-		}
-		&.color-artes-visuais {
-			color: $azul-1;
-			border-top: 4px solid $azul-1;
-
-			&:hover,
-			&:focus,
-			&.active { background-color: $azul-1; }
-		}
-		&.color-literatura {
-			color: $limao-1;
-			border-top: 4px solid $limao-1;
-
-			&:hover,
-			&:focus,
-			&.active { background-color: $limao-1; }
-		}
-
-		&:hover,
-		&:focus,
-		&.active {
-			color: $branco;
-			text-decoration: none;
+			a {
+				margin-left: -5px;
+				padding: 12px 10px 8px 32px;
+				text-align: left;
+				border-top: none;
+				border-left: 5px solid $cinza-6;
+			}
 		}
 	}
 }
