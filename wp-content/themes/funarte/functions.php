@@ -21,6 +21,15 @@ function extra_files() {
 }
 add_action('wp_enqueue_scripts','extra_files');
 
+function add_files_admin() {
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
+
+	wp_register_style('jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css');
+	wp_enqueue_style( 'jquery-ui' ); 
+}
+add_action('admin_enqueue_scripts', 'add_files_admin');
+
 register_nav_menus( array(
 	'principal' => __( 'Menu Principal', 'funarte' ),
 ) );

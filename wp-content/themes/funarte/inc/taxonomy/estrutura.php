@@ -29,7 +29,7 @@ class taxEstrutura {
 
 		register_taxonomy(
 			$this->name,
-			"post",
+			"None",
 			array(
 				'hierarchical' => true,
 				'labels' => $labels,

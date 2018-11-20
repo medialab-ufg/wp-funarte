@@ -29,7 +29,7 @@ class taxCategoria {
 
 		register_taxonomy(
 			$this->name,
-			"post",
+			["post", "page"],
 			array(
 				'hierarchical' => true,
 				'labels' => $labels,
