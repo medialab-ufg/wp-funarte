@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	// Todas as paginas
 	base.acessibilidade.iniciar();
 	base.acessibilidade.manipularFontes();
 	base.acessibilidade.ativarAltoContraste();
@@ -6,14 +7,45 @@ $(document).ready(function() {
 	base.jsNaoObstrusivo.ativar();
 	base.menu.manipular();
 
+	// Home
 	base.carrossel.iniciarDestaques();
 	base.carrossel.iniciarAcervo();
 	base.carrossel.iniciarAgenda();
 	base.carrossel.iniciarEditais();
 	base.noticias.visualizar();
+
+	// Contatos
+	base.collapse.manipularBox1();
 });
 
 var base = {
+	collapse: {
+		manipularBox1: function() {
+			$('.collapse__button').on('click',function() {
+				var $this = $(this),
+					text = $this.text(),
+					word = text.split(' '),
+					newText = '';
+
+				if (word[0] == 'Ocultar') {
+					word[0] = 'Exibir';
+				} else {
+					word[0] = 'Ocultar';
+				}
+
+				for (var i = 0; i < word.length; i++) {
+					newText += word[i] + ' ';
+				}
+
+				$this
+				.text(newText)
+				.toggleClass('active')
+				.siblings('.collapse__text')
+				.slideToggle(200);
+			});
+		}
+	},
+
 	menu: {
 		manipular: function() {
 			$('.navbar-toggler').on('click',function() {
