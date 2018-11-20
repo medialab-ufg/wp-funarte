@@ -4,12 +4,15 @@ namespace funarte;
 class Edital {
 	use Singleton;
 
+	private $POST_TYPE = "edital";
+
 	protected function init() {
 		add_action('init', array( &$this, "register_post_type" ));
+		add_action('add_meta_boxes', array(&$this, 'add_custom_box'));
+		add_action('save_post', array(&$this, 'save_custom_box'));
 	}
 
 	public function register_post_type() {
-		$POST_TYPE = "edital";
 		$POST_TYPE_NAME_PLURAL = "Editais";
 		$POST_TYPE_NAME_SINGULAR = "Edital";
 
@@ -47,7 +50,129 @@ class Edital {
 			]
 		);
 
-		register_post_type($POST_TYPE, $post_type_args);
+		register_post_type($this->POST_TYPE, $post_type_args);
+	}
+
+	public function add_custom_box() {
+		add_meta_box('edital_custombox', __( 'Dados e datas do edital'),
+					array(&$this, 'edital_custom_box'), $this->POST_TYPE, 'side','high');
+	}
+
+	public function save_custom_box($post_id) {
+		$this->save_edital_custom_box($post_id);
+	}
+
+	public function edital_custom_box() {
+		global $post;
+		$nonce = wp_create_nonce(__FILE__);
+
+		$edital = get_post_meta($post->ID, 'edital-inscricoes_inicio', true);
+		date_default_timezone_set("Brazil/East");
+		if ($post->ID && !empty($edital)) {
+			$edital = array(
+				'inscricoes_inicio' => date('d/m/Y', strtotime(get_post_meta($post->ID, 'edital-inscricoes_inicio', true))),
+				'inscricoes_fim' => date('d/m/Y', strtotime(get_post_meta($post->ID, 'edital-inscricoes_fim', true))),
+				'prorrogado' => (bool)get_post_meta($post->ID, 'edital-prorrogado', true),
+				'resultado' => (bool)get_post_meta($post->ID, 'edital-resultado', true)
+			);
+		} else {
+			$edital = array(
+				'inscricoes_inicio' => date('d/m/Y'),
+				'inscricoes_fim' => date('d/m/Y', strtotime('+1 week')),
+				'prorrogado' => false,
+				'resultado' => false
+			);
+		}
+
+		$THEME_FOLDER = get_template_directory();
+		$DS = DIRECTORY_SEPARATOR;
+		$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'post_types' . $DS . 'edital' . $DS;
+		require_once($META_FOLDER . 'metabox-edital.php');
+	}
+
+	private function save_edital_custom_box($post_id) {
+		if (empty($_POST))
+			return $post_id;
+
+		// Verifica o nonce
+		if (!wp_verify_nonce($_POST['edital_custombox'], __FILE__))
+			return $post_id;
+
+		// É um autosave?
+		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+			return $post_id;
+
+		// Não pode editar o Edital?
+		if (!current_user_can('edit_post', $post_id))
+			return $post_id;
+
+		$edital = $_POST['edital'];
+		foreach ($edital as $field => &$value) {
+			// Verifica se os campos são seguros
+			if (in_array($field, array('inscricoes_inicio', 'inscricoes_fim', 'prorrogado', 'resultado'))) {
+				if (in_array($field, array('inscricoes_inicio', 'inscricoes_fim')) && preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $value)) {
+					// Converte a data
+					list($dia, $mes, $ano) = explode('/', $value);
+					$value = $ano . '-' . $mes . '-' . $dia;
+				// Converte os booleanos
+				} else {
+					$value = (bool)$value;
+				}
+				update_post_meta($post_id, 'edital-' . $field, $value);
+			}
+		}
+		return $edital;
+	}
+
+	public function getEditais($status = 'todos', $params = array()) {
+		$hoje = date('Y-m-d');
+		$query = array(
+			'post_type' => $this->POST_TYPE,
+			'posts_per_page' => -1
+		);
+
+		switch ($status) {
+			case 'aberto':
+				$query = array_merge($query, array(
+					'meta_key' => 'edital-inscricoes_fim',
+					'meta_compare' => '>=',
+					'meta_value' => $hoje
+				));
+				break;
+			case 'avaliacao':
+			case 'resultados':
+				$query = array_merge($query, array(
+					'meta_key' => 'edital-inscricoes_fim',
+					'meta_compare' => '<=',
+					'meta_value' => $hoje
+				));
+				break;
+		}
+		
+		$editais = query_posts($query);
+		wp_reset_query();
+		
+		if ($status != 'todos')
+			foreach ($editais as $key => $edital)
+				if ($this->getEditalStatus($edital->ID) != $status)
+					unset($editais[$key]);
+		
+		if (empty($editais))
+			return array();
+		
+		$ids = array();
+		foreach ($editais as &$edital)
+			array_push($ids, $edital->ID);
+		
+		$params = array_merge(array(
+			'post__in' => $ids,
+			'post_type' => $this->postTypeEdital['name'],
+		
+			'orderby' => 'date',
+			'order' => 'DESC'
+		), $params);
+		
+		return query_posts($params);
 	}
 }
 
