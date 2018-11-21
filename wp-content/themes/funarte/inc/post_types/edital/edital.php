@@ -124,7 +124,7 @@ class Edital {
 		return $edital;
 	}
 
-	public function getEditais($status = 'todos', $params = array()) {
+	public function get_editais($status = 'todos', $params = array()) {
 		$hoje = date('Y-m-d');
 		$query = array(
 			'post_type' => $this->POST_TYPE,
@@ -166,13 +166,52 @@ class Edital {
 		
 		$params = array_merge(array(
 			'post__in' => $ids,
-			'post_type' => $this->postTypeEdital['name'],
+			'post_type' => $this->POST_TYPE,
 		
 			'orderby' => 'date',
 			'order' => 'DESC'
 		), $params);
 		
 		return query_posts($params);
+	}
+
+	public function get_edital_status($editalID) {
+		$editalID = (int)$editalID;
+		if (!(get_post_type($editalID) == $this->POST_TYPE))
+			return false;
+		$meta = array(
+			'inscricoes_inicio' => strtotime(get_post_meta($editalID, 'edital-inscricoes_inicio', true)),
+			'inscricoes_fim' => strtotime("+1 day" . (get_post_meta($editalID, 'edital-inscricoes_fim', true))),
+			'prorrogado' => (bool)get_post_meta($editalID, 'edital-prorrogado', true),
+			'resultado' => (bool)get_post_meta($editalID, 'edital-resultado', true),
+		);
+		$now = time();
+		if (($now > $meta['inscricoes_inicio']) && ($now < $meta['inscricoes_fim']))
+			return 'aberto';
+		elseif (($now > $meta['inscricoes_fim']) && !$meta['resultado'])
+			return 'avaliacao';
+		else
+			return 'resultado';
+		return false;
+	}
+
+	public function get_edital_status_name($editalID) {
+		return $this->get_edital_status_name_by_slug($this->get_edital_status($editalID));
+	}
+
+	public function get_edital_status_name_by_slug($name) {
+		switch ($name) {
+			case 'aberto':
+				return 'Inscrições abertas';
+				break;
+			case 'avaliacao':
+				return 'Em avaliação';
+				break;
+			case 'resultado':
+				return 'Resultado';
+				break;
+		}
+		return null;
 	}
 }
 
