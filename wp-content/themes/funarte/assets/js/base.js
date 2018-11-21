@@ -27,21 +27,17 @@ var base = {
 					word = text.split(' '),
 					newText = '';
 
-				if (word[0] == 'Ocultar') {
-					word[0] = 'Exibir';
-				} else {
-					word[0] = 'Ocultar';
-				}
+				word[0] = word[0] == 'Ocultar' ? 'Exibir' : 'Ocultar';
 
 				for (var i = 0; i < word.length; i++) {
 					newText += word[i] + ' ';
 				}
 
 				$this
-				.text(newText)
-				.toggleClass('active')
-				.siblings('.collapse__text')
-				.slideToggle(200);
+					.text(newText)
+					.toggleClass('active')
+					.siblings('.collapse__text')
+					.slideToggle(200);
 			});
 		}
 	},
