@@ -53,6 +53,7 @@ $preto: #000;
 
 body {
 	font-family: 'Roboto', sans-serif;
+	overflow-x: hidden;
 }
 form legend {
 	width: 1px;
@@ -331,6 +332,16 @@ noscript {
 		font-family: 'Sansita', sans-serif;
 		font-size: 1rem;
 		color: $cinza-6;
+		line-height: 1.2rem;
+		display: block;
+	}
+
+	em {
+		font-weight: 700;
+		font-style: italic;
+		font-size: .9rem;
+		color: $cinza-6;
+		line-height: 1.2rem;
 		display: block;
 	}
 
@@ -345,8 +356,89 @@ noscript {
 		& + strong { margin-top: 16px; }
 	}
 
-	a { color: $cinza-6; }
+	a {
+		color: $cinza-6;
+		word-break: break-word;
+	}
 }
+.box-info__collapse {
+	margin-top: 33px;
+
+	button {
+		padding: 2px 0 0 35px;
+		font-size: 1rem;
+		color: $cinza-6;
+		text-align: left;
+		cursor: pointer;
+		overflow: hidden;
+		position: relative;
+		border: none;
+		background: none;
+
+		&:after {
+			content: "+";
+			width: 22px;
+			height: 22px;
+			font-size: 26px;
+			color: $branco;
+			text-align: center;
+			line-height: 22px;
+			display: block;
+			position: absolute;
+			top: 2px;
+			left: 0;
+			background-color: $verde-1;
+		}
+
+		&.active:after { content: "-"; }
+	}
+
+	.collapse__text {
+		margin: 17px 0 0 30px;
+		padding: 67px 20px 37px 100px;
+		position: relative;
+
+		&:after {
+			content: "";
+			width: 999999px;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: $cinza-3;
+			z-index: -1;
+		}
+
+		&:before {
+			content: "";
+			width: 50%;
+			height: 2px;
+			display: block;
+			position: absolute;
+			top: 27px;
+			left: -30px;
+			background-color: $verde-1;
+			transition: width 1000ms ease-in-out;
+		}
+
+		strong,
+		em,
+		p { margin-bottom: 20px; }
+	}
+}
+
+@media screen and (max-width:600px) {
+	.box-info__collapse .collapse__text {
+		margin: 17px 0 0;
+		padding: 67px 20px 37px;
+	}
+}
+@media screen and (max-width:500px) {
+	.list-boxes-info { padding-left: 0; }
+}
+
+// JS não obstrusivo
+body.js .collapse__text { display: none; }
 
 .box-news {
 	width: 100%;
@@ -778,6 +870,7 @@ noscript {
 		position: absolute;
 		top: 0;
 		left: 0;
+		z-index: 2;
 
 		img {
 			margin: -14px 0 0 -8px;
