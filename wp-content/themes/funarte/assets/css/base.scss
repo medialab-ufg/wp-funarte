@@ -53,7 +53,10 @@ $preto: #000;
 
 body {
 	font-family: 'Roboto', sans-serif;
+	color: $cinza-6;
 	overflow-x: hidden;
+
+	a { color: inherit; }
 }
 form legend {
 	width: 1px;
@@ -147,6 +150,8 @@ noscript {
 		background-color: $verde-1;
 	}
 
+	a { color: inherit; }
+
 	span {
 		padding-left: 28px;
 		color: $cinza-6;
@@ -169,6 +174,8 @@ noscript {
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.9rem;
 	color: $cinza-6;
+
+	a { color: inherit; }
 }
 .title-h3 {
 	margin: 0;
@@ -176,6 +183,8 @@ noscript {
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.75rem;
 	color: $cinza-6;
+
+	a { color: inherit; }
 }
 .title-h4 {
 	margin: 0;
@@ -183,6 +192,8 @@ noscript {
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.5rem;
 	color: $verde-1;
+
+	a { color: inherit; }
 }
 .title-h5 {
 	margin: 0;
@@ -190,6 +201,8 @@ noscript {
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.15rem;
 	color: $cinza-6;
+
+	a { color: inherit; }
 }
 
 
@@ -1794,6 +1807,14 @@ ul.slick-dots {
 			}
 		}
 	}
+}
+
+/* LISTAS */
+
+.list-notices {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 /***
