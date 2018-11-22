@@ -154,7 +154,7 @@ class Edital {
 		
 		if ($status != 'todos')
 			foreach ($editais as $key => $edital)
-				if ($this->getEditalStatus($edital->ID) != $status)
+				if ($this->get_edital_status($edital->ID) != $status)
 					unset($editais[$key]);
 		
 		if (empty($editais))
