@@ -1,8 +1,8 @@
 <?php 
-	get_header(); 
+	get_header();
 	$edital = \funarte\Edital::get_instance();
 	$status = $edital->get_edital_status($post->ID);
-	
+
 	if (have_posts()) { the_post(); ?>
 		<div id="section">
 			<h2 class="titulo-25">
@@ -84,7 +84,14 @@
 					<?php } ?>
 				</div>
 			</div>
-			[[--widgets--]]
+			
+			<?php 
+				$THEME_FOLDER = get_template_directory();
+				$DS = DIRECTORY_SEPARATOR;
+				$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'post_types' . $DS . 'edital' . $DS;
+				require_once($META_FOLDER . 'widget-arquivos-relacionados.php');
+			?>
+			
 		</div>
 		<?php }
 get_footer();

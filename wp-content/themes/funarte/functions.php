@@ -34,6 +34,37 @@ register_nav_menus( array(
 	'principal' => __( 'Menu Principal', 'funarte' ),
 ) );
 
+function get_post_files($postID = null, $params = array(), $exclude = '/^(image\/(jpeg|png|gif)|audio\/)/') {
+	global $post;
+	$postID = (!is_null($postID)) ? (int)$postID : $post->ID;
+	$upload_dir = wp_upload_dir();
+	$params = array_merge(array(
+		'post_type' => 'attachment',
+		'post_parent' => $postID,
+		'orderby' => 'menu_order',
+		'order' => 'ASC'
+	), $params);
+	$posts = get_children($params);
+	
+	if ($exclude && is_string($exclude) && !empty($exclude)) {
+		foreach ($posts as $key => &$attachment) {
+			if (preg_match($exclude, $attachment->post_mime_type)) {
+				unset($posts[$key]);
+				continue;
+			}
+			$attachment->path = str_replace(
+				array($upload_dir['baseurl'], '/'),
+				array($upload_dir['basedir'], DIRECTORY_SEPARATOR),
+				$attachment->guid);
+			if (!file_exists($attachment->path)) {
+				unset($posts[$key]); continue;
+			}
+			$attachment->size = filesize($attachment->path);
+		}
+	}
+	return $posts;
+}
+
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/assets/lib/class-wp-bootstrap-navwalker.php';
 
