@@ -365,7 +365,7 @@
 			</div>
 		</section>
 
-		<section class="carousel-collection mb-100">
+		<section class="carousel-collection">
 			<h2 class="title-1 mb-65">Acervo</h2>
 
 			<div class="carousel-collection__wrapper">

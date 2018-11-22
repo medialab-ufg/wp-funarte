@@ -10,7 +10,9 @@
 			<a href="#">Contatos</a>
 		</div>
 
-		<h2 class="title-h1">Contatos <span>Informações</span></h2>
+		<div class="box-title">
+			<h2 class="title-h1">Contatos <span>Informações</span></h2>
+		</div>
 
 		<div class="list-boxes-info">
 			<section class="box-info">

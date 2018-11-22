@@ -92,6 +92,13 @@ noscript {
 
 /* TÍTULOS */
 
+.box-title {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	position: relative;
+}
 .title-1 {
 	margin: 0;
 	padding: 0 0 9px 10px;
@@ -212,6 +219,7 @@ noscript {
 	padding: 0 0 0 15px;
 	display: flex;
 	align-items: flex-end;
+	flex-wrap: wrap;
 
 	a {
 		padding: 5px 15px 1px;
@@ -221,6 +229,8 @@ noscript {
 		display: inline-block;
 		position: relative;
 		background-color: $cinza-1;
+
+		& + a { margin-left: 25px; }
 
 		&:after {
 			content: "";
@@ -241,6 +251,17 @@ noscript {
 		word-break: break-word;
 		display: inline-block;
 		background-color: $cinza-6;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+
+		li + li { margin-left: 25px; }
 	}
 }
 .link-more {
@@ -330,6 +351,51 @@ noscript {
 }
 
 /* BOXES */
+
+.box-tabs {
+	.list-tabs {
+		width: 100%;
+		border-bottom: 4px solid $verde-1;
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			justify-content: flex-end;
+			flex-wrap: wrap;
+		}
+
+		li {
+
+			a {
+				width: 100%;
+				height: 100%;
+				padding: 9px 40px 5px;
+				font-family: 'Sansita', sans-serif;
+				font-size: 1.5rem;
+				color: $verde-1;
+				display: block;
+				background-color: $branco;
+				transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+			}
+
+			&:hover a,
+			&:focus a,
+			&.active a {
+				color: $branco;
+				text-decoration: none;
+				background-color: $verde-1;
+			}
+		}
+
+	}
+	.content-tab {
+		width: 100%;
+		padding: 120px 0 100px;
+		background-color: $cinza-2;
+	}
+}
 
 .list-boxes-info {
 	width: 100%;
@@ -1256,6 +1322,11 @@ body.js .collapse__text { display: none; }
 * CONTEÚDO
 ***/
 
+main {
+	width: 100%;
+	padding-bottom: 100px;
+}
+
 /* BREADCRUMB */
 
 .box-breadcrumb {
@@ -1815,6 +1886,98 @@ ul.slick-dots {
 	margin: 0;
 	padding: 0;
 	list-style: none;
+
+	li {
+		padding-bottom: 37px;
+		border-bottom: 2px solid $cinza-3;
+
+		& + li { margin-top: 50px; }
+	}
+
+	.link-area {
+		margin-bottom: 20px;
+
+		li {
+			margin-top: 0;
+			padding-bottom: 0;
+			border-bottom: none;
+		}
+	}
+
+	.title-h5 { margin-bottom: 20px; }
+
+	p {
+		margin-bottom: 0;
+		line-height: 1.2rem;
+	}
+
+	.link-more { margin-top: 25px; }
+}
+
+/* PAGINAÇÃO */
+
+.box-pagination {
+	width: 100%;
+	margin-top: 35px;
+	display: flex;
+	justify-content: flex-end;
+}
+.box-pagination__list {
+	margin: 0 -5px;
+	padding: 7px 0 0;
+	list-style: none;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+
+	li {
+		width: 13px;
+		height: 13px;
+		margin: 0 5px;
+
+		a {
+			width: 100%;
+			height: 100%;
+			text-indent: -99999px;
+			display: block;
+			background-color: $cinza-3;
+			transition: background-color 200ms ease-in-out;
+		}
+
+		&.active a,
+		&:hover a,
+		&:focus a { background-color: $verde-1; }
+	}
+
+}
+.box-pagination__control {
+	width: 65px;
+	height: 30px;
+	margin: 0 -2.5px 0 42.5px;
+	display: flex;
+	justify-content: space-between;
+
+	button {
+		width: 30px;
+		height: 30px;
+		margin: 0 2.5px;
+		font-size: 30px;
+		color: $branco;
+		line-height: 30px;
+		text-align: center;
+		cursor: pointer;
+		position: relative;
+		overflow: hidden;
+		border: none;
+		background: $verde-1;
+
+		i {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
 }
 
 /***
@@ -1874,6 +2037,29 @@ ul.slick-dots {
 	.columns__column-a + .columns__column-a,
 	.columns__column-a + .columns__column-b,
 	.columns__column-b + .columns__column-a { margin-top: 20px; }
+}
+
+/***
+* FORMS
+***/
+
+.box-forms {
+	display: flex;
+	justify-content: space-between;
+
+	.form-area {
+		select {
+			padding: 7px 20px;
+			font-size: 1rem;
+			color: $cinza-6;
+			border: 1px solid $cinza-2;
+			background-color: $branco;
+		}
+	}
+
+	.form-filtro-editais {
+		margin-left: 50px;
+	}
 }
 
 /* FORMULÁRIO DO RODAPÉ */
