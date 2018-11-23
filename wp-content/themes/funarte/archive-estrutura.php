@@ -16,7 +16,9 @@
 			<a href="#">Contatos</a>
 		</div>
 
-		<h2 class="title-h1">Contatos <span>Informações</span></h2>
+		<div class="box-title">
+			<h2 class="title-h1">Contatos <span>Informações</span></h2>
+		</div>
 
 		<div class="list-boxes-info">
 			<?php if(have_posts()): while(have_posts()): the_post(); ?>
