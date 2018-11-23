@@ -508,7 +508,11 @@ noscript {
 		p { margin-bottom: 20px; }
 
 		#corpo-materia,
-		.text__block { break-inside: avoid; }
+		.text__block {
+			-webkit-column-break-inside: avoid;
+			page-break-inside: avoid;
+			break-inside: avoid;
+		}
 	}
 }
 
