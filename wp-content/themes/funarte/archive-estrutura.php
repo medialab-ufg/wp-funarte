@@ -37,12 +37,14 @@
 								<button class="collapse__button" type="button">Exibir a estrutura de <?php the_title() ?></button>
 								<div class="collapse__text">
 									<?php foreach($filhos as $filho): ?>
-										<strong><?php $filho->post_title; ?></strong>
-										<?php 
-											$content = $filho->post_content; 
-											$content = apply_filters('the_content', $content);
-											echo $content;
-										?>
+										<div class="text__block">
+											<strong><?php echo $filho->post_title; ?></strong>
+											<?php 
+												$content = $filho->post_content; 
+												$content = apply_filters('the_content', $content);
+												echo $content;
+											?>
+										</div>
 									<?php endforeach; ?>
 								</div>
 							</div>
