@@ -8,7 +8,6 @@ class Estrutura {
 
 	protected function init() {
 		add_action('init', array( &$this, "register_post_type" ));
-		add_action('init', array( &$this, "register_taxonomy" ));
 	}
 
 	public function register_post_type() {
@@ -37,21 +36,26 @@ class Estrutura {
 			'query_var' => true,
 			'can_export' => true,
 			'has_archive' => true,
+			'hierarchical' => true,
 			'show_in_menu' => true,
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => true,
+			'supports' => array(
+				'title', 'editor', 'page-attributes', ),
 			'taxonomies' => [
-				taxEstrutura::get_instance()->get_name()
+				taxEstrutura::get_instance()->get_name(),
+				//taxTag::get_instance()->get_name()
+
 			]
 		);
 
 		register_post_type($this->POST_TYPE, $post_type_args);
 	}
 
-	public function register_taxonomy() {
-		
+	public function get_post_type() {
+		return $this->POST_TYPE;
 	}
 
 }

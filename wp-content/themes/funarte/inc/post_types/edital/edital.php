@@ -130,7 +130,7 @@ class Edital {
 			'post_type' => $this->POST_TYPE,
 			'posts_per_page' => -1
 		);
-
+		
 		switch ($status) {
 			case 'aberto':
 				$query = array_merge($query, array(
@@ -167,11 +167,11 @@ class Edital {
 		$params = array_merge(array(
 			'post__in' => $ids,
 			'post_type' => $this->POST_TYPE,
-		
 			'orderby' => 'date',
 			'order' => 'DESC'
 		), $params);
 		
+
 		return query_posts($params);
 	}
 

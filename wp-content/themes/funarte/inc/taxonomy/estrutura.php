@@ -4,7 +4,7 @@ namespace funarte;
 class taxEstrutura {
 	use Singleton;
 
-	private $name = 'estrutura';
+	private $name = 'estruturas';
 	public function get_name() {
 		return $this->name;
 	}
