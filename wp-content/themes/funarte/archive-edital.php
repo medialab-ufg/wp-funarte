@@ -27,7 +27,7 @@ get_header();
 			<h2 class="title-h1">Editais</h2>
 
 			<div class="box-forms">
-				<form class=>>>>>>> e96da3fce9e368f353936a8347b6c4e0dd986b8c"form-area" action="#" method="post">
+				<form class="form-area" action="#" method="post">
 					<fieldset>
 						<legend>Formulário de seleção de área</legend>
 

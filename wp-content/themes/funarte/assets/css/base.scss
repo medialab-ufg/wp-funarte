@@ -412,7 +412,6 @@ noscript {
 		font-size: 1rem;
 		color: $cinza-6;
 		line-height: 1.2rem;
-		display: block;
 	}
 
 	em {
@@ -438,6 +437,8 @@ noscript {
 	a {
 		color: $cinza-6;
 		word-break: break-word;
+
+		span { color: inherit !important; }
 	}
 }
 .box-info__collapse {
@@ -475,6 +476,8 @@ noscript {
 	.collapse__text {
 		margin: 17px 0 0 30px;
 		padding: 67px 20px 37px 100px;
+		column-count: 2;
+		column-gap: 60px;
 		position: relative;
 
 		&:after {
@@ -503,9 +506,17 @@ noscript {
 		strong,
 		em,
 		p { margin-bottom: 20px; }
+
+		#corpo-materia { break-inside: avoid; }
 	}
 }
 
+@media screen and (max-width:991px) {
+	.box-info__collapse .collapse__text {
+		column-count: 1;
+		column-gap: 0;
+	}
+}
 @media screen and (max-width:600px) {
 	.box-info__collapse .collapse__text {
 		margin: 17px 0 0;
