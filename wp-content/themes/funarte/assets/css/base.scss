@@ -507,7 +507,8 @@ noscript {
 		em,
 		p { margin-bottom: 20px; }
 
-		#corpo-materia { break-inside: avoid; }
+		#corpo-materia,
+		.text__block { break-inside: avoid; }
 	}
 }
 
