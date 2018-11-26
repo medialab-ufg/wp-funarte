@@ -279,8 +279,8 @@
 							<hr>
 							<div class="carousel-schedule__row">
 								<div class="carousel-schedule__column-1">
-									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
-									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
+									<span class="carousel-schedule__time">das 13 às 17 horas</span>
+									<span class="carousel-schedule__local">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
@@ -297,8 +297,8 @@
 							<hr>
 							<div class="carousel-schedule__row">
 								<div class="carousel-schedule__column-1">
-									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
-									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
+									<span class="carousel-schedule__time">das 13 às 17 horas</span>
+									<span class="carousel-schedule__local">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
@@ -315,8 +315,8 @@
 							<hr>
 							<div class="carousel-schedule__row">
 								<div class="carousel-schedule__column-1">
-									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
-									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
+									<span class="carousel-schedule__time">das 13 às 17 horas</span>
+									<span class="carousel-schedule__local">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
@@ -333,8 +333,8 @@
 							<hr>
 							<div class="carousel-schedule__row">
 								<div class="carousel-schedule__column-1">
-									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
-									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
+									<span class="carousel-schedule__time">das 13 às 17 horas</span>
+									<span class="carousel-schedule__local">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>
@@ -351,8 +351,8 @@
 							<hr>
 							<div class="carousel-schedule__row">
 								<div class="carousel-schedule__column-1">
-									<span class="carousel-schedule__time icon-css">das 13 às 17 horas</span>
-									<span class="carousel-schedule__local icon-css">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
+									<span class="carousel-schedule__time">das 13 às 17 horas</span>
+									<span class="carousel-schedule__local">MediaLab/ UFG - R. Samambaia, S/N - Vila Itatiaia, Goiânia - GO, 74690-900</span>
 								</div>
 								<div class="carousel-schedule__column-2">
 									<p>Lorem ipsum dolor sit amet, consecte-tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud exercitation ullam-co laboris.grsuysdbhsidgs</p>

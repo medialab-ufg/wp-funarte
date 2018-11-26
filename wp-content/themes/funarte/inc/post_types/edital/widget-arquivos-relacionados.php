@@ -7,7 +7,7 @@ $params = array_merge(array(
 	'titulo' => 'Arquivos Relacionados',
 	'params' => array(),
 	'wraper' => true,
-	'return' => false
+	'return' => true
 ), (isset($params) ? $params : array()));
 
 $files = get_post_files(get_the_ID(), $params['params'], $params['exclude']);
@@ -15,19 +15,16 @@ $files = get_post_files(get_the_ID(), $params['params'], $params['exclude']);
 $html_widget = '';
 if (!empty($files)) {
 	if ($params['wraper'])
-		$html_widget .= '<div class="outras-infos-texto grid-' . $params['colunas'] . '-12">';
-		
-	$html_widget .= '<div class="widgets-pa arquivos-relacionados ' . $params['class'] . ' grid-' . $params['colunas'] . '-12">';
-		$html_widget .= '<h3>' . $params['titulo'] . '</h3>';
-		$html_widget .= '<ul>';
+		$html_widget .= '<div class="box-links">';
+
+		$html_widget .= '<h4 class="title-h1">' . $params['titulo'] . '</h4>';
+		$html_widget .= '<ul class="list-links">';
 		foreach ($files as $file) {
 			$html_widget .= '<li>';
-				$link = '<a href=' . $file->guid . ' title="Faça download do arquivo" >' . $file->post_title . '</a>';
-				$html_widget .= '<span>(' . date('d/m/Y', strtotime($file->post_date)) . ')' . $link . '</span>';
+				$html_widget .= '<a href=' . $file->guid . ' title="Faça download do arquivo" >(' . date('d/m/Y', strtotime($file->post_date)) . ') ' . $file->post_title . '</a>';
 			$html_widget .= '</li>';
 		}
 		$html_widget .= '</ul>';
-	$html_widget .= '</div>';
 
 	if ($params['wraper'])
 		$html_widget .= '</div>';

@@ -78,9 +78,9 @@ noscript {
 	background-color: #FFC107;
 }
 
-/* ICONES DA BIBLIOTECA INSERIDOS VIA CSS */
+/* INSERIR O MIXIN ABAIXO NO AFTER/BEFORE QUE RECEBERÁ UM ÍCONE */
 
-.icon-css:after {
+@mixin icon-css {
 	display: inline-block;
 	font: normal normal normal 24px/1 "Material Design Icons";
 	font-size: inherit;
@@ -218,7 +218,6 @@ noscript {
 	position: relative;
 	background-color: $cinza-2;
 
-
 	&:before {
 		content: "";
 		width: 9999999px;
@@ -242,15 +241,7 @@ noscript {
 		z-index: -4;
 	}
 
-	 .link-area a { margin-bottom: 22px; }
-	&.color-funarte .link-area a { color: $verde-1; }
-	&.color-circo .link-area a { color: $vermelho-1; }
-	&.color-musica .link-area a { color: $laranja-1; }
-	&.color-danca .link-area a { color: $amarelo-1; }
-	&.color-literatura .link-area a { color: $limao-1; }
-	&.color-artes-visuais .link-area a { color: $azul-1; }
-	&.color-artes-integradas .link-area a { color: $roxo-1; }
-	&.color-teatro .link-area a { color: $rosa-1; }
+	.link-area { margin-bottom: 22px; }
 
 	.title-page {
 		margin: 0;
@@ -266,7 +257,6 @@ noscript {
 		padding: 30px 20px 42px 0;
 	}
 }
-
 
 /* SESSÕES COLORIDAS */
 
@@ -343,70 +333,216 @@ noscript {
 }
 .color-funarte {
 	.link-area {
-		a:after,
-		span { background-color: $verde-1; }
+		a {
+			color: $verde-1;
+
+			&:after,
+			span { background-color: $verde-1; }
+		}
 	}
 	.link-more { color: $verde-1; }
 }
 .color-circo {
 	.link-area {
-		a:after,
-		span { background-color: $vermelho-1; }
+		a {
+			color: $vermelho-1;
+
+			&:after,
+			span { background-color: $vermelho-1; }
+		}
 	}
 	.link-more { color: $vermelho-1; }
 }
 .color-musica {
 	.link-area {
-		a:after,
-		span { background-color: $laranja-1; }
+		a {
+			color: $laranja-1;
+
+			&:after,
+			span { background-color: $laranja-1; }
+		}
 	}
 	.link-more { color: $laranja-1; }
 }
 .color-danca {
 	.link-area {
-		a:after,
-		span { background-color: $amarelo-1; }
+		a {
+			color: $amarelo-1;
+
+			&:after,
+			span { background-color: $amarelo-1; }
+		}
 	}
 	.link-more { color: $amarelo-1; }
 }
 .color-literatura {
 	.link-area {
-		a:after,
-		span { background-color: $limao-1; }
+		a {
+			color: $limao-1;
+
+			&:after,
+			span { background-color: $limao-1; }
+		}
 	}
 	.link-more { color: $limao-1; }
 }
 .color-artes-visuais {
 	.link-area {
-		a:after,
-		span { background-color: $azul-1; }
+		a {
+			color: $azul-1;
+
+			&:after,
+			span { background-color: $azul-1; }
+		}
 	}
 	.link-more { color: $azul-1; }
 }
 .color-artes-integradas {
 	.link-area {
-		a:after,
-		span { background-color: $roxo-1; }
+		a {
+			color: $roxo-1;
+
+			&:after,
+			span { background-color: $roxo-1; }
+		}
 	}
 	.link-more { color: $roxo-1; }
 }
 .color-teatro {
 	.link-area {
-		a:after,
-		span { background-color: $rosa-1; }
+		a {
+			color: $rosa-1;
+
+			&:after,
+			span { background-color: $rosa-1; }
+		}
 	}
 	.link-more { color: $rosa-1; }
 }
 .color-multicategoria {
 	.link-area {
-		a:after,
-		span { background-color: $verde-3; }
+		a {
+			color: $verde-3;
+
+			&:after,
+			span { background-color: $verde-3; }
+		}
 	}
 	.link-more { color: $verde-3; }
 }
 
+/* CORES PARA VÁRIOS ITENS NUMA MESMA LINHA */
+
+ul.link-area {
+	margin: 0 -15px;
+	padding: 0;
+	list-style: none;
+
+	li {
+		margin: 0 15px 10px;
+
+		&.color-funarte {
+			a {
+				color: $verde-1;
+
+				&:after,
+				span { background-color: $verde-1; }
+			}
+		}
+		&.color-circo {
+			a {
+				color: $vermelho-1;
+
+				&:after,
+				span { background-color: $vermelho-1; }
+			}
+		}
+		&.color-musica {
+			a {
+				color: $laranja-1;
+
+				&:after,
+				span { background-color: $laranja-1; }
+			}
+		}
+		&.color-danca {
+			a {
+				color: $amarelo-1;
+
+				&:after,
+				span { background-color: $amarelo-1; }
+			}
+		}
+		&.color-literatura {
+			a {
+				color: $limao-1;
+
+				&:after,
+				span { background-color: $limao-1; }
+			}
+		}
+		&.color-artes-visuais {
+			a {
+				color: $azul-1;
+
+				&:after,
+				span { background-color: $azul-1; }
+			}
+		}
+		&.color-artes-integradas {
+			a {
+				color: $roxo-1;
+
+				&:after,
+				span { background-color: $roxo-1; }
+			}
+		}
+		&.color-teatro {
+			a {
+				color: $rosa-1;
+
+				&:after,
+				span { background-color: $rosa-1; }
+			}
+		}
+		&.color-multicategoria {
+			a {
+				color: $verde-3;
+
+				&:after,
+				span { background-color: $verde-3; }
+			}
+		}
+	}
+}
+
 /* BOXES */
 
+.box-text {
+	.box-text__date {
+		margin-bottom: 20px;
+		text-align: right;
+	}
+	.box-text__image {
+		margin-bottom: 20px;
+
+		img {
+			margin: 0 auto;
+			display: block;
+		}
+	}
+	.box-text__text {
+		p {
+			color: $cinza-6;
+
+			span { color: inherit !important; }
+
+			strong span {
+				font-size: 1.4rem;
+			}
+		}
+	}
+}
 .box-tabs {
 	.list-tabs {
 		width: 100%;
@@ -1067,7 +1203,7 @@ body.js .collapse__text { display: none; }
 		}
 	}
 
-	a {
+	.navbar-nav a.nav-link {
 		padding: 0;
 		font-size: 1.15rem;
 		color: #303030;
@@ -1396,6 +1532,12 @@ body.js .collapse__text { display: none; }
 main {
 	width: 100%;
 	padding-bottom: 100px;
+}
+
+@media screen and (max-width:768px) {
+	.content-aside {
+		margin-top: 30px;
+	}
 }
 
 /* BREADCRUMB */
@@ -1740,6 +1882,7 @@ ul.slick-dots {
 		position: relative;
 
 		&:after {
+			@include icon-css;
 			content: "\f34e";
 			font-size: 24px;
 			position: absolute;
@@ -1953,6 +2096,41 @@ ul.slick-dots {
 
 /* LISTAS */
 
+.box-links {
+
+	.list-links {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			padding: 0 0 29px;
+
+			& + li {
+				padding: 23px 0 29px;
+				border-top: 1px solid $verde-1;
+			}
+		}
+
+		a {
+			padding: 0 0 0 50px;
+			font-size: 1rem;
+			color: $cinza-6;
+			display: block;
+			position: relative;
+
+			&:after {
+				@include icon-css;
+				content: "\f1da";
+				font-size: 24px;
+				color: $verde-1;
+				position: absolute;
+				top: -4px;
+				left: 4px;
+			}
+		}
+	}
+}
 .list-notices {
 	margin: 0;
 	padding: 0;
