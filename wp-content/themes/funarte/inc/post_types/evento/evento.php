@@ -116,7 +116,7 @@ class Evento {
 
 	public function save_custom_box($post_id) {
 		global $post; 
-		if ($post->post_type != $this->POST_TYPE) {
+		if ($post && $post->post_type != $this->POST_TYPE) {
 			return $post_id;
 		}
 		$this->save_evento_custom_box($post_id);

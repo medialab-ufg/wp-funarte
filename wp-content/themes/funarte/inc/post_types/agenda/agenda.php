@@ -4,12 +4,13 @@ namespace funarte;
 class Agenda {
 	use Singleton;
 
+	protected $POST_TYPE = "agenda";
+
 	protected function init() {
 		add_action('init', array( &$this, "register_post_type" ));
 	}
 
 	public function register_post_type() {
-		$POST_TYPE = "agenda";
 		$POST_TYPE_NAME_PLURAL = "Agendas";
 		$POST_TYPE_NAME_SINGULAR = "Agenda";
 
@@ -49,7 +50,7 @@ class Agenda {
 			]
 		);
 
-		register_post_type($POST_TYPE, $post_type_args);
+		register_post_type($this->POST_TYPE, $post_type_args);
 	}
 }
 
