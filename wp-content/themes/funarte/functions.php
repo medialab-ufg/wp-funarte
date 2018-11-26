@@ -65,9 +65,16 @@ function get_post_files($postID = null, $params = array(), $exclude = '/^(image\
 	return $posts;
 }
 
+function funarte_load_part($name, $args) {
+	extract($args);
+	var_dump(get_file_data($name . '.php', []));
+	require($name . '.php');
+}
+
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/assets/lib/class-wp-bootstrap-navwalker.php';
 
+require_once('inc/functions.lib.php');
 require_once('inc/traits/singleton.php');
 //includes - taxonomy
 require_once('inc/taxonomy/identidade-visual.php');
