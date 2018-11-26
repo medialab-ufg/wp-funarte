@@ -213,6 +213,7 @@ noscript {
 }
 .box-title-page {
 	width: 72%;
+	min-height: 200px;
 	margin-bottom: 100px;
 	padding: 30px 90px 42px 50px;
 	position: relative;
@@ -336,9 +337,9 @@ noscript {
 		a {
 			color: $verde-1;
 
-			&:after,
-			span { background-color: $verde-1; }
+			&:after { background-color: $verde-1; }
 		}
+		span { background-color: $verde-1; }
 	}
 	.link-more { color: $verde-1; }
 }
@@ -347,9 +348,9 @@ noscript {
 		a {
 			color: $vermelho-1;
 
-			&:after,
-			span { background-color: $vermelho-1; }
+			&:after { background-color: $vermelho-1; }
 		}
+		span { background-color: $vermelho-1; }
 	}
 	.link-more { color: $vermelho-1; }
 }
@@ -358,9 +359,9 @@ noscript {
 		a {
 			color: $laranja-1;
 
-			&:after,
-			span { background-color: $laranja-1; }
+			&:after { background-color: $laranja-1; }
 		}
+		span { background-color: $laranja-1; }
 	}
 	.link-more { color: $laranja-1; }
 }
@@ -369,9 +370,9 @@ noscript {
 		a {
 			color: $amarelo-1;
 
-			&:after,
-			span { background-color: $amarelo-1; }
+			&:after { background-color: $amarelo-1; }
 		}
+		span { background-color: $amarelo-1; }
 	}
 	.link-more { color: $amarelo-1; }
 }
@@ -380,9 +381,9 @@ noscript {
 		a {
 			color: $limao-1;
 
-			&:after,
-			span { background-color: $limao-1; }
+			&:after { background-color: $limao-1; }
 		}
+		span { background-color: $limao-1; }
 	}
 	.link-more { color: $limao-1; }
 }
@@ -391,9 +392,9 @@ noscript {
 		a {
 			color: $azul-1;
 
-			&:after,
-			span { background-color: $azul-1; }
+			&:after { background-color: $azul-1; }
 		}
+		span { background-color: $azul-1; }
 	}
 	.link-more { color: $azul-1; }
 }
@@ -402,9 +403,9 @@ noscript {
 		a {
 			color: $roxo-1;
 
-			&:after,
-			span { background-color: $roxo-1; }
+			&:after { background-color: $roxo-1; }
 		}
+		span { background-color: $roxo-1; }
 	}
 	.link-more { color: $roxo-1; }
 }
@@ -413,9 +414,9 @@ noscript {
 		a {
 			color: $rosa-1;
 
-			&:after,
-			span { background-color: $rosa-1; }
+			&:after { background-color: $rosa-1; }
 		}
+		span { background-color: $rosa-1; }
 	}
 	.link-more { color: $rosa-1; }
 }
@@ -424,9 +425,9 @@ noscript {
 		a {
 			color: $verde-3;
 
-			&:after,
-			span { background-color: $verde-3; }
+			&:after { background-color: $verde-3; }
 		}
+		span { background-color: $verde-3; }
 	}
 	.link-more { color: $verde-3; }
 }
@@ -445,73 +446,73 @@ ul.link-area {
 			a {
 				color: $verde-1;
 
-				&:after,
-				span { background-color: $verde-1; }
+				&:after { background-color: $verde-1; }
 			}
+			span { background-color: $verde-1; }
 		}
 		&.color-circo {
 			a {
 				color: $vermelho-1;
 
-				&:after,
-				span { background-color: $vermelho-1; }
+				&:after { background-color: $vermelho-1; }
 			}
+			span { background-color: $vermelho-1; }
 		}
 		&.color-musica {
 			a {
 				color: $laranja-1;
 
-				&:after,
-				span { background-color: $laranja-1; }
+				&:after { background-color: $laranja-1; }
 			}
+			span { background-color: $laranja-1; }
 		}
 		&.color-danca {
 			a {
 				color: $amarelo-1;
 
-				&:after,
-				span { background-color: $amarelo-1; }
+				&:after { background-color: $amarelo-1; }
 			}
+			span { background-color: $amarelo-1; }
 		}
 		&.color-literatura {
 			a {
 				color: $limao-1;
 
-				&:after,
-				span { background-color: $limao-1; }
+				&:after { background-color: $limao-1; }
 			}
+			span { background-color: $limao-1; }
 		}
 		&.color-artes-visuais {
 			a {
 				color: $azul-1;
 
-				&:after,
-				span { background-color: $azul-1; }
+				&:after { background-color: $azul-1; }
 			}
+			span { background-color: $azul-1; }
 		}
 		&.color-artes-integradas {
 			a {
 				color: $roxo-1;
 
-				&:after,
-				span { background-color: $roxo-1; }
+				&:after { background-color: $roxo-1; }
 			}
+			span { background-color: $roxo-1; }
 		}
 		&.color-teatro {
 			a {
 				color: $rosa-1;
 
-				&:after,
-				span { background-color: $rosa-1; }
+				&:after { background-color: $rosa-1; }
 			}
+			span { background-color: $rosa-1; }
 		}
 		&.color-multicategoria {
 			a {
 				color: $verde-3;
 
-				&:after,
-				span { background-color: $verde-3; }
+				&:after { background-color: $verde-3; }
 			}
+			span { background-color: $verde-3; }
 		}
 	}
 }
