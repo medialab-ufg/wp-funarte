@@ -4,7 +4,7 @@ namespace funarte;
 class taxEspacosCulturais {
 	use Singleton;
 
-	private $name = 'espaco-cultural';
+	private $name = 'espacos-culturais';
 	public function get_name() {
 		return $this->name;
 	}

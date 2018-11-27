@@ -4,7 +4,7 @@ namespace funarte;
 class taxIdentidadeVisual {
 	use Singleton;
 
-	private $name = 'identidade-visual';
+	private $name = 'identidades-visuais';
 	public function get_name() {
 		return $this->name;
 	}

@@ -8,7 +8,21 @@ class NovaAquisicao {
 
 	protected function init() {
 		add_action('init', array( &$this, "register_post_type" ));
-		add_action('init', array( &$this, "register_taxonomy" ));
+		add_action('add_meta_boxes', array(&$this, 'add_custom_box'));
+		add_action('save_post', array(&$this, 'save_custom_box'));
+	}
+
+	public function add_custom_box() {
+		add_meta_box('novasaquisicoes_custombox', __( 'Detalhes'),
+					array(&$this, 'novas_aquisicoes_custom_box'), $this->POST_TYPE, 'side', 'high');
+	}
+
+	public function save_custom_box($post_id) {
+		global $post; 
+		if ($post && $post->post_type != $this->POST_TYPE) {
+			return $post_id;
+		}
+		$this->save_novas_aquisicoes_custom_box($post_id);
 	}
 
 	public function register_post_type() {
@@ -50,8 +64,29 @@ class NovaAquisicao {
 		register_post_type($this->POST_TYPE, $post_type_args);
 	}
 
-	public function register_taxonomy() {
-		
+	public function novas_aquisicoes_custom_box() {
+		global $post;
+		$nonce = wp_create_nonce(__FILE__);
+		$timestamp = get_post_meta($post->ID, 'aquisicao-timestamp', true);
+
+		$THEME_FOLDER = get_template_directory();
+		$DS = DIRECTORY_SEPARATOR;
+		$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'post_types' . $DS . 'nova_aquisicao' . $DS;
+		require_once($META_FOLDER . 'metabox-detalhes-aquisicao.php');
+	}
+
+	public function save_novas_aquisicoes_custom_box($post_id) {
+		if (empty($_POST)) {
+			return $post_id;
+		}
+		if (!wp_verify_nonce($_POST['aquisicao-nonce'], __FILE__)) {
+			return $post_id;
+		}
+		if (!current_user_can('edit_post', $post_id)) {
+			return $post_id;
+		}
+		$timestamp = mktime(1, 1, 1, (int)$_POST['mes'], 1, (int)$_POST['ano']);
+		update_post_meta($post_id, 'aquisicao-timestamp', $timestamp);
 	}
 
 }

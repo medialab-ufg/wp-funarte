@@ -42,7 +42,9 @@ class IdentidadeVisual {
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => true,
+			'supports' => array('title', 'editor'),
 			'taxonomies' => [
+				taxTag::get_instance()->get_name(),
 				taxIdentidadeVisual::get_instance()->get_name()
 			]
 		);

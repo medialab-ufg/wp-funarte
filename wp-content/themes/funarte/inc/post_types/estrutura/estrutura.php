@@ -46,8 +46,7 @@ class Estrutura {
 				'title', 'editor', 'page-attributes', ),
 			'taxonomies' => [
 				taxEstrutura::get_instance()->get_name(),
-				//taxTag::get_instance()->get_name()
-
+				taxTag::get_instance()->get_name()
 			]
 		);
 
