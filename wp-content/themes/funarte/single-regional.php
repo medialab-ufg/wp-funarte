@@ -57,14 +57,14 @@ if(have_posts()) : the_post();
 					if (!empty($fax))
 						echo "<span>Fax: $fax</span><br />";
 					if (!empty($email))
-						echo "<span>mailto:{$email}</span> ";
+						echo "<span>email:{$email}</span> <br >";
 					if (!empty($rua)) {
 						$conteudo = $rua;
 						if (!empty($numero))
 							$conteudo .= ', Nº ' . $numero;
 						if (!empty($complemento))
 							$conteudo .= ' - ' . $complemento;
-						echo "<span>$conteudo</span>";
+						echo "<span>$conteudo</span> <br>";
 					}
 					if (!empty($cidade)) {
 						$conteudo = '';
@@ -87,7 +87,7 @@ if(have_posts()) : the_post();
 										echo '<h6>' . $contato['area'] . '</h6>';
 										echo '<span><strong>' . $contato['responsavel'] . '</strong></span>';
 										if (isset($contato['telefone']) && !empty($contato['telefone'])) :
-											echo '<span>Tel.: ' . $contato['telefone'] . '</span>';
+											echo '<span>Tel.: ' . $contato['telefone'] . '</span> <br >';
 										endif;
 										if (isset($contato['email']) && !empty($contato['email'])) :
 											echo '<span>' . $contato['email'] . ' mailto:' . $contato['email'] . '</span>';
@@ -102,19 +102,37 @@ if(have_posts()) : the_post();
 			</div>
 
 			<div class="box-text">
-				<?php 
+			  <h3>Lista de Próximos Eventos</h3> <br />
+				<?php
 					//jogar isso para um widget?
-					$regional = get_term_by('name', get_the_title(), \funarte\taxRegional::get_instance()->get_name());
-					$query = array(
-						'paged' => false,
-						'post_type' => 'evento',
-						'orderby' => 'meta_value',
-						'order' => 'ASC',
-						$regional->taxonomy => $regional->slug,
-						'post__not_in' => array(get_the_ID()),
-						'meta_value' => date('Y-m-d')
-					);
-					
+					$regional = wp_get_post_terms( get_the_ID(), \funarte\taxRegional::get_instance()->get_name());
+					if(!empty($regional)) {
+						$query = array(
+							'paged' => false,
+							'post_type' => 'evento',
+							'orderby' => 'meta_value',
+							'order' => 'ASC',
+							$regional[0]->taxonomy => $regional[0]->slug,
+							'post__not_in' => array(get_the_ID()),
+							'meta_key'	 => 'evento-inicio',
+							'meta_compare' 		=> '<',
+							'meta_value' => date('Y-m-d')
+						);
+
+						
+						$the_query = new WP_Query( $query );
+						if ( $the_query->have_posts() ) {
+    					echo '<ul>';
+    					while ( $the_query->have_posts() ) {
+        				$the_query->the_post();
+        				echo '<li>' . get_the_title() . '</li>';
+    					}
+    					echo '</ul>';
+						} else {
+							echo "nenhum evento";
+						}
+						wp_reset_postdata();
+					}
 				?>
 			</div>
 		</div>
