@@ -109,6 +109,14 @@ class Licitacao {
 		}
 	}
 
+	public function get_modalidade_by_name($name) {
+		$taxModalidade = taxModalidade::get_instance()->get_name();
+		$licitacao = get_term_by('name', $name, $taxModalidade);
+		if(!$licitacao)
+			$licitacao = get_term_by('slug', $name, $taxModalidade);
+		return $licitacao;
+	}
+
 }
 
 Licitacao::get_instance();
