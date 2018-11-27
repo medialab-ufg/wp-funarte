@@ -1,4 +1,5 @@
 <?php
+add_theme_support( 'post-thumbnails' );
 
 function extra_files() {
 	// Fontes
@@ -82,7 +83,7 @@ require_once('inc/taxonomy/categoria_edital.php');
 require_once('inc/taxonomy/espaco_cultural.php');
 require_once('inc/taxonomy/categoria.php');
 require_once('inc/taxonomy/estrutura.php');
-require_once('inc/taxonomy/licitacao.php');
+require_once('inc/taxonomy/modalidade.php');
 require_once('inc/taxonomy/regional.php');
 require_once('inc/taxonomy/tag.php');
 

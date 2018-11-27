@@ -77,7 +77,7 @@ get_header();
 					<div class="container">
 						<ul class="list-notices"><?php while (have_posts()): the_post(); ?>
 							<li class="color-<?php echo get_the_category()[0]->slug; ?>">
-								<!-- <h6><?php echo $Edital->get_edital_status_name($post->ID); ?></h6> -->
+								<!-- <h6><?php echo $edital->get_edital_status_name($post->ID); ?></h6> -->
 
 								<div class="link-area">
 									<?php the_category(); ?>

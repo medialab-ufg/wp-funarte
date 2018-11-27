@@ -44,7 +44,12 @@ class Evento {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true
+			'exclude_from_search' => true,
+			'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'permalink'),
+			'taxonomies' => array(
+				taxCategoria::get_instance()->get_name(),
+				taxTag::get_instance()->get_name(),
+				taxRegional::get_instance()->get_name())
 		);
 
 		register_post_type($this->POST_TYPE, $post_type_args);

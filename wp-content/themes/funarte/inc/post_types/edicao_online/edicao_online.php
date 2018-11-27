@@ -41,7 +41,12 @@ class EdicaoOnline {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true
+			'exclude_from_search' => true,
+			'supports' => array(
+				'title', 'editor', 'excerpt', 'thumbnail', 'permalink', 'page-attributes'),
+			'taxonomies' => [
+					taxTag::get_instance()->get_name()
+				]
 		);
 
 		register_post_type($this->POST_TYPE, $post_type_args);

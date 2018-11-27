@@ -1,13 +1,34 @@
 <?php
+
+$licitacao = \funarte\Licitacao::get_instance();
+$modalidade = (isset($_GET['modalidade'])) ? $licitacao->get_modalidade_by_name($_GET['modalidade']) : false;
+$ano = (isset($_GET['ano']) && (preg_match('/^\d{4}$/', (int)$_GET['ano']))) ? (int)$_GET['ano'] : date('Y');
+
+$params = array(
+	'post_type' => 'licitacao',
+	'meta_key' => 'licitacao-ano',
+	'meta_value' => $ano
+);
+
+if($modalidade) {
+	$params = array_merge(array(\funarte\taxModalidade::get_instance()->get_name() => $modalidade->slug), $params);
+}
+query_posts($params);
 get_header();
 ?>
+
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container">
 		<?php include('inc/template_parts/breadcrumb.php'); ?>
 
 		<div class="box-title">
-			<h2 class="title-h1">Espaços Culturais</h2>
+			
+			<?php if($modalidade) { ?>
+				<h2 class="title-h1"><?php echo $modalidade->name; ?></h2>
+			<?php } else { ?>
+				<h2 class="title-h1">Licitações</h2>
+			<?php } ?>
 
 			<div class="box-forms">
 				<form class="form-area" action="#" method="post">
@@ -27,13 +48,16 @@ get_header();
 		<div class="container">
 			<div class="row">
 				<?php while (have_posts()): the_post(); ?>
-					<div class="col-md-6 color-<?php echo get_the_category()[0]->slug; ?>">
+					<div class="color-funarte" >
 						<div class="link-area">
-							<?php the_category(); ?>
-						</div>
-
-						<div>
-							<?php the_post_thumbnail() ?>
+							<?php 
+								$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
+								if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
+									if(!$modalidade) {
+										echo $categoria_modalidade[0]->name;
+									}
+								}
+							?>
 						</div>
 
 						<h3 class="title-h5">
@@ -41,9 +65,7 @@ get_header();
 								<?php the_title(); ?>
 							</a>
 						</h3>
-
-						<p><?php echo wp_trim_words(get_the_content(),50); ?></p>
-
+						<p><?php echo wp_trim_words(get_the_content(),30); ?></p>
 						<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
 					</div>
 				<?php endwhile; ?>
