@@ -10,22 +10,16 @@
 				<?php include('inc/template_parts/breadcrumb.php'); ?>
 
 				<div class="box-title">
-					<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/edital'; ?>">Editais</a> <a href="<?php echo get_bloginfo('url') . '/editais/?status=' . $status; ?>"><span><?php echo $edital->get_edital_status_name($post->ID); ?></span></a></h2>
+					<h2 class="title-h1"><a href="#">Funarte</a> <a href="<?php echo get_bloginfo('url') . '/espaco-cultural'; ?>"><span>Espaços Culturais</span></a></h2>
 				</div>
 
 				<!-- A DIV ABAIXO DEVE IR PARA O TEMPLATE_PARTS -->
 				<div class="box-title-page color-artes-visuais">
-					<?php
-						$areas = get_the_category();
-						if (!empty($areas)): ?>
-						<ul class="link-area">
-							<?php foreach ($areas as $area): ?>
-								<li class="<?php echo 'color-' . $area->category_nicename; ?>">
-									<a href="#"><?php echo $area->name; ?></a>
-								</li>
-							<?php endforeach; ?>
-						</ul>
-					<?php endif; ?>
+					<ul class="link-area">
+						<li class="color-funarte">
+							<a href="#">[NOME DA CIDADE]</a>
+						</li>
+					</ul>
 					<h3 class="title-page"><?php the_title(); ?></h3>
 				</div>
 
