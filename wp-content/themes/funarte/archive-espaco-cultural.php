@@ -1,50 +1,72 @@
 <?php
 get_header();
-
-$categoria = (isset($_GET['area']) && ($_GET['area'] != 'Todas as áreas')) ? get_category_by_name($_GET['area']) : false;
-$mes = (isset($_GET['mes'])) ? (int)$_GET['mes'] : date('n');
-$ano = (isset($_GET['ano'])) ? (int)$_GET['ano'] : date('Y');
-
-$estudiof = get_category_by_name('Estúdio F');
-wp_dropdown_categories(array(
-	'show_option_none' => 'Todas as áreas',
-	'hide_empty' => false,
-	'exclude' => array($estudiof->term_id),
-	'id' => 'select-categoria',
-	'name' => 'area',
-	'selected' => ($categoria) ? $categoria->term_id : null)
-);
 ?>
+<main role="main">
+	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
+	<div class="container">
+		<?php include('inc/template_parts/breadcrumb.php'); ?>
 
-	<input type="hidden" name="ano" value="<?php echo $ano; ?>" />
-	<select id="select-mes" name="mes">
-		<option value="" <?php if(empty($mes)) { echo 'selected="selected"'; }?>>Todos os meses</option>
-		<option value="1" <?php if($mes == 1) { echo 'selected="selected"'; }?>>Janeiro</option>
-		<option value="2" <?php if($mes == 2) { echo 'selected="selected"'; }?>>Fevereiro</option>
-		<option value="3" <?php if($mes == 3) { echo 'selected="selected"'; }?>>Março</option>
-		<option value="4" <?php if($mes == 4) { echo 'selected="selected"'; }?>>Abril</option>
-		<option value="5" <?php if($mes == 5) { echo 'selected="selected"'; }?>>Maio</option>
-		<option value="6" <?php if($mes == 6) { echo 'selected="selected"'; }?>>Junho</option>
-		<option value="7" <?php if($mes == 7) { echo 'selected="selected"'; }?>>Julho</option>
-		<option value="8" <?php if($mes == 8) { echo 'selected="selected"'; }?>>Agosto</option>
-		<option value="9" <?php if($mes == 9) { echo 'selected="selected"'; }?>>Setembro</option>
-		<option value="10" <?php if($mes == 10) { echo 'selected="selected"'; }?>>Outubro</option>
-		<option value="11" <?php if($mes == 11) { echo 'selected="selected"'; }?>>Novembro</option>
-		<option value="12" <?php if($mes == 12) { echo 'selected="selected"'; }?>>Dezembro</option>						
-	</select>
+		<div class="box-title">
+			<h2 class="title-h1">Espaços Culturais</h2>
 
-<?php while (have_posts()): the_post(); ?>
-	<div>
-		<a href=<?php echo get_post_permalink(get_the_ID()); ?> >
-			<h3> <?php the_title(); ?> </h3> 
-			<div> <?php echo get_the_date(); ?> </div>
-		</a>
-	</div> <br> <br>
+			<div class="box-forms">
+				<form class="form-area" action="#" method="post">
+					<fieldset>
+						<legend>filtrar por local</legend>
+						<select>
+							<option value="">Filtrar por local</option>
+						</select>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
 
-	<label for="select-categoria">Filtre por </label>
+	<?php if (have_posts()): ?>
+	<section class="box-tabs">
+		<div class="container">
+			<div class="row">
+				<?php while (have_posts()): the_post(); ?>
+					<div class="col-md-6 color-<?php echo get_the_category()[0]->slug; ?>">
+						<div class="link-area">
+							<?php the_category(); ?>
+						</div>
+
+						<div>
+							<?php the_post_thumbnail() ?>
+						</div>
+
+						<h3 class="title-h5">
+							<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+								<?php the_title(); ?>
+							</a>
+						</h3>
+
+						<p><?php echo wp_trim_words(get_the_content(),50); ?></p>
+
+						<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
+					</div>
+				<?php endwhile; ?>
+			</div>
+
+			<div class="box-pagination">
+				<ul class="box-pagination__list">
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+				</ul>
+				<div class="box-pagination__control">
+					<button type="button" class="control__previous"><i class="mdi mdi-chevron-left"></i></button>
+					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php endif;?>
+</main>
 <?php
-//the_content();
-endwhile;
-
 get_footer();
 ?>
