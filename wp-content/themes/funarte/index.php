@@ -5,12 +5,12 @@
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container">
-		<section class="carousel-highlights">
+		<section class="box-carousel-highlights">
 			<div class="carousel-highlights__control">
 				<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
 				<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
 			</div>
-			<ul>
+			<ul class="carousel-highlights">
 				<li>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/carrossel_001.jpg'; ?>" alt="Coleção exemplo">
 					<div class="carousel-highlights__caption">
@@ -47,7 +47,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-md-6">
-					<section class="carousel-notices">
+					<section class="box-carousel-notices">
 						<h2 class="title-1 mb-60">Editais</h2>
 
 						<div class="carousel-notices__wrapper">
@@ -55,92 +55,114 @@
 								<button type="button" class="control__prev"><i class="mdi mdi-chevron-up"></i></button>
 								<button type="button" class="control__next"><i class="mdi mdi-chevron-down"></i></button>
 							</div>
-							<ul>
+							<ul class="carousel-notices">
+								<li>
+									<ul class="link-area">
+										<li class="color-danca">
+											<a href="#">Dança</a>
+											<span>Inscrições abertas</span>
+										</li>
+									</ul>
+									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
+									<a href="#" class="link-more">Ler mais</a>
+								</li>
+								<li class="color-artes-integradas">
+									<ul class="link-area">
+										<li>
+											<a href="#">Artes integradas</a>
+											<span>Inscrições abertas</span>
+										</li>
+									</ul>
+									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
+									<a href="#" class="link-more">Ler mais</a>
+								</li>
+								<li class="color-circo">
+									<ul class="link-area">
+										<li>
+											<a href="#">Circo</a>
+											<span>Resultados</span>
+										</li>
+									</ul>
+									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
+									<a href="#" class="link-more">Ler mais</a>
+								</li>
+								<li class="color-multicategoria">
+									<ul class="link-area">
+										<li>
+											<a href="#">Multicategoria</a>
+											<span>Resultados</span>
+										</li>
+									</ul>
+									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
+									<a href="#" class="link-more">Ler mais</a>
+								</li>
+								<li class="color-artes-integradas">
+									<ul class="link-area">
+										<li>
+											<a href="#">Artes integradas</a>
+											<span>Inscrições abertas</span>
+										</li>
+									</ul>
+									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
+									<a href="#" class="link-more">Ler mais</a>
+								</li>
 								<li class="color-danca">
-									<div class="link-area">
-										<a href="#">Dança</a>
-										<span>Inscrições abertas</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li class="color-artes-integradas">
-									<div class="link-area">
-										<a href="#">Artes integradas</a>
-										<span>Inscrições abertas</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li class="color-circo">
-									<div class="link-area">
-										<a href="#">Circo</a>
-										<span>Resultados</span>
-									</div>
+									<ul class="link-area">
+										<li>
+											<a href="#">Dança</a>
+											<span>Inscrições abertas</span>
+										</li>
+									</ul>
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
 									<a href="#" class="link-more">Ler mais</a>
 								</li>
 								<li class="color-multicategoria">
-									<div class="link-area">
-										<a href="#">Multicategoria</a>
-										<span>Resultados</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li class="color-artes-integradas">
-									<div class="link-area">
-										<a href="#">Artes integradas</a>
-										<span>Inscrições abertas</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li class="color-danca">
-									<div class="link-area">
-										<a href="#">Dança</a>
-										<span>Inscrições abertas</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li class="color-multicategoria">
-									<div class="link-area">
-										<a href="#">Multicategoria</a>
-										<span>Resultados</span>
-									</div>
+									<ul class="link-area">
+										<li>
+											<a href="#">Multicategoria</a>
+											<span>Resultados</span>
+										</li>
+									</ul>
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
 									<a href="#" class="link-more">Ler mais</a>
 								</li>
 								<li class="color-circo">
-									<div class="link-area">
-										<a href="#">Circo</a>
-										<span>Resultados</span>
-									</div>
+									<ul class="link-area">
+										<li>
+											<a href="#">Circo</a>
+											<span>Resultados</span>
+										</li>
+									</ul>
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
 									<a href="#" class="link-more">Ler mais</a>
 								</li>
 								<li class="color-multicategoria">
-									<div class="link-area">
-										<a href="#">Multicategoria</a>
-										<span>Resultados</span>
-									</div>
+									<ul class="link-area">
+										<li>
+											<a href="#">Multicategoria</a>
+											<span>Resultados</span>
+										</li>
+									</ul>
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
 									<a href="#" class="link-more">Ler mais</a>
 								</li>
 								<li class="color-artes-integradas">
-									<div class="link-area">
-										<a href="#">Artes integradas</a>
-										<span>Inscrições abertas</span>
-									</div>
+									<ul class="link-area">
+										<li>
+											<a href="#">Artes integradas</a>
+											<span>Inscrições abertas</span>
+										</li>
+									</ul>
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
 									<a href="#" class="link-more">Ler mais</a>
 								</li>
 								<li class="color-circo">
-									<div class="link-area">
-										<a href="#">Circo</a>
-										<span>Resultados</span>
-									</div>
+									<ul class="link-area">
+										<li>
+											<a href="#">Circo</a>
+											<span>Resultados</span>
+										</li>
+									</ul>
 									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
 									<a href="#" class="link-more">Ler mais</a>
 								</li>
@@ -152,9 +174,11 @@
 					<section class="box-highlight color-circo">
 						<h2 class="title-1">Destaque</h2>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/destaque_001.jpg'; ?>" alt="Destaque">
-						<div class="link-area">
-							<a href="#">Circo</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Circo</a>
+							</li>
+						</ul>
 						<h3 class="title-3">Lorem ipsum dolor sit amet, consectetuer adi</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
 						<a href="#" class="link-more">Ler mais</a>
@@ -169,87 +193,105 @@
 			<h2 class="title-1 mb-44">Notícias</h2>
 
 			<!-- SÓ A PRIMEIRA UL VEM COM A CLASSE VISIBLE -->
-			<ul class="visible">
+			<ul class="box-news__list visible">
 				<li class="color-artes-visuais">
-					<div class="link-area">
-						<a href="#">Artes visuais</a>
-					</div>
+					<ul class="link-area">
+						<li>
+							<a href="#">Artes visuais</a>
+						</li>
+					</ul>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
 					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
 					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
 					<a href="#" class="link-more">Ler mais</a>
 				</li>
 				<li class="color-danca">
-					<div class="link-area">
-						<a href="#">Dança</a>
-					</div>
+					<ul class="link-area">
+						<li>
+							<a href="#">Dança</a>
+						</li>
+					</ul>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_002.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
 					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
 					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
 					<a href="#" class="link-more">Ler mais</a>
 				</li>
 				<li class="color-circo">
-					<div class="link-area">
-						<a href="#">Circo</a>
-					</div>
+					<ul class="link-area">
+						<li>
+							<a href="#">Circo</a>
+						</li>
+					</ul>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
 					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
 					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
 					<a href="#" class="link-more">Ler mais</a>
 				</li>
 			</ul>
-			<ul>
+			<ul class="box-news__list">
 				<li class="color-artes-visuais">
-					<div class="link-area">
-						<a href="#">Artes visuais</a>
-					</div>
+					<ul class="link-area">
+						<li>
+							<a href="#">Artes visuais</a>
+						</li>
+					</ul>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
 					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
 					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
 					<a href="#" class="link-more">Ler mais</a>
 				</li>
 				<li class="color-danca">
-					<div class="link-area">
-						<a href="#">Dança</a>
-					</div>
+					<ul class="link-area">
+						<li>
+							<a href="#">Dança</a>
+						</li>
+					</ul>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_002.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
 					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
 					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
 					<a href="#" class="link-more">Ler mais</a>
 				</li>
 				<li class="color-circo">
-					<div class="link-area">
-						<a href="#">Circo</a>
-					</div>
+					<ul class="link-area">
+						<li>
+							<a href="#">Circo</a>
+						</li>
+					</ul>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
 					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
 					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
 					<a href="#" class="link-more">Ler mais</a>
 				</li>
 			</ul>
-			<ul>
+			<ul class="box-news__list">
 				<li class="color-artes-visuais">
-					<div class="link-area">
-						<a href="#">Artes visuais</a>
-					</div>
+					<ul class="link-area">
+						<li>
+							<a href="#">Artes visuais</a>
+						</li>
+					</ul>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
 					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
 					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
 					<a href="#" class="link-more">Ler mais</a>
 				</li>
 				<li class="color-danca">
-					<div class="link-area">
-						<a href="#">Dança</a>
-					</div>
+					<ul class="link-area">
+						<li>
+							<a href="#">Dança</a>
+						</li>
+					</ul>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_002.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
 					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
 					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
 					<a href="#" class="link-more">Ler mais</a>
 				</li>
 				<li class="color-circo">
-					<div class="link-area">
-						<a href="#">Circo</a>
-					</div>
+					<ul class="link-area">
+						<li>
+							<a href="#">Circo</a>
+						</li>
+					</ul>
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>" alt="Título lorem ipsum sit dolor...">
 					<h3 class="news-title">Título lorem ipsum sit dolor...</h3>
 					<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</span>
@@ -262,7 +304,7 @@
 	</section>
 
 	<div class="container">
-		<section class="carousel-schedule mb-100">
+		<section class="box-carousel-schedule mb-100">
 			<h2 class="title-1">Agenda Cultural</h2>
 
 			<div class="carousel-schedule__wrapper">
@@ -270,7 +312,7 @@
 					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
 					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
 				</div>
-				<ul>
+				<ul class="carousel-schedule">
 					<li class="color-teatro">
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg'; ?>" alt="Festival de música regional">
 						<div class="carousel-schedule__body">
@@ -365,7 +407,7 @@
 			</div>
 		</section>
 
-		<section class="carousel-collection">
+		<section class="box-carousel-collection">
 			<h2 class="title-1 mb-65">Acervo</h2>
 
 			<div class="carousel-collection__wrapper">
@@ -373,74 +415,94 @@
 					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
 					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
 				</div>
-				<ul>
+				<ul class="carousel-collection">
 					<li class="color-circo">
-						<div class="link-area">
-							<a href="#">Circo</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Circo</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_001.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
 					<li class="color-literatura carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Literatura</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Literatura</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
 					<li class="color-artes-visuais">
-						<div class="link-area">
-							<a href="#">Artes visuais</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Artes visuais</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_003.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
 					<li class="color-teatro carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Teatro</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Teatro</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_004.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
 					<li class="color-circo">
-						<div class="link-area">
-							<a href="#">Circo</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Circo</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_001.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
 					<li class="color-literatura carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Literatura</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Literatura</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
 					<li class="color-artes-visuais">
-						<div class="link-area">
-							<a href="#">Artes visuais</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Artes visuais</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_003.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
 					<li class="color-teatro carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Teatro</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Teatro</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_004.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
 					<li class="color-literatura carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Literatura</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Literatura</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
 					<li class="color-artes-visuais">
-						<div class="link-area">
-							<a href="#">Artes visuais</a>
-						</div>
+						<ul class="link-area">
+							<li>
+								<a href="#">Artes visuais</a>
+							</li>
+						</ul>
 						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
 						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_003.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
 					</li>
