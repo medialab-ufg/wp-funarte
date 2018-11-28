@@ -1,6 +1,12 @@
-<?php 
+<?php
+	use \funarte\taxModalidade;
+	
+	$modalidade = wp_get_post_terms( $post->ID, taxModalidade::get_instance()->get_name());
+	$modalidade = $modalidade[0];
+	$ano = get_post_meta($post->ID, 'licitacao-ano', true);
+
 	get_header();
-	if (have_posts()) { the_post(); ?>
+	if (have_posts()) : the_post(); ?>
 		<main role="main">
 			<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 			<div class="container">
@@ -28,13 +34,6 @@
 					<h3 class="title-page"><?php the_title(); ?></h3>
 				</div>
 
-				<?php 
-					$THEME_FOLDER = get_template_directory();
-					$DS = DIRECTORY_SEPARATOR;
-					$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'post_types' . $DS . 'edital' . $DS;
-					require_once($META_FOLDER . 'widget-arquivos-relacionados.php');
-				?>
-
 				<div class="row justify-content-between">
 					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
 						<div class="box-text">
@@ -48,69 +47,77 @@
 								</div>
 
 								<?php the_content(); ?>
+								
+								<table>
+									<thead>
+										<tr>
+											<td>Número</td>
+											<td>Data</td>
+											<td>Hora</td>
+											<td>Modalidade</td>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+											$numero = get_post_meta($post->ID, 'licitacao-numero', true);
+											$data = get_post_meta($post->ID, 'licitacao-data', true);
+											$hora = get_post_meta($post->ID, 'licitacao-hora', true);
+											$controleModalidade = $modalidade->name;
+										?>
+										<tr>
+											<td><?php echo $numero; ?></td>
+											<td><?php echo $data; ?></td>
+											<td><?php echo $hora; ?></td>
+											<td><?php echo $modalidade->name; ?></td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 
-							<!-- VERIFICAR O USO DESTE BLOCO -->
-
-							<!-- <div class="box-text__info">
-								<div class="resultado">
-									<h3>
-										<span><?php echo $edital->get_edital_status_name($post->ID); ?></span>
-										<?php if ($status == 'aberto') { ?>
-											<span class="interrogacao">
-												<a href="#" title="Ajuda">?</a>
-												<div class="box-guia">
-													<p>Fique atento ao prazo final e inscreva-se a tempo. Estamos esperando seu projeto.</p>
-												</div>
-											</span>
-										<?php } elseif ($status == 'avaliacao') { ?>
-											<span class="interrogacao">
-												<a href="#" title="Ajuda">?</a>
-												<div class="box-guia">
-													<p>Após o fim do prazo para inscrições, uma comissão julgadora avalia as propostas recebidas. Em seguida, a lista de projetos classificados será divulgada neste portal.</p>
-												</div>
-											</span>
-										<?php } elseif ($status == 'resultado') { ?>
-											<span class="interrogacao">
-												<a href="#" title="Ajuda">?</a>
-												<div class="box-guia">
-													<p>Já foi divulgada a relação dos projetos classificados. Os proponentes contemplados devem proceder às próximas etapas previstas pelo edital (ex.: envio de documentação).</p>
-												</div>
-											</span>
-										<?php } ?>
-									</h3>
-									<?php
-									if ($status == 'aberto') {
-										$meta = array(
-											'inscricoes' => array(
-												'inicio' => strtotime(get_post_meta($post->ID, 'edital-inscricoes_inicio', true)),
-												'fim' => strtotime(get_post_meta($post->ID, 'edital-inscricoes_fim', true))
-											),
-											'prorrogado' => (bool)get_post_meta($post->ID, 'edital-prorrogado', true),
-											'resultado' => (bool)get_post_meta($post->ID, 'edital-resultado', true)
-										);
-									?>
-									<div class="descricao">
-										<?php if ($meta['prorrogado']) { ?>
-										<span class="fundo-amarelo">Prorrogado</span>
-										<?php } ?>
-										<span>Início: <strong><?php echo date('d/m/Y', $meta['inscricoes']['inicio']); ?></strong></span>
-										<span>Término: <strong><?php echo date('d/m/Y', $meta['inscricoes']['fim']); ?></strong></span>
+							<?php
+							$THEME_FOLDER = get_template_directory();
+							$DS = DIRECTORY_SEPARATOR;
+							$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'widget' . $DS;
+							require_once($META_FOLDER . 'arquivos-relacionados.php');
+							
+							if ($controleModalidade != "Dispensa" and $controleModalidade != "Inexigibilidade") :
+								query_posts(array(
+									'post_type' => 'licitacao',
+									'post__not_in' => array($post->ID),
+									'meta_key' => 'licitacao-ano',
+									'meta_value' => (int)$ano,
+									'posts_per_page' => 5
+								));
+								if(have_posts()) : ?>
+									<div>
+										<h3>
+											<?php echo "<a href='/licitacoes/?ano=$ano' title='Outras licitações de $ano' >Outras licitações de $ano</a>";?>
+										</h3>
+										<ul>
+											<?php
+											while(have_posts()) :
+												the_post();
+												$modalidade = wp_get_post_terms( $post->ID, taxModalidade::get_instance()->get_name());
+												$modalidade = $modalidade[0];
+											?>
+												<li>
+													<h6><?php echo $modalidade->name; ?></h6>
+													<h4><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
+														<?php the_title(); ?>
+													</a></h4>
+												</li>
+											<?php  endwhile; ?>
+										</ul>
 									</div>
-									<?php } ?>
-								</div>
-							</div> -->
+								<?php 
+								endif; 
+							endif;
+							?>
 						</div>
 					</div>
-					<?php if (!empty($html_widget)): ?>
-						<div class="col-md-4">
-							<aside class="content-aside">
-								<?php echo $html_widget; ?>
-							</aside>
-						</div>
-					<?php endif; ?>
 				</div>
 			</div>
 		</main>
-	<?php }
+<?php 
+	endif;
 get_footer();

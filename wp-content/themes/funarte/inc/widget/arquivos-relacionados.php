@@ -7,7 +7,7 @@ $params = array_merge(array(
 	'titulo' => 'Arquivos Relacionados',
 	'params' => array(),
 	'wraper' => true,
-	'return' => true
+	'return' => false
 ), (isset($params) ? $params : array()));
 
 $files = get_post_files(get_the_ID(), $params['params'], $params['exclude']);
