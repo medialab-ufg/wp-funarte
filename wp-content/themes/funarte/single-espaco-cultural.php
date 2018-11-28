@@ -15,11 +15,9 @@
 
 				<!-- A DIV ABAIXO DEVE IR PARA O TEMPLATE_PARTS -->
 				<div class="box-title-page box-title-page--image color-artes-visuais">
-					<ul class="link-area">
-						<li class="color-funarte">
-							<a href="#">[NOME DA CIDADE]</a>
-						</li>
-					</ul>
+					<div class="link-area">
+						<a class="color-funarte" href="#">[NOME DA CIDADE]</a>
+					</div>
 					<h3 class="title-page">Lorem ipsum dolor sit amet, consectetuer adi-piscing elit, sed diam no-nummy </h3>
 
 					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/espaco_001.jpg'?>" alt="<?php the_title(); ?>">
@@ -55,38 +53,30 @@
 									</div>
 									<ul class="carousel-events">
 										<li>
-											<ul class="link-area">
-												<li class="color-danca">
-													<a href="#">Dança</a>
-												</li>
-											</ul>
+											<div class="link-area">
+												<a class="color-danca" href="#">Dança</a>
+											</div>
 											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
 											<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
 										</li>
 										<li>
-											<ul class="link-area">
-												<li class="color-circo">
-													<a href="#">Circo</a>
-												</li>
-											</ul>
+											<div class="link-area">
+												<a class="color-circo" href="#">Circo</a>
+											</div>
 											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
 											<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
 										</li>
 										<li>
-											<ul class="link-area">
-												<li class="color-danca">
-													<a href="#">Dança</a>
-												</li>
-											</ul>
+											<div class="link-area">
+												<a class="color-danca" href="#">Dança</a>
+											</div>
 											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
 											<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
 										</li>
 										<li>
-											<ul class="link-area">
-												<li class="color-circo">
-													<a href="#">Circo</a>
-												</li>
-											</ul>
+											<div class="link-area">
+												<a class="color-circo" href="#">Circo</a>
+											</div>
 											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
 											<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
 										</li>
@@ -127,27 +117,14 @@
 
 								<h4 class="title-5">Veja como chegar</h4>
 
-								<div id="map"></div>
+								<div class="box-data__map">
+									<?php echo get_post_meta($post->ID, "espaco-maplink", true); ?>
+								</div>
 							</div>
 						</aside>
 					</div>
 				</div>
 			</div>
 		</main>
-
-		<script>
-			function initMap() {
-				var local = {lat: -25.344, lng: 131.036},
-					map = new google.maps.Map(document.getElementById('map'), {
-						zoom: 4,
-						center: local
-					}),
-					marker = new google.maps.Marker({
-						position: local,
-						map: map
-					});
-			}
-		</script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=ASDF&callback=initMap"></script>
 	<?php }
 get_footer();
