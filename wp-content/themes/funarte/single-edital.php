@@ -30,10 +30,11 @@
 				</div>
 
 				<?php 
+					$params = ['return'=>true];
 					$THEME_FOLDER = get_template_directory();
 					$DS = DIRECTORY_SEPARATOR;
-					$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'post_types' . $DS . 'edital' . $DS;
-					require_once($META_FOLDER . 'widget-arquivos-relacionados.php');
+					$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'widget' . $DS;
+					require_once($META_FOLDER . 'arquivos-relacionados.php');
 				?>
 
 				<div class="row justify-content-between">
