@@ -16,6 +16,9 @@ $(document).ready(function() {
 
 	// Contatos
 	base.collapse.manipularBox1();
+
+	// Espaços Culturais
+	base.carrossel.iniciarEventos();
 });
 
 var base = {
@@ -71,9 +74,9 @@ var base = {
 
 	carrossel: {
 		iniciarDestaques: function() {
-			var $carousel = $('.carousel-highlights');
+			var $carousel = $('.box-carousel-highlights');
 
-			$carousel.find('ul').slick({
+			$('.carousel-highlights').slick({
 				speed: 1000,
 				fade: true,
 				infinite: true,
@@ -88,9 +91,9 @@ var base = {
 		},
 
 		iniciarAcervo: function() {
-			var $carousel = $('.carousel-collection');
+			var $carousel = $('.box-carousel-collection');
 
-			$carousel.find('ul').slick({
+			$('.carousel-collection').slick({
 				speed: 1000,
 				infinite: false,
 				slidesToShow: 4,
@@ -118,9 +121,9 @@ var base = {
 		},
 
 		iniciarAgenda: function() {
-			var $carousel = $('.carousel-schedule');
+			var $carousel = $('.box-carousel-schedule');
 
-			$carousel.find('ul').slick({
+			$('.carousel-schedule').slick({
 				speed: 1000,
 				infinite: false,
 				slidesToShow: 2,
@@ -158,9 +161,9 @@ var base = {
 		},
 
 		iniciarEditais: function() {
-			var $carousel = $('.carousel-notices');
+			var $carousel = $('.box-carousel-notices');
 
-			$carousel.find('ul').slick({
+			$('.carousel-notices').slick({
 				speed: 1000,
 				infinite: false,
 				slidesToShow: 4,
@@ -176,6 +179,28 @@ var base = {
 				} else {
 					$carousel.removeClass('reverse');
 				}
+			});
+		},
+
+		iniciarEventos: function() {
+			var $carousel = $('.box-carousel-events');
+
+			$('.carousel-events').slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+				responsive: [
+					{
+						breakpoint: 530,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
 			});
 		}
 	},

@@ -50,6 +50,8 @@
 								</div>
 
 								<?php the_content(); ?>
+
+								<a href="#" class="button-1 button-inscreva-se">Inscreva-se</a>
 							</div>
 
 							<!-- VERIFICAR O USO DESTE BLOCO -->

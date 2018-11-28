@@ -14,13 +14,15 @@
 				</div>
 
 				<!-- A DIV ABAIXO DEVE IR PARA O TEMPLATE_PARTS -->
-				<div class="box-title-page color-artes-visuais">
+				<div class="box-title-page box-title-page--image color-artes-visuais">
 					<ul class="link-area">
 						<li class="color-funarte">
 							<a href="#">[NOME DA CIDADE]</a>
 						</li>
 					</ul>
-					<h3 class="title-page"><?php the_title(); ?></h3>
+					<h3 class="title-page">Lorem ipsum dolor sit amet, consectetuer adi-piscing elit, sed diam no-nummy </h3>
+
+					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/espaco_001.jpg'?>" alt="<?php the_title(); ?>">
 				</div>
 
 				<?php 
@@ -31,11 +33,9 @@
 				?>
 
 				<div class="row justify-content-between">
-					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
+					<div class="col-md-6">
 						<div class="box-text">
-							<div class="box-text__date">
-								<small>Publicado em <?php the_time(get_option('date_format')); ?></small>
-							</div>
+							<h4 class="title-5">Sobre</h4>
 
 							<div class="box-text__text">
 								<div class="box-text__image">
@@ -43,69 +43,111 @@
 								</div>
 
 								<?php the_content(); ?>
+
 							</div>
+							<div class="box-carousel-events">
+								<h4 class="title-5">Próximos eventos no local</h4>
 
-							<!-- VERIFICAR O USO DESTE BLOCO -->
-
-							<!-- <div class="box-text__info">
-								<div class="resultado">
-									<h3>
-										<span><?php echo $edital->get_edital_status_name($post->ID); ?></span>
-										<?php if ($status == 'aberto') { ?>
-											<span class="interrogacao">
-												<a href="#" title="Ajuda">?</a>
-												<div class="box-guia">
-													<p>Fique atento ao prazo final e inscreva-se a tempo. Estamos esperando seu projeto.</p>
-												</div>
-											</span>
-										<?php } elseif ($status == 'avaliacao') { ?>
-											<span class="interrogacao">
-												<a href="#" title="Ajuda">?</a>
-												<div class="box-guia">
-													<p>Após o fim do prazo para inscrições, uma comissão julgadora avalia as propostas recebidas. Em seguida, a lista de projetos classificados será divulgada neste portal.</p>
-												</div>
-											</span>
-										<?php } elseif ($status == 'resultado') { ?>
-											<span class="interrogacao">
-												<a href="#" title="Ajuda">?</a>
-												<div class="box-guia">
-													<p>Já foi divulgada a relação dos projetos classificados. Os proponentes contemplados devem proceder às próximas etapas previstas pelo edital (ex.: envio de documentação).</p>
-												</div>
-											</span>
-										<?php } ?>
-									</h3>
-									<?php
-									if ($status == 'aberto') {
-										$meta = array(
-											'inscricoes' => array(
-												'inicio' => strtotime(get_post_meta($post->ID, 'edital-inscricoes_inicio', true)),
-												'fim' => strtotime(get_post_meta($post->ID, 'edital-inscricoes_fim', true))
-											),
-											'prorrogado' => (bool)get_post_meta($post->ID, 'edital-prorrogado', true),
-											'resultado' => (bool)get_post_meta($post->ID, 'edital-resultado', true)
-										);
-									?>
-									<div class="descricao">
-										<?php if ($meta['prorrogado']) { ?>
-										<span class="fundo-amarelo">Prorrogado</span>
-										<?php } ?>
-										<span>Início: <strong><?php echo date('d/m/Y', $meta['inscricoes']['inicio']); ?></strong></span>
-										<span>Término: <strong><?php echo date('d/m/Y', $meta['inscricoes']['fim']); ?></strong></span>
+								<div class="carousel-events__wrapper">
+									<div class="carousel-events__control">
+										<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+										<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
 									</div>
-									<?php } ?>
+									<ul class="carousel-events">
+										<li>
+											<ul class="link-area">
+												<li class="color-danca">
+													<a href="#">Dança</a>
+												</li>
+											</ul>
+											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
+											<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
+										</li>
+										<li>
+											<ul class="link-area">
+												<li class="color-circo">
+													<a href="#">Circo</a>
+												</li>
+											</ul>
+											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
+											<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
+										</li>
+										<li>
+											<ul class="link-area">
+												<li class="color-danca">
+													<a href="#">Dança</a>
+												</li>
+											</ul>
+											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
+											<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
+										</li>
+										<li>
+											<ul class="link-area">
+												<li class="color-circo">
+													<a href="#">Circo</a>
+												</li>
+											</ul>
+											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
+											<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
+										</li>
+									</ul>
 								</div>
-							</div> -->
+							</div>
 						</div>
 					</div>
-					<?php if (!empty($html_widget)): ?>
-						<div class="col-md-4">
-							<aside class="content-aside">
-								<?php echo $html_widget; ?>
-							</aside>
-						</div>
-					<?php endif; ?>
+					<div class="col-md-5">
+						<aside class="content-aside">
+							<div class="box-data">
+								<h4 class="title-5">Informações</h4>
+
+								<div class="box-data__row">
+									<strong>Cecilia em busca da fantasia</strong>
+									<span>De 8 a 30 de setembro – sábados e domingos, às 16h</span>
+								</div>
+
+								<div class="box-data__row">
+									<span><b>Classificação etária:</b> Livre</span>
+									<span><b>Duração:</b> 70min.</span>
+								</div>
+
+								<div class="box-data__row">
+									<span><b>Ingressos:</b> R$ 20 (Inteira) e R$ 10 (Meia)</span>
+								</div>
+
+								<div class="box-data__row">
+									<strong>Teatro Dulcina<br>Rua Alcindo Guanabara 17, Centro – Rio de Janeiro (RJ)<br>(próximo ao VLT e ao Metrô Cinelândia)</strong>
+									<span><b>Telefone:</b> (21) 2240 4879</span>
+								</div>
+
+								<div class="box-data__row">
+									<span><b>Dias:</b> De 8 de setembro a 9 de setembro de 2018</span>
+									<span><b>Horário:</b> 16:00 às 17:10</span>
+									<span><b>Local:</b> Teatro Dulcina - Rua Alcindo Guanabara 17, Centro – Rio de Janeiro (RJ)</span>
+								</div>
+
+								<h4 class="title-5">Veja como chegar</h4>
+
+								<div id="map"></div>
+							</div>
+						</aside>
+					</div>
 				</div>
 			</div>
 		</main>
+
+		<script>
+			function initMap() {
+				var local = {lat: -25.344, lng: 131.036},
+					map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 4,
+						center: local
+					}),
+					marker = new google.maps.Marker({
+						position: local,
+						map: map
+					});
+			}
+		</script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=ASDF&callback=initMap"></script>
 	<?php }
 get_footer();
