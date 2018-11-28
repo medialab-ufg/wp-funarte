@@ -148,6 +148,6 @@
 					});
 			}
 		</script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJmTPIg1D7Vm8nNhxWPgUh-k2yvYwfbPg&callback=initMap"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=ASDF&callback=initMap"></script>
 	<?php }
 get_footer();
