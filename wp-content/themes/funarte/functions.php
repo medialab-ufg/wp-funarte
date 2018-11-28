@@ -1,6 +1,14 @@
 <?php
 add_theme_support( 'post-thumbnails' );
 
+function funarte_load_part($name, $args) {
+	$THEME_FOLDER = get_template_directory();
+	$DS = DIRECTORY_SEPARATOR;
+	$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'template_parts' . $DS;
+	extract($args);
+	require($META_FOLDER . $name . '.php');
+}
+
 function extra_files() {
 	// Fontes
 	wp_enqueue_style('google-custom-fonts', '//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Sansita:400,400i,700,700i');
@@ -66,11 +74,7 @@ function get_post_files($postID = null, $params = array(), $exclude = '/^(image\
 	return $posts;
 }
 
-function funarte_load_part($name, $args) {
-	extract($args);
-	var_dump(get_file_data($name . '.php', []));
-	require($name . '.php');
-}
+
 
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/assets/lib/class-wp-bootstrap-navwalker.php';

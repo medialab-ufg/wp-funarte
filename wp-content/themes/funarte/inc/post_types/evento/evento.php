@@ -179,6 +179,60 @@ class Evento {
 		return $evento;
 	}
 
+	public function get_eventos_from_month($mes = null, $ano = null, $params = array()) {
+		$mes = (empty($mes)) ? date('m') : (int)$mes;
+		$ano = (empty($ano)) ? date('Y') : (int)$ano;
+
+		$timestamp = mktime(0, 0, 0, 1, 1, $ano);
+		$dia_final = mktime(23, 59, 59, 12, date('t', $timestamp), 2200);
+
+		$params = array_merge(array(
+			'post_type' 	=> $this->POST_TYPE,
+			'meta_key'		=> 'evento-inicio',
+			'meta_compare'=> '>=',
+			'meta_value'	=>  date('Y-m-d H:i:s',mktime(23, 59, 59, 1 , 1,$ano)),
+			'ordeby' 			=> 'meta_value',
+			'order'				=> 'DESC',
+			'posts_per_page'	=> -1
+		), $params);
+
+		$eventos = query_posts($params);
+		wp_reset_query();
+		
+		foreach ($eventos as $key => $evento) {
+			$evento->inicio = get_post_meta($evento->ID, 'evento-inicio', true);
+			$evento->fim = get_post_meta($evento->ID, 'evento-fim', true);
+			if (strtotime($evento->inicio) > $dia_final)
+				unset($eventos[$key]);
+		}
+
+		$ids = array();
+		foreach ($eventos as $evento)
+			$ids[] = $evento->ID;
+			
+		$params = array_merge(array(
+			'post_type'	=> $this->POST_TYPE,
+			'post__in'	=> $ids,
+			'meta_key'	=> 'evento-inicio',
+			'ordeby' 		=> 'meta_value',
+			'order'			=> 'ASC',
+			'posts_per_page'	=> -1
+		), $params);
+			
+		return query_posts($params);
+	}
+
+	public function get_last_eventos($params = array()) {
+		$params = array_merge(array(
+			'post_type' 	=> $this->POST_TYPE,
+			'meta_key'		=> 'evento-inicio',
+			'meta_compare'=> '<',
+			'ordeby' 			=> 'meta_value',
+			'order'				=> 'DESC',
+			'posts_per_page' 	=> 5
+		), $params);
+		return query_posts($params);
+	}
 }
 
 Evento::get_instance();
