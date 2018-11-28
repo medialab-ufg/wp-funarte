@@ -1,5 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteRule ^wp-content\/uploads\/?(.*)$ "http\:\/\/www.funarte.gov.br\/wp-content\/uploads\/$1" [R=302,L]
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
