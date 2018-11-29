@@ -18,13 +18,11 @@
 					<?php
 						$areas = get_the_category();
 						if (!empty($areas)): ?>
-						<ul class="link-area">
+						<div class="link-area">
 							<?php foreach ($areas as $area): ?>
-								<li class="<?php echo 'color-' . $area->category_nicename; ?>">
-									<a href="#"><?php echo $area->name; ?></a>
-								</li>
+								<a class="<?php echo 'color-' . $area->category_nicename; ?>" href="#"><?php echo $area->name; ?></a>
 							<?php endforeach; ?>
-						</ul>
+						</div>
 					<?php endif; ?>
 					<h3 class="title-page"><?php the_title(); ?></h3>
 				</div>

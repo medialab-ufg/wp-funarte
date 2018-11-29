@@ -263,7 +263,7 @@ noscript {
 	img {
 		width: 60%;
 		max-width: 640px;
-		max-height: 385px;
+		max-height: 370px;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -354,6 +354,8 @@ noscript {
 		word-break: break-word;
 		display: inline-block;
 		background-color: $cinza-6;
+
+		& + a { margin-left: 25px; }
 	}
 
 	ul {
@@ -491,90 +493,69 @@ noscript {
 
 /* CORES PARA VÁRIOS ITENS NUMA MESMA LINHA */
 
-ul.link-area {
-	margin: 0 -15px;
-	padding: 0;
-	list-style: none;
+.link-area {
+	a.color-funarte {
+		color: $verde-1;
 
-	li {
-		margin: 0 15px 10px;
-		padding: 0 0 0 15px;
-		display: flex;
-		align-items: flex-end;
-		flex-wrap: wrap;
+		&:after { background-color: $verde-1; }
 
-		&.color-funarte {
-			a {
-				color: $verde-1;
+		& + span { background-color: $verde-1; }
+	}
+	a.color-circo {
+		color: $vermelho-1;
 
-				&:after { background-color: $verde-1; }
-			}
-			span { background-color: $verde-1; }
-		}
-		&.color-circo {
-			a {
-				color: $vermelho-1;
+		&:after { background-color: $vermelho-1; }
 
-				&:after { background-color: $vermelho-1; }
-			}
-			span { background-color: $vermelho-1; }
-		}
-		&.color-musica {
-			a {
-				color: $laranja-1;
+		& + span { background-color: $vermelho-1; }
+	}
+	a.color-musica {
+		color: $laranja-1;
 
-				&:after { background-color: $laranja-1; }
-			}
-			span { background-color: $laranja-1; }
-		}
-		&.color-danca {
-			a {
-				color: $amarelo-1;
+		&:after { background-color: $laranja-1; }
 
-				&:after { background-color: $amarelo-1; }
-			}
-			span { background-color: $amarelo-1; }
-		}
-		&.color-literatura {
-			a {
-				color: $limao-1;
+		& + span { background-color: $laranja-1; }
+	}
+	a.color-danca {
+		color: $amarelo-1;
 
-				&:after { background-color: $limao-1; }
-			}
-			span { background-color: $limao-1; }
-		}
-		&.color-artes-visuais {
-			a {
-				color: $azul-1;
+		&:after { background-color: $amarelo-1; }
 
-				&:after { background-color: $azul-1; }
-			}
-			span { background-color: $azul-1; }
-		}
-		&.color-artes-integradas {
-			a {
-				color: $roxo-1;
+		& + span { background-color: $amarelo-1; }
+	}
+	a.color-literatura {
+		color: $limao-1;
 
-				&:after { background-color: $roxo-1; }
-			}
-			span { background-color: $roxo-1; }
-		}
-		&.color-teatro {
-			a {
-				color: $rosa-1;
+		&:after { background-color: $limao-1; }
 
-				&:after { background-color: $rosa-1; }
-			}
-			span { background-color: $rosa-1; }
-		}
-		&.color-multicategoria {
-			a {
-				color: $verde-3;
+		& + span { background-color: $limao-1; }
+	}
+	a.color-artes-visuais {
+		color: $azul-1;
 
-				&:after { background-color: $verde-3; }
-			}
-			span { background-color: $verde-3; }
-		}
+		&:after { background-color: $azul-1; }
+
+		& + span { background-color: $azul-1; }
+	}
+	a.color-artes-integradas {
+		color: $roxo-1;
+
+		&:after { background-color: $roxo-1; }
+
+		& + span { background-color: $roxo-1; }
+	}
+	a.color-teatro {
+		color: $rosa-1;
+
+		&:after { background-color: $rosa-1; }
+
+		& + span { background-color: $rosa-1; }
+	}
+	a.color-multicategoria {
+		color: $verde-3;
+
+		&:after { background-color: $verde-3; }
+
+		& + span { background-color: $verde-3; }
 	}
 }
 
@@ -615,16 +596,17 @@ ul.link-area {
 		line-height: 1.2rem;
 		display: block;
 	}
+
+	a { color: $branco; }
 }
 .box-data__row {
 	width: 100%;
 	margin-bottom: 20px;
 }
-#map {
+.box-data__map {
 	width: 100%;
 	max-width: 372px;
 	height: 226px;
-	background-color: orange;
 }
 
 .box-text {
@@ -1197,7 +1179,7 @@ body.js .collapse__text { display: none; }
 	flex-wrap: wrap;
 	list-style: none;
 
-	.link-area { margin-bottom: 10px; }
+	.link-area { margin-bottom: 30px; }
 
 	img {
 		width: 100%;
@@ -2226,7 +2208,7 @@ ul.slick-dots {
 	}
 }
 
-@media (max-width: 1300px) {
+@media screen and (max-width: 1300px) {
 	.box-carousel-schedule {
 		li.active {
 			max-width: 690px;
@@ -2235,7 +2217,7 @@ ul.slick-dots {
 		}
 	}
 }
-@media (max-width: 1199px) {
+@media screen and (max-width: 1199px) {
 	.box-carousel-schedule li.active {
 		max-width: 580px;
 
@@ -2243,7 +2225,7 @@ ul.slick-dots {
 		.carousel-schedule__column-2 { width: 47%; }
 	}
 }
-@media (max-width: 991px) {
+@media screen and (max-width: 991px) {
 	.box-carousel-schedule {
 		.carousel-schedule__wrapper:after { right: 46%; }
 		.carousel-schedule {
@@ -2275,7 +2257,7 @@ ul.slick-dots {
 		}
 	}
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
 	.box-carousel-schedule {
 		.carousel-schedule__control {
 			bottom: 50%;
@@ -2314,8 +2296,58 @@ ul.slick-dots {
 
 /* LISTAS */
 
-.box-links {
+.list-soft {
+	width: 100%;
+	padding-bottom: 40px;
+	border-bottom: 1px solid $cinza-4;
+}
+.list-soft__item { margin-bottom: 50px; }
+.list-soft__content {
+	width: 100%;
+	padding: 15px 0 0;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+.list-soft__image {
+	img {
+		width: 214px;
+		height: auto;
+		margin-right: 25px;
+		display: block;
+	}
 
+	.link-area {
+		position: absolute;
+		top: 0;
+		left: 20px;
+	}
+
+	&.no-image .link-area {
+		top: -15px;
+		left: 0;
+	}
+}
+.list-soft__text {
+	.title-h5 { margin-bottom: 34px; }
+
+	p {
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.2rem;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.list-soft__content { display: block; }
+	.list-soft__image {
+		margin-bottom: 10px;
+
+		img { width: 100%; }
+	}
+}
+
+.box-links {
 	.list-links {
 		margin: 0;
 		padding: 0;
@@ -2497,7 +2529,7 @@ ul.slick-dots {
 	}
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
 	.footer__columns { display: block; }
 	.columns__column-a,
 	.columns__column-b { max-width: none; }
@@ -2575,6 +2607,23 @@ ul.slick-dots {
 	}
 }
 
+@media screen and (max-width: 550px) {
+	.box-forms {
+		width: 100%;
+		margin-bottom: 50px;
+		display: block;
+
+		.form-area,
+		.form-filtro-editais {
+			max-width: none;
+			margin: 0;
+
+			& + .form-area,
+			& + .form-filtro-editais { margin-top: 20px; }
+		}
+	}
+}
+
 /* FORMULÁRIO DO RODAPÉ */
 
 .form-newsletter {
@@ -2647,10 +2696,10 @@ ul.social-media-list {
 * GRID
 ***/
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
 	.container { max-width: 1170px; }
 }
-@media (min-width: 576px) {
+@media screen and (min-width: 576px) {
 	.container {
 		padding-left: 0;
 		padding-right: 0;
