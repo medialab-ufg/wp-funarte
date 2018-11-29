@@ -108,7 +108,7 @@
 					echo "<div class='col-md-6'><ul>";
 					echo "<li>$estado</li>";
 					echo "<li>$area->name</li>";
-					echo "<li>$espaco->guid</li>";
+					echo "<li>" . get_permalink($espaco->ID) . "</li>";
 					echo "<li>" . \funarte\EspacoCultural::get_instance()->formata_endereco($espaco->ID) . "</li>"; 
 					echo "<li>" . get_post_meta($espaco->ID, 'espaco-telefone1', true) . "</li>";
 					echo "<li>" . esc_attr($espaco->post_title) . "</li>";
