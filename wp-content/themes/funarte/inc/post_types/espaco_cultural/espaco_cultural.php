@@ -136,6 +136,38 @@ class EspacoCultural {
 		return $espaco;
 	}
 
+	public function get_espacos($params = array()) {
+		$query = array_merge(array(
+			'post_type' => $this->POST_TYPE,
+			'meta_key' => 'espaco-estado',
+			'orderby' => 'title',
+			'order' => 'ASC'
+		), $params);
+		
+		$espacos = query_posts($query);
+		return $espacos;
+	}
+
+	public function formata_endereco($espacoID) {
+		$array = array('rua', 'numero', 'complemento', 'bairro', 'cidade', 'cep');
+		foreach ($array AS $key)
+			${$key} = get_post_meta($espacoID, "espaco-{$key}", true);
+		$return = '';
+		$return .= $rua;
+		if (!empty($numero)) {
+			$return .= ', ' . $numero;
+			if (!empty($complemento))
+				$return .= ' / ' . $complemento;
+		}
+		$return .= ' - ' . $bairro;
+		if (!empty($bairro))
+			$return .= ', ';
+		$return .= $cidade;
+		if (!empty($cep))
+			$return .= ' - CEP ' . $cep;
+		return preg_replace('/[ ]{2,}/', ' ', $return);
+	}
+
 }
 
 EspacoCultural::get_instance();
