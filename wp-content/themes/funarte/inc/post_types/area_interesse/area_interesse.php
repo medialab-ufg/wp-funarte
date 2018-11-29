@@ -101,6 +101,10 @@ class AreaInteresse {
 			update_post_meta($post_id, "{$prefix}-{$key}", $value);
 		}
 	}
+
+	public function get_post_type_name() {
+		return $this->POST_TYPE;
+	}
 }
 
 AreaInteresse::get_instance();

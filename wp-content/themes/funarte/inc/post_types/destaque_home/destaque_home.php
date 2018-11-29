@@ -109,6 +109,49 @@ class DestaqueHome {
 		}
 	}
 
+	public function get_post_type_name() {
+		return $this->POST_TYPE;
+	}
+
+	public function get_destaques($area = 'home', $posicao = 1, $limite = 5, $params = array()) {
+		$params = array_merge(array(
+			'post_type' => $this->POST_TYPE,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'posts_per_page' => -1
+		), $params);
+		
+		switch ($area) {
+			case 'home':
+				$params = array_merge($params, array(
+					'meta_key' => 'destaque-home_site',
+					'meta_value' => '1',
+				));
+				break;
+			case 'area':
+				$params = array_merge($params, array(
+					'meta_key' => 'destaque-home_area',
+					'meta_value' => '1',
+				));
+				break;
+		}
+		
+		$destaques = query_posts($params);
+		$i = 1;
+		foreach ($destaques as $k => &$destaque) {
+			$destaque->posicao = (int)get_post_meta($destaque->ID, 'destaque-posicao', true);
+			$destaque->url = get_post_meta($destaque->ID, 'destaque-url', true);
+			if ($destaque->posicao != $posicao) {
+				unset($destaques[$k]);
+				continue;
+			}
+			if ($i++ > $limite) {
+				unset($destaques[$k]);
+			}
+		}
+		return $destaques;
+	}
+
 }
 
 DestaqueHome::get_instance();

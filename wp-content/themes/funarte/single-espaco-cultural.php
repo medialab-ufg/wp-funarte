@@ -11,12 +11,12 @@ if (have_posts()): the_post();
 		'link' => get_post_meta($post->ID, "{$prefix}-link", true),
 		'maplink' => get_post_meta($post->ID, "{$prefix}-maplink", true),
 	
-		'rua' => get_post_meta($post->ID, "{$prefix}-rua", true),			
-		'numero' => get_post_meta($post->ID, "{$prefix}-numero", true),	
-		'complemento' => get_post_meta($post->ID, "{$prefix}-complemento", true),			
-		'bairro' => get_post_meta($post->ID, "{$prefix}-bairro", true),			
-		'cidade' => get_post_meta($post->ID, "{$prefix}-cidade", true),			
-		'estado' => get_post_meta($post->ID, "{$prefix}-estado", true),			
+		'rua' => get_post_meta($post->ID, "{$prefix}-rua", true),
+		'numero' => get_post_meta($post->ID, "{$prefix}-numero", true),
+		'complemento' => get_post_meta($post->ID, "{$prefix}-complemento", true),
+		'bairro' => get_post_meta($post->ID, "{$prefix}-bairro", true),
+		'cidade' => get_post_meta($post->ID, "{$prefix}-cidade", true),
+		'estado' => get_post_meta($post->ID, "{$prefix}-estado", true),
 		'cep' => get_post_meta($post->ID, "{$prefix}-cep", true)
 	);
 ?>

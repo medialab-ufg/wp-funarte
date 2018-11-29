@@ -1,6 +1,8 @@
 <?php
 /**
- * texto: o texto de denro... 
+ * tag:
+ * title:
+ * img:
  * 
  */
 if(!isset($tag) || !isset($title) || !isset($img)) :
