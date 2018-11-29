@@ -99,25 +99,6 @@ if (have_posts()): the_post();
 									endif;
 									wp_reset_query();
 									?>
-									<li>
-										<ul class="link-area">
-											<li class="color-danca">
-												<a href="#">Dança</a>
-											</li>
-										</ul>
-										<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
-										<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
-									</li>
-									<li>
-										<ul class="link-area">
-											<li class="color-danca">
-												<a href="#">Dança</a>
-											</li>
-										</ul>
-										<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg' ?>" alt="Título lorem ipsum sit dolor amet, consectetur adispicing ">
-										<strong>Título lorem ipsum sit dolor amet, consectetur adispicing</strong>
-									</li>
-									
 								</ul>
 							</div>
 						</div>
@@ -131,17 +112,18 @@ if (have_posts()): the_post();
 
 							<div class="box-data__row">
 								<strong>Informações ao público:</strong>
-									<?php if (!empty($espaco['telefone1'])) ?>
+
+								<?php if (!empty($espaco['telefone1'])) ?>
 									<strong><?php echo $espaco['telefone1']; ?></strong>
-									
-									<?php if (!empty($espaco['telefone2'])) ?>
-										<strong><?php echo $espaco['telefone2']; ?></strong>
-						
-									<?php if (!empty($espaco['email'])) ?>
-										<a href="mailto:<?php echo $espaco['email']; ?>"><?php echo $espaco['email']; ?></a>
-						
-									<?php if (!empty($espaco['link'])) ?>
-										<a href="<?php echo $espaco['link']; ?>" rel="nofollow"><?php echo $espaco['link']; ?></a>
+
+								<?php if (!empty($espaco['telefone2'])) ?>
+									<strong><?php echo $espaco['telefone2']; ?></strong>
+
+								<?php if (!empty($espaco['email'])) ?>
+									<a href="mailto:<?php echo $espaco['email']; ?>"><?php echo $espaco['email']; ?></a>
+
+								<?php if (!empty($espaco['link'])) ?>
+									<a href="<?php echo $espaco['link']; ?>" rel="nofollow"><?php echo $espaco['link']; ?></a>
 							</div>
 
 							<div class="box-data__row">
@@ -150,9 +132,7 @@ if (have_posts()): the_post();
 
 							<h4 class="title-5">Veja como chegar</h4>
 
-							<div class="box-data__map">
-								<?php echo get_post_meta($post->ID, "espaco-maplink", true); ?>
-							</div>
+							<div id="map"></div>
 						</div>
 					</aside>
 				</div>
