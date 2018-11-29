@@ -79,19 +79,31 @@ get_header();
 							<li class="color-<?php echo get_the_category()[0]->slug; ?>">
 								<!-- <h6><?php echo $edital->get_edital_status_name($post->ID); ?></h6> -->
 
-								<div class="link-area">
-									<?php the_category(); ?>
+								<div class="list-notices-image">
+									<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/espaco_002.jpg'; ?>" alt="<?php the_title(); ?>">
 								</div>
 
-								<h3 class="title-h5">
-									<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
-										<?php the_title(); ?>
-									</a>
-								</h3>
+								<div class="list-notices-text">
+									<?php
+										$areas = get_the_category();
+										if (!empty($areas)): ?>
+										<div class="link-area">
+											<?php foreach ($areas as $area): ?>
+												<a class="<?php echo 'color-' . $area->category_nicename; ?>" href="#"><?php echo $area->name; ?></a>
+											<?php endforeach; ?>
+										</div>
+									<?php endif; ?>
 
-								<p><?php echo wp_trim_words(get_the_content(),50); ?></p>
+									<h3 class="title-h5">
+										<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+											<?php the_title(); ?>
+										</a>
+									</h3>
 
-								<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
+									<p><?php echo wp_trim_words(get_the_content(),50); ?></p>
+
+									<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
+								</div>
 							</li>
 						<?php endwhile; ?></ul>
 

@@ -183,25 +183,31 @@ var base = {
 		},
 
 		iniciarEventos: function() {
-			var $carousel = $('.box-carousel-events');
+			var $boxCarousel = $('.box-carousel-events'),
+				$carousel = $('.carousel-events'),
+				quantidade = $carousel.find('li').length;
 
-			$('.carousel-events').slick({
-				speed: 1000,
-				infinite: false,
-				slidesToShow: 2,
-				slidesToScroll: 1,
-				prevArrow: $carousel.find('.control__prev'),
-				nextArrow: $carousel.find('.control__next'),
-				responsive: [
-					{
-						breakpoint: 530,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
+			if (quantidade > 2) {
+				$boxCarousel.addClass('carousel-active');
+
+				$('.carousel-events').slick({
+					speed: 1000,
+					infinite: true,
+					slidesToShow: 2,
+					slidesToScroll: 1,
+					prevArrow: $boxCarousel.find('.control__prev'),
+					nextArrow: $boxCarousel.find('.control__next'),
+					responsive: [
+						{
+							breakpoint: 530,
+							settings: {
+								slidesToShow: 1,
+								slidesToScroll: 1
+							}
 						}
-					}
-				]
-			});
+					]
+				});
+			}
 		}
 	},
 

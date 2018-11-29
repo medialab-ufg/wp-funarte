@@ -82,11 +82,9 @@ if (have_posts()): the_post();
 												$evento->hora_inicio = strtotime(get_post_meta(get_the_ID(), 'evento-inicio', true));
 												if (($evento->fim >= time())): ?>
 													<li>
-														<ul class="link-area">
-															<li class="color-<?php echo $area[0]->name; ?>">
-																<a href="#"><?php echo $area[0]->name; ?></a>
-															</li>
-														</ul>
+														<div class="link-area">
+															<a class="color-<?php echo $area[0]->slug; ?>" href="#"><?php echo $area[0]->name; ?></a>
+														</div>
 														<?php if (has_post_thumbnail()): ?>
 															<img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
 														<?php endif; ?>

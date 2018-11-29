@@ -14,38 +14,39 @@
 
 				<div class="box-title">
 					<h2 class="title-h1">
-						<a href="<?php echo get_bloginfo('url') . '/licitacao'; ?>">Licitações</a>
+						<a href="<?php echo get_bloginfo('url') . '/licitacao'; ?>">Funarte <span>Licitações</span></a>
 					</h2>
 				</div>
 
 				<!-- A DIV ABAIXO DEVE IR PARA O TEMPLATE_PARTS -->
-				<div class="box-title-page color-artes-visuais">
-					<?php
-						$areas = get_the_category();
-						if (!empty($areas)): ?>
-						<div class="link-area">
-							<?php foreach ($areas as $area): ?>
-								<a class="<?php echo 'color-' . $area->category_nicename; ?>" href="#"><?php echo $area->name; ?></a>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
+				<div class="box-title-page">
+					<?php 
+						$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
+						if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
+							if(!$modalidade) {
+								echo '<div class="link-area"><a class="color-funarte" href="#">' . $categoria_modalidade[0]->name . '</a></div>';
+							}
+						}
+					?>
 					<h3 class="title-page"><?php the_title(); ?></h3>
+					<strong>Contratação de empresa especializada na prestação de serviços continuados com dedica-ção exclusiva de mão-de-obra, na execução de atividades ligadas à produção de espetácu-los teatrais, de dança, de musicais e de circo, relativos às atividades complementares e acessórias à área de atuação da Fundação Nacional de Artes – FUNARTE, localizadas nas cidades do Rio de Janeiro/RJ, São Paulo/SP, Belo Horizonte/MG e Brasília/DF, conforme con-dições, quantidades e exigências estabelecidas neste Edital e seus anexos.</strong>
 				</div>
 
 				<div class="row justify-content-between">
 					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
 						<div class="box-text">
-							<div class="box-text__date">
-								<small>Publicado em <?php the_time(get_option('date_format')); ?></small>
-							</div>
-
 							<div class="box-text__text">
+							<?php
+								$thumbnailPost = get_the_post_thumbnail(get_the_ID(), array('width' => 380, 'height' => null, 'after' => '<hr />'));
+								if (!empty($thumbnailPost)):
+							?>
 								<div class="box-text__image">
-									<?php get_the_post_thumbnail(get_the_ID(), array('width' => 380, 'height' => null, 'after' => '<hr />')); ?>
+									<?php echo $thumbnailPost; ?>
 								</div>
+							<?php endif; ?>
 
 								<?php the_content(); ?>
-								
+
 								<table>
 									<thead>
 										<tr>
