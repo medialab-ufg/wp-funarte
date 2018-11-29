@@ -5,42 +5,30 @@
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container">
-		<section class="box-carousel-highlights">
-			<div class="carousel-highlights__control">
-				<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
-				<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
-			</div>
-			<ul class="carousel-highlights">
-				<li>
-					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/carrossel_001.jpg'; ?>" alt="Coleção exemplo">
-					<div class="carousel-highlights__caption">
-						<strong>Coleção exemplo</strong>
-						<span>Título de item exemplo da coleção exemplo</span>
-					</div>
-				</li>
-				<li>
-					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/carrossel_002.jpg'; ?>" alt="Coleção exemplo 2">
-					<div class="carousel-highlights__caption">
-						<strong>Coleção exemplo 2</strong>
-						<span>Título de item exemplo da coleção exemploTítulo de item exemplo da coleção exemplo</span>
-					</div>
-				</li>
-				<li>
-					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/carrossel_003.jpg'; ?>" alt="Coleção exemplo 3">
-					<div class="carousel-highlights__caption">
-						<strong>Coleção exemplo 3</strong>
-						<span>Título de item exemplo da coleção exemploTítulo de item exemplo da coleção exemploTítulo de item exemplo da coleção exemplo</span>
-					</div>
-				</li>
-				<li>
-					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/carrossel_004.jpg'; ?>" alt="Coleção exemplo 4">
-					<div class="carousel-highlights__caption">
-						<strong>Coleção exemplo 4</strong>
-						<span>Título de item exemplo da coleção exemploTítulo de item exemplo da coleção exemploTítulo de item exemplo da coleção exemploTítulo de item exemplo da coleção exemplo</span>
-					</div>
-				</li>
-			</ul>
-		</section>
+		<?php
+			$arg = ['items' => array(
+				['img_url'	=> get_template_directory_uri() . '/assets/img/fke/carrossel_002.jpg',
+				 'title'			=> 'titles', 
+				 'descricao'	=> 'descricao'],
+
+				['img_url'	=> get_template_directory_uri() . '/assets/img/fke/carrossel_001.jpg',
+				 'title'			=> 'Coleção exemplo',
+				 'descricao'	=> 'Título de item exemplo da coleção exemplo'],
+
+				['img_url' =>  get_template_directory_uri() . '/assets/img/fke/carrossel_002.jpg',
+				 'title'			=> 'Coleção exemplo 2',
+				 'descricao' => 'Título de item exemplo da coleção exemploTítulo de item exemplo da coleção exemplo'],
+
+				['img_url'	=>  get_template_directory_uri() . '/assets/img/fke/carrossel_003.jpg',
+				 'title'			=> 'Coleção exemplo 3',
+				 'descricao'	=> 'Título de item exemplo da coleção exemploTítulo de item exemplo da coleção exemploTítulo de item exemplo da coleção exemplo'],
+
+				['img_url'	=>  get_template_directory_uri() . '/assets/img/fke/carrossel_004.jpg',
+				 'title'			=> 'Coleção exemplo 4',
+				 'descricao'	=> 'Título de item exemplo da coleção exemploTítulo de item exemplo da coleção exemploTítulo de item exemplo da coleção exemploTítulo de item exemplo da coleção exemplo']
+			)];
+			funarte_load_part('carousel-highlights', $arg);
+		?>
 	</div>
 
 	<div class="box-notices-highlight mb-60">
