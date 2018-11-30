@@ -56,8 +56,10 @@ body {
 	color: $cinza-6;
 	overflow-x: hidden;
 
-	a { color: inherit; }
 }
+a,
+a:hover { color: inherit; }
+p { line-height: 1.2rem; }
 form legend {
 	width: 1px;
 	height: 1px;
@@ -260,10 +262,20 @@ noscript {
 		font-size: 1.8rem;
 	}
 
+	strong {
+		margin-top: 18px;
+		font-family: 'Sansita', sans-serif;
+		font-weight: 700;
+		font-size: 1.1rem;
+		color: $cinza-6;
+		line-height: 1.4rem;
+		display: block;
+	}
+
 	img {
 		width: 60%;
 		max-width: 640px;
-		max-height: 370px;
+		max-height: 342px;
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -630,11 +642,37 @@ noscript {
 		p {
 			font-size: 1.1rem;
 			color: $cinza-6;
+			line-height: 1.4rem;
 
 			span { color: inherit !important; }
 
-			strong span {
-				font-size: 1.4rem;
+			strong span { font-size: 1.4rem; }
+		}
+
+		table {
+			width: 100%;
+			margin-top: 80px;
+
+			thead {
+				td {
+					padding: 21px 0 22px;
+					font-family: 'Sansita', sans-serif;
+					font-size: 1.5rem;
+					color: $cinza-6;
+					text-align: center;
+					background-color: $cinza-2;
+				}
+			}
+			tbody {
+				td {
+					padding: 22px 0 21px;
+					font-size: 1.3rem;
+					color: $cinza-6;
+					text-align: center;
+					background-color: $branco;
+
+					& + td { border-left: 1px solid $cinza-2; }
+				}
 			}
 		}
 	}
@@ -719,7 +757,6 @@ noscript {
 		font-weight: 400;
 		font-size: 1rem;
 		color: $cinza-6;
-		line-height: 1.2rem;
 
 		& + p { margin-top: 19px; }
 		& + strong { margin-top: 16px; }
@@ -986,9 +1023,7 @@ body.js .collapse__text { display: none; }
 
 /* CARROSSEL DE EVENTOS */
 
-.box-carousel-events {
-	width: 100%;
-}
+.box-carousel-events { width: 100%; }
 .carousel-events {
 	margin: 0 -25px 0 32px;
 	padding: 0;
@@ -997,7 +1032,7 @@ body.js .collapse__text { display: none; }
 
 	& > li,
 	.slick-slide {
-		width: 100%;
+		width: 240px !important;
 		margin: 0 25px;
 		padding: 15px 0 0;
 		position: relative;
@@ -1027,6 +1062,7 @@ body.js .collapse__text { display: none; }
 .carousel-events__control {
 	width: 30px;
 	height: 65px;
+	display: none;
 	position: absolute;
 	top: 118px;
 	left: 10px;
@@ -1057,6 +1093,7 @@ body.js .collapse__text { display: none; }
 	.control__prev { top: 0; }
 	.control__next { bottom: 0; }
 }
+.box-carousel-events.carousel-active .carousel-events__control { display: block; }
 .carousel-events__wrapper {
 	width: 100%;
 	position: relative;
@@ -2296,6 +2333,25 @@ ul.slick-dots {
 
 /* LISTAS */
 
+.list-bidding {
+	margin: 0;
+	padding: 0 0 20px 50px;
+	list-style: none;
+
+	li {
+		padding: 0 0 37px;
+		border-bottom: 1px solid $cinza-3;
+
+		& + li {
+			padding: 50px 0 37px;
+		}
+
+		.link-area { margin-bottom: 20px; }
+		.title-h5 { margin-bottom: 18px; }
+		.link-more { margin-top: 12px; }
+	}
+}
+
 .list-soft {
 	width: 100%;
 	padding-bottom: 40px;
@@ -2334,7 +2390,6 @@ ul.slick-dots {
 	p {
 		margin: 0;
 		font-size: 1rem;
-		line-height: 1.2rem;
 	}
 }
 
@@ -2383,14 +2438,18 @@ ul.slick-dots {
 }
 .list-notices {
 	margin: 0;
-	padding: 0;
+	padding: 0 0 0 50px;
 	list-style: none;
 
 	li {
 		padding-bottom: 37px;
+		display: flex;
+		justify-content: space-between;
 		border-bottom: 2px solid $cinza-3;
 
 		& + li { margin-top: 50px; }
+
+		.list-notices-image { margin: 0 50px 0 0; }
 	}
 
 	.link-area {
@@ -2405,12 +2464,31 @@ ul.slick-dots {
 
 	.title-h5 { margin-bottom: 20px; }
 
-	p {
-		margin-bottom: 0;
-		line-height: 1.2rem;
-	}
+	p { margin-bottom: 0; }
 
 	.link-more { margin-top: 25px; }
+}
+
+@media screen and (max-width: 767px) {
+	.list-notices {
+		padding: 0;
+
+		li {
+			display: block;
+
+			.list-notices-image {
+				margin: 0 0 20px 0;
+
+				img {
+					margin: 0 auto;
+					display: block;
+				}
+			}
+		}
+	}
+}
+@media screen and (max-width: 450px) {
+	.list-notices li .list-notices-image img { width: 100%; }
 }
 
 /* PAGINAÇÃO */
@@ -2546,9 +2624,11 @@ ul.slick-dots {
 	display: flex;
 	justify-content: space-between;
 
-	.form-area {
+	.form-area,
+	.form-select {
 		width: 100%;
 		max-width: 210px;
+		margin-left: 50px;
 
 		select {
 			width: 100%;
@@ -2562,7 +2642,8 @@ ul.slick-dots {
 		}
 	}
 
-	.form-filtro-editais {
+	.form-filtro-editais,
+	.form-filtro {
 		width: 100%;
 		max-width: 210px;
 		margin-left: 50px;
@@ -2614,12 +2695,16 @@ ul.slick-dots {
 		display: block;
 
 		.form-area,
-		.form-filtro-editais {
+		.form-select,
+		.form-filtro-editais,
+		.form-filtro {
 			max-width: none;
 			margin: 0;
 
 			& + .form-area,
-			& + .form-filtro-editais { margin-top: 20px; }
+			& + .form-select,
+			& + .form-filtro-editais,
+			& + .form-filtro { margin-top: 20px; }
 		}
 	}
 }

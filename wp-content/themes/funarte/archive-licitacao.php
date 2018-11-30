@@ -27,16 +27,45 @@ get_header();
 			<?php if($modalidade) { ?>
 				<h2 class="title-h1"><?php echo $modalidade->name; ?></h2>
 			<?php } else { ?>
-				<h2 class="title-h1">Licitações</h2>
+				<h2 class="title-h1">Funarte <span>Licitações</span></h2>
 			<?php } ?>
 
 			<div class="box-forms">
-				<form class="form-area" action="#" method="post">
+				<form class="form-ano form-select" action="#" method="post">
 					<fieldset>
-						<legend>filtrar por local</legend>
+						<legend>Formulário de ano</legend>
+
 						<select>
-							<option value="">Filtrar por local</option>
+							<option value="">Ano</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
 						</select>
+					</fieldset>
+				</form>
+
+				<form class="form-categoria form-select" action="#" method="post">
+					<fieldset>
+						<legend>Formulário de categoria</legend>
+
+						<select>
+							<option value="">Categoria</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+						</select>
+					</fieldset>
+				</form>
+
+				<form class="form-filtro" action="#" method="post">
+					<fieldset>
+						<legend>Formulário de filtro</legend>
+
+						<div class="form-group">
+							<label class="sr-only" for="filtro-texto">Pesquisar</label>
+							<input type="text" id="filtro-texto" placeholder="Pesquisar">
+							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
+						</div>
 					</fieldset>
 				</form>
 			</div>
@@ -46,19 +75,17 @@ get_header();
 	<?php if (have_posts()): ?>
 	<section class="box-tabs">
 		<div class="container">
-			<div class="row">
+			<ul class="list-bidding">
 				<?php while (have_posts()): the_post(); ?>
-					<div class="color-funarte" >
-						<div class="link-area">
-							<?php 
-								$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
-								if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
-									if(!$modalidade) {
-										echo $categoria_modalidade[0]->name;
-									}
+					<li>
+						<?php 
+							$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
+							if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
+								if(!$modalidade) {
+									echo '<div class="link-area"><a class="color-funarte" href="#">' . $categoria_modalidade[0]->name . '</a></div>';
 								}
-							?>
-						</div>
+							}
+						?>
 
 						<h3 class="title-h5">
 							<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
@@ -67,9 +94,9 @@ get_header();
 						</h3>
 						<p><?php echo wp_trim_words(get_the_content(),30); ?></p>
 						<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
-					</div>
+					</li>
 				<?php endwhile; ?>
-			</div>
+			</ul>
 
 			<div class="box-pagination">
 				<ul class="box-pagination__list">
