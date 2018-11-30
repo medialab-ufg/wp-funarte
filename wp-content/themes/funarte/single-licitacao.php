@@ -33,9 +33,8 @@
 				</div>
 
 				<div class="row justify-content-between">
-					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
-						<div class="box-text">
-							<div class="box-text__text">
+					<div class="col-md-7">
+						<div class="box-text box-text--type-b">
 							<?php
 								$thumbnailPost = get_the_post_thumbnail(get_the_ID(), array('width' => 380, 'height' => null, 'after' => '<hr />'));
 								if (!empty($thumbnailPost)):
@@ -45,8 +44,11 @@
 								</div>
 							<?php endif; ?>
 
+							<div class="box-text__text">
 								<?php the_content(); ?>
+							</div>
 
+							<div class="box-text__table">
 								<table>
 									<thead>
 										<tr>
@@ -78,41 +80,44 @@
 							$DS = DIRECTORY_SEPARATOR;
 							$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'widget' . $DS;
 							require_once($META_FOLDER . 'arquivos-relacionados.php');
-							
-							if ($controleModalidade != "Dispensa" and $controleModalidade != "Inexigibilidade") :
-								query_posts(array(
-									'post_type' => 'licitacao',
-									'post__not_in' => array($post->ID),
-									'meta_key' => 'licitacao-ano',
-									'meta_value' => (int)$ano,
-									'posts_per_page' => 5
-								));
-								if(have_posts()) : ?>
-									<div>
-										<h3>
-											<?php echo "<a href='/licitacoes/?ano=$ano' title='Outras licitações de $ano' >Outras licitações de $ano</a>";?>
-										</h3>
-										<ul>
-											<?php
-											while(have_posts()) :
-												the_post();
-												$modalidade = wp_get_post_terms( $post->ID, taxModalidade::get_instance()->get_name());
-												$modalidade = $modalidade[0];
-											?>
-												<li>
-													<h6><?php echo $modalidade->name; ?></h6>
-													<h4><a title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
-														<?php the_title(); ?>
-													</a></h4>
-												</li>
-											<?php  endwhile; ?>
-										</ul>
-									</div>
-								<?php 
-								endif; 
-							endif;
 							?>
 						</div>
+					</div>
+					<div class="col-md-4">
+						<aside class="content-aside">
+							<?php if ($controleModalidade != "Dispensa" and $controleModalidade != "Inexigibilidade") :
+									query_posts(array(
+										'post_type' => 'licitacao',
+										'post__not_in' => array($post->ID),
+										'meta_key' => 'licitacao-ano',
+										'meta_value' => (int)$ano,
+										'posts_per_page' => 5
+									));
+									if(have_posts()) : ?>
+										<div class="box-bidding">
+											<h4 class="title-h1--type-b">Mais licitações</h4>
+											<ul class="list-bidding--type-b">
+												<?php
+												while(have_posts()) :
+													the_post();
+													$modalidade = wp_get_post_terms( $post->ID, taxModalidade::get_instance()->get_name());
+													$modalidade = $modalidade[0];
+												?>
+													<li class="color-funarte">
+														<div class="link-area">
+															<a href="#"><?php echo $modalidade->name; ?></a>
+														</div>
+														<strong><?php the_title(); ?></strong>
+														<a class="link-more" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">Ler mais</a>
+													</li>
+												<?php endwhile; ?>
+											</ul>
+										</div>
+									<?php
+									endif;
+								endif;
+							?>
+						</aside>
 					</div>
 				</div>
 			</div>
