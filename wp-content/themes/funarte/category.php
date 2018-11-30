@@ -21,6 +21,9 @@
 	$destaques = \funarte\DestaqueHome::get_instance()->get_destaques('area', 1, 5, $query);
 	$espacos = \funarte\EspacoCultural::get_instance()->get_espacos($query);
 	$editais = \funarte\Edital::get_instance()->get_editais('todos', $query);
+
+	$query_news = ['cat' => (int)$area->term_id, 'post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'orderby' => 'date', 'order' => 'DESC'];
+	$noticias = query_posts($query_news);
 ?>
 
 <main role="main">
@@ -143,7 +146,25 @@
 		funarte_load_part('notices-highlights', $arg);
 	?>
 	<!-- FIM EDITAIS -->
-	
+
+	<!-- NOTICIAS -->
+	<?php
+		$default_img_url = get_template_directory_uri() . '/assets/img/fke/news_003.jpg';
+		$items = [];
+		foreach ($noticias as $noticia) {
+			$items[] = ['tag_class_area'=>$area->slug,
+									'tag_name_area' =>$area->name,
+									'tag_subname_area'=>'',
+									'title' => $noticia->post_title,
+									'url'=> get_permalink($noticia->ID),
+									'content'=> get_the_excerpt($noticia->ID),
+									'url_img'=> get_the_post_thumbnail_url($noticia->ID) ? get_the_post_thumbnail_url($noticia->ID) : $default_img_url];
+		}
+		$arg = ['items' => $items];
+		funarte_load_part('box-news', $arg);
+	?>
+	<!-- FIM NOTICIAS -->
+
 </main>
 	
 <?php get_footer();
