@@ -20,6 +20,7 @@
 	$cat = (isset($query['cat'])) ? get_category($query['cat']) : null;
 	$destaques = \funarte\DestaqueHome::get_instance()->get_destaques('area', 1, 5, $query);
 	$espacos = \funarte\EspacoCultural::get_instance()->get_espacos($query);
+	$editais = \funarte\Edital::get_instance()->get_editais('todos', $query);
 ?>
 
 <main role="main">
@@ -89,10 +90,11 @@
 			<div class="col-md-6">
 				[LINKS RELACIONADOS]
 			</div>
-			<!--//FIMLINKS RELACIONADOS -->
+			<!--//FIM LINKS RELACIONADOS -->
 		</div>
 	</div>
 
+	<!-- ESPAÇO CULTURAL -->
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -118,7 +120,30 @@
 			?>
 		</div>
 	</div>
+	<!-- FIM ESPAÇO CULTURAL -->
 
+	<!-- EDITAIS -->
+	<?php
+		$items = [];
+		foreach ($editais as $edital) {
+			$items[] = ['tag_class_area'=>$area->slug,
+									'tag_name_area'=>$area->name,
+									'tag_subname_area'=>\funarte\Edital::get_instance()->get_edital_status($edital->ID),
+									'title' => $edital->post_title ,
+									'url'=>get_permalink($edital->ID)];
+		}
+		$arg = ['title'=> 'Editais', 'items' => $items,
+						'destaque' => ['url'=> get_template_directory_uri(),
+													 'title'=> '[TITULO]',
+													 'tag_name_area'=>$area->name,
+													 'tag_class_area'=>$area->slug,
+													 'content'=>'[CONTEUTO DO DESTAQUE]',
+													 'img_url'=> get_template_directory_uri() . '/assets/img/fke/destaque_001.jpg']
+		];
+		funarte_load_part('notices-highlights', $arg);
+	?>
+	<!-- FIM EDITAIS -->
+	
 </main>
 	
 <?php get_footer();
