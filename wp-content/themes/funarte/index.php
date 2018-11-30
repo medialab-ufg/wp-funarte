@@ -31,126 +31,34 @@
 		?>
 	</div>
 
-	<div class="box-notices-highlight mb-60">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-md-6">
-					<section class="box-carousel-notices">
-						<h2 class="title-1 mb-60">Editais</h2>
-
-						<div class="carousel-notices__wrapper">
-							<div class="carousel-notices__control">
-								<button type="button" class="control__prev"><i class="mdi mdi-chevron-up"></i></button>
-								<button type="button" class="control__next"><i class="mdi mdi-chevron-down"></i></button>
-							</div>
-							<ul class="carousel-notices">
-								<li>
-									<div class="link-area">
-										<a class="color-danca" href="#">Dança</a>
-										<span>Inscrições abertas</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-artes-integradas" href="#">Artes integradas</a>
-										<span>Inscrições abertas</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-circo" href="#">Circo</a>
-										<span>Resultados</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-multicategoria" href="#">Multicategoria</a>
-										<span>Resultados</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-artes-integradas" href="#">Artes integradas</a>
-										<span>Inscrições abertas</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-danca" href="#">Dança</a>
-										<span>Inscrições abertas</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-multicategoria" href="#">Multicategoria</a>
-										<span>Resultados</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-circo" href="#">Circo</a>
-										<span>Resultados</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-multicategoria" href="#">Multicategoria</a>
-										<span>Resultados</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-artes-integradas" href="#">Artes integradas</a>
-										<span>Inscrições abertas</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-								<li>
-									<div class="link-area">
-										<a class="color-circo" href="#">Circo</a>
-										<span>Resultados</span>
-									</div>
-									<h3 class="title-4">Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</h3>
-									<a href="#" class="link-more">Ler mais</a>
-								</li>
-							</ul>
-						</div>
-					</section>
-				</div>
-				<div class="col-xs-12 col-md-6">
-					<section class="box-highlight color-circo">
-						<h2 class="title-1">Destaque</h2>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/destaque_001.jpg'; ?>" alt="Destaque">
-						<div class="link-area">
-							<a href="#">Circo</a>
-						</div>
-						<h3 class="title-3">Lorem ipsum dolor sit amet, consectetuer adi</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
-						<a href="#" class="link-more">Ler mais</a>
-					</section>
-				</div>
-			</div>
-		</div>
-	</div>
+	<?php
+		$items = [['tag_class_area'=>'danca', 'tag_name_area'=>'Dança',
+							 'tag_subname_area'=>'Inscrições abertas', 'title' => 'Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do' ,
+							 'url'=>'#'],
+							 ['tag_class_area'=>'artes-integradas', 'tag_name_area'=>'Artes integradas',
+							 'tag_subname_area'=>'Inscrições abertas', 'title' => 'Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do' ,
+							 'url'=>'#'],
+							 ['tag_class_area'=>'circo', 'tag_name_area'=>'Circo',
+							 'tag_subname_area'=>'Inscrições abertas', 'title' => 'Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do' ,
+							 'url'=>'#'],
+							 ['tag_class_area'=>'multicategoria', 'tag_name_area'=>'Multicategoria',
+							 'tag_subname_area'=>'Inscrições abertas', 'title' => 'Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do' ,
+							 'url'=>'#'],
+							 ['tag_class_area'=>'multicategoria', 'tag_name_area'=>'Multicategoria',
+							 'tag_subname_area'=>'Inscrições abertas', 'title' => 'Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do' ,
+							 'url'=>'#']
+							];
+		
+		$arg = ['title'=> 'Editais', 'items' => $items,
+						'destaque' => ['url'=> '#',
+													 'title'=> '[TITULO]',
+													 'tag_name_area'=>'Dança',
+													 'tag_class_area'=>'danca',
+													 'content'=>'[CONTEUTO DO DESTAQUE]',
+													 'img_url'=> get_template_directory_uri() . '/assets/img/fke/destaque_001.jpg']
+		];
+		funarte_load_part('notices-highlights', $arg);
+	?>
 
 	<section class="box-news mb-100">
 		<div class="container">
