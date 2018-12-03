@@ -28,7 +28,7 @@
 	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'cat' => (int)$area->term_id ];
 	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'),date('Y'), $query_eventos);
 	if (empty($eventos)) {
-		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query);
+		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
 	}
 ?>
 
