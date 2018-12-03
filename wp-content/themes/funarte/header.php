@@ -1,3 +1,7 @@
+<?php
+	$area = get_query_var('cat');
+	$area = get_category((int)$area);
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -64,13 +68,13 @@
 							?>
 
 							<ul class="areas-list">
-								<li><a class="color-circo" href="#">Circo</a></li>
-								<li><a class="color-teatro" href="#">Teatro</a></li>
-								<li><a class="color-danca active" href="#">Dança</a></li>
-								<li><a class="color-musica" href="#">Música</a></li>
-								<li><a class="color-artes-integradas" href="#">Artes integradas</a></li>
-								<li><a class="color-artes-visuais" href="#">Artes visuais</a></li>
-								<li><a class="color-literatura" href="#">Literatura</a></li>
+								<li><a class="color-circo <?php echo ($area!=null && $area->slug == 'circo') ? 'active' : ''; ?>" 	href="/category/circo/">Circo</a></li>
+								<li><a class="color-teatro <?php echo ($area!=null && $area->slug == 'teatro') ? 'active' : ''; ?>" href="/category/teatro/">Teatro</a></li>
+								<li><a class="color-danca <?php echo ($area!=null && $area->slug == 'danca') ? 'active' : ''; ?>" 	href="/category/danca/">Dança</a></li>
+								<li><a class="color-musica <?php echo ($area!=null && $area->slug == 'musica') ? 'active' : ''; ?>" href="/category/musica/">Música</a></li>
+								<li><a class="color-artes-integradas <?php echo ($area!=null && $area->slug == 'artes-integradas') ? 'active' : ''; ?>" href="/category/artes-integradas/">Artes integradas</a></li>
+								<li><a class="color-artes-visuais <?php echo ($area!=null && $area->slug == 'artes-visuais') ? 'active' : ''; ?>" href="/category/artes-visuais/">Artes visuais</a></li>
+								<li><a class="color-literatura <?php echo ($area!=null && $area->slug == 'literatura') ? 'active' : ''; ?>" href="/category/literatura/">Literatura</a></li>
 							</ul>
 						</div>
 					</nav>
