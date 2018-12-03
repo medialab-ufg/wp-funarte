@@ -134,6 +134,15 @@ noscript {
 
 	a { color: inherit; }
 }
+.title-5--type-b {
+	margin: 0;
+	font-weight: 400;
+	font-family: 'Sansita', sans-serif;
+	font-size: 1.7rem;
+	color: $verde-1;
+
+	a { color: inherit; }
+}
 .news-title {
 	margin-bottom: 13px;
 	font-family: 'Sansita', sans-serif;
@@ -296,7 +305,7 @@ noscript {
 
 	img {
 		width: 60%;
-		max-width: 640px;
+		max-width: 480px;
 		max-height: 342px;
 		position: absolute;
 		top: 0;
@@ -305,9 +314,8 @@ noscript {
 }
 .box-title-page--image {
 	width: 91%;
+	padding: 30px 490px 42px 50px;
 	margin-bottom: 172px;
-
-	.title-page { width: 36%; }
 }
 
 @media screen and (max-width:767px) {
@@ -671,6 +679,30 @@ noscript {
 	}
 
 	a { color: $branco; }
+
+	.box-info__collapse {
+		margin: 0;
+
+		button {
+			color: $branco;
+
+			&:after {
+				color: $verde-1;
+				background-color: $branco;
+			}
+		}
+
+		.collapse__text {
+			padding: 0;
+			column-count: unset;
+			column-gap: unset;
+
+			.text__block {
+				& + .text__block { margin-top: 40px; }
+				strong { margin-bottom: 10px; }
+			}
+		}
+	}
 }
 .box-data__row {
 	width: 100%;
@@ -683,7 +715,9 @@ noscript {
 }
 
 .box-text {
-	.title-5 { margin-bottom: 50px; }
+	& + .box-text { margin-top: 66px; }
+	.title-5,
+	.title-5--type-b { margin-bottom: 50px; }
 	.button-inscreva-se { margin-top: 40px; }
 	.box-carousel-events { margin-top: 50px; }
 }
@@ -2447,21 +2481,10 @@ ul.slick-dots {
 }
 .list-bidding--type-b {
 	margin: 0;
-	padding: 50px 0 35px 30px;
+	padding: 50px 30px 35px;
 	list-style: none;
 	position: relative;
-
-	&:after {
-		content: "";
-		width: 999999px;
-		height: 100%;
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		background-color: $cinza-2;
-		z-index: -1;
-	}
+	background-color: $cinza-2;
 
 	li {
 		padding: 0 25px 2px;
@@ -2483,6 +2506,22 @@ ul.slick-dots {
 	}
 
 	.link-more { margin-top: 17px; }
+}
+
+aside .list-bidding--type-b {
+	padding: 50px 0 35px 30px;
+
+	&:after {
+		content: "";
+		width: 999999px;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: $cinza-2;
+		z-index: -1;
+	}
 }
 
 @media screen and (max-width: 767px) {

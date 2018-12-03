@@ -16,124 +16,166 @@ if(have_posts()) : the_post();
 		<?php include('inc/template_parts/breadcrumb.php'); ?>
 
 		<div class="box-title">
-			<h2 class="title-h1">
-				<a href="<?php echo get_bloginfo('url') . '/regional'; ?>">
-					Representações Regionais
-				</a> 
-			</h2>
+			<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/regional'; ?>">Funarte <span>Representações Regionais</span></a></h2>
 		</div>
 
-		<div class="box-title-page color-artes-visuais">
+		<?php $imagem = get_the_post_thumbnail( $post_id,'medium'); ?>
+
+		<div class="box-title-page <?php echo !empty($imagem) ? 'box-title-page--image' : ''; ?>">
 			<h3 class="title-page"><?php the_title(); ?></h3>
-			<?php echo get_the_post_thumbnail( $post_id,'medium'); ?>
+
+			<?php
+				if (!empty($imagem))
+					echo $imagem;
+			?>
 		</div>
 
-		<div>
-			<div class="box-text">
-				<div class="box-text__date">
-					<small>Publicado em <?php the_time(get_option('date_format')); ?></small>
-				</div>
-				<div class="box-text__text">
+		<div class="row justify-content-between">
+			<div class="col-md-6">
+				<div class="box-text">
 					<div class="box-text__image">
 						<?php get_the_post_thumbnail(get_the_ID(), array('width' => 380, 'height' => null, 'after' => '<hr />')); ?>
 					</div>
-					<h3>sobre</h3>
-					<?php  the_content(); ?>
+					<h4 class="title-5--type-b">Sobre</h4>
+					<div class="box-text__text">
+						<?php the_content(); ?>
+					</div>
 				</div>
-			</div>
 
-			<div class="box-text">
-				<div class="widgets-pa mais-infos">
-					<h3>Mais Informações</h3> <br />
+				<div class="box-text">
+					<h4 class="title-5--type-b">Próximos eventos no local</h4>
+
 					<?php
-					if (!empty($coordenador))
-						echo "<span><strong>$coordenador</strong></span><br />";
-					if (!empty($telefone1)) {
-						$conteudo = 'Tel.: ' . $telefone1;
-						if (!empty($telefone2))
-							$conteudo .= " <br/> $telefone2";
-						echo "<span>$conteudo</span><br />";
-					}
-					if (!empty($fax))
-						echo "<span>Fax: $fax</span><br />";
-					if (!empty($email))
-						echo "<span>email:{$email}</span> <br >";
-					if (!empty($rua)) {
-						$conteudo = $rua;
-						if (!empty($numero))
-							$conteudo .= ', Nº ' . $numero;
-						if (!empty($complemento))
-							$conteudo .= ' - ' . $complemento;
-						echo "<span>$conteudo</span> <br>";
-					}
-					if (!empty($cidade)) {
-						$conteudo = '';
-						if (!empty($bairro))
-							$conteudo .= $bairro . ' - ';
-						$conteudo .= $cidade;
-						echo "<span>$conteudo</span>";
-					}
-					if (!empty($estado))
-						echo "<span>$estado</span>";
-					if (!empty($cep))
-						echo "<span>CEP $cep</span>";
-				
-					if (!empty($contatos)) : ?>
-						<div class="mais-infos-estrutura">
-							<ul style="display: none">
-								<?php foreach ($contatos as $contato) : ?>
-								<li>
-									<?php 
-										echo '<h6>' . $contato['area'] . '</h6>';
-										echo '<span><strong>' . $contato['responsavel'] . '</strong></span>';
-										if (isset($contato['telefone']) && !empty($contato['telefone'])) :
-											echo '<span>Tel.: ' . $contato['telefone'] . '</span> <br >';
-										endif;
-										if (isset($contato['email']) && !empty($contato['email'])) :
-											echo '<span>' . $contato['email'] . ' mailto:' . $contato['email'] . '</span>';
-											endif;
-									?>
-								</li>
-								<?php endforeach; ?>
-							</ul>
-						</div>
-					<?php endif; ?>
+						//jogar isso para um widget?
+						$regional = wp_get_post_terms( get_the_ID(), \funarte\taxRegional::get_instance()->get_name());
+						if(!empty($regional)) {
+							$query = array(
+								'paged' => false,
+								'post_type' => 'evento',
+								'orderby' => 'meta_value',
+								'order' => 'ASC',
+								$regional[0]->taxonomy => $regional[0]->slug,
+								'post__not_in' => array(get_the_ID()),
+								'meta_key'	 => 'evento-inicio',
+								'meta_compare' 		=> '<',
+								'meta_value' => date('Y-m-d')
+							);
+
+							$the_query = new WP_Query( $query );
+							if ( $the_query->have_posts() ) {
+					?>
+
+						<ul class="list-bidding--type-b">
+
+					<?php
+							while ( $the_query->have_posts() ) {
+							$the_query->the_post();
+
+							$areas = get_the_category();
+					?>
+							<li class="<?php echo 'color-' . $areas[0]->slug; ?>">
+								<?php
+									if (!empty($areas)): ?>
+									<div class="link-area">
+										<?php foreach ($areas as $area): ?>
+											<a class="<?php echo 'color-' . $area->slug; ?>" href="#"><?php echo $area->name; ?></a>
+										<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+
+								<strong><?php the_title(); ?></strong>
+								<a class="link-more" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">Ler mais</a>
+							</li>
+					<?php
+							}
+					?>
+
+						</ul>
+
+					<?php
+							} else {
+								echo "nenhum evento";
+							}
+							wp_reset_postdata();
+						}
+					?>
 				</div>
 			</div>
 
-			<div class="box-text">
-			  <h3>Lista de Próximos Eventos</h3> <br />
-				<?php
-					//jogar isso para um widget?
-					$regional = wp_get_post_terms( get_the_ID(), \funarte\taxRegional::get_instance()->get_name());
-					if(!empty($regional)) {
-						$query = array(
-							'paged' => false,
-							'post_type' => 'evento',
-							'orderby' => 'meta_value',
-							'order' => 'ASC',
-							$regional[0]->taxonomy => $regional[0]->slug,
-							'post__not_in' => array(get_the_ID()),
-							'meta_key'	 => 'evento-inicio',
-							'meta_compare' 		=> '<',
-							'meta_value' => date('Y-m-d')
-						);
+			<div class="col-md-5">
+				<aside class="content-aside">
+					<div class="box-data">
+						<h4 class="title-5">Informações</h4>
 
-						
-						$the_query = new WP_Query( $query );
-						if ( $the_query->have_posts() ) {
-    					echo '<ul>';
-    					while ( $the_query->have_posts() ) {
-        				$the_query->the_post();
-        				echo '<li>' . get_the_title() . '</li>';
-    					}
-    					echo '</ul>';
-						} else {
-							echo "nenhum evento";
-						}
-						wp_reset_postdata();
-					}
-				?>
+						<div class="box-data__row">
+							<?php
+								if (!empty($coordenador))
+									echo "<div class='box-data__row'><strong>$coordenador</strong></div>";
+								if (!empty($telefone1)) {
+									$conteudo = '<b>Tel.:</b> ' . $telefone1;
+									if (!empty($telefone2))
+										$conteudo .= " <br/> $telefone2";
+									echo "<div class='box-data__row'><span>$conteudo</span></div>";
+								}
+								if (!empty($fax))
+									echo "<div class='box-data__row'><span><b>Fax:</b> $fax</span></div>";
+								if (!empty($email))
+									echo "<div class='box-data__row'><span><b>Email:</b> {$email}</span></div>";
+							?>
+
+							<div class='box-data__row'>
+							<?php
+								if (!empty($rua)) {
+									$conteudo = $rua;
+									if (!empty($numero))
+										$conteudo .= ', Nº ' . $numero;
+									if (!empty($complemento))
+										$conteudo .= ' - ' . $complemento;
+									echo "<span>$conteudo</span>";
+								}
+								if (!empty($cidade)) {
+									$conteudo = '';
+									if (!empty($bairro))
+										$conteudo .= $bairro . ' - ';
+									$conteudo .= $cidade;
+									echo "<span>$conteudo</span>";
+								}
+								if (!empty($estado))
+									echo "<span>$estado</span>";
+								if (!empty($cep))
+									echo "<span><b>CEP:</b> $cep</span>";
+							?>
+							</div>
+
+							<?php
+								if (!empty($contatos)) : ?>
+									<div class="box-info__collapse">
+										<button class="collapse__button" type="button">Exibir todos os contatos</button>
+										<div class="collapse__text">
+											<?php foreach ($contatos as $contato) : ?>
+												<div class="text__block">
+													<strong><?php echo $contato['area']; ?></strong>
+													<strong><?php echo $contato['responsavel']; ?></strong>
+													<?php
+														if (isset($contato['telefone']) && !empty($contato['telefone'])) :
+															echo '<span><b>Tel.:</b> ' . $contato['telefone'] . '</span>';
+														endif;
+														if (isset($contato['email']) && !empty($contato['email'])) :
+															echo '<a href="mailto:' . $contato['email'] . '">' . $contato['email'] . '</a>';
+														endif;
+													?>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									</div>
+								<?php endif;
+							?>
+						</div>
+						<h4 class="title-5">Veja como chegar</h4>
+
+						<div id="map"></div>
+					</div>
+				</aside>
 			</div>
 		</div>
 	</div>
