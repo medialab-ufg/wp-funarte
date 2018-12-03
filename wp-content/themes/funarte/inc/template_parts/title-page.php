@@ -5,16 +5,14 @@
  * img:
  * 
  */
-if(!isset($tag) || !isset($title) || !isset($img)) :
+if(!isset($tag) || !isset($title) || !isset($img) || !isset($tag_class_area)) :
 	echo "<br><b> parameter not found! </b> <br>";
 else : 
  ?>
-<div class="box-title-page box-title-page--image color-artes-visuais">
-	<ul class="link-area">
-		<li class="color-funarte">
-			<a href="#"><?php echo $tag; ?></a>
-		</li>
-	</ul>
+<div class="box-title-page box-title-page--image">
+	<div class="link-area">
+		<a class="color-<?php echo $tag_class_area; ?>" href="#"><?php echo $tag; ?></a>
+	</div>
 	<h3 class="title-page">
 		<?php echo $title; ?>
 	</h3>

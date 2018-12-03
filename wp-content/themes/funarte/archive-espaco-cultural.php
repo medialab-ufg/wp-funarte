@@ -47,7 +47,7 @@ get_header();
 
 							<div class="list-soft__image <?php echo empty($thumbnail) ? 'no-image' : '' ?>">
 								<div class="link-area">
-									<a href="#"><?php echo get_post_meta($post->ID, "espaco-estado", true); ?></a>
+									<strong><?php echo get_post_meta($post->ID, "espaco-estado", true); ?></strong>
 								</div>
 								<?php echo $thumbnail; ?>
 							</div>

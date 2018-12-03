@@ -25,7 +25,7 @@ if(have_posts()) : the_post();
 
 		<div class="box-title-page color-artes-visuais">
 			<h3 class="title-page"><?php the_title(); ?></h3>
-			<?php post_thumbnail(get_the_ID(), array('width' => 380, 'height' => null)); ?>
+			<?php echo get_the_post_thumbnail( $post_id,'medium'); ?>
 		</div>
 
 		<div>

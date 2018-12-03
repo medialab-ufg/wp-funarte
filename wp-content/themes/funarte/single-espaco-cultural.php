@@ -29,7 +29,7 @@ if (have_posts()): the_post();
 			<div class="box-title">
 				<h2 class="title-h1"><a href="#">Funarte</a> <a href="<?php echo get_bloginfo('url') . '/espaco-cultural'; ?>"><span>Espaços Culturais</span></a></h2>
 			</div>
-			<?php funarte_load_part('title-page', ['tag'=> $estado, 'title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( )]); ?>
+			<?php funarte_load_part('title-page', ['tag'=> $estado, 'title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ),'tag_class_area'=>'funarte']); ?>
 
 			<div class="row justify-content-between">
 				<div class="col-md-6">

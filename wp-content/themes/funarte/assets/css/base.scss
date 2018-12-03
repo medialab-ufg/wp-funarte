@@ -358,8 +358,10 @@ noscript {
 	align-items: flex-end;
 	flex-wrap: wrap;
 
-	a {
+	a,
+	strong {
 		padding: 5px 15px 1px;
+		font-weight: 400;
 		font-size: .9rem;
 		color: $cinza-6;
 		text-transform: uppercase;
@@ -367,7 +369,8 @@ noscript {
 		position: relative;
 		background-color: $cinza-1;
 
-		& + a { margin-left: 25px; }
+		& + a,
+		& + strong { margin-left: 25px; }
 
 		&:after {
 			content: "";
@@ -427,7 +430,8 @@ noscript {
 }
 .color-funarte {
 	.link-area {
-		a {
+		a,
+		strong {
 			color: $verde-1;
 
 			&:after { background-color: $verde-1; }
@@ -438,7 +442,8 @@ noscript {
 }
 .color-circo {
 	.link-area {
-		a {
+		a,
+		strong {
 			color: $vermelho-1;
 
 			&:after { background-color: $vermelho-1; }
@@ -449,7 +454,8 @@ noscript {
 }
 .color-musica {
 	.link-area {
-		a {
+		a,
+		strong {
 			color: $laranja-1;
 
 			&:after { background-color: $laranja-1; }
@@ -460,7 +466,8 @@ noscript {
 }
 .color-danca {
 	.link-area {
-		a {
+		a,
+		strong {
 			color: $amarelo-1;
 
 			&:after { background-color: $amarelo-1; }
@@ -471,7 +478,8 @@ noscript {
 }
 .color-literatura {
 	.link-area {
-		a {
+		a,
+		strong {
 			color: $limao-1;
 
 			&:after { background-color: $limao-1; }
@@ -482,7 +490,8 @@ noscript {
 }
 .color-artes-visuais {
 	.link-area {
-		a {
+		a,
+		strong {
 			color: $azul-1;
 
 			&:after { background-color: $azul-1; }
@@ -493,7 +502,8 @@ noscript {
 }
 .color-artes-integradas {
 	.link-area {
-		a {
+		a,
+		strong {
 			color: $roxo-1;
 
 			&:after { background-color: $roxo-1; }
@@ -504,7 +514,8 @@ noscript {
 }
 .color-teatro {
 	.link-area {
-		a {
+		a,
+		strong {
 			color: $rosa-1;
 
 			&:after { background-color: $rosa-1; }
@@ -515,7 +526,8 @@ noscript {
 }
 .color-multicategoria {
 	.link-area {
-		a {
+		a,
+		strong {
 			color: $verde-3;
 
 			&:after { background-color: $verde-3; }
@@ -528,68 +540,95 @@ noscript {
 /* CORES PARA VÁRIOS ITENS NUMA MESMA LINHA */
 
 .link-area {
-	a.color-funarte {
-		color: $verde-1;
+	a,
+	strong {
+		&.color-funarte {
+			color: $verde-1;
 
-		&:after { background-color: $verde-1; }
+			&:after { background-color: $verde-1; }
 
-		& + span { background-color: $verde-1; }
+			& + span { background-color: $verde-1; }
+		}
 	}
-	a.color-circo {
-		color: $vermelho-1;
+	a,
+	strong {
+		&.color-circo {
+			color: $vermelho-1;
 
-		&:after { background-color: $vermelho-1; }
+			&:after { background-color: $vermelho-1; }
 
-		& + span { background-color: $vermelho-1; }
+			& + span { background-color: $vermelho-1; }
+		}
 	}
-	a.color-musica {
-		color: $laranja-1;
+	a,
+	strong {
+		&.color-musica {
+			color: $laranja-1;
 
-		&:after { background-color: $laranja-1; }
+			&:after { background-color: $laranja-1; }
 
-		& + span { background-color: $laranja-1; }
+			& + span { background-color: $laranja-1; }
+		}
 	}
-	a.color-danca {
-		color: $amarelo-1;
+	a,
+	strong {
+		&.color-danca {
+			color: $amarelo-1;
 
-		&:after { background-color: $amarelo-1; }
+			&:after { background-color: $amarelo-1; }
 
-		& + span { background-color: $amarelo-1; }
+			& + span { background-color: $amarelo-1; }
+		}
 	}
-	a.color-literatura {
-		color: $limao-1;
+	a,
+	strong {
+		&.color-literatura {
+			color: $limao-1;
 
-		&:after { background-color: $limao-1; }
+			&:after { background-color: $limao-1; }
 
-		& + span { background-color: $limao-1; }
+			& + span { background-color: $limao-1; }
+		}
 	}
-	a.color-artes-visuais {
-		color: $azul-1;
+	a,
+	strong {
+		&.color-artes-visuais {
+			color: $azul-1;
 
-		&:after { background-color: $azul-1; }
+			&:after { background-color: $azul-1; }
 
-		& + span { background-color: $azul-1; }
+			& + span { background-color: $azul-1; }
+		}
 	}
-	a.color-artes-integradas {
-		color: $roxo-1;
+	a,
+	strong {
+		&.color-artes-integradas {
+			color: $roxo-1;
 
-		&:after { background-color: $roxo-1; }
+			&:after { background-color: $roxo-1; }
 
-		& + span { background-color: $roxo-1; }
+			& + span { background-color: $roxo-1; }
+		}
 	}
-	a.color-teatro {
-		color: $rosa-1;
+	a,
+	strong {
+		&.color-teatro {
+			color: $rosa-1;
 
-		&:after { background-color: $rosa-1; }
+			&:after { background-color: $rosa-1; }
 
-		& + span { background-color: $rosa-1; }
+			& + span { background-color: $rosa-1; }
+		}
 	}
-	a.color-multicategoria {
-		color: $verde-3;
+	a,
+	strong {
+		&.color-multicategoria {
+			color: $verde-3;
 
-		&:after { background-color: $verde-3; }
+			&:after { background-color: $verde-3; }
 
-		& + span { background-color: $verde-3; }
+			& + span { background-color: $verde-3; }
+		}
 	}
 }
 
@@ -2380,10 +2419,22 @@ ul.slick-dots {
 
 	li {
 		padding: 0 0 37px;
+		display: flex;
+		justify-content: space-between;
 		border-bottom: 1px solid $cinza-3;
 
-		& + li {
-			padding: 50px 0 37px;
+		& + li { padding: 50px 0 37px; }
+
+		.list-bidding__image {
+			min-width: 214px;
+			max-width: 214px;
+			margin-right: 50px;
+
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
 		}
 
 		.link-area { margin-bottom: 20px; }
@@ -2432,6 +2483,16 @@ ul.slick-dots {
 	}
 
 	.link-more { margin-top: 17px; }
+}
+
+@media screen and (max-width: 767px) {
+	.list-bidding {
+		li {
+			display: block;
+
+			.list-bidding__image { margin: 0 0 30px; }
+		}
+	}
 }
 
 .list-soft {
