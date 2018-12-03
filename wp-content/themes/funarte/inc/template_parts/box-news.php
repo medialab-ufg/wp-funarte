@@ -2,7 +2,7 @@
 /**
  * items: array of item
  * 			item: one array = ['tag_class_area'=>'', 'tag_name_area'=>'', 'tag_subname_area'=>'', 'title' => '' , 'url'=>'' , 'content'=>'']
- * 
+ * more_news_url: url to page of news
  */
 if(!isset($number_cols)):
 	$number_cols = 3;
@@ -15,8 +15,16 @@ else:
 	$li = "";
 	$flag = true;
 	foreach ($items as $item):
-		echo "lllllllllllllllllllll" . $col. "--" . $number_cols . "<br>";
-		if($col++ > $number_cols - 1) {
+		$li .= "<li class='color-" . $item['tag_class_area'] . "'>
+							<div class='link-area'>
+								<a href='#'>" . $item['tag_name_area'] . "</a>
+							</div>
+							<img src='" . $item['url_img'] . "' alt='" . $item['title'] . "'>
+							<h3 class='news-title'>" . $item['title'] . "</h3>
+							<span>" . $item['content'] . "</span>
+							<a href='" . $item['url'] . "' class='link-more'>Ler mais</a>
+						</li>";
+		if($col++ == $number_cols-1) {
 			//<!-- SÓ A PRIMEIRA UL VEM COM A CLASSE VISIBLE -->
 			if ($flag) {
 				$ul .= "<ul class='box-news__list visible'>$li</ul>";
@@ -27,22 +35,13 @@ else:
 			$li = "";
 			$col = 0; 
 		}
-		$li .= "<li class='color-" . $item['tag_class_area'] . "'>
-							<div class='link-area'>
-								<a href='#'>" . $item['tag_name_area'] . "</a>
-							</div>
-							<img src='" . $item['url_img'] . "' alt='" . $item['title'] . "'>
-							<h3 class='news-title'>" . $item['title'] . "</h3>
-							<span>" . $item['content'] . "</span>
-							<a href='" . $item['url'] . "' class='link-more'>Ler mais</a>
-						</li>";
 	endforeach;
 ?>
 	<section class="box-news mb-100">
 		<div class="container">
 			<h2 class="title-1 mb-44">Notícias</h2>
 			<?php echo $ul; ?>
-			<a href="#" class="box-news__load"><i class="mdi mdi-chevron-down"></i><i class="mdi mdi-plus"></i><span class="sr-only">Ver mais</span></a>
+			<a href="<? echo $more_news_url;?>" class="box-news__load"><i class="mdi mdi-chevron-down"></i><i class="mdi mdi-plus"></i><span class="sr-only">Ver mais</span></a>
 		</div>
 	</section>
 <?php endif; ?>

@@ -24,6 +24,12 @@
 
 	$query_news = ['cat' => (int)$area->term_id, 'post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'orderby' => 'date', 'order' => 'DESC'];
 	$noticias = query_posts($query_news);
+
+	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'cat' => (int)$area->term_id ];
+	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'),date('Y'), $query_eventos);
+	if (empty($eventos)) {
+		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query);
+	}
 ?>
 
 <main role="main">
@@ -160,10 +166,44 @@
 									'content'=> get_the_excerpt($noticia->ID),
 									'url_img'=> get_the_post_thumbnail_url($noticia->ID) ? get_the_post_thumbnail_url($noticia->ID) : $default_img_url];
 		}
-		$arg = ['items' => $items];
+		$arg = ['items' => $items, 'more_news_url' => '#'];
 		funarte_load_part('box-news', $arg);
 	?>
 	<!-- FIM NOTICIAS -->
+
+	<!-- EVENTOS -->
+	<div class="container">
+		<?php
+			$default_img_url = get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg';
+			$items = [];
+			foreach ($eventos as $evento) {
+				$inicio = strtotime('00:00:00', strtotime(get_post_meta($evento->ID, 'evento-inicio', true)));
+				$fim = strtotime('23:59:59', strtotime(get_post_meta($evento->ID, 'evento-fim', true)));
+				$local = get_post_meta($evento->ID, 'evento-local', true);
+				$schedule = strtotime(get_post_meta($evento->ID, 'evento-inicio', true));
+
+				if (($inicio <= time()) && ($fim >= time())) {
+					$day = date_i18n('d');
+					$month = date_i18n('F');
+				} else {
+					$day = date_i18n('d', $inicio);
+					$month = date_i18n('F', $inicio);
+				}
+				$items[] = ['url' => get_permalink($evento->ID),
+ 										'day'=> $day,
+										'month'=> $month,
+										'local' => $local,
+										'title' => $evento->post_title,
+										//'url_img' => get_the_post_thumbnail_url($evento->ID) ? get_the_post_thumbnail_url($evento->ID) : $default_img_url,
+										'url_img' => $default_img_url,
+										'content' => 	get_the_excerpt($evento->ID),
+ 										'schedule' => date_i18n('H:i', $schedule),
+ 										'tag_class_area'=>$area->slug];
+			}
+			$arg = ['items' => $items];
+			funarte_load_part('schedule-events', $arg);
+		?>
+	</div>
 
 </main>
 	

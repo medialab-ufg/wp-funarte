@@ -57,13 +57,13 @@ class Evento {
 
 	public function add_custom_box() {
 		add_meta_box('evento_custombox', __( 'Datas e horários do evento'),
-			array(&$this, 'print_evento_custom_box'), $this->POST_TYPE, 'side', 'high');
+			array(&$this, 'evento_custom_box'), $this->POST_TYPE, 'side', 'high');
 
 			add_meta_box('evento_details_custombox', __( 'Detalhes do evento'),
-			array(&$this, 'print_evento_details_custom_box'), $this->POST_TYPE, 'advanced', 'high');
+			array(&$this, 'evento_details_custom_box'), $this->POST_TYPE, 'advanced', 'high');
 	}
 
-	public function print_evento_custom_box() {
+	public function evento_custom_box() {
 		global $post;
 		$nonce = wp_create_nonce(__FILE__);
 		
@@ -90,7 +90,7 @@ class Evento {
 		require_once($META_FOLDER . 'metabox-evento.php');
 	}
 	
-	public function print_evento_details_custom_box() {
+	public function evento_details_custom_box() {
 		global $post;
 		$nonce = wp_create_nonce(__FILE__);
 		
