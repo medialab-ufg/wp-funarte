@@ -14,7 +14,7 @@
 				</div>
 
 				<!-- A DIV ABAIXO DEVE IR PARA O TEMPLATE_PARTS -->
-				<div class="box-title-page color-artes-visuais">
+				<div class="box-title-page">
 					<?php
 						$areas = get_the_category();
 						if (!empty($areas)): ?>

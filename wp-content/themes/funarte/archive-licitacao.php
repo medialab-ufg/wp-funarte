@@ -77,22 +77,24 @@ get_header();
 		<ul class="list-bidding">
 			<?php while (have_posts()): the_post(); ?>
 				<li>
-					<?php 
-						$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
-						if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
-							if(!$modalidade) {
-								echo '<div class="link-area"><a class="color-funarte" href="#">' . $categoria_modalidade[0]->name . '</a></div>';
+					<div class="list-bidding__text">
+						<?php
+							$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
+							if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
+								if(!$modalidade) {
+									echo '<div class="link-area"><a class="color-funarte" href="#">' . $categoria_modalidade[0]->name . '</a></div>';
+								}
 							}
-						}
-					?>
+						?>
 
-					<h3 class="title-h5">
-						<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
-							<?php the_title(); ?>
-						</a>
-					</h3>
-					<p><?php echo wp_trim_words(get_the_content(),30); ?></p>
-					<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
+						<h3 class="title-h5">
+							<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+								<?php the_title(); ?>
+							</a>
+						</h3>
+						<p><?php echo wp_trim_words(get_the_content(),30); ?></p>
+						<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
+					</div>
 				</li>
 			<?php endwhile; ?>
 		</ul>

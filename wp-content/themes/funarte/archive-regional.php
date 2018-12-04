@@ -22,7 +22,7 @@ get_header();
 				<div class="list-bidding__image">
 					<?php echo $imagem; ?>
 				</div>
-			<?php endif; ?>
+				<?php endif; ?>
 
 				<div class="list-bidding__text">
 					<div class="link-area">
