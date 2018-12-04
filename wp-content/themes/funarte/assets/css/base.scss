@@ -151,7 +151,7 @@ noscript {
 	display: block;
 }
 .title-h1 {
-	margin: 0 0 90px;
+	margin: 0;
 	padding: 0 0 0 17px;
 	font-weight: 400;
 	font-family: 'Sansita', sans-serif;
@@ -252,6 +252,8 @@ noscript {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	position: relative;
+
+	.title-h1 { margin: 0 0 90px; }
 }
 .box-title-page {
 	width: 72%;
@@ -792,7 +794,6 @@ noscript {
 		}
 	}
 }
-
 
 .box-tabs {
 	.list-tabs {
@@ -2446,6 +2447,86 @@ ul.slick-dots {
 
 /* LISTAS */
 
+.box-simple-links {
+	margin-bottom: 100px;
+
+	.title-h1 { margin-bottom: 60px; }
+
+	.list-simple-links {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			padding: 20px 0 12px;
+			border-bottom: 1px solid $verde-1;
+
+			& + li {
+
+			}
+		}
+
+		.link-area { margin-bottom: 8px; }
+
+		strong {
+			font-family: 'Sansita', sans-serif;
+			font-size: 1.3rem;
+			color: $cinza-6;
+			line-height: 1.5rem;
+			display: block;
+		}
+
+		.link-more { margin-top: 12px; }
+	}
+}
+
+.box-more-info {
+	margin-bottom: 100px;
+
+	.title-h1 { margin-bottom: 55px; }
+
+	.list-more-info {
+		margin: 0;
+		padding: 50px 0 94px;
+		list-style: none;
+		position: relative;
+
+		&:after {
+			content: "";
+			width: 999999px;
+			height: 100%;
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			background-color: $cinza-2;
+			z-index: -1;
+		}
+
+		li {
+
+			& > strong {
+				font-family: 'Sansita', sans-serif;
+				font-size: 1.3rem;
+				color: $cinza-6;
+				display: block;
+			}
+			& > span {
+				margin-bottom: 23px;
+				font-size: 1.3rem;
+				color: $cinza-6;
+				line-height: 1.5rem;
+				display: block;
+
+				& > span { display: block; }
+
+				strong { font-family: 'Sansita', sans-serif; }
+			}
+		}
+	}
+}
+
+
 .list-bidding {
 	margin: 0;
 	padding: 0 0 20px 50px;
@@ -2972,6 +3053,45 @@ ul.social-media-list {
 		padding-right: 0;
 	}
 }
+
+/***
+* CORES DAS ÁREAS
+***/
+
+body.body-color-circo {
+	.box-carousel-highlights:after,
+	ul.slick-dots li.slick-active button { background-color: $vermelho-1; }
+}
+body.body-color-teatro {
+	.box-carousel-highlights:after,
+	ul.slick-dots li.slick-active button { background-color: $rosa-1; }
+}
+body.body-color-danca {
+	.box-carousel-highlights:after,
+	ul.slick-dots li.slick-active button { background-color: $amarelo-1; }
+}
+body.body-color-musica {
+	.box-carousel-highlights:after,
+	ul.slick-dots li.slick-active button { background-color: $laranja-1; }
+}
+body.body-color-artes-integradas {
+	.box-carousel-highlights:after,
+	ul.slick-dots li.slick-active button { background-color: $roxo-1; }
+}
+body.body-color-artes-visuais {
+	.box-carousel-highlights:after,
+	ul.slick-dots li.slick-active button { background-color: $azul-1; }
+}
+body.body-color-literatura {
+	.box-carousel-highlights:after,
+	ul.slick-dots li.slick-active button { background-color: $limao-1; }
+}
+body.body-color-multicategoria {
+	.box-carousel-highlights:after,
+	ul.slick-dots li.slick-active button { background-color: $verde-3; }
+}
+
+
 
 /***
 * ACESSIBILIDADE

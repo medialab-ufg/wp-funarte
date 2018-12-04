@@ -43,12 +43,13 @@
 					if (!has_post_thumbnail($destaque->ID)) {
 						continue;
 					}
+
 					$img_url = get_the_post_thumbnail_url($destaque->ID);
 					$url = get_post_meta($destaque->ID, 'destaque-url', true);
 					$items[] = ['img_url'		=> $img_url,
-				 							'title'			=> $destaque->post_title, 
-											'descricao'	=> $destaque->post_content,
-											'url' 		=> $url];
+	 							'title'			=> $destaque->post_title,
+								'descricao'		=> $destaque->post_content,
+								'url'			=> $url];
 				}
 			}
 			$arg = ['items' => $items];
@@ -56,48 +57,80 @@
 			//FIM-CAROUSEL-HIGHLIGHTS
 		?>
 
-		<div class="row">
+		<div class="row justify-content-between">
 			<!--//MAIS INFORMAÇÕES -->
-			<div class="col-md-6">
-				<h3>Mais Informações</h3>
-				<?php
-					$fields = array('coordenador','telefone1','telefone2','fax','email','endereco');
-					foreach ($fields as $field) {
-						${$field} = get_post_meta($post_area->ID, 'area_de_interesse-' . $field, true);
-					}
-				?>
-				<span>
-					<strong><?php echo $coordenador; ?></strong>
-				</span>
-				<?php if (!empty($telefone1) || !empty($fax) || !empty($email)) { ?>
-					<span>
-						Contatos
-						<?php if (!empty($telefone1)) { ?>
-							<strong>Tel: <?php echo $telefone1; ?></strong>
-							<?php if (!empty($telefone2)) { ?>
-									<strong><?php echo $telefone2; ?></strong>
+			<div class="col-md-7">
+				<div class="box-more-info">
+					<h2 class="title-h1">Mais Informações</h2>
+
+					<ul class="list-more-info">
+						<?php
+							$fields = array('coordenador','telefone1','telefone2','fax','email','endereco');
+							foreach ($fields as $field) {
+								${$field} = get_post_meta($post_area->ID, 'area_de_interesse-' . $field, true);
+							}
+						?>
+						<li>
+							<span><?php echo $coordenador; ?></span>
+
+							<?php if (!empty($telefone1) || !empty($fax) || !empty($email)) { ?>
+								<strong>Contatos:</strong>
+
+								<?php if (!empty($telefone1)) { ?>
+									<span>Tel: <?php echo $telefone1; ?></span>
+									<?php if (!empty($telefone2)) { ?>
+											<span><?php echo $telefone2; ?></span>
+									<?php } ?>
+								<?php } ?>
+
+								<?php if (!empty($fax)) { ?>
+									<span><strong>Fax:</strong> <?php echo $fax; ?></span>
+								<?php } ?>
+
+								<?php if (!empty($email)) { ?>
+									<span><strong>E-mail:</strong> <?php echo $email; ?></span>
+								<?php } ?>
+
+								<?php if (!empty($endereco)) { ?>
+									<strong>Endereço:</strong>
+									<span><?php echo $endereco; ?></span>
+								<?php } ?>
 							<?php } ?>
-						<?php } ?>
-						<?php if (!empty($fax)) { ?>
-							<strong>Fax: <?php echo $fax; ?></strong>
-						<?php } ?>
-						<?php if (!empty($email)) { ?>
-							<strong><?php echo $email; ?></strong>
-						<?php } ?>
-						<?php if (!empty($endereco)) { ?>
-							<span>
-								Endereço
-								<strong><?php echo $endereco; ?></strong>
-							</span>
-						<?php } ?>
-					</span>
-				<?php } ?>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<!--//FIM MAIS INFORMAÇÕES -->
 
 			<!--//LINKS RELACIONADOS -->
-			<div class="col-md-6">
-				[LINKS RELACIONADOS]
+			<div class="col-md-4">
+				<div class="box-simple-links">
+					<h2 class="title-h1">Links relacionados</h2>
+
+					<ul class="list-simple-links">
+						<li class="color-funarte">
+							<div class="link-area">
+								<a href="#">CEDOC</a>
+							</div>
+							<strong>Escola Nacional de Circo</strong>
+							<a class="link-more" href="#">Visitar</a>
+						</li>
+						<li class="color-funarte">
+							<div class="link-area">
+								<a href="#">CEDOC</a>
+							</div>
+							<strong>Escola Nacional de Circo</strong>
+							<a class="link-more" href="#">Visitar</a>
+						</li>
+						<li class="color-funarte">
+							<div class="link-area">
+								<a href="#">CEDOC</a>
+							</div>
+							<strong>Escola Nacional de Circo</strong>
+							<a class="link-more" href="#">Visitar</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<!--//FIM LINKS RELACIONADOS -->
 		</div>
@@ -107,7 +140,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Espaços Culturais</h3>
+				<h2 class="title-1">Espaços Culturais</h2>
 			</div>
 			<?php 
 				foreach ($espacos as $espaco) {

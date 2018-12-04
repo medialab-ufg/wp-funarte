@@ -10,7 +10,7 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body>
+	<body class="<?php echo 'body-color-' . ($area->slug); ?>">
 		<!-- MENU DE ACESSIBILIDADE -->
 		<div class="accessibility-bar">
 			<nav class="container">
