@@ -138,28 +138,41 @@
 
 	<!-- ESPAÇO CULTURAL -->
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h2 class="title-1">Espaços Culturais</h2>
+		<div class='box-carousel-zoom'>
+			<h2 class="title-1">Espaços Culturais</h2>
+
+			<div class="carousel-zoom__wrapper">
+				<div class="carousel-zoom__control">
+					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
+				</div>
+
+				<ul class="carousel-zoom">
+				<?php
+					$contador = 0;
+
+					foreach ($espacos as $espaco) {
+						$estado = get_post_meta($espaco->ID, 'espaco-estado', true);
+						$area = (!isset($query['cat'])) ? get_single_category() : get_category($query['cat']);
+						if (!has_post_thumbnail($espaco->ID)) { 
+							continue;
+						}
+				?>
+							<li class="color-funarte carousel-zoom__item-<?php echo $contador++%3; ?>">
+								<div class="link-area">
+									<strong><?php echo $estado ?></strong>
+								</div>
+								<div class="carousel-zoom__image" style="background-image: url('<?php echo get_the_post_thumbnail_url($espaco->ID,'medium') ?>');"></div>
+
+								<div class="carousel-zoom__text">
+									<strong><?php echo esc_attr($espaco->post_title) ?></strong>
+									<p><?php echo \funarte\EspacoCultural::get_instance()->formata_endereco($espaco->ID) ?> - <?php echo get_post_meta($espaco->ID, 'espaco-telefone1', true) ?></p>
+									<a class="link-more" href="<?php echo get_permalink($espaco->ID) ?>">Ler mais</a>
+								</div>
+							</li>
+					<?php } ?>
+				</ul>
 			</div>
-			<?php 
-				foreach ($espacos as $espaco) {
-					$estado = get_post_meta($espaco->ID, 'espaco-estado', true);
-					$area = (!isset($query['cat'])) ? get_single_category() : get_category($query['cat']);
-					if (!has_post_thumbnail($espaco->ID)) { 
-						continue;
-					}
-					echo "<div class='col-md-6'><ul>";
-					echo "<li>$estado</li>";
-					echo "<li>$area->name</li>";
-					echo "<li>" . get_permalink($espaco->ID) . "</li>";
-					echo "<li>" . \funarte\EspacoCultural::get_instance()->formata_endereco($espaco->ID) . "</li>"; 
-					echo "<li>" . get_post_meta($espaco->ID, 'espaco-telefone1', true) . "</li>";
-					echo "<li>" . esc_attr($espaco->post_title) . "</li>";
-					echo "<li>" . get_the_post_thumbnail($espaco->ID,'medium') . "</li>";
-					echo "</ul></div>";
-				}
-			?>
 		</div>
 	</div>
 	<!-- FIM ESPAÇO CULTURAL -->

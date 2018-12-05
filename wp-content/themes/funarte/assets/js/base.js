@@ -19,6 +19,9 @@ $(document).ready(function() {
 
 	// Espaços Culturais
 	base.carrossel.iniciarEventos();
+
+	// Interna de categorias
+	base.carrossel.iniciarZoom();
 });
 
 var base = {
@@ -208,6 +211,31 @@ var base = {
 					]
 				});
 			}
+		},
+
+		iniciarZoom: function() {
+			var $carousel = $('.box-carousel-zoom');
+
+			$('.carousel-zoom').slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+				adaptiveHeight: true,
+				variableWidth: true,
+				// responsive: [
+				// 	{
+				// 		breakpoint: 768,
+				// 		settings: {
+				// 			slidesToShow: 1,
+				// 			slidesToScroll: 1,
+				// 			variableWidth: false
+				// 		}
+				// 	}
+				// ]
+			});
 		}
 	},
 
