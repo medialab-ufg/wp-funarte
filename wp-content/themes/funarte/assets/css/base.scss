@@ -1138,8 +1138,70 @@ body.js .collapse__text { display: none; }
 /* CARROSSEL DE IMAGENS COM TAMANHOS DIFERENTES */
 
 .box-carousel-zoom {
-
+	width: 100%;
+	margin-bottom: 169px;
 }
+
+.carousel-zoom__wrapper {
+	margin-top: 60px;
+	position: relative;
+
+	&:before {
+		content: "";
+		width: 999999px;
+		height: 175px;
+		display: block;
+		position: absolute;
+		bottom: -42px;
+		right: 90%;
+		background-color: $verde-1;
+		z-index: -1;
+	}
+	&:after {
+		content: "";
+		width: 999999px;
+		height: 420px;
+		display: block;
+		position: absolute;
+		top: -60px;
+		left: 60%;
+		background-color: $cinza-2;
+		z-index: -1;
+	}
+}
+
+.carousel-zoom__control {
+	width: 65px;
+	height: 30px;
+	position: absolute;
+	right: 25%;
+	bottom: -10px;
+	z-index: 2;
+
+	button {
+		width: 30px;
+		height: 30px;
+		font-size: 32px;
+		color: $branco;
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		overflow: hidden;
+		border: none;
+		background-color: $verde-1;
+
+		&.control__next { right: 0; }
+		&.control__prev { left: 0; }
+
+		i {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+}
+
 .carousel-zoom {
 	margin: 0 -19px;
 	padding: 0;
@@ -1155,7 +1217,6 @@ body.js .collapse__text { display: none; }
 		display: flex;
 		justify-content: space-between;
 		position: relative;
-		background-color: orange;
 
 		.carousel-zoom__image {
 			position: absolute;
@@ -1176,7 +1237,20 @@ body.js .collapse__text { display: none; }
 	}
 }
 .carousel-zoom__text {
+	padding-top: 24px;
 	display: none;
+
+	strong {
+		margin-bottom: 38px;
+		font-weight: 700;
+		font-family: 'Sansita', sans-serif;
+		font-size: 1.2rem;
+		color: $cinza-6;
+		line-height: 1rem;
+		display: block;
+	}
+
+	.link-more { margin-top: 22px; }
 }
 .carousel-zoom__item-0 {
 	width: 245px;
@@ -1207,7 +1281,8 @@ body.js .collapse__text { display: none; }
 	}
 
 	.carousel-zoom__text {
-		padding: 0 20px 0 326px;
+		padding-right: 20px;
+		padding-left: 326px;
 		display: block;
 	}
 }
@@ -1219,15 +1294,36 @@ body.js .collapse__text { display: none; }
 	.carousel-zoom__item-0 .link-area,
 	.carousel-zoom__item-1 .link-area { top: 0; }
 
+	.carousel-zoom {
+		li {
+			height: auto;
+
+			.carousel-zoom__image {
+				width: auto;
+				height: 207px;
+				margin-bottom: 20px;
+				position: static;
+				left: auto;
+				bottom: auto;
+			}
+
+			.carousel-zoom__text {
+				padding: 0;
+				display: block;
+			}
+
+			.link-more { margin-top: 2px; }
+		}
+
+		.slick-list { height: auto; }
+	}
+
+	.carousel-zoom__wrapper:before { bottom: 150px; }
+}
+@media screen and (max-width:600px) {
 	.carousel-zoom__item-0,
 	.carousel-zoom__item-1,
 	.carousel-zoom__item-2 { width: auto; }
-	.carousel-zoom li .carousel-zoom__image {
-		width: auto;
-		position: static;
-		left: auto;
-		bottom: auto;
-	}
 }
 
 /* CARROSSEL DE EVENTOS */

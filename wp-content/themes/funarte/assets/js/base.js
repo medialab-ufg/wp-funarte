@@ -225,16 +225,21 @@ var base = {
 				nextArrow: $carousel.find('.control__next'),
 				adaptiveHeight: true,
 				variableWidth: true,
-				// responsive: [
-				// 	{
-				// 		breakpoint: 768,
-				// 		settings: {
-				// 			slidesToShow: 1,
-				// 			slidesToScroll: 1,
-				// 			variableWidth: false
-				// 		}
-				// 	}
-				// ]
+				responsive: [
+					{
+						breakpoint: 990,
+						settings: {
+							variableWidth: false
+						}
+					},
+					{
+						breakpoint: 600,
+						settings: {
+							variableWidth: false,
+							slidesToShow: 1
+						}
+					}
+				]
 			});
 		}
 	},
