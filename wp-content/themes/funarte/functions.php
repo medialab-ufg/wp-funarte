@@ -105,3 +105,6 @@ require_once('inc/post_types/area_interesse/area_interesse.php');
 require_once('inc/post_types/nova_aquisicao/nova_aquisicao.php');
 require_once('inc/post_types/espaco_cultural/espaco_cultural.php');
 require_once('inc/post_types/identidade_visual/identidade_visual.php');
+
+//includes - customizes on pages
+require_once('inc/pages/relatorios.php');
