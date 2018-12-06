@@ -1,5 +1,5 @@
 <?php
-get_header();
+get_header(); the_post();
 ?>
 <main role="main">
 	<div class="container">
