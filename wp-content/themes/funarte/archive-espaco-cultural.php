@@ -42,7 +42,7 @@ get_header();
 					<div class="list-soft__item col-lg-5 color-funarte">
 						<div class="list-soft__content">
 							<?php
-								$thumbnail = get_the_post_thumbnail( $post_id,'medium');
+								$thumbnail = get_the_post_thumbnail( get_the_ID(),'medium');
 							?>
 
 							<div class="list-soft__image <?php echo empty($thumbnail) ? 'no-image' : '' ?>">
