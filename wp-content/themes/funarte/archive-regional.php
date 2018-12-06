@@ -15,7 +15,7 @@ get_header();
 			<?php if(have_posts()): while(have_posts()): the_post(); ?>
 			<li class="color-funarte">
 				<?php
-					$imagem = get_the_post_thumbnail( $post_id,'medium');
+					$imagem = get_the_post_thumbnail( get_the_ID(),'medium');
 
 					if (!empty($imagem)):
 				?>

@@ -1,5 +1,6 @@
 <?php
-get_header();
+get_header(); the_post();
+
 $arg = array(
 	'post_parent' => get_the_ID(),
 	'post_type'   => 'page',
@@ -9,26 +10,28 @@ $arg = array(
 $contents = [];
 $filhos = get_children($arg);
 if(!empty($filhos)):
-	foreach($filhos as $filho): 
+	foreach($filhos as $filho):
 		$contents[$filho->post_title] = $filho->post_content;
 	endforeach;
 endif;
+
 ?>
 <main role="main">
 	<div class="container">
-		
 		<div class="box-title">
-			<h2 class="title-h1">Funarte <span>institucional</span></h2>
+			<h2 class="title-h1">
+				<a href="">Funarte</a>
+				<span><?php the_title(); ?></span>
+			</h2>
 		</div>
 
 		<section class="box-tabs">
 			<div class="list-tabs">
 				<div class="container">
 					<ul>
-						<li class="active"><a href="#">Sobre</a></li>
-						<li><a href="#">Missão</a></li>
-						<li><a href="#">Informações Básicas</a></li>
-						<li><a href="#">Identidade</a></li>
+						<?php foreach ($contents as $title => $content):
+							echo "<li class='$title'><a href='#'>$title</a></li>";
+						endforeach;?>
 					</ul>
 				</div>
 			</div>
@@ -36,14 +39,14 @@ endif;
 			<div class="content-tab">
 				<div class="container">
 					<?php foreach ($contents as $title => $content) : ?>
-						<div>
-							<h3 class="title-h5"><?php echo $title ?></h3>
-							<p><?php echo $content ?></p>
+						<div class="<?php echo $title; ?>">
+							<?php echo $content;?>
 						</div>
-					<?php	endforeach; ?>
+					<?php endforeach;?>
 				</div>
 			</div>
 		</section>
 	</div>
 </main>
+	
 <?php get_footer(); ?>

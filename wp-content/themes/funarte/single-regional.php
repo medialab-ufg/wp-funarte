@@ -19,7 +19,7 @@ if(have_posts()) : the_post();
 			<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/regional'; ?>">Funarte <span>Representações Regionais</span></a></h2>
 		</div>
 
-		<?php $imagem = get_the_post_thumbnail( $post_id,'medium'); ?>
+		<?php $imagem = get_the_post_thumbnail( get_the_ID(),'medium'); ?>
 
 		<div class="box-title-page <?php echo !empty($imagem) ? 'box-title-page--image' : ''; ?>">
 			<h3 class="title-page"><?php the_title(); ?></h3>
