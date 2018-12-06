@@ -1135,6 +1135,101 @@ body.js .collapse__text { display: none; }
 * CARROSSEIS
 ***/
 
+/* CARROSSEL DE IMAGENS COM TAMANHOS DIFERENTES */
+
+.box-carousel-zoom {
+
+}
+.carousel-zoom {
+	margin: 0 -19px;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row wrap;
+
+	li {
+		height: 280px;
+		margin: 0 0 40px;
+		padding: 14px 19px 0;
+		display: flex;
+		justify-content: space-between;
+		position: relative;
+		background-color: orange;
+
+		.carousel-zoom__image {
+			position: absolute;
+			left: 19px;
+			bottom: 0;
+			border: 6px solid #fff;
+			background-position: center;
+			background-repeat: repeat;
+			background-size: cover;
+		}
+	}
+
+	.link-area {
+		position: absolute;
+		top: 0;
+		left: 34px;
+		z-index: 2;
+	}
+}
+.carousel-zoom__text {
+	display: none;
+}
+.carousel-zoom__item-0 {
+	width: 245px;
+
+	.link-area { top: 59px; }
+
+	.carousel-zoom__image {
+		width: 207px;
+		height: 207px;
+	}
+}
+.carousel-zoom__item-1 {
+	width: 268px;
+
+	.link-area { top: 36px; }
+
+	.carousel-zoom__image {
+		width: 230px;
+		height: 230px;
+	}
+}
+.carousel-zoom__item-2 {
+	width: 695px;
+
+	.carousel-zoom__image {
+		width: 266px;
+		height: 266px;
+	}
+
+	.carousel-zoom__text {
+		padding: 0 20px 0 326px;
+		display: block;
+	}
+}
+
+@media screen and (max-width:1199px) {
+	.carousel-zoom__item-2 { width: 465px; }
+}
+@media screen and (max-width:990px) {
+	.carousel-zoom__item-0 .link-area,
+	.carousel-zoom__item-1 .link-area { top: 0; }
+
+	.carousel-zoom__item-0,
+	.carousel-zoom__item-1,
+	.carousel-zoom__item-2 { width: auto; }
+	.carousel-zoom li .carousel-zoom__image {
+		width: auto;
+		position: static;
+		left: auto;
+		bottom: auto;
+	}
+}
+
 /* CARROSSEL DE EVENTOS */
 
 .box-carousel-events { width: 100%; }
