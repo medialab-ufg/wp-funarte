@@ -363,6 +363,7 @@ noscript {
 /* SESSÕES COLORIDAS */
 
 .link-area {
+	margin: 0 -5px 0 -20px;
 	padding: 0 0 0 15px;
 	display: flex;
 	align-items: flex-end;
@@ -370,6 +371,7 @@ noscript {
 
 	a,
 	strong {
+		margin: 0 5px 10px 20px;
 		padding: 5px 15px 1px;
 		font-weight: 400;
 		font-size: .9rem;
@@ -378,9 +380,6 @@ noscript {
 		display: inline-block;
 		position: relative;
 		background-color: $cinza-1;
-
-		& + a,
-		& + strong { margin-left: 25px; }
 
 		&:after {
 			content: "";
