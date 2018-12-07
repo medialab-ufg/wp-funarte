@@ -217,6 +217,10 @@ class Edital {
 		}
 		return null;
 	}
+
+	public function get_post_type() {
+		return $this->POST_TYPE;
+	}
 }
 
 Edital::get_instance();

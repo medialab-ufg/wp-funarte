@@ -155,6 +155,10 @@ class Regional {
 		update_post_meta($post_id, 'regional-contatos', $contatos);
 		return $regional;
 	}
+
+	public function get_post_type() {
+		return $this->POST_TYPE;
+	}
 }
 
 Regional::get_instance();

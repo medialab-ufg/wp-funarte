@@ -168,6 +168,10 @@ class EspacoCultural {
 		return preg_replace('/[ ]{2,}/', ' ', $return);
 	}
 
+	public function get_post_type() {
+		return $this->POST_TYPE;
+	}
+
 }
 
 EspacoCultural::get_instance();

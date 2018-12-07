@@ -233,6 +233,10 @@ class Evento {
 		), $params);
 		return query_posts($params);
 	}
+	
+	public function get_post_type() {
+		return $this->POST_TYPE;
+	}
 }
 
 Evento::get_instance();
