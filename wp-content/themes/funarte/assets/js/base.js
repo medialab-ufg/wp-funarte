@@ -22,6 +22,9 @@ $(document).ready(function() {
 
 	// Interna de categorias
 	base.carrossel.iniciarZoom();
+
+	// Interna de notícias
+	base.carrossel.iniciarImagens();
 });
 
 var base = {
@@ -51,7 +54,10 @@ var base = {
 	menu: {
 		manipular: function() {
 			$('.navbar-toggler').on('click',function() {
-				$(this).siblings('.menu-wrapper').toggleClass('active');
+				$(this)
+				.parents('.navigation-menu')
+				.find('.menu-wrapper')
+				.toggleClass('active');
 			});
 		}
 	},
@@ -76,6 +82,35 @@ var base = {
 	},
 
 	carrossel: {
+		iniciarImagens: function() {
+			var $carousel = $('.box-carousel-image');
+
+			$('.carousel-image').slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 586,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
+		},
+
 		iniciarDestaques: function() {
 			var $carousel = $('.box-carousel-highlights');
 

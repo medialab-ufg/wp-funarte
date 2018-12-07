@@ -54,6 +54,10 @@
 						</button>
 
 						<div class="menu-wrapper">
+							<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+								<i class="mdi mdi-close"></i>
+							</button>
 							<?php
 								wp_nav_menu( array(
 									'theme_location'    => 'principal',
