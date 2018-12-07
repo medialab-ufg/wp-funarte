@@ -72,7 +72,7 @@
 									'content'=> get_the_excerpt($noticia->ID),
 									'url_img'=> get_the_post_thumbnail_url($noticia->ID) ? get_the_post_thumbnail_url($noticia->ID) : $default_img_url];
 		}
-		$arg = ['items' => $items, 'more_news_url' => '#'];
+		$arg = ['items' => $items, 'more_news_url' => '/noticias'];
 		funarte_load_part('box-news', $arg);
 	?>
 	<!-- FIM NOTICIAS -->
@@ -98,10 +98,10 @@
 
 				if (($inicio <= time()) && ($fim >= time())) {
 					$day = date_i18n('d');
-					$month = date_i18n('F');
+					$month = date_i18n('M');
 				} else {
 					$day = date_i18n('d', $inicio);
-					$month = date_i18n('F', $inicio);
+					$month = date_i18n('M', $inicio);
 				}
 				$items[] = ['url' => get_permalink($evento->ID),
  										'day'=> $day,
