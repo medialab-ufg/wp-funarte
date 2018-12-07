@@ -41,6 +41,7 @@
 			$area = get_the_category($edital->ID);
 			$items[] = ['tag_class_area'=>$area[0]->slug,
 									'tag_name_area'=>$area[0]->name,
+									'tag_url_area'=>get_category_link( $area[0]->cat_ID ),
 									'tag_subname_area'=>\funarte\Edital::get_instance()->get_edital_status($edital->ID),
 									'title' => $edital->post_title ,
 									'url'=>get_permalink($edital->ID)];
@@ -64,13 +65,14 @@
 			$area = get_the_category($noticia->ID);
 			$items[] = ['tag_class_area'=>$area[0]->slug,
 									'tag_name_area' =>$area[0]->name,
+									'tag_url_area'=>get_category_link( $area[0]->cat_ID ),
 									'tag_subname_area'=>'',
 									'title' => $noticia->post_title,
 									'url'=> get_permalink($noticia->ID),
 									'content'=> get_the_excerpt($noticia->ID),
 									'url_img'=> get_the_post_thumbnail_url($noticia->ID) ? get_the_post_thumbnail_url($noticia->ID) : $default_img_url];
 		}
-		$arg = ['items' => $items, 'more_news_url' => '#'];
+		$arg = ['items' => $items, 'more_news_url' => '/noticias'];
 		funarte_load_part('box-news', $arg);
 	?>
 	<!-- FIM NOTICIAS -->
@@ -96,10 +98,10 @@
 
 				if (($inicio <= time()) && ($fim >= time())) {
 					$day = date_i18n('d');
-					$month = date_i18n('F');
+					$month = date_i18n('M');
 				} else {
 					$day = date_i18n('d', $inicio);
-					$month = date_i18n('F', $inicio);
+					$month = date_i18n('M', $inicio);
 				}
 				$items[] = ['url' => get_permalink($evento->ID),
  										'day'=> $day,

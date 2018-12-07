@@ -89,6 +89,10 @@ class NovaAquisicao {
 		update_post_meta($post_id, 'aquisicao-timestamp', $timestamp);
 	}
 
+	public function get_post_type() {
+		return $this->POST_TYPE;
+	}
+
 }
 
 NovaAquisicao::get_instance();

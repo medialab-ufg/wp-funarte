@@ -1,7 +1,7 @@
 <?php
 /**
  * items: array of item
- * 			item: one array = ['tag_class_area'=>'', 'tag_name_area'=>'', 'tag_subname_area'=>'', 'title' => '' , 'url'=>'' , 'content'=>'']
+ * 			item: one array = ['tag_class_area'=>'', 'tag_name_area'=>'', 'tag_url_area'=>'', 'tag_subname_area'=>'', 'title' => '' , 'url'=>'' , 'content'=>'']
  * more_news_url: url to page of news
  */
 if(!isset($number_cols)):
@@ -15,9 +15,10 @@ else:
 	$li = "";
 	$flag = true;
 	foreach ($items as $item):
+		$tag_url = isset($item['tag_url_area']) ? $item['tag_url_area'] : '#';
 		$li .= "<li class='color-" . $item['tag_class_area'] . "'>
 							<div class='link-area'>
-								<a href='#'>" . $item['tag_name_area'] . "</a>
+								<a href='$tag_url'>" . $item['tag_name_area'] . "</a>
 							</div>
 							<img src='" . $item['url_img'] . "' alt='" . $item['title'] . "'>
 							<h3 class='news-title'>" . $item['title'] . "</h3>
