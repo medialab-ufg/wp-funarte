@@ -2,7 +2,7 @@
 /**
  * title: title
  * items: array of item
- * 			item: one array = ['tag_class_area'=>'', 'tag_name_area'=>'', 'tag_subname_area'=>'', 'title' => '' , 'url'=>'']
+ * 			item: one array = ['tag_class_area'=>'', 'tag_name_area'=>'', 'tag_url_area'=>'', 'tag_subname_area'=>'', 'title' => '' , 'url'=>'']
  * destaque: ['tag_class_area'=>'', 'tag_name_area'=>'', 'url'=>'', 'content'=>'', 'title'=>'', 'img_url'=>'']
  * 
  */
@@ -25,7 +25,8 @@ else:
 							<?php foreach ($items as $item): ?>
 								<li>
 									<div class="link-area">
-										<a class="color-<?php echo $item['tag_class_area']; ?>" href="#">
+										<?php $tag_url = isset($item['tag_url_area']) ? $item['tag_url_area'] : '#';?>
+										<a class="color-<?php echo $item['tag_class_area']; ?>" href="<?php echo $tag_url; ?>">
 											<?php echo $item['tag_name_area']; ?>
 										</a>
 										<span><?php echo $item['tag_subname_area']; ?></span>

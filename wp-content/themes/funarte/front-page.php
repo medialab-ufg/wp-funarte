@@ -41,6 +41,7 @@
 			$area = get_the_category($edital->ID);
 			$items[] = ['tag_class_area'=>$area[0]->slug,
 									'tag_name_area'=>$area[0]->name,
+									'tag_url_area'=>get_category_link( $area[0]->cat_ID ),
 									'tag_subname_area'=>\funarte\Edital::get_instance()->get_edital_status($edital->ID),
 									'title' => $edital->post_title ,
 									'url'=>get_permalink($edital->ID)];
@@ -64,6 +65,7 @@
 			$area = get_the_category($noticia->ID);
 			$items[] = ['tag_class_area'=>$area[0]->slug,
 									'tag_name_area' =>$area[0]->name,
+									'tag_url_area'=>get_category_link( $area[0]->cat_ID ),
 									'tag_subname_area'=>'',
 									'title' => $noticia->post_title,
 									'url'=> get_permalink($noticia->ID),
