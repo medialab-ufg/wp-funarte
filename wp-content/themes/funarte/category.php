@@ -32,7 +32,7 @@
 	}
 ?>
 
-<main role="main">
+<main role="main" class="mb-100">
   <a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container">
 		<?php

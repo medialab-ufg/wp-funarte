@@ -35,7 +35,7 @@
 					require_once($META_FOLDER . 'arquivos-relacionados.php');
 				?>
 
-				<div class="row justify-content-between">
+				<div class="row justify-content-between mb-100">
 					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
 						<div class="box-text">
 							<div class="box-text__date">

@@ -118,6 +118,10 @@ class Licitacao {
 		return $licitacao;
 	}
 
+	public function get_post_type() {
+		return $this->POST_TYPE;
+	}
+
 }
 
 Licitacao::get_instance();

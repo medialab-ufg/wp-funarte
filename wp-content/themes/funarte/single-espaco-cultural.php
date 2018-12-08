@@ -31,7 +31,7 @@ if (have_posts()): the_post();
 			</div>
 			<?php funarte_load_part('title-page', ['tag'=> $estado, 'title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ),'tag_class_area'=>'funarte']); ?>
 
-			<div class="row justify-content-between">
+			<div class="row justify-content-between mb-100">
 				<div class="col-md-6">
 					<div class="box-text">
 						<h4 class="title-5">Sobre</h4>
