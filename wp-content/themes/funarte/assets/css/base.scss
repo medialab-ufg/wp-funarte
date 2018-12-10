@@ -295,7 +295,7 @@ noscript {
 		font-size: 1.8rem;
 	}
 
-	strong {
+	& > strong {
 		margin-top: 18px;
 		font-family: 'Sansita', sans-serif;
 		font-weight: 700;
@@ -2884,9 +2884,12 @@ ul.slick-dots {
 		& + li { padding: 50px 0 37px; }
 
 		.list-bidding__image {
-			min-width: 214px;
-			max-width: 214px;
+			width: 214px;
+			height: 214px;
 			margin-right: 50px;
+			background-position: center;
+			background-repeat: repeat;
+			background-size: cover;
 
 			img {
 				width: 100%;
@@ -2931,6 +2934,7 @@ ul.slick-dots {
 
 	.link-more { margin-top: 17px; }
 }
+.list-bidding--type-c { padding: 50px 0 35px; }
 
 aside .list-bidding--type-b {
 	padding: 50px 0 35px 30px;
