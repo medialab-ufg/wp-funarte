@@ -41,12 +41,15 @@ query_posts(array_merge(array(
 							<div class='link-area'>
 								<a href="<?php echo home_url() . '/category/' . $area->slug; ?>"><?php echo $area->name; ?></a>
 							</div>
+
 							<?php 
 								if (has_post_thumbnail()):
-									the_post_thumbnail('medium', array('title' => esc_attr(get_the_title()), 'width' => 120, 'height' => 90)); 
-								else:?>
-									<img src='<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>' alt='<?php esc_attr(get_the_title()); ?>'>
+							?>
+									<div class="box-news__image" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');"></div>
+							<?php else:?>
+										<img src='<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>' alt='<?php esc_attr(get_the_title()); ?>'>
 							<?php endif; ?>
+
 							<h3 class='news-title'><?php the_title(); ?></h3>
 							<?php the_excerpt(); ?>
 							<a href='<?php the_permalink();  ?>' class='link-more'>Ler mais</a>
