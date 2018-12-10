@@ -10,6 +10,7 @@ class EspacoCultural {
 		add_action('init', array( &$this, "register_post_type" ));
 		add_action('add_meta_boxes', array(&$this, 'add_custom_box'));
 		add_action('save_post', array(&$this, 'save_custom_box'));
+		add_action('wp_enqueue_scripts', array(&$this, 'extra_files'), 15);
 	}
 
 	public function add_custom_box() {
@@ -148,6 +149,30 @@ class EspacoCultural {
 		return $espacos;
 	}
 
+	/**
+	 * Retorna uma lista de estados com espaços culturais
+	 * 
+	 * @return array
+	 */
+	public function get_estados() {
+		$estados = array();
+		$espacos = get_posts(array(
+			'post_type' => $this->POST_TYPE,
+			'posts_per_page' => -1
+		));
+		
+		foreach ($espacos as $espaco) {
+			$estado = get_post_meta($espaco->ID, 'espaco-estado', true);
+			if (!empty($estado))
+				array_push($estados, $estado); 
+		}
+		
+		$estados = array_unique($estados);
+		sort($estados);
+		
+		return $estados;
+	}
+
 	public function formata_endereco($espacoID) {
 		$array = array('rua', 'numero', 'complemento', 'bairro', 'cidade', 'cep');
 		foreach ($array AS $key)
@@ -170,6 +195,12 @@ class EspacoCultural {
 
 	public function get_post_type() {
 		return $this->POST_TYPE;
+	}
+
+	public function extra_files() {
+		if ( is_post_type_archive($this->POST_TYPE) ) {
+			wp_enqueue_script('licitacao-js', get_theme_file_uri() . '/inc/post_types/espaco_cultural/espaco_cultural.js', null, microtime(), true);
+		}
 	}
 
 }

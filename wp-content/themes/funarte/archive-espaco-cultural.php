@@ -1,5 +1,28 @@
 <?php
 get_header();
+$estados = \funarte\EspacoCultural::get_instance()->get_estados();
+
+if (isset($_GET['estado']) && !empty($_GET['estado']))
+	$estado = $_GET['estado'];
+$busca = (isset($_GET['busca'])) ? $_GET['busca'] : '';
+$params = array(
+	'post_type' => \funarte\EspacoCultural::get_instance()->get_post_type(),
+	'orderby' => 'title',
+	'order' => 'ASC',
+	'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
+	'posts_per_page' => 10,
+	's' => $busca,
+);
+
+if (isset($estado)) {
+	$params = array_merge(array(
+		'meta_key' => 'espaco-estado',
+		'meta_value' => $estado
+	), $params);
+} else {
+	$estado = "";
+}
+query_posts($params);
 ?>
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
@@ -13,19 +36,24 @@ get_header();
 				<form class="form-area" action="#" method="post">
 					<fieldset>
 						<legend>filtrar por local</legend>
-						<select>
+						<select class='select_local' onChange="filter();">
 							<option value="">Filtrar por local</option>
+							<?php foreach ($estados as $estado_) { ?>
+								<option value="<?php echo $estado_; ?>" <?php if($estado_ == $estado) echo 'selected=true'; ?> >
+									<?php echo $estado_; ?>
+								</option>
+							<?php } ?>
 						</select>
 					</fieldset>
 				</form>
 
-				<form class="form-filtro-editais" action="#" method="post">
+				<form class="form-filtro form-filtro--espaco-cultural">
 					<fieldset>
 						<legend>Formulário de filtro de editais</legend>
 
 						<div class="form-group">
 							<label class="sr-only" for="filtro-editais-texto">Pesquisar editais</label>
-							<input type="text" id="filtro-editais-texto" placeholder="Pesquisar editais">
+							<input type="text" id="filtro-editais-texto" class='input_search' placeholder="Pesquisar editais" value="<?php echo $busca; ?>">
 							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
 						</div>
 					</fieldset>
@@ -66,23 +94,9 @@ get_header();
 						</div>
 					</div>
 				<?php endwhile; ?>
+				<?php echo get_pagination(); ?>
 			</div>
 		</section>
-
-		<div class="box-pagination">
-			<ul class="box-pagination__list">
-				<li class="active"><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-			</ul>
-			<div class="box-pagination__control">
-				<button type="button" class="control__previous"><i class="mdi mdi-chevron-left"></i></button>
-				<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
-			</div>
-		</div>
 	</div>
 	<?php endif;?>
 </main>

@@ -56,7 +56,7 @@ get_header();
 				<form class="form-ano form-select" action="#" method="post">
 					<fieldset>
 						<legend>Formulário de ano </legend>
-						<select onChange="applyFilters();" class="select_ano">
+						<select onChange="filter();" class="select_ano">
 							<?php foreach ($anos as $ano_):?>
 							<option value="<?php echo $ano_; ?>" <?php if($ano_ == $ano) echo 'selected'; ?>>
 								<?php echo $ano_; ?>
@@ -69,7 +69,7 @@ get_header();
 				<form class="form-categoria form-select" action="#" method="post">
 					<fieldset>
 						<legend>Formulário de categoria</legend>
-						<select onChange="applyFilters();" class="select_modalidade">
+						<select onChange="filter();" class="select_modalidade">
 							<option value="">Categoria</option>
 							<?php foreach ($modalidades as $modalidade_):?>
 								<option value="<?php echo $modalidade_->slug; ?>" <?php if($modalidade && $modalidade_->slug == $modalidade->slug ) echo 'selected'; ?>>
@@ -91,6 +91,7 @@ get_header();
 					<div class="list-bidding__text">
 						<?php
 							$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
+							if(!empty($categoria_modalidade)) 
 							if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
 								echo '<div class="link-area"><a class="color-funarte" href="?modalidade=' . $categoria_modalidade[0]->slug . '">' . $categoria_modalidade[0]->name . '</a></div>';
 							}
@@ -116,25 +117,3 @@ get_header();
 <?php
 get_footer();
 ?>
-
-<script>
-
-function applyFilters( ) {
-	var url = window.location.protocol + '//' + window.location.host + window.location.pathname;
-	var ano = $('.select_ano').val();
-	var modalidade = $('.select_modalidade').val();
-	console.log(ano);
-	console.log(modalidade);
-	if(ano !== null && ano !== '') {
-		url += '?ano='+ano;
-	}
-	if(modalidade !== null && modalidade !== '') {
-		if (url.indexOf('?') > -1)
-			url += '&modalidade='+modalidade;
-		else
-			url += '?modalidade='+modalidade;
-	}
-	window.location.href = url;
-}
-
-</script>

@@ -54,7 +54,10 @@ query_posts(array_merge(array(
 							<?php the_excerpt(); ?>
 							<a href='<?php the_permalink();  ?>' class='link-more'>Ler mais</a>
 						</li>
-					<?php endwhile;	endif; ?>
+					<?php 
+					endwhile;
+					echo get_pagination();
+					endif; ?>
 				</ul>
 			</div>
 		</section>
