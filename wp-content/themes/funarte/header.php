@@ -1,6 +1,6 @@
 <?php
-	$cod_color_area = get_query_var('cat');
-	$cod_color_area = (!empty($cod_color_area)) ? get_category((int)$cod_color_area) : null;
+	$area = get_query_var('cat');
+	$area = (!empty($area)) ? get_category((int)$area) : null;
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
 		<?php wp_head(); ?>
 	</head>
 	
-	<body <?php echo $cod_color_area ? "class='body-color-$cod_color_area->slug'" : "" ; ?> >
+	<body <?php echo $area ? "class='body-color-$area->slug'" : "" ; ?> >
 		<!-- MENU DE ACESSIBILIDADE -->
 		<div class="accessibility-bar">
 			<nav class="container">
