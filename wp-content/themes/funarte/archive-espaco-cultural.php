@@ -35,7 +35,7 @@ get_header();
 	</div>
 
 	<?php if (have_posts()): ?>
-	<div class="container">
+	<div class="container mb-100">
 		<section class="list-soft">
 			<div class="row justify-content-between">
 				<?php while (have_posts()): the_post(); ?>

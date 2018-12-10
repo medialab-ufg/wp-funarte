@@ -30,7 +30,7 @@ query_posts(array_merge(array(
 			</div>
 		</div>
 
-		<section class="box-news mb-100">
+		<section class="box-news">
 			<div class="container">
 				<ul class='box-news__list visible'>
 					<?php if (have_posts()) :	while (have_posts()) : 
@@ -39,7 +39,7 @@ query_posts(array_merge(array(
 						?>
 						<li class='color-<?php echo $area->slug; ?>'>
 							<div class='link-area'>
-									<a href='#'><?php echo $area->name; ?></a>
+								<a href="<?php echo home_url() . '/category/' . $area->slug; ?>"><?php echo $area->name; ?></a>
 							</div>
 							<?php 
 								if (has_post_thumbnail()):
@@ -48,7 +48,7 @@ query_posts(array_merge(array(
 									<img src='<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>' alt='<?php esc_attr(get_the_title()); ?>'>
 							<?php endif; ?>
 							<h3 class='news-title'><?php the_title(); ?></h3>
-							<span></span>
+							<?php the_excerpt(); ?>
 							<a href='<?php the_permalink();  ?>' class='link-more'>Ler mais</a>
 						</li>
 					<?php endwhile;	endif; ?>
