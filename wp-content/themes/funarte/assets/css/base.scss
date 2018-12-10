@@ -1016,7 +1016,7 @@ body.js .collapse__text { display: none; }
 	.link-area {
 		position: absolute;
 		top: 21px;
-		left: 56px;
+		left: 40px;
 	}
 
 	.box-news__list {
@@ -1066,7 +1066,7 @@ body.js .collapse__text { display: none; }
 .box-news__image {
 	width: 350px;
 	height: 208px;
-	margin-bottom: 13px;
+	margin: 0 auto 13px;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -1088,6 +1088,12 @@ body.js .collapse__text { display: none; }
 	.box-news__image {
 		width: 240px;
 		height: 143px;
+	}
+}
+@media screen and (max-width:570px) {
+	.box-news__image {
+		width: 275px;
+		height: 164px;
 	}
 }
 
@@ -1132,7 +1138,7 @@ body.js .collapse__text { display: none; }
 @media screen and (max-width:768px) {
 	.box-news .box-news__list li { width: 50%; }
 }
-@media screen and (max-width:478px) {
+@media screen and (max-width:570px) {
 	.box-news .box-news__list li { width: 100%; }
 }
 
