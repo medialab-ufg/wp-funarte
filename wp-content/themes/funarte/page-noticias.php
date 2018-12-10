@@ -47,7 +47,7 @@ query_posts(array_merge(array(
 							?>
 									<div class="box-news__image" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');"></div>
 							<?php else:?>
-										<img src='<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>' alt='<?php esc_attr(get_the_title()); ?>'>
+									<div class="box-news__image" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/img/fke/news_003.jpg'; ?>');"></div>
 							<?php endif; ?>
 
 							<h3 class='news-title'><?php the_title(); ?></h3>
