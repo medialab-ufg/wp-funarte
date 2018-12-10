@@ -106,21 +106,7 @@ get_header();
 								</div>
 							</li>
 						<?php endwhile; ?></ul>
-
-						<div class="box-pagination">
-							<ul class="box-pagination__list">
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">6</a></li>
-							</ul>
-							<div class="box-pagination__control">
-								<button type="button" class="control__previous"><i class="mdi mdi-chevron-left"></i></button>
-								<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
-							</div>
-						</div>
+						<?php echo get_pagination(); ?>
 					</div>
 				</div>
 			</section>
