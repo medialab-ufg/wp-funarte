@@ -1063,6 +1063,34 @@ body.js .collapse__text { display: none; }
 		}
 	}
 }
+.box-news__image {
+	width: 350px;
+	height: 208px;
+	margin-bottom: 13px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+@media screen and (max-width:1199px) {
+	.box-news__image {
+		width: 280px;
+		height: 166px;
+	}
+}
+@media screen and (max-width:991px) {
+	.box-news__image {
+		width: 200px;
+		height: 119px;
+	}
+}
+@media screen and (max-width:768px) {
+	.box-news__image {
+		width: 240px;
+		height: 143px;
+	}
+}
+
 .box-news__load {
 	width: 30px;
 	height: 30px;
@@ -1169,6 +1197,7 @@ body.js .collapse__text { display: none; }
 }
 .carousel-image__wrapper {
 	width: 100%;
+	max-width: 1020px;
 	padding-right: 60px;
 	position: relative;
 }
