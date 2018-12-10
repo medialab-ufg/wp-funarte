@@ -27,7 +27,7 @@ $params = array(
 	<div class="container">
 		<?php include('inc/template_parts/breadcrumb.php'); ?>
 		<div class="box-title">
-			<h2 class="title-h1">Busca</h2>
+			<h2 class="title-h1">Resultados de busca</h2>
 		</div>
 	</div>
 
@@ -55,6 +55,7 @@ $params = array(
 								if (!empty($area)) { 
 									$tag_name = $area[0]->name;
 									$tag_class = $area[0]->slug;
+									$tag_url = get_category_link( $area[0]->cat_ID );
 								}	else {
 									$tag_name = 'funarte';
 									$tag_class = 'funarte';
@@ -71,9 +72,9 @@ $params = array(
 
 								<div class="list-bidding__text">
 									<div class="link-area">
-										<strong class="color-<?php echo $tag_class; ?>">
+										<a href="<?php echo $tag_url; ?>" class="color-<?php echo $tag_class; ?>">
 											<?php echo $tag_name; ?>
-										</strong>
+										</a>
 									</div>
 									<h3 class="title-h5"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a></h3>
 									<?php the_excerpt(); ?>
