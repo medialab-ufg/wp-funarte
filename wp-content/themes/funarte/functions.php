@@ -27,6 +27,7 @@ function extra_files() {
 	wp_enqueue_script('bootstrap-cdn-js', '//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', null, microtime(), true);
 	wp_enqueue_script('main-js', get_theme_file_uri() . '/assets/js/base.min.js', null, microtime(), true);
 	wp_enqueue_script('slick-js', get_theme_file_uri() . '/assets/js/plugins/slick.min.js', null, microtime(), true);
+	wp_enqueue_script('filters-js', get_theme_file_uri() . '/assets/js/filters.js', null, microtime(), true);
 }
 add_action('wp_enqueue_scripts','extra_files');
 
