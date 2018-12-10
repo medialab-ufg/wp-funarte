@@ -108,7 +108,7 @@ get_header();
 			<?php endwhile; ?>
 		</ul>
 		
-		<?php echo paginate_links( $params ); ?>
+		<?php echo get_pagination(); ?>
 		
 	</div>
 	<?php endif;?>
