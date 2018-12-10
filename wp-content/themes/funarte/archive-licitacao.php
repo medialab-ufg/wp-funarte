@@ -1,8 +1,30 @@
 <?php
 
+function get_anos() {
+	$posts = query_posts(array(
+		'post_type' => \funarte\Licitacao::get_instance()->get_post_type(),
+		'posts_per_page' =>	-1
+	));
+
+	$anos = array();
+	while (have_posts()) {
+		the_post();
+		$ano = trim(get_post_meta(get_the_ID(), 'licitacao-ano', true));
+		if (!empty($ano))
+			$anos[] = $ano;
+	}
+	wp_reset_query();
+	$anos = array_unique($anos);
+	sort($anos);
+	return $anos;
+}
+
 $licitacao = \funarte\Licitacao::get_instance();
 $modalidade = (isset($_GET['modalidade'])) ? $licitacao->get_modalidade_by_name($_GET['modalidade']) : false;
 $ano = (isset($_GET['ano']) && (preg_match('/^\d{4}$/', (int)$_GET['ano']))) ? (int)$_GET['ano'] : date('Y');
+
+$anos = get_anos();
+$modalidades = get_terms(\funarte\taxModalidade::get_instance()->get_name());
 
 $params = array(
 	'post_type' => 'licitacao',
@@ -29,17 +51,17 @@ get_header();
 			<?php } else { ?>
 				<h2 class="title-h1">Funarte <span>Licitações</span></h2>
 			<?php } ?>
-
+			
 			<div class="box-forms">
 				<form class="form-ano form-select" action="#" method="post">
 					<fieldset>
-						<legend>Formulário de ano</legend>
-
-						<select>
-							<option value="">Ano</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
+						<legend>Formulário de ano </legend>
+						<select onChange="applyFilters();" class="select_ano">
+							<?php foreach ($anos as $ano_):?>
+							<option value="<?php echo $ano_; ?>" <?php if($ano_ == $ano) echo 'selected'; ?>>
+								<?php echo $ano_; ?>
+							</option>
+							<?php endforeach; ?>
 						</select>
 					</fieldset>
 				</form>
@@ -47,25 +69,14 @@ get_header();
 				<form class="form-categoria form-select" action="#" method="post">
 					<fieldset>
 						<legend>Formulário de categoria</legend>
-
-						<select>
+						<select onChange="applyFilters();" class="select_modalidade">
 							<option value="">Categoria</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
+							<?php foreach ($modalidades as $modalidade_):?>
+								<option value="<?php echo $modalidade_->slug; ?>" <?php if($modalidade && $modalidade_->slug == $modalidade->slug ) echo 'selected'; ?>>
+									<?php echo $modalidade_->name; ?>
+								</option>
+							<?php endforeach; ?>
 						</select>
-					</fieldset>
-				</form>
-
-				<form class="form-filtro" action="#" method="post">
-					<fieldset>
-						<legend>Formulário de filtro</legend>
-
-						<div class="form-group">
-							<label class="sr-only" for="filtro-texto">Pesquisar</label>
-							<input type="text" id="filtro-texto" placeholder="Pesquisar">
-							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
-						</div>
 					</fieldset>
 				</form>
 			</div>
@@ -81,9 +92,7 @@ get_header();
 						<?php
 							$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
 							if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
-								if(!$modalidade) {
-									echo '<div class="link-area"><a class="color-funarte" href="#">' . $categoria_modalidade[0]->name . '</a></div>';
-								}
+								echo '<div class="link-area"><a class="color-funarte" href="?modalidade=' . $categoria_modalidade[0]->slug . '">' . $categoria_modalidade[0]->name . '</a></div>';
 							}
 						?>
 
@@ -119,3 +128,25 @@ get_header();
 <?php
 get_footer();
 ?>
+
+<script>
+
+function applyFilters( ) {
+	var url = window.location.protocol + '//' + window.location.host + window.location.pathname;
+	var ano = $('.select_ano').val();
+	var modalidade = $('.select_modalidade').val();
+	console.log(ano);
+	console.log(modalidade);
+	if(ano !== null && ano !== '') {
+		url += '?ano='+ano;
+	}
+	if(modalidade !== null && modalidade !== '') {
+		if (url.indexOf('?') > -1)
+			url += '&modalidade='+modalidade;
+		else
+			url += '?modalidade='+modalidade;
+	}
+	window.location.href = url;
+}
+
+</script>
