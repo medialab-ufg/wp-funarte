@@ -98,6 +98,7 @@
 											<h4 class="title-h1--type-b">Mais licitações</h4>
 											<ul class="list-bidding--type-b">
 												<?php
+												$post_type = get_post_type_archive_link( get_post_type() );
 												while(have_posts()) :
 													the_post();
 													$modalidade = wp_get_post_terms( $post->ID, taxModalidade::get_instance()->get_name());
@@ -105,7 +106,7 @@
 												?>
 													<li class="color-funarte">
 														<div class="link-area">
-															<a href="#"><?php echo $modalidade->name; ?></a>
+															<a href="<?php echo "$post_type?modalidade=$modalidade->slug"; ?>"><?php echo $modalidade->name; ?></a>
 														</div>
 														<strong><?php the_title(); ?></strong>
 														<a class="link-more" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">Ler mais</a>
