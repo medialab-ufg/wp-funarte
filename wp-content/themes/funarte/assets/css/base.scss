@@ -304,8 +304,6 @@ noscript {
 		z-index: -4;
 	}
 
-	.link-area { margin-bottom: 22px; }
-
 	.title-page {
 		margin: 0;
 		font-family: 'Sansita', sans-serif;
@@ -751,7 +749,6 @@ noscript {
 }
 .box-text__date {
 	margin-bottom: 20px;
-	text-align: right;
 }
 .box-text__image {
 	margin-bottom: 20px;
@@ -2996,17 +2993,20 @@ aside .list-bidding--type-b {
 	position: relative;
 }
 .list-soft__image {
-	img {
-		width: 214px;
-		height: auto;
-		margin-right: 25px;
-		display: block;
-	}
+	width: 214px;
+	height: 160px;
+	margin-right: 25px;
+	display: block;
+	flex-grow: 0;
+	flex-shrink: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 
 	.link-area {
 		position: absolute;
 		top: 0;
-		left: 20px;
+		left: 10px;
 	}
 
 	&.no-image .link-area {

@@ -24,6 +24,11 @@
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
+
+					<div class="box-text__date">
+						<small>Publicado em <?php the_time(get_option('date_format')); ?></small>
+					</div>
+
 					<h3 class="title-page"><?php the_title(); ?></h3>
 				</div>
 
@@ -38,10 +43,6 @@
 				<div class="row justify-content-between mb-100">
 					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
 						<div class="box-text">
-							<div class="box-text__date">
-								<small>Publicado em <?php the_time(get_option('date_format')); ?></small>
-							</div>
-
 							<div class="box-text__text">
 								<div class="box-text__image">
 									<?php get_the_post_thumbnail(get_the_ID(), array('width' => 380, 'height' => null, 'after' => '<hr />')); ?>

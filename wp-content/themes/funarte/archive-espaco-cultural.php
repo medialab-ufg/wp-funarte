@@ -70,14 +70,13 @@ query_posts($params);
 					<div class="list-soft__item col-lg-5 color-funarte">
 						<div class="list-soft__content">
 							<?php
-								$thumbnail = get_the_post_thumbnail( get_the_ID(),'medium');
+								$thumbnail = get_the_post_thumbnail_url( get_the_ID(),'medium');
 							?>
 
-							<div class="list-soft__image <?php echo empty($thumbnail) ? 'no-image' : '' ?>">
+							<div class="list-soft__image <?php echo empty($thumbnail) ? 'no-image' : '' ?>" style="background-image: url(<?php echo $thumbnail ?>);">
 								<div class="link-area">
 									<strong><?php echo get_post_meta($post->ID, "espaco-estado", true); ?></strong>
 								</div>
-								<?php echo $thumbnail; ?>
 							</div>
 
 							<div class="list-soft__text">
