@@ -49,11 +49,11 @@ query_posts($params);
 
 				<form class="form-filtro form-filtro--espaco-cultural">
 					<fieldset>
-						<legend>Formulário de filtro de editais</legend>
+						<legend>Formulário de filtro de espaço</legend>
 
 						<div class="form-group">
-							<label class="sr-only" for="filtro-editais-texto">Pesquisar editais</label>
-							<input type="text" id="filtro-editais-texto" class='input_search' placeholder="Pesquisar editais" value="<?php echo $busca; ?>">
+							<label class="sr-only" for="filtro-espaco-texto">Pesquisar espaço</label>
+							<input type="text" id="filtro-espaco-texto" class='input_search' placeholder="Pesquisar espaços" value="<?php echo $busca; ?>">
 							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
 						</div>
 					</fieldset>

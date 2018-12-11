@@ -124,13 +124,26 @@ if (have_posts()): the_post();
 									<a href="<?php echo $espaco['link']; ?>" rel="nofollow"><?php echo $espaco['link']; ?></a>
 							</div>
 
-							<div class="box-data__row">
-								<span><b>Local:</b></span>
-							</div>
+							<?php 
+							if (!empty($espaco['maplink'])):
+								$espaco['maplink'] .= '&t=r';
+								$maps = gmaps_url($espaco['maplink']);
+								$mapa = the_gmaps_src(null, $maps['latitude'], $maps['longitude'], $maps['zoom'], 194, 120, null, 'A', '0x'.getCategoryColor());
+							?>
+								<div class="box-data__row">
+									<span><b>Local:</b></span>
+								</div>
 
-							<h4 class="title-5">Veja como chegar</h4>
-
-							<div id="map"></div>
+								<h4 class="title-5">Veja como chegar</h4>
+							
+								<div id="map">
+									<strong>
+										<a class="mapa" href="<?php echo $espaco['maplink'] . '&output=embed'; ?>" rel="shadowbox;title=<?php the_title(); ?>" title="Amplie o mapa">
+											<img src="<?php echo $mapa; ?>" alt="Mapa do espaço cultural" width="194" height="120" />
+										</a>
+									</strong>
+								</div>
+							<?php endif; ?>
 						</div>
 					</aside>
 				</div>

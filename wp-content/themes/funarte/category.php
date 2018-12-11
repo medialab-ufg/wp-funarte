@@ -183,6 +183,7 @@
 		foreach ($editais as $edital) {
 			$items[] = ['tag_class_area'=>$area->slug,
 									'tag_name_area'=>$area->name,
+									'tag_url_area'=>get_category_link( $area->cat_ID ),
 									'tag_subname_area'=>\funarte\Edital::get_instance()->get_edital_status($edital->ID),
 									'title' => $edital->post_title ,
 									'url'=>get_permalink($edital->ID)];
@@ -206,13 +207,14 @@
 		foreach ($noticias as $noticia) {
 			$items[] = ['tag_class_area'=>$area->slug,
 									'tag_name_area' =>$area->name,
+									'tag_url_area' => get_category_link( $area->cat_ID ),
 									'tag_subname_area'=>'',
 									'title' => $noticia->post_title,
 									'url'=> get_permalink($noticia->ID),
 									'content'=> get_the_excerpt($noticia->ID),
 									'url_img'=> get_the_post_thumbnail_url($noticia->ID) ? get_the_post_thumbnail_url($noticia->ID) : $default_img_url];
 		}
-		$arg = ['items' => $items, 'more_news_url' => '#'];
+		$arg = ['items' => $items, 'more_news_url' => '/noticias?area=' . $area->name];
 		funarte_load_part('box-news', $arg);
 	?>
 	<!-- FIM NOTICIAS -->
