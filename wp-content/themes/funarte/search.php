@@ -28,13 +28,67 @@ $params = array(
 		<?php include('inc/template_parts/breadcrumb.php'); ?>
 		<div class="box-title">
 			<h2 class="title-h1">Resultados de busca</h2>
+
+			<div class="box-forms">
+				<form class="form-area" action="#" method="post">
+					<fieldset>
+						<legend>Formulário de reordenação</legend>
+						<select class='select_local'>
+							<option value="">Ordenar por</option>
+								<option value="A">A</option>
+								<option value="B">B</option>
+								<option value="C">C</option>
+						</select>
+					</fieldset>
+				</form>
+
+				<form class="form-area" action="#" method="post">
+					<fieldset>
+						<legend>Formulário de filtro</legend>
+						<select class='select_local'>
+							<option value="">Filtrar por área</option>
+								<option value="A">A</option>
+								<option value="B">B</option>
+								<option value="C">C</option>
+						</select>
+					</fieldset>
+				</form>
+
+				<form class="form-filtro form-filtro--espaco-cultural">
+					<fieldset>
+						<legend>Formulário de filtro de editais</legend>
+
+						<div class="form-group">
+							<label class="sr-only" for="filtro-editais-texto">Pesquisar editais</label>
+							<input type="text" id="filtro-editais-texto" class='input_search' placeholder="Pesquisar editais" value="<?php echo $busca; ?>">
+							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
 		</div>
 	</div>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				
+				<aside>
+					<div class="box-list-links">
+						<h3 class="title-6 box-list-links__title">Tipos de resultados</h3>
+
+						<ul>
+							<li><a href="#">Espaços Culturais (76)</a></li>
+							<li><a href="#">Notícias (113)</a></li>
+							<li><a href="#">Eventos (3)</a></li>
+							<li><a href="#">Acervos (32)</a></li>
+							<li><a href="#">Editais (16)</a></li>
+							<li><a href="#">Itens de acervo (213)</a></li>
+							<li><a href="#">Coleções (5)</a></li>
+							<li><a href="#">Contatos (12)</a></li>
+							<li><a href="#">Outros (39)</a></li>
+						</ul>
+					</div>
+				</aside>
 			</div>
 			<div class="col-md-8">
 				<section class="list-soft">
@@ -48,8 +102,8 @@ $params = array(
 						$end = min($start + get_option('posts_per_page') - 1, $total);
 					?>
 						<div class="relacionamento">
-							<span>Buscando por "<strong><?php echo get_search_query(); ?>"</strong>"</span>
-							<span class="exibindo-paginas">Exibindo <strong><?php echo $start; ?></strong> a <strong><?php echo $end; ?></strong> de <strong><?php echo $total; ?></strong> resultados.</span>
+							<h3 class="title-7">Buscando por "<?php echo get_search_query(); ?>"</h3>
+							<span>Exibindo <?php echo $start; ?> a <?php echo $end; ?> de <?php echo $total; ?> resultados.</span>
 						</div>
 
 						<ul class="list-bidding list-bidding--type-c">
