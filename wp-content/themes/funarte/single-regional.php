@@ -58,7 +58,8 @@ if(have_posts()) : the_post();
 								'post__not_in' => array(get_the_ID()),
 								'meta_key'	 => 'evento-inicio',
 								'meta_compare' 		=> '<',
-								'meta_value' => date('Y-m-d')
+								'meta_value' => date('Y-m-d'),
+								'posts_per_page' => 4
 							);
 
 							$the_query = new WP_Query( $query );
@@ -78,7 +79,7 @@ if(have_posts()) : the_post();
 									if (!empty($areas)): ?>
 									<div class="link-area">
 										<?php foreach ($areas as $area): ?>
-											<a class="<?php echo 'color-' . $area->slug; ?>" href="#"><?php echo $area->name; ?></a>
+											<a class="<?php echo 'color-' . $area->slug; ?>" href="<?php echo get_category_link( $area->cat_ID ) ?>"><?php echo $area->name; ?></a>
 										<?php endforeach; ?>
 									</div>
 								<?php endif; ?>

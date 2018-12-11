@@ -5,8 +5,9 @@ if (!empty($_GET['area'])) {
 		$cat = $area->term_id;
 }
 
+$busca = (isset($_GET['busca'])) ? $_GET['busca'] : '';
 $params = array(
-	's' => (isset($_GET['busca'])) ? $_GET['busca'] : '',
+	's' => $busca,
 	'cat' => isset($cat) ? $cat : null,
 	'paged' => get_query_var('paged') ? get_query_var('paged') : 1
 );
@@ -31,26 +32,26 @@ get_header();
 					<fieldset>
 						<legend>Formulário de seleção de área</legend>
 
-						<select>
-							<option value="">Filtrar por área</option>
-							<option value="Artes integradas">Artes integradas</option>
-							<option value="Artes visuais">Artes visuais</option>
-							<option value="Circo">Circo</option>
-							<option value="Dança">Dança</option>
-							<option value="Literatura">Literatura</option>
-							<option value="Música">Música</option>
-							<option value="Teatro">Teatro</option>
-						</select>
+						<?php
+						wp_dropdown_categories(array(
+							'show_option_none' => false,
+							'hide_empty' => false,
+							'id' => 'select-categoria',
+							'class' => 'select_area',
+							'name' => 'area',
+							'value_field' => 'slug',
+							'selected' => (isset($area->slug)) ? $area->slug : null));
+						?>
+						
 					</fieldset>
 				</form>
 
-				<form class="form-filtro-editais" action="#" method="post">
+				<form class="form-filtro form-filtro--editais">
 					<fieldset>
 						<legend>Formulário de filtro de editais</legend>
-
 						<div class="form-group">
 							<label class="sr-only" for="filtro-editais-texto">Pesquisar editais</label>
-							<input type="text" id="filtro-editais-texto" placeholder="Pesquisar editais">
+							<input type="text" id="filtro-editais-texto" class="input_search" placeholder="Pesquisar editais" value="<?php echo $busca;?>">
 							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
 						</div>
 					</fieldset>
@@ -59,62 +60,59 @@ get_header();
 		</div>
 	</div>
 
-		<?php
-		if (!empty($editais) && have_posts()):
-		?>
-			<section class="box-tabs">
-				<div class="list-tabs">
-					<div class="container">
-						<ul>
-							<li class="active"><a href="#">Todos</a></li>
-							<li><a href="#">Inscrições abertas</a></li>
-							<li><a href="#">Em avaliação</a></li>
-							<li><a href="#">Resultados</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="content-tab">
-					<div class="container">
-						<ul class="list-notices"><?php while (have_posts()): the_post(); ?>
-							<li class="color-<?php echo get_the_category()[0]->slug; ?>">
-								<!-- <h6><?php echo $edital->get_edital_status_name($post->ID); ?></h6> -->
+	<section class="box-tabs">
+		<div class="list-tabs">
+			<div class="container">
+				<ul>
+					<li class="<?php if($status=='todos') echo 'active'; ?>">		 <a data-status="todos" class="link-tabs" href="#">Todos</a></li>
+					<li class="<?php if($status=='aberto') echo 'active'; ?>">	 <a data-status="aberto" class="link-tabs" href="#">Inscrições abertas</a></li>
+					<li class="<?php if($status=='avaliacao') echo 'active'; ?>"><a data-status="avaliacao" class="link-tabs" href="#">Em avaliação</a></li>
+					<li class="<?php if($status=='resultado') echo 'active'; ?>"><a data-status="resultado" class="link-tabs" href="#">Resultados</a></li>
+				</ul>
+			</div>
+		</div>
 
-								<div class="list-notices-image">
-									<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/espaco_002.jpg'; ?>" alt="<?php the_title(); ?>">
+		<?php if (!empty($editais) && have_posts()):?>
+		<div class="content-tab">
+			<div class="container">
+				<ul class="list-notices"><?php while (have_posts()): the_post(); ?>
+					<li class="color-<?php echo get_the_category()[0]->slug; ?>">
+						<div class="list-notices-image">
+							<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/espaco_002.jpg'; ?>" alt="<?php the_title(); ?>">
+						</div>
+						<div class="list-notices-text">
+							<?php
+								$areas = get_the_category();
+								if (!empty($areas)): ?>
+								<div class="link-area">
+									<?php foreach ($areas as $area): ?>
+										<a class="<?php echo 'color-' . $area->category_nicename; ?>" href="<?php echo get_category_link( $area->cat_ID ); ?>"><?php echo $area->name; ?></a>
+									<?php endforeach; ?>
 								</div>
+							<?php endif; ?>
+							<h3 class="title-h5">
+								<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+									<?php the_title(); ?>
+								</a>
+							</h3>
+							<p><?php echo wp_trim_words(get_the_content(),50); ?></p>
 
-								<div class="list-notices-text">
-									<?php
-										$areas = get_the_category();
-										if (!empty($areas)): ?>
-										<div class="link-area">
-											<?php foreach ($areas as $area): ?>
-												<a class="<?php echo 'color-' . $area->category_nicename; ?>" href="#"><?php echo $area->name; ?></a>
-											<?php endforeach; ?>
-										</div>
-									<?php endif; ?>
-
-									<h3 class="title-h5">
-										<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
-											<?php the_title(); ?>
-										</a>
-									</h3>
-
-									<p><?php echo wp_trim_words(get_the_content(),50); ?></p>
-
-									<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
-								</div>
-							</li>
-						<?php endwhile; ?></ul>
-						<?php echo get_pagination(); ?>
-					</div>
+							<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
+						</div>
+					</li>
+					<?php endwhile; ?>
+				</ul>
+				<?php echo get_pagination(); ?>
+			</div>
+		</div>
+		<?php else:?>
+			<div class="content-tab">
+				<div class="container">
+					Não existe editais.
 				</div>
-			</section>
-		<?php 
-		endif;
-		?>
-
-	</div>
+			</div>
+		<?php endif;?>
+	</section>
 </main>
 
 <?php

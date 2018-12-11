@@ -10,6 +10,7 @@ class Edital {
 		add_action('init', array( &$this, "register_post_type" ));
 		add_action('add_meta_boxes', array(&$this, 'add_custom_box'));
 		add_action('save_post', array(&$this, 'save_custom_box'));
+		add_action('wp_enqueue_scripts', array(&$this, 'extra_files'), 15);
 	}
 
 	public function register_post_type() {
@@ -221,6 +222,13 @@ class Edital {
 	public function get_post_type() {
 		return $this->POST_TYPE;
 	}
+
+	public function extra_files() {
+		if ( is_post_type_archive($this->POST_TYPE) ) {
+			wp_enqueue_script('edital-js', get_theme_file_uri() . '/inc/post_types/edital/edital.js', null, microtime(), true);
+		}
+	}
+
 }
 
 Edital::get_instance();
