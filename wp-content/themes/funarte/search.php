@@ -27,64 +27,68 @@ $params = array(
 	<div class="container">
 		<?php include('inc/template_parts/breadcrumb.php'); ?>
 		<div class="box-title">
-			<h2 class="title-h1">Busca</h2>
+			<h2 class="title-h1">Resultados de busca</h2>
 		</div>
 	</div>
 
 	<div class="container">
-		<section class="list-soft">
-			<div class="row">
-				<?php 
-				if(have_posts()) :
-					$busca_sem_filtro = new WP_Query(array_merge($params, array('showposts'=> -1)));
-					wp_reset_query();
-					query_posts($params);
-					$total = $busca_sem_filtro->post_count;
-					$start = max(((get_query_var('paged') - 1) * get_option('posts_per_page')) + 1, 1);
-					$end = min($start + get_option('posts_per_page') - 1, $total);
-				?>
-					<div class="relacionamento">
-						<span>Buscando por "<strong><?php echo get_search_query(); ?>"</strong>"</span>
-						<span class="exibindo-paginas">Exibindo <strong><?php echo $start; ?></strong> a <strong><?php echo $end; ?></strong> de <strong><?php echo $total; ?></strong> resultados.</span>
-					</div>
-
-					<ul class="list-bidding">
-						<?php while (have_posts()): the_post(); ?>
-							<?php
-								$area = get_the_category(get_the_ID());
-								if (!empty($area)) { 
-									$tag_name = $area[0]->name;
-									$tag_class = $area[0]->slug;
-								}	else {
-									$tag_name = 'funarte';
-									$tag_class = 'funarte';
-								}
-								$imagem = get_the_post_thumbnail( get_the_ID(),'medium');
-							?>
-
-							<li class="color-<?php echo $tag_class; ?>">
-								<?php if (!empty($imagem)): ?>
-									<div class="list-bidding__image">
-										<?php echo $imagem; ?>
-									</div>
-								<?php endif; ?>
-
-								<div class="list-bidding__text">
-									<div class="link-area">
-										<strong class="color-<?php echo $tag_class; ?>">
-											<?php echo $tag_name; ?>
-										</strong>
-									</div>
-									<h3 class="title-h5"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a></h3>
-									<?php the_excerpt(); ?>
-									<a href="<?php the_permalink(); ?>" class="link-more">Ler mais</a>
-								</div>
-							</li>
-						<?php endwhile; ?>
-					</ul>
-				<?php endif; ?>
+		<div class="row">
+			<div class="col-md-4">
+				
 			</div>
-		</section>
+			<div class="col-md-8">
+				<section class="list-soft">
+					<?php 
+					if(have_posts()) :
+						$busca_sem_filtro = new WP_Query(array_merge($params, array('showposts'=> -1)));
+						wp_reset_query();
+						query_posts($params);
+						$total = $busca_sem_filtro->post_count;
+						$start = max(((get_query_var('paged') - 1) * get_option('posts_per_page')) + 1, 1);
+						$end = min($start + get_option('posts_per_page') - 1, $total);
+					?>
+						<div class="relacionamento">
+							<span>Buscando por "<strong><?php echo get_search_query(); ?>"</strong>"</span>
+							<span class="exibindo-paginas">Exibindo <strong><?php echo $start; ?></strong> a <strong><?php echo $end; ?></strong> de <strong><?php echo $total; ?></strong> resultados.</span>
+						</div>
+
+						<ul class="list-bidding list-bidding--type-c">
+							<?php while (have_posts()): the_post(); ?>
+								<?php
+									$area = get_the_category(get_the_ID());
+									if (!empty($area)) { 
+										$tag_name = $area[0]->name;
+										$tag_class = $area[0]->slug;
+										$tag_url = get_category_link( $area[0]->cat_ID );
+									}	else {
+										$tag_name = 'funarte';
+										$tag_class = 'funarte';
+									}
+									$imagem = get_the_post_thumbnail_url( get_the_ID(),'medium');
+								?>
+
+								<li class="color-<?php echo $tag_class; ?>">
+									<?php if (!empty($imagem)): ?>
+										<div class="list-bidding__image" style="background-image: url('<?php echo $imagem; ?>');"></div>
+									<?php endif; ?>
+
+									<div class="list-bidding__text">
+										<div class="link-area">
+											<a href="<?php echo $tag_url; ?>" class="color-<?php echo $tag_class; ?>">
+												<?php echo $tag_name; ?>
+											</a>
+										</div>
+										<h3 class="title-h5"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a></h3>
+										<?php the_excerpt(); ?>
+										<a href="<?php the_permalink(); ?>" class="link-more">Ler mais</a>
+									</div>
+								</li>
+							<?php endwhile; ?>
+						</ul>
+					<?php endif; ?>
+				</section>
+			</div>
+		</div>
 	</div>
 </main>
 
