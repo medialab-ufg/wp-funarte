@@ -1,8 +1,66 @@
 # wp-funarte
 
+## Instalando o Ambiente
+
+### Dependências:
+Instale as seguintes dependências:
+
+* apache
+* mysql
+* git
+
+#### Instalando o composer
+
+```
+php -r "copy ('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+mv composer.phar /usr/local/bin/composer
+```
+
+#### Instalando o wp-cli
+```
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
+```
 
 
-# Ativar o automatizador de tarefas
+### Clone do repositório
+
+Fazer um clone do repositório para a raiz do diretório público do apache. Execute o comando a seguir:
+
+```
+git clone https://github.com/medialab-ufg/wp-funarte.git
+```
+
+Acesse o diretório onde se localiza o repositório que foi feito o clone e crie os arquivos de configurações baseados nos arquivos de exemplos presentes no repositório:
+```
+  cp wp-config-sample.php wp-config.php
+  cp .htaccess-sample .htaccess
+```
+no arquivo **wp-config.php** deve ser alterado as configurações para acesso a base de dados, certifique-se de que tenha configurado previa e corretamente um banco de dados para uso na aplicação:
+```
+define('DB_NAME'      ,'[<database-name>]');
+define('DB_USER'      ,'[<username>]');
+define('DB_PASSWORD'  ,'[<password>]');
+define('DB_HOST'      ,'[<localhost>]');
+```
+
+Acesse o diretório onde se localiza o repositório que foi feito o clone. E execute o comando para instalar os repositórios do projeto.
+
+```
+composer install
+```
+
+Agora você está com todas as bibliotecas e classes necessárias para o funcionamento do site.
+
+
+
+# Outras informações:
+
+## Compilando **sass** e **javascript**
+#### Ativar o automatizador de tarefas
 
 Primeiramente devemos instalar o **gulp**. No link abaixo há um passo a passo de como realizar essa tarefa:
 ```
@@ -17,6 +75,7 @@ Com o **gulp** devidamente instalado, agora devemos abrir um terminal no linux/m
 Certifique-se de que o tema possui os arquivos **gulpfile.js** e **package.json**. Em seguida, execute o comando abaixo e aguarde.
 ```
 npm install
+gulp
 ```
 
 Com o término da instalação dos arquivos, basta executar o comando **gulp** e pronto. Os arquivos **/assets/css/base.scss** e **/assets/js/base.js** estarão sendo observados e automaticamente atualizarão os arquivos **base.min.css** e **base.min.js** , respectivamente, cada vez que forem alterados. Um aviso de confirmação será exibido na tela cada vez que isso acontecer.
