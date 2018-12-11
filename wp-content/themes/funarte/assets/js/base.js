@@ -25,9 +25,28 @@ $(document).ready(function() {
 
 	// Interna de notícias
 	base.carrossel.iniciarImagens();
+
+	// Institucional
+	base.tabs.visualizar();
 });
 
 var base = {
+	tabs: {
+		visualizar: function() {
+			$('.box-tabs--active')
+			.find('.list-tabs')
+			.find('a')
+			.on('click',function() {
+				var target = $(this).attr('href');
+
+				$(target).addClass('active').siblings('.content-tab__content').removeClass('active');
+
+
+				return false;
+			});
+		}
+	},
+
 	collapse: {
 		manipularBox1: function() {
 			$('.collapse__button').on('click',function() {

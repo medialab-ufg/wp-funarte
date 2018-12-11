@@ -870,7 +870,33 @@ noscript {
 	.content-tab {
 		width: 100%;
 		padding: 120px 0 100px;
-		background-color: $cinza-2;
+		position: relative;
+
+		&:after {
+			content: "";
+			width: 999999px;
+			height: 100%;
+			display: block;
+			position: absolute;
+			top: -4px;
+			left: 50%;
+			transform: translate(-50%,0);
+			border-top: 4px solid $verde-1;
+			background-color: $cinza-2;
+			z-index: -1;
+		}
+
+		p {
+			margin: 0;
+
+		}
+	}
+
+	.content-tab__title { margin-bottom: 27px; }
+	.content-tab__content {
+		display: none;
+
+		&.active { display: block; }
 	}
 }
 
