@@ -10,7 +10,7 @@ $contents = [];
 $filhos = get_children($arg);
 if(!empty($filhos)):
 	foreach($filhos as $filho): 
-		$contents[$filho->post_title] = $filho->post_content;
+		$contents[$filho->post_name] = ['content'=>$filho->post_content,'title'=>$filho->post_title];
 	endforeach;
 endif;
 ?>
@@ -25,10 +25,15 @@ endif;
 			<div class="list-tabs">
 				<div class="container">
 					<ul>
-						<li class="active"><a href="#content-tab-0">Sobre</a></li>
-						<li><a href="#content-tab-1">Missão</a></li>
-						<li><a href="#content-tab-2">Informações Básicas</a></li>
-						<li><a href="#content-tab-3">Identidade</a></li>
+						<?php
+							$contador = 0;
+							foreach ($contents as $key => $content) :
+						?>
+								<li class="<?php echo $contador == 0 ? 'active' : ''; ?>"><a href="#content-tab-<?php echo $key; ?>"><?php echo $content['title'] ?></a></li>
+						<?php
+							$contador++;
+							endforeach;
+						?>
 					</ul>
 				</div>
 			</div>
@@ -36,11 +41,11 @@ endif;
 			<div class="content-tab">
 				<?php
 					$contador = 0;
-					foreach ($contents as $title => $content) :
+					foreach ($contents as $key => $content) :
 				?>
-					<div id="content-tab-<?php echo $contador; ?>" class="content-tab__content <?php echo $contador == 0 ? 'active' : ''; ?>">
-						<h3 class="title-h4 content-tab__title"><?php echo $title ?></h3>
-						<p><?php echo $content ?></p>
+					<div id="content-tab-<?php echo $key; ?>" class="content-tab__content <?php echo $contador == 0 ? 'active' : ''; ?>">
+						<h3 class="title-h4 content-tab__title"><?php echo $content['title'] ?></h3>
+						<p><?php echo $content['content'] ?></p>
 					</div>
 				<?php
 					$contador++;

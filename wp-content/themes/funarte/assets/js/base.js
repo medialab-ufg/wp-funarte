@@ -39,8 +39,16 @@ var base = {
 			.on('click',function() {
 				var target = $(this).attr('href');
 
-				$(target).addClass('active').siblings('.content-tab__content').removeClass('active');
+				$(target)
+					.addClass('active')
+					.siblings('.content-tab__content')
+					.removeClass('active');
 
+				$(this)
+					.parent('li')
+					.addClass('active')
+					.siblings('li')
+					.removeClass('active');
 
 				return false;
 			});
