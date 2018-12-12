@@ -19,23 +19,29 @@ if(have_posts()) : the_post();
 			<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/regional'; ?>">Funarte <span>Representações Regionais</span></a></h2>
 		</div>
 
-		<?php $imagem = get_the_post_thumbnail( get_the_ID(),'medium'); ?>
+		<?php $imagem = get_the_post_thumbnail( get_the_ID(),'large'); ?>
 
 		<div class="box-title-page <?php echo !empty($imagem) ? 'box-title-page--image' : ''; ?>">
+
+			<div class="link-area">
+				<strong class="color-funarte"><?php echo get_post_meta($post->ID, "regional-cidade", true); ?></strong>
+			</div>
+
 			<h3 class="title-page"><?php the_title(); ?></h3>
 
 			<?php
-				if (!empty($imagem))
-					echo $imagem;
+				if (!empty($imagem)):
+					?> <div> <?php
+						echo $imagem;
+						the_post_thumbnail_caption();
+					?> </div> <?php
+				endif;
 			?>
 		</div>
 
 		<div class="row justify-content-between">
 			<div class="col-md-6">
 				<div class="box-text">
-					<div class="box-text__image">
-						<?php get_the_post_thumbnail(get_the_ID(), array('width' => 380, 'height' => null, 'after' => '<hr />')); ?>
-					</div>
 					<h4 class="title-5--type-b">Sobre</h4>
 					<div class="box-text__text">
 						<?php the_content(); ?>
