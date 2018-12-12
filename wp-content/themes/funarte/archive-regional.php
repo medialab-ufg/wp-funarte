@@ -16,12 +16,15 @@ get_header();
 			<li class="color-funarte">
 				<?php
 					$imagem = get_the_post_thumbnail( get_the_ID(),'medium');
-
 					if (!empty($imagem)):
 				?>
-				<div class="list-bidding__image">
-					<?php echo $imagem; ?>
-				</div>
+					<div class="list-bidding__image">
+						<?php echo $imagem; ?>
+					</div>
+				<?php else:?>
+					<div class="list-bidding__image">
+						<img src="http://localhost:8001/wp-content/themes/funarte/assets/img/bkg/grafismo_funarte.png" class="attachment-medium size-medium wp-post-image" />
+					</div>
 				<?php endif; ?>
 
 				<div class="list-bidding__text">
