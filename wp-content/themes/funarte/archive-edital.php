@@ -61,7 +61,8 @@ get_header();
 	</div>
 
 	<section class="box-tabs">
-		<div class="list-tabs">
+		<!-- LIST-TABS-ON-OFF: CLASSE UTILIZADA PARA ATIVAR/DESATIVAR O CARROSSEL DE ABAS AO PASSAR POR 1100PX DE LARGURA -->
+		<div class="list-tabs list-tabs--on-off">
 			<div class="box-tabs__control">
 				<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
 				<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>

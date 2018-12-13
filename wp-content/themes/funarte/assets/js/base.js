@@ -29,7 +29,8 @@ $(document).ready(function() {
 	// Institucional e Relatórios
 	base.tabs.visualizar();
 	base.carrossel.verificarTabs();
-	base.carrossel.iniciarTabs();
+	base.carrossel.iniciarTabsOnOff();
+	base.carrossel.iniciarTabsOn();
 });
 
 var base = {
@@ -112,23 +113,22 @@ var base = {
 
 	carrossel: {
 		verificarTabs: function() {
-			var $boxCarousel = $('.list-tabs'),
-				$carousel = $('.list-tabs__main');
+			var $carousel = $('.list-tabs-on-off').find('.list-tabs__main');
 
 			$(window).resize(function() {
 				var $windowWidth = $(window).width();
 
 				if ($windowWidth < 1100) {
 					if (!$carousel.hasClass('slick-slider')) {
-						base.carrossel.iniciarTabs();
+						base.carrossel.iniciarTabsOnOff();
 					}
 				}
 			});
 		},
 
-		iniciarTabs: function() {
-			var $boxCarousel = $('.list-tabs'),
-				$carousel = $('.list-tabs__main');
+		iniciarTabsOnOff: function() {
+			var $boxCarousel = $('.list-tabs--on-off'),
+				$carousel = $boxCarousel.find('.list-tabs__main');
 
 			$carousel.slick({
 				speed: 1000,
@@ -151,6 +151,35 @@ var base = {
 					},
 					{
 						breakpoint: 768,
+						settings: {
+							slidesToShow: 1
+						}
+					}
+				]
+			});
+		},
+
+		iniciarTabsOn: function() {
+			var $boxCarousel = $('.list-tabs--on'),
+				$carousel = $boxCarousel.find('.list-tabs__main');
+
+			$carousel.slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				prevArrow: $boxCarousel.find('.control__prev'),
+				nextArrow: $boxCarousel.find('.control__next'),
+				adaptiveHeight: true,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 2
+						}
+					},
+					{
+						breakpoint: 992,
 						settings: {
 							slidesToShow: 1
 						}
