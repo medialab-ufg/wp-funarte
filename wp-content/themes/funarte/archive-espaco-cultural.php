@@ -70,7 +70,7 @@ query_posts($params);
 					<div class="list-soft__item col-lg-5 color-funarte">
 						<div class="list-soft__content">
 							<?php
-								$thumbnail = get_the_post_thumbnail_url( get_the_ID(),'medium');
+								$thumbnail = get_the_post_thumbnail_url( get_the_ID(),'medium') ? get_the_post_thumbnail_url( get_the_ID(),'medium') : funarte_get_img_default('funarte');
 							?>
 
 							<div class="list-soft__image <?php echo empty($thumbnail) ? 'no-image' : '' ?>" style="background-image: url(<?php echo $thumbnail ?>);">

@@ -202,7 +202,6 @@
 
 	<!-- NOTICIAS -->
 	<?php
-		$default_img_url = get_template_directory_uri() . '/assets/img/fke/news_003.jpg';
 		$items = [];
 		foreach ($noticias as $noticia) {
 			$items[] = ['tag_class_area'=>$area->slug,
@@ -212,7 +211,7 @@
 									'title' => $noticia->post_title,
 									'url'=> get_permalink($noticia->ID),
 									'content'=> get_the_excerpt($noticia->ID),
-									'url_img'=> get_the_post_thumbnail_url($noticia->ID) ? get_the_post_thumbnail_url($noticia->ID) : $default_img_url];
+									'url_img'=> get_the_post_thumbnail_url($noticia->ID) ? get_the_post_thumbnail_url($noticia->ID) : null];
 		}
 		$arg = ['items' => $items, 'more_news_url' => '/noticias?area=' . $area->name];
 		funarte_load_part('box-news', $arg);

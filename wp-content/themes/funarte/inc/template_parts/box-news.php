@@ -15,12 +15,18 @@ else:
 	$li = "";
 	$flag = true;
 	foreach ($items as $item):
+		if (isset($item['url_img']) && $item['url_img'] != null ):
+			$url_img = $item['url_img'];
+		else:
+			$url_img = funarte_get_img_default($item['tag_class_area']);
+		endif;
+
 		$tag_url = isset($item['tag_url_area']) ? $item['tag_url_area'] : '#';
 		$li .= "<li class='color-" . $item['tag_class_area'] . "'>
 							<div class='link-area'>
 								<a href='$tag_url'>" . $item['tag_name_area'] . "</a>
 							</div>
-							<img src='" . $item['url_img'] . "' alt='" . $item['title'] . "'>
+							<img src='$url_img' alt='" . $item['title'] . "'>
 							<h3 class='news-title'>" . $item['title'] . "</h3>
 							<span>" . $item['content'] . "</span>
 							<a href='" . $item['url'] . "' class='link-more'>Ler mais</a>
