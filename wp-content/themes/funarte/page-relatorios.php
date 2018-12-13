@@ -27,10 +27,16 @@ endif;
 
 		<div class="row justify-content-between mb-100">
 			<div class="col-md-7">
+				<!-- BOX-TABS--ACTIVE: CLASSE UTILIZADA PARA ATIVAR A TROCA DE ABAS VIA JS -->
 				<section class="box-tabs box-tabs--active">
-					<div class="list-tabs">
+					<!-- LIST-TABS-ON: CLASSE UTILIZADA PARA ATIVAR O CARROSSEL DE ABAS -->
+					<div class="list-tabs list-tabs--on">
+						<div class="box-tabs__control">
+							<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+							<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
+						</div>
 						<div class="container">
-							<ul>
+							<ul class="list-tabs__main">
 								<?php
 									$contador = 0;
 									foreach ($contents as $key => $content):
@@ -67,7 +73,7 @@ endif;
 					<div class="box-links">
 						<h4 class="title-h1 box-links__title">Outros downloads</h4>
 
-						<ul class="list-links">
+						<ul class="list-links list-links--type-b">
 							<li>
 								<a href="#">O Papel Fundamental da Funarte no Ministério da Cultura</a>
 							</li>
@@ -83,7 +89,7 @@ endif;
 					<div class="box-links">
 						<h4 class="title-h1 box-links__title">Manual e formulários para elaboração da prestação de contas de convênios</h4>
 
-						<ul class="list-links">
+						<ul class="list-links list-links--type-b">
 							<li>
 								<a href="#">O Papel Fundamental da Funarte no Ministério da Cultura</a>
 							</li>
