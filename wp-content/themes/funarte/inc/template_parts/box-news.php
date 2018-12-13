@@ -48,7 +48,7 @@ else:
 		<div class="container">
 			<h2 class="title-1 mb-44">Notícias</h2>
 			<?php echo $ul; ?>
-			<a href="<? echo $more_news_url;?>" class="box-news__load"><i class="mdi mdi-chevron-down"></i><i class="mdi mdi-plus"></i><span class="sr-only">Ver mais</span></a>
+			<a href="<?php echo $more_news_url;?>" class="box-news__load"><i class="mdi mdi-chevron-down"></i><i class="mdi mdi-plus"></i><span class="sr-only">Ver mais</span></a>
 		</div>
 	</section>
 <?php endif; ?>
