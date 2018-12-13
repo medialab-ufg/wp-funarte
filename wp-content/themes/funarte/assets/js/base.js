@@ -26,8 +26,10 @@ $(document).ready(function() {
 	// Interna de notícias
 	base.carrossel.iniciarImagens();
 
-	// Institucional
+	// Institucional e Relatórios
 	base.tabs.visualizar();
+	base.carrossel.verificarTabs();
+	base.carrossel.iniciarTabs();
 });
 
 var base = {
@@ -109,6 +111,54 @@ var base = {
 	},
 
 	carrossel: {
+		verificarTabs: function() {
+			var $boxCarousel = $('.list-tabs'),
+				$carousel = $('.list-tabs__main');
+
+			$(window).resize(function() {
+				var $windowWidth = $(window).width();
+
+				if ($windowWidth < 1100) {
+					if (!$carousel.hasClass('slick-slider')) {
+						base.carrossel.iniciarTabs();
+					}
+				}
+			});
+		},
+
+		iniciarTabs: function() {
+			var $boxCarousel = $('.list-tabs'),
+				$carousel = $('.list-tabs__main');
+
+			$carousel.slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				prevArrow: $boxCarousel.find('.control__prev'),
+				nextArrow: $boxCarousel.find('.control__next'),
+				adaptiveHeight: true,
+				responsive: [
+					{
+						breakpoint: 10000,
+						settings: 'unslick'
+					},
+					{
+						breakpoint: 1100,
+						settings: {
+							slidesToShow: 2,
+						}
+					},
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 1
+						}
+					}
+				]
+			});
+		},
+
 		iniciarImagens: function() {
 			var $carousel = $('.box-carousel-image');
 

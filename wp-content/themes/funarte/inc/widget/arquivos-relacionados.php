@@ -17,7 +17,7 @@ if (!empty($files)) {
 	if ($params['wraper'])
 		$html_widget .= '<div class="box-links">';
 
-		$html_widget .= '<h4 class="title-h1">' . $params['titulo'] . '</h4>';
+		$html_widget .= '<h4 class="title-h1 box-links__title">' . $params['titulo'] . '</h4>';
 		$html_widget .= '<ul class="list-links">';
 		foreach ($files as $file) {
 			$html_widget .= '<li>';

@@ -19,12 +19,17 @@ endif;
 		
 		<div class="box-title">
 			<h2 class="title-h1">Funarte <span>Institucional</span></h2>
+			<a class="box-title__link" href="#" target="_blank">Dados Abertos</a>
 		</div>
 
 		<section class="box-tabs box-tabs--active">
 			<div class="list-tabs">
+				<div class="box-tabs__control">
+					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
+				</div>
 				<div class="container">
-					<ul>
+					<ul class="list-tabs__main">
 						<?php
 							$contador = 0;
 							foreach ($contents as $key => $content) :

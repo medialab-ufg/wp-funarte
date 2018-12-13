@@ -62,8 +62,12 @@ get_header();
 
 	<section class="box-tabs">
 		<div class="list-tabs">
+			<div class="box-tabs__control">
+				<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+				<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
+			</div>
 			<div class="container">
-				<ul>
+				<ul class="list-tabs__main">
 					<li class="<?php if($status=='todos') echo 'active'; ?>">		 <a data-status="todos" class="link-tabs" href="#">Todos</a></li>
 					<li class="<?php if($status=='aberto') echo 'active'; ?>">	 <a data-status="aberto" class="link-tabs" href="#">Inscrições abertas</a></li>
 					<li class="<?php if($status=='avaliacao') echo 'active'; ?>"><a data-status="avaliacao" class="link-tabs" href="#">Em avaliação</a></li>

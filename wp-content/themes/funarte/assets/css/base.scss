@@ -273,6 +273,27 @@ noscript {
 
 	.title-h1 { margin: 0 0 90px; }
 }
+.box-title__link {
+	margin: 0;
+	padding: 0 0 0 43px;
+	font-weight: 400;
+	font-family: 'Sansita', sans-serif;
+	font-size: 1.5rem;
+	color: $verde-1;
+	position: relative;
+
+	&:hover { color: $verde-1; }
+
+	a { color: inherit; }
+
+	&:after {
+		@include icon-css;
+		content: "\f3cc";
+		position: absolute;
+		top: 2px;
+		left: 0;
+	}
+}
 .box-title-page {
 	width: 72%;
 	min-height: 200px;
@@ -830,8 +851,41 @@ noscript {
 }
 
 .box-tabs {
+	position: relative;
+
+	.box-tabs__control {
+		display: none;
+
+		button {
+			width: 30px;
+			height: 30px;
+			color: $branco;
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			overflow: hidden;
+			border: none;
+			background-color: $verde-1;
+			transform: translate(0,-50%);
+			z-index: 9;
+
+			i {
+				width: 30px;
+				height: 30px;
+				font-size: 32px;
+				line-height: 30px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+		}
+		.control__next { right: 0; }
+		.control__prev { left: 0; }
+	}
 	.list-tabs {
 		width: 100%;
+		position: relative;
 		border-bottom: 4px solid $verde-1;
 
 		ul {
@@ -886,10 +940,7 @@ noscript {
 			z-index: -1;
 		}
 
-		p {
-			margin: 0;
-
-		}
+		p { margin: 0; }
 	}
 
 	.content-tab__title { margin-bottom: 27px; }
@@ -898,6 +949,17 @@ noscript {
 
 		&.active { display: block; }
 	}
+}
+
+@media screen and (max-width:1100px) {
+	.list-tabs { padding: 0 40px; }
+	.box-tabs .box-tabs__control { display: block; }
+}
+
+.row .box-tabs .content-tab:after {
+	left: auto;
+	right: 0;
+	transform: translate(0,0);
 }
 
 .list-boxes-info {
@@ -3059,6 +3121,7 @@ aside .list-bidding--type-b {
 }
 
 .box-links {
+	.box-links__title { margin-bottom: 80px; }
 	.list-links {
 		margin: 0;
 		padding: 0;
@@ -3164,7 +3227,7 @@ aside .list-bidding--type-b {
 	flex-wrap: wrap;
 
 	li {
-		width: 18px;
+		min-width: 18px;
 		height: 18px;
 		margin: 0 5px;
 		color: $verde-1;
