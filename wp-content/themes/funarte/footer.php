@@ -5,26 +5,28 @@
 				<div class="columns__column-a links-list">
 					<strong>Áreas artísticas:</strong>
 					<ul>
-						<li><a href="#">Teatro</a></li>
-						<li><a href="#">Circo</a></li>
-						<li><a href="#">Dança</a></li>
-						<li><a href="#">Literatura</a></li>
-						<li><a href="#">Música</a></li>
-						<li><a href="#">Artes visuais</a></li>
-						<li><a href="#">Artes integradas</a></li>
+						<li><a href="/category/teatro/">Teatro</a></li>
+						<li><a href="/category/circo/">Circo</a></li>
+						<li><a href="/category/danca/">Dança</a></li>
+						<li><a href="/category/literatura/">Literatura</a></li>
+						<li><a href="/category/musica/">Música</a></li>
+						<li><a href="/category/artes-visuais/">Artes visuais</a></li>
+						<li><a href="/category/artes-integradas/">Artes integradas</a></li>
 					</ul>
-				</div><div class="columns__column-a links-list">
-					<strong>Funarte:</strong>
-					<ul>
-						<li><a href="#">Institucional</a></li>
-						<li><a href="#">Estrutura organizacional</a></li>
-						<li><a href="#">Espaços culturais</a></li>
-						<li><a href="#">Regionais</a></li>
-						<li><a href="#">Relatórios</a></li>
-						<li><a href="#">Licitações</a></li>
-						<li><a href="#">Contratações diretas</a></li>
-					</ul>
-				</div><div class="columns__column-a links-list">
+				</div>
+				
+				<?php
+					wp_nav_menu( array(
+							'theme_location'    => 'rodape',
+							'depth'             => 1,
+							'container'         => 'div',
+							'container_class'   => 'columns__column-a links-list',
+							'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+							'walker'            => new WP_Bootstrap_Navwalker(),
+						) );
+				?>
+
+				<div class="columns__column-a links-list">
 					<strong>Acervos:</strong>
 					<ul>
 						<li><a href="#">Arquivos permanentes</a></li>

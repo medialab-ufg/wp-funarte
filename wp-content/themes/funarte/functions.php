@@ -76,6 +76,7 @@ add_action('admin_enqueue_scripts', 'add_files_admin');
 
 register_nav_menus( array(
 	'principal' => __( 'Menu Principal', 'funarte' ),
+	'rodape' => __( 'Rodapé', 'funarte' )
 ) );
 
 function get_post_files($postID = null, $params = array(), $exclude = '/^(image\/(jpeg|png|gif)|audio\/)/') {
