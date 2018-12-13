@@ -82,12 +82,7 @@ get_header();
 			<div class="container">
 				<ul class="list-notices"><?php while (have_posts()): the_post(); ?>
 					<li class="color-<?php echo get_the_category()[0]->slug; ?>">
-						<div class="list-notices-image">
-							<?php if (has_post_thumbnail()): ?>
-								<img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-							<?php else: ?>
-								<img src="<?php echo funarte_get_img_default(get_the_category()[0]->slug); ?>" alt="<?php the_title(); ?>">
-							<?php endif; ?>
+						<div class="list-notices-image" style="background-image: url(<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : funarte_get_img_default(get_the_category()[0]->slug); ?>)">
 						</div>
 						<div class="list-notices-text">
 							<?php

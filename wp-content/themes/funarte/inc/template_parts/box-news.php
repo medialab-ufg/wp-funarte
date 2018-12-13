@@ -26,7 +26,7 @@ else:
 							<div class='link-area'>
 								<a href='$tag_url'>" . $item['tag_name_area'] . "</a>
 							</div>
-							<img src='$url_img' alt='" . $item['title'] . "'>
+							<div class='box-news__image' style='background-image: url($url_img);'></div>
 							<h3 class='news-title'>" . $item['title'] . "</h3>
 							<span>" . $item['content'] . "</span>
 							<a href='" . $item['url'] . "' class='link-more'>Ler mais</a>
