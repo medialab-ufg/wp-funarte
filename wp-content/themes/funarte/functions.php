@@ -9,6 +9,40 @@ function funarte_load_part($name, $args) {
 	require($META_FOLDER . $name . '.php');
 }
 
+function funarte_get_img_default($area='') {
+	$base_dir = get_template_directory_uri() . '/assets/img/bkg/';
+	switch ($area) {
+		case 'artes-integradas':
+			$img = 'grafismo_artes_integradas.png';
+			break;
+		case 'danca':
+			$img = 'grafismo_danca.png';
+			break;
+		case 'funarte':
+			$img = 'grafismo_funarte.png';
+			break;
+		case 'literatura':
+			$img = 'grafismo_literatura.png';
+			break;
+		case 'musica':
+			$img = 'grafismo_musica.png';
+			break;
+		case 'teatro':
+			$img = 'grafismo_teatro.png';
+			break;
+		case 'circo':
+			$img = 'grafismo_circo.png';
+			break;
+		case 'artes-visuais':
+			$img = 'grafismo_artes_visuais.png';
+			break;
+		default:
+		$img = 'grafismo.png';
+			break;
+	}
+	return $base_dir . $img;
+}
+
 function extra_files() {
 	// Fontes
 	wp_enqueue_style('google-custom-fonts', '//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Sansita:400,400i,700,700i');
@@ -42,6 +76,7 @@ add_action('admin_enqueue_scripts', 'add_files_admin');
 
 register_nav_menus( array(
 	'principal' => __( 'Menu Principal', 'funarte' ),
+	'rodape' => __( 'Rodapé', 'funarte' )
 ) );
 
 function get_post_files($postID = null, $params = array(), $exclude = '/^(image\/(jpeg|png|gif)|audio\/)/') {

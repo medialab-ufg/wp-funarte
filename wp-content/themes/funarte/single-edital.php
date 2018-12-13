@@ -44,13 +44,7 @@
 					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
 						<div class="box-text">
 							<div class="box-text__text">
-								<div class="box-text__image">
-									<?php get_the_post_thumbnail(get_the_ID(), array('width' => 380, 'height' => null, 'after' => '<hr />')); ?>
-								</div>
-
 								<?php the_content(); ?>
-
-								<a href="#" class="button-1 button-inscreva-se">Inscreva-se</a>
 							</div>
 
 							<!-- VERIFICAR O USO DESTE BLOCO -->

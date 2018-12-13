@@ -13,13 +13,14 @@ if(have_posts()) : the_post();
 
 			<?php
 				$imagem = get_the_post_thumbnail( );
-
-				$area = get_the_category()[0];
+				$areas = get_the_category();
 			?>
 
 			<div class="box-title-page <?php echo !empty($imagem) ? 'box-title-page--image' : ''; ?>">
 				<div class='link-area'>
-					<a href="<?php echo home_url() . '/category/' . $area->slug; ?>" class="color-<?php echo $area->slug; ?>"><?php echo $area->name; ?></a>
+					<?php foreach ($areas as $area): ?>
+						<a href="<?php echo home_url() . '/category/' . $area->slug; ?>" class="color-<?php echo $area->slug; ?>"><?php echo $area->name; ?></a>
+					<?php endforeach; ?>
 				</div>
 				<h3 class="title-page"><?php the_title(); ?></h3>
 				<?php

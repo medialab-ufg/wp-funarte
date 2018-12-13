@@ -83,7 +83,11 @@ get_header();
 				<ul class="list-notices"><?php while (have_posts()): the_post(); ?>
 					<li class="color-<?php echo get_the_category()[0]->slug; ?>">
 						<div class="list-notices-image">
-							<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/espaco_002.jpg'; ?>" alt="<?php the_title(); ?>">
+							<?php if (has_post_thumbnail()): ?>
+								<img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+							<?php else: ?>
+								<img src="<?php echo funarte_get_img_default(get_the_category()[0]->slug); ?>" alt="<?php the_title(); ?>">
+							<?php endif; ?>
 						</div>
 						<div class="list-notices-text">
 							<?php
