@@ -126,6 +126,7 @@ $order_param = isset($_GET['ordenar']) ? $_GET['ordenar'] : '';
 								</li>
 							<?php endwhile; ?>
 						</ul>
+						<?php echo get_pagination(); ?>
 					<?php endif; ?>
 				</section>
 			</div>
