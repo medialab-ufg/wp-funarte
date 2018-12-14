@@ -117,6 +117,10 @@ require_once get_template_directory() . '/assets/lib/class-wp-bootstrap-navwalke
 
 require_once('inc/functions.lib.php');
 require_once('inc/traits/singleton.php');
+
+// search
+require_once('inc/search/search.php');
+
 //includes - taxonomy
 require_once('inc/taxonomy/identidade-visual.php');
 require_once('inc/taxonomy/categoria_edital.php');

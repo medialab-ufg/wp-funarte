@@ -43,7 +43,7 @@ class Edital {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true,
+			'exclude_from_search' => false,
 			'taxonomies' => [
 				taxCategoria::get_instance()->get_name(),
 				taxEditais::get_instance()->get_name(),

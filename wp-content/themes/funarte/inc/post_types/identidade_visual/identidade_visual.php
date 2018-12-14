@@ -41,7 +41,7 @@ class IdentidadeVisual {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true,
+			'exclude_from_search' => false,
 			'supports' => array('title', 'editor'),
 			'taxonomies' => [
 				taxTag::get_instance()->get_name(),
