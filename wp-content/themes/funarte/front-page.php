@@ -1,7 +1,7 @@
 <?php
 	get_header();
 
-	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC'];
+	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'posts_per_page' => 20];
 	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'), date('Y'), $query_eventos);
 	if (empty($eventos)) {
 		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
@@ -107,8 +107,8 @@
 										'month'=> $month,
 										'local' => $local,
 										'title' => $evento->post_title,
-										//'url_img' => get_the_post_thumbnail_url($evento->ID) ? get_the_post_thumbnail_url($evento->ID) : $default_img_url,
-										'url_img' => $default_img_url,
+										'url_img' => get_the_post_thumbnail_url($evento->ID) ? get_the_post_thumbnail_url($evento->ID,'medium_large') : $default_img_url,
+										//'url_img' => $default_img_url,
 										'content' => 	get_the_excerpt($evento->ID),
  										'schedule' => date_i18n('H:i', $schedule),
  										'tag_class_area'=>$area->slug];

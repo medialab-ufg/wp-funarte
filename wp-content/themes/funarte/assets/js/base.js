@@ -290,28 +290,29 @@ var base = {
 				variableWidth: true,
 				responsive: [
 					{
-						breakpoint: 768,
+						breakpoint: 992,
 						settings: {
 							slidesToShow: 1,
-							slidesToScroll: 1,
 							variableWidth: false
 						}
 					}
 				]
 			})
 			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+				$thumb = $('.carousel-schedule__thumb');
+
 				if (nextSlide > currentSlide) {
-					$carousel
-						.find('.active')
-						.removeClass('active')
-						.next('li')
-						.addClass('active');
+					$thumb
+						.find('.visible')
+						.removeClass('visible')
+						.next()
+						.addClass('visible');
 				} else {
-					$carousel
-						.find('.active')
-						.removeClass('active')
-						.prev('li')
-						.addClass('active');
+					$thumb
+						.find('.visible')
+						.removeClass('visible')
+						.prev()
+						.addClass('visible');
 				}
 			});
 		},

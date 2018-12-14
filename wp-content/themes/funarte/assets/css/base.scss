@@ -1297,6 +1297,7 @@ body.js .collapse__text { display: none; }
 	padding: 0 0 20px;
 
 	img {
+		max-width: 744px;
 		margin: 0 0 35px -32%;
 		padding: 84px 0 0;
 		display: block;
@@ -2597,6 +2598,7 @@ ul.slick-dots {
 	.carousel-schedule__wrapper,
 	.carousel-schedule__body {
 		width: 100%;
+		padding: 0 50px 0 0;
 		position: relative;
 	}
 	.carousel-schedule__wrapper {
@@ -2606,7 +2608,7 @@ ul.slick-dots {
 		&:after {
 			content: "";
 			width: 9999999px;
-			height: 80%;
+			height: 84%;
 			position: absolute;
 			bottom: 0;
 			right: 30%;
@@ -2625,6 +2627,7 @@ ul.slick-dots {
 		height: 4px;
 		margin: 30px 0;
 		display: block;
+		transition: width 1s ease-in-out;
 	}
 	.color-funarte {
 		.title-2,
@@ -2727,13 +2730,13 @@ ul.slick-dots {
 
 	/* SEGUNDO ITEM */
 
-	li.active {
+	li.slick-active + .slick-active {
 		width: 70%;
 		max-width: 840px;
 		padding: 203px 50px 40px;
 
 		.title-2 {
-			width: 40%;
+			width: 34%;
 			margin-left: 0;
 		}
 
@@ -2773,7 +2776,7 @@ ul.slick-dots {
 		.carousel-schedule__date { left: 0; }
 
 		img {
-			display: block;
+			display: none;
 			position: absolute;
 			top: 0;
 			right: 100px;
@@ -2836,6 +2839,35 @@ ul.slick-dots {
 	}
 }
 
+.carousel-schedule__thumb {
+	width: 426px;
+	height: 242px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: rgba(0,0,0,.1);
+	z-index: 2;
+}
+.carousel-schedule__image {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	opacity: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -2;
+	transition: opacity 0s ease-in-out 500ms;
+
+	&.visible {
+		opacity: 1;
+		z-index: 2;
+		transition: opacity 500ms ease-in-out;
+	}
+}
+
 @media screen and (max-width: 1300px) {
 	.box-carousel-schedule {
 		li.active {
@@ -2852,74 +2884,83 @@ ul.slick-dots {
 		.carousel-schedule__column-1,
 		.carousel-schedule__column-2 { width: 47%; }
 	}
+
+	.box-carousel-schedule li.slick-active + .slick-active { max-width: 580px; }
+	.carousel-schedule__thumb { width: 230px; }
 }
 @media screen and (max-width: 991px) {
-	.box-carousel-schedule {
-		.carousel-schedule__wrapper:after { right: 46%; }
-		.carousel-schedule {
-			& > li,
-			.slick-slide {
-				max-width: 360px;
+	.box-carousel-schedule .slick-slide,
+	.box-carousel-schedule > li {
+		max-width: unset;
 
-				.title-2 { width: 100%; }
-			}
-			li.active {
-				max-width: 360px;
-
-				.title-2 { width: 100%; }
-
-				img {
-					max-width: none;
-					width: 100%;
-				}
-
-				.carousel-schedule__row { display: block; }
-
-				.carousel-schedule__column-1,
-				.carousel-schedule__column-2 {
-					width: 100%;
-					padding: 0;
-				}
-				.carousel-schedule__column-2 { margin-top: 20px; }
-			}
-		}
+		.title-2 { max-width: 390px; }
 	}
+	// .box-carousel-schedule {
+	// 	.carousel-schedule__wrapper:after { right: 46%; }
+	// 	.carousel-schedule {
+	// 		& > li,
+	// 		.slick-slide {
+	// 			max-width: 360px;
+
+	// 			.title-2 { width: 100%; }
+	// 		}
+	// 		li.active {
+	// 			max-width: 360px;
+
+	// 			.title-2 { width: 100%; }
+
+	// 			img {
+	// 				max-width: none;
+	// 				width: 100%;
+	// 			}
+
+	// 			.carousel-schedule__row { display: block; }
+
+	// 			.carousel-schedule__column-1,
+	// 			.carousel-schedule__column-2 {
+	// 				width: 100%;
+	// 				padding: 0;
+	// 			}
+	// 			.carousel-schedule__column-2 { margin-top: 20px; }
+	// 		}
+	// 	}
+	// }
 }
 @media screen and (max-width: 767px) {
-	.box-carousel-schedule {
-		.carousel-schedule__control {
-			bottom: 50%;
-			transform: translate(0,50%);
-		}
+	// .box-carousel-schedule {
+	// 	.carousel-schedule__control {
+	// 		bottom: 50%;
+	// 		transform: translate(0,50%);
+	// 	}
 
-		.carousel-schedule {
-			margin: 0;
-			padding: 0;
-			background-color: $cinza-2;
+	// 	.carousel-schedule {
+	// 		margin: 0;
+	// 		padding: 0;
+	// 		background-color: $cinza-2;
 
-			& > li,
-			.slick-slide,
-			li.active {
-				width: auto;
-				max-width: none;
-				padding: 80px 50px 30px;
+	// 		& > li,
+	// 		.slick-slide,
+	// 		li.active {
+	// 			width: auto;
+	// 			max-width: none;
+	// 			padding: 80px 50px 30px;
 
-				.title-2 { margin: 0; }
+	// 			.title-2 { margin: 0; }
 
-				.carousel-schedule__date { left: 0; }
-				.carousel-schedule__wrapper:after { display: none; }
+	// 			.carousel-schedule__date { left: 0; }
+	// 			.carousel-schedule__wrapper:after { display: none; }
 
-				img {
-					width: 100%;
-					margin-bottom: 50px;
-					display: block;
-					position: static;
-					top: auto;
-					right: auto;
-				}
-			}
-		}
-	}
+	// 			img {
+	// 				width: 100%;
+	// 				margin-bottom: 50px;
+	// 				display: block;
+	// 				position: static;
+	// 				top: auto;
+	// 				right: auto;
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 /* LISTAS */
