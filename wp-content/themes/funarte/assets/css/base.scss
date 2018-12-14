@@ -3372,7 +3372,8 @@ aside .list-bidding--type-b {
 	display: flex;
 	justify-content: space-between;
 
-	button {
+	button,
+	a {
 		width: 30px;
 		height: 30px;
 		margin: 0 2.5px;
