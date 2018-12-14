@@ -1,13 +1,20 @@
 <?php 
 	get_header(); 
 
-	if (get_single_category()) {
-		$area = get_single_category();
-		if ($area->name == 'Estúdio F')
-			$area = get_category_by_name('Música');
-		$Breadcrumb->addBread($area->name, get_bloginfo('url') . '/agenda-cultural/?area=' . $area->slug);
-	}
+	// if (get_single_category()) {
+	// 	$area = get_single_category();
+	// 	if ($area->name == 'Estúdio F')
+	// 		$area = get_category_by_name('Música');
+	// 	$Breadcrumb->addBread($area->name, get_bloginfo('url') . '/agenda-cultural/?area=' . $area->slug);
+	// }
 ?>
+<main role="main">
+	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
+	<div class="container mb-100">
+	Em desenvolvimento
+	</div>
+</main>
+<!--
 <?php if ( have_posts() ) : the_post(); ?>
 	
 	<?php
@@ -28,6 +35,6 @@
 		<div> <?php echo get_the_date(); ?> </div>
 	</div>
 
-<?php
-endif;
-get_footer();
+<?php endif; ?>
+-->
+<?php get_footer();
