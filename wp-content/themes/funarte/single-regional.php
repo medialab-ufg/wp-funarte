@@ -31,10 +31,12 @@ if(have_posts()) : the_post();
 
 			<?php
 				if (!empty($imagem)):
-					?> <div> <?php
-						echo $imagem;
-						the_post_thumbnail_caption();
-					?> </div> <?php
+			?>
+				<div class="box-title-page__thumb">
+					<?php echo $imagem; ?>
+					<span class="box-title-page__caption"><?php the_post_thumbnail_caption(); ?></span>
+				</div>
+			<?php
 				endif;
 			?>
 		</div>

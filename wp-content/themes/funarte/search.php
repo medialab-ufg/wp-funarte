@@ -3,23 +3,9 @@
 get_header();
 $info_extra = true;
 
-$params = array(
-	's' => get_search_query(),
-	'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
-	'post_type' => array(
-		'post',
-		'page',
-		// Custom posts que entram no resultado
-		\funarte\Edital::get_instance()->get_post_type(),
-		\funarte\Evento::get_instance()->get_post_type(),
-		\funarte\Regional::get_instance()->get_post_type(),
-		\funarte\EspacoCultural::get_instance()->get_post_type(),
-		\funarte\Licitacao::get_instance()->get_post_type(),
-		\funarte\NovaAquisicao::get_instance()->get_post_type(),
-		\funarte\Estrutura::get_instance()->get_post_type()
-		//$Relatorio->postTypeRelatorio['name']
-	)
-);
+$search_helper = \funarte\Search::get_instance();
+$order_param = isset($_GET['ordenar']) ? $_GET['ordenar'] : '';
+
 ?>
 
 <main role="main">
@@ -30,37 +16,43 @@ $params = array(
 			<h2 class="title-h1">Resultados de busca</h2>
 
 			<div class="box-forms">
-				<form class="form-area" action="#" method="post">
+				<form class="form-area" method="get">
 					<fieldset>
 						<legend>Formulário de reordenação</legend>
-						<select class='select_local'>
-							<option value="">Ordenar por</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
+						<select name="ordenar"class='select_local'>
+							<option value="">Ordenar</option>
+								<option value="title" <?php selected($order_param, 'title'); ?>>Por título</option>
+								<option value="date_desc" <?php selected($order_param, 'date_desc'); ?>>Mais novos primeiro</option>
+								<option value="date_asc" <?php selected($order_param, 'date_asc'); ?>>Mais antigos primeiro</option>
 						</select>
 					</fieldset>
-				</form>
+				
 
-				<form class="form-area" action="#" method="post">
+				
 					<fieldset>
-						<legend>Formulário de filtro</legend>
-						<select class='select_local'>
-							<option value="">Filtrar por área</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
-						</select>
+						<legend>Formulário de filtro por área</legend>
+						<?php
+						wp_dropdown_categories(array(
+							'show_option_none' => 'Filtrar por área',
+							'option_none_value' => '',
+							'hide_empty' => true,
+							'id' => 'select-categoria',
+							'class' => 'select_area',
+							'name' => 'area',
+							'value_field' => 'id',
+							'selected' => isset($_GET['area']) ? $_GET['area'] : ''));
+						?>
+
 					</fieldset>
-				</form>
+				
 
-				<form class="form-filtro form-filtro--espaco-cultural">
+				
 					<fieldset>
-						<legend>Formulário de filtro de editais</legend>
+						<legend>Campo de busca</legend>
 
 						<div class="form-group">
-							<label class="sr-only" for="filtro-editais-texto">Pesquisar editais</label>
-							<input type="text" id="filtro-editais-texto" class='input_search' placeholder="Pesquisar editais" value="<?php echo $busca; ?>">
+							<label class="sr-only" for="busca-texto">Pesquisar</label>
+							<input type="text" id="busca-texto" name="s" class='input_search' placeholder="<?php echo get_search_query(); ?>" value="<?php echo get_search_query(); ?>">
 							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
 						</div>
 					</fieldset>
@@ -75,17 +67,21 @@ $params = array(
 				<aside>
 					<div class="box-list-links">
 						<h3 class="title-6 box-list-links__title">Tipos de resultados</h3>
-
+						
+						<?php 
+						$post_types = $search_helper->get_search_post_types_groups();
+						
+						?>
+						
 						<ul>
-							<li><a href="#">Espaços Culturais (76)</a></li>
-							<li><a href="#">Notícias (113)</a></li>
-							<li><a href="#">Eventos (3)</a></li>
-							<li><a href="#">Acervos (32)</a></li>
-							<li><a href="#">Editais (16)</a></li>
-							<li><a href="#">Itens de acervo (213)</a></li>
-							<li><a href="#">Coleções (5)</a></li>
-							<li><a href="#">Contatos (12)</a></li>
-							<li><a href="#">Outros (39)</a></li>
+							<?php foreach ($post_types as $group => $group_def): ?>
+								<li class="<?php echo $search_helper->active_class($group); ?>">
+									<a href="<?php echo add_query_arg('search_type', $group); ?>">
+										<?php echo $group_def['label']; ?> (<?php echo $search_helper->get_group_search_count($group); ?>)
+									</a>
+								</li>
+							<?php endforeach; ?>
+
 						</ul>
 					</div>
 				</aside>
@@ -94,10 +90,7 @@ $params = array(
 				<section class="list-soft">
 					<?php 
 					if(have_posts()) :
-						$busca_sem_filtro = new WP_Query(array_merge($params, array('showposts'=> -1)));
-						wp_reset_query();
-						query_posts($params);
-						$total = $busca_sem_filtro->post_count;
+						$total = $wp_query->found_posts;
 						$start = max(((get_query_var('paged') - 1) * get_option('posts_per_page')) + 1, 1);
 						$end = min($start + get_option('posts_per_page') - 1, $total);
 					?>
