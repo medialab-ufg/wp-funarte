@@ -1,6 +1,16 @@
-<?php
-get_header();
+<?php get_header(); ?>
 
+<main role="main">
+	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
+	<div class="container mb-100">
+	Em desenvolvimento
+	</div>
+</main>
+<!--
+
+
+
+<?php 
 $categoria = (isset($_GET['area']) && ($_GET['area'] != 'Todas as áreas')) ? get_category_by_name($_GET['area']) : false;
 $mes = (isset($_GET['mes'])) ? (int)$_GET['mes'] : date('n');
 $ano = (isset($_GET['ano'])) ? (int)$_GET['ano'] : date('Y');
@@ -42,9 +52,13 @@ wp_dropdown_categories(array(
 	</div> <br> <br>
 
 	<label for="select-categoria">Filtre por </label>
+
+
 <?php
 //the_content();
 endwhile;
-
+?>
+-->
+<?php
 get_footer();
 ?>

@@ -48,7 +48,7 @@ else:
 						</div>
 						<h3 class="title-3"><?php echo $destaque['title']; ?></h3>
 						<p><?php echo $destaque['content']; ?></p>
-						<a href="<?php echo $destaque['url']; ?>" class="link-more">Ler mais</a>
+						<a href="<?php echo $destaque['url'];?>" class="link-more">Ler mais</a>
 					</section>
 				</div>
 			</div>
