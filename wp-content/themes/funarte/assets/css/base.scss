@@ -1779,7 +1779,7 @@ body.js .collapse__text { display: none; }
 	flex-wrap: wrap;
 	list-style: none;
 
-	.link-area { margin-bottom: 10px; }
+	.link-area { margin-bottom: 6px; }
 
 	img {
 		width: 100%;
@@ -1809,6 +1809,7 @@ body.js .collapse__text { display: none; }
 	.slick-slide {
 		width: 25%;
 		min-height: 432px;
+		//min-height: 383px;
 		padding: 0 5px;
 
 		&.carousel-collection__reverse {
@@ -1864,13 +1865,20 @@ body.js .collapse__text { display: none; }
 @media screen and (max-width:1199px) {
 	.carousel-collection {
 		& > li,
-		.slick-slide { min-height: 390px; }
+		.slick-slide {
+			min-height: 390px;
+			//min-height: 383px;
+		}
 	}
 }
 @media screen and (max-width:991px) {
 	.carousel-collection {
 		& > li,
-		.slick-slide { min-height: 342px; }
+		.slick-slide {
+			//min-height: 342px;
+			//min-height: 383px;
+			min-height: 382px;
+		}
 	}
 }
 @media screen and (max-width:767px) {

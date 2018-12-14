@@ -247,33 +247,36 @@ var base = {
 		},
 
 		iniciarAcervo: function() {
-			var $carousel = $('.box-carousel-collection');
+			var $carousel = $('.box-carousel-collection'),
+				itens = $('.carousel-collection').find('li').length;
 
-			$('.carousel-collection').slick({
-				speed: 1000,
-				infinite: false,
-				slidesToShow: 4,
-				slidesToScroll: 4,
-				prevArrow: $carousel.find('.control__prev'),
-				nextArrow: $carousel.find('.control__next'),
-				adaptiveHeight: true,
-				responsive: [
-					{
-						breakpoint: 768,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 2
+			if (itens > 4) {
+				$('.carousel-collection').slick({
+					speed: 1000,
+					infinite: false,
+					slidesToShow: 4,
+					slidesToScroll: 4,
+					prevArrow: $carousel.find('.control__prev'),
+					nextArrow: $carousel.find('.control__next'),
+					adaptiveHeight: true,
+					responsive: [
+						{
+							breakpoint: 768,
+							settings: {
+								slidesToShow: 2,
+								slidesToScroll: 2
+							}
+						},
+						{
+							breakpoint: 586,
+							settings: {
+								slidesToShow: 1,
+								slidesToScroll: 1
+							}
 						}
-					},
-					{
-						breakpoint: 586,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
-						}
-					}
-				]
-			});
+					]
+				});
+			}
 		},
 
 		iniciarAgenda: function() {
