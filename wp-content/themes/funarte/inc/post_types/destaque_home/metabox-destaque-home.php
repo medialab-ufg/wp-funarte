@@ -31,6 +31,7 @@
 		<td width="85%">
 			<input type="checkbox" id="destaque-home_site" name="destaque[home_site]" <?php if($destaquehomesite) { echo 'checked = "checked"';} ?> /><label for="destaque-home_site">Destacar na Home principal do portal</label><br />
 			<input type="checkbox" id="destaque-home_area" name="destaque[home_area]" <?php if($destaquehomearea) { echo 'checked = "checked"';} ?> /><label for="destaque-home_area">Destacar na Home da área de interesse</label><br />
+			<input type="checkbox" id="destaque-secundario" name="destaque[secundario]" <?php if($secundario) { echo 'checked = "checked"';} ?> /><label for="destaque-secundario">Destaque como Secundário</label><br />
 		</td>
 	</tr>
 	<tr>

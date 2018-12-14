@@ -8,7 +8,8 @@
 	}
 	$query_news = ['post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'orderby' => 'date', 'order' => 'DESC'];
 	$noticias = query_posts($query_news);
-	$destaques = \funarte\DestaqueHome::get_instance()->get_destaques('area', 1, 5);
+	$destaques = \funarte\DestaqueHome::get_instance()->get_destaques('home', 1, 5);
+	$destaque_secundario = \funarte\DestaqueHome::get_instance()->get_destaque_secundario();
 	$editais = \funarte\Edital::get_instance()->get_editais('todos');
 ?>
 
@@ -46,13 +47,15 @@
 									'title' => $edital->post_title ,
 									'url'=>get_permalink($edital->ID)];
 		}
+		$area = get_the_category($destaque_secundario->ID);
 		$arg = ['title'=> 'Editais', 'items' => $items,
-											'destaque' => ['url'=> get_template_directory_uri(),
-											'title'=> '[TITULO]',
-											'tag_name_area'=>$area[0]->name,
-											'tag_class_area'=>$area[0]->slug,
-											'content'=>'[CONTEUTO DO DESTAQUE]',
-											'img_url'=> get_template_directory_uri() . '/assets/img/fke/destaque_001.jpg']
+											'destaque' => [
+														'url'=> get_post_meta($destaque_secundario->ID, 'destaque-url', true),
+														'title'=> $destaque_secundario->post_title,
+														'tag_name_area'=>$area[0]->name,
+														'tag_class_area'=>$area[0]->slug,
+														'content'=> $destaque_secundario->post_content,
+														'img_url'=> get_the_post_thumbnail_url($destaque_secundario->ID)]
 		];
 		funarte_load_part('notices-highlights', $arg);
 	?>

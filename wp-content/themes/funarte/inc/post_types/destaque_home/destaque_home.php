@@ -74,6 +74,7 @@ class DestaqueHome {
 		$destaquehomearea = get_post_meta($post->ID, 'destaque-home_area', true);
 		$posicao = get_post_meta($post->ID, 'destaque-posicao', true);
 		$target = get_post_meta($post->ID, 'destaque-target', true);
+		$secundario = get_post_meta($post->ID, 'destaque-secundario', true);
 	
 		$THEME_FOLDER = get_template_directory();
 		$DS = DIRECTORY_SEPARATOR;
@@ -95,15 +96,15 @@ class DestaqueHome {
 		}
 		$fields = array('url', 'posicao', 'target');
 		$data = $_POST['destaque'];
-		foreach ($data AS $field => $value) {
+		foreach ($data as $field => $value) {
 			if (!in_array($field, $fields)) {
 				continue;
 			}
 			update_post_meta($post_id, 'destaque-' . $field, $value);
 		}
 		// Checkboxes (podem não existir no post)
-		$fields = array('home_site', 'home_area');
-		foreach ($fields AS $field) {
+		$fields = array('home_site', 'home_area', 'secundario');
+		foreach ($fields as $field) {
 			$value = (isset($data[$field]) && !empty($data[$field])) ? 1 : 0;
 			update_post_meta($post_id, 'destaque-' . $field, $value);
 		}
@@ -150,6 +151,37 @@ class DestaqueHome {
 			}
 		}
 		return $destaques;
+	}
+
+	public function get_destaque_secundario($area = 'home', $params = array()) {
+		$params = array_merge(array(
+			'post_type' => $this->POST_TYPE,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+			'posts_per_page' => 1
+		), $params);
+
+		$meta_query = array('meta_query' => array(
+			array('key' => 'destaque-secundario', 'value'   => '1')
+		));
+
+		switch ($area) {
+			case 'home':
+				$meta_query['meta_query'][] = array(
+					'meta_key' => 'destaque-home_site',
+					'meta_value' => '1'
+				);
+				break;
+			case 'area':
+				$meta_query['meta_query'][] = array(
+					'meta_key' => 'destaque-home_area',
+					'meta_value' => '1'
+				);
+				break;
+		}
+		$params = array_merge($params, $meta_query);
+		$destaque = query_posts($params);
+		return $destaque[0];
 	}
 
 }
