@@ -3336,14 +3336,47 @@ aside .list-bidding--type-b {
 * BARRA LATERAL
 ***/
 
-.box-list-links {
+.box-list-links__button {
+	width: 30px;
+	height: 30px;
+	color: $branco;
+	cursor: pointer;
+	position: fixed;
+	top: 50%;
+	left: 0;
+	display: none;
+	overflow: hidden;
+	border: none;
+	background-color: $verde-1;
+	transform: translate(0,-50%);
+	z-index: 9;
 
+	i {
+		width: 30px;
+		height: 30px;
+		font-size: 32px;
+		line-height: 30px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+
+	.mdi-chevron-left { display: none; }
+
+	&.active {
+		.mdi-chevron-left { display: block; }
+		.mdi-chevron-right { display: none; }
+	}
+}
+.box-list-links {
 	ul { 
 		width: 90%;
 		margin: -28px auto 0;
 		padding: 57px 0 40px;
 		list-style-type: none;
 		position: relative;
+		background-color: $cinza-1;
 
 		&:after {
 			content: "";
@@ -3366,26 +3399,22 @@ aside .list-bidding--type-b {
 		&.active a {
 			text-decoration: none;
 			font-weight: 700;
+			display: flex;
+			align-items: center;
 
 			&:after {
 				@include icon-css;
 				content: "\f142";
 				font-size: 32px;
-				position: absolute;
-				top: 50%;
-				right: 0;
-				transform: translate(0,-50%);
+				line-height: 21px;
 			}
 		}
 
 		a {
-			padding-right: 30px;
 			font-size: 1.3rem;
 			color: $verde-1;
-			position: relative;
 		}
 	}
-
 }
 .box-list-links__title {
 	width: 85%;
@@ -3404,6 +3433,27 @@ aside .list-bidding--type-b {
 		background-color: $verde-1;
 		z-index: -1;
 	}
+}
+@media screen and (max-width: 767px) {
+	.box-list-links__button { display: block; }
+	.box-list-links {
+		position: fixed;
+		left: 10%;
+		top: 50%;
+		z-index: 2;
+		transform: translate(-150%,-50%);
+		transition: transform .2s ease-in-out;
+
+		&.active { transform: translate(0,-50%); }
+
+		ul {
+			width: 95%;
+			padding: 57px 10px 40px;
+		}
+	}
+}
+@media screen and (max-width: 500px) {
+	.box-list-links { width: 90%; }
 }
 
 /***
@@ -3472,89 +3522,147 @@ aside .list-bidding--type-b {
 .box-forms {
 	display: flex;
 	justify-content: space-between;
+}
+.form-area,
+.form-select {
+	width: 100%;
+	max-width: 210px;
+	margin-left: 50px;
 
-	.form-area,
-	.form-select {
+	select {
 		width: 100%;
-		max-width: 210px;
-		margin-left: 50px;
+		padding: 8px 20px;
+		font-size: 1rem;
+		color: $cinza-6;
+		border: 1px solid $cinza-2;
+		background-color: $branco;
 
-		select {
-			width: 100%;
-			padding: 7px 20px;
-			font-size: 1rem;
-			color: $cinza-6;
-			border: 1px solid $cinza-2;
-			background-color: $branco;
-
-			option:hover { background-color: $cinza-2; }
-		}
+		option:hover { background-color: $cinza-2; }
 	}
 
-	.form-filtro-editais,
-	.form-filtro {
+	input[type=text] {
 		width: 100%;
-		max-width: 210px;
-		margin-left: 50px;
+		padding: 7px 45px 7px 20px;
+		font-size: 1rem;
+		color: $cinza-6;
+		border: none;
+		border-bottom: 1px solid $cinza-2;
+		background-color: $branco;
 
-		.form-group { position: relative; }
+		&::placeholder { color: $cinza-6; }
+		&:-ms-input-placeholder { color: $cinza-6; }
+		&::-ms-input-placeholder { color: $cinza-6; }
+	}
 
-		input[type=text] {
-			width: 100%;
-			padding: 7px 45px 7px 20px;
-			font-size: 1rem;
-			color: $cinza-6;
-			border: none;
-			border-bottom: 1px solid $cinza-2;
-			background-color: $branco;
+	input[type=submit],
+	button[type=submit] {
+		width: 37px;
+		height: 37px;
+		cursor: pointer;
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border: none;
+		background: none;
 
-			&::placeholder { color: $cinza-6; }
-			&:-ms-input-placeholder { color: $cinza-6; }
-			&::-ms-input-placeholder { color: $cinza-6; }
-		}
-
-		input[type=submit],
-		button[type=submit] {
-			width: 37px;
-			height: 37px;
-			cursor: pointer;
-			display: block;
+		i {
+			font-size: 27px;
+			color: $verde-1;
 			position: absolute;
-			top: 0;
-			right: 0;
-			border: none;
-			background: none;
-
-			i {
-				font-size: 27px;
-				color: $verde-1;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%,-50%);
-			}
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
 		}
 	}
 }
 
+.form-filtro-editais,
+.form-filtro {
+	width: 100%;
+	max-width: 210px;
+	margin-left: 50px;
+
+	.form-group { position: relative; }
+
+	input[type=text] {
+		width: 100%;
+		padding: 7px 45px 7px 20px;
+		font-size: 1rem;
+		color: $cinza-6;
+		border: none;
+		border-bottom: 1px solid $cinza-2;
+		background-color: $branco;
+
+		&::placeholder { color: $cinza-6; }
+		&:-ms-input-placeholder { color: $cinza-6; }
+		&::-ms-input-placeholder { color: $cinza-6; }
+	}
+
+	input[type=submit],
+	button[type=submit] {
+		width: 37px;
+		height: 37px;
+		cursor: pointer;
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border: none;
+		background: none;
+
+		i {
+			font-size: 27px;
+			color: $verde-1;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+}
+
+.form-multi {
+	width: auto;
+	max-width: 700px;
+	margin: 0 -25px;
+	display: flex;
+	justify-content: space-between;
+
+	fieldset {
+		margin: 0 25px;
+		flex-grow: 1;
+		flex-basis: 0;
+		position: relative;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.form-multi {
+		width: 100%;
+		display: block;
+
+		fieldset { margin: 25px; }
+	}
+}
 @media screen and (max-width: 550px) {
 	.box-forms {
 		width: 100%;
 		margin-bottom: 50px;
 		display: block;
+	}
 
-		.form-area,
-		.form-select,
-		.form-filtro-editais,
-		.form-filtro {
-			max-width: none;
-			margin: 0;
+	.form-area,
+	.form-select,
+	.form-filtro-editais,
+	.form-filtro {
+		max-width: none;
+		margin: 0;
 
-			& + .form-area,
-			& + .form-select,
-			& + .form-filtro-editais,
-			& + .form-filtro { margin-top: 20px; }
-		}
+		& + .form-area,
+		& + .form-select,
+		& + .form-filtro-editais,
+		& + .form-filtro { margin-top: 20px; }
 	}
 }
 

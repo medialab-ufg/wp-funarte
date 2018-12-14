@@ -31,9 +31,21 @@ $(document).ready(function() {
 	base.carrossel.verificarTabs();
 	base.carrossel.iniciarTabsOnOff();
 	base.carrossel.iniciarTabsOn();
+
+	// Resultado de busca
+	base.menuLateral.exibir();
 });
 
 var base = {
+	menuLateral: {
+		exibir: function() {
+			$('.box-list-links__button').on('click',function() {
+				$('.box-list-links').toggleClass('active');
+				$(this).toggleClass('active');
+			});
+		}
+	},
+
 	tabs: {
 		visualizar: function() {
 			$('.box-tabs--active')
