@@ -15,49 +15,42 @@ $order_param = isset($_GET['ordenar']) ? $_GET['ordenar'] : '';
 		<div class="box-title">
 			<h2 class="title-h1">Resultados de busca</h2>
 
-			<div class="box-forms">
-				<form class="form-area" method="get">
-					<fieldset>
-						<legend>Formulário de reordenação</legend>
-						<select name="ordenar"class='select_local'>
-							<option value="">Ordenar</option>
-								<option value="title" <?php selected($order_param, 'title'); ?>>Por título</option>
-								<option value="date_desc" <?php selected($order_param, 'date_desc'); ?>>Mais novos primeiro</option>
-								<option value="date_asc" <?php selected($order_param, 'date_asc'); ?>>Mais antigos primeiro</option>
-						</select>
-					</fieldset>
-				
+			<form class="form-multi form-area" method="get">
+				<fieldset>
+					<legend>Formulário de reordenação</legend>
+					<select name="ordenar"class='select_local'>
+						<option value="">Ordenar</option>
+							<option value="title" <?php selected($order_param, 'title'); ?>>Por título</option>
+							<option value="date_desc" <?php selected($order_param, 'date_desc'); ?>>Mais novos primeiro</option>
+							<option value="date_asc" <?php selected($order_param, 'date_asc'); ?>>Mais antigos primeiro</option>
+					</select>
+				</fieldset>
 
-				
-					<fieldset>
-						<legend>Formulário de filtro por área</legend>
-						<?php
-						wp_dropdown_categories(array(
-							'show_option_none' => 'Filtrar por área',
-							'option_none_value' => '',
-							'hide_empty' => true,
-							'id' => 'select-categoria',
-							'class' => 'select_area',
-							'name' => 'area',
-							'value_field' => 'id',
-							'selected' => isset($_GET['area']) ? $_GET['area'] : ''));
-						?>
+				<fieldset>
+					<legend>Formulário de filtro por área</legend>
+					<?php
+					wp_dropdown_categories(array(
+						'show_option_none' => 'Filtrar por área',
+						'option_none_value' => '',
+						'hide_empty' => true,
+						'id' => 'select-categoria',
+						'class' => 'select_area',
+						'name' => 'area',
+						'value_field' => 'id',
+						'selected' => isset($_GET['area']) ? $_GET['area'] : ''));
+					?>
+				</fieldset>
 
-					</fieldset>
-				
+				<fieldset>
+					<legend>Campo de busca</legend>
 
-				
-					<fieldset>
-						<legend>Campo de busca</legend>
-
-						<div class="form-group">
-							<label class="sr-only" for="busca-texto">Pesquisar</label>
-							<input type="text" id="busca-texto" name="s" class='input_search' placeholder="<?php echo get_search_query(); ?>" value="<?php echo get_search_query(); ?>">
-							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
-						</div>
-					</fieldset>
-				</form>
-			</div>
+					<div class="form-group">
+						<label class="sr-only" for="busca-texto">Pesquisar</label>
+						<input type="text" id="busca-texto" name="s" class='input_search' placeholder="<?php echo get_search_query(); ?>" value="<?php echo get_search_query(); ?>">
+						<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
+					</div>
+				</fieldset>
+			</form>
 		</div>
 	</div>
 
@@ -65,6 +58,7 @@ $order_param = isset($_GET['ordenar']) ? $_GET['ordenar'] : '';
 		<div class="row">
 			<div class="col-md-4">
 				<aside>
+					<button type="button" class="box-list-links__button"><i class="mdi mdi-chevron-left"></i><i class="mdi mdi-chevron-right"></i></button>
 					<div class="box-list-links">
 						<h3 class="title-6 box-list-links__title">Tipos de resultados</h3>
 						
