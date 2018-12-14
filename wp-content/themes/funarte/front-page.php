@@ -125,84 +125,13 @@
 		<section class="box-carousel-collection">
 			<h2 class="title-1 mb-65">Acervo</h2>
 
-			<div class="carousel-collection__wrapper">
-				<div class="carousel-collection__control">
-					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
-					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
-				</div>
-				<ul class="carousel-collection">
-					<li class="color-circo">
-						<div class="link-area">
-							<a href="#">Circo</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_001.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-					<li class="color-literatura carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Literatura</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-					<li class="color-artes-visuais">
-						<div class="link-area">
-							<a href="#">Artes visuais</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_003.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-					<li class="color-teatro carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Teatro</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_004.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-					<li class="color-circo">
-						<div class="link-area">
-							<a href="#">Circo</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_001.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-					<li class="color-literatura carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Literatura</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-					<li class="color-artes-visuais">
-						<div class="link-area">
-							<a href="#">Artes visuais</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_003.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-					<li class="color-teatro carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Teatro</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_004.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-					<li class="color-literatura carousel-collection__reverse">
-						<div class="link-area">
-							<a href="#">Literatura</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_002.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-					<li class="color-artes-visuais">
-						<div class="link-area">
-							<a href="#">Artes visuais</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipis</p>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_003.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipis">
-					</li>
-				</ul>
-			</div>
+			<?php $collections = new WP_Query([
+				'post_type' => 'tainacan-collection',
+				'posts_per_page' => -1
+			]); ?>
+			
+			<?php funarte_load_part('collections-carousel', ['collections' => $collections]); ?>
+			
 		</section>
 	</div>
 </main>

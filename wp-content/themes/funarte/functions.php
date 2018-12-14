@@ -1,5 +1,11 @@
 <?php
-add_theme_support( 'post-thumbnails' );
+
+add_action('after_setup_theme', function() {
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'custom-header' );
+});
+
+
 
 function funarte_load_part($name, $args) {
 	$THEME_FOLDER = get_template_directory();
@@ -110,7 +116,22 @@ function get_post_files($postID = null, $params = array(), $exclude = '/^(image\
 	return $posts;
 }
 
-
+//  COrrige link errado que o tainacan gerava até 0.6.1 
+add_filter('post_type_link', function($permalink, $post, $leavename) {
+	
+	if ( ! class_exists('\Tainacan\Entities\Collection')) {
+		return $permalink;
+	}
+	
+	$collection_post_type = \Tainacan\Entities\Collection::get_post_type();
+	
+	if (!is_admin() && $post->post_type == $collection_post_type) {
+		$permalink = str_replace(site_url(), home_url(), $permalink);
+	}
+	
+	return $permalink;
+	
+}, 15, 3);
 
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/assets/lib/class-wp-bootstrap-navwalker.php';
