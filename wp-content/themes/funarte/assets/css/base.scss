@@ -3359,14 +3359,33 @@ aside .list-bidding--type-b {
 	}
 
 	li {
-		
+
 		& + li { margin-top: 19px; }
+
+		&:hover a,
+		&.active a {
+			text-decoration: none;
+			font-weight: 700;
+
+			&:after {
+				@include icon-css;
+				content: "\f142";
+				font-size: 32px;
+				position: absolute;
+				top: 50%;
+				right: 0;
+				transform: translate(0,-50%);
+			}
+		}
+
+		a {
+			padding-right: 30px;
+			font-size: 1.3rem;
+			color: $verde-1;
+			position: relative;
+		}
 	}
 
-	a {
-		font-size: 1.3rem;
-		color: $verde-1;
-	}
 }
 .box-list-links__title {
 	width: 85%;
