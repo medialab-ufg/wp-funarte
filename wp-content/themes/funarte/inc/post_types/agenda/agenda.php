@@ -7,7 +7,7 @@ class Agenda {
 	protected $POST_TYPE = "agenda";
 
 	protected function init() {
-		add_action('init', array( &$this, "register_post_type" ));
+		//add_action('init', array( &$this, "register_post_type" ));
 	}
 
 	public function register_post_type() {

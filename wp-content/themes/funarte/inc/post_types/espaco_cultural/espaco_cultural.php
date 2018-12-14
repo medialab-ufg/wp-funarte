@@ -56,7 +56,7 @@ class EspacoCultural {
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
-			'exclude_from_search' => true,
+			'exclude_from_search' => false,
 			'supports' => array('title', 'editor', 'thumbnail', 'permalink'),
 			'taxonomies' => [
 				taxEspacosCulturais::get_instance()->get_name(),

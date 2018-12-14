@@ -34,8 +34,9 @@ get_header();
 
 						<?php
 						wp_dropdown_categories(array(
-							'show_option_none' => false,
-							'hide_empty' => false,
+							'show_option_none' => 'Filtrar por área',
+							'option_none_value' => '',
+							'hide_empty' => true,
 							'id' => 'select-categoria',
 							'class' => 'select_area',
 							'name' => 'area',
