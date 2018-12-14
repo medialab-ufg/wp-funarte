@@ -8,12 +8,18 @@
 		'cat' => $area->term_id
 	));
 	$post_area = end($post_area);
+
+	$collections = new WP_Query([
+		'post_type' => 'tainacan-collection',
+		'posts_per_page' => -1,
+		'cat' => $area->term_id
+	]);
 	
 	// Se a área de interesse não existir
 	if (!$area || empty($area) || !$post_area || empty($post_area)) {
 		header("Location: " . get_bloginfo('url')); exit;
 	}
-	$bodyClass = $area->slug;
+	$bodyClass = $area->slug;	
 	get_header();
 
 	$query = ['cat' => (int)$area->term_id];
@@ -249,6 +255,17 @@
 			$arg = ['items' => $items];
 			funarte_load_part('schedule-events', $arg);
 		?>
+	</div>
+
+	<div class="container">
+		<section class="box-carousel-collection">
+			<h2 class="title-1 mb-65">Acervo</h2>
+
+			<?php  ?>
+			
+			<?php funarte_load_part('collections-carousel', ['collections' => $collections, 'area' => ['slug'=>$area->slug, 'name'=>$area->name]]); ?>
+			
+		</section>
 	</div>
 
 </main>

@@ -12,13 +12,22 @@
 	<ul class="carousel-collection">
 		<?php if ($collections->have_posts()): $x = 1; ?>
 			<?php while ($collections->have_posts()): $collections->the_post(); $x++; ?>
+
+				<?php
+					if (!isset($area))
+						$area_ = ['name'=>get_the_category(get_the_ID())[0]->name, 'slug'=>get_the_category(get_the_ID())[0]->slug ];
+					else {
+						$area_ = $area;
+					}
+					$image = has_post_thumbnail()? get_the_post_thumbnail_url()  : funarte_get_img_default($area_['slug']);
+				?>
 				
-				<li class="color-circo <?php if (($x % 2) != 0) echo 'carousel-collection__reverse'; ?> ">
+				<li class="color-<?php echo $area_['slug']; if (($x % 2) != 0) echo ' carousel-collection__reverse'; ?> ">
 					<div class="link-area">
-						<a href="#">Teatro</a>
+						<a href="#"><?php echo $area_['name'];?></a>
 					</div>
 					<p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-					<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/acervo_001.jpg'; ?>" alt="Lorem ipsum dolor sit amet, consectetuer adipisLorem ipsum dolor sit amet, consectetuer adipis">
+					<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>">
 				</li>
 				
 			<?php endwhile; ?>
