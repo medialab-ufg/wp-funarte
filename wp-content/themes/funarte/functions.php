@@ -49,6 +49,16 @@ function funarte_get_img_default($area='') {
 	return $base_dir . $img;
 }
 
+function get_area_class($postID = null) {
+	if (is_null($postID)) return false;
+	
+	$cat = get_the_category($postID);
+	if (empty($cat) )
+		return ['slug'=>'funarte', 'name'=>'funarte'];
+	else 
+		return ['slug'=>$cat[0]->slug, 'name'=>$cat[0]->name];
+}
+
 function extra_files() {
 	// Fontes
 	wp_enqueue_style('google-custom-fonts', '//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Sansita:400,400i,700,700i');

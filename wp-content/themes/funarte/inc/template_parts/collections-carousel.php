@@ -14,9 +14,9 @@
 			<?php while ($collections->have_posts()): $collections->the_post(); $x++; ?>
 
 				<?php
-					if (!isset($area))
-						$area_ = ['name'=>get_the_category(get_the_ID())[0]->name, 'slug'=>get_the_category(get_the_ID())[0]->slug ];
-					else {
+					if (!isset($area)) {
+						$area_ = get_area_class(get_the_ID());
+					} else {
 						$area_ = $area;
 					}
 					$image = has_post_thumbnail()? get_the_post_thumbnail_url()  : funarte_get_img_default($area_['slug']);
