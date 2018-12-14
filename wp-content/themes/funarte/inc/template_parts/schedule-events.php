@@ -34,6 +34,7 @@ else:
 		<ul class="carousel-schedule">
 			<?php foreach ($items as $item): $id++;?>
 				<li class="color-<?php echo $item['tag_class_area']; ?> <?php echo $id==2? 'active' : ''; ?>">
+					<img src="<?php echo $item['url_img']; ?>" alt="<?php echo $item['title']; ?>">
 					<div class="carousel-schedule__body">
 						<h3 class="title-2"><?php echo $item['title']; ?></h3>
 						<span class="carousel-schedule__date">
