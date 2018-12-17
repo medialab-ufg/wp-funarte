@@ -108,9 +108,9 @@ get_header();
 				</li>
 			<?php endwhile; ?>
 		</ul>
-		
+
 		<?php echo get_pagination(); ?>
-		
+
 	</div>
 	<?php endif;?>
 </main>

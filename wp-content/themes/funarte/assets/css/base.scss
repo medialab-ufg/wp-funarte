@@ -1779,10 +1779,14 @@ body.js .collapse__text { display: none; }
 	flex-wrap: wrap;
 	list-style: none;
 
-	.link-area { margin-bottom: 6px; }
+	.link-area {
+		height: 37px;
+		margin-bottom: 6px;
+	}
 
 	img {
 		width: 100%;
+		height: 212px;
 		display: block;
 	}
 
@@ -1808,7 +1812,7 @@ body.js .collapse__text { display: none; }
 	& > li,
 	.slick-slide {
 		width: 25%;
-		min-height: 432px;
+		height: 432px;
 		//min-height: 383px;
 		padding: 0 5px;
 
@@ -1865,29 +1869,33 @@ body.js .collapse__text { display: none; }
 @media screen and (max-width:1199px) {
 	.carousel-collection {
 		& > li,
-		.slick-slide {
-			min-height: 389px;
-			//min-height: 383px;
-		}
+		.slick-slide { height: 389px; }
+		img { height: 169px; }
 	}
 }
 @media screen and (max-width:991px) {
 	.carousel-collection {
 		& > li,
 		.slick-slide {
-			//min-height: 342px;
-			//min-height: 383px;
-			min-height: 382px;
+			height: 382px;
 		}
+
+		.link-area { height: 58px; }
+
+		img { height: 120px; }
 	}
+
 }
+
 @media screen and (max-width:767px) {
 	.carousel-collection {
 		& > li,
 		.slick-slide {
 			width: 50%;
-			min-height: 396px;
+			height: 437px;
 		}
+
+		img { height: 175px; }
 	}
 }
 @media screen and (max-width:585px) {
@@ -1898,9 +1906,11 @@ body.js .collapse__text { display: none; }
 		& > li,
 		.slick-slide {
 			width: 100%;
-			min-height: auto;
+			height: auto;
 			margin-bottom: 30px;
 		}
+
+		img { height: auto; }
 
 		li.carousel-collection__reverse {
 			flex-direction: column;
@@ -2601,6 +2611,7 @@ ul.slick-dots {
 		max-width: 400px;
 		padding: 203px 50px 30px 130px;
 		position: relative;
+		transition: width 1s ease-in-out;
 	}
 
 	.carousel-schedule__wrapper,
@@ -2636,6 +2647,9 @@ ul.slick-dots {
 		margin: 30px 0;
 		display: block;
 		transition: width 1s ease-in-out;
+	}
+	&.barra-larga hr {
+		animation: esticar 2s;
 	}
 	.color-funarte {
 		.title-2,
@@ -2867,12 +2881,12 @@ ul.slick-dots {
 	background-repeat: no-repeat;
 	background-size: cover;
 	z-index: -2;
-	transition: opacity 0s ease-in-out 500ms;
+	transition: opacity 0s ease-in-out 2s;
 
 	&.visible {
 		opacity: 1;
 		z-index: 2;
-		transition: opacity 500ms ease-in-out;
+		transition: opacity 2s ease-in-out;
 	}
 }
 
@@ -2983,6 +2997,17 @@ ul.slick-dots {
 	// 		}
 	// 	}
 	// }
+}
+
+@keyframes esticar {
+	0% {
+		width: 100%;
+		transform: translate(0,0);
+	}
+	10% { transform: translate(20%,0); }
+	30% { width: 200%; }
+	80% { transform: translate(0,0); }
+	100% { width: 100%; }
 }
 
 /* LISTAS */
@@ -3786,6 +3811,50 @@ ul.social-media-list {
 	li { margin: 0 12px; }
 
 	i { font-size: 24px; }
+}
+
+/***
+* BOTÃO DE ROLAR ATÉ O TOPO
+***/
+
+.button-scroll-top {
+	width: 38px;
+	height: 38px;
+	cursor: pointer;
+	outline: none !important;
+	display: block;
+	position: fixed;
+	right: 55px;
+	bottom: 55px;
+	border: none;
+	background-color: $cinza-6;
+	transition: transform 200ms ease-in-out;
+
+	&.hidden { transform: translate(0,200px); }
+
+	&:after {
+		content: "TOPO";
+		font-weight: 400;
+		font-size: 14px;
+		color: $cinza-6;
+		position: absolute;
+		top: -22px;
+		left: 50%;
+		transform: translate(-50%,32px);
+		z-index: -1;
+		transition: transform 200ms ease-in-out;
+	}
+
+	&:hover:after { transform: translate(-50%,0); }
+
+	i {
+		font-size: 32px;
+		color: #fff;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
 }
 
 /***
