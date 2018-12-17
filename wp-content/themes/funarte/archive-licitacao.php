@@ -22,13 +22,13 @@ function get_anos() {
 $licitacao = \funarte\Licitacao::get_instance();
 $modalidade = (isset($_GET['modalidade'])) ? $licitacao->get_modalidade_by_name($_GET['modalidade']) : false;
 $ano = (isset($_GET['ano']) && (preg_match('/^\d{4}$/', (int)$_GET['ano']))) ? (int)$_GET['ano'] : date('Y');
-
 $anos = get_anos();
 $modalidades = get_terms(\funarte\taxModalidade::get_instance()->get_name());
 
 $params = array(
 	'post_type' => 'licitacao',
 	'meta_key' => 'licitacao-ano',
+	'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
 	'meta_value' => $ano
 );
 
@@ -94,11 +94,11 @@ get_header();
 				<li>
 					<div class="list-bidding__text">
 						<?php
-							$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
-							if(!empty($categoria_modalidade)) 
-							if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
-								echo '<div class="link-area"><a class="color-funarte" href="?modalidade=' . $categoria_modalidade[0]->slug . '">' . $categoria_modalidade[0]->name . '</a></div>';
-							}
+							// $categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
+							// if(!empty($categoria_modalidade)) 
+							// if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
+							// 	echo '<div class="link-area"><a class="color-funarte" href="?modalidade=' . $categoria_modalidade[0]->slug . '">' . $categoria_modalidade[0]->name . '</a></div>';
+							// }
 						?>
 
 						<h3 class="title-h5">
