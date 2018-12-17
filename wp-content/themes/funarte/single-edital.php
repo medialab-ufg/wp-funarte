@@ -7,7 +7,13 @@
 		<main role="main">
 			<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 			<div class="container">
-				<?php include('inc/template_parts/breadcrumb.php'); ?>
+
+				<?php 
+					$links = [
+						['link_name'=>'Editais','link_url'=>'/edital'],
+						['link_name'=>get_the_title()]];
+					funarte_load_part('breadcrumb', ['links'=>$links]); 
+				?>
 
 				<div class="box-title">
 					<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/edital'; ?>">Editais</a> <a href="<?php echo get_bloginfo('url') . '/editais/?status=' . $status; ?>"><span><?php echo $edital->get_edital_status_name($post->ID); ?></span></a></h2>

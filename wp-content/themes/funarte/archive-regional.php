@@ -4,10 +4,13 @@ get_header();
 <main role="main" class="mb-100">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container">
-		<div class="box-breadcrumb">
-			<a class="box-breadcrumb__home" href="#"><i class="mdi mdi-home"></i></a>
-			<a href="#">Funarte</a>
-		</div>
+
+		<?php
+			$links = [
+				['link_name'=>'Representações Regionais']];
+			funarte_load_part('breadcrumb', ['links'=>$links]); 
+		?>
+
 		<div class="box-title">
 			<h2 class="title-h1">Funarte <span> Representações Regionais</span></h2>
 		</div>

@@ -529,7 +529,7 @@ function post_thumbnail($postID = null, $params = array()) {
 		</div>
 		<?php } ?>
 	</div>
-	<?php echo $params['after']; ?>		
+	<?php echo $params['after']; ?>
 	<?php
 }
 

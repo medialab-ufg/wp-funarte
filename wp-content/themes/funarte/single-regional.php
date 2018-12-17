@@ -13,10 +13,16 @@ if(have_posts()) : the_post();
 <main role="main" class="mb-100">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container">
-		<?php include('inc/template_parts/breadcrumb.php'); ?>
+
+		<?php
+			$links = [
+				['link_name'=>'Representações Regionais','link_url'=>'/regional'],
+				['link_name'=>get_the_title()]];
+			funarte_load_part('breadcrumb', ['links'=>$links]); 
+		?>
 
 		<div class="box-title">
-			<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/regional'; ?>">Funarte <span>Representações Regionais</span></a></h2>
+			<h2 class="title-h1">Funarte <span>Representações Regionais</span></h2>
 		</div>
 
 		<?php $imagem = get_the_post_thumbnail( get_the_ID(),'large'); ?>

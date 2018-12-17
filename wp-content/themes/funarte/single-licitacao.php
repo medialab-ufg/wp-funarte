@@ -10,12 +10,16 @@
 		<main role="main" class="mb-100">
 			<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 			<div class="container">
-				<?php include('inc/template_parts/breadcrumb.php'); ?>
+
+				<?php
+					$links = [
+						['link_name'=>'Licitação','link_url'=>'/licitacao'],
+						['link_name'=>get_the_title()]];
+					funarte_load_part('breadcrumb', ['links'=>$links]); 
+				?>
 
 				<div class="box-title">
-					<h2 class="title-h1">
-						<a href="<?php echo get_bloginfo('url') . '/licitacao'; ?>">Funarte <span>Licitações</span></a>
-					</h2>
+					<h2 class="title-h1">Funarte <span>Licitações</span></h2>
 				</div>
 
 				<!-- A DIV ABAIXO DEVE IR PARA O TEMPLATE_PARTS -->

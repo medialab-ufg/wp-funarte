@@ -42,7 +42,11 @@ get_header();
 <main role="main" class="mb-100">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container">
-		<?php include('inc/template_parts/breadcrumb.php'); ?>
+		<?php
+			$links = [
+				['link_name'=>'Licitações']];
+			funarte_load_part('breadcrumb', ['links'=>$links]); 
+		?>
 
 		<div class="box-title">
 			

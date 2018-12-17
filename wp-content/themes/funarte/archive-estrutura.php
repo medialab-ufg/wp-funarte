@@ -11,10 +11,12 @@
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container mb-100">
-		<div class="box-breadcrumb">
-			<a class="box-breadcrumb__home" href="#"><i class="mdi mdi-home"></i></a>
-			<a href="#">Contatos</a>
-		</div>
+
+		<?php
+			$links = [
+				['link_name'=>'Contatos']];
+			funarte_load_part('breadcrumb', ['links'=>$links]); 
+		?>
 
 		<div class="box-title">
 			<h2 class="title-h1">Contatos <span>Informações</span></h2>

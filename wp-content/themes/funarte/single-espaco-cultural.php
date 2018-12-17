@@ -24,10 +24,16 @@ if (have_posts()): the_post();
 	<main role="main">
 		<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 		<div class="container">
-			<?php include('inc/template_parts/breadcrumb.php'); ?>
+
+			<?php 
+				$links = [
+					['link_name'=>'Espaços Culturais','link_url'=>'/espaco-cultural'],
+					['link_name'=>get_the_title()]];
+				funarte_load_part('breadcrumb', ['links'=>$links]); 
+			?>
 
 			<div class="box-title">
-				<h2 class="title-h1"><a href="#">Funarte</a> <a href="<?php echo get_bloginfo('url') . '/espaco-cultural'; ?>"><span>Espaços Culturais</span></a></h2>
+				<h2 class="title-h1">Funarte<span>Espaços Culturais</span></h2>
 			</div>
 			<?php funarte_load_part('title-page', ['tag'=> $estado, 'title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ),'tag_class_area'=>'funarte']); ?>
 

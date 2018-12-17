@@ -5,10 +5,15 @@ if(have_posts()) : the_post();
 	<main role="main" class="mb-100">
 		<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 		<div class="container">
-			<?php include('inc/template_parts/breadcrumb.php'); ?>
+			<?php
+				$links = [
+					['link_name'=>'Notícias','link_url'=>'/noticias'],
+					['link_name'=>get_the_title()]];
+				funarte_load_part('breadcrumb', ['links'=>$links]); 
+			?>
 
 			<div class="box-title">
-				<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/noticias'; ?>">Notícias</a> <a href="#"><span>Recentes</span></a> </h2>
+				<h2 class="title-h1">Funarte<span>Notícias</span></h2>
 			</div>
 
 			<?php
