@@ -25,12 +25,34 @@ query_posts(array_merge(array(
 		<div class="container">
 
 			<?php
-				$links = [['link_name'=>get_the_title()]];
+				$links = [['link_name'=>'Notícias']];
 				funarte_load_part('breadcrumb', ['links'=>$links]); 
 			?>
 
 			<div class="box-title">
+				
 				<h2 class="title-h1">Notícias<span>Recentes</span></h2>
+
+				<div class="box-forms">
+				<form class="form-area" action="#" method="get">
+					<fieldset>
+						<legend>Formulário de seleção de área</legend>
+						<?php
+						wp_dropdown_categories(array(
+							'show_option_none' => 'Filtrar por área',
+							'option_none_value' => '',
+							'hide_empty' => true,
+							'id' => 'select-categoria',
+							'class' => 'select_area',
+							'name' => 'area',
+							'value_field' => 'slug',
+							'selected' => (isset($categoria->slug)) ? $categoria->slug : null));
+						?>
+						
+					</fieldset>
+				</form>
+				</div>
+
 			</div>
 		</div>
 

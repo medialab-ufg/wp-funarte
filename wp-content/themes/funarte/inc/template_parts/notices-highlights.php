@@ -15,7 +15,11 @@ else:
 		<div class="row">
 			<div class="col-xs-12 col-md-6">
 				<section class="box-carousel-notices">
+					<?php if (isset($url_title)): ?>
+						<h2 class="title-1 mb-60"><a href="<?php echo $url_title; ?>"><?php echo $title ?></a></h2>
+					<?php else: ?>
 					<h2 class="title-1 mb-60"><?php echo $title ?></h2>
+					<?php endif; ?>
 					<div class="carousel-notices__wrapper">
 						<div class="carousel-notices__control">
 							<button type="button" class="control__prev"><i class="mdi mdi-chevron-up"></i></button>
