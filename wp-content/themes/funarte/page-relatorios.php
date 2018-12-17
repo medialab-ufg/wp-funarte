@@ -18,11 +18,14 @@ endif;
 ?>
 <main role="main">
 	<div class="container">
+
+		<?php
+			$links = [['link_name'=>get_the_title()]];
+			funarte_load_part('breadcrumb', ['links'=>$links]); 
+		?>
+
 		<div class="box-title">
-			<h2 class="title-h1">
-				<a href="">Funarte</a>
-				<span><?php the_title(); ?></span>
-			</h2>
+			<h2 class="title-h1">Funarte<span><?php the_title(); ?></span></h2>
 		</div>
 
 		<div class="row justify-content-between mb-100">

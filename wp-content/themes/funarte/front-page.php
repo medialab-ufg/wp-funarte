@@ -48,7 +48,8 @@
 									'url'=>get_permalink($edital->ID)];
 		}
 		$area = get_the_category($destaque_secundario->ID);
-		$arg = ['title'=> 'Editais', 'items' => $items,
+		$arg = ['title'=> 'Editais', 'url_title'=> get_post_type_archive_link(\funarte\Edital::get_instance()->get_post_type()),
+											'items' => $items,
 											'destaque' => [
 														'url'=> get_post_meta($destaque_secundario->ID, 'destaque-url', true),
 														'title'=> $destaque_secundario->post_title,

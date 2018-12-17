@@ -3,6 +3,12 @@ get_header(); the_post();
 ?>
 <main role="main">
 	<div class="container">
+
+		<?php
+			$links = [['link_name'=>get_the_title()]];
+			funarte_load_part('breadcrumb', ['links'=>$links]); 
+		?>
+
 		<div class="box-title">
 			<h2 class="title-h1"><?php the_title(); ?></h2>
 		</div>

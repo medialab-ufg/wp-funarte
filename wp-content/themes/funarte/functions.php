@@ -243,6 +243,7 @@ require_once('inc/taxonomy/regional.php');
 require_once('inc/taxonomy/tag.php');
 
 //includes - post type
+require_once('inc/post_types/post/post.php');
 require_once('inc/post_types/edital/edital.php');
 require_once('inc/post_types/agenda/agenda.php');
 require_once('inc/post_types/evento/evento.php');
