@@ -22,7 +22,10 @@ else :
 	</h3>
 
 	<?php if (!empty($img)): ?>
-		<img src="<?php echo $img ?>" alt="<?php echo $title; ?>">
+		<div class="box-title-page__thumb">
+			<img src="<?php echo $img ?>" alt="<?php echo $title; ?>">
+			<span class="box-title-page__caption"><?php the_post_thumbnail_caption(); ?></span>
+		</div>
 	<?php endif; ?>
 </div>
 <?php endif;

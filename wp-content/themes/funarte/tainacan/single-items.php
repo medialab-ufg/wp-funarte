@@ -2,33 +2,34 @@
 
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
-	<div class="container">
-		<h2 class="title-h1">Acervo - <?php echo tainacan_get_the_collection_name(); ?></h2>
-		<br />
-		
-		
+	<div class="container mb-100">
+		<div class="box-title">
+			<h2 class="title-h1">Acervo <span><?php echo tainacan_get_the_collection_name(); ?></span></h2>
+		</div>
+
 		<?php if ( have_posts() ) : ?>
 			<?php do_action( 'tainacan-interface-single-item-top' ); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<div class="tainacan-title">
-					<div class="border-bottom border-jelly-bean tainacan-title-page" style="border-width: 2px !important;">
-						<ul class="list-inline mb-1">
-							<li class="list-inline-item text-midnight-blue font-weight-bold title-page">
+					<div class="tainacan-title-page" style="border-width: 2px !important;">
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item text-midnight-blue title-page">
 								<?php the_title(); ?>
 							</li>
-							<li class="list-inline-item float-right title-back"><a href="javascript:history.go(-1)"><?php _e( 'Back', 'tainacan-interface' ); ?></a></li>
+							<li class="list-inline-item float-right title-back">
+								<a href="javascript:history.go(-1)">
+									<?php _e( 'Back', 'tainacan-interface' ); ?>
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
-				
-				
-				<div class="mt-3 tainacan-single-post collection-single-item">
+
+				<div class="tainacan-single-post collection-single-item">
 					<article role="article" id="post_<?php the_ID()?>" <?php post_class()?>>
-						<header class="mb-4">
-							
-						</header>
 						<?php if ( tainacan_has_document() ) : ?>
-							<h1 class="title-content-items"><?php _e( 'Document', 'tainacan-interface' ); ?></h1>
+							<h3 class="title-content-items"><?php _e( 'Document', 'tainacan-interface' ); ?></h3>
+
 							<section class="tainacan-content single-item-collection margin-two-column">
 								<div class="single-item-collection--document">
 									<?php tainacan_the_document(); ?>
@@ -40,10 +41,7 @@
 
 
 				<?php if ( tainacan_has_document() ) : ?>
-					<div class="tainacan-title my-5">
-						<div class="border-bottom border-silver tainacan-title-page" style="border-width: 1px !important;">
-						</div>
-					</div>
+					<div class="tainacan-border"></div>
 				<?php endif; ?>
 
 				<?php
@@ -62,7 +60,7 @@
 
 				<?php if ( ! empty( $attachment ) ) : ?>
 
-					<div class="mt-3 tainacan-single-post">
+					<div class="tainacan-single-post">
 						<article role="article">
 							<h1 class="title-content-items"><?php _e( 'Attachments', 'tainacan-interface' ); ?></h1>
 							<section class="tainacan-content single-item-collection margin-two-column">
@@ -90,7 +88,7 @@
 				<?php endif; ?>
 
 
-				<div class="mt-3 tainacan-single-post">
+				<div class="tainacan-single-post">
 					<article role="article">
 						<!-- <h1 class="title-content-items"><?php _e( 'Information', 'tainacan-interface' ); ?></h1> -->
 						<section class="tainacan-content single-item-collection margin-two-column">
@@ -99,13 +97,13 @@
 									<div class="col s-item-collection--metadata">
 										<div class="card border-0">
 											<div class="card-body bg-white border-0 pl-0 pt-0 pb-1">
-												<h3><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h3>
+												<h3 class="title-content-items"><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h3>
 												<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'tainacan-medium-full' ) ?>" class="item-card--thumbnail mt-2">
 											</div>
 										</div>
 										<div class="card border-0 my-3">
 											<div class="card-body bg-white border-0 pl-0 pt-0 pb-1">
-												<h3><?php _e( 'Share', 'tainacan-interface' ); ?></h3>
+												<h3 class="title-content-items"><?php _e( 'Share', 'tainacan-interface' ); ?></h3>
 												<div class="btn-group" role="group">
 													<?php if ( true == get_theme_mod( 'tainacan_facebook_share', true ) ) : ?> 
 														<a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="item-card-link--sharing" target="_blank">
@@ -132,7 +130,7 @@
 										<?php do_action( 'tainacan-interface-single-item-metadata-begin' ); ?>
 										<?php
 											$args = array(
-												'before_title' => '<div><h3>',
+												'before_title' => '<div><h3 class="title-content-items">',
 												'after_title' => '</h3>',
 												'before_value' => '<p>',
 												'after_value' => '</p></div>',
