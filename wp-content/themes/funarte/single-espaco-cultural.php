@@ -35,7 +35,8 @@ if (have_posts()): the_post();
 			<div class="box-title">
 				<h2 class="title-h1">Funarte<span>Espaços Culturais</span></h2>
 			</div>
-			<?php funarte_load_part('title-page', ['tag'=> $estado, 'title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ),'tag_class_area'=>'funarte']); ?>
+			<?php funarte_load_part('title-page', ['title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ),
+																						'tags'=> [['slug' => 'funarte', 'name' => $estado]]]); ?>
 
 			<div class="row justify-content-between mb-100">
 				<div class="col-md-6">

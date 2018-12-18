@@ -19,7 +19,7 @@
 	if (!$area || empty($area) || !$post_area || empty($post_area)) {
 		header("Location: " . get_bloginfo('url')); exit;
 	}
-	$bodyClass = $area->slug;	
+	$bodyClass = $area->slug;
 	get_header();
 
 	$query = ['cat' => (int)$area->term_id];
@@ -146,7 +146,13 @@
 	<!-- ESPAÇO CULTURAL -->
 	<div class="container">
 		<div class='box-carousel-zoom'>
-			<h2 class="title-1">Espaços Culturais</h2>
+			<?php $url_title = get_post_type_archive_link(\funarte\EspacoCultural::get_instance()->get_post_type());
+						$url_title .= '?area=' . $area->slug ;?>
+			<?php if ($url_title) : ?>
+				<h2 class="title-1"><a href="<?php echo $url_title; ?>">Espaços Culturais</a></h2>
+			<?php else : ?>
+				<h2 class="title-1">Espaços Culturais</h2>
+			<?php endif; ?>
 
 			<div class="carousel-zoom__wrapper">
 				<div class="carousel-zoom__control">
@@ -193,7 +199,8 @@
 									'title' => $edital->post_title ,
 									'url'=>get_permalink($edital->ID)];
 		}
-		$arg = ['title'=> 'Editais', 'items' => $items,
+		$arg = ['title'=> 'Editais', 'url_title'=> get_post_type_archive_link(\funarte\Edital::get_instance()->get_post_type()) . '?area=' . $area->slug,
+						'items' => $items,
 						'destaque' => ['url'=> get_post_meta($destaque_secundario->ID, 'destaque-url', true),
 													 'title'=> $destaque_secundario->post_title,
 													 'tag_name_area'=>$area->name,
@@ -259,10 +266,14 @@
 
 	<div class="container">
 		<section class="box-carousel-collection">
-			<h2 class="title-1 mb-65">Acervo</h2>
+			<?php $url_title = get_post_type_archive_link('tainacan-collection');
+						$url_title .= '?area=' . $area->slug ;?>
+			<?php if ($url_title) : ?>
+				<h2 class="title-1  mb-65"><a href="<?php echo $url_title; ?>">Acervo</a></h2>
+			<?php else : ?>
+				<h2 class="title-1 mb-65">Acervo</h2>
+			<?php endif; ?>
 
-			<?php  ?>
-			
 			<?php funarte_load_part('collections-carousel', ['collections' => $collections, 'area' => ['slug'=>$area->slug, 'name'=>$area->name]]); ?>
 			
 		</section>

@@ -19,26 +19,22 @@
 					<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/edital'; ?>">Editais</a> <a href="<?php echo get_bloginfo('url') . '/editais/?status=' . $status; ?>"><span><?php echo $edital->get_edital_status_name($post->ID); ?></span></a></h2>
 				</div>
 
-				<!-- A DIV ABAIXO DEVE IR PARA O TEMPLATE_PARTS -->
-				<div class="box-title-page">
-					<?php
-						$areas = get_the_category();
-						if (!empty($areas)): ?>
-						<div class="link-area">
-							<?php foreach ($areas as $area): ?>
-								<a class="<?php echo 'color-' . $area->category_nicename; ?>" href="#"><?php echo $area->name; ?></a>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
+				<?php
+					$areas = get_the_category();
+					$tags = [];
+					foreach ($areas as $area):
+						$tags[] = [	'slug'=> $area->slug,
+											'name'=> $area->name,
+											'url_area'=> home_url() . '/category/' . $area->slug];
+					endforeach;
+				?>
+				
+				<?php funarte_load_part('title-page', [	'title'=> get_the_title(),
+																								'date_pub' => get_the_time(get_option('date_format')),
+																								'img'  => get_the_post_thumbnail_url(),
+																								'tags'=> $tags]); ?>
 
-					<div class="box-text__date">
-						<small>Publicado em <?php the_time(get_option('date_format')); ?></small>
-					</div>
-
-					<h3 class="title-page"><?php the_title(); ?></h3>
-				</div>
-
-				<?php 
+				<?php
 					$params = ['return'=>true];
 					$THEME_FOLDER = get_template_directory();
 					$DS = DIRECTORY_SEPARATOR;

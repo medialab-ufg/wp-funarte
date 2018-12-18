@@ -83,7 +83,6 @@
 	<!-- EVENTOS -->
 	<div class="container">
 		<?php
-			$default_img_url = get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg';
 			$items = [];
 			foreach ($eventos as $evento) {
 				$area = get_the_category($evento->ID);
@@ -106,13 +105,13 @@
 					$day = date_i18n('d', $inicio);
 					$month = date_i18n('M', $inicio);
 				}
+				$url_img = has_post_thumbnail($evento->ID) ? get_the_post_thumbnail_url($evento->ID,'medium_large') : funarte_get_img_default($area->slug);
 				$items[] = ['url' => get_permalink($evento->ID),
  										'day'=> $day,
 										'month'=> $month,
 										'local' => $local,
 										'title' => $evento->post_title,
-										'url_img' => get_the_post_thumbnail_url($evento->ID) ? get_the_post_thumbnail_url($evento->ID,'medium_large') : $default_img_url,
-										//'url_img' => $default_img_url,
+										'url_img' => $url_img,
 										'content' => 	get_the_excerpt($evento->ID),
  										'schedule' => date_i18n('H:i', $schedule),
  										'tag_class_area'=>$area->slug];
@@ -124,7 +123,14 @@
 
 	<div class="container">
 		<section class="box-carousel-collection">
+		<?php $url_title = get_post_type_archive_link('tainacan-collection'); ?>
+		<?php if ($url_title) : ?>
+			<h2 class="title-1  mb-65"><a href="<?php echo $url_title; ?>">Acervo</a></h2>
+		<?php else : ?>
 			<h2 class="title-1 mb-65">Acervo</h2>
+		<?php endif; ?>
+		
+			
 
 			<?php $collections = new WP_Query([
 				'post_type' => 'tainacan-collection',

@@ -4,13 +4,22 @@ $estados = \funarte\EspacoCultural::get_instance()->get_estados();
 
 if (isset($_GET['estado']) && !empty($_GET['estado']))
 	$estado = $_GET['estado'];
-$busca = (isset($_GET['busca'])) ? $_GET['busca'] : '';
+
+	$busca = (isset($_GET['busca'])) ? $_GET['busca'] : '';
+
+	if (!empty($_GET['area'])) {
+		$area = get_category_by_name($_GET['area']);
+		if (!empty($area))
+			$cat = $area->term_id;
+	}
+
 $params = array(
 	'post_type' => \funarte\EspacoCultural::get_instance()->get_post_type(),
 	'orderby' => 'title',
 	'order' => 'ASC',
 	'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
 	'posts_per_page' => 10,
+	'cat' => isset($cat) ? $cat : null,
 	's' => $busca,
 );
 
