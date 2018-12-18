@@ -17,7 +17,13 @@ else:
 	$id = 0;
 ?>
 <section class="box-carousel-schedule mb-100">
-	<h2 class="title-1">Agenda Cultural</h2>
+	<?php $url_title = get_post_type_archive_link(\funarte\Evento::get_instance()->get_post_type()); ?>
+	
+	<?php if ($url_title) : ?>
+		<h2 class="title-1"><a href="<?php echo $url_title; ?>">Agenda Cultural</a></h2>
+	<?php else : ?>
+		<h2 class="title-1">Agenda Cultural</h2>
+	<?php endif; ?>
 
 	<div class="carousel-schedule__wrapper">
 		<div class="carousel-schedule__control">
