@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "4.7.*",
+        "johnpbloch/wordpress": "4.9.*",
         "wpackagist-plugin/tainacan":"*"
     },
     "extra": {
