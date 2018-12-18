@@ -22,19 +22,20 @@
 					<h2 class="title-h1">Funarte <span>Licitações</span></h2>
 				</div>
 
-				<!-- A DIV ABAIXO DEVE IR PARA O TEMPLATE_PARTS -->
-				<div class="box-title-page">
-					<?php 
-						$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
-						if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
-							if(!$modalidade) {
-								echo '<div class="link-area"><a class="color-funarte" href="#">' . $categoria_modalidade[0]->name . '</a></div>';
-							}
+				<?php
+					$tags = [];
+					$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
+					if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
+						if($modalidade) {
+							$tags[] = [	'slug'=> 'funarte',
+													'name'=> $categoria_modalidade[0]->name
+												];
 						}
-					?>
-					<h3 class="title-page"><?php the_title(); ?></h3>
-					<strong>Contratação de empresa especializada na prestação de serviços continuados com dedica-ção exclusiva de mão-de-obra, na execução de atividades ligadas à produção de espetácu-los teatrais, de dança, de musicais e de circo, relativos às atividades complementares e acessórias à área de atuação da Fundação Nacional de Artes – FUNARTE, localizadas nas cidades do Rio de Janeiro/RJ, São Paulo/SP, Belo Horizonte/MG e Brasília/DF, conforme con-dições, quantidades e exigências estabelecidas neste Edital e seus anexos.</strong>
-				</div>
+					}
+				?>
+				<?php funarte_load_part('title-page', [	'title'=> get_the_title(),
+																								'img'  => false,
+																								'tags'=> $tags]); ?>
 
 				<div class="row justify-content-between">
 					<div class="col-md-7">

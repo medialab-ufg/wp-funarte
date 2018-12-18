@@ -27,25 +27,9 @@ if(have_posts()) : the_post();
 
 		<?php $imagem = get_the_post_thumbnail( get_the_ID(),'large'); ?>
 
-		<div class="box-title-page <?php echo !empty($imagem) ? 'box-title-page--image' : ''; ?>">
-
-			<div class="link-area">
-				<strong class="color-funarte"><?php echo get_post_meta($post->ID, "regional-cidade", true); ?></strong>
-			</div>
-
-			<h3 class="title-page"><?php the_title(); ?></h3>
-
-			<?php
-				if (!empty($imagem)):
-			?>
-				<div class="box-title-page__thumb">
-					<?php echo $imagem; ?>
-					<span class="box-title-page__caption"><?php the_post_thumbnail_caption(); ?></span>
-				</div>
-			<?php
-				endif;
-			?>
-		</div>
+		<?php funarte_load_part('title-page', ['title'=> get_the_title(), 
+																						'img'  => get_the_post_thumbnail_url(get_the_ID() ),
+																						'tags'=> [['slug' => 'funarte', 'name' => get_post_meta($post->ID, "regional-cidade", true)]]]); ?>
 
 		<div class="row justify-content-between">
 			<div class="col-md-6">

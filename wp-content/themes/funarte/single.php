@@ -19,26 +19,16 @@ if(have_posts()) : the_post();
 			<?php
 				$imagem = get_the_post_thumbnail( );
 				$areas = get_the_category();
+				$tags = [];
+				foreach ($areas as $area):
+					$tags[] = [	'slug'=> $area->slug,
+											'name'=> $area->name,
+											'url_area'=> home_url() . '/category/' . $area->slug];
+				endforeach;
 			?>
 
-			<div class="box-title-page <?php echo !empty($imagem) ? 'box-title-page--image' : ''; ?>">
-				<div class='link-area'>
-					<?php foreach ($areas as $area): ?>
-						<a href="<?php echo home_url() . '/category/' . $area->slug; ?>" class="color-<?php echo $area->slug; ?>"><?php echo $area->name; ?></a>
-					<?php endforeach; ?>
-				</div>
-				<h3 class="title-page"><?php the_title(); ?></h3>
-				<?php
-					if (!empty($imagem)):
-				?>
-					<div class="box-title-page__thumb">
-						<?php echo $imagem; ?>
-						<span class="box-title-page__caption"><?php the_post_thumbnail_caption(); ?></span>
-					</div>
-				<?php
-					endif;
-				?>
-			</div>
+			<?php funarte_load_part('title-page', ['title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ),
+																						'tags'=> $tags]); ?>
 
 			<div class="box-text box-text--2-columns mb-100">
 				<div class="box-text__text">
