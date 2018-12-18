@@ -6,6 +6,9 @@ $(document).ready(function() {
 	base.busca.manipular();
 	base.jsNaoObstrusivo.ativar();
 	base.menu.manipular();
+	base.scroll.rolarAoTopo();
+	base.scroll.observarRolagem();
+	base.scroll.manipularElemento();
 
 	// Home
 	base.carrossel.iniciarDestaques();
@@ -37,6 +40,41 @@ $(document).ready(function() {
 });
 
 var base = {
+	scroll: {
+		rolarAoTopo: function() {
+			$('.button-scroll-top').on('click',function() {
+				$('html,body').animate({scrollTop: 0}, 'slow');
+			});
+		},
+
+		observarRolagem: function() {
+			var $window = $(window);
+
+			$window.on('scroll',function() {
+				base.scroll.manipularElemento(($window.height() / 2));
+			});
+		},
+
+		manipularElemento: function(height) {
+			var $window = $(window),
+				$button = $('.button-scroll-top');
+
+			if (height == undefined) {
+				height = ($window.height() / 2);
+			}
+
+			if (height >= $window.scrollTop()) {
+				if (!$button.hasClass('hidden')) {
+					$button.addClass('hidden');
+				}
+			} else {
+				if ($button.hasClass('hidden')) {
+					$button.removeClass('hidden');
+				}
+			}
+		}
+	},
+
 	menuLateral: {
 		exibir: function() {
 			$('.box-list-links__button').on('click',function() {
@@ -283,12 +321,12 @@ var base = {
 			var $carousel = $('.box-carousel-schedule');
 
 			$('.carousel-schedule').slick({
-				speed: 1000,
-				infinite: false,
+				speed: 2000,
+				infinite: true,
 				slidesToShow: 2,
 				slidesToScroll: 1,
-				prevArrow: $carousel.find('.control__prev'),
-				nextArrow: $carousel.find('.control__next'),
+				prevArrow: $carousel.find('.control__next'), // Botoes trocados de proposito
+				nextArrow: $carousel.find('.control__prev'),
 				adaptiveHeight: true,
 				variableWidth: true,
 				responsive: [
@@ -317,6 +355,11 @@ var base = {
 						.prev()
 						.addClass('visible');
 				}
+
+				$carousel.addClass('barra-larga');
+			})
+			.on('afterChange', function() {
+				$carousel.removeClass('barra-larga');
 			});
 		},
 

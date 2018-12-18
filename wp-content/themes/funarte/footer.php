@@ -62,7 +62,11 @@
 		</div>
 	</footer>
 
+	<button type="button" class="button-scroll-top"><i class="mdi mdi-chevron-up"></i></button>
+
 	<?php wp_footer(); ?>
+
+	<script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
 
 	</body>
 </html>

@@ -29,8 +29,14 @@ if(have_posts()) : the_post();
 				</div>
 				<h3 class="title-page"><?php the_title(); ?></h3>
 				<?php
-					if (!empty($imagem))
-						echo $imagem;
+					if (!empty($imagem)):
+				?>
+					<div class="box-title-page__thumb">
+						<?php echo $imagem; ?>
+						<span class="box-title-page__caption"><?php the_post_thumbnail_caption(); ?></span>
+					</div>
+				<?php
+					endif;
 				?>
 			</div>
 
