@@ -46,7 +46,7 @@ else:
 ?>
 	<section class="box-news mb-100">
 		<div class="container">
-			<h2 class="title-1 mb-44"><a href='\noticias'>Notícias</a></h2>
+			<h2 class="title-1 mb-44"><a href="<?php echo $more_news_url;?>">Notícias</a></h2>
 			<?php echo $ul; ?>
 			<a href="<?php echo $more_news_url;?>" class="box-news__load"><i class="mdi mdi-chevron-down"></i><i class="mdi mdi-plus"></i><span class="sr-only">Ver mais</span></a>
 		</div>
