@@ -35,8 +35,18 @@ if (have_posts()): the_post();
 			<div class="box-title">
 				<h2 class="title-h1">Funarte<span>Espaços Culturais</span></h2>
 			</div>
-			<?php funarte_load_part('title-page', ['title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ),
-																						'tags'=> [['slug' => 'funarte', 'name' => $estado]]]); ?>
+			
+			<?php
+				$areas = get_the_category();
+				$tags = [];
+				foreach ($areas as $area):
+					$tags[] = [	'slug'=> $area->slug,
+											'name'=> $area->name,
+											'url_area'=> home_url() . '/category/' . $area->slug];
+				endforeach;
+			?>
+
+			<?php funarte_load_part('title-page', ['title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ),'tags'=> $tags]); ?>
 
 			<div class="row justify-content-between mb-100">
 				<div class="col-md-6">
@@ -119,10 +129,10 @@ if (have_posts()): the_post();
 								<strong>Informações ao público:</strong>
 
 								<?php if (!empty($espaco['telefone1'])) ?>
-									<strong><?php echo $espaco['telefone1']; ?></strong>
+									<span><?php echo $espaco['telefone1']; ?></span>
 
 								<?php if (!empty($espaco['telefone2'])) ?>
-									<strong><?php echo $espaco['telefone2']; ?></strong>
+									<span><?php echo $espaco['telefone2']; ?></span>
 
 								<?php if (!empty($espaco['email'])) ?>
 									<a href="mailto:<?php echo $espaco['email']; ?>"><?php echo $espaco['email']; ?></a>
@@ -139,6 +149,7 @@ if (have_posts()): the_post();
 							?>
 								<div class="box-data__row">
 									<span><b>Local:</b></span>
+									<span><?php echo $estado; ?></span>
 								</div>
 
 								<h4 class="title-5">Veja como chegar</h4>

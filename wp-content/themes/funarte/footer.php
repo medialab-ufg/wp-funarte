@@ -15,16 +15,19 @@
 					</ul>
 				</div>
 				
-				<?php
-					wp_nav_menu( array(
-							'theme_location'    => 'rodape',
-							'depth'             => 1,
-							'container'         => 'div',
-							'container_class'   => 'columns__column-a links-list',
-							'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-							'walker'            => new WP_Bootstrap_Navwalker(),
-						) );
-				?>
+				<div class="columns__column-a links-list">
+					<strong>Funarte:</strong>
+					<?php
+						wp_nav_menu( array(
+								'theme_location'    => 'rodape',
+								'depth'             => 1,
+								'container'         => '',
+								'container_class'   => '',
+								'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+								'walker'            => new WP_Bootstrap_Navwalker(),
+							) );
+					?>
+				</div>
 
 				<div class="columns__column-a links-list">
 					<strong>Acervos:</strong>
