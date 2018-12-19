@@ -32,11 +32,14 @@
 	$query_news = ['cat' => (int)$area->term_id, 'post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'orderby' => 'date', 'order' => 'DESC'];
 	$noticias = query_posts($query_news);
 
-	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'cat' => (int)$area->term_id ];
+	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'cat' => (int)$area->term_id, 'posts_per_page' => 10 ];
 	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'),date('Y'), $query_eventos);
 	if (empty($eventos)) {
 		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
 	}
+
+	$query_links_relacionados = ['cat' => (int)$area->term_id, 'post_type' => \funarte\LinkRelacionado::get_instance()->get_post_type(), 'posts_per_page' => 5];
+	$links_relacionados = query_posts($query_links_relacionados);
 ?>
 
 <main role="main" class="mb-100">
@@ -115,27 +118,12 @@
 					<h2 class="title-h1">Links relacionados</h2>
 
 					<ul class="list-simple-links">
-						<li class="color-funarte">
-							<div class="link-area">
-								<a href="#">CEDOC</a>
-							</div>
-							<strong>Escola Nacional de Circo</strong>
-							<a class="link-more" href="#">Visitar</a>
-						</li>
-						<li class="color-funarte">
-							<div class="link-area">
-								<a href="#">CEDOC</a>
-							</div>
-							<strong>Escola Nacional de Circo</strong>
-							<a class="link-more" href="#">Visitar</a>
-						</li>
-						<li class="color-funarte">
-							<div class="link-area">
-								<a href="#">CEDOC</a>
-							</div>
-							<strong>Escola Nacional de Circo</strong>
-							<a class="link-more" href="#">Visitar</a>
-						</li>
+						<?php foreach ($links_relacionados as $link):?>
+							<li class="color-funarte">
+								<strong><?php echo $link->post_title; ?></strong>
+								<a class="link-more" target="_blank" href="<?php echo get_post_meta($link->ID, 'linkrelacionado-url', true); ?>">Visitar</a>
+							</li>
+						<?php endforeach; ?>
 					</ul>
 				</div>
 			</div>
@@ -163,24 +151,23 @@
 				<ul class="carousel-zoom">
 				<?php
 					$contador = 0;
-
 					foreach ($espacos as $espaco) {
 						$estado = get_post_meta($espaco->ID, 'espaco-estado', true);
 						$area = (!isset($query['cat'])) ? get_single_category() : get_category($query['cat']);
 						$url_img = has_post_thumbnail($espaco->ID) ? get_the_post_thumbnail_url($espaco->ID) : funarte_get_img_default();
 				?>
-							<li class="color-funarte carousel-zoom__item-<?php echo $contador++%3; ?>">
-								<div class="link-area">
-									<strong><?php echo $estado ?></strong>
-								</div>
-								<div class="carousel-zoom__image" style="background-image: url('<?php echo $url_img ?>');"></div>
+						<li class="color-funarte carousel-zoom__item-<?php echo $contador++%3; ?>">
+							<div class="link-area">
+								<strong><?php echo $estado ?></strong>
+							</div>
+							<div class="carousel-zoom__image" style="background-image: url('<?php echo $url_img ?>');"></div>
 
-								<div class="carousel-zoom__text">
-									<strong><?php echo esc_attr($espaco->post_title) ?></strong>
-									<p><?php echo \funarte\EspacoCultural::get_instance()->formata_endereco($espaco->ID) ?> - <?php echo get_post_meta($espaco->ID, 'espaco-telefone1', true) ?></p>
-									<a class="link-more" href="<?php echo get_permalink($espaco->ID) ?>">Ler mais</a>
-								</div>
-							</li>
+							<div class="carousel-zoom__text">
+								<strong><?php echo esc_attr($espaco->post_title) ?></strong>
+								<p><?php echo \funarte\EspacoCultural::get_instance()->formata_endereco($espaco->ID) ?> - <?php echo get_post_meta($espaco->ID, 'espaco-telefone1', true) ?></p>
+								<a class="link-more" href="<?php echo get_permalink($espaco->ID) ?>">Ler mais</a>
+							</div>
+						</li>
 					<?php } ?>
 				</ul>
 			</div>
@@ -233,7 +220,6 @@
 	<!-- EVENTOS -->
 	<div class="container">
 		<?php
-			$default_img_url = get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg';
 			$items = [];
 			foreach ($eventos as $evento) {
 				$inicio = strtotime('00:00:00', strtotime(get_post_meta($evento->ID, 'evento-inicio', true)));
@@ -248,21 +234,22 @@
 					$day = date_i18n('d', $inicio);
 					$month = date_i18n('F', $inicio);
 				}
+				$url_img = has_post_thumbnail($evento->ID) ? get_the_post_thumbnail_url($evento->ID,'medium_large') : funarte_get_img_default($area->slug);
 				$items[] = ['url' => get_permalink($evento->ID),
  										'day'=> $day,
 										'month'=> $month,
 										'local' => $local,
 										'title' => $evento->post_title,
-										//'url_img' => get_the_post_thumbnail_url($evento->ID) ? get_the_post_thumbnail_url($evento->ID) : $default_img_url,
-										'url_img' => $default_img_url,
+										'url_img' => $url_img,
 										'content' => 	get_the_excerpt($evento->ID),
  										'schedule' => date_i18n('H:i', $schedule),
- 										'tag_class_area'=>$area->slug];
+										 'tag_class_area'=>$area->slug];
 			}
 			$arg = ['items' => $items];
 			funarte_load_part('schedule-events', $arg);
 		?>
 	</div>
+	<!-- FIM EVENTOS -->
 
 	<div class="container">
 		<section class="box-carousel-collection">

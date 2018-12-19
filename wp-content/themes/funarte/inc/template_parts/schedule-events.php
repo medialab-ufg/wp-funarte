@@ -33,12 +33,12 @@ else:
 
 		<div class="carousel-schedule__thumb">
 		<?php foreach ($items as $item): $id++;?>
-			<div class="carousel-schedule__image carousel-schedule__image-<?php echo $id; ?> <?php echo $id == 1 ? 'visible' : ''; ?>" style="background-image: url(<?php echo $item['url_img']; ?>);"></div>
+			<div class="carousel-schedule__image carousel-schedule__image-<?php echo $id; ?> <?php echo $id == 2 ? 'visible' : ''; ?>" style="background-image: url(<?php echo $item['url_img']; ?>);"></div>
 		<?php endforeach; ?>
 		</div>
 
 		<ul class="carousel-schedule">
-			<?php foreach ($items as $item): $id++;?>
+			<?php $id=0;foreach ($items as $item): $id++;?>
 				<li class="color-<?php echo $item['tag_class_area']; ?> <?php echo $id==2? 'active' : ''; ?>">
 					<img src="<?php echo $item['url_img']; ?>" alt="<?php echo $item['title']; ?>">
 					<div class="carousel-schedule__body">
