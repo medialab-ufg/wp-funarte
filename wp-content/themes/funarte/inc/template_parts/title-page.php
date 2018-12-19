@@ -10,23 +10,25 @@ if(!isset($tags) || !isset($title) || !isset($img) ) :
 else :
 ?>
 <div class="box-title-page <?php echo !empty($img) ? 'box-title-page--image' : ''; ?>">
-	<div class="link-area">
-		<?php foreach ($tags as $tag): ?>
-			<?php if(isset($tag['url_area'])): ?>
-				<a href="<?php echo home_url() . '/category/' . $tag['slug']; ?>" class="color-<?php echo $tag['slug']; ?>"><?php echo $tag['name']; ?></a>
-			<?php else: ?>
-				<strong class="color-<?php echo $tag['slug']; ?>"><?php echo $tag['name']; ?></strong>
-			<?php endif; ?>
-		<?php endforeach; ?>
-	</div>
-
-	<?php if(isset($date_pub)): ?>
-		<div class="box-text__date">
-			<small>Publicado em <?php echo $date_pub; ?></small>
+	<div class="box-title-page__text">
+		<div class="link-area">
+			<?php foreach ($tags as $tag): ?>
+				<?php if(isset($tag['url_area'])): ?>
+					<a href="<?php echo home_url() . '/category/' . $tag['slug']; ?>" class="color-<?php echo $tag['slug']; ?>"><?php echo $tag['name']; ?></a>
+				<?php else: ?>
+					<strong class="color-<?php echo $tag['slug']; ?>"><?php echo $tag['name']; ?></strong>
+				<?php endif; ?>
+			<?php endforeach; ?>
 		</div>
-	<?php endif; ?>
 
-	<h3 class="title-page"><?php the_title(); ?></h3>
+		<?php if(isset($date_pub)): ?>
+			<div class="box-text__date">
+				<small>Publicado em <?php echo $date_pub; ?></small>
+			</div>
+		<?php endif; ?>
+
+		<h3 class="title-page"><?php the_title(); ?></h3>
+	</div>
 
 	<?php if (!empty($img)): ?>
 		<div class="box-title-page__thumb">
