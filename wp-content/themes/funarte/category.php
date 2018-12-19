@@ -32,7 +32,7 @@
 	$query_news = ['cat' => (int)$area->term_id, 'post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'orderby' => 'date', 'order' => 'DESC'];
 	$noticias = query_posts($query_news);
 
-	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'cat' => (int)$area->term_id ];
+	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'cat' => (int)$area->term_id, 'posts_per_page' => 10 ];
 	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'),date('Y'), $query_eventos);
 	if (empty($eventos)) {
 		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
@@ -220,7 +220,6 @@
 	<!-- EVENTOS -->
 	<div class="container">
 		<?php
-			$default_img_url = get_template_directory_uri() . '/assets/img/fke/agenda_002.jpg';
 			$items = [];
 			foreach ($eventos as $evento) {
 				$inicio = strtotime('00:00:00', strtotime(get_post_meta($evento->ID, 'evento-inicio', true)));
@@ -235,16 +234,16 @@
 					$day = date_i18n('d', $inicio);
 					$month = date_i18n('F', $inicio);
 				}
+				$url_img = has_post_thumbnail($evento->ID) ? get_the_post_thumbnail_url($evento->ID,'medium_large') : funarte_get_img_default($area->slug);
 				$items[] = ['url' => get_permalink($evento->ID),
  										'day'=> $day,
 										'month'=> $month,
 										'local' => $local,
 										'title' => $evento->post_title,
-										//'url_img' => get_the_post_thumbnail_url($evento->ID) ? get_the_post_thumbnail_url($evento->ID) : $default_img_url,
-										'url_img' => $default_img_url,
+										'url_img' => $url_img,
 										'content' => 	get_the_excerpt($evento->ID),
  										'schedule' => date_i18n('H:i', $schedule),
- 										'tag_class_area'=>$area->slug];
+										 'tag_class_area'=>$area->slug];
 			}
 			$arg = ['items' => $items];
 			funarte_load_part('schedule-events', $arg);
