@@ -2454,14 +2454,19 @@ main { width: 100%; }
 		display: block;
 	}
 }
-.carousel-highlights__caption {
+.carousel-highlights__captions {
 	margin-left: 35px;
 	padding: 6px 20px 14px;
 	position: absolute;
 	right: 85px;
 	bottom: 20px;
 	background-color: #f1f1f1;
-	transition: width 200ms ease-in-out;
+	z-index: 2;
+	transition: width 2s ease-in-out;
+
+	.carousel-highlights__caption { display: none; }
+
+	.carousel-highlights__caption.visible { display: block; }
 
 	strong {
 		font-family: 'Sansita', sans-serif;
@@ -2486,7 +2491,7 @@ main { width: 100%; }
 	z-index: 2;
 
 	button {
-		width: 50px;
+		width: 40px;
 		height: 40px;
 		font-size: 32px;
 		color: $branco;
@@ -2498,7 +2503,7 @@ main { width: 100%; }
 		background: none;
 		transform: translate(-50%,0);
 	}
-	.control__prev { top: 45px; }
+	.control__prev { top: 52px; }
 	.control__next { top: 12px; }
 }
 ul.slick-dots {
@@ -2538,7 +2543,7 @@ ul.slick-dots {
 		& > li,
 		.slick-slide { padding: 0; }
 	}
-	.carousel-highlights__caption {
+	.carousel-highlights__captions {
 		margin: 0;
 		position: static;
 		right: auto;
@@ -2741,6 +2746,7 @@ ul.slick-dots {
 			content: "\f150";
 			font-size: 20px;
 			top: 0;
+			left: 2px;
 		}
 	}
 
@@ -2828,7 +2834,7 @@ ul.slick-dots {
 	height: 65px;
 	position: absolute;
 	left: 15px;
-	bottom: 150px;
+	top: 390px;
 	z-index: 2;
 
 	button {

@@ -284,6 +284,16 @@ var base = {
 				nextArrow: $carousel.find('.control__next'),
 				dots: true,
 				adaptiveHeight: true
+			})
+			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+				$caption = $('.carousel-highlights__captions');
+
+				$caption
+					.find('.visible')
+					.removeClass('visible')
+					.end()
+					.find('.carousel-highlights__caption-' + nextSlide)
+					.addClass('visible');
 			});
 		},
 
@@ -325,9 +335,10 @@ var base = {
 
 			$('.carousel-schedule').slick({
 				speed: 2000,
-				infinite: true,
+				infinite: false,
 				slidesToShow: 2,
 				slidesToScroll: 1,
+				autoplay: false,
 				prevArrow: $carousel.find('.control__next'), // Botoes trocados de proposito
 				nextArrow: $carousel.find('.control__prev'),
 				adaptiveHeight: true,
@@ -345,19 +356,12 @@ var base = {
 			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 				$thumb = $('.carousel-schedule__thumb');
 
-				if (nextSlide > currentSlide) {
-					$thumb
-						.find('.visible')
-						.removeClass('visible')
-						.next()
-						.addClass('visible');
-				} else {
-					$thumb
-						.find('.visible')
-						.removeClass('visible')
-						.prev()
-						.addClass('visible');
-				}
+				$thumb
+					.find('.visible')
+					.removeClass('visible')
+					.end()
+					.find('.carousel-schedule__image-' + (nextSlide + 1))
+					.addClass('visible');
 
 				$carousel.addClass('barra-larga');
 			})
