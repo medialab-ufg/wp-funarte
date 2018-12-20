@@ -9,8 +9,10 @@ if (isset($_GET['estado']) && !empty($_GET['estado']))
 
 	if (!empty($_GET['area'])) {
 		$area = get_category_by_name($_GET['area']);
-		if (!empty($area))
+		if (!empty($area)) 
 			$cat = $area->term_id;
+	} else {
+		$area = get_the_category()[0];
 	}
 
 $params = array(
@@ -87,9 +89,12 @@ query_posts($params);
 							?>
 
 							<div class="list-soft__image <?php echo empty($thumbnail) ? 'no-image' : '' ?>" style="background-image: url(<?php echo $thumbnail ?>);">
-								<div class="link-area">
-									<strong><?php echo get_post_meta($post->ID, "espaco-estado", true); ?></strong>
-								</div>
+								<?php
+									if (!empty($area)): ?>
+									<div class="link-area">
+										<a class="<?php echo 'color-' . $area->slug; ?>" href="<?php echo get_category_link( $area->term_id ); ?>"><?php echo $area->name; ?></a>
+									</div>
+								<?php endif; ?>
 							</div>
 
 							<div class="list-soft__text">
@@ -98,6 +103,8 @@ query_posts($params);
 										<?php the_title(); ?>
 									</a>
 								</h3>
+
+								<strong class="list-soft__local"><?php echo get_post_meta($post->ID, "espaco-estado", true); ?></strong>
 
 								<p><?php echo wp_trim_words(get_the_content(),50); ?></p>
 

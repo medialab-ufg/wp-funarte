@@ -60,25 +60,23 @@
 
 				<?php if ( ! empty( $attachment ) ) : ?>
 
-					<div class="tainacan-single-post">
-						<article role="article">
-							<h1 class="title-content-items"><?php _e( 'Attachments', 'tainacan-interface' ); ?></h1>
-							<section class="tainacan-content single-item-collection margin-two-column">
-								<div class="single-item-collection--attachments">
-									<?php foreach ( $attachment as $attachment ) { ?>
-										<div class="single-item-collection--attachments-img">
-											<a href="<?php echo $attachment->guid; ?>" target="_BLANK">
-												<?php
-													echo wp_get_attachment_image( $attachment->ID, 'tainacan-interface-item-attachments' );
-												?>
-											</a>
-										</div>
-									<?php }
-									?>
-								</div>
-							</section>
-						</article>
-					</div>
+					<section class="box-carousel-attachments">
+						<h3 class="box-carousel-attachments__title"><?php _e( 'Attachments', 'tainacan-interface' ); ?></h3>
+
+						<div class="box-carousel__control">
+							<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+							<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
+						</div>
+
+						<ul class="carousel-attachments">
+							<?php foreach ( $attachment as $attachment ) { ?>
+								<li>
+									<a href="<?php echo $attachment->guid; ?>" target="_BLANK" style="background-image: url(<?php echo wp_get_attachment_image_url( $attachment->ID, 'tainacan-interface-item-attachments' ); ?>);"></a>
+								</li>
+							<?php }
+							?>
+						</ul>
+					</section>
 
 					<div class="tainacan-title my-5">
 						<div class="border-bottom border-silver tainacan-title-page" style="border-width: 1px !important;">
@@ -96,9 +94,9 @@
 								<div class="row">
 									<div class="col s-item-collection--metadata">
 										<div class="card border-0">
-											<div class="card-body bg-white border-0 pl-0 pt-0 pb-1">
-												<h3 class="title-content-items"><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h3>
-												<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'tainacan-medium-full' ) ?>" class="item-card--thumbnail mt-2">
+											<div class="box-acervo-info">
+												<h3 class="box-acervo-info__title"><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h3>
+												<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'tainacan-medium-full' ) ?>" class="box-acervo-info__image">
 											</div>
 										</div>
 										<div class="card border-0 my-3">
@@ -128,16 +126,19 @@
 											</div>
 										</div>
 										<?php do_action( 'tainacan-interface-single-item-metadata-begin' ); ?>
-										<?php
-											$args = array(
-												'before_title' => '<div><h3 class="title-content-items">',
-												'after_title' => '</h3>',
-												'before_value' => '<p>',
-												'after_value' => '</p></div>',
-											);
-											//$field = null;
-											tainacan_the_metadata( $args );
-										?>
+
+										<ul class="box-acervo__metadata">
+											<?php
+												$args = array(
+													'before_title' => '<li><h4 class="box-acervo__metadata-title">',
+													'after_title' => '</h4>',
+													'before_value' => '<p>',
+													'after_value' => '</p></li>',
+												);
+												//$field = null;
+												tainacan_the_metadata( $args );
+											?>
+										</ul>
 									</div>
 								</div>
 							</div>
@@ -150,8 +151,6 @@
 		<?php else : ?>
 			<?php _e( 'Nothing found', 'tainacan-interface' ); ?>
 		<?php endif; ?>
-		
-		
 	</div>
 </main>
 
