@@ -261,6 +261,7 @@ require_once('inc/post_types/identidade_visual/identidade_visual.php');
 
 //includes - customizes on pages
 require_once('inc/pages/relatorios.php');
+require_once('inc/options/options_config.php');
 
 //tainacan
 require_once('inc/tainacan/tainacan_taxonomy_categoria.php');

@@ -13,6 +13,11 @@ if(!empty($filhos)):
 		$contents[$filho->post_name] = ['content'=>$filho->post_content,'title'=>$filho->post_title];
 	endforeach;
 endif;
+$options = wp_parse_args( get_option('theme_options'), get_theme_default_options() );
+$url_dados_abertos = "#";
+if(isset($options['url_dados_abertos'])) {
+	$url_dados_abertos = $options['url_dados_abertos'];
+}
 ?>
 <main role="main">
 	<div class="container">
@@ -24,7 +29,7 @@ endif;
 		
 		<div class="box-title">
 			<h2 class="title-h1">Funarte <span>Institucional</span></h2>
-			<a class="box-title__link" href="#" target="_blank">Dados Abertos</a>
+			<a class="box-title__link" href="<?php echo $url_dados_abertos; ?>" target="_blank">Dados Abertos</a>
 		</div>
 
 		<!-- BOX-TABS--ACTIVE: CLASSE UTILIZADA PARA ATIVAR A TROCA DE ABAS VIA JS -->
