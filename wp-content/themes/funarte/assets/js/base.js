@@ -428,22 +428,22 @@ var base = {
 					speed: 1000,
 					infinite: false,
 					slidesToShow: 6,
-					slidesToScroll: 6,
+					slidesToScroll: 1,
+					autoplay: true,
+					autoplaySpeed: 2000,
 					prevArrow: $boxCarousel.find('.control__prev'),
 					nextArrow: $boxCarousel.find('.control__next'),
 					responsive: [
 						{
 							breakpoint: 1200,
 							settings: {
-								slidesToShow: 5,
-								slidesToScroll: 5
+								slidesToShow: 5
 							}
 						},
 						{
 							breakpoint: 992,
 							settings: {
-								slidesToShow: 4,
-								slidesToScroll: 4
+								slidesToShow: 4
 							}
 						},
 						{

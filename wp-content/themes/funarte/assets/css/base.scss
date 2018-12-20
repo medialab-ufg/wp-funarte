@@ -269,6 +269,7 @@ noscript {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	align-items: flex-start;
 	position: relative;
 
 	.title-h1 { margin: 0 0 90px; }
@@ -3835,6 +3836,12 @@ ul.social-media-list {
 	font-size: 1.2rem;
 	color: $verde-1;
 }
+.box-tainacan-document {
+	width: 100%;
+	margin-bottom: 100px;
+	padding: 0 9%;
+	text-align: center;
+}
 
 .box-acervo-info {
 	margin: 0;
@@ -3876,6 +3883,25 @@ ul.social-media-list {
 	font-size: .9rem;
 	color: $cinza-6;
 }
+.box-acervo__social-media-list {
+	margin: 0 -4px;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	justify-content: flex-start;
+
+	li {
+		width: 38px;
+		height: 30px;
+		margin: 0;
+		padding: 0 4px;
+
+		img {
+			width: 100%;
+			display: block;
+		}
+	}
+}
 
 .single-item-collection--document {
 	margin-bottom: 120px;
@@ -3903,14 +3929,19 @@ ul.social-media-list {
 
 .box-carousel-attachments {
 	width: 100%;
-	padding: 0 5%;
+	padding: 0;
 	position: relative;
 }
 .box-carousel-attachments__title {
-	margin: 0 0 45px;
+	margin: 0 0 45px 5%;
 	font-weight: 700;
 	font-size: 1.2rem;
 	color: #2f9187;
+}
+.box-carousel-attachments__wrapper {
+	margin: 0 0 0 9%;
+	padding: 0 50px 0 0;
+	position: relative;
 }
 .box-carousel__control {
 	button {
@@ -3923,6 +3954,7 @@ ul.social-media-list {
 		top: 50%;
 		z-index: 2;
 		background: none;
+		transform: translate(0,-50%);
 	}
 	.control__next {
 		border-top: 20px solid transparent;
@@ -3936,7 +3968,7 @@ ul.social-media-list {
 		border-left: none;
 		border-right: 20px solid $verde-1;
 		border-bottom: 20px solid transparent;
-		left: 0;
+		left: -50px;
 	}
 }
 .carousel-attachments {
@@ -3951,7 +3983,6 @@ ul.social-media-list {
 		width: 164px;
 		height: 124px;
 		padding: 0 20px;
-		margin-bottom: 20px;
 
 		a {
 			width: 100%;
@@ -3968,6 +3999,14 @@ ul.social-media-list {
 			display: block;
 		}
 	}
+}
+
+@media screen and (max-width: 550px) {
+	.box-carousel-attachments__wrapper {
+		margin: 0;
+		padding: 0 50px;
+	}
+	.box-carousel__control .control__prev { left: 0; }
 }
 
 /***

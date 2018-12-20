@@ -30,11 +30,9 @@
 						<?php if ( tainacan_has_document() ) : ?>
 							<h3 class="title-content-items"><?php _e( 'Document', 'tainacan-interface' ); ?></h3>
 
-							<section class="tainacan-content single-item-collection margin-two-column">
-								<div class="single-item-collection--document">
-									<?php tainacan_the_document(); ?>
-								</div>
-							</section>
+							<div class="box-tainacan-document">
+								<?php tainacan_the_document(); ?>
+							</div>
 						<?php endif; ?>
 					</article>
 				</div>
@@ -63,19 +61,21 @@
 					<section class="box-carousel-attachments">
 						<h3 class="box-carousel-attachments__title"><?php _e( 'Attachments', 'tainacan-interface' ); ?></h3>
 
-						<div class="box-carousel__control">
-							<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
-							<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
-						</div>
+						<div class="box-carousel-attachments__wrapper">
+							<div class="box-carousel__control">
+								<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+								<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
+							</div>
 
-						<ul class="carousel-attachments">
-							<?php foreach ( $attachment as $attachment ) { ?>
-								<li>
-									<a href="<?php echo $attachment->guid; ?>" target="_BLANK" style="background-image: url(<?php echo wp_get_attachment_image_url( $attachment->ID, 'tainacan-interface-item-attachments' ); ?>);"></a>
-								</li>
-							<?php }
-							?>
-						</ul>
+							<ul class="carousel-attachments">
+								<?php foreach ( $attachment as $attachment ) { ?>
+									<li>
+										<a href="<?php echo $attachment->guid; ?>" target="_BLANK" style="background-image: url(<?php echo wp_get_attachment_image_url( $attachment->ID, 'tainacan-interface-item-attachments' ); ?>);"></a>
+									</li>
+								<?php }
+								?>
+							</ul>
+						</div>
 					</section>
 
 					<div class="tainacan-title my-5">
@@ -88,61 +88,55 @@
 
 				<div class="tainacan-single-post">
 					<article role="article">
-						<!-- <h1 class="title-content-items"><?php _e( 'Information', 'tainacan-interface' ); ?></h1> -->
-						<section class="tainacan-content single-item-collection margin-two-column">
-							<div class="single-item-collection--information justify-content-center">
-								<div class="row">
-									<div class="col s-item-collection--metadata">
-										<div class="card border-0">
-											<div class="box-acervo-info">
-												<h3 class="box-acervo-info__title"><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h3>
-												<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'tainacan-medium-full' ) ?>" class="box-acervo-info__image">
-											</div>
-										</div>
-										<div class="card border-0 my-3">
-											<div class="card-body bg-white border-0 pl-0 pt-0 pb-1">
-												<h3 class="title-content-items"><?php _e( 'Share', 'tainacan-interface' ); ?></h3>
-												<div class="btn-group" role="group">
-													<?php if ( true == get_theme_mod( 'tainacan_facebook_share', true ) ) : ?> 
-														<a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="item-card-link--sharing" target="_blank">
-															<img src="<?php echo get_template_directory_uri() . '/assets/images/facebook-circle.png'; ?>" alt="">
-														</a>
-													<?php endif; ?>
-													<?php if ( true == get_theme_mod( 'tainacan_twitter_share', true ) ) : ?> 
-														<?php
-														$twitter_option = get_option( 'tainacan_twitter_user' );
-														$via = ! empty( $twitter_option ) ? '&amp;via=' . esc_attr( get_option( 'tainacan_twitter_user' ) ) : '';
-														?>
-														<a href="http://twitter.com/share?url=<?php the_permalink(); ?>&amp;text=<?php the_title_attribute(); ?><?php echo $via; ?>" target="_blank" class="item-card-link--sharing">
-															<img src="<?php echo get_template_directory_uri() . '/assets/images/twitter-circle.png'; ?>" alt="">
-														</a>
-													<?php endif; ?>
-													<?php if ( true == get_theme_mod( 'tainacan_google_share', true ) ) : ?> 
-														<a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" target="_blank" class="item-card-link--sharing">
-															<img src="<?php echo get_template_directory_uri() . '/assets/images/google-plus-circle.png'; ?>" alt="">
-														</a>
-													<?php endif; ?>
-												</div>
-											</div>
-										</div>
-										<?php do_action( 'tainacan-interface-single-item-metadata-begin' ); ?>
+						<?php do_action( 'tainacan-interface-single-item-metadata-begin' ); ?>
 
-										<ul class="box-acervo__metadata">
-											<?php
-												$args = array(
-													'before_title' => '<li><h4 class="box-acervo__metadata-title">',
-													'after_title' => '</h4>',
-													'before_value' => '<p>',
-													'after_value' => '</p></li>',
-												);
-												//$field = null;
-												tainacan_the_metadata( $args );
-											?>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</section>
+						<ul class="box-acervo__metadata">
+							<li>
+								<h4 class="box-acervo__metadata-title"><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h4>
+								<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'tainacan-medium-full' ) ?>">
+							</li>
+							<li>
+								<h4 class="box-acervo__metadata-title"><?php _e( 'Share', 'tainacan-interface' ); ?></h4>
+
+								<ul class="box-acervo__social-media-list">
+									<?php if ( true == get_theme_mod( 'tainacan_facebook_share', true ) ) : ?> 
+										<li>
+											<a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="item-card-link--sharing" target="_blank">
+												<img src="<?php echo get_template_directory_uri() . '/assets/img/ico/facebook-circle.png'; ?>" alt="">
+											</a>
+										</li>
+									<?php endif; ?>
+									<?php if ( true == get_theme_mod( 'tainacan_twitter_share', true ) ) : ?> 
+										<?php
+										$twitter_option = get_option( 'tainacan_twitter_user' );
+										$via = ! empty( $twitter_option ) ? '&amp;via=' . esc_attr( get_option( 'tainacan_twitter_user' ) ) : '';
+										?>
+										<li>
+											<a href="http://twitter.com/share?url=<?php the_permalink(); ?>&amp;text=<?php the_title_attribute(); ?><?php echo $via; ?>" target="_blank" class="item-card-link--sharing">
+												<img src="<?php echo get_template_directory_uri() . '/assets/img/ico/twitter-circle.png'; ?>" alt="">
+											</a>
+										</li>
+									<?php endif; ?>
+									<?php if ( true == get_theme_mod( 'tainacan_google_share', true ) ) : ?> 
+										<li>
+											<a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" target="_blank" class="item-card-link--sharing">
+												<img src="<?php echo get_template_directory_uri() . '/assets/img/ico/google-plus-circle.png'; ?>" alt="">
+											</a>
+										</li>
+									<?php endif; ?>
+								</ul>
+							</li>
+							<?php
+								$args = array(
+									'before_title' => '<li><h4 class="box-acervo__metadata-title">',
+									'after_title' => '</h4>',
+									'before_value' => '<p>',
+									'after_value' => '</p></li>',
+								);
+								//$field = null;
+								tainacan_the_metadata( $args );
+							?>
+						</ul>
 					</article>
 				</div>
 
