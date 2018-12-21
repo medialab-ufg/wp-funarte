@@ -477,13 +477,14 @@ var base = {
 
 			$('.carousel-zoom').slick({
 				speed: 1000,
-				infinite: false,
+				infinite: true,
 				slidesToShow: 3,
 				slidesToScroll: 1,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
 				adaptiveHeight: true,
 				variableWidth: true,
+				dots: false,
 				responsive: [
 					{
 						breakpoint: 990,
