@@ -17,22 +17,24 @@ class Relatorio {
 		$slug = $post->post_name;
 		
 		if ( $this->PAGE_SLUG == $slug ) {
-			add_meta_box( 'downloads_custombox' ,__( 'Downloads'),
-				array($this, 'meta_box_downloads'), 'page', 'advanced' , 'high');
+			add_meta_box( 'downloads_custombox' , __( 'Downloads'),
+				array($this, 'meta_box_downloads'), 'page', 'advanced', 'high');
 			
-			add_meta_box( 'arquivos_diversos_custombox' ,__( 'Arquivos Diversos'),
-				 array($this, 'meta_box_arquivos_diversos'), 'page', 'advanced' , 'high');
+			add_meta_box( 'arquivos_diversos_custombox' , __( 'Arquivos Diversos'),
+				 array($this, 'meta_box_arquivos_diversos'), 'page', 'advanced', 'high');
 		}
 	}
 
 	function meta_box_downloads() {
-		?>
-			<p>This will render inside of the meta box.</p>
-			<select name="featured_photo">
-				<option value="0" <?php selected( 0, $value ); ?> >No </option>
-				<option value="1" <?php selected( 1, $value ); ?> >Yes </option>
-			</select>
-		<?php
+
+		$download = array('links' => array(
+			['descricao' => 'descrição', 'link' => 'Link'],
+			['descricao' => 'descrição', 'link' => 'Link'] )); 
+
+		$THEME_FOLDER = get_template_directory();
+		$DS = DIRECTORY_SEPARATOR;
+		$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'pages' . $DS;
+		require_once($META_FOLDER . 'metabox-arquivos-download.php');
 	}
 
 	function meta_box_arquivos_diversos() {
