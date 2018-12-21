@@ -1723,13 +1723,13 @@ body.js .collapse__text { display: none; }
 		&.slick-active:nth-child(4n+4) { transition: opacity 500ms ease-in-out 300ms, transform 500ms ease-in-out 300ms; }
 	}
 
-	&.reverse {
-		.slick-slide { transform: translate(0,10px); }
-		.slick-active:nth-child(4n+1) { transition: opacity 500ms ease-in-out 300ms, transform 500ms ease-in-out 300ms; }
-		.slick-active:nth-child(4n+2) { transition: opacity 500ms ease-in-out 200ms, transform 500ms ease-in-out 200ms; }
-		.slick-active:nth-child(4n+3) { transition: opacity 500ms ease-in-out 100ms, transform 500ms ease-in-out 100ms; }
-		.slick-active:nth-child(4n+4) { transition: opacity 500ms ease-in-out, transform 500ms ease-in-out; }
-	}
+	// &.reverse {
+	// 	.slick-slide { transform: translate(0,10px); }
+	// 	.slick-active:nth-child(4n+1) { transition: opacity 500ms ease-in-out 300ms, transform 500ms ease-in-out 300ms; }
+	// 	.slick-active:nth-child(4n+2) { transition: opacity 500ms ease-in-out 200ms, transform 500ms ease-in-out 200ms; }
+	// 	.slick-active:nth-child(4n+3) { transition: opacity 500ms ease-in-out 100ms, transform 500ms ease-in-out 100ms; }
+	// 	.slick-active:nth-child(4n+4) { transition: opacity 500ms ease-in-out, transform 500ms ease-in-out; }
+	// }
 
 	.link-area { margin-bottom: 10px; }
 
@@ -2455,6 +2455,8 @@ main { width: 100%; }
 	}
 }
 .carousel-highlights__captions {
+	width: 90%;
+	max-width: 80%;
 	margin-left: 35px;
 	padding: 6px 20px 14px;
 	position: absolute;
@@ -2462,11 +2464,16 @@ main { width: 100%; }
 	bottom: 20px;
 	background-color: #f1f1f1;
 	z-index: 2;
-	transition: width 2s ease-in-out;
+	transition: width 1s ease-in-out;
 
 	.carousel-highlights__caption { display: none; }
 
 	.carousel-highlights__caption.visible { display: block; }
+
+	.hidden__caption {
+		position: absolute;
+		left: -999999px;
+	}
 
 	strong {
 		font-family: 'Sansita', sans-serif;
@@ -2511,6 +2518,7 @@ ul.slick-dots {
 	height: auto;
 	max-height: 256px;
 	padding: 10px 0 30px;
+	display: block !important;
 	position: absolute;
 	right: 0;
 	bottom: 150px;
@@ -2544,6 +2552,8 @@ ul.slick-dots {
 		.slick-slide { padding: 0; }
 	}
 	.carousel-highlights__captions {
+		width: 100%;
+		max-width: 100%;
 		margin: 0;
 		position: static;
 		right: auto;
@@ -2553,7 +2563,7 @@ ul.slick-dots {
 		width: auto;
 		padding: 0;
 		max-height: none;
-		display: flex;
+		display: flex !important;
 		right: 50%;
 		bottom: -20px;
 		transform: translate(50%,0);

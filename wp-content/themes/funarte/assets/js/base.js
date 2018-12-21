@@ -286,7 +286,10 @@ var base = {
 				adaptiveHeight: true
 			})
 			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-				$caption = $('.carousel-highlights__captions');
+				var $caption = $('.carousel-highlights__captions');
+				largura = $('.hidden__caption-' + nextSlide).outerWidth();
+				console.log(largura);
+				$caption.css('width',largura);
 
 				$caption
 					.find('.visible')
@@ -382,14 +385,14 @@ var base = {
 				adaptiveHeight: true,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
-			})
-			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-				if (nextSlide < currentSlide) {
-					$carousel.addClass('reverse');
-				} else {
-					$carousel.removeClass('reverse');
-				}
 			});
+			// .on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+			// 	// if (nextSlide < currentSlide) {
+			// 	// 	$carousel.addClass('reverse');
+			// 	// } else {
+			// 	// 	$carousel.removeClass('reverse');
+			// 	// }
+			// });
 		},
 
 		iniciarEventos: function() {
