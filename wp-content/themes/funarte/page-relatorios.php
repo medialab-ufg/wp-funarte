@@ -77,15 +77,15 @@ endif;
 						<h4 class="title-h1 box-links__title">Outros downloads</h4>
 
 						<ul class="list-links list-links--type-b">
-							<li>
-								<a href="#">O Papel Fundamental da Funarte no Ministério da Cultura</a>
-							</li>
-							<li>
-								<a href="#">O Papel Fundamental da Funarte no Ministério da Cultura</a>
-							</li>
-							<li>
-								<a href="#">O Papel Fundamental da Funarte no Ministério da Cultura</a>
-							</li>
+							<?php
+							$downloads  = \funarte\Relatorio::get_instance()->get_downlods();
+							foreach ($downloads as $download):
+							?>
+								<li>
+									<a href="<?php echo $download['url'];?>"><?php echo $download['descricao'];?> </a>
+								</li>
+							<?php endforeach; ?>
+							
 						</ul>
 					</div>
 
@@ -93,15 +93,15 @@ endif;
 						<h4 class="title-h1 box-links__title">Manual e formulários para elaboração da prestação de contas de convênios</h4>
 
 						<ul class="list-links list-links--type-b">
-							<li>
-								<a href="#">O Papel Fundamental da Funarte no Ministério da Cultura</a>
-							</li>
-							<li>
-								<a href="#">O Papel Fundamental da Funarte no Ministério da Cultura</a>
-							</li>
-							<li>
-								<a href="#">O Papel Fundamental da Funarte no Ministério da Cultura</a>
-							</li>
+
+							<?php
+							$arquivos  = \funarte\Relatorio::get_instance()->get_arquivos_diversos();
+							foreach ($arquivos as $arquivo):
+							?>
+								<li>
+									<a href="<?php echo $arquivo['url'];?>"><?php echo $arquivo['descricao'];?></a>
+								</li>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 				</aside>
