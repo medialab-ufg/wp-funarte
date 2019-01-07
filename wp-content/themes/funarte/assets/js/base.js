@@ -286,10 +286,11 @@ var base = {
 				adaptiveHeight: true
 			})
 			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-				var $caption = $('.carousel-highlights__captions');
-				largura = $('.hidden__caption-' + nextSlide).outerWidth();
-				console.log(largura);
-				$caption.css('width',largura);
+				var $caption = $('.carousel-highlights__captions'),
+					largura = $('.hidden__caption-' + nextSlide).outerWidth(),
+					padding = 20;
+
+				$caption.css('width',largura + (padding * 2));
 
 				$caption
 					.find('.visible')
