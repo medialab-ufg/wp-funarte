@@ -4099,6 +4099,14 @@ ul.social-media-list {
 }
 
 /***
+* CALENDÁRIO
+***/
+
+.ui-datepicker-year {
+	display: none;
+}
+
+/***
 * MARGENS
 ***/
 
@@ -4158,8 +4166,6 @@ body.body-color-multicategoria {
 	.box-carousel-highlights:after,
 	ul.slick-dots li.slick-active button { background-color: $verde-3; }
 }
-
-
 
 /***
 * ACESSIBILIDADE

@@ -2,8 +2,25 @@
 
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
-	<div class="container mb-100">
-	Em desenvolvimento
+
+	<div class="container">
+		<div class="box-breadcrumb">
+			<a class="box-breadcrumb__home" href="/"><i class="mdi mdi-home"></i></a>
+			<a href="/evento">Agenda cultural</a>
+		</div>
+
+		<div class="box-title">
+			<h2 class="title-h1">Agenda cultural <span>Eventos do dia</span></h2>
+		</div>
+
+		<div class="row justify-content-between mb-100">
+			<div class="col-md-4">
+				<div id="datepicker"></div>
+			</div>
+			<div class="col-md-6">
+				
+			</div>
+		</div>
 	</div>
 </main>
 <!--
@@ -59,6 +76,9 @@ wp_dropdown_categories(array(
 endwhile;
 ?>
 -->
+
 <?php
 get_footer();
 ?>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
