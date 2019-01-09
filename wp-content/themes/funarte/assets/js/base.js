@@ -43,6 +43,7 @@ $(document).ready(function() {
 
 	// Eventos
 	base.calendario.ativar();
+	base.carrossel.iniciarCalendario();
 });
 
 var base = {
@@ -96,8 +97,7 @@ var base = {
 
 			} ) );
 
-			$.datepicker.setDefaults( $.datepicker.regional['pt-BR'] );
-			$( "#datepicker" ).datepicker();
+			$('.datepicker').datepicker();
 		}
 	},
 
@@ -223,6 +223,42 @@ var base = {
 	},
 
 	carrossel: {
+		iniciarCalendario: function() {
+			var $carousel = $('.carousel-calendar-box');
+
+			$('.carousel-calendar').slick({
+				speed: 500,
+				infinite: false,
+				slidesToShow: 5,
+				slidesToScroll: 5,
+				// centerMode: true,
+				// centerPadding: '0',
+				focusOnSelect: true,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+				// responsive: [
+				// 	{
+				// 		breakpoint: 768,
+				// 		settings: {
+				// 			slidesToShow: 2,
+				// 			slidesToScroll: 2
+				// 		}
+				// 	},
+				// 	{
+				// 		breakpoint: 586,
+				// 		settings: {
+				// 			slidesToShow: 1,
+				// 			slidesToScroll: 1
+				// 		}
+				// 	}
+				// ]
+			});
+
+			$('.title-h1').click(function() {
+				$('.carousel-calendar').slick('slickNext');
+			});
+		},
+
 		verificarTabs: function() {
 			var $carousel = $('.list-tabs-on-off').find('.list-tabs__main');
 
