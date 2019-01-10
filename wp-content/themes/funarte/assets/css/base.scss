@@ -4102,9 +4102,248 @@ ul.social-media-list {
 * CALENDÁRIO
 ***/
 
+/* CALENDÁRIO COMPACTO COM CARROSSEL */
+
 .ui-datepicker-year {
 	display: none;
 }
+
+.datepicker-box {
+	display: flex;
+	justify-content: space-between;
+}
+.box-calendario-sidebar {
+	width: 100%;
+	max-width: 346px;
+	padding-left: 26px;
+
+	.datepicker,
+	.ui-datepicker { width: 100%; }
+
+	.datepicker { margin-bottom: 80px; }
+	.form-filtro-calendario + .form-filtro-calendario { margin-top: 20px; }
+}
+.box-calendario-main {
+	width: 100%;
+	max-width: 787px;
+}
+
+.box-calendario {
+	width: 100%;
+	position: relative;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+
+		li {
+			width: 100%;
+			min-height: 483px;
+			padding: 223px 0 0;
+			position: relative;
+
+			&:after {
+				content: "";
+				width: 50%;
+				height: 100%;
+				position: absolute;
+				left: 15px;
+				bottom: 0;
+				background-color: $cinza-2;
+				z-index: -1;
+			}
+			&:before {
+				content: "";
+				width: 50%;
+				height: 24%;
+				position: absolute;
+				top: 0;
+				left: 15px;
+				background-color: $branco;
+			}
+
+			hr {
+				width: 66%;
+				height: 4px;
+				margin: 0 0 24px 5%;
+				display: block;
+				border: none;
+			}
+
+			p {
+				margin: 0;
+				font-size: .9rem;
+				line-height: 1.1rem;
+			}
+
+			.link-more { margin-top: 26px; }
+
+			&.color-funarte {
+				.box-calendario__data,
+				hr { background-color: $verde-1; }
+				.link-more,
+				.box-calendario__titulo { color: $verde-1; }
+			}
+			&.color-circo {
+				.box-calendario__data,
+				hr { background-color: $vermelho-1; }
+				.link-more,
+				.box-calendario__titulo { color: $vermelho-1; }
+			}
+			&.color-musica {
+				.box-calendario__data,
+				hr { background-color: $laranja-1; }
+				.link-more,
+				.box-calendario__titulo { color: $laranja-1; }
+			}
+			&.color-danca {
+				.box-calendario__data,
+				hr { background-color: $amarelo-1; }
+				.link-more,
+				.box-calendario__titulo { color: $amarelo-1; }
+			}
+			&.color-literatura {
+				.box-calendario__data,
+				hr { background-color: $limao-1; }
+				.link-more,
+				.box-calendario__titulo { color: $limao-1; }
+			}
+			&.color-artes-visuais {
+				.box-calendario__data,
+				hr { background-color: $azul-1; }
+				.link-more,
+				.box-calendario__titulo { color: $azul-1; }
+			}
+			&.color-artes-integradas {
+				.box-calendario__data,
+				hr { background-color: $roxo-1; }
+				.link-more,
+				.box-calendario__titulo { color: $roxo-1; }
+			}
+			&.color-teatro {
+				.box-calendario__data,
+				hr { background-color: $rosa-1; }
+				.link-more,
+				.box-calendario__titulo { color: $rosa-1; }
+			}
+		}
+	}
+
+	.carousel-highlights__control {
+		width: 65px;
+		height: 30px;
+		position: absolute;
+		right: 0;
+		bottom: 24px;
+
+		button {
+			width: 30px;
+			height: 30px;
+			cursor: pointer;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: auto;
+			right: auto;
+			background-color: $verde-1;
+			transform: translate(0,0);
+		}
+		.control__prev { left: 0; }
+		.control__next { right: 0; }
+	}
+}
+
+.box-calendario__imagem {
+	padding-top: 17px;
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	img {
+		width: 100%;
+		max-width: 426px;
+		display: block;
+	}
+
+	.link-area {
+		position: absolute;
+		top: 0;
+		left: 28px;
+	}
+}
+.box-calendario__data {
+	padding: 8px 15px;
+	font-weight: 400;
+	font-family: 'Sansita', sans-serif;
+	font-size: 1.6rem;
+	color: $branco;
+	text-transform: uppercase;
+	display: block;
+	position: absolute;
+	top: 92px;
+	left: 0;
+}
+.box-calendario__titulo {
+	max-width: 330px;
+	margin: 0 0 26px;
+	padding-left: 9%;
+	font-family: Sansita,sans-serif;
+	font-weight: 700;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	line-height: 1.3rem;
+	display: block;
+}
+.box-calendario__linha {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.box-calendario__coluna-1 {
+	width: 100%;
+	max-width: 330px;
+	margin-left: 15px;
+	padding: 11px 0 0 8%;
+}
+.box-calendario__coluna-2 {
+	width: 100%;
+	max-width: 320px;
+	padding-right: 6%;
+}
+.box-calendario__time,
+.box-calendario__pin {
+	font-size: .8rem;
+	display: block;
+	position: relative;
+}
+.box-calendario__time {
+	margin-bottom: 30px;
+	padding-left: 25px;
+
+	&:after {
+		@include icon-css;
+		content: "\f150";
+		font-size: 20px;
+		position: absolute;
+		top: -5px;
+		left: -2px;
+	}
+}
+.box-calendario__pin {
+	padding-left: 20px;
+
+	&:after {
+		@include icon-css;
+		content: "\f34e";
+		font-size: 24px;
+		position: absolute;
+		top: -10px;
+		left: -5px;
+	}
+}
+
+/* CALENDÁRIO COMPLETO */
 
 .form-filtro-calendario {
 	input[type=text],

@@ -43,7 +43,8 @@ $(document).ready(function() {
 
 	// Eventos
 	base.calendario.ativar();
-	base.carrossel.iniciarCalendario();
+	base.carrossel.iniciarCalendarioCompacto();
+	base.carrossel.iniciarCalendarioCompleto();
 });
 
 var base = {
@@ -223,39 +224,64 @@ var base = {
 	},
 
 	carrossel: {
-		iniciarCalendario: function() {
+		iniciarCalendarioCompacto: function() {
+			var $carousel = $('.box-calendario');
+
+			$carousel.find('ul').slick({
+				speed: 500,
+				infinite: false,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				adaptiveHeight: true,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+			});
+		},
+
+		iniciarCalendarioCompleto: function() {
 			var $carousel = $('.carousel-calendar-box');
 
 			$('.carousel-calendar').slick({
 				speed: 500,
-				infinite: false,
+				infinite: true,
 				slidesToShow: 5,
 				slidesToScroll: 5,
-				// centerMode: true,
-				// centerPadding: '0',
+				centerMode: true,
+				centerPadding: '0',
 				focusOnSelect: true,
+				adaptiveHeight: true,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
-				// responsive: [
-				// 	{
-				// 		breakpoint: 768,
-				// 		settings: {
-				// 			slidesToShow: 2,
-				// 			slidesToScroll: 2
-				// 		}
-				// 	},
-				// 	{
-				// 		breakpoint: 586,
-				// 		settings: {
-				// 			slidesToShow: 1,
-				// 			slidesToScroll: 1
-				// 		}
-				// 	}
-				// ]
-			});
-
-			$('.title-h1').click(function() {
-				$('.carousel-calendar').slick('slickNext');
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
+					},
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					},
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 450,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
 			});
 		},
 

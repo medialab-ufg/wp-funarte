@@ -13,12 +13,204 @@
 			<h2 class="title-h1">Agenda cultural <span>Eventos do dia</span></h2>
 		</div>
 
-		<div class="datepicker-box row justify-content-between mb-100">
-			<div class="col-md-4">
+		<div class="datepicker-box mb-100">
+			<div class="box-calendario-sidebar">
 				<div class="datepicker"></div>
+
+				<form class="form-filtro-calendario" action="#" method="post">
+					<fieldset>
+						<legend>Formulário de filtro para o calendário</legend>
+
+						<select>
+							<option value="">Todos os locais</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+						</select>
+					</fieldset>
+				</form>
+
+				<form class="form-filtro-calendario" action="#" method="post">
+					<fieldset>
+						<legend>Formulário de filtro para o calendário</legend>
+
+						<select>
+							<option value="">Filtrar por área</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+						</select>
+					</fieldset>
+				</form>
+
+				<form class="form-filtro-calendario" action="#" method="post">
+					<fieldset>
+						<legend>Formulário de filtro para o calendário</legend>
+
+						<select>
+							<option value="">Todos os eventos</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+						</select>
+					</fieldset>
+				</form>
 			</div>
-			<div class="col-md-6">
-				
+
+			<div class="box-calendario-main">
+				<div class="box-calendario">
+					<div class="carousel-highlights__control">
+						<button type="button" class="control__next slick-arrow" style="display: block;"><i class="mdi mdi-chevron-right"></i></button>
+						<button type="button" class="control__prev slick-arrow" style="display: block;"><i class="mdi mdi-chevron-left"></i></button>
+					</div>
+
+					<ul>
+						<li class="color-teatro">
+							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
+
+							<div class="box-calendario__imagem">
+								<div class="link-area">
+									<a href="#">Teatro</a>
+								</div>
+								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
+							</div>
+
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
+							<div class="box-calendario__linha">
+								<div class="box-calendario__coluna-1">
+									<span class="box-calendario__time">das 13 às 17 horas</span>
+									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
+								</div>
+								<div class="box-calendario__coluna-2">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
+									<a class="link-more" href="#">Ler mais</a>
+								</div>
+							</div>
+						</li>
+						<li class="color-danca">
+							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
+
+							<div class="box-calendario__imagem">
+								<div class="link-area">
+									<a href="#">Dança</a>
+								</div>
+								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
+							</div>
+
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
+							<div class="box-calendario__linha">
+								<div class="box-calendario__coluna-1">
+									<span class="box-calendario__time">das 13 às 17 horas</span>
+									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
+								</div>
+								<div class="box-calendario__coluna-2">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
+									<a class="link-more" href="#">Ler mais</a>
+								</div>
+							</div>
+						</li>
+						<li class="color-circo">
+							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
+
+							<div class="box-calendario__imagem">
+								<div class="link-area">
+									<a href="#">Circo</a>
+								</div>
+								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
+							</div>
+
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
+							<div class="box-calendario__linha">
+								<div class="box-calendario__coluna-1">
+									<span class="box-calendario__time">das 13 às 17 horas</span>
+									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
+								</div>
+								<div class="box-calendario__coluna-2">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
+									<a class="link-more" href="#">Ler mais</a>
+								</div>
+							</div>
+						</li>
+						<li class="color-artes-visuais">
+							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
+
+							<div class="box-calendario__imagem">
+								<div class="link-area">
+									<a href="#">Artes Visuais</a>
+								</div>
+								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
+							</div>
+
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
+							<div class="box-calendario__linha">
+								<div class="box-calendario__coluna-1">
+									<span class="box-calendario__time">das 13 às 17 horas</span>
+									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
+								</div>
+								<div class="box-calendario__coluna-2">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
+									<a class="link-more" href="#">Ler mais</a>
+								</div>
+							</div>
+						</li>
+						<li class="color-artes-integradas">
+							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
+
+							<div class="box-calendario__imagem">
+								<div class="link-area">
+									<a href="#">Artes Integradas</a>
+								</div>
+								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
+							</div>
+
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
+							<div class="box-calendario__linha">
+								<div class="box-calendario__coluna-1">
+									<span class="box-calendario__time">das 13 às 17 horas</span>
+									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
+								</div>
+								<div class="box-calendario__coluna-2">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
+									<a class="link-more" href="#">Ler mais</a>
+								</div>
+							</div>
+						</li>
+						<li class="color-musica">
+							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
+
+							<div class="box-calendario__imagem">
+								<div class="link-area">
+									<a href="#">Música</a>
+								</div>
+								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
+							</div>
+
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
+							<div class="box-calendario__linha">
+								<div class="box-calendario__coluna-1">
+									<span class="box-calendario__time">das 13 às 17 horas</span>
+									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
+								</div>
+								<div class="box-calendario__coluna-2">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
+									<a class="link-more" href="#">Ler mais</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 
