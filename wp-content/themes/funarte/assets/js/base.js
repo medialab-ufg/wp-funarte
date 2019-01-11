@@ -43,6 +43,7 @@ $(document).ready(function() {
 
 	// Eventos
 	base.calendario.ativar();
+	base.calendario.ativarCompacto();
 	base.carrossel.iniciarCalendarioCompacto();
 	base.carrossel.iniciarCalendarioCompleto();
 });
@@ -82,8 +83,8 @@ var base = {
 						"Sexta-feira",
 						"Sábado"
 					],
-					dayNamesShort: [ "Dom","Seg","Ter","Qua","Qui","Sex","Sáb" ],
-					dayNamesMin: [ "Dom","Seg","Ter","Qua","Qui","Sex","Sáb" ],
+					dayNamesShort: [ "D","S","T","Q","Q","S","S" ],
+					dayNamesMin: [ "D","S","T","Q","Q","S","S" ],
 					weekHeader: "Sm",
 					dateFormat: "dd/mm/yy",
 					firstDay: 0,
@@ -99,6 +100,68 @@ var base = {
 			} ) );
 
 			$('.datepicker').datepicker();
+		},
+
+		ativarCompacto: function() {
+			$('.datepicker-compacto').datepicker({
+				onSelect: function(text, inst) {
+					var estrutura = '<ul class="calendario-carousel">',
+						$box = $('.box-calendario'),
+						$boxMain = $('.box-calendario-main');
+					console.log('text: ',text);
+					console.log('inst: ',inst);
+
+					$.ajax({
+						type: "GET", 
+						url: templateUrl + '/assets/js/carrossel.json',
+						timeout: 3000,
+						contentType: "application/json; charset=utf-8",
+						cache: false,
+						beforeSend: function() {
+							$('.calendario-carousel,.slick-dots').remove();
+							$boxMain.addClass('loading');
+						},
+						error: function() {
+							$boxMain.removeClass('loading');
+							$box.html("Ocorreu um erro. Tente novamente mais tarde.");
+						},
+						success: function(html) {
+							setTimeout(function(){
+								var slides = JSON.parse(html);
+
+								$.each(slides,function(i, slide){
+									estrutura += '<li class="color-' + slide.areaSlug + '">\
+													<h3 class="box-calendario__data">' + slide.dataInicial + ' - ' + slide.dataFinal + '</h3>\
+													<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
+													<hr>\
+													<div class="box-calendario__imagem">\
+														<div class="link-area">\
+															<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
+														</div>\
+														<img src="' + slide.imagem + '" alt="Imagem">\
+													</div>\
+													<div class="box-calendario__linha">\
+														<div class="box-calendario__coluna-1">\
+															<span class="box-calendario__time">' + slide.horario + '</span>\
+															<span class="box-calendario__pin">' + slide.endereco + '</span>\
+														</div>\
+														<div class="box-calendario__coluna-2">\
+															<p>' + slide.texto + '</p>\
+															<a class="link-more" href="' + slide.url + '">Ler mais</a>\
+														</div>\
+													</div>\
+												</li>';
+								});
+								estrutura += '</ul>';
+								$box.append(estrutura);
+
+								base.carrossel.iniciarCalendarioCompacto();
+								$boxMain.removeClass('loading');
+							}, 2000);
+						}
+					});
+				}
+			});
 		}
 	},
 
@@ -225,13 +288,15 @@ var base = {
 
 	carrossel: {
 		iniciarCalendarioCompacto: function() {
-			var $carousel = $('.box-calendario');
+			var $carousel = $('.box-calendario-main');
 
-			$carousel.find('ul').slick({
+			$('.calendario-carousel').slick({
 				speed: 500,
 				infinite: false,
 				slidesToShow: 1,
 				slidesToScroll: 1,
+				dots: true,
+				appendDots: $carousel,
 				adaptiveHeight: true,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),

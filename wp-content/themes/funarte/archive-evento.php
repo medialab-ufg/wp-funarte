@@ -15,7 +15,7 @@
 
 		<div class="datepicker-box mb-100">
 			<div class="box-calendario-sidebar">
-				<div class="datepicker"></div>
+				<div class="datepicker-compacto"></div>
 
 				<form class="form-filtro-calendario" action="#" method="post">
 					<fieldset>
@@ -55,18 +55,29 @@
 						</select>
 					</fieldset>
 				</form>
+
+				<form class="form-filtro-calendario form-filtro-calendario--datepicker" action="#" method="post">
+					<fieldset>
+						<legend>Formulário de filtro para o calendário</legend>
+
+						<input type="text" class="datepicker-compacto datepicker-field">
+					</fieldset>
+				</form>
 			</div>
 
 			<div class="box-calendario-main">
-				<div class="box-calendario">
-					<div class="carousel-highlights__control">
-						<button type="button" class="control__next slick-arrow" style="display: block;"><i class="mdi mdi-chevron-right"></i></button>
-						<button type="button" class="control__prev slick-arrow" style="display: block;"><i class="mdi mdi-chevron-left"></i></button>
-					</div>
+				<div class="carousel-highlights__control">
+					<button type="button" class="control__next slick-arrow" style="display: block;"><i class="mdi mdi-chevron-right"></i></button>
+					<button type="button" class="control__prev slick-arrow" style="display: block;"><i class="mdi mdi-chevron-left"></i></button>
+				</div>
 
-					<ul>
+				<div class="box-calendario">
+					<ul class="calendario-carousel">
 						<li class="color-teatro">
 							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
+
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
 
 							<div class="box-calendario__imagem">
 								<div class="link-area">
@@ -74,9 +85,6 @@
 								</div>
 								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
 							</div>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
 
 							<div class="box-calendario__linha">
 								<div class="box-calendario__coluna-1">
@@ -92,15 +100,15 @@
 						<li class="color-danca">
 							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
 
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
 							<div class="box-calendario__imagem">
 								<div class="link-area">
 									<a href="#">Dança</a>
 								</div>
 								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
 							</div>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
 
 							<div class="box-calendario__linha">
 								<div class="box-calendario__coluna-1">
@@ -116,15 +124,15 @@
 						<li class="color-circo">
 							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
 
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
 							<div class="box-calendario__imagem">
 								<div class="link-area">
 									<a href="#">Circo</a>
 								</div>
 								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
 							</div>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
 
 							<div class="box-calendario__linha">
 								<div class="box-calendario__coluna-1">
@@ -140,15 +148,15 @@
 						<li class="color-artes-visuais">
 							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
 
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
 							<div class="box-calendario__imagem">
 								<div class="link-area">
 									<a href="#">Artes Visuais</a>
 								</div>
 								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
 							</div>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
 
 							<div class="box-calendario__linha">
 								<div class="box-calendario__coluna-1">
@@ -164,15 +172,15 @@
 						<li class="color-artes-integradas">
 							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
 
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
 							<div class="box-calendario__imagem">
 								<div class="link-area">
 									<a href="#">Artes Integradas</a>
 								</div>
 								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
 							</div>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
 
 							<div class="box-calendario__linha">
 								<div class="box-calendario__coluna-1">
@@ -188,15 +196,15 @@
 						<li class="color-musica">
 							<h3 class="box-calendario__data">27/SET - 07/OUT</h3>
 
+							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
+							<hr>
+
 							<div class="box-calendario__imagem">
 								<div class="link-area">
 									<a href="#">Música</a>
 								</div>
 								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
 							</div>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
 
 							<div class="box-calendario__linha">
 								<div class="box-calendario__coluna-1">

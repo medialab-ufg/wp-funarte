@@ -7,6 +7,9 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+		<script type="text/javascript"> var templateUrl = '<?= get_bloginfo("template_url"); ?>'; </script>
+
 		<?php wp_head(); ?>
 	</head>
 	
