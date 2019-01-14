@@ -1,7 +1,7 @@
 [
 	{
-		"dataInicial": "27/SET",
-		"dataFinal": "07/OUT",
+		"dataInicial": "27/01/2019",
+		"dataFinal": "07/02/2019",
 		"areaLink": "#",
 		"areaNome": "Dança",
 		"areaSlug": "danca",
@@ -13,8 +13,8 @@
 		"url": "#"
 	},
 	{
-		"dataInicial": "27/SET",
-		"dataFinal": "07/OUT",
+		"dataInicial": "23/01/2019",
+		"dataFinal": "10/02/2019",
 		"areaLink": "#",
 		"areaNome": "Teatro",
 		"areaSlug": "teatro",
@@ -26,8 +26,8 @@
 		"url": "#"
 	},
 	{
-		"dataInicial": "27/SET",
-		"dataFinal": "07/OUT",
+		"dataInicial": "27/01/2019",
+		"dataFinal": "10/02/2019",
 		"areaLink": "#",
 		"areaNome": "Música",
 		"areaSlug": "musica",
@@ -39,8 +39,8 @@
 		"url": "#"
 	},
 	{
-		"dataInicial": "27/SET",
-		"dataFinal": "07/OUT",
+		"dataInicial": "20/01/2019",
+		"dataFinal": "21/01/2019",
 		"areaLink": "#",
 		"areaNome": "Artes Visuais",
 		"areaSlug": "artes-visuais",

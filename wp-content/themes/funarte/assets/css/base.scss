@@ -4176,8 +4176,12 @@ ul.social-media-list {
 	transition: color 200ms ease-in-out, background-color 200ms ease-in-out !important;
 }
 
-.ui-datepicker-calendar .ui-state-default:hover,
-.ui-datepicker-calendar .ui-state-active {
+.ui-datepicker-calendar .active .ui-state-default {
+	color: $cinza-6 !important;
+	background-color: $cinza-2 !important;
+}
+
+.ui-datepicker-calendar .ui-state-default:hover {
 	color: $branco !important;
 	background-color: $verde-1 !important;
 }
@@ -4259,6 +4263,7 @@ ul.social-media-list {
 	.carousel-highlights__control {
 		width: 65px;
 		height: 30px;
+		display: none;
 		position: absolute;
 		right: 0;
 		bottom: 24px;
@@ -4278,6 +4283,8 @@ ul.social-media-list {
 		.control__prev { left: 0; }
 		.control__next { right: 0; }
 	}
+
+	&.active .carousel-highlights__control { display: block; }
 }
 
 @media screen and (max-width: 1200px) {

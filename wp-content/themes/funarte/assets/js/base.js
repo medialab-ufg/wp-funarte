@@ -42,25 +42,19 @@ $(document).ready(function() {
 	base.menuLateral.exibir();
 
 	// Eventos
-	base.calendario.ativar();
-	base.calendario.ativarCompacto();
 	base.carrossel.iniciarCalendarioCompacto();
 	base.carrossel.iniciarCalendarioCompleto();
+	base.calendario.ativar();
+	base.calendario.ativarCompacto();
 });
 
 var base = {
 	calendario: {
 		ativar: function() {
-			/* Brazilian initialisation for the jQuery UI date picker plugin. */
-			/* Written by Leonildo Costa Silva (leocsilva@gmail.com). */
 			( function( factory ) {
 				if ( typeof define === "function" && define.amd ) {
-
-					// AMD. Register as an anonymous module.
 					define( [ "../widgets/datepicker" ], factory );
 				} else {
-
-					// Browser globals
 					factory( jQuery.datepicker );
 				}
 			}( function( datepicker ) {
@@ -103,13 +97,26 @@ var base = {
 		},
 
 		ativarCompacto: function() {
+			var dataInicial,
+				dataFinal,
+				date1,
+				date2;
+
 			$('.datepicker-compacto').datepicker({
-				onSelect: function(text, inst) {
+				beforeShowDay: function(date) {
+					dataInicial = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial');
+					dataFinal = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('final');
+
+					date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataInicial);
+					date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataFinal);
+
+					return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? 'active' : ''];
+				},
+				onSelect: function(text, data) {
 					var estrutura = '<ul class="calendario-carousel">',
 						$box = $('.box-calendario'),
-						$boxMain = $('.box-calendario-main');
-					console.log('text: ',text);
-					console.log('inst: ',inst);
+						$boxMain = $('.box-calendario-main'),
+						contador = 0;
 
 					$.ajax({
 						type: "GET", 
@@ -119,7 +126,7 @@ var base = {
 						cache: false,
 						beforeSend: function() {
 							$('.calendario-carousel,.slick-dots').remove();
-							$boxMain.addClass('loading');
+							$boxMain.addClass('loading').removeClass('active');
 						},
 						error: function() {
 							$boxMain.removeClass('loading');
@@ -129,33 +136,45 @@ var base = {
 							setTimeout(function(){
 								var slides = JSON.parse(html);
 
-								$.each(slides,function(i, slide){
-									estrutura += '<li class="color-' + slide.areaSlug + '">\
-													<h3 class="box-calendario__data">' + slide.dataInicial + ' - ' + slide.dataFinal + '</h3>\
-													<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
-													<hr>\
-													<div class="box-calendario__imagem">\
-														<div class="link-area">\
-															<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
+								$.each(slides,function(i, slide) {
+									if (text == slide.dataInicial) {
+										estrutura += '<li class="color-' + slide.areaSlug + '">\
+														<h3 class="box-calendario__data" data-inicial="' + slide.dataInicial + '" data-final="' + slide.dataFinal + '">' + slide.dataInicial + ' - ' + slide.dataFinal + '</h3>\
+														<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
+														<hr>\
+														<div class="box-calendario__imagem">\
+															<div class="link-area">\
+																<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
+															</div>\
+															<img src="' + slide.imagem + '" alt="Imagem">\
 														</div>\
-														<img src="' + slide.imagem + '" alt="Imagem">\
-													</div>\
-													<div class="box-calendario__linha">\
-														<div class="box-calendario__coluna-1">\
-															<span class="box-calendario__time">' + slide.horario + '</span>\
-															<span class="box-calendario__pin">' + slide.endereco + '</span>\
+														<div class="box-calendario__linha">\
+															<div class="box-calendario__coluna-1">\
+																<span class="box-calendario__time">' + slide.horario + '</span>\
+																<span class="box-calendario__pin">' + slide.endereco + '</span>\
+															</div>\
+															<div class="box-calendario__coluna-2">\
+																<p>' + slide.texto + '</p>\
+																<a class="link-more" href="' + slide.url + '">Ler mais</a>\
+															</div>\
 														</div>\
-														<div class="box-calendario__coluna-2">\
-															<p>' + slide.texto + '</p>\
-															<a class="link-more" href="' + slide.url + '">Ler mais</a>\
-														</div>\
-													</div>\
-												</li>';
+													</li>';
+
+										contador++;
+									}
 								});
+
+								if (contador <= 0) {
+									estrutura += '<li><h4 class="box-calendario__titulo">Não foi encontrado nenhum evento no dia selecionado.</h4></li>';
+								}
+
 								estrutura += '</ul>';
+
 								$box.append(estrutura);
 
-								base.carrossel.iniciarCalendarioCompacto();
+								if ($box.find('li').length > 1) {
+									base.carrossel.iniciarCalendarioCompacto();
+								}
 								$boxMain.removeClass('loading');
 							}, 2000);
 						}
@@ -288,9 +307,10 @@ var base = {
 
 	carrossel: {
 		iniciarCalendarioCompacto: function() {
-			var $carousel = $('.box-calendario-main');
+			var $carousel = $('.box-calendario-main'),
+				$calendario = $('.calendario-carousel');
 
-			$('.calendario-carousel').slick({
+			$calendario.slick({
 				speed: 500,
 				infinite: false,
 				slidesToShow: 1,
@@ -299,8 +319,14 @@ var base = {
 				appendDots: $carousel,
 				adaptiveHeight: true,
 				prevArrow: $carousel.find('.control__prev'),
-				nextArrow: $carousel.find('.control__next'),
+				nextArrow: $carousel.find('.control__next')
 			});
+
+			$calendario.on('afterChange',function(slick, currentSlide) {
+				$('.datepicker-compacto').datepicker('refresh');
+			});
+
+			$carousel.addClass('active');
 		},
 
 		iniciarCalendarioCompleto: function() {
