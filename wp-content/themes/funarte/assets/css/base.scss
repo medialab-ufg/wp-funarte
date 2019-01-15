@@ -3412,30 +3412,31 @@ aside .list-bidding--type-b {
 	margin: 0 -5px;
 	padding: 7px 0 0;
 	list-style: none;
-	display: flex;
-	justify-content: flex-start;
-	flex-wrap: wrap;
 
 	li {
 		min-width: 18px;
 		height: 18px;
 		margin: 0 5px;
 		color: $verde-1;
-		a {
-			width: 100%;
-			height: 100%;
-			padding: .0rem .3rem;
-			color: $verde-1;
-			display: flex;
-    		align-items: center;
-			transition: background-color 200ms ease-in-out;
-		}
 
-		&.active a,
-		&:hover a,
-		&:focus a { background-color: $verde-1; color: $branco; }
 	}
 
+	a {
+		min-width: 18px;
+		height: 18px;
+		padding: 0;
+		color: $verde-1;
+		align-items: center;
+		transition: background-color 200ms ease-in-out;
+
+		&.active,
+		&:hover,
+		&:focus {
+			padding: .0rem .3rem;
+			color: $branco;
+			background-color: $verde-1;
+		}
+	}
 }
 .box-pagination__control {
 	width: 65px;

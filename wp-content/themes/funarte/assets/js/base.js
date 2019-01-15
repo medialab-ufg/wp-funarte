@@ -51,150 +51,156 @@ $(document).ready(function() {
 var base = {
 	calendario: {
 		ativar: function() {
-			( function( factory ) {
-				if ( typeof define === "function" && define.amd ) {
-					define( [ "../widgets/datepicker" ], factory );
-				} else {
-					factory( jQuery.datepicker );
-				}
-			}( function( datepicker ) {
+			if ($('.datepicker').length > 0) {
+				( function( factory ) {
+					if ( typeof define === "function" && define.amd ) {
+						define( [ "../widgets/datepicker" ], factory );
+					} else {
+						factory( jQuery.datepicker );
+					}
+				}( function( datepicker ) {
 
-				datepicker.regional[ "pt-BR" ] = {
-					closeText: "Fechar",
-					prevText: "&#x3C;Anterior",
-					nextText: "Próximo&#x3E;",
-					currentText: "Hoje",
-					monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
-					"Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
-					monthNamesShort: [ "Jan","Fev","Mar","Abr","Mai","Jun",
-					"Jul","Ago","Set","Out","Nov","Dez" ],
-					dayNames: [
-						"Domingo",
-						"Segunda-feira",
-						"Terça-feira",
-						"Quarta-feira",
-						"Quinta-feira",
-						"Sexta-feira",
-						"Sábado"
-					],
-					dayNamesShort: [ "D","S","T","Q","Q","S","S" ],
-					dayNamesMin: [ "D","S","T","Q","Q","S","S" ],
-					weekHeader: "Sm",
-					dateFormat: "dd/mm/yy",
-					firstDay: 0,
-					isRTL: false,
-					showMonthAfterYear: false,
-					yearSuffix: ""
-				};
+					datepicker.regional[ "pt-BR" ] = {
+						closeText: "Fechar",
+						prevText: "&#x3C;Anterior",
+						nextText: "Próximo&#x3E;",
+						currentText: "Hoje",
+						monthNames: [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+						"Julho","Agosto","Setembro","Outubro","Novembro","Dezembro" ],
+						monthNamesShort: [ "Jan","Fev","Mar","Abr","Mai","Jun",
+						"Jul","Ago","Set","Out","Nov","Dez" ],
+						dayNames: [
+							"Domingo",
+							"Segunda-feira",
+							"Terça-feira",
+							"Quarta-feira",
+							"Quinta-feira",
+							"Sexta-feira",
+							"Sábado"
+						],
+						dayNamesShort: [ "D","S","T","Q","Q","S","S" ],
+						dayNamesMin: [ "D","S","T","Q","Q","S","S" ],
+						weekHeader: "Sm",
+						dateFormat: "dd/mm/yy",
+						firstDay: 0,
+						isRTL: false,
+						showMonthAfterYear: false,
+						yearSuffix: ""
+					};
 
-				datepicker.setDefaults( datepicker.regional[ "pt-BR" ] );
+					datepicker.setDefaults( datepicker.regional[ "pt-BR" ] );
 
-				return datepicker.regional[ "pt-BR" ];
+					return datepicker.regional[ "pt-BR" ];
 
-			} ) );
+				} ) );
 
-			$('.datepicker').datepicker();
+				$('.datepicker').datepicker();
+			}
 		},
 
 		ativarCompacto: function() {
-			var dataInicial,
-				dataFinal,
-				date1,
-				date2;
+			var $datepicker = $('.datepicker-compacto');
 
-			$('.datepicker-compacto').datepicker({
-				defaultDate: $.datepicker.parseDate($.datepicker._defaults.dateFormat, $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial')),
-				beforeShowDay: function(date) {
-					dataInicial = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial');
-					dataFinal = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('final');
+			if ($datepicker.length > 0) {
+				var dataInicial,
+					dataFinal,
+					date1,
+					date2;
 
-					if (dataInicial) {
-						date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataInicial);
-					} else {
-						date1 = 0;
-					}
-					if (dataFinal) {
-						date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataFinal);
-					} else {
-						date2 = 0;
-					}
+				$datepicker.datepicker({
+					defaultDate: $.datepicker.parseDate($.datepicker._defaults.dateFormat, $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial')),
+					beforeShowDay: function(date) {
+						dataInicial = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial');
+						dataFinal = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('final');
 
-					return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? 'active' : ''];
-				},
-				onSelect: function(text, data) {
-					var estrutura = '<ul class="calendario-carousel">',
-						$box = $('.box-calendario'),
-						$boxMain = $('.box-calendario-main'),
-						contador = 0;
-
-					$.ajax({
-						type: "GET",
-						url: templateUrl + '/assets/js/carrossel.json',
-						timeout: 3000,
-						contentType: "application/json; charset=utf-8",
-						cache: false,
-						beforeSend: function() {
-							$('.calendario-carousel,.slick-dots').remove();
-							$boxMain.addClass('loading').removeClass('active');
-						},
-						error: function() {
-							$boxMain.removeClass('loading');
-							$box.html("Ocorreu um erro. Tente novamente mais tarde.");
-						},
-						success: function(html) {
-							var slides = JSON.parse(html),
-								dataInicialSeparada,
-								dataFinalSeparada;
-
-							$.each(slides,function(i, slide) {
-								if (text == slide.dataInicial) {
-									dataInicialSeparada = slide.dataInicial.split('/');
-									dataFinalSeparada = slide.dataFinal.split('/');
-
-									mesInicial = base.calendario.transformarMes(dataInicialSeparada[1]);
-									mesFinal = base.calendario.transformarMes(dataFinalSeparada[1]);
-
-									estrutura += '<li class="color-' + slide.areaSlug + '">\
-													<h3 class="box-calendario__data" data-inicial="' + slide.dataInicial + '" data-final="' + slide.dataFinal + '">' + dataInicialSeparada[0] + '/' + mesInicial + ' - ' + dataFinalSeparada[0] + '/' + mesFinal + '</h3>\
-													<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
-													<hr>\
-													<div class="box-calendario__imagem">\
-														<div class="link-area">\
-															<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
-														</div>\
-														<img src="' + slide.imagem + '" alt="Imagem">\
-													</div>\
-													<div class="box-calendario__linha">\
-														<div class="box-calendario__coluna-1">\
-															<span class="box-calendario__time">' + slide.horario + '</span>\
-															<span class="box-calendario__pin">' + slide.endereco + '</span>\
-														</div>\
-														<div class="box-calendario__coluna-2">\
-															<p>' + slide.texto + '</p>\
-															<a class="link-more" href="' + slide.url + '">Ler mais</a>\
-														</div>\
-													</div>\
-												</li>';
-
-									contador++;
-								}
-							});
-
-							if (contador <= 0) {
-								estrutura += '<li><h4 class="box-calendario__titulo">Não foi encontrado nenhum evento no dia selecionado.</h4></li>';
-							}
-
-							estrutura += '</ul>';
-
-							$box.append(estrutura);
-
-							base.carrossel.iniciarCalendarioCompacto();
-							$('.datepicker-compacto').datepicker('refresh');
-							$boxMain.removeClass('loading');
+						if (dataInicial) {
+							date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataInicial);
+						} else {
+							date1 = 0;
 						}
-					});
-				}
-			});
+						if (dataFinal) {
+							date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataFinal);
+						} else {
+							date2 = 0;
+						}
+
+						return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? 'active' : ''];
+					},
+					onSelect: function(text, data) {
+						var estrutura = '<ul class="calendario-carousel">',
+							$box = $('.box-calendario'),
+							$boxMain = $('.box-calendario-main'),
+							contador = 0;
+
+						$.ajax({
+							type: "GET",
+							url: templateUrl + '/assets/js/carrossel.json',
+							timeout: 3000,
+							contentType: "application/json; charset=utf-8",
+							cache: false,
+							beforeSend: function() {
+								$('.calendario-carousel,.slick-dots').remove();
+								$boxMain.addClass('loading').removeClass('active');
+							},
+							error: function() {
+								$boxMain.removeClass('loading');
+								$box.html("Ocorreu um erro. Tente novamente mais tarde.");
+							},
+							success: function(html) {
+								var slides = JSON.parse(html),
+									dataInicialSeparada,
+									dataFinalSeparada;
+
+								$.each(slides,function(i, slide) {
+									if (text == slide.dataInicial) {
+										dataInicialSeparada = slide.dataInicial.split('/');
+										dataFinalSeparada = slide.dataFinal.split('/');
+
+										mesInicial = base.calendario.transformarMes(dataInicialSeparada[1]);
+										mesFinal = base.calendario.transformarMes(dataFinalSeparada[1]);
+
+										estrutura += '<li class="color-' + slide.areaSlug + '">\
+														<h3 class="box-calendario__data" data-inicial="' + slide.dataInicial + '" data-final="' + slide.dataFinal + '">' + dataInicialSeparada[0] + '/' + mesInicial + ' - ' + dataFinalSeparada[0] + '/' + mesFinal + '</h3>\
+														<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
+														<hr>\
+														<div class="box-calendario__imagem">\
+															<div class="link-area">\
+																<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
+															</div>\
+															<img src="' + slide.imagem + '" alt="Imagem">\
+														</div>\
+														<div class="box-calendario__linha">\
+															<div class="box-calendario__coluna-1">\
+																<span class="box-calendario__time">' + slide.horario + '</span>\
+																<span class="box-calendario__pin">' + slide.endereco + '</span>\
+															</div>\
+															<div class="box-calendario__coluna-2">\
+																<p>' + slide.texto + '</p>\
+																<a class="link-more" href="' + slide.url + '">Ler mais</a>\
+															</div>\
+														</div>\
+													</li>';
+
+										contador++;
+									}
+								});
+
+								if (contador <= 0) {
+									estrutura += '<li><h4 class="box-calendario__titulo">Não foi encontrado nenhum evento no dia selecionado.</h4></li>';
+								}
+
+								estrutura += '</ul>';
+
+								$box.append(estrutura);
+
+								base.carrossel.iniciarCalendarioCompacto();
+								$datepicker.datepicker('refresh');
+								$boxMain.removeClass('loading');
+							}
+						});
+					}
+				});
+			}
 		},
 
 		transformarMes: function(data) {
