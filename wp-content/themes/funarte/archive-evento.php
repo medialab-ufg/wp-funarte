@@ -74,7 +74,7 @@
 				<div class="box-calendario">
 					<ul class="calendario-carousel">
 						<li class="color-teatro">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="10/02/2019">27/01/2019 - 10/02/2019</h3>
+							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="10/02/2019">27/JAN - 10/FEV</h3>
 
 							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
 							<hr>
@@ -98,7 +98,7 @@
 							</div>
 						</li>
 						<li class="color-danca">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="07/02/2019">27/01/2019 - 07/02/2019</h3>
+							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="07/02/2019">27/JAN - 07/FEV</h3>
 
 							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
 							<hr>
@@ -122,7 +122,7 @@
 							</div>
 						</li>
 						<li class="color-circo">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="30/01/2019">27/01/2019 - 30/01/2019</h3>
+							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="30/01/2019">27/JAN - 30/JAN</h3>
 
 							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
 							<hr>
@@ -146,7 +146,7 @@
 							</div>
 						</li>
 						<li class="color-artes-visuais">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="28/01/2019">27/01/2019 - 28/01/2019</h3>
+							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="28/01/2019">27/JAN - 28/JAN</h3>
 
 							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
 							<hr>
@@ -170,7 +170,7 @@
 							</div>
 						</li>
 						<li class="color-artes-integradas">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="29/01/2019">27/01/2019 - 29/01/2019</h3>
+							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="29/01/2019">27/JAN - 29/JAN</h3>
 
 							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
 							<hr>
@@ -194,7 +194,7 @@
 							</div>
 						</li>
 						<li class="color-musica">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="31/01/2019">27/01/2019 - 31/01/2019</h3>
+							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="31/01/2019">27/JAN - 31/JAN</h3>
 
 							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
 							<hr>

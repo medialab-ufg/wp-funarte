@@ -4181,7 +4181,8 @@ ul.social-media-list {
 	background-color: $cinza-2 !important;
 }
 
-.ui-datepicker-calendar .ui-state-default:hover {
+.ui-datepicker-calendar .ui-state-default:hover,
+.ui-datepicker-calendar .ui-state-default.ui-state-active {
 	color: $branco !important;
 	background-color: $verde-1 !important;
 }
@@ -4296,7 +4297,6 @@ ul.social-media-list {
 		padding-left: 0;
 		display: flex;
 		justify-content: space-between;
-		flex-direction: row-reverse;
 		flex-wrap: wrap;
 
 		.datepicker-compacto {
@@ -4304,20 +4304,32 @@ ul.social-media-list {
 			margin-bottom: 0;
 		}
 		div.datepicker-compacto { display: none; }
-		.form-filtro-calendario--datepicker {
-			max-width: none;
-			display: block;
-
-			input[type=text] { max-width: none; }
-		}
 
 		.form-filtro-calendario {
 			width: 33.33%;
 
 			& + .form-filtro-calendario {
 				margin-top: 0;
-				padding: 0 24px 30px 0;
+				padding: 0 0 30px 24px;
 			}
+		}
+
+		.form-filtro-calendario--datepicker {
+			max-width: none;
+			padding: 0 0 30px !important;
+			display: block;
+
+			input[type=text] { max-width: none; }
+		}
+	}
+}
+@media screen and (max-width: 550px) {
+	.box-calendario-sidebar {
+		display: block;
+
+		.form-filtro-calendario {
+			width: 100%;
+			padding: 0 0 30px !important;
 		}
 	}
 }
@@ -4499,6 +4511,9 @@ ul.social-media-list {
 	}
 }
 
+@media screen and (max-width: 992px) {
+	.box-calendario__titulo { max-width: 280px; }
+}
 @media screen and (max-width: 768px) {
 	.box-calendario-main:before {
 		width: 999999px;

@@ -103,12 +103,21 @@ var base = {
 				date2;
 
 			$('.datepicker-compacto').datepicker({
+				defaultDate: $.datepicker.parseDate($.datepicker._defaults.dateFormat, $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial')),
 				beforeShowDay: function(date) {
 					dataInicial = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial');
 					dataFinal = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('final');
 
-					date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataInicial);
-					date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataFinal);
+					if (dataInicial) {
+						date1 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataInicial);
+					} else {
+						date1 = 0;
+					}
+					if (dataFinal) {
+						date2 = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataFinal);
+					} else {
+						date2 = 0;
+					}
 
 					return [true, date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? 'active' : ''];
 				},
@@ -119,7 +128,7 @@ var base = {
 						contador = 0;
 
 					$.ajax({
-						type: "GET", 
+						type: "GET",
 						url: templateUrl + '/assets/js/carrossel.json',
 						timeout: 3000,
 						contentType: "application/json; charset=utf-8",
@@ -133,54 +142,102 @@ var base = {
 							$box.html("Ocorreu um erro. Tente novamente mais tarde.");
 						},
 						success: function(html) {
-							setTimeout(function(){
-								var slides = JSON.parse(html);
+							var slides = JSON.parse(html),
+								dataInicialSeparada,
+								dataFinalSeparada;
 
-								$.each(slides,function(i, slide) {
-									if (text == slide.dataInicial) {
-										estrutura += '<li class="color-' + slide.areaSlug + '">\
-														<h3 class="box-calendario__data" data-inicial="' + slide.dataInicial + '" data-final="' + slide.dataFinal + '">' + slide.dataInicial + ' - ' + slide.dataFinal + '</h3>\
-														<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
-														<hr>\
-														<div class="box-calendario__imagem">\
-															<div class="link-area">\
-																<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
-															</div>\
-															<img src="' + slide.imagem + '" alt="Imagem">\
+							$.each(slides,function(i, slide) {
+								if (text == slide.dataInicial) {
+									dataInicialSeparada = slide.dataInicial.split('/');
+									dataFinalSeparada = slide.dataFinal.split('/');
+
+									mesInicial = base.calendario.transformarMes(dataInicialSeparada[1]);
+									mesFinal = base.calendario.transformarMes(dataFinalSeparada[1]);
+
+									estrutura += '<li class="color-' + slide.areaSlug + '">\
+													<h3 class="box-calendario__data" data-inicial="' + slide.dataInicial + '" data-final="' + slide.dataFinal + '">' + dataInicialSeparada[0] + '/' + mesInicial + ' - ' + dataFinalSeparada[0] + '/' + mesFinal + '</h3>\
+													<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
+													<hr>\
+													<div class="box-calendario__imagem">\
+														<div class="link-area">\
+															<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
 														</div>\
-														<div class="box-calendario__linha">\
-															<div class="box-calendario__coluna-1">\
-																<span class="box-calendario__time">' + slide.horario + '</span>\
-																<span class="box-calendario__pin">' + slide.endereco + '</span>\
-															</div>\
-															<div class="box-calendario__coluna-2">\
-																<p>' + slide.texto + '</p>\
-																<a class="link-more" href="' + slide.url + '">Ler mais</a>\
-															</div>\
+														<img src="' + slide.imagem + '" alt="Imagem">\
+													</div>\
+													<div class="box-calendario__linha">\
+														<div class="box-calendario__coluna-1">\
+															<span class="box-calendario__time">' + slide.horario + '</span>\
+															<span class="box-calendario__pin">' + slide.endereco + '</span>\
 														</div>\
-													</li>';
+														<div class="box-calendario__coluna-2">\
+															<p>' + slide.texto + '</p>\
+															<a class="link-more" href="' + slide.url + '">Ler mais</a>\
+														</div>\
+													</div>\
+												</li>';
 
-										contador++;
-									}
-								});
-
-								if (contador <= 0) {
-									estrutura += '<li><h4 class="box-calendario__titulo">Não foi encontrado nenhum evento no dia selecionado.</h4></li>';
+									contador++;
 								}
+							});
 
-								estrutura += '</ul>';
+							if (contador <= 0) {
+								estrutura += '<li><h4 class="box-calendario__titulo">Não foi encontrado nenhum evento no dia selecionado.</h4></li>';
+							}
 
-								$box.append(estrutura);
+							estrutura += '</ul>';
 
-								if ($box.find('li').length > 1) {
-									base.carrossel.iniciarCalendarioCompacto();
-								}
-								$boxMain.removeClass('loading');
-							}, 2000);
+							$box.append(estrutura);
+
+							base.carrossel.iniciarCalendarioCompacto();
+							$('.datepicker-compacto').datepicker('refresh');
+							$boxMain.removeClass('loading');
 						}
 					});
 				}
 			});
+		},
+
+		transformarMes: function(data) {
+			switch(data) {
+				case '01':
+					mes = 'JAN';
+					break;
+				case '02':
+					mes = 'FEV';
+					break;
+				case '03':
+					mes = 'MAR';
+					break;
+				case '04':
+					mes = 'ABR';
+					break;
+				case '05':
+					mes = 'MAI';
+					break;
+				case '06':
+					mes = 'JUN';
+					break;
+				case '07':
+					mes = 'JUL';
+					break;
+				case '08':
+					mes = 'AGO';
+					break;
+				case '09':
+					mes = 'SET';
+					break;
+				case '10':
+					mes = 'OUT';
+					break;
+				case '11':
+					mes = 'NOV';
+					break;
+				case '12':
+					mes = 'DEZ';
+					break;
+			}
+
+			return mes;
 		}
 	},
 
