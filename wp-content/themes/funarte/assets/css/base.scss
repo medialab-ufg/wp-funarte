@@ -3409,31 +3409,27 @@ aside .list-bidding--type-b {
 	justify-content: flex-end;
 }
 .box-pagination__list {
-	margin: 0 -5px;
-	padding: 7px 0 0;
+	margin: 0;
+	padding: 3px 0 0;
+	color: $verde-1;
+	display: block;
 	list-style: none;
-
-	li {
-		min-width: 18px;
-		height: 18px;
-		margin: 0 5px;
-		color: $verde-1;
-
-	}
 
 	a {
 		min-width: 18px;
 		height: 18px;
 		padding: 0;
 		color: $verde-1;
-		align-items: center;
+		line-height: 18px;
+		text-align: center;
+		display: inline-block;
 		transition: background-color 200ms ease-in-out;
 
 		&.active,
 		&:hover,
 		&:focus {
-			padding: .0rem .3rem;
 			color: $branco;
+			text-decoration: none;
 			background-color: $verde-1;
 		}
 	}
@@ -3441,7 +3437,7 @@ aside .list-bidding--type-b {
 .box-pagination__control {
 	width: 65px;
 	height: 30px;
-	margin: 0 -2.5px 0 42.5px;
+	margin: 0 0 0 10px;
 	display: flex;
 	justify-content: space-between;
 
@@ -3449,7 +3445,7 @@ aside .list-bidding--type-b {
 	a {
 		width: 30px;
 		height: 30px;
-		margin: 0 2.5px;
+		margin: 0;
 		font-size: 30px;
 		color: $branco;
 		line-height: 30px;
@@ -3466,6 +3462,9 @@ aside .list-bidding--type-b {
 			left: 50%;
 			transform: translate(-50%,-50%);
 		}
+
+		& + button,
+		& + a { margin: 0 0 0 5px; }
 	}
 }
 

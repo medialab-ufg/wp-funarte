@@ -95,13 +95,13 @@ function get_pagination() {
 	} ?>
 
 	<div class="box-pagination">
-		<div class="box-pagination__list">
+		<span class="box-pagination__list">
 			<?php
 				/** Link to first page, plus ellipses if necessary */
 				if ( ! in_array( 1, $links ) ) {
 					$class = 1 == $paged ? ' class="active"' : '';
 
-					printf( '<a%s href="%s">%s</a>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+					printf( '<a%s href="%s">%s</a>,' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
 
 					if ( ! in_array( 2, $links ) ) {
 						echo '<span>&hellip;</span>';
@@ -125,7 +125,7 @@ function get_pagination() {
 					printf( '<a%s href="%s">%s</a>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
 				}
 			?>
-		</div>
+		</span>
 		<div class="box-pagination__control">
 			<?php /** Previous and Next Post Link */
 				if ( get_previous_posts_link() ) {
@@ -144,17 +144,17 @@ function extra_files() {
 	wp_enqueue_style('google-custom-fonts', '//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Sansita:400,400i,700,700i');
 
 	// CSS
-	wp_enqueue_style('bootstrap-cdn-style', '//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
+	wp_enqueue_style('bootstrap-cdn-style', get_theme_file_uri() . '/assets/css/plugins/bootstrap.min.css');
 	wp_enqueue_style('theme-style', get_stylesheet_uri(), null, microtime());
 	wp_enqueue_style('slick-theme-style', get_theme_file_uri() . '/assets/css/plugins/slick-theme.css', null, microtime());
 	wp_enqueue_style('slick-style', get_theme_file_uri() . '/assets/css/plugins/slick.css', null, microtime());
-	wp_enqueue_style('material-design-icons-cdn-style', '//cdn.materialdesignicons.com/2.8.94/css/materialdesignicons.min.css', null, microtime());
+	wp_enqueue_style('material-design-icons-cdn-style', get_theme_file_uri() . '/assets/css/plugins/materialdesignicons.min.css', null, microtime());
 	wp_enqueue_style('main-style', get_theme_file_uri() . '/assets/css/base.min.css', null, microtime());
 
 	// Javascript
-	wp_enqueue_script('jquery-cdn', '//code.jquery.com/jquery-2.2.4.min.js', null, microtime(), true);
-	wp_enqueue_script('popper-cdn', '//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', null, microtime(), true);
-	wp_enqueue_script('bootstrap-cdn-js', '//stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', null, microtime(), true);
+	wp_enqueue_script('jquery-cdn', get_theme_file_uri() . '/assets/js/plugins/jquery-2.2.4.min.js', null, microtime(), true);
+	wp_enqueue_script('popper-cdn', get_theme_file_uri() . '/assets/js/plugins/popper.min.js', null, microtime(), true);
+	wp_enqueue_script('bootstrap-cdn-js', get_theme_file_uri() . '/assets/js/plugins/bootstrap.min.js', null, microtime(), true);
 	wp_enqueue_script('main-js', get_theme_file_uri() . '/assets/js/base.min.js', null, microtime(), true);
 	wp_enqueue_script('slick-js', get_theme_file_uri() . '/assets/js/plugins/slick.min.js', null, microtime(), true);
 	wp_enqueue_script('filters-js', get_theme_file_uri() . '/assets/js/filters.js', null, microtime(), true);
@@ -165,7 +165,7 @@ function add_files_admin() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
 
-	wp_register_style('jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css');
+	wp_register_style('jquery-ui', get_theme_file_uri() . '/assets/css/plugins/jquery-ui.css');
 	wp_enqueue_style( 'jquery-ui' ); 
 }
 add_action('admin_enqueue_scripts', 'add_files_admin');
