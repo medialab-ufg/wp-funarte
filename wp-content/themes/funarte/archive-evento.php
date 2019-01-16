@@ -67,8 +67,8 @@
 
 			<div class="box-calendario-main">
 				<div class="carousel-highlights__control">
-					<button type="button" class="control__next slick-arrow" style="display: block;"><i class="mdi mdi-chevron-right"></i></button>
-					<button type="button" class="control__prev slick-arrow" style="display: block;"><i class="mdi mdi-chevron-left"></i></button>
+					<button type="button" class="control__next slick-arrow"><i class="mdi mdi-chevron-right"></i></button>
+					<button type="button" class="control__prev slick-arrow"><i class="mdi mdi-chevron-left"></i></button>
 				</div>
 
 				<div class="box-calendario">
@@ -79,11 +79,10 @@
 							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
 							<hr>
 
-							<div class="box-calendario__imagem">
+							<div class="box-calendario__imagem" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>);">
 								<div class="link-area">
 									<a href="#">Teatro</a>
 								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
 							</div>
 
 							<div class="box-calendario__linha">

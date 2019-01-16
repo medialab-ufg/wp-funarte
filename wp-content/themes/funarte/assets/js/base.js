@@ -164,11 +164,10 @@ var base = {
 														<h3 class="box-calendario__data" data-inicial="' + slide.dataInicial + '" data-final="' + slide.dataFinal + '">' + dataInicialSeparada[0] + '/' + mesInicial + ' - ' + dataFinalSeparada[0] + '/' + mesFinal + '</h3>\
 														<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
 														<hr>\
-														<div class="box-calendario__imagem">\
+														<div class="box-calendario__imagem" style="background-image: url(' + slide.imagem + ');">\
 															<div class="link-area">\
 																<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
 															</div>\
-															<img src="' + slide.imagem + '" alt="Imagem">\
 														</div>\
 														<div class="box-calendario__linha">\
 															<div class="box-calendario__coluna-1">\

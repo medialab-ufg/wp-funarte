@@ -30,7 +30,7 @@ query_posts(array_merge(array(
 			?>
 
 			<div class="box-title">
-				<h2 class="title-h1">Notícias<span>Mídias</span></h2>
+				<h2 class="title-h1 mb-50">Notícias<span>Mídias</span></h2>
 
 				<div class="box-forms">
 					<form class="form-area" action="#" method="get">
