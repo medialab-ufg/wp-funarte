@@ -47,6 +47,7 @@ class Evento {
 			'exclude_from_search' => true,
 			'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'permalink'),
 			'taxonomies' => array(
+				taxEspacosCulturais::get_instance()->get_name(),
 				taxCategoria::get_instance()->get_name(),
 				taxTag::get_instance()->get_name(),
 				taxRegional::get_instance()->get_name())
