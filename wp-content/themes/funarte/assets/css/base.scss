@@ -3215,6 +3215,36 @@ aside .list-bidding--type-b {
 	}
 }
 
+/* BOX DE NOTICIAS */
+
+.box-bidding--type-b {
+	position: relative;
+
+	&:after {
+		content: "";
+		width: 99999px;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-color: $cinza-2;
+		z-index: -1;
+	}
+
+	.list-bidding--type-b {
+		li {
+			& + li { border-top: 1px solid $verde-1; }
+
+			strong {
+				font-size: 1.4rem;
+				line-height: 1.5rem;
+			}
+		}
+	}
+
+}
+
 @media screen and (max-width: 767px) {
 	.list-bidding {
 		li {
@@ -4731,11 +4761,12 @@ ul.social-media-list {
 * MARGENS
 ***/
 
-.mb-30 { margin-bottom: 30px; }
-.mb-44 { margin-bottom: 44px; }
-.mb-60 { margin-bottom: 60px; }
-.mb-65 { margin-bottom: 65px; }
-.mb-100 { margin-bottom: 100px; }
+.mb-30 { margin-bottom: 30px !important; }
+.mb-44 { margin-bottom: 44px !important; }
+.mb-60 { margin-bottom: 60px !important; }
+.mb-65 { margin-bottom: 65px !important; }
+.mb-90 { margin-bottom: 90px !important; }
+.mb-100 { margin-bottom: 100px !important; }
 
 /***
 * GRID
@@ -4858,6 +4889,7 @@ body.js .accessibility-options {
 	height: 24px;
 	margin-left: -10px;
 	margin-right: -10px;
+	margin-bottom: 0;
 	padding: 0;
 	display: flex;
 	list-style: none;
