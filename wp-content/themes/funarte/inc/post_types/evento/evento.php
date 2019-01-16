@@ -11,6 +11,9 @@ class Evento {
 		add_action('add_meta_boxes', array(&$this, 'add_custom_box'));
 		add_action('save_post', array(&$this, 'save_custom_box'));
 		
+		add_action('wp_ajax_get_events_by_day', array(&$this, 'ajax_get_events_by_day'));
+		add_action('wp_ajax_nopriv_get_events_by_day', array(&$this, 'ajax_get_events_by_day'));
+		
 	}
 
 	public function register_post_type() {
@@ -47,6 +50,7 @@ class Evento {
 			'exclude_from_search' => true,
 			'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'permalink'),
 			'taxonomies' => array(
+				taxEspacosCulturais::get_instance()->get_name(),
 				taxCategoria::get_instance()->get_name(),
 				taxTag::get_instance()->get_name(),
 				taxRegional::get_instance()->get_name())
@@ -236,6 +240,118 @@ class Evento {
 	
 	public function get_post_type() {
 		return $this->POST_TYPE;
+	}
+	
+	/**
+	* Retorna todos os evenos que acontecem em um dia, ou seja
+	* que começam hoje ou antes de hoje e terminam hoje ou depois de Hoje
+	* 
+	* @param $date Objeto DateTime com a data a ser buscada 
+	* @param $param opcional. parametros adicionais de busca por eventos 
+	* @return array 
+	*/
+	function get_events_by_day(\DateTime $date, $params = []) {
+		
+		$inicio = $date->format('Y-m-d') . ' 23:59:59';
+		$fim = $date->format('Y-m-d') . ' 00:00:00';
+		$meta_q = isset($params['meta_query']) ? $params['meta_query'] : [];
+		
+		$meta_query = array_merge($meta_q, [
+			[
+				'key' => 'evento-inicio',
+				'value' => $inicio,
+				'compare' => '<='
+			],
+			[
+				'key' => 'evento-fim',
+				'value' => $fim,
+				'compare' => '>='
+			]
+		]);
+		
+		$params = array_merge(array(
+			'post_type' 	=> $this->POST_TYPE,
+			'posts_per_page' 	=> -1,
+			'meta_query' => $meta_query
+		), $params);
+		
+		return new \WP_Query($params);
+	}
+	
+	/**
+	* Espera data no formato dd/mm/aaaa 
+	*/
+	function ajax_get_events_by_day() {
+		
+		$day = $_GET['day'];
+		
+		$parseDay = preg_match('/(\d{2})\/(\d{2})\/(\d{4})/', $day, $matches);
+		
+		$response = [];
+		
+		if ($matches) {
+			if (isset($matches[1])) {
+				$datestring = $matches[3] . '-' . $matches[2] . '-' . $matches[1];
+				$date = new \DateTime($datestring);
+				
+				$events = $this->get_events_by_day($date);
+				
+				while ($events->have_posts()) {
+					$events->the_post();
+					
+					$areas = get_the_category();
+					$areaNome = '';
+					$areaSlug = '';
+					$areaLink = '';
+					if (sizeof($areas) > 0) {
+						$area = $areas[0];
+						$areaNome = $area->name;
+						$areaSlug = $area->slug;
+						$areaLink = get_term_link($area);
+					}
+					
+					$dataInicial_meta = get_post_meta(get_the_ID(), 'evento-inicio', true);
+					$dataInicial = preg_replace('/(\d{4})-(\d{2})-(\d{2})(.+)/','$3/$2/$1', $dataInicial_meta);
+					$horaInicial = preg_replace('/(.+) (\d{2}):(\d{2}):(\d{2})/','$2:$3', $dataInicial_meta);
+					
+					$dataFinal = get_post_meta(get_the_ID(), 'evento-fim', true);
+					$dataFinal = preg_replace('/(\d{4})-(\d{2})-(\d{2})(.+)/','$3/$2/$1', $dataFinal);
+					
+					$imagem = '';
+					if ( has_post_thumbnail() ) {
+						$imagem = get_the_post_thumbnail_url();
+					}
+					
+					$titulo = get_the_title();
+					
+					$horario = $horaInicial;
+					$endereco = get_post_meta(get_the_ID(), 'evento-local', true);
+					$texto  = get_the_excerpt();
+					$url = get_permalink();
+
+					$response[] = [
+						"dataInicial" => $dataInicial,
+						"dataFinal" => $dataFinal,
+						"areaLink" => $areaLink,
+						"areaNome" => $areaNome,
+						"areaSlug" => $areaSlug,
+						"imagem" => $imagem,
+						"titulo" => $titulo,
+						"horario" => $horario,
+						"endereco" => $endereco,
+						"texto" => $texto,
+						"url" => $url
+					];
+					
+				}
+				
+			}
+		}
+		
+		echo json_encode($response);
+		
+		die;
+		
 	}
 }
 

@@ -131,10 +131,11 @@ var base = {
 							$box = $('.box-calendario'),
 							$boxMain = $('.box-calendario-main'),
 							contador = 0;
-
+						
+						
 						$.ajax({
 							type: "GET",
-							url: templateUrl + '/assets/js/carrossel.json',
+							url: funarte.ajaxurl + '?action=get_events_by_day&day=' + text,
 							timeout: 3000,
 							contentType: "application/json; charset=utf-8",
 							cache: false,
