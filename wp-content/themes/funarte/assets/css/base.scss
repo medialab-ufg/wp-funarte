@@ -3215,6 +3215,46 @@ aside .list-bidding--type-b {
 	}
 }
 
+/* BOX DE NOTICIAS */
+
+.box-bidding--type-b {
+	position: relative;
+
+	&:after {
+		content: "";
+		width: 99999px;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-color: $cinza-2;
+		z-index: -1;
+	}
+
+	.list-bidding--type-b {
+		padding: 42px 100px 26px 0;
+
+		li {
+			padding: 0 20px 9px 0;
+
+			& + li {
+				padding: 20px 20px 9px 0;
+				border-top: 1px solid $verde-1;
+			}
+
+			.link-area { margin-bottom: 0; }
+
+			strong {
+				font-size: 1.4rem;
+				line-height: 1.5rem;
+			}
+
+			.link-more { margin-top: 7px; }
+		}
+	}
+}
+
 @media screen and (max-width: 767px) {
 	.list-bidding {
 		li {
@@ -4423,10 +4463,15 @@ ul.social-media-list {
 }
 
 .box-calendario__imagem {
-	padding-top: 17px;
+	width: 426px;
+	height: 242px;
+	margin-top: 17px;
 	position: absolute;
 	top: 0;
 	right: 0;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 
 	img {
 		width: 100%;
@@ -4436,7 +4481,7 @@ ul.social-media-list {
 
 	.link-area {
 		position: absolute;
-		top: 0;
+		top: -17px;
 		left: 28px;
 	}
 }
@@ -4542,10 +4587,7 @@ ul.social-media-list {
 		top: auto;
 		right: auto;
 	}
-	.box-calendario__imagem .link-area {
-		left: auto;
-		right: 308px;
-	}
+	.box-calendario__imagem .link-area { left: 8px; }
 	.box-calendario__imagem img { display: inline-block; }
 	.box-calendario-main ul.slick-dots { transform: translate(0,0); }
 }
@@ -4562,12 +4604,9 @@ ul.social-media-list {
 		max-width: none;
 		padding: 0 0 70px 10px;
 	}
-}
-
-@media screen and (max-width: 472px) {
-	.box-calendario__imagem .link-area {
-		right: auto;
-		left: 28px;
+	.box-calendario__imagem {
+		width: 275px;
+		height: 160px;
 	}
 }
 
@@ -4731,11 +4770,13 @@ ul.social-media-list {
 * MARGENS
 ***/
 
-.mb-30 { margin-bottom: 30px; }
-.mb-44 { margin-bottom: 44px; }
-.mb-60 { margin-bottom: 60px; }
-.mb-65 { margin-bottom: 65px; }
-.mb-100 { margin-bottom: 100px; }
+.mb-30 { margin-bottom: 30px !important; }
+.mb-44 { margin-bottom: 44px !important; }
+.mb-50 { margin-bottom: 50px !important; }
+.mb-60 { margin-bottom: 60px !important; }
+.mb-65 { margin-bottom: 65px !important; }
+.mb-90 { margin-bottom: 90px !important; }
+.mb-100 { margin-bottom: 100px !important; }
 
 /***
 * GRID
@@ -4858,6 +4899,7 @@ body.js .accessibility-options {
 	height: 24px;
 	margin-left: -10px;
 	margin-right: -10px;
+	margin-bottom: 0;
 	padding: 0;
 	display: flex;
 	list-style: none;

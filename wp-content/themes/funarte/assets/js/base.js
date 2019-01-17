@@ -46,6 +46,7 @@ $(document).ready(function() {
 	base.carrossel.iniciarCalendarioCompleto();
 	base.calendario.ativar();
 	base.calendario.ativarCompacto();
+	base.calendario.atualizaCarrosselCompacto();
 });
 
 var base = {
@@ -89,7 +90,6 @@ var base = {
 					};
 
 					datepicker.setDefaults( datepicker.regional[ "pt-BR" ] );
-
 					return datepicker.regional[ "pt-BR" ];
 
 				} ) );
