@@ -279,73 +279,87 @@ class Evento {
 	}
 	
 	/**
-	* Espera data no formato dd/mm/aaaa 
+	* Espera data no formato timestamp
 	*/
 	function ajax_get_events_by_day() {
 		
 		$day = $_GET['day'];
-		
-		$parseDay = preg_match('/(\d{2})\/(\d{2})\/(\d{4})/', $day, $matches);
-		
 		$response = [];
 		
-		if ($matches) {
-			if (isset($matches[1])) {
-				$datestring = $matches[3] . '-' . $matches[2] . '-' . $matches[1];
-				$date = new \DateTime($datestring);
+		if ( is_numeric($day) ) {
+			$day = intval($day);
+			$datestring = date('Y-m-d', (int) $day);
+			$date = new \DateTime($datestring);
+			
+			$extra_args = [];
+			$extra_args['tax_query'] = [];
+			
+			if (isset($_GET['local']) && is_numeric($_GET['local'])) {
+				$extra_args['tax_query'][] = [
+					'taxonomy' => 'espacos-culturais',
+					'terms' => (int) $_GET['local'],
+				];
+			}
+			
+			if (isset($_GET['area']) && is_numeric($_GET['area'])) {
+				$extra_args['tax_query'][] = [
+					'taxonomy' => 'category',
+					'terms' => (int) $_GET['area'],
+				];
+			}
+			
+			$events = $this->get_events_by_day($date, $extra_args);
+			
+			while ($events->have_posts()) {
+				$events->the_post();
 				
-				$events = $this->get_events_by_day($date);
-				
-				while ($events->have_posts()) {
-					$events->the_post();
-					
-					$areas = get_the_category();
-					$areaNome = '';
-					$areaSlug = '';
-					$areaLink = '';
-					if (sizeof($areas) > 0) {
-						$area = $areas[0];
-						$areaNome = $area->name;
-						$areaSlug = $area->slug;
-						$areaLink = get_term_link($area);
-					}
-					
-					$dataInicial_meta = get_post_meta(get_the_ID(), 'evento-inicio', true);
-					$dataInicial = preg_replace('/(\d{4})-(\d{2})-(\d{2})(.+)/','$3/$2/$1', $dataInicial_meta);
-					$horaInicial = preg_replace('/(.+) (\d{2}):(\d{2}):(\d{2})/','$2:$3', $dataInicial_meta);
-					
-					$dataFinal = get_post_meta(get_the_ID(), 'evento-fim', true);
-					$dataFinal = preg_replace('/(\d{4})-(\d{2})-(\d{2})(.+)/','$3/$2/$1', $dataFinal);
-					
-					$imagem = '';
-					if ( has_post_thumbnail() ) {
-						$imagem = get_the_post_thumbnail_url();
-					}
-					
-					$titulo = get_the_title();
-					
-					$horario = $horaInicial;
-					$endereco = get_post_meta(get_the_ID(), 'evento-local', true);
-					$texto  = get_the_excerpt();
-					$url = get_permalink();
-
-					$response[] = [
-						"dataInicial" => $dataInicial,
-						"dataFinal" => $dataFinal,
-						"areaLink" => $areaLink,
-						"areaNome" => $areaNome,
-						"areaSlug" => $areaSlug,
-						"imagem" => $imagem,
-						"titulo" => $titulo,
-						"horario" => $horario,
-						"endereco" => $endereco,
-						"texto" => $texto,
-						"url" => $url
-					];
-					
+				$areas = get_the_category();
+				$areaNome = '';
+				$areaSlug = '';
+				$areaLink = '';
+				if (sizeof($areas) > 0) {
+					$area = $areas[0];
+					$areaNome = $area->name;
+					$areaSlug = $area->slug;
+					$areaLink = get_term_link($area);
 				}
 				
+				$dataInicial_meta = get_post_meta(get_the_ID(), 'evento-inicio', true);
+				$dataInicial = preg_replace('/(\d{4})-(\d{2})-(\d{2})(.+)/','$3/$2/$1', $dataInicial_meta);
+				$horaInicial = preg_replace('/(.+) (\d{2}):(\d{2}):(\d{2})/','$2:$3', $dataInicial_meta);
+				
+				$dataFinal = get_post_meta(get_the_ID(), 'evento-fim', true);
+				$dataFinal = preg_replace('/(\d{4})-(\d{2})-(\d{2})(.+)/','$3/$2/$1', $dataFinal);
+				
+				$imagem = '';
+				if ( has_post_thumbnail() ) {
+					$imagem = get_the_post_thumbnail_url();
+				}
+				
+				$titulo = get_the_title();
+				
+				$horario = $horaInicial;
+				$endereco = get_post_meta(get_the_ID(), 'evento-local', true);
+				$texto  = get_the_excerpt();
+				$url = get_permalink();
+
+				$response[] = [
+					"dataInicial" => $dataInicial,
+					"dataFinal" => $dataFinal,
+					"areaLink" => $areaLink,
+					"areaNome" => $areaNome,
+					"areaSlug" => $areaSlug,
+					"imagem" => $imagem,
+					"titulo" => $titulo,
+					"horario" => $horario,
+					"endereco" => $endereco,
+					"texto" => $texto,
+					"url" => $url
+				];
+				
 			}
+				
+			
 		}
 		
 		echo json_encode($response);
