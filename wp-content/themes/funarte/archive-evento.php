@@ -65,7 +65,7 @@
 				</form>
 			</div>
 
-			<div class="box-calendario-main">
+			<div class="box-calendario-main loading">
 				<div class="carousel-highlights__control">
 					<button type="button" class="control__next slick-arrow"><i class="mdi mdi-chevron-right"></i></button>
 					<button type="button" class="control__prev slick-arrow"><i class="mdi mdi-chevron-left"></i></button>
@@ -83,126 +83,6 @@
 								<div class="link-area">
 									<a href="#">Teatro</a>
 								</div>
-							</div>
-
-							<div class="box-calendario__linha">
-								<div class="box-calendario__coluna-1">
-									<span class="box-calendario__time">das 13 às 17 horas</span>
-									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
-								</div>
-								<div class="box-calendario__coluna-2">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
-									<a class="link-more" href="#">Ler mais</a>
-								</div>
-							</div>
-						</li>
-						<li class="color-danca">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="07/02/2019">27/JAN - 07/FEV</h3>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
-
-							<div class="box-calendario__imagem">
-								<div class="link-area">
-									<a href="#">Dança</a>
-								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
-							</div>
-
-							<div class="box-calendario__linha">
-								<div class="box-calendario__coluna-1">
-									<span class="box-calendario__time">das 13 às 17 horas</span>
-									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
-								</div>
-								<div class="box-calendario__coluna-2">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
-									<a class="link-more" href="#">Ler mais</a>
-								</div>
-							</div>
-						</li>
-						<li class="color-circo">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="30/01/2019">27/JAN - 30/JAN</h3>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
-
-							<div class="box-calendario__imagem">
-								<div class="link-area">
-									<a href="#">Circo</a>
-								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
-							</div>
-
-							<div class="box-calendario__linha">
-								<div class="box-calendario__coluna-1">
-									<span class="box-calendario__time">das 13 às 17 horas</span>
-									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
-								</div>
-								<div class="box-calendario__coluna-2">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
-									<a class="link-more" href="#">Ler mais</a>
-								</div>
-							</div>
-						</li>
-						<li class="color-artes-visuais">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="28/01/2019">27/JAN - 28/JAN</h3>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
-
-							<div class="box-calendario__imagem">
-								<div class="link-area">
-									<a href="#">Artes Visuais</a>
-								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
-							</div>
-
-							<div class="box-calendario__linha">
-								<div class="box-calendario__coluna-1">
-									<span class="box-calendario__time">das 13 às 17 horas</span>
-									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
-								</div>
-								<div class="box-calendario__coluna-2">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
-									<a class="link-more" href="#">Ler mais</a>
-								</div>
-							</div>
-						</li>
-						<li class="color-artes-integradas">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="29/01/2019">27/JAN - 29/JAN</h3>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
-
-							<div class="box-calendario__imagem">
-								<div class="link-area">
-									<a href="#">Artes Integradas</a>
-								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
-							</div>
-
-							<div class="box-calendario__linha">
-								<div class="box-calendario__coluna-1">
-									<span class="box-calendario__time">das 13 às 17 horas</span>
-									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
-								</div>
-								<div class="box-calendario__coluna-2">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
-									<a class="link-more" href="#">Ler mais</a>
-								</div>
-							</div>
-						</li>
-						<li class="color-musica">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="31/01/2019">27/JAN - 31/JAN</h3>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
-
-							<div class="box-calendario__imagem">
-								<div class="link-area">
-									<a href="#">Música</a>
-								</div>
-								<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>" alt="Imagem">
 							</div>
 
 							<div class="box-calendario__linha">

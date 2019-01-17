@@ -3233,15 +3233,11 @@ aside .list-bidding--type-b {
 	}
 
 	.list-bidding--type-b {
-		padding: 42px 100px 26px 0;
+		padding: 22px 100px 138px 0;
 
 		li {
-			padding: 0 20px 9px 0;
-
-			& + li {
-				padding: 20px 20px 9px 0;
-				border-top: 1px solid $verde-1;
-			}
+			padding: 19px 20px 10px 0;
+			border-bottom: 1px solid $verde-1;
 
 			.link-area { margin-bottom: 0; }
 
@@ -3252,6 +3248,39 @@ aside .list-bidding--type-b {
 
 			.link-more { margin-top: 7px; }
 		}
+	}
+
+	.carousel-bidding--type-b__control {
+		width: 30px;
+		height: 65px;
+		position: absolute;
+		left: 0;
+		bottom: 50px;
+		z-index: 2;
+
+		button {
+			width: 30px;
+			height: 30px;
+			padding: 0;
+			font-size: 35px;
+			color: $branco;
+			cursor: pointer;
+			position: absolute;
+			left: 0;
+			overflow: hidden;
+			border: none;
+			background-color: $verde-1;
+
+			i {
+				position: absolute;
+				top: -10px;
+				left: 50%;
+				transform: translate(-50%,0);
+			}
+		}
+
+		.control__next { bottom: 0; }
+		.control__prev { top: 0; }
 	}
 }
 
@@ -3454,6 +3483,13 @@ aside .list-bidding--type-b {
 	color: $verde-1;
 	display: block;
 	list-style: none;
+
+	span {
+		padding: 0 5px;
+		color: $verde-1 !important;
+		line-height: 18px !important;
+		display: inline !important;
+	}
 
 	a {
 		min-width: 18px;
@@ -4203,6 +4239,8 @@ ul.social-media-list {
 	font-size: 22px !important;
 	color: $cinza-6 !important;
 }
+
+.ui-datepicker td { padding: 0 !important; }
 
 .ui-datepicker-calendar .ui-state-default {
 	padding: 6px !important;

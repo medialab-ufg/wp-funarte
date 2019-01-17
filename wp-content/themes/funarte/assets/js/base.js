@@ -31,6 +31,7 @@ $(document).ready(function() {
 
 	// Interna de notícias
 	base.carrossel.iniciarImagens();
+	base.carrossel.iniciarMidias();
 
 	// Institucional e Relatórios
 	base.tabs.visualizar();
@@ -369,6 +370,21 @@ var base = {
 	},
 
 	carrossel: {
+		iniciarMidias: function() {
+			var $carousel = $('.box-bidding--type-b');
+
+			$('.box-bidding--type-b__carousel').slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 3,
+				slidesToScroll: 3,
+				vertical: true,
+				adaptiveHeight: true,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+			});
+		},
+
 		iniciarCalendarioCompacto: function() {
 			var $carousel = $('.box-calendario-main'),
 				$calendario = $('.calendario-carousel');

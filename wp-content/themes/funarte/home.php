@@ -57,7 +57,12 @@ query_posts(array_merge(array(
 			<div class="row justify-content-between mb-90">
 				<div class="col-md-4">
 					<div class="box-bidding box-bidding--type-b">
-						<ul class="list-bidding--type-b">
+						<div class="carousel-bidding--type-b__control">
+							<button type="button" class="control__prev slick-arrow"><i class="mdi mdi-chevron-up"></i></button>
+							<button type="button" class="control__next slick-arrow"><i class="mdi mdi-chevron-down"></i></button>
+						</div>
+
+						<ul class="list-bidding--type-b box-bidding--type-b__carousel">
 							<li class="color-funarte">
 								<div class="link-area">
 									<a href="#">Facebook</a>
@@ -79,12 +84,54 @@ query_posts(array_merge(array(
 								<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
 								<a class="link-more" href="#">Ler mais</a>
 							</li>
+							<li class="color-funarte">
+								<div class="link-area">
+									<a href="#">Facebook</a>
+								</div>
+								<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
+								<a class="link-more" href="#">Ler mais</a>
+							</li>
+							<li class="color-funarte">
+								<div class="link-area">
+									<a href="#">Twitter</a>
+								</div>
+								<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
+								<a class="link-more" href="#">Ler mais</a>
+							</li>
+							<li class="color-funarte">
+								<div class="link-area">
+									<a href="#">Facebook</a>
+								</div>
+								<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
+								<a class="link-more" href="#">Ler mais</a>
+							</li>
+							<li class="color-funarte">
+								<div class="link-area">
+									<a href="#">Facebook</a>
+								</div>
+								<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
+								<a class="link-more" href="#">Ler mais</a>
+							</li>
 						</ul>
 					</div>
 				</div>
 
 				<div class="col-md-7">
-					aasdf
+					<div class="box-carousel-audio">
+						<div class="carousel-bidding--type-b__control">
+							<button type="button" class="control__prev slick-arrow"><i class="mdi mdi-chevron-up"></i></button>
+							<button type="button" class="control__next slick-arrow"><i class="mdi mdi-chevron-down"></i></button>
+						</div>
+
+						<ul class="carousel-audio">
+							<li>
+								<div class="link-area color-funarte">
+									<a href="#">Podcast</a>
+								</div>
+								<strong>Lorem ipsum dolor sit amet, consectetuer adi</strong>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 
