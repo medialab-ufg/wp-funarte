@@ -90,29 +90,7 @@
 
 				<div class="box-calendario">
 					<ul class="calendario-carousel">
-						<li class="color-teatro">
-							<h3 class="box-calendario__data" data-inicial="27/01/2019" data-final="10/02/2019">27/JAN - 10/FEV</h3>
-
-							<h4 class="box-calendario__titulo">Festival de<br>música regional</h4>
-							<hr>
-
-							<div class="box-calendario__imagem" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/agenda_001.jpg' ?>);">
-								<div class="link-area">
-									<a href="#">Teatro</a>
-								</div>
-							</div>
-
-							<div class="box-calendario__linha">
-								<div class="box-calendario__coluna-1">
-									<span class="box-calendario__time">das 13 às 17 horas</span>
-									<span class="box-calendario__pin">MediaLab/ UFG - R. Samambaia,<br>S/N - Vila Itatiaia, Goiânia - GO,<br>74690-900</span>
-								</div>
-								<div class="box-calendario__coluna-2">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation veniam, quis nostrud laboris.grsuysdbhsidgs</p>
-									<a class="link-more" href="#">Ler mais</a>
-								</div>
-							</div>
-						</li>
+						
 					</ul>
 				</div>
 			</div>

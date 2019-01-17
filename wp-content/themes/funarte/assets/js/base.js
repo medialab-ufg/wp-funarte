@@ -106,10 +106,18 @@ var base = {
 				var dataInicial,
 					dataFinal,
 					date1,
-					date2;
+					date2,
+					dataPadrao =  $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial'),
+					dataConcluida;
+
+				if (dataPadrao) {
+					dataConcluida = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dataPadrao);
+				} else {
+					dataPadrao = null;
+				}
 
 				$datepicker.datepicker({
-					defaultDate: $.datepicker.parseDate($.datepicker._defaults.dateFormat, $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial')),
+					defaultDate: dataConcluida,
 					beforeShowDay: function(date) {
 						dataInicial = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('inicial');
 						dataFinal = $('.box-calendario').find('.slick-active').find('.box-calendario__data').data('final');
