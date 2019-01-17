@@ -19,31 +19,48 @@
 
 				<form class="form-filtro-calendario" action="#" method="post">
 					<fieldset>
-						<legend>Formulário de filtro para o calendário</legend>
+						<legend>Formulário para filtrar eventos por local</legend>
 
-						<select>
-							<option value="">Todos os locais</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-						</select>
+						<?php 
+						
+						wp_dropdown_categories([
+							'show_option_none'   => 'Filtrar por local',
+							'option_none_value'		=> '',
+							'orderby'           => 'name',
+							'order'             => 'ASC',
+							'name'              => 'local',
+							'taxonomy'			=> 'espacos-culturais',
+							'id'                => 'datepicker-compacto-filtro-local',
+							'class'				=> 'datepicker-compacto-filtro',
+						]);
+						
+						?>
+						
 					</fieldset>
 				</form>
 
 				<form class="form-filtro-calendario" action="#" method="post">
 					<fieldset>
-						<legend>Formulário de filtro para o calendário</legend>
+						<legend>Formulário para filtrar eventos por área</legend>
+						
+						<?php 
+						
+						wp_dropdown_categories([
+							'show_option_none'   => 'Filtrar por área',
+							'option_none_value'		=> '',
+							'orderby'           => 'name',
+							'order'             => 'ASC',
+							'name'              => 'cat',
+							'id'                => 'datepicker-compacto-filtro-area',
+							'class'				=> 'datepicker-compacto-filtro',
+						]);
+						
+						?>
 
-						<select>
-							<option value="">Filtrar por área</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-						</select>
 					</fieldset>
 				</form>
 
-				<form class="form-filtro-calendario" action="#" method="post">
+				<!--<form class="form-filtro-calendario" action="#" method="post">
 					<fieldset>
 						<legend>Formulário de filtro para o calendário</legend>
 
@@ -54,7 +71,7 @@
 							<option value="C">C</option>
 						</select>
 					</fieldset>
-				</form>
+				</form> -->
 
 				<form class="form-filtro-calendario form-filtro-calendario--datepicker" action="#" method="post">
 					<fieldset>
