@@ -3217,6 +3217,8 @@ aside .list-bidding--type-b {
 /* BOX DE NOTICIAS */
 
 .box-bidding--type-b {
+	width: 100%;
+	max-width: 422px;
 	position: relative;
 
 	&:after {
@@ -3235,13 +3237,13 @@ aside .list-bidding--type-b {
 		padding: 22px 100px 138px 0;
 
 		li {
-			padding: 19px 20px 10px 0;
+			padding: 19px 0 10px;
 			border-bottom: 1px solid $verde-1;
 
 			.link-area { margin-bottom: 0; }
 
 			strong {
-				font-size: 1.4rem;
+				font-size: 1.3rem;
 				line-height: 1.5rem;
 			}
 
@@ -4805,16 +4807,38 @@ ul.social-media-list {
 
 /* CARROSSEL DE NOTÍCIAS */
 
+.box-carousels-news {
+	width: 100%;
+	margin-bottom: 90px;
+	display: flex;
+	justify-content: space-between;
+}
+
 .box-carousel-audio {
 	width: 100%;
+	max-width: 700px;
 	position: relative;
+
+	&:after {
+		content: "";
+		width: 99999px;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 90%;
+		background-color: $verde-1;
+		z-index: -1;
+	}
 }
 .box-carousel-audio__row-1 {
-	margin: 0 -8px 24px;
+	margin: 0 0 24px;
 	display: flex;
 	justify-content: space-between;
 	border: 8px solid $branco;
+	border-top: 21px solid $branco;
 }
+.box-carousel-audio__row-2 { padding: 0 15% 37px 8px; }
 .box-carousel-audio__info {
 	padding: 50px 25px;
 	background-color: $cinza-2;
@@ -4845,8 +4869,13 @@ ul.social-media-list {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+	display: flex;
+
+	&.slick-vertical .slick-slide { border: none !important; }
 
 	p {
+		height: 85px;
+		overflow: hidden;
 		font-size: .9rem;
 		line-height: 1.1rem;
 	}
@@ -4859,10 +4888,49 @@ ul.social-media-list {
 
 /* Controle do carrossel */
 
-.carousel-bidding--type-b__control {
+.box-carousel-audio__control {
+	width: 30px;
+	height: 65px;
 	position: absolute;
 	right: 0;
-	bottom: 0;
+	bottom: 50px;
+	z-index: 2;
+
+	button {
+		width: 30px;
+		height: 30px;
+		padding: 0;
+		font-size: 35px;
+		color: $verde-1;
+		cursor: pointer;
+		position: absolute;
+		left: 0;
+		overflow: hidden;
+		border: none;
+		background-color: $cinza-2;
+
+		i {
+			position: absolute;
+			top: -10px;
+			left: 50%;
+			transform: translate(-50%,0);
+		}
+	}
+
+	.control__next { bottom: 0; }
+	.control__prev { top: 0; }
+}
+
+@media screen and (max-width: 1200px) {
+	//.box-carousels-news { display: block; }
+	.box-bidding--type-b { max-width: 398px; }
+	.box-carousel-audio { max-width: 676px; }
+}
+@media screen and (max-width: 700px) {
+	.box-carousels-news { display: block; }
+	.box-bidding--type-b { max-width: none; }
+	.box-carousel-audio { max-width: none; }
+	.box-carousel-audio__image { flex: 0 0 280px; }
 }
 
 /***

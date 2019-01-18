@@ -32,6 +32,7 @@ $(document).ready(function() {
 	// Interna de notícias
 	base.carrossel.iniciarImagens();
 	base.carrossel.iniciarMidias();
+	base.carrossel.iniciarAudios();
 
 	// Institucional e Relatórios
 	base.tabs.visualizar();
@@ -426,6 +427,21 @@ var base = {
 				slidesToScroll: 3,
 				vertical: true,
 				adaptiveHeight: true,
+				prevArrow: $carousel.find('.control__prev'),
+				nextArrow: $carousel.find('.control__next'),
+			});
+		},
+
+		iniciarAudios: function() {
+			var $carousel = $('.box-carousel-audio');
+
+			$('.carousel-audio').slick({
+				speed: 1000,
+				infinite: false,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				vertical: true,
+				//adaptiveHeight: true,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
 			});
