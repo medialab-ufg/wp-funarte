@@ -333,7 +333,7 @@ class Evento {
 				
 				$imagem = '';
 				if ( has_post_thumbnail() ) {
-					$imagem = get_the_post_thumbnail_url();
+					$imagem = get_the_post_thumbnail_url(get_the_ID(),'medium_large');
 				}
 				
 				$titulo = get_the_title();

@@ -2906,7 +2906,6 @@ ul.slick-dots {
 	position: absolute;
 	top: 0;
 	right: 0;
-	background-color: rgba(0,0,0,.1);
 	z-index: 2;
 }
 .carousel-schedule__image {
@@ -4802,6 +4801,68 @@ ul.social-media-list {
 		top: -5px;
 		left: -2px;
 	}
+}
+
+/* CARROSSEL DE NOTÍCIAS */
+
+.box-carousel-audio {
+	width: 100%;
+	position: relative;
+}
+.box-carousel-audio__row-1 {
+	margin: 0 -8px 24px;
+	display: flex;
+	justify-content: space-between;
+	border: 8px solid $branco;
+}
+.box-carousel-audio__info {
+	padding: 50px 25px;
+	background-color: $cinza-2;
+
+	.link-area { margin-bottom: 12px; }
+
+	strong {
+		font-weight: 700;
+		font-family: Sansita,sans-serif;
+		font-size: 1.4rem;
+		color: #515151;
+		line-height: 1.5rem;
+		display: block;
+	}
+}
+.box-carousel-audio__image {
+	width: 372px;
+	height: 374px;
+	flex: 0 0 372px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/* Carrossel */
+
+.carousel-audio {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+
+	p {
+		font-size: .9rem;
+		line-height: 1.1rem;
+	}
+
+	.link-more {
+		margin-top: 14px;
+		color: $verde-1;
+	}
+}
+
+/* Controle do carrossel */
+
+.carousel-bidding--type-b__control {
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
 
 /***

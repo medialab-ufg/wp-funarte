@@ -125,10 +125,19 @@ query_posts(array_merge(array(
 
 						<ul class="carousel-audio">
 							<li>
-								<div class="link-area color-funarte">
-									<a href="#">Podcast</a>
+								<div class="box-carousel-audio__row-1">
+									<div class="box-carousel-audio__info">
+										<div class="link-area">
+											<a class="color-funarte" href="#">Podcast</a>
+										</div>
+										<strong>Lorem ipsum dolor sit amet, consectetuer adi</strong>
+									</div>
+									<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
 								</div>
-								<strong>Lorem ipsum dolor sit amet, consectetuer adi</strong>
+								<div class="box-carousel-audio__row-2">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
+									<a class="link-more" href="#">Ler mais</a>
+								</div>
 							</li>
 						</ul>
 					</div>

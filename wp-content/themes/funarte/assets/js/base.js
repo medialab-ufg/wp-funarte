@@ -151,103 +151,103 @@ var base = {
 			var estrutura = '<ul class="calendario-carousel">',
 				$box = $('.box-calendario'),
 				$boxMain = $('.box-calendario-main'),
-				contador = 0;
+				contador = 0,
+				$datepicker = $('.datepicker-compacto');
+
+			if ($datepicker.length > 0) {
+				var selectedDate = $datepicker.datepicker( "getDate" );
+				if (!selectedDate) {
+					return;
+				}
 				
-			var $datepicker = $('.datepicker-compacto');
-			var selectedDate = $datepicker.datepicker( "getDate" );
-			if (!selectedDate) {
-				return;
-			}
-			
-			selectedDate = selectedDate.getTime() / 1000; //js timestamp is in miliseconds
-			
-			var local = $('#datepicker-compacto-filtro-local').val();
-			var area = $('#datepicker-compacto-filtro-area').val();
-			
-			var query = 'day=' + selectedDate;
-			
-			if (local) {
-				query += '&local=' + local;
-			}
-			
-			if (area) {
-				query += '&area=' + area;
-			}
-			
-			
-			
-			$.ajax({
-				type: "GET",
-				url: funarte.ajaxurl + '?action=get_events_by_day&' + query,
-				timeout: 3000,
-				contentType: "application/json; charset=utf-8",
-				cache: false,
-				beforeSend: function() {
-					$('.calendario-carousel,.slick-dots').remove();
-					$boxMain.addClass('loading').removeClass('active');
-				},
-				error: function() {
-					$boxMain.removeClass('loading');
-					$box.html("Ocorreu um erro. Tente novamente mais tarde.");
-				},
-				success: function(html) {
-					var slides = JSON.parse(html),
-						dataInicialSeparada,
-						dataFinalSeparada;
+				selectedDate = selectedDate.getTime() / 1000; //js timestamp is in miliseconds
+				
+				var local = $('#datepicker-compacto-filtro-local').val();
+				var area = $('#datepicker-compacto-filtro-area').val();
+				
+				var query = 'day=' + selectedDate;
+				
+				if (local) {
+					query += '&local=' + local;
+				}
+				
+				if (area) {
+					query += '&area=' + area;
+				}
+				
+				
+				
+				$.ajax({
+					type: "GET",
+					url: funarte.ajaxurl + '?action=get_events_by_day&' + query,
+					timeout: 3000,
+					contentType: "application/json; charset=utf-8",
+					cache: false,
+					beforeSend: function() {
+						$('.calendario-carousel,.slick-dots').remove();
+						$boxMain.addClass('loading').removeClass('active');
+					},
+					error: function() {
+						$boxMain.removeClass('loading');
+						$box.html("Ocorreu um erro. Tente novamente mais tarde.");
+					},
+					success: function(html) {
+						var slides = JSON.parse(html),
+							dataInicialSeparada,
+							dataFinalSeparada;
 
-					$.each(slides,function(i, slide) {
-						
-						dataInicialSeparada = slide.dataInicial.split('/');
-						dataFinalSeparada = slide.dataFinal.split('/');
+						$.each(slides,function(i, slide) {
+							
+							dataInicialSeparada = slide.dataInicial.split('/');
+							dataFinalSeparada = slide.dataFinal.split('/');
 
-						mesInicial = base.calendario.transformarMes(dataInicialSeparada[1]);
-						mesFinal = base.calendario.transformarMes(dataFinalSeparada[1]);
-						
-						var dataString = dataInicialSeparada[0] + '/' + mesInicial;
-						if (slide.dataInicial != slide.dataFinal) {
-							dataString += ' - ' + dataFinalSeparada[0] + '/' + mesFinal;
+							mesInicial = base.calendario.transformarMes(dataInicialSeparada[1]);
+							mesFinal = base.calendario.transformarMes(dataFinalSeparada[1]);
+							
+							var dataString = dataInicialSeparada[0] + '/' + mesInicial;
+							if (slide.dataInicial != slide.dataFinal) {
+								dataString += ' - ' + dataFinalSeparada[0] + '/' + mesFinal;
+							}
+
+							estrutura += '<li class="color-' + slide.areaSlug + '">\
+											<h3 class="box-calendario__data" data-inicial="' + slide.dataInicial + '" data-final="' + slide.dataFinal + '">' + dataString + '</h3>\
+											<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
+											<hr>\
+											<div class="box-calendario__imagem" style="background-image: url(' + slide.imagem + ');">\
+												<div class="link-area">\
+													<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
+												</div>\
+											</div>\
+											<div class="box-calendario__linha">\
+												<div class="box-calendario__coluna-1">\
+													<span class="box-calendario__time">' + slide.horario + '</span>\
+													<span class="box-calendario__pin">' + slide.endereco + '</span>\
+												</div>\
+												<div class="box-calendario__coluna-2">\
+													<p>' + slide.texto + '</p>\
+													<a class="link-more" href="' + slide.url + '">Ler mais</a>\
+												</div>\
+											</div>\
+										</li>';
+
+							contador++;
+							
+						});
+
+						if (contador <= 0) {
+							estrutura += '<li><h4 class="box-calendario__titulo">Não foi encontrado nenhum evento no dia selecionado.</h4></li>';
 						}
 
-						estrutura += '<li class="color-' + slide.areaSlug + '">\
-										<h3 class="box-calendario__data" data-inicial="' + slide.dataInicial + '" data-final="' + slide.dataFinal + '">' + dataString + '</h3>\
-										<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
-										<hr>\
-										<div class="box-calendario__imagem">\
-											<div class="link-area">\
-												<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
-											</div>\
-											<img src="' + slide.imagem + '" alt="Imagem">\
-										</div>\
-										<div class="box-calendario__linha">\
-											<div class="box-calendario__coluna-1">\
-												<span class="box-calendario__time">' + slide.horario + '</span>\
-												<span class="box-calendario__pin">' + slide.endereco + '</span>\
-											</div>\
-											<div class="box-calendario__coluna-2">\
-												<p>' + slide.texto + '</p>\
-												<a class="link-more" href="' + slide.url + '">Ler mais</a>\
-											</div>\
-										</div>\
-									</li>';
+						estrutura += '</ul>';
 
-						contador++;
-						
-					});
+						$box.append(estrutura);
 
-					if (contador <= 0) {
-						estrutura += '<li><h4 class="box-calendario__titulo">Não foi encontrado nenhum evento no dia selecionado.</h4></li>';
+						base.carrossel.iniciarCalendarioCompacto();
+						$datepicker.datepicker('refresh');
+						$boxMain.removeClass('loading');
 					}
-
-					estrutura += '</ul>';
-
-					$box.append(estrutura);
-
-					base.carrossel.iniciarCalendarioCompacto();
-					$datepicker.datepicker('refresh');
-					$boxMain.removeClass('loading');
-				}
-			});
-			
+				});
+			}
 		},
 
 		transformarMes: function(data) {
