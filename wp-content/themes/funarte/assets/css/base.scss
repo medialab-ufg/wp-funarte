@@ -4812,6 +4812,7 @@ ul.social-media-list {
 	margin-bottom: 90px;
 	display: flex;
 	justify-content: space-between;
+	flex-direction: row-reverse;
 }
 
 .box-carousel-audio {
@@ -4835,6 +4836,7 @@ ul.social-media-list {
 	margin: 0 0 24px;
 	display: flex;
 	justify-content: space-between;
+	flex-direction: row-reverse;
 	border: 8px solid $branco;
 	border-top: 21px solid $branco;
 }
@@ -4855,12 +4857,173 @@ ul.social-media-list {
 	}
 }
 .box-carousel-audio__image {
-	width: 372px;
 	height: 374px;
 	flex: 0 0 372px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+/* PLAYER DE ÁUDIO */
+
+.audio-player {
+	width: 100%;
+	height: 65px;
+	margin: 57px 0 0;
+}
+.audio-player .player {
+	width: 100%;
+	position: relative;
+}
+
+/* Botões */
+
+.audio-player .controls {
+	width: 65px;
+	height: 65px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.audio-player .controls .play,
+.audio-player .controls .pause {
+	width: 65px;
+	height: 65px;
+	cursor: pointer;
+	display: block;
+	overflow: hidden;
+	outline: none !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 50%;
+	border: none;
+	background: $verde-1;
+
+	&.active { z-index: 4; }
+
+	&:after {
+		@include icon-css;
+		content: "\f40a";
+		font-size: 50px;
+		color: $branco;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+}
+.audio-player .controls .play {
+	z-index: 2;
+
+	&.hidden { z-index: 0; }
+}
+.audio-player .controls .pause{
+	&.visible { z-index: 2; }
+	&:after { content: "\f3e4"; }
+}
+
+/* Duração */
+
+.audio-player .timeHolder {
+	width: 80px;
+	display: flex;
+	position: absolute;
+	top: 11px;
+	left: 85px;
+
+	.time-current,
+	.time-separator,
+	.time-duration { font-size: .9rem; }
+}
+
+/* Volume */
+
+.volume {
+	width: 75px;
+	height: 15px;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	top: 12px;
+	right: 0;
+
+	.volume-btn {
+		width: 15px;
+		height: 15px;
+		position: relative;
+
+		&:after {
+			@include icon-css;
+			content: "\f57e";
+			font-size: 20px;
+			color: $cinza-5;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+
+	.volume-adjust {
+		width: 55px;
+		height: 5px;
+		margin-top: 5px;
+		background-color: $branco;
+
+		div > div {
+			height: 5px;
+			background-color: $verde-1;
+		}
+	}
+}
+.player.mute .volume .volume-btn:after {
+	content: "\f57f";
+}
+
+.progressbar {
+	width: 177px;
+	height: 5px;
+	position: absolute;
+	top: 58px;
+	right: 0;
+	background-color: $branco;
+
+	.bar-played {
+		height: 5px;
+		background-color: $verde-1;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.audio-player {
+		height: 95px;
+
+		.timeHolder {
+			width: 64%;
+			top: 45px;
+			left: auto;
+			right: 0;
+		}
+	}
+
+	.volume {
+		width: 64%;
+		top: 18px;
+
+		.volume-adjust { width: 85%; }
+	}
+
+	.progressbar {
+		width: 100%;
+		top: 90px;
+	}
+}
+@media screen and (max-width: 992px) {
+	.box-bidding--type-b:after {
+		right: 50%;
+		transform: translate(50%,0);
+	}
 }
 
 /* Carrossel */
@@ -4922,15 +5085,36 @@ ul.social-media-list {
 }
 
 @media screen and (max-width: 1200px) {
-	//.box-carousels-news { display: block; }
 	.box-bidding--type-b { max-width: 398px; }
-	.box-carousel-audio { max-width: 676px; }
+	.box-carousel-audio { max-width: 526px; }
+	.box-carousel-audio__image { flex: 0 0 250px; }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 992px) {
 	.box-carousels-news { display: block; }
-	.box-bidding--type-b { max-width: none; }
+	.box-bidding--type-b,
 	.box-carousel-audio { max-width: none; }
-	.box-carousel-audio__image { flex: 0 0 280px; }
+	.box-bidding--type-b .list-bidding--type-b { padding: 22px 0 138px; }
+	.box-carousel-audio__image { flex: 0 0 384px; }
+}
+@media screen and (max-width: 768px) {
+	.box-carousel-audio__row-1 {
+		display: block;
+		background-color: $branco;
+	}
+	.box-carousel-audio__image {
+		width: 384px;
+		margin: 0 auto;
+	}
+}
+@media screen and (max-width: 445px) {
+	.box-carousel-audio:after { display: none; }
+	.box-carousel-audio__row-1 { border: none; }
+	.box-carousel-audio__image {
+		width: 275px;
+		height: 275px;
+	}
+	.box-carousel-audio__info { padding: 25px 25px 50px; }
+	.audio-player { margin: 37px 0 0; }
 }
 
 /***

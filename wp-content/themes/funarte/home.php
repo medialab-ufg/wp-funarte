@@ -55,6 +55,100 @@ query_posts(array_merge(array(
 			</div>
 
 			<div class="box-carousels-news">
+				<div class="box-carousel-audio">
+					<div class="box-carousel-audio__control">
+						<button type="button" class="control__prev slick-arrow"><i class="mdi mdi-chevron-up"></i></button>
+						<button type="button" class="control__next slick-arrow"><i class="mdi mdi-chevron-down"></i></button>
+					</div>
+
+					<ul class="carousel-audio">
+						<li>
+							<div class="box-carousel-audio__row-1">
+								<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
+								<div class="box-carousel-audio__info">
+									<div class="link-area">
+										<a class="color-funarte" href="#">Podcast</a>
+									</div>
+									<strong>Lorem ipsum dolor sit amet, consectetuer adi</strong>
+
+									<div class="audio-player">
+										<ul class="playlist">
+											<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3' ?>);"></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="box-carousel-audio__row-2">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
+								<a class="link-more" href="#">Ler mais</a>
+							</div>
+						</li>
+						<li>
+							<div class="box-carousel-audio__row-1">
+								<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
+								<div class="box-carousel-audio__info">
+									<div class="link-area">
+										<a class="color-funarte" href="#">Podcast</a>
+									</div>
+									<strong>2 Lorem ipsum dolor sit amet, consectetuer adi</strong>
+
+									<div class="audio-player">
+										<ul class="playlist">
+											<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3' ?>);"></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="box-carousel-audio__row-2">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
+								<a class="link-more" href="#">Ler mais</a>
+							</div>
+						</li>
+						<li>
+							<div class="box-carousel-audio__row-1">
+								<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
+								<div class="box-carousel-audio__info">
+									<div class="link-area">
+										<a class="color-funarte" href="#">Podcast</a>
+									</div>
+									<strong>3 Lorem ipsum dolor sit amet, consectetuer adi</strong>
+
+									<div class="audio-player">
+										<ul class="playlist">
+											<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3' ?>);"></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="box-carousel-audio__row-2">
+								<p>Lorem ipsum dolor sit amet</p>
+								<a class="link-more" href="#">Ler mais</a>
+							</div>
+						</li>
+						<li>
+							<div class="box-carousel-audio__row-1">
+								<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
+								<div class="box-carousel-audio__info">
+									<div class="link-area">
+										<a class="color-funarte" href="#">Podcast</a>
+									</div>
+									<strong>4 Lorem ipsum dolor sit amet, consectetuer adi</strong>
+
+									<div class="audio-player">
+										<ul class="playlist">
+											<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3' ?>);"></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="box-carousel-audio__row-2">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit</p>
+								<a class="link-more" href="#">Ler mais</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+
 				<div class="box-bidding box-bidding--type-b">
 					<div class="carousel-bidding--type-b__control">
 						<button type="button" class="control__prev slick-arrow"><i class="mdi mdi-chevron-up"></i></button>
@@ -110,76 +204,6 @@ query_posts(array_merge(array(
 							</div>
 							<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
 							<a class="link-more" href="#">Ler mais</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="box-carousel-audio">
-					<div class="box-carousel-audio__control">
-						<button type="button" class="control__prev slick-arrow"><i class="mdi mdi-chevron-up"></i></button>
-						<button type="button" class="control__next slick-arrow"><i class="mdi mdi-chevron-down"></i></button>
-					</div>
-
-					<ul class="carousel-audio">
-						<li>
-							<div class="box-carousel-audio__row-1">
-								<div class="box-carousel-audio__info">
-									<div class="link-area">
-										<a class="color-funarte" href="#">Podcast</a>
-									</div>
-									<strong>Lorem ipsum dolor sit amet, consectetuer adi</strong>
-								</div>
-								<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
-							</div>
-							<div class="box-carousel-audio__row-2">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
-								<a class="link-more" href="#">Ler mais</a>
-							</div>
-						</li>
-						<li>
-							<div class="box-carousel-audio__row-1">
-								<div class="box-carousel-audio__info">
-									<div class="link-area">
-										<a class="color-funarte" href="#">Podcast</a>
-									</div>
-									<strong>2 Lorem ipsum dolor sit amet, consectetuer adi</strong>
-								</div>
-								<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
-							</div>
-							<div class="box-carousel-audio__row-2">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
-								<a class="link-more" href="#">Ler mais</a>
-							</div>
-						</li>
-						<li>
-							<div class="box-carousel-audio__row-1">
-								<div class="box-carousel-audio__info">
-									<div class="link-area">
-										<a class="color-funarte" href="#">Podcast</a>
-									</div>
-									<strong>3 Lorem ipsum dolor sit amet, consectetuer adi</strong>
-								</div>
-								<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
-							</div>
-							<div class="box-carousel-audio__row-2">
-								<p>Lorem ipsum dolor sit amet</p>
-								<a class="link-more" href="#">Ler mais</a>
-							</div>
-						</li>
-						<li>
-							<div class="box-carousel-audio__row-1">
-								<div class="box-carousel-audio__info">
-									<div class="link-area">
-										<a class="color-funarte" href="#">Podcast</a>
-									</div>
-									<strong>4 Lorem ipsum dolor sit amet, consectetuer adi</strong>
-								</div>
-								<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
-							</div>
-							<div class="box-carousel-audio__row-2">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit</p>
-								<a class="link-more" href="#">Ler mais</a>
-							</div>
 						</li>
 					</ul>
 				</div>
@@ -242,3 +266,5 @@ query_posts(array_merge(array(
 		</section>
 	</main>
 <?php get_footer(); ?>
+
+<script src="<?php echo get_theme_file_uri() . '/assets/js/plugins/musicplayer-min.js'; ?>"></script>

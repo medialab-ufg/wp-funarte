@@ -33,6 +33,7 @@ $(document).ready(function() {
 	base.carrossel.iniciarImagens();
 	base.carrossel.iniciarMidias();
 	base.carrossel.iniciarAudios();
+	base.audio.ativar();
 
 	// Institucional e Relatórios
 	base.tabs.visualizar();
@@ -52,6 +53,16 @@ $(document).ready(function() {
 });
 
 var base = {
+	audio: {
+		ativar: function() {
+			var $audioPlayer = $('.audio-player');
+
+			$audioPlayer.musicPlayer({
+				elements: ['controls', 'time', 'volume', 'progress']
+			});
+		}
+	},
+
 	calendario: {
 		ativar: function() {
 			if ($('.datepicker').length > 0) {
