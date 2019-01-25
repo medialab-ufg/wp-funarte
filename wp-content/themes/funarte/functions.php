@@ -141,7 +141,7 @@ function get_pagination() {
 
 function extra_files() {
 	// Fontes
-	wp_enqueue_style('google-custom-fonts', '//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Sansita:400,400i,700,700i');
+	wp_enqueue_style('google-custom-fonts', '//fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i|Sansita:400,400i,700,700i');
 
 	// CSS
 	wp_enqueue_style('bootstrap-cdn-style', get_theme_file_uri() . '/assets/css/plugins/bootstrap.min.css');
