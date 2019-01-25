@@ -4261,19 +4261,23 @@ ul.social-media-list {
 .ui-datepicker-next:after { content: "\f142"; }
 
 .ui-datepicker-calendar thead th span {
-	font-weight: 600 !important;
+	font-weight: 500 !important;
 	font-family: Roboto, sans-serif !important;
-	font-size: 22px !important;
+	font-size: 20px !important;
 	color: $cinza-6 !important;
 }
 
-.ui-datepicker td { padding: 0 !important; }
+.ui-datepicker td {
+	max-width: 35px;
+	padding: 0 !important;
+}
 
 .ui-datepicker-calendar .ui-state-default {
-	padding: 6px !important;
+	height: 35px;
+	padding: 1px 3px !important;
 	font-weight: 400 !important;
 	font-family: Roboto, sans-serif !important;
-	font-size: 22px !important;
+	font-size: 20px !important;
 	color: $cinza-3 !important;
 	text-align: center !important;
 	border: none !important;
@@ -4619,6 +4623,16 @@ ul.social-media-list {
 		top: -10px;
 		left: -5px;
 	}
+}
+
+/* MENSAGEM DE ERRO */
+
+.box-calendario__message {
+	width: 33%;
+	margin: 190px 0 0 95px;
+	font-size: 1rem;
+	color: $cinza-6;
+	display: block;
 }
 
 @media screen and (max-width: 992px) {

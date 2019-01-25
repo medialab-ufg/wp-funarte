@@ -203,7 +203,7 @@ var base = {
 					},
 					error: function() {
 						$boxMain.removeClass('loading');
-						$box.html("Ocorreu um erro. Tente novamente mais tarde.");
+						$box.html('<span class="box-calendario__message">Não foi encontrado nenhum evento no dia selecionado.</span>');
 					},
 					success: function(html) {
 						var slides = JSON.parse(html),
