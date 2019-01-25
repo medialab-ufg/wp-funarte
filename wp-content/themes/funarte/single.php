@@ -66,23 +66,25 @@ if(have_posts()) : the_post();
 				$tax = \Tainacan\Repositories\Taxonomies::get_instance()->fetch_one(['slug'=>'assunto']);
 				$slug_taxonomia = $tax->get_db_identifier();
 				$terms = get_the_terms(get_the_ID(), $slug_taxonomia);
-				$terms_slugs = array_map(function($el) { return $el->slug; }, $terms);
+				if (!empty($terms)) {
+					$terms_slugs = array_map(function($el) { return $el->slug; }, $terms);
 
-				$loop = new WP_Query([
-    			'posts_per_page' => 3,
-					'post_type' => \Tainacan\Repositories\Repository::get_collections_db_identifiers(),
-					'taxonomy' => [
-						'tax_query' => [
-							['field' => 'slug', 'terms' => $terms_slugs]
+					$loop = new WP_Query([
+						'posts_per_page' => 3,
+						'post_type' => \Tainacan\Repositories\Repository::get_collections_db_identifiers(),
+						'taxonomy' => [
+							'tax_query' => [
+								['field' => 'slug', 'terms' => $terms_slugs]
+							]
 						]
-					]
-				]);
+					]);
 
-				while ( $loop->have_posts() ) : $loop->the_post();
-					the_title();
-					$image = has_post_thumbnail() ? get_the_post_thumbnail_url()  : funarte_get_img_default( );
-					echo $image;
-				endwhile;
+					while ( $loop->have_posts() ) : $loop->the_post();
+						the_title();
+						$image = has_post_thumbnail() ? get_the_post_thumbnail_url()  : funarte_get_img_default( );
+						echo $image;
+					endwhile;
+				}
 			?>
 		</div>
 	</main>
