@@ -46,7 +46,7 @@ else:
 				<div class="col-xs-12 col-md-6">
 					<section class="box-highlight color-circo">
 						<h2 class="title-1">Destaque</h2>
-						<img src="<?php echo $destaque['img_url']; ?>" alt="Destaque">
+						<div class="box-highlight__image" style="background-image: url(<?php echo $destaque['img_url'] ?>);"></div>
 						<div class="link-area">
 							<a class="color-<?php echo $destaque['tag_class_area']; ?>" href="#"><?php echo $destaque['tag_name_area']; ?></a>
 						</div>

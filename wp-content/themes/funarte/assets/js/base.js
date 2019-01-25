@@ -57,9 +57,11 @@ var base = {
 		ativar: function() {
 			var $audioPlayer = $('.audio-player');
 
-			$audioPlayer.musicPlayer({
-				elements: ['controls', 'time', 'volume', 'progress']
-			});
+			if ($audioPlayer.length > 0) {
+				$audioPlayer.musicPlayer({
+					elements: ['controls', 'time', 'volume', 'progress']
+				});
+			}
 		}
 	},
 
@@ -776,7 +778,7 @@ var base = {
 					nextArrow: $boxCarousel.find('.control__next'),
 					responsive: [
 						{
-							breakpoint: 530,
+							breakpoint: 1200,
 							settings: {
 								slidesToShow: 1,
 								slidesToScroll: 1

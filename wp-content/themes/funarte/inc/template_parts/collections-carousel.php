@@ -27,7 +27,7 @@
 						<a href="#"><?php echo $area_['name'];?></a>
 					</div>
 					<p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-					<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>">
+					<div class="carousel-collection__image" style="background-image: url(<?php echo $image ?>);"></div>
 				</li>
 				
 			<?php endwhile; ?>
