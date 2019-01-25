@@ -9,10 +9,14 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "4.9.*",
-        "wpackagist-plugin/tainacan":"*"
+        "johnpbloch/wordpress": "4.9.*"
     },
     "extra": {
         "wordpress-install-dir": "wp"
+    },
+    "scripts": {    
+        "post-install-cmd": [
+            "./get_tainacan.sh"
+        ]
     }
 }
