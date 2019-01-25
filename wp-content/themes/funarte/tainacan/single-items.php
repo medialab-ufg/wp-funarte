@@ -85,30 +85,6 @@
 
 				<?php endif; ?>
 
-				<section class="box-related-links color-funarte">
-					<h3 class="box-carousel-attachments__title">Links relacionados</h3>
-
-					<ul class="box-related-links__list">
-						<li>
-							<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Imagem">
-							<a href="#"><span>Título do item ou coleção relacionada lorem ipsum sit dolor amet</span></a>
-						</li>
-						<li>
-							<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Imagem">
-							<a href="#"><span>Título do item ou coleção relacionada lorem ipsum sit dolor amet</span></a>
-						</li>
-						<li>
-							<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Imagem">
-							<a href="#"><span>Título do item ou coleção relacionada lorem ipsum sit dolor amet</span></a>
-						</li>
-					</ul>
-
-					<div class="box-related-links__more">
-						<a href="#" class="link-more">Ver mais</a>
-					</div>
-				</section>
-
-				<div class="tainacan-border"></div>
 
 				<div class="tainacan-single-post">
 					<article role="article">
