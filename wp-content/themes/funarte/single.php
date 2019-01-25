@@ -36,29 +36,6 @@ if(have_posts()) : the_post();
 				</div>
 			</div>
 
-			<section class="box-related-links color-funarte">
-				<h3 class="box-carousel-attachments__title">Links relacionados</h3>
-
-				<ul class="box-related-links__list">
-					<li>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Imagem">
-						<a href="#"><span>Título do item ou coleção relacionada lorem ipsum sit dolor amet</span></a>
-					</li>
-					<li>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Imagem">
-						<a href="#"><span>Título do item ou coleção relacionada lorem ipsum sit dolor amet</span></a>
-					</li>
-					<li>
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Imagem">
-						<a href="#"><span>Título do item ou coleção relacionada lorem ipsum sit dolor amet</span></a>
-					</li>
-				</ul>
-
-				<div class="box-related-links__more">
-					<a href="#" class="link-more">Ver mais</a>
-				</div>
-			</section>
-
 			<!-- <section class="box-carousel-image">
 				<div class="carousel-image__wrapper">
 					<div class="carousel-image__control">
@@ -89,9 +66,8 @@ if(have_posts()) : the_post();
 				$tax = \Tainacan\Repositories\Taxonomies::get_instance()->fetch_one(['slug'=>'assunto']);
 				$slug_taxonomia = $tax->get_db_identifier();
 				$terms = get_the_terms(get_the_ID(), $slug_taxonomia);
-				if (!empty($terms)) {
+				if (!empty($terms)):
 					$terms_slugs = array_map(function($el) { return $el->slug; }, $terms);
-
 					$loop = new WP_Query([
 						'posts_per_page' => 3,
 						'post_type' => \Tainacan\Repositories\Repository::get_collections_db_identifiers(),
@@ -101,14 +77,30 @@ if(have_posts()) : the_post();
 							]
 						]
 					]);
+					?>
 
-					while ( $loop->have_posts() ) : $loop->the_post();
-						the_title();
-						$image = has_post_thumbnail() ? get_the_post_thumbnail_url()  : funarte_get_img_default( );
-						echo $image;
-					endwhile;
-				}
-			?>
+					<section class="box-related-links color-funarte">
+						<h3 class="box-carousel-attachments__title">Links relacionados</h3>
+						<ul class="box-related-links__list">
+							<?php 
+								while ( $loop->have_posts() ) : $loop->the_post();
+								$image = has_post_thumbnail() ? get_the_post_thumbnail_url()  : funarte_get_img_default( );
+							?>
+								<li>
+									<img src="<?php echo $image; ?>" alt="Imagem">
+									<a href="<?php echo get_permalink() ?>"><span><?php echo get_the_title(); ?></span></a>
+								</li>
+							<?php
+								endwhile;
+							?>
+						</ul>
+						<div class="box-related-links__more">
+							<a href="#" class="link-more">Ver mais</a>
+						</div>
+					</section>
+				<?php
+				endif;
+				?>
 		</div>
 	</main>
 <?php
