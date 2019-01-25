@@ -85,28 +85,46 @@
 
 				<?php endif; ?>
 
+
+				<?php
+				$tax = \Tainacan\Repositories\Taxonomies::get_instance()->fetch_one(['slug'=>'assunto']);
+				$slug_taxonomia = $tax->get_db_identifier();
+				$terms = get_the_terms(get_the_ID(), $slug_taxonomia);
+				if (!empty($terms)):
+					$terms_slugs = array_map(function($el) { return $el->slug; }, $terms);
+					$link_more = get_term_link($terms[0]->term_id);
+					$loop = new WP_Query([
+						'posts_per_page' => 3,
+						'post_type' => 'post',
+						'taxonomy' => [
+							'tax_query' => [
+								['field' => 'slug', 'terms' => $terms_slugs]
+							]
+						]
+					]);
+				?>
+
 				<section class="box-related-links color-funarte">
 					<h3 class="box-carousel-attachments__title">Links relacionados</h3>
 
 					<ul class="box-related-links__list">
-						<li>
-							<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Imagem">
-							<a href="#"><span>Título do item ou coleção relacionada lorem ipsum sit dolor amet</span></a>
-						</li>
-						<li>
-							<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Imagem">
-							<a href="#"><span>Título do item ou coleção relacionada lorem ipsum sit dolor amet</span></a>
-						</li>
-						<li>
-							<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/news_001.jpg'; ?>" alt="Imagem">
-							<a href="#"><span>Título do item ou coleção relacionada lorem ipsum sit dolor amet</span></a>
-						</li>
+						<?php while ( $loop->have_posts() ) : $loop->the_post(); 
+							$image = has_post_thumbnail() ? get_the_post_thumbnail_url()  : funarte_get_img_default( ); ?>
+							<li>
+								<img src="<?php echo $image; ?>" alt="Imagem">
+								<a href="<?php echo get_permalink() ?>"><span><?php echo get_the_title(); ?></span></a>
+							</li>
+						<?php endwhile; ?>
 					</ul>
 
 					<div class="box-related-links__more">
-						<a href="#" class="link-more">Ver mais</a>
+						<a href="<?php echo $link_more; ?>" class="link-more">Ver mais</a>
 					</div>
 				</section>
+			<?php
+				wp_reset_query();
+				endif;
+			?>
 
 				<div class="tainacan-border"></div>
 

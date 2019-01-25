@@ -68,6 +68,7 @@ if(have_posts()) : the_post();
 				$terms = get_the_terms(get_the_ID(), $slug_taxonomia);
 				if (!empty($terms)):
 					$terms_slugs = array_map(function($el) { return $el->slug; }, $terms);
+					$link_more = get_term_link($terms[0]->term_id);
 					$loop = new WP_Query([
 						'posts_per_page' => 3,
 						'post_type' => \Tainacan\Repositories\Repository::get_collections_db_identifiers(),
@@ -95,10 +96,11 @@ if(have_posts()) : the_post();
 							?>
 						</ul>
 						<div class="box-related-links__more">
-							<a href="#" class="link-more">Ver mais</a>
+							<a href="<?php echo $link_more; ?>" class="link-more">Ver mais</a>
 						</div>
 					</section>
 				<?php
+				wp_reset_query();
 				endif;
 				?>
 		</div>
