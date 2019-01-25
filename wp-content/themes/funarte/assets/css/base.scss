@@ -4157,6 +4157,52 @@ ul.social-media-list {
 	.box-carousel__control .control__prev { left: 0; }
 }
 
+/* LISTA DE LINKS RELACIONADOS */
+
+.box-related-links {
+	width: 100%;
+	padding-bottom: 30px;
+}
+.box-related-links__list {
+	margin: 0 -10px;
+	padding: 0 0 0 9%;
+	display: flex;
+	justify-content: space-between;
+	list-style-type: none;
+
+	li {
+		max-width: 256px;
+		padding: 0 10px;
+
+		span {
+			font-size: .9rem;
+			display: block;
+		}
+	}
+
+	img {
+		width: 100%;
+		max-width: 256px;
+		max-height: 150px;
+		margin-bottom: 14px;
+		display: block;
+	}
+}
+.box-related-links__more { text-align: right; }
+
+@media screen and (max-width: 500px) {
+	.box-related-links__list {
+		flex-direction: column;
+		align-items: center;
+
+		li {
+			padding: 0;
+
+			& + li { padding-top: 40px; }
+		}
+	}
+}
+
 /***
 * BOTÃO DE ROLAR ATÉ O TOPO
 ***/
