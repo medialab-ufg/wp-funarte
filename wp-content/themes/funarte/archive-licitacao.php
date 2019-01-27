@@ -6,7 +6,7 @@ function get_anos() {
 		'posts_per_page' =>	-1
 	));
 
-	$anos = array();
+	$anos = array(  );
 	while (have_posts()) {
 		the_post();
 		$ano = trim(get_post_meta(get_the_ID(), 'licitacao-ano', true));
@@ -53,7 +53,7 @@ get_header();
 			<?php if($modalidade) { ?>
 				<h2 class="title-h1"><?php echo $modalidade->name; ?></h2>
 			<?php } else { ?>
-				<h2 class="title-h1">Funarte <span>Licitações</span></h2>
+				<h2 class="title-h1">Funarte <span>Licitações <?php echo $ano; ?></span></h2>
 			<?php } ?>
 			
 			<div class="box-forms">
@@ -61,7 +61,10 @@ get_header();
 					<fieldset>
 						<legend>Formulário de ano </legend>
 						<select onChange="filter();" class="select_ano">
-							<?php foreach ($anos as $ano_):?>
+							<option value="">
+                                Filtrar por ano
+                            </option>
+                            <?php foreach ($anos as $ano_):?>
 							<option value="<?php echo $ano_; ?>" <?php if($ano_ == $ano) echo 'selected'; ?>>
 								<?php echo $ano_; ?>
 							</option>
@@ -87,36 +90,41 @@ get_header();
 		</div>
 	</div>
 
-	<?php if (have_posts()): ?>
+	
 	<div class="container">
-		<ul class="list-bidding">
-			<?php while (have_posts()): the_post(); ?>
-				<li>
-					<div class="list-bidding__text">
-						<?php
-							// $categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
-							// if(!empty($categoria_modalidade)) 
-							// if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
-							// 	echo '<div class="link-area"><a class="color-funarte" href="?modalidade=' . $categoria_modalidade[0]->slug . '">' . $categoria_modalidade[0]->name . '</a></div>';
-							// }
-						?>
+		<?php if (have_posts()): ?>
+            <ul class="list-bidding">
+                <?php while (have_posts()): the_post(); ?>
+                    <li>
+                        <div class="list-bidding__text">
+                            <?php
+                                // $categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
+                                // if(!empty($categoria_modalidade)) 
+                                // if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
+                                // 	echo '<div class="link-area"><a class="color-funarte" href="?modalidade=' . $categoria_modalidade[0]->slug . '">' . $categoria_modalidade[0]->name . '</a></div>';
+                                // }
+                            ?>
 
-						<h3 class="title-h5">
-							<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
-								<?php the_title(); ?>
-							</a>
-						</h3>
-						<p><?php echo wp_trim_words(get_the_content(),30); ?></p>
-						<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
-					</div>
-				</li>
-			<?php endwhile; ?>
-		</ul>
+                            <h3 class="title-h5">
+                                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h3>
+                            <p><?php echo wp_trim_words(get_the_content(),30); ?></p>
+                            <a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
+                        </div>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
 
-		<?php echo get_pagination(); ?>
-
+            <?php echo get_pagination(); ?>
+        <?php else: ?>
+        
+            Nenhuma licitação encontrada
+            
+        <?php endif;?>
 	</div>
-	<?php endif;?>
+	
 </main>
 <?php
 get_footer();
