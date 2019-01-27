@@ -62,7 +62,7 @@ endif;
 						?>
 							<div id="content-tab-<?php echo $key; ?>" class="content-tab__content <?php echo $contador == 0 ? 'active' : ''; ?>">
 								<h3 class="title-h4 content-tab__title"><?php echo $content['title'] ?></h3>
-								<?php echo $content['content']; ?>
+								<?php echo apply_filters('the_content', $content['content']); ?>
 							</div>
 						<?php
 							$contador++;
