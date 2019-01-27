@@ -87,7 +87,7 @@
 
 
 				<?php
-				$tax = \Tainacan\Repositories\Taxonomies::get_instance()->fetch_one(['slug'=>'assunto']);
+				$tax = \Tainacan\Repositories\Taxonomies::get_instance()->fetch_one(['name'=>'Assunto']);
 				$slug_taxonomia = $tax->get_db_identifier();
 				$terms = get_the_terms(get_the_ID(), $slug_taxonomia);
 				if (!empty($terms)):
@@ -96,9 +96,9 @@
 					$loop = new WP_Query([
 						'posts_per_page' => 3,
 						'post_type' => 'post',
-						'taxonomy' => [
-							'tax_query' => [
-								['field' => 'slug', 'terms' => $terms_slugs]
+						'tax_query' => [
+							[
+								['taxonomy' => $slug_taxonomia, 'field' => 'slug', 'terms' => $terms_slugs]
 							]
 						]
 					]);
