@@ -47,6 +47,28 @@ define('DB_PASSWORD'  ,'[<password>]');
 define('DB_HOST'      ,'[<localhost>]');
 ```
 
+Ainda no arquivo **wp-config.php** verifique os valores para `WP_SITEURL`, `WP_HOME` e `WP_CONTENT_URL`, e coloque o endereço do seu ambiente. Por exemplo:
+
+```
+define('WP_SITEURL', 'http://localhost/funarte/wp');
+define('WP_HOME', 'http://localhost/funarte' );
+
+define('WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
+define('WP_CONTENT_URL', 'http://localhost/funarte/wp-content' );
+```
+
+Não é preciso alterar o valor de `WP_CONTENT_DIR`.
+
+Edite o arquivo `.htaccess` e verifique os valores para `RewriteBase` e para a última `RewriteRule`. Se seu ambiente roda na raíz do servidor, não é preciso fazer alteração. Se está em uma subpasta, ela deve ser adicionada. Por exemplo, se o ambiente roda em `localhost/funarte`, coloque:
+
+```
+...
+RewriteBase /funarte/
+...
+RewriteRule . /funarte/index.php [L]
+...
+```
+
 Acesse o diretório onde se localiza o repositório que foi feito o clone. E execute o comando para instalar os repositórios do projeto.
 
 ```
