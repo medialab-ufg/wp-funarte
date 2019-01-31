@@ -3531,6 +3531,7 @@ aside .list-bidding--type-b {
 		&.active,
 		&:hover,
 		&:focus {
+			margin-right: 4px;
 			color: $branco;
 			text-decoration: none;
 			background-color: $verde-1;
@@ -3701,7 +3702,7 @@ aside .list-bidding--type-b {
 
 .footer {
 	width: 100%;
-	padding: 44px 0 50px;
+	padding: 45px 0 50px;
 	background-color: $verde-1;
 }
 .logo-footer {
@@ -3709,11 +3710,21 @@ aside .list-bidding--type-b {
 	display: block;
 }
 .footer__columns {
-	margin-bottom: 40px;
-	padding-bottom: 53px;
+	margin-bottom: 36px;
+	padding-bottom: 28px;
 	display: flex;
 	justify-content: space-between;
+	flex-direction: row-reverse;
 	border-bottom: 1px solid $branco;
+}
+.columns__lists {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.columns__options {
+	width: 100%;
+	max-width: 370px;
 }
 .columns__column-a {
 	width: 100%;
@@ -3747,13 +3758,25 @@ aside .list-bidding--type-b {
 	}
 }
 
+@media screen and (max-width: 992px) {
+	.columns__options { flex: 1; }
+}
 @media screen and (max-width: 767px) {
-	.footer__columns { display: block; }
+	.footer__columns,
+	.columns__lists { display: block; }
 	.columns__column-a,
 	.columns__column-b { max-width: none; }
 	.columns__column-a + .columns__column-a,
 	.columns__column-a + .columns__column-b,
 	.columns__column-b + .columns__column-a { margin-top: 20px; }
+
+	.columns__options {
+		max-width: none;
+		flex: auto;
+	}
+
+	.links-list strong { margin-bottom: 10px; }
+	.columns__column-a.links-list strong { margin-bottom: 8px; }
 }
 
 /***
@@ -3954,6 +3977,10 @@ aside .list-bidding--type-b {
 	}
 }
 
+@media screen and (max-width: 767px) {
+	.form-newsletter .form-group { margin-bottom: 30px; }
+}
+
 /* MÍDIAS SOCIAIS */
 
 ul.social-media-list {
@@ -3963,6 +3990,13 @@ ul.social-media-list {
 	li { margin: 0 12px; }
 
 	i { font-size: 24px; }
+}
+
+@media screen and (max-width: 767px) {
+	ul.social-media-list {
+		margin-top: -4px;
+		margin-bottom: 21px;
+	}
 }
 
 /***
@@ -4159,9 +4193,7 @@ ul.social-media-list {
 
 /* LISTA DE LINKS RELACIONADOS */
 
-.box-related-links {
-	width: 100%;
-}
+.box-related-links { width: 100%; }
 .box-related-links__list {
 	margin: 0 -10px;
 	padding: 0 0 0 9%;
