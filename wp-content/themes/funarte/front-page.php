@@ -1,8 +1,10 @@
-<?php
+	<?php
 	get_header();
 
 	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'posts_per_page' => 20];
-	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'), date('Y'), $query_eventos);
+	//$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'), date('Y'), $query_eventos);
+	// para desenvolvimento e testes deixamos fixo no ano passado onde há mais eventos
+	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(10, 2018, $query_eventos);
 	if (empty($eventos)) {
 		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
 	}
