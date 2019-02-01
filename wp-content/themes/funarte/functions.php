@@ -228,6 +228,17 @@ add_filter('post_type_link', function($permalink, $post, $leavename) {
 	
 }, 15, 3);
 
+
+// Redireciona as páginas de listagens para ficar igual as URLS do site antigo:
+function funarte_support_old_urls() {
+  add_rewrite_rule('^agenda-cultural/?', 'index.php?post_type=evento', 'top');
+  add_rewrite_rule('^editais/?', 'index.php?post_type=edital', 'top');
+  add_rewrite_rule('^licitacoes/?', 'index.php?post_type=licitacao', 'top');
+  add_rewrite_rule('^espacos-culturais/?', 'index.php?post_type=espaco-cultural', 'top');
+}
+add_action('init', 'funarte_support_old_urls');
+
+
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/assets/lib/class-wp-bootstrap-navwalker.php';
 
