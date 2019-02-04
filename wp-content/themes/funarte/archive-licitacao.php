@@ -26,10 +26,16 @@ $anos = get_anos();
 $modalidades = get_terms(\funarte\taxModalidade::get_instance()->get_name());
 
 $params = array(
-	'post_type' => 'licitacao',
+	'post_type' => \funarte\Licitacao::get_instance()->get_post_type(),
 	'meta_key' => 'licitacao-ano',
 	'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
-	'meta_value' => $ano
+	'meta_value' => $ano,
+	'tax_query' => [
+		['taxonomy' => \funarte\taxModalidade::get_instance()->get_name(),
+		'field' => 'name',
+		'terms' => ['inexigibilidade', 'dispensa'],
+		'operator' => 'NOT IN']
+	]
 );
 
 if($modalidade) {
@@ -62,12 +68,12 @@ get_header();
 						<legend>Formulário de ano </legend>
 						<select onChange="filter();" class="select_ano">
 							<option value="">
-                                Filtrar por ano
-                            </option>
-                            <?php foreach ($anos as $ano_):?>
-							<option value="<?php echo $ano_; ?>" <?php if($ano_ == $ano) echo 'selected'; ?>>
-								<?php echo $ano_; ?>
+								Filtrar por ano
 							</option>
+							<?php foreach ($anos as $ano_):?>
+								<option value="<?php echo $ano_; ?>" <?php if($ano_ == $ano) echo 'selected'; ?>>
+									<?php echo $ano_; ?>
+								</option>
 							<?php endforeach; ?>
 						</select>
 					</fieldset>
@@ -79,9 +85,11 @@ get_header();
 						<select onChange="filter();" class="select_modalidade">
 							<option value="">Categoria</option>
 							<?php foreach ($modalidades as $modalidade_):?>
-								<option value="<?php echo $modalidade_->slug; ?>" <?php if($modalidade && $modalidade_->slug == $modalidade->slug ) echo 'selected'; ?>>
-									<?php echo $modalidade_->name; ?>
-								</option>
+								<?php if ($modalidade_->slug != "inexigibilidade" and $modalidade_->slug != "dispensa") : ?>
+									<option value="<?php echo $modalidade_->slug; ?>" <?php if($modalidade && $modalidade_->slug == $modalidade->slug ) echo 'selected'; ?>>
+										<?php echo $modalidade_->name; ?>
+									</option>
+								<?php endif; ?>
 							<?php endforeach; ?>
 						</select>
 					</fieldset>
@@ -90,41 +98,28 @@ get_header();
 		</div>
 	</div>
 
-	
 	<div class="container">
 		<?php if (have_posts()): ?>
-            <ul class="list-bidding">
-                <?php while (have_posts()): the_post(); ?>
-                    <li>
-                        <div class="list-bidding__text">
-                            <?php
-                                // $categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
-                                // if(!empty($categoria_modalidade)) 
-                                // if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
-                                // 	echo '<div class="link-area"><a class="color-funarte" href="?modalidade=' . $categoria_modalidade[0]->slug . '">' . $categoria_modalidade[0]->name . '</a></div>';
-                                // }
-                            ?>
-
-                            <h3 class="title-h5">
-                                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                            </h3>
-                            <p><?php echo wp_trim_words(get_the_content(),30); ?></p>
-                            <a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
-                        </div>
-                    </li>
-                <?php endwhile; ?>
-            </ul>
-
-            <?php echo get_pagination(); ?>
-        <?php else: ?>
-        
-            Nenhuma licitação encontrada
-            
-        <?php endif;?>
+			<ul class="list-bidding">
+				<?php while (have_posts()): the_post(); ?>
+					<li>
+						<div class="list-bidding__text">
+							<h3 class="title-h5">
+								<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
+									<?php the_title(); ?>
+								</a>
+							</h3>
+								<p><?php echo wp_trim_words(get_the_content(),30); ?></p>
+								<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
+						</div>
+					</li>
+				<?php endwhile; ?>
+			</ul>
+			<?php echo get_pagination(); ?>
+		<?php else: ?>
+			Nenhuma licitação encontrada
+		<?php endif;?>
 	</div>
-	
 </main>
 <?php
 get_footer();
