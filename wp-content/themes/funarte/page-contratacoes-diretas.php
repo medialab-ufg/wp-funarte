@@ -31,7 +31,6 @@ $params = array(
 	'post_title' => "%dispensa%",
 	'meta_key' => 'licitacao-ano',
 	'meta_value' => $ano,
-	'posts_per_page' => -1,
 	'tax_query' => [
 		['taxonomy' => \funarte\taxModalidade::get_instance()->get_name(),
 		'field' => 'name',
