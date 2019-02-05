@@ -93,7 +93,7 @@
 								<li><a class="color-musica <?php echo ($area!=null && $area->slug == 'musica') ? 'active' : ''; ?>" href="/category/musica/">Música</a></li>
 								<li><a class="color-artes-integradas <?php echo ($area!=null && $area->slug == 'artes-integradas') ? 'active' : ''; ?>" href="/category/artes-integradas/">Artes integradas</a></li>
 								<li><a class="color-artes-visuais <?php echo ($area!=null && $area->slug == 'artes-visuais') ? 'active' : ''; ?>" href="/category/artes-visuais/">Artes visuais</a></li>
-								<li><a class="color-literatura <?php echo ($area!=null && $area->slug == 'literatura') ? 'active' : ''; ?>" href="/category/literatura/">Literatura</a></li>
+								<!-- <li><a class="color-literatura <?php echo ($area!=null && $area->slug == 'literatura') ? 'active' : ''; ?>" href="/category/literatura/">Literatura</a></li> -->
 							</ul>
 						</div>
 					</nav>

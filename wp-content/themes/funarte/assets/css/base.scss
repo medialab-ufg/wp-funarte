@@ -3702,15 +3702,17 @@ aside .list-bidding--type-b {
 
 .footer {
 	width: 100%;
-	padding: 45px 0 50px;
+	padding: 45px 0 21px;
 	background-color: $verde-1;
 }
 .logo-footer {
-	margin: -5px 0 -8px -3px;
+	max-width: 554px;
+	margin: 0 auto;
 	display: block;
 }
+.box-logo-footer { display: none; }
 .footer__columns {
-	margin-bottom: 36px;
+	margin-bottom: 10px;
 	padding-bottom: 28px;
 	display: flex;
 	justify-content: space-between;
@@ -3777,6 +3779,26 @@ aside .list-bidding--type-b {
 
 	.links-list strong { margin-bottom: 10px; }
 	.columns__column-a.links-list strong { margin-bottom: 8px; }
+}
+@media screen and (max-width: 500px) {
+	.footer { padding: 45px 0 38px; }
+	.footer__columns { margin-bottom: 31px; }
+	.logo-footer { display: none; }
+	.box-logo-footer {
+		display: block;
+
+		.logo-footer-1 {
+			max-width: 156px;
+			margin: 0 auto 23px;
+			display: block;
+		}
+
+		.logo-footer-2 {
+			max-width: 130px;
+			margin: 0 auto;
+			display: block;
+		}
+	}
 }
 
 /***
