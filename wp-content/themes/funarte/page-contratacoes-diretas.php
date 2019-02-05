@@ -104,9 +104,16 @@ get_header();
 	<div class="container">
 		<?php if (have_posts()): ?>
 			<ul class="list-bidding">
-				<?php while (have_posts()): the_post(); ?>
+				<?php while (have_posts()): the_post();
+					$terms_modalidade = get_the_terms( get_the_ID(), \funarte\taxModalidade::get_instance()->get_name());
+					if (isset($terms_modalidade))
+						$name_modalidade = $terms_modalidade[0]->name;
+				?>
 					<li>
 						<div class="list-bidding__text">
+							<div class="link-area">
+								<strong class="color-funarte"><?php echo $name_modalidade; ?></strong>
+							</div>
 							<h3 class="title-h5">
 								<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 									<?php the_title(); ?>
