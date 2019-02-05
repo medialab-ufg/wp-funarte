@@ -3738,7 +3738,7 @@ aside .list-bidding--type-b {
 }
 .links-list {
 	strong {
-		margin-bottom: 21px;
+		margin-bottom: 0;
 		font-weight: 700;
 		font-size: 1rem;
 		color: $branco;
@@ -3758,31 +3758,94 @@ aside .list-bidding--type-b {
 			display: inline;
 		}
 	}
+
+	strong + ul { padding-top: 21px; }
+}
+
+.box-form-newsletter {
+	margin-bottom: 40px;
+
+	strong { margin-bottom: 21px;}
 }
 
 @media screen and (max-width: 992px) {
-	.columns__options { flex: 1; }
-}
-@media screen and (max-width: 767px) {
-	.footer__columns,
-	.columns__lists { display: block; }
-	.columns__column-a,
-	.columns__column-b { max-width: none; }
-	.columns__column-a + .columns__column-a,
-	.columns__column-a + .columns__column-b,
-	.columns__column-b + .columns__column-a { margin-top: 20px; }
+	.footer__columns { display: block; }
 
 	.columns__options {
 		max-width: none;
+		margin-bottom: 14px;
 		flex: auto;
 	}
+	.columns__column-a,
+	.columns__column-b { max-width: none; }
 
-	.links-list strong { margin-bottom: 10px; }
-	.columns__column-a.links-list strong { margin-bottom: 8px; }
+	.columns__column-b.links-list { display: flex; }
+	.box-form-newsletter {
+		margin-bottom: 0;
+		flex: 2;
+
+		strong { margin-bottom: 10px; }
+	}
+	.box-social-media-list {
+		flex: 1;
+
+		strong + ul { padding: 8px 0 0; }
+	}
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 767px) {
+	.links-list strong + ul { padding-top: 10px; }
+	.columns__column-a.links-list strong + ul { padding-top: 8px; }
+}
+@media screen and (max-width: 600px) {
 	.footer { padding: 45px 0 38px; }
-	.footer__columns { margin-bottom: 31px; }
+	.footer__columns {
+		margin-bottom: 31px;
+		padding-bottom: 27px;
+	}
+	.columns__lists { display: block; }
+
+	.columns__column-b.links-list { display: block; }
+
+	.columns__column-a + .columns__column-a,
+	.columns__column-a + .columns__column-b,
+	.columns__column-b + .columns__column-a { margin-top: 9px; }
+
+	.links-list.columns__column-a {
+		strong {
+			padding-left: 28px;
+			cursor: pointer;
+			position: relative;
+
+			&:after {
+				@include icon-css;
+				content: "\f415";
+				font-size: 26px;
+				color: #fff;
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translate(0,-50%);
+				transition: transform 200ms ease-in-out;
+			}
+
+			&.active:after { transform: translate(-2px,-50%) rotate(45deg); }
+		}
+
+		ul {
+			max-height: 0;
+			padding-top: 0 !important;
+			overflow: hidden;
+			transition: max-height 200ms ease-in-out, padding 200ms ease-in-out;
+
+			&.active {
+				max-height: 1000px;
+				padding-bottom: 14px;
+			}
+		}
+
+		strong + ul.active { padding-top: 8px !important; }
+	}
+
 	.logo-footer { display: none; }
 	.box-logo-footer {
 		display: block;
@@ -3956,7 +4019,9 @@ aside .list-bidding--type-b {
 
 .form-newsletter {
 	width: 100%;
-	position: relative;
+	padding-right: 50px;
+
+	fieldset { position: relative; }
 
 	input[type=text] {
 		width: 100%;

@@ -9,6 +9,7 @@ $(document).ready(function() {
 	base.scroll.rolarAoTopo();
 	base.scroll.observarRolagem();
 	base.scroll.manipularElemento();
+	base.collapse.manipularColuna();
 
 	// Home
 	base.carrossel.iniciarDestaques();
@@ -395,6 +396,12 @@ var base = {
 					.toggleClass('active')
 					.siblings('.collapse__text')
 					.slideToggle(200);
+			});
+		},
+
+		manipularColuna: function() {
+			$('.links-list--collapse').find('strong').on('click',function() {
+				$(this).toggleClass('active').siblings('ul').toggleClass('active');
 			});
 		}
 	},

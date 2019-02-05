@@ -4,30 +4,34 @@
 			<div class="footer__columns">
 				<div class="columns__options">
 					<div class="columns__column-b links-list">
-						<strong>Assine nossa newsletter:</strong>
-						<form class="form-newsletter" action="#" method="post">
-							<fieldset>
-								<legend>Formulário de cadastro de email</legend>
+						<div class="box-form-newsletter">
+							<strong>Assine nossa newsletter:</strong>
+							<form class="form-newsletter" action="#" method="post">
+								<fieldset>
+									<legend>Formulário de cadastro de email</legend>
 
-								<div class="form-group">
-									<label class="sr-only" for="newsletter-email">Digite seu email</label>
-									<input type="text" id="newsletter-email">
-									<button type="submit"><i class="mdi mdi-arrow-right"></i></button>
-								</div>
-							</fieldset>
-						</form>
+									<div class="form-group">
+										<label class="sr-only" for="newsletter-email">Digite seu email</label>
+										<input type="text" id="newsletter-email">
+										<button type="submit"><i class="mdi mdi-arrow-right"></i></button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
 
-						<strong>Redes sociais:</strong>
-						<ul class="social-media-list">
-							<li><a href="#"><i class="mdi mdi-facebook"></i></a></li>
-							<li><a href="#"><i class="mdi mdi-twitter"></i></a></li>
-							<li><a href="#"><i class="mdi mdi-instagram"></i></a></li>
-						</ul>
+						<div class="box-social-media-list">
+							<strong>Redes sociais:</strong>
+							<ul class="social-media-list">
+								<li><a href="#"><i class="mdi mdi-facebook"></i></a></li>
+								<li><a href="#"><i class="mdi mdi-twitter"></i></a></li>
+								<li><a href="#"><i class="mdi mdi-instagram"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 
 				<div class="columns__lists">
-					<div class="columns__column-a links-list">
+					<div class="columns__column-a links-list links-list--collapse">
 						<strong>Áreas artísticas:</strong>
 						<ul>
 							<li><a href="/category/teatro/">Teatro</a></li>
@@ -40,7 +44,7 @@
 						</ul>
 					</div>
 					
-					<div class="columns__column-a links-list">
+					<div class="columns__column-a links-list links-list--collapse">
 						<strong>Funarte:</strong>
 						<?php
 							wp_nav_menu( array(
@@ -54,7 +58,7 @@
 						?>
 					</div>
 
-					<div class="columns__column-a links-list">
+					<div class="columns__column-a links-list links-list--collapse">
 						<strong>Acervos:</strong>
 						<ul>
 							<li><a href="#">Arquivos permanentes</a></li>

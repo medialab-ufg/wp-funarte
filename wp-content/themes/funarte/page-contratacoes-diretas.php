@@ -3,10 +3,11 @@
 function get_anos() {
 	$posts = query_posts(array(
 		'post_type' => \funarte\Licitacao::get_instance()->get_post_type(),
+		'post_title' => "%dispensa%",
 		'posts_per_page' =>	-1
 	));
 
-	$anos = array(  );
+	$anos = array( );
 	while (have_posts()) {
 		the_post();
 		$ano = trim(get_post_meta(get_the_ID(), 'licitacao-ano', true));
@@ -27,14 +28,14 @@ $modalidades = get_terms(\funarte\taxModalidade::get_instance()->get_name());
 
 $params = array(
 	'post_type' => \funarte\Licitacao::get_instance()->get_post_type(),
+	'post_title' => "%dispensa%",
 	'meta_key' => 'licitacao-ano',
-	'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
 	'meta_value' => $ano,
 	'tax_query' => [
 		['taxonomy' => \funarte\taxModalidade::get_instance()->get_name(),
 		'field' => 'name',
 		'terms' => ['inexigibilidade', 'dispensa'],
-		'operator' => 'NOT IN']
+		'operator' => 'IN']
 	]
 );
 
@@ -47,10 +48,12 @@ get_header();
 
 <main role="main" class="mb-100">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
+	
 	<div class="container">
+	
 		<?php
 			$links = [
-				['link_name'=>'Licitações']];
+				['link_name'=>'Contratações Diretas']];
 			funarte_load_part('breadcrumb', ['links'=>$links]); 
 		?>
 
@@ -59,7 +62,7 @@ get_header();
 			<?php if($modalidade) { ?>
 				<h2 class="title-h1"><?php echo $modalidade->name; ?></h2>
 			<?php } else { ?>
-				<h2 class="title-h1">Funarte <span>Licitações <?php echo $ano; ?></span></h2>
+				<h2 class="title-h1">Funarte <span>Contratações Diretas <?php echo $ano; ?></span></h2>
 			<?php } ?>
 			
 			<div class="box-forms">
@@ -68,12 +71,12 @@ get_header();
 						<legend>Formulário de ano </legend>
 						<select onChange="filter();" class="select_ano">
 							<option value="">
-								Filtrar por ano
+                                Filtrar por ano
+                            </option>
+                            <?php foreach ($anos as $ano_):?>
+							<option value="<?php echo $ano_; ?>" <?php if($ano_ == $ano) echo 'selected'; ?>>
+								<?php echo $ano_; ?>
 							</option>
-							<?php foreach ($anos as $ano_):?>
-								<option value="<?php echo $ano_; ?>" <?php if($ano_ == $ano) echo 'selected'; ?>>
-									<?php echo $ano_; ?>
-								</option>
 							<?php endforeach; ?>
 						</select>
 					</fieldset>
@@ -85,7 +88,7 @@ get_header();
 						<select onChange="filter();" class="select_modalidade">
 							<option value="">Categoria</option>
 							<?php foreach ($modalidades as $modalidade_):?>
-								<?php if ($modalidade_->slug != "inexigibilidade" and $modalidade_->slug != "dispensa") : ?>
+								<?php if ($modalidade_->slug == "inexigibilidade" or $modalidade_->slug == "dispensa") : ?>
 									<option value="<?php echo $modalidade_->slug; ?>" <?php if($modalidade && $modalidade_->slug == $modalidade->slug ) echo 'selected'; ?>>
 										<?php echo $modalidade_->name; ?>
 									</option>
@@ -101,7 +104,7 @@ get_header();
 	<div class="container">
 		<?php if (have_posts()): ?>
 			<ul class="list-bidding">
-				<?php while (have_posts()): the_post(); 
+				<?php while (have_posts()): the_post();
 					$terms_modalidade = get_the_terms( get_the_ID(), \funarte\taxModalidade::get_instance()->get_name());
 					if (isset($terms_modalidade))
 						$name_modalidade = $terms_modalidade[0]->name;
@@ -116,8 +119,8 @@ get_header();
 									<?php the_title(); ?>
 								</a>
 							</h3>
-								<p><?php echo wp_trim_words(get_the_content(),30); ?></p>
-								<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
+							<p><?php echo wp_trim_words(get_the_content(),30); ?></p>
+							<a class="link-more" href="<?php the_permalink(); ?>">Leia mais</a>
 						</div>
 					</li>
 				<?php endwhile; ?>

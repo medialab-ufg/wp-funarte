@@ -87,13 +87,13 @@
 							?>
 
 							<ul class="areas-list">
-								<li><a class="color-circo <?php echo ($area!=null && $area->slug == 'circo') ? 'active' : ''; ?>" 	href="/category/circo/">Circo</a></li>
-								<li><a class="color-teatro <?php echo ($area!=null && $area->slug == 'teatro') ? 'active' : ''; ?>" href="/category/teatro/">Teatro</a></li>
-								<li><a class="color-danca <?php echo ($area!=null && $area->slug == 'danca') ? 'active' : ''; ?>" 	href="/category/danca/">Dança</a></li>
-								<li><a class="color-musica <?php echo ($area!=null && $area->slug == 'musica') ? 'active' : ''; ?>" href="/category/musica/">Música</a></li>
-								<li><a class="color-artes-integradas <?php echo ($area!=null && $area->slug == 'artes-integradas') ? 'active' : ''; ?>" href="/category/artes-integradas/">Artes integradas</a></li>
-								<li><a class="color-artes-visuais <?php echo ($area!=null && $area->slug == 'artes-visuais') ? 'active' : ''; ?>" href="/category/artes-visuais/">Artes visuais</a></li>
-								<!-- <li><a class="color-literatura <?php echo ($area!=null && $area->slug == 'literatura') ? 'active' : ''; ?>" href="/category/literatura/">Literatura</a></li> -->
+								<li><a class="color-circo <?php echo ($area!=null && $area->slug == 'circo') ? 'active' : ''; ?>" 	href="<?php echo get_term_link('circo', 'category'); ?>">Circo</a></li>
+								<li><a class="color-teatro <?php echo ($area!=null && $area->slug == 'teatro') ? 'active' : ''; ?>" href="<?php echo get_term_link('teatro', 'category'); ?>">Teatro</a></li>
+								<li><a class="color-danca <?php echo ($area!=null && $area->slug == 'danca') ? 'active' : ''; ?>" 	href="<?php echo get_term_link('danca', 'category'); ?>">Dança</a></li>
+								<li><a class="color-musica <?php echo ($area!=null && $area->slug == 'musica') ? 'active' : ''; ?>" href="<?php echo get_term_link('musica', 'category'); ?>">Música</a></li>
+								<li><a class="color-artes-integradas <?php echo ($area!=null && $area->slug == 'artes-integradas') ? 'active' : ''; ?>" href="<?php echo get_term_link('artes-integradas', 'category'); ?>">Artes integradas</a></li>
+								<li><a class="color-artes-visuais <?php echo ($area!=null && $area->slug == 'artes-visuais') ? 'active' : ''; ?>" href="<?php echo get_term_link('artes-visuais', 'category'); ?>">Artes visuais</a></li>
+								<!-- <li><a class="color-literatura <?php echo ($area!=null && $area->slug == 'literatura') ? 'active' : ''; ?>" href="<?php echo get_term_link('literatura', 'category'); ?>">Literatura</a></li> -->
 							</ul>
 						</div>
 					</nav>
