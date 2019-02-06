@@ -855,23 +855,27 @@ var base = {
 				slidesToScroll: 1,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
-				adaptiveHeight: true,
 				variableWidth: true,
 				dots: false,
 				responsive: [
 					{
-						breakpoint: 990,
+						breakpoint: 1200,
 						settings: {
-							variableWidth: false
+							// slidesToShow: 2,
 						}
 					},
-					{
-						breakpoint: 600,
-						settings: {
-							variableWidth: false,
-							slidesToShow: 1
-						}
-					}
+					// {
+					// 	breakpoint: 990,
+					// 	settings: {
+							
+					// 	}
+					// },
+					// {
+					// 	breakpoint: 600,
+					// 	settings: {
+					// 		slidesToShow: 1
+					// 	}
+					// }
 				]
 			});
 		}
