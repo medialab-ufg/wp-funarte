@@ -72,14 +72,14 @@
 			</div>
 
 			<div class="footer__logos">
-				<img class="logo-footer" src="<?php echo get_template_directory_uri() . '/assets/img/lgo/gov_e_funarte.svg'; ?>" alt="Fundação Nacional de Artes - Funarte - Ministério da Cidadania - Pátria Amada Brasil - Governo Federal">
+				<a class="logo-footer" href="http://www.funarte.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/gov_e_funarte.svg'; ?>" alt="Fundação Nacional de Artes - Funarte - Ministério da Cidadania - Pátria Amada Brasil - Governo Federal"></a>
 
 				<div class="box-logo-footer">
-					<img class="logo-footer-1" src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte2.svg'; ?>" alt="Fundação Nacional de Artes - Funarte">
-					<img class="logo-footer-2" src="<?php echo get_template_directory_uri() . '/assets/img/lgo/gov_vertical.svg'; ?>" alt="Ministério da Cidadania - Pátria Amada Brasil - Governo Federal">
+					<a class="logo-footer-1" href="http://www.funarte.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte2.svg'; ?>" alt="Fundação Nacional de Artes - Funarte"></a>
+					<a class="logo-footer-2" href="http://www.brasil.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/gov_vertical.svg'; ?>" alt="Ministério da Cidadania - Pátria Amada Brasil - Governo Federal"></a>
 				</div>
 
-				<img class="logo-footer-3" src="<?php echo get_template_directory_uri() . '/assets/img/lgo/informacao.svg'; ?>" alt="Acesso à informação">
+				<a class="logo-footer-3" href="http://www.funarte.gov.br/acessoainformacao/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/informacao.svg'; ?>" alt="Acesso à informação"></a>
 			</div>
 		</div>
 	</footer>
