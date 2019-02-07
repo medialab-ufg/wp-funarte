@@ -250,12 +250,12 @@ var base = {
 						});
 
 						if (contador <= 0) {
-							estrutura += '<li><h4 class="box-calendario__titulo">Não foi encontrado nenhum evento no dia selecionado.</h4></li>';
+							estrutura += '<li><span class="box-calendario__message">Não foi encontrado nenhum evento no dia selecionado.</span></li>';
 						}
 
 						estrutura += '</ul>';
 
-						$box.append(estrutura);
+						$box.html(estrutura);
 
 						base.carrossel.iniciarCalendarioCompacto();
 						$datepicker.datepicker('refresh');

@@ -4861,8 +4861,11 @@ ul.social-media-list {
 	margin: 190px 0 0 95px;
 	font-size: 1rem;
 	color: $cinza-6;
+	line-height: normal;
 	display: block;
 }
+
+.box-calendario .calendario-carousel li .box-calendario__message { margin: 0 0 0 95px; }
 
 @media screen and (max-width: 992px) {
 	.box-calendario__titulo { max-width: 280px; }
