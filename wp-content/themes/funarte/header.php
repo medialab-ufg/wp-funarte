@@ -59,7 +59,7 @@
 		<header role="banner" class="header">
 			<div class="container">
 				<div class="header__row">
-					<h1><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte.png'; ?>" alt="Funarte - Fundação Nacional de Artes"></a></h1>
+					<h1><a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte.svg'; ?>" alt="Funarte - Fundação Nacional de Artes"></a></h1>
 
 					<a href="#funarte-navigation-menu" id="funarte-navigation-menu" name="funarte-navigation-menu" class="sr-only">Início do menu de navegação</a>
 					<nav class="navbar navbar-expand-lg navbar-light navigation-menu" role="navigation">

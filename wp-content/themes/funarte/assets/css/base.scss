@@ -3,39 +3,35 @@
 ***/
 
 /* Cor da area Funarte */
-$verde-1: #2f9187;
-$verde-2: #2e6e6a;
+$turquesa-1: #2f9187;
+$turquesa-2: #2e6e6a;
 
 /* Cor da area Multicategoria */
-$verde-3: #2D6D6A;
+$turquesa-3: #2D6D6A;
 
 /* Cor da area Circo */
 $vermelho-1: #a62838;
 $vermelho-2: #b73753;
 
-/* Cor da area Musica */
+/* Cor da area Teatro */
 $laranja-1: #d65529;
-$laranja-2: #ea5a3d;
+$laranja-2: #E06853;
 
 /* Cor da area Danca */
 $amarelo-1: #c18423;
 $amarelo-2: #ce8f34;
 
-/* Cor da area Literatura */
-$limao-1: #64a62e;
-$limao-2: #74b535;
+/* Cor da area Musica */
+$verde-1: #64a62e;
+$verde-2: #74b535;
 
-/* Cor da area Artes Visuais */
+/* Cor da area Artes Integradas */
 $azul-1: #3a417b;
 $azul-2: #485187;
 
-/* Cor da area Artes Integradas */
+/* Cor da area Artes Visuais */
 $roxo-1: #5e2c73;
 $roxo-2: #693684;
-
-/* Cor da area Teatro */
-$rosa-1: #ad3463;
-$rosa-2: #b23f6e;
 
 $cinza-1: #efefef;
 $cinza-2: #e2e2e2;
@@ -101,7 +97,7 @@ noscript {
 	font-size: 1.9rem;
 	color: $cinza-6;
 	line-height: 1.8rem;
-	border-left: 6px solid $verde-1;
+	border-left: 6px solid $turquesa-1;
 }
 .title-2 {
 	margin: 0;
@@ -139,7 +135,7 @@ noscript {
 	font-weight: 400;
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.7rem;
-	color: $verde-1;
+	color: $turquesa-1;
 
 	a { color: inherit; }
 }
@@ -174,7 +170,7 @@ noscript {
 	font-weight: 400;
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.9rem;
-	color: $verde-1;
+	color: $turquesa-1;
 	position: relative;
 
 	&:after {
@@ -185,7 +181,7 @@ noscript {
 		position: absolute;
 		top: 4px;
 		left: 0;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 	}
 
 	a { color: inherit; }
@@ -223,7 +219,7 @@ noscript {
 		position: absolute;
 		top: 4px;
 		left: 0;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 	}
 
 	a { color: inherit; }
@@ -251,7 +247,7 @@ noscript {
 	font-weight: 400;
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.5rem;
-	color: $verde-1;
+	color: $turquesa-1;
 
 	a { color: inherit; }
 }
@@ -280,10 +276,10 @@ noscript {
 	font-weight: 400;
 	font-family: 'Sansita', sans-serif;
 	font-size: 1.5rem;
-	color: $verde-1;
+	color: $turquesa-1;
 	position: relative;
 
-	&:hover { color: $verde-1; }
+	&:hover { color: $turquesa-1; }
 
 	a { color: inherit; }
 
@@ -332,7 +328,7 @@ noscript {
 		position: absolute;
 		top: -50px;
 		right: -54px;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 		z-index: -4;
 	}
 
@@ -416,12 +412,12 @@ noscript {
 	font-size: 1.7rem;
 	color: $branco;
 	display: inline-block;
-	background-color: $verde-1;
+	background-color: $turquesa-1;
 
 	&:hover,
 	&:focus {
 		color: $branco;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 	}
 }
 
@@ -506,13 +502,13 @@ noscript {
 	.link-area {
 		a,
 		strong {
-			color: $verde-1;
+			color: $turquesa-1;
 
-			&:after { background-color: $verde-1; }
+			&:after { background-color: $turquesa-1; }
 		}
-		span { background-color: $verde-1; }
+		span { background-color: $turquesa-1; }
 	}
-	.link-more { color: $verde-1; }
+	.link-more { color: $turquesa-1; }
 }
 .color-circo {
 	.link-area {
@@ -530,13 +526,13 @@ noscript {
 	.link-area {
 		a,
 		strong {
-			color: $laranja-1;
+			color: $verde-1;
 
-			&:after { background-color: $laranja-1; }
+			&:after { background-color: $verde-1; }
 		}
-		span { background-color: $laranja-1; }
+		span { background-color: $verde-1; }
 	}
-	.link-more { color: $laranja-1; }
+	.link-more { color: $verde-1; }
 }
 .color-danca {
 	.link-area {
@@ -554,27 +550,15 @@ noscript {
 	.link-area {
 		a,
 		strong {
-			color: $limao-1;
+			color: $verde-1;
 
-			&:after { background-color: $limao-1; }
+			&:after { background-color: $verde-1; }
 		}
-		span { background-color: $limao-1; }
+		span { background-color: $verde-1; }
 	}
-	.link-more { color: $limao-1; }
+	.link-more { color: $verde-1; }
 }
 .color-artes-visuais {
-	.link-area {
-		a,
-		strong {
-			color: $azul-1;
-
-			&:after { background-color: $azul-1; }
-		}
-		span { background-color: $azul-1; }
-	}
-	.link-more { color: $azul-1; }
-}
-.color-artes-integradas {
 	.link-area {
 		a,
 		strong {
@@ -586,29 +570,41 @@ noscript {
 	}
 	.link-more { color: $roxo-1; }
 }
+.color-artes-integradas {
+	.link-area {
+		a,
+		strong {
+			color: $azul-1;
+
+			&:after { background-color: $azul-1; }
+		}
+		span { background-color: $azul-1; }
+	}
+	.link-more { color: $azul-1; }
+}
 .color-teatro {
 	.link-area {
 		a,
 		strong {
-			color: $rosa-1;
+			color: $laranja-1;
 
-			&:after { background-color: $rosa-1; }
+			&:after { background-color: $laranja-1; }
 		}
-		span { background-color: $rosa-1; }
+		span { background-color: $laranja-1; }
 	}
-	.link-more { color: $rosa-1; }
+	.link-more { color: $laranja-1; }
 }
 .color-multicategoria {
 	.link-area {
 		a,
 		strong {
-			color: $verde-3;
+			color: $turquesa-3;
 
-			&:after { background-color: $verde-3; }
+			&:after { background-color: $turquesa-3; }
 		}
-		span { background-color: $verde-3; }
+		span { background-color: $turquesa-3; }
 	}
-	.link-more { color: $verde-3; }
+	.link-more { color: $turquesa-3; }
 }
 
 /* CORES PARA VÁRIOS ITENS NUMA MESMA LINHA */
@@ -617,11 +613,11 @@ noscript {
 	a,
 	strong {
 		&.color-funarte {
-			color: $verde-1;
+			color: $turquesa-1;
 
-			&:after { background-color: $verde-1; }
+			&:after { background-color: $turquesa-1; }
 
-			& + span { background-color: $verde-1; }
+			& + span { background-color: $turquesa-1; }
 		}
 	}
 	a,
@@ -637,11 +633,11 @@ noscript {
 	a,
 	strong {
 		&.color-musica {
-			color: $laranja-1;
+			color: $verde-1;
 
-			&:after { background-color: $laranja-1; }
+			&:after { background-color: $verde-1; }
 
-			& + span { background-color: $laranja-1; }
+			& + span { background-color: $verde-1; }
 		}
 	}
 	a,
@@ -657,26 +653,16 @@ noscript {
 	a,
 	strong {
 		&.color-literatura {
-			color: $limao-1;
+			color: $verde-1;
 
-			&:after { background-color: $limao-1; }
+			&:after { background-color: $verde-1; }
 
-			& + span { background-color: $limao-1; }
+			& + span { background-color: $verde-1; }
 		}
 	}
 	a,
 	strong {
 		&.color-artes-visuais {
-			color: $azul-1;
-
-			&:after { background-color: $azul-1; }
-
-			& + span { background-color: $azul-1; }
-		}
-	}
-	a,
-	strong {
-		&.color-artes-integradas {
 			color: $roxo-1;
 
 			&:after { background-color: $roxo-1; }
@@ -686,22 +672,32 @@ noscript {
 	}
 	a,
 	strong {
+		&.color-artes-integradas {
+			color: $azul-1;
+
+			&:after { background-color: $azul-1; }
+
+			& + span { background-color: $azul-1; }
+		}
+	}
+	a,
+	strong {
 		&.color-teatro {
-			color: $rosa-1;
+			color: $laranja-1;
 
-			&:after { background-color: $rosa-1; }
+			&:after { background-color: $laranja-1; }
 
-			& + span { background-color: $rosa-1; }
+			& + span { background-color: $laranja-1; }
 		}
 	}
 	a,
 	strong {
 		&.color-multicategoria {
-			color: $verde-3;
+			color: $turquesa-3;
 
-			&:after { background-color: $verde-3; }
+			&:after { background-color: $turquesa-3; }
 
-			& + span { background-color: $verde-3; }
+			& + span { background-color: $turquesa-3; }
 		}
 	}
 }
@@ -720,7 +716,7 @@ noscript {
 		position: absolute;
 		top: 0;
 		left: 0;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 		z-index: -1;
 	}
 
@@ -754,7 +750,7 @@ noscript {
 			color: $branco;
 
 			&:after {
-				color: $verde-1;
+				color: $turquesa-1;
 				background-color: $branco;
 			}
 		}
@@ -886,7 +882,7 @@ noscript {
 			top: 50%;
 			overflow: hidden;
 			border: none;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 			transform: translate(0,-50%);
 			z-index: 9;
 
@@ -907,7 +903,7 @@ noscript {
 	.list-tabs {
 		width: 100%;
 		position: relative;
-		border-bottom: 4px solid $verde-1;
+		border-bottom: 4px solid $turquesa-1;
 
 		ul {
 			margin: 0;
@@ -926,7 +922,7 @@ noscript {
 				padding: 9px 40px 5px;
 				font-family: 'Sansita', sans-serif;
 				font-size: 1.5rem;
-				color: $verde-1;
+				color: $turquesa-1;
 				display: block;
 				background-color: $branco;
 				transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
@@ -937,7 +933,7 @@ noscript {
 			&.active a {
 				color: $branco;
 				text-decoration: none;
-				background-color: $verde-1;
+				background-color: $turquesa-1;
 			}
 		}
 
@@ -956,7 +952,7 @@ noscript {
 			top: -4px;
 			left: 50%;
 			transform: translate(-50%,0);
-			border-top: 4px solid $verde-1;
+			border-top: 4px solid $turquesa-1;
 			background-color: $cinza-2;
 			z-index: -1;
 		}
@@ -1060,7 +1056,7 @@ noscript {
 			position: absolute;
 			top: 2px;
 			left: 0;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 		}
 
 		&.active:after { content: "-"; }
@@ -1092,7 +1088,7 @@ noscript {
 			position: absolute;
 			top: 27px;
 			left: -30px;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 			transition: width 1000ms ease-in-out;
 		}
 
@@ -1240,7 +1236,7 @@ body.js .collapse__text { display: none; }
 	position: relative;
 	overflow: hidden;
 	border: none;
-	background-color: $verde-1;
+	background-color: $turquesa-1;
 
 	.mdi-plus { opacity: 0; }
 
@@ -1283,7 +1279,7 @@ body.js .collapse__text { display: none; }
 		position: absolute;
 		right: 53%;
 		bottom: -57px;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 		z-index: -1;
 	}
 }
@@ -1363,7 +1359,7 @@ body.js .collapse__text { display: none; }
 		left: 0;
 		overflow: hidden;
 		border: none;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 
 		&.control__next { top: 0; }
 		&.control__prev { bottom: 0; }
@@ -1439,7 +1435,7 @@ body.js .collapse__text { display: none; }
 		top: 0;
 		overflow: hidden;
 		border: none;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 
 		&.control__next { right: 0; }
 		&.control__prev { left: 0; }
@@ -1550,7 +1546,7 @@ body.js .collapse__text { display: none; }
 		padding-top: 24px;
 		padding-right: 55px;
 		padding-left: 374px;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 	}
 }
 .carousel-zoom .slick-active + .slick-active + .slick-active {
@@ -1597,7 +1593,7 @@ body.js .collapse__text { display: none; }
 			padding-top: 24px;
 			padding-right: 55px;
 			padding-left: 374px;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 		}
 	}
 	.carousel-zoom .slick-active + .slick-active {
@@ -1710,7 +1706,7 @@ body.js .collapse__text { display: none; }
 		left: 0;
 		overflow: hidden;
 		border: none;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 
 		i {
 			width: 30px;
@@ -1753,7 +1749,7 @@ body.js .collapse__text { display: none; }
 			height: 30px;
 			padding: 0;
 			font-size: 35px;
-			color: $verde-1;
+			color: $turquesa-1;
 			cursor: pointer;
 			position: absolute;
 			left: 0;
@@ -1826,7 +1822,7 @@ body.js .collapse__text { display: none; }
 		.carousel-notices__wrapper {
 			margin-bottom: 30px;
 			padding: 20px 20px 90px;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 		}
 		.carousel-notices__control {
 			left: 20px;
@@ -1872,14 +1868,14 @@ body.js .collapse__text { display: none; }
 		border-left: 5px solid $cinza-6;
 	}
 
-	.color-funarte p { border-color: $verde-1; }
+	.color-funarte p { border-color: $turquesa-1; }
 	.color-circo p { border-color: $vermelho-1; }
-	.color-musica p { border-color: $laranja-1; }
+	.color-musica p { border-color: $verde-1; }
 	.color-danca p { border-color: $amarelo-1; }
-	.color-literatura p { border-color: $limao-1; }
-	.color-artes-visuais p { border-color: $azul-1; }
-	.color-artes-integradas p { border-color: $roxo-1; }
-	.color-teatro p { border-color: $rosa-1; }
+	.color-literatura p { border-color: $verde-1; }
+	.color-artes-visuais p { border-color: $roxo-1; }
+	.color-artes-integradas p { border-color: $azul-1; }
+	.color-teatro p { border-color: $laranja-1; }
 
 	& > li,
 	.slick-slide {
@@ -1917,7 +1913,7 @@ body.js .collapse__text { display: none; }
 		left: 0;
 		overflow: hidden;
 		border: none;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 
 		i {
 			width: 30px;
@@ -2046,16 +2042,15 @@ body.js .collapse__text { display: none; }
 	padding: 43px 0 0;
 
 	h1 {
-		width: 132px;
-		height: 32px;
+		width: 133px;
 		margin: 0;
 		position: absolute;
-		top: 0;
-		left: 0;
+		top: -5px;
+		left: 4px;
 		z-index: 2;
 
 		img {
-			margin: -14px 0 0 -8px;
+			margin: 0;
 			display: block;
 		}
 	}
@@ -2093,7 +2088,7 @@ body.js .collapse__text { display: none; }
 				&:hover,
 				&:focus {
 					color: $branco;
-					background-color: $verde-1;
+					background-color: $turquesa-1;
 				}
 			}
 		}
@@ -2124,72 +2119,70 @@ body.js .collapse__text { display: none; }
 			font-size: 1.1rem;
 			text-align: center;
 			display: block;
+			position: relative;
 			border-top: 4px solid $cinza-6;
-			transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+			transition: color 200ms ease-in-out;
+
+			&:after {
+				content: "";
+				width: 100%;
+				height: 100%;
+				max-height: 0;
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+				transition: max-height 400ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
+			}
 
 			&.color-funarte {
-				color: $verde-1;
-				border-color: $verde-1;
+				color: $turquesa-1;
+				border-color: $turquesa-1;
 
-				&:hover,
-				&:focus,
-				&.active { background-color: $verde-1; }
+				&:after { background-color: $turquesa-1; }
 			}
 			&.color-circo {
 				color: $vermelho-1;
 				border-color: $vermelho-1;
 
-				&:hover,
-				&:focus,
-				&.active { background-color: $vermelho-1; }
+				&:after { background-color: $vermelho-1; }
 			}
 			&.color-teatro {
-				color: $rosa-1;
-				border-color: $rosa-1;
+				color: $laranja-1;
+				border-color: $laranja-1;
 
-				&:hover,
-				&:focus,
-				&.active { background-color: $rosa-1; }
+				&:after { background-color: $laranja-1; }
 			}
 			&.color-danca {
 				color: $amarelo-1;
 				border-color: $amarelo-1;
 
-				&:hover,
-				&:focus,
-				&.active { background-color: $amarelo-1; }
+				&:after { background-color: $amarelo-1; }
 			}
 			&.color-musica {
-				color: $laranja-1;
-				border-color: $laranja-1;
+				color: $verde-1;
+				border-color: $verde-1;
 
-				&:hover,
-				&:focus,
-				&.active { background-color: $laranja-1; }
+				&:after { background-color: $verde-1; }
 			}
 			&.color-artes-integradas {
-				color: $roxo-1;
-				border-color: $roxo-1;
-
-				&:hover,
-				&:focus,
-				&.active { background-color: $roxo-1; }
-			}
-			&.color-artes-visuais {
 				color: $azul-1;
 				border-color: $azul-1;
 
-				&:hover,
-				&:focus,
-				&.active { background-color: $azul-1; }
+				&:after { background-color: $azul-1; }
+			}
+			&.color-artes-visuais {
+				color: $roxo-1;
+				border-color: $roxo-1;
+
+				&:after { background-color: $roxo-1; }
 			}
 			&.color-literatura {
-				color: $limao-1;
-				border-color: $limao-1;
+				color: $verde-1;
+				border-color: $verde-1;
 
-				&:hover,
-				&:focus,
-				&.active { background-color: $limao-1; }
+				&:after { background-color: $verde-1; }
 			}
 
 			&:hover,
@@ -2197,6 +2190,8 @@ body.js .collapse__text { display: none; }
 			&.active {
 				color: $branco;
 				text-decoration: none;
+
+				&:after { max-height: 50px; }
 			}
 		}
 	}
@@ -2295,7 +2290,7 @@ body.js .collapse__text { display: none; }
 			height: auto !important;
 			margin: 0;
 			padding: 0;
-			border-left: 5px solid $verde-1;
+			border-left: 5px solid $turquesa-1;
 		}
 
 		.navbar-nav {
@@ -2306,7 +2301,7 @@ body.js .collapse__text { display: none; }
 
 				&:hover {
 					color: $branco;
-					background-color: $verde-1;
+					background-color: $turquesa-1;
 				}
 			}
 		}
@@ -2355,9 +2350,9 @@ body.js .collapse__text { display: none; }
 			font-weight: 400;
 			font-family: 'Sansita', sans-serif;
 			font-size: 1.4rem;
-			color: $verde-1;
+			color: $turquesa-1;
 			display: block;
-			border-bottom: 1px solid $verde-1;
+			border-bottom: 1px solid $turquesa-1;
 		}
 
 		input[type=text] {
@@ -2387,14 +2382,14 @@ body.js .collapse__text { display: none; }
 		}
 
 		.searchcancel {
-			color: $verde-1;
+			color: $turquesa-1;
 			background-color: $cinza-3;
 		}
 
 		#searchsubmit {
 			margin-left: 12px;
 			color: $branco;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 		}
 	}
 
@@ -2504,11 +2499,11 @@ main { width: 100%; }
 	}
 
 	a {
-		color: $verde-1;
+		color: $turquesa-1;
 	}
 	.box-breadcrumb__home {
 		font-size: 24px;
-		color: $verde-1;
+		color: $turquesa-1;
 	}
 }
 
@@ -2527,7 +2522,7 @@ main { width: 100%; }
 		bottom: 0;
 		display: block;
 		z-index: -2;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 	}
 }
 .carousel-highlights {
@@ -2641,7 +2636,7 @@ ul.slick-dots {
 
 		& + li { margin-top: 10px; }
 
-		&.slick-active button { background-color: $verde-1; }
+		&.slick-active button { background-color: $turquesa-1; }
 	}
 }
 @media screen and (max-width:767px) {
@@ -2686,7 +2681,7 @@ ul.slick-dots {
 			left: auto;
 			z-index: 2;
 			transform: translate(0,-50%);
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 		}
 		.control__prev {
 			top: 50%;
@@ -2762,8 +2757,8 @@ ul.slick-dots {
 	}
 	.color-funarte {
 		.title-2,
-		.carousel-schedule__date strong { color: $verde-1; }
-		hr { background-color: $verde-1; }
+		.carousel-schedule__date strong { color: $turquesa-1; }
+		hr { background-color: $turquesa-1; }
 	}
 	.color-circo {
 		.title-2,
@@ -2772,8 +2767,8 @@ ul.slick-dots {
 	}
 	.color-musica {
 		.title-2,
-		.carousel-schedule__date strong { color: $laranja-1; }
-		hr { background-color: $laranja-1; }
+		.carousel-schedule__date strong { color: $verde-1; }
+		hr { background-color: $verde-1; }
 	}
 	.color-danca {
 		.title-2,
@@ -2782,23 +2777,23 @@ ul.slick-dots {
 	}
 	.color-literatura {
 		.title-2,
-		.carousel-schedule__date strong { color: $limao-1; }
-		hr { background-color: $limao-1; }
+		.carousel-schedule__date strong { color: $verde-1; }
+		hr { background-color: $verde-1; }
 	}
 	.color-artes-visuais {
-		.title-2,
-		.carousel-schedule__date strong { color: $azul-1; }
-		hr { background-color: $azul-1; }
-	}
-	.color-artes-integradas {
 		.title-2,
 		.carousel-schedule__date strong { color: $roxo-1; }
 		hr { background-color: $roxo-1; }
 	}
+	.color-artes-integradas {
+		.title-2,
+		.carousel-schedule__date strong { color: $azul-1; }
+		hr { background-color: $azul-1; }
+	}
 	.color-teatro {
 		.title-2,
-		.carousel-schedule__date strong { color: $rosa-1; }
-		hr { background-color: $rosa-1; }
+		.carousel-schedule__date strong { color: $laranja-1; }
+		hr { background-color: $laranja-1; }
 	}
 
 	.carousel-schedule__date {
@@ -2874,7 +2869,7 @@ ul.slick-dots {
 
 		&.color-funarte .carousel-schedule__date strong {
 			color: $branco;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 		}
 		&.color-circo .carousel-schedule__date strong {
 			color: $branco;
@@ -2882,7 +2877,7 @@ ul.slick-dots {
 		}
 		&.color-musica .carousel-schedule__date strong {
 			color: $branco;
-			background-color: $laranja-1;
+			background-color: $verde-1;
 		}
 		&.color-danca .carousel-schedule__date strong {
 			color: $branco;
@@ -2890,19 +2885,19 @@ ul.slick-dots {
 		}
 		&.color-literatura .carousel-schedule__date strong {
 			color: $branco;
-			background-color: $limao-1;
+			background-color: $verde-1;
 		}
 		&.color-artes-visuais .carousel-schedule__date strong {
 			color: $branco;
-			background-color: $azul-1;
+			background-color: $roxo-1;
 		}
 		&.color-artes-integradas .carousel-schedule__date strong {
 			color: $branco;
-			background-color: $roxo-1;
+			background-color: $azul-1;
 		}
 		&.color-teatro .carousel-schedule__date strong {
 			color: $branco;
-			background-color: $rosa-1;
+			background-color: $laranja-1;
 		}
 
 		.carousel-schedule__date { left: 0; }
@@ -2957,7 +2952,7 @@ ul.slick-dots {
 		left: 0;
 		overflow: hidden;
 		border: none;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 
 		&.control__next { top: 0; }
 		&.control__prev { bottom: 0; }
@@ -3133,7 +3128,7 @@ ul.slick-dots {
 
 		li {
 			padding: 20px 0 12px;
-			border-bottom: 1px solid $verde-1;
+			border-bottom: 1px solid $turquesa-1;
 
 			& + li {
 
@@ -3309,7 +3304,7 @@ aside .list-bidding--type-b {
 
 		li {
 			padding: 19px 0 10px;
-			border-bottom: 1px solid $verde-1;
+			border-bottom: 1px solid $turquesa-1;
 
 			.link-area { margin-bottom: 0; }
 
@@ -3341,7 +3336,7 @@ aside .list-bidding--type-b {
 			left: 0;
 			overflow: hidden;
 			border: none;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 
 			i {
 				position: absolute;
@@ -3412,7 +3407,7 @@ aside .list-bidding--type-b {
 		margin: 0;
 		font-weight: 400;
 		font-size: .9rem;
-		color: $verde-1;
+		color: $turquesa-1;
 		text-transform: uppercase;
 		display: block;
 	}
@@ -3441,7 +3436,7 @@ aside .list-bidding--type-b {
 
 			& + li {
 				padding: 23px 0 29px;
-				border-top: 1px solid $verde-1;
+				border-top: 1px solid $turquesa-1;
 			}
 		}
 
@@ -3456,7 +3451,7 @@ aside .list-bidding--type-b {
 				@include icon-css;
 				content: "\f1da";
 				font-size: 24px;
-				color: $verde-1;
+				color: $turquesa-1;
 				position: absolute;
 				top: -4px;
 				left: 4px;
@@ -3552,13 +3547,13 @@ aside .list-bidding--type-b {
 .box-pagination__list {
 	margin: 0;
 	padding: 3px 0 0;
-	color: $verde-1;
+	color: $turquesa-1;
 	display: block;
 	list-style: none;
 
 	span {
 		padding: 0 5px;
-		color: $verde-1 !important;
+		color: $turquesa-1 !important;
 		line-height: 18px !important;
 		display: inline !important;
 	}
@@ -3567,7 +3562,7 @@ aside .list-bidding--type-b {
 		min-width: 18px;
 		height: 18px;
 		padding: 0;
-		color: $verde-1;
+		color: $turquesa-1;
 		line-height: 18px;
 		text-align: center;
 		display: inline-block;
@@ -3579,7 +3574,7 @@ aside .list-bidding--type-b {
 			margin-right: 4px;
 			color: $branco;
 			text-decoration: none;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 		}
 	}
 }
@@ -3603,7 +3598,7 @@ aside .list-bidding--type-b {
 		position: relative;
 		overflow: hidden;
 		border: none;
-		background: $verde-1;
+		background: $turquesa-1;
 
 		i {
 			position: absolute;
@@ -3632,7 +3627,7 @@ aside .list-bidding--type-b {
 	display: none;
 	overflow: hidden;
 	border: none;
-	background-color: $verde-1;
+	background-color: $turquesa-1;
 	transform: translate(0,-50%);
 	z-index: 9;
 
@@ -3697,7 +3692,7 @@ aside .list-bidding--type-b {
 
 		a {
 			font-size: 1.3rem;
-			color: $verde-1;
+			color: $turquesa-1;
 		}
 	}
 }
@@ -3715,7 +3710,7 @@ aside .list-bidding--type-b {
 		position: absolute;
 		top: 0;
 		right: 0;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 		z-index: -1;
 	}
 }
@@ -3748,7 +3743,7 @@ aside .list-bidding--type-b {
 .footer {
 	width: 100%;
 	padding: 45px 0 21px;
-	background-color: $verde-1;
+	background-color: $turquesa-1;
 }
 .logo-footer {
 	max-width: 554px;
@@ -3914,16 +3909,19 @@ aside .list-bidding--type-b {
 	.box-logo-footer {
 		display: block;
 
-		.logo-footer-1 {
-			max-width: 156px;
-			margin-bottom: 23px;
+		img {
+			width: 100%;
 			display: block;
+		}
+
+		.logo-footer-1 {
+			max-width: 144px;
+			margin-bottom: 31px;
 		}
 
 		.logo-footer-2 {
 			max-width: 130px;
 			margin: 0;
-			display: block;
 		}
 	}
 
@@ -3983,7 +3981,7 @@ aside .list-bidding--type-b {
 
 		i {
 			font-size: 27px;
-			color: $verde-1;
+			color: $turquesa-1;
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -4028,7 +4026,7 @@ aside .list-bidding--type-b {
 
 		i {
 			font-size: 27px;
-			color: $verde-1;
+			color: $turquesa-1;
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -4096,7 +4094,7 @@ aside .list-bidding--type-b {
 		font-size: 12px;
 		color: $branco;
 		border: 1px solid $branco;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 	}
 	input[type=submit],
 	button[type=submit] {
@@ -4123,7 +4121,7 @@ aside .list-bidding--type-b {
 
 		&:hover,
 		&:focus {
-			color: $verde-1;
+			color: $turquesa-1;
 			background-color: $branco;
 		}
 	}
@@ -4155,20 +4153,20 @@ ul.social-media-list {
 * COLLECTIONS
 ***/
 
-.tainacan-title .tainacan-title-page { border-bottom: 1px solid $verde-1!important; }
+.tainacan-title .tainacan-title-page { border-bottom: 1px solid $turquesa-1!important; }
 .tainacan-title .title-page {
 	font-size: 1.4rem;
 	font-weight: 400 !important;
-	color: $verde-1;
+	color: $turquesa-1;
 }
-.tainacan-title .title-back { color: $verde-1; }
+.tainacan-title .title-back { color: $turquesa-1; }
 
 .tainacan-title { margin-bottom: 32px; }
 .title-content-items {
 	margin: 0 0 45px 5%;
 	font-weight: 700;
 	font-size: 1.2rem;
-	color: $verde-1;
+	color: $turquesa-1;
 }
 .box-tainacan-document {
 	width: 100%;
@@ -4185,7 +4183,7 @@ ul.social-media-list {
 	margin: 0 0 45px 5%;
 	font-weight: 700;
 	font-size: 1.2rem;
-	color: $verde-1;
+	color: $turquesa-1;
 }
 .box-acervo-info__image { margin: 0 0 0 9%; }
 .box-acervo__metadata {
@@ -4292,7 +4290,7 @@ ul.social-media-list {
 	}
 	.control__next {
 		border-top: 20px solid transparent;
-		border-left: 20px solid $verde-1;
+		border-left: 20px solid $turquesa-1;
 		border-right: none;
 		border-bottom: 20px solid transparent;
 		right: 0;
@@ -4300,7 +4298,7 @@ ul.social-media-list {
 	.control__prev {
 		border-top: 20px solid transparent;
 		border-left: none;
-		border-right: 20px solid $verde-1;
+		border-right: 20px solid $turquesa-1;
 		border-bottom: 20px solid transparent;
 		left: -50px;
 	}
@@ -4463,11 +4461,11 @@ ul.social-media-list {
 	top: 3px !important;
 	border-radius: 0 !important;
 	border: none !important;
-	background-color: $verde-1 !important;
+	background-color: $turquesa-1 !important;
 
 	&:hover {
 		border: none !important;
-		background-color: $verde-1 !important;
+		background-color: $turquesa-1 !important;
 	}
 
 	span { display: none !important; }
@@ -4522,7 +4520,7 @@ ul.social-media-list {
 .ui-datepicker-calendar .ui-state-default:hover,
 .ui-datepicker-calendar .ui-state-default.ui-state-active {
 	color: $branco !important;
-	background-color: $verde-1 !important;
+	background-color: $turquesa-1 !important;
 }
 
 .datepicker-box {
@@ -4616,7 +4614,7 @@ ul.social-media-list {
 			top: 0;
 			left: auto;
 			right: auto;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 			transform: translate(0,0);
 		}
 		.control__prev { left: 0; }
@@ -4710,9 +4708,9 @@ ul.social-media-list {
 
 			&.color-funarte {
 				.box-calendario__data,
-				hr { background-color: $verde-1; }
+				hr { background-color: $turquesa-1; }
 				.link-more,
-				.box-calendario__titulo { color: $verde-1; }
+				.box-calendario__titulo { color: $turquesa-1; }
 			}
 			&.color-circo {
 				.box-calendario__data,
@@ -4722,9 +4720,9 @@ ul.social-media-list {
 			}
 			&.color-musica {
 				.box-calendario__data,
-				hr { background-color: $laranja-1; }
+				hr { background-color: $verde-1; }
 				.link-more,
-				.box-calendario__titulo { color: $laranja-1; }
+				.box-calendario__titulo { color: $verde-1; }
 			}
 			&.color-danca {
 				.box-calendario__data,
@@ -4734,27 +4732,27 @@ ul.social-media-list {
 			}
 			&.color-literatura {
 				.box-calendario__data,
-				hr { background-color: $limao-1; }
+				hr { background-color: $verde-1; }
 				.link-more,
-				.box-calendario__titulo { color: $limao-1; }
+				.box-calendario__titulo { color: $verde-1; }
 			}
 			&.color-artes-visuais {
-				.box-calendario__data,
-				hr { background-color: $azul-1; }
-				.link-more,
-				.box-calendario__titulo { color: $azul-1; }
-			}
-			&.color-artes-integradas {
 				.box-calendario__data,
 				hr { background-color: $roxo-1; }
 				.link-more,
 				.box-calendario__titulo { color: $roxo-1; }
 			}
+			&.color-artes-integradas {
+				.box-calendario__data,
+				hr { background-color: $azul-1; }
+				.link-more,
+				.box-calendario__titulo { color: $azul-1; }
+			}
 			&.color-teatro {
 				.box-calendario__data,
-				hr { background-color: $rosa-1; }
+				hr { background-color: $laranja-1; }
 				.link-more,
-				.box-calendario__titulo { color: $rosa-1; }
+				.box-calendario__titulo { color: $laranja-1; }
 			}
 		}
 	}
@@ -4958,7 +4956,7 @@ ul.social-media-list {
 		top: 26px;
 		overflow: hidden;
 		border: none;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 		z-index: 9;
 
 		i {
@@ -4990,7 +4988,7 @@ ul.social-media-list {
 
 		&.slick-current .carousel-calendar__button button {
 			color: $branco;
-			background: $verde-1;
+			background: $turquesa-1;
 		}
 	}
 }
@@ -5000,7 +4998,7 @@ ul.social-media-list {
 	position: absolute;
 	top: 0;
 	left: 0;
-	border-bottom: 4px solid $verde-1;
+	border-bottom: 4px solid $turquesa-1;
 
 	button {
 		width: 90px;
@@ -5019,7 +5017,7 @@ ul.social-media-list {
 		&:hover,
 		&.active {
 			color: $branco;
-			background: $verde-1;
+			background: $turquesa-1;
 		}
 	}
 }
@@ -5036,14 +5034,14 @@ ul.social-media-list {
 		display: block;
 	}
 
-	&.color-funarte strong { color: $verde-1; }
+	&.color-funarte strong { color: $turquesa-1; }
 	&.color-circo strong { color: $vermelho-1; }
-	&.color-musica strong { color: $laranja-1; }
+	&.color-musica strong { color: $verde-1; }
 	&.color-danca strong { color: $amarelo-1; }
-	&.color-literatura strong { color: $limao-1; }
-	&.color-artes-visuais strong { color: $azul-1; }
-	&.color-artes-integradas strong { color: $roxo-1; }
-	&.color-teatro strong { color: $rosa-1; }
+	&.color-literatura strong { color: $verde-1; }
+	&.color-artes-visuais strong { color: $roxo-1; }
+	&.color-artes-integradas strong { color: $azul-1; }
+	&.color-teatro strong { color: $laranja-1; }
 }
 .carousel-calendar__pin,
 .carousel-calendar__time {
@@ -5100,7 +5098,7 @@ ul.social-media-list {
 		position: absolute;
 		top: 0;
 		left: 90%;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 		z-index: -1;
 	}
 }
@@ -5170,7 +5168,7 @@ ul.social-media-list {
 	left: 0;
 	border-radius: 50%;
 	border: none;
-	background: $verde-1;
+	background: $turquesa-1;
 
 	&.active { z-index: 4; }
 
@@ -5245,7 +5243,7 @@ ul.social-media-list {
 
 		div > div {
 			height: 5px;
-			background-color: $verde-1;
+			background-color: $turquesa-1;
 		}
 	}
 }
@@ -5263,7 +5261,7 @@ ul.social-media-list {
 
 	.bar-played {
 		height: 5px;
-		background-color: $verde-1;
+		background-color: $turquesa-1;
 	}
 }
 
@@ -5317,7 +5315,7 @@ ul.social-media-list {
 
 	.link-more {
 		margin-top: 14px;
-		color: $verde-1;
+		color: $turquesa-1;
 	}
 }
 
@@ -5336,7 +5334,7 @@ ul.social-media-list {
 		height: 30px;
 		padding: 0;
 		font-size: 35px;
-		color: $verde-1;
+		color: $turquesa-1;
 		cursor: pointer;
 		position: absolute;
 		left: 0;
@@ -5425,7 +5423,7 @@ body.body-color-circo {
 }
 body.body-color-teatro {
 	.box-carousel-highlights:after,
-	ul.slick-dots li.slick-active button { background-color: $rosa-1; }
+	ul.slick-dots li.slick-active button { background-color: $laranja-1; }
 }
 body.body-color-danca {
 	.box-carousel-highlights:after,
@@ -5433,23 +5431,23 @@ body.body-color-danca {
 }
 body.body-color-musica {
 	.box-carousel-highlights:after,
-	ul.slick-dots li.slick-active button { background-color: $laranja-1; }
+	ul.slick-dots li.slick-active button { background-color: $verde-1; }
 }
 body.body-color-artes-integradas {
 	.box-carousel-highlights:after,
-	ul.slick-dots li.slick-active button { background-color: $roxo-1; }
+	ul.slick-dots li.slick-active button { background-color: $azul-1; }
 }
 body.body-color-artes-visuais {
 	.box-carousel-highlights:after,
-	ul.slick-dots li.slick-active button { background-color: $azul-1; }
+	ul.slick-dots li.slick-active button { background-color: $roxo-1; }
 }
 body.body-color-literatura {
 	.box-carousel-highlights:after,
-	ul.slick-dots li.slick-active button { background-color: $limao-1; }
+	ul.slick-dots li.slick-active button { background-color: $verde-1; }
 }
 body.body-color-multicategoria {
 	.box-carousel-highlights:after,
-	ul.slick-dots li.slick-active button { background-color: $verde-3; }
+	ul.slick-dots li.slick-active button { background-color: $turquesa-3; }
 }
 
 /***
