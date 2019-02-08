@@ -56,12 +56,7 @@ class MetaboxMaisInformacoes {
 		
 		<br/><br/>
 		
-		<label> Título da seção extra</label><br/>
-		<input type="text" name="<?php echo $this->meta_key ?>[mais_titulo]" value="<?php echo $metadata['mais_titulo']; ?>" />
-		
-		<br/><br/>
-		
-		<label> Conteúdo da seção extra</label><br/>
+		<label> Conteúdo da seção "Mais Contatos"</label><br/>
 		<textarea name="<?php echo $this->meta_key ?>[mais_content]"><?php echo $metadata['mais_content']; ?></textarea>
 		
 		

@@ -49,10 +49,10 @@ if(have_posts()) : the_post();
 							<span><?php echo \Funarte\MetaboxMaisInformacoes::get_instance()->get_value(get_the_ID(), 'content'); ?></span>
 							
 							<?php
-								if ( \Funarte\MetaboxMaisInformacoes::get_instance()->get_value(get_the_ID(), 'mais_titulo') ) : ?>
+								if ( \Funarte\MetaboxMaisInformacoes::get_instance()->get_value(get_the_ID(), 'mais_content') ) : ?>
 									<div class="box-info__collapse">
 										<button class="collapse__button" type="button">
-											<?php echo \Funarte\MetaboxMaisInformacoes::get_instance()->get_value(get_the_ID(), 'mais_titulo'); ?>
+											Exibir todos os contatos
 										</button>
 										<div class="collapse__text">
 											<span>
