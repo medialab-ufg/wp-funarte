@@ -850,7 +850,7 @@ var base = {
 
 			$('.carousel-zoom').slick({
 				speed: 1000,
-				infinite: true,
+				infinite: false,
 				slidesToShow: 3,
 				slidesToScroll: 1,
 				prevArrow: $carousel.find('.control__prev'),
