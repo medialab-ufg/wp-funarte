@@ -14,6 +14,8 @@ class Evento {
 		add_action('wp_ajax_get_events_by_day', array(&$this, 'ajax_get_events_by_day'));
 		add_action('wp_ajax_nopriv_get_events_by_day', array(&$this, 'ajax_get_events_by_day'));
 		
+		add_action('wp_ajax_get_events_by_month', array(&$this, 'ajax_get_events_by_month'));
+		add_action('wp_ajax_nopriv_get_events_by_month', array(&$this, 'ajax_get_events_by_month'));
 	}
 
 	public function register_post_type() {
@@ -366,6 +368,21 @@ class Evento {
 		
 		die;
 		
+	}
+
+	function ajax_get_events_by_month() {
+		$day = $_GET['mes'];
+		$year = $_GET['ano'];
+		$response = [];
+		
+
+		if ( !is_numeric($day) || !is_numeric($year) ) {
+			wp_send_json_error("invalid parameters");
+		}
+
+		$eventos = $this->get_eventos_from_month($day, $year);
+
+		wp_send_json($eventos, 200);
 	}
 }
 
