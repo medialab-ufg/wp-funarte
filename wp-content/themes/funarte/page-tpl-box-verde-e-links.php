@@ -31,7 +31,6 @@ if(have_posts()) : the_post();
 		<div class="row justify-content-between">
 			<div class="col-md-6">
 				<div class="box-text">
-					<h4 class="title-5--type-b">Sobre</h4>
 					<div class="box-text__text">
 						<?php the_content(); ?>
 					</div>
