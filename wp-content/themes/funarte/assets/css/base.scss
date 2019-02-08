@@ -3173,6 +3173,7 @@ ul.slick-dots {
 		}
 
 		li {
+			padding-right: 30px;
 
 			& > strong {
 				font-family: 'Sansita', sans-serif;
@@ -3745,27 +3746,8 @@ aside .list-bidding--type-b {
 	padding: 45px 0 21px;
 	background-color: $turquesa-1;
 }
-.logo-footer {
-	max-width: 554px;
-	flex: 1;
-	display: block;
-}
-.box-logo-footer { display: none; }
-
-.logo-footer-3 {
-	max-width: 109px;
-	flex: 1;
-	display: block;
-
-	img {
-		width: 100%;
-		height: 100%;
-		display: block;
-	}
-}
-
 .footer__columns {
-	margin-bottom: 10px;
+	margin-bottom: 6px;
 	padding-bottom: 28px;
 	display: flex;
 	justify-content: space-between;
@@ -3827,6 +3809,46 @@ aside .list-bidding--type-b {
 	align-items: center;
 }
 
+.box-logo-footer-horizontal {
+	padding: 0 0 0 34px;
+	display: flex;
+	flex: 1;
+
+	a {
+		flex: 1;
+		display: block;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
+	.logo-footer-horizontal-1 {
+		max-width: 152px;
+		margin-top: 5px;
+	}
+	.logo-footer-horizontal-2 {
+		max-width: 282px;
+		margin-left: 59px;
+	}
+}
+.box-logo-footer-vertical { display: none; }
+
+.logo-footer-3 {
+	max-width: 109px;
+	margin-left: 30px;
+	flex: 1;
+	display: block;
+
+	img {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+}
+
 @media screen and (max-width: 992px) {
 	.footer__columns { display: block; }
 
@@ -3855,6 +3877,8 @@ aside .list-bidding--type-b {
 @media screen and (max-width: 767px) {
 	.links-list strong + ul { padding-top: 10px; }
 	.columns__column-a.links-list strong + ul { padding-top: 8px; }
+
+	.box-logo-footer-horizontal .logo-footer-horizontal-1 { max-width: 122px; }
 }
 @media screen and (max-width: 600px) {
 	.footer { padding: 45px 0 38px; }
@@ -3913,8 +3937,8 @@ aside .list-bidding--type-b {
 		align-items: center;
 	}
 
-	.logo-footer { display: none; }
-	.box-logo-footer {
+	.box-logo-footer-horizontal { display: none; }
+	.box-logo-footer-vertical {
 		display: block;
 
 		img {
@@ -3922,20 +3946,20 @@ aside .list-bidding--type-b {
 			display: block;
 		}
 
-		.logo-footer-1 {
+		.logo-footer-vertical-1 {
 			max-width: 144px;
 			margin-bottom: 31px;
 			display: block;
 		}
 
-		.logo-footer-2 {
+		.logo-footer-vertical-2 {
 			max-width: 130px;
-			margin: 0;
+			margin: 0 auto;
 			display: block;
 		}
 	}
 
-	.logo-footer-3 { margin-top: 33px; }
+	.logo-footer-3 { margin: 33px 0 0; }
 }
 
 /***

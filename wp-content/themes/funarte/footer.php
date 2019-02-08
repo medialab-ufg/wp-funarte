@@ -72,11 +72,14 @@
 			</div>
 
 			<div class="footer__logos">
-				<a class="logo-footer" href="http://www.funarte.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/gov_e_funarte.svg'; ?>" alt="Fundação Nacional de Artes - Funarte - Ministério da Cidadania - Pátria Amada Brasil - Governo Federal"></a>
+				<div class="box-logo-footer-horizontal">
+					<a class="logo-footer-horizontal-1" href="http://www.funarte.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte2.svg'; ?>" alt="Fundação Nacional de Artes - Funarte - Ministério da Cidadania - Pátria Amada Brasil - Governo Federal"></a>
+					<a class="logo-footer-horizontal-2" href="http://www.brasil.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/gov_horizontal.svg'; ?>" alt="Ministério da Cidadania - Pátria Amada Brasil - Governo Federal"></a>
+				</div>
 
-				<div class="box-logo-footer">
-					<a class="logo-footer-1" href="http://www.funarte.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte2.svg'; ?>" alt="Fundação Nacional de Artes - Funarte"></a>
-					<a class="logo-footer-2" href="http://www.brasil.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/gov_vertical.svg'; ?>" alt="Ministério da Cidadania - Pátria Amada Brasil - Governo Federal"></a>
+				<div class="box-logo-footer-vertical">
+					<a class="logo-footer-vertical-1" href="http://www.funarte.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/funarte2.svg'; ?>" alt="Fundação Nacional de Artes - Funarte"></a>
+					<a class="logo-footer-vertical-2" href="http://www.brasil.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/gov_vertical.svg'; ?>" alt="Ministério da Cidadania - Pátria Amada Brasil - Governo Federal"></a>
 				</div>
 
 				<a class="logo-footer-3" href="http://www.funarte.gov.br/acessoainformacao/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/informacao.svg'; ?>" alt="Acesso à informação"></a>
