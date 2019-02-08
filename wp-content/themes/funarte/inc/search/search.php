@@ -83,7 +83,7 @@ class Search {
 				]
 			],
 			'contratos' => [
-				'label' => 'Contratos',
+				'label' => 'Licitações',
 				'post_types' => [
 					'licitacao'
 				]
