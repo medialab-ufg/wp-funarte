@@ -5,20 +5,22 @@
  * img:
  * 
  */
-if(!isset($tags) || !isset($title) || !isset($img) ) :
+if( !isset($title) || !isset($img) ) :
 	echo "<br><b> parameter not found! </b> <br>";
 else :
 ?>
 <div class="box-title-page <?php echo !empty($img) ? 'box-title-page--image' : ''; ?>">
 	<div class="box-title-page__text">
 		<div class="link-area">
-			<?php foreach ($tags as $tag): ?>
-				<?php if(isset($tag['url_area'])): ?>
-					<a href="<?php echo home_url() . '/category/' . $tag['slug']; ?>" class="color-<?php echo $tag['slug']; ?>"><?php echo $tag['name']; ?></a>
-				<?php else: ?>
-					<strong class="color-<?php echo $tag['slug']; ?>"><?php echo $tag['name']; ?></strong>
-				<?php endif; ?>
-			<?php endforeach; ?>
+			<?php if (isset($tags)) : ?>
+					<?php foreach ($tags as $tag): ?>
+					<?php if(isset($tag['url_area'])): ?>
+						<a href="<?php echo home_url() . '/category/' . $tag['slug']; ?>" class="color-<?php echo $tag['slug']; ?>"><?php echo $tag['name']; ?></a>
+					<?php else: ?>
+						<strong class="color-<?php echo $tag['slug']; ?>"><?php echo $tag['name']; ?></strong>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
 		</div>
 
 		<?php if(isset($date_pub)): ?>

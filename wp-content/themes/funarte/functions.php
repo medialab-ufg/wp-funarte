@@ -280,3 +280,6 @@ require_once('inc/options/options_config.php');
 
 //tainacan
 require_once('inc/tainacan/tainacan_taxonomy_categoria.php');
+
+// includes metaboxes 
+require_once('inc/meta-boxes/informacoes-adicionais.php');
