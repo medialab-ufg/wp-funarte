@@ -107,6 +107,9 @@
 								<?php } ?>
 							<?php } ?>
 						</li>
+						<li class="color-funarte">
+							<a href="<?php echo get_bloginfo('url') . '/estrutura'; ?>" class="link-more">Ver outros contatos</a>
+						</li>
 					</ul>
 				</div>
 			</div>

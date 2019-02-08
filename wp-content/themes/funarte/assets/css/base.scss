@@ -3156,7 +3156,7 @@ ul.slick-dots {
 
 	.list-more-info {
 		margin: 0;
-		padding: 50px 0 94px;
+		padding: 50px 0 37px;
 		list-style: none;
 		position: relative;
 
@@ -3177,13 +3177,13 @@ ul.slick-dots {
 
 			& > strong {
 				font-family: 'Sansita', sans-serif;
-				font-size: 1.3rem;
+				font-size: 1.4rem;
 				color: $cinza-6;
 				display: block;
 			}
 			& > span {
 				margin-bottom: 23px;
-				font-size: 1.3rem;
+				font-size: 1.4rem;
 				color: $cinza-6;
 				line-height: 1.5rem;
 				display: block;
@@ -3192,6 +3192,8 @@ ul.slick-dots {
 
 				strong { font-family: 'Sansita', sans-serif; }
 			}
+
+			.link-more { margin-top: 28px; }
 		}
 	}
 }

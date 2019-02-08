@@ -31,7 +31,6 @@ if(have_posts()) : the_post();
 		<div class="row justify-content-between">
 			<div class="col-md-6">
 				<div class="box-text">
-					<h4 class="title-5--type-b">Sobre</h4>
 					<div class="box-text__text">
 						<?php the_content(); ?>
 					</div>
@@ -49,10 +48,10 @@ if(have_posts()) : the_post();
 							<span><?php echo \Funarte\MetaboxMaisInformacoes::get_instance()->get_value(get_the_ID(), 'content'); ?></span>
 							
 							<?php
-								if ( \Funarte\MetaboxMaisInformacoes::get_instance()->get_value(get_the_ID(), 'mais_titulo') ) : ?>
+								if ( \Funarte\MetaboxMaisInformacoes::get_instance()->get_value(get_the_ID(), 'mais_content') ) : ?>
 									<div class="box-info__collapse">
 										<button class="collapse__button" type="button">
-											<?php echo \Funarte\MetaboxMaisInformacoes::get_instance()->get_value(get_the_ID(), 'mais_titulo'); ?>
+											Exibir todos os contatos
 										</button>
 										<div class="collapse__text">
 											<span>
