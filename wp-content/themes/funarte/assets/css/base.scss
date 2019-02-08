@@ -1488,7 +1488,27 @@ body.js .collapse__text { display: none; }
 		//transition: transform 500ms ease-in-out;
 	}
 
-	.slick-dots { display: none !important; }
+	.slick-dots {
+		width: 509px;
+		max-height: none;
+		margin: 0 -5px;
+		padding: 0;
+		display: flex !important;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		right: 33%;
+		top: 367px;
+		bottom: auto;
+
+		li {
+			width: auto !important;
+			margin: 0 0 10px;
+			padding: 0 5px;
+
+			&.slick-active button { background-color: $turquesa-1 !important; }
+		}
+
+	}
 }
 .carousel-zoom__text {
 	width: 0;
@@ -1568,13 +1588,8 @@ body.js .collapse__text { display: none; }
 }
 
 @media screen and (max-width:1199px) {
-	// .carousel-zoom .slick-active + .slick-active + .slick-active {
-	// 	width: 465px;
-	// 	height: auto;
-	// 	min-height: 280px;
-
-	// 	.carousel-zoom__image { bottom: auto; }
-	// }
+	.carousel-zoom__control { right: 38.4%; }
+	.carousel-zoom .slick-dots { right: 46.5%; }
 
 	.carousel-zoom .slick-active {
 		width: 640px;

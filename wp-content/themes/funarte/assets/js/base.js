@@ -856,7 +856,7 @@ var base = {
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
 				variableWidth: true,
-				dots: false,
+				dots: true,
 				responsive: [
 					{
 						breakpoint: 1200,
