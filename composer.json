@@ -9,10 +9,14 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "4.9.*"
+        "johnpbloch/wordpress": "5.0.*",
+        "wpackagist-plugin/classic-editor": "1.*"
     },
     "extra": {
-        "wordpress-install-dir": "wp"
+        "wordpress-install-dir": "wp",
+        "installer-paths": {
+            "wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+        }
     },
     "scripts": {    
         "post-install-cmd": [
@@ -20,3 +24,5 @@
         ]
     }
 }
+
+

@@ -5,3 +5,4 @@ node_modules/
 package-lock.json
 .htaccess
 wp-content/plugins/tainacan-nightly.zip
+wp-content/plugins/classic-editor
