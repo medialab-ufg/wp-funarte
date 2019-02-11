@@ -19,14 +19,12 @@ $metadataRepo = \Tainacan\Repositories\Metadata::get_instance();
 $itemsRepo = \Tainacan\Repositories\Items::get_instance();
 $itemMetadataRepo = \Tainacan\Repositories\Item_Metadata::get_instance();
 
-
 ##Criando a coleção dos resgistros do Estúdio F##
 
 $collection = new \Tainacan\Entities\Collection();
 $collection->set_name('Estúdio F');
 $collection->set_status('publish');
 $collection->set_description('Coleção com os registros do Estúdio F.');
-
 
 if ($collection->validate()) {
 	$insertedCollection = $collectionsRepo->insert($collection);
