@@ -23,6 +23,7 @@ class MetaboxArquivosDiversos {
 	}
 
 	public function save_custom_box($post_id) {
+		$page_template = get_page_template_slug( $post_ID );
 		if (!in_array($page_template, $this->allowed_templates)) {
 			return $post_id;
 		}
