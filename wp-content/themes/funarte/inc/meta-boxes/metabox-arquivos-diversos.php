@@ -60,7 +60,10 @@ class MetaboxArquivosDiversos {
 	public function get_arquivos_diversos() {
 		global $post;
 		if ((!empty($post->ID)) && (!empty($post->post_title))) {
-			$arquivos_diversos = get_post_meta($post->ID, "arquivos-diversos", true);
+			$arquivos_diversos = get_post_meta($post->ID, "arquivos-diversoss", true);
+			if($arquivos_diversos == '') {
+				return [];
+			}
 		} else {
 			$arquivos_diversos = array('arquivos' => array(['descricao' => '', 'url' => '']));
 		}
