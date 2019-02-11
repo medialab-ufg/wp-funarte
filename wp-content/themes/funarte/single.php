@@ -64,7 +64,7 @@ if(have_posts()) : the_post();
 
 			<?php
 				$tax = \Tainacan\Repositories\Taxonomies::get_instance()->fetch_one(['name'=>'Assunto']);
-				if ($tax instanceof \Entities\Taxonomy):
+				if ($tax instanceof \Tainacan\Entities\Taxonomy):
 					$slug_taxonomia = $tax->get_db_identifier();
 					$terms = get_the_terms(get_the_ID(), $slug_taxonomia);
 					if (!empty($terms)):
@@ -96,9 +96,7 @@ if(have_posts()) : the_post();
 									endwhile;
 								?>
 							</ul>
-							<div class="box-related-links__more">
-								<a href="<?php echo $link_more; ?>" class="link-more">Ver mais</a>
-							</div>
+							<a href="<?php echo $link_more; ?>" class="link-more--type-b"><i class="mdi mdi-plus"></i></a>
 						</section>
 					<?php
 					wp_reset_query();

@@ -117,9 +117,7 @@
 						<?php endwhile; ?>
 					</ul>
 
-					<div class="box-related-links__more">
-						<a href="<?php echo $link_more; ?>" class="link-more">Ver mais</a>
-					</div>
+					<a href="<?php echo $link_more; ?>" class="link-more--type-b"><i class="mdi mdi-plus"></i></a>
 				</section>
 			<?php
 				wp_reset_query();

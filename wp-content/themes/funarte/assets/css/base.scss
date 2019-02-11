@@ -3350,6 +3350,7 @@ ul.slick-dots {
 }
 .box-bidding {
 	.title-h1--type-b { margin: 0 0 40px; }
+	.title-h1--type-d { margin: 0 0 63px; }
 }
 .list-bidding--type-b {
 	margin: 0;
@@ -3395,6 +3396,32 @@ aside .list-bidding--type-b {
 		background-color: $cinza-2;
 		z-index: -1;
 	}
+}
+
+.list-bidding--type-d {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+
+	li {
+		padding: 0 0 7px;
+
+		& + li {
+			padding: 20px 0 2px;
+			border-top: 1px solid $turquesa-1;
+		}
+	}
+
+	strong {
+		font-family: 'Sansita', sans-serif;
+		font-size: 1.4rem;
+		color: $cinza-6;
+		line-height: normal;
+		display: block;
+	}
+
+	.link-more { margin-top: 17px; }
 }
 
 /* BOX DE NOTICIAS */
@@ -3615,6 +3642,8 @@ aside .list-bidding--type-b {
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
+
+		.list-notices-text { width: 100%; }
 	}
 
 	.link-area {
@@ -4493,10 +4522,13 @@ ul.social-media-list {
 
 /* LISTA DE LINKS RELACIONADOS */
 
-.box-related-links { width: 100%; }
+.box-related-links {
+	width: 100%;
+	position: relative;
+}
 .box-related-links__list {
 	margin: 0 -10px;
-	padding: 0 0 0 9%;
+	padding: 0 59px 0 9%;
 	display: flex;
 	justify-content: space-between;
 	list-style-type: none;
@@ -4519,10 +4551,32 @@ ul.social-media-list {
 		display: block;
 	}
 }
-.box-related-links__more { text-align: right; }
+.link-more--type-b {
+	width: 30px;
+	height: 30px;
+	display: block;
+	position: absolute;
+	top: 128px;
+	right: 0;
+	overflow: hidden;
+	background-color: $turquesa-1;
 
+	i {
+		font-size: 36px;
+		color: $branco;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.link-more--type-b { top: 108px; }
+}
 @media screen and (max-width: 500px) {
 	.box-related-links__list {
+		padding: 0;
 		flex-direction: column;
 		align-items: center;
 
@@ -4531,6 +4585,12 @@ ul.social-media-list {
 
 			& + li { padding-top: 40px; }
 		}
+	}
+	.link-more--type-b {
+		margin: 40px auto 0;
+		position: relative;
+		top: auto;
+		right: auto;
 	}
 }
 

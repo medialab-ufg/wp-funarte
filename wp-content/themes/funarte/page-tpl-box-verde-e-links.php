@@ -66,8 +66,8 @@ if(have_posts()) : the_post();
 					</div>
 
 					<div class="box-bidding">
-						<h4 class="title-h1 box-links__title">Links relacionados</h4>
-						<ul class="list-bidding--type-b">
+						<h4 class="title-h1 title-h1--type-d box-links__title">Links relacionados</h4>
+						<ul class="list-bidding--type-d">
 							<?php
 							$arquivos  = \funarte\MetaboxArquivosDiversos::get_instance()->get_arquivos_diversos();
 							foreach ($arquivos as $arquivo):
@@ -79,7 +79,7 @@ if(have_posts()) : the_post();
 									<strong>
 										<?php echo $arquivo['descricao'];?>
 									</strong>
-									<a class="link-more" href="<?php echo $arquivo['url']; ?>">Ler mais</a>
+									<a class="link-more" href="<?php echo $arquivo['url']; ?>">Visitar</a>
 								</li>
 							<?php endforeach; ?>
 						</ul>
