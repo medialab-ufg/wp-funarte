@@ -86,7 +86,6 @@ function item_insert($metadata_title, $content){
 	$collection = $collectionsRepo->fetch(['name'=>'Estúdio F'], 'OBJECT');
 	$collection = $collection[0];
 
-	
 	$item = new \Tainacan\Entities\Item();
 	$item->set_title($metadata_title);
 	$item->set_status('publish');
@@ -99,8 +98,6 @@ function item_insert($metadata_title, $content){
 		$metadatum = $metadatum[0];
 		$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
 		$itemMetadata->set_value($content);
-
-
 		
 		#Validando ItemMetadata
 		if ($itemMetadata->validate()) {
@@ -136,10 +133,7 @@ function item_insert($metadata_title, $content){
 	return $item;
 }
 
-
 ##Recuperando registros do site e adicionando à coleção.##
-
-
 require_once('wp-config.php');
 
 $posts = new WP_Query([
@@ -165,7 +159,6 @@ while ($posts->have_posts()) {
     
     #explode(" - ", $title)[1]; #Artista *
     item_insert('Artista',explode(" - ", $post->post_title)[1]);
-
 
 #Documentos Anexados aos Posts (Audios)#
 
