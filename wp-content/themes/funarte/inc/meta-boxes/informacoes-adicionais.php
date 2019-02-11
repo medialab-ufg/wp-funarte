@@ -52,12 +52,12 @@ class MetaboxMaisInformacoes {
 		</p>
 		
 		<label> Conteúdo principal</label><br/>
-		<textarea name="<?php echo $this->meta_key ?>[content]"><?php echo $metadata['content']; ?></textarea>
+		<textarea name="<?php echo $this->meta_key ?>[content]"><?php echo isset($metadata['content'])?$metadata['content']:''; ?></textarea>
 		
 		<br/><br/>
 		
 		<label> Conteúdo da seção "Mais Contatos"</label><br/>
-		<textarea name="<?php echo $this->meta_key ?>[mais_content]"><?php echo $metadata['mais_content']; ?></textarea>
+		<textarea name="<?php echo $this->meta_key ?>[mais_content]"><?php echo isset($metadata['mais_content'])?$metadata['mais_content']:'';; ?></textarea>
 		
 		
 		<script>

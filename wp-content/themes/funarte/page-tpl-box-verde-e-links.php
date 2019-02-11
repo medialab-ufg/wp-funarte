@@ -64,6 +64,26 @@ if(have_posts()) : the_post();
 						</div>
 						
 					</div>
+
+					<div class="box-bidding">
+						<h4 class="title-h1 box-links__title">Links relacionados</h4>
+						<ul class="list-bidding--type-b">
+							<?php
+							$arquivos  = \funarte\MetaboxArquivosDiversos::get_instance()->get_arquivos_diversos();
+							foreach ($arquivos as $arquivo):
+							?>
+								<li class="color-funarte">
+									<div class="link-area">
+										<a href="#">CEDOC</a>
+									</div>
+									<strong>
+										<?php echo $arquivo['descricao'];?>
+									</strong>
+									<a class="link-more" href="<?php echo $arquivo['url']; ?>">Ler mais</a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
 				</aside>
 			</div>
 		</div>
