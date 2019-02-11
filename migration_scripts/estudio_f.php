@@ -50,7 +50,7 @@ while ($posts->have_posts()) {
 		
 		foreach ($links as $link){
 			if (strpos($link, '.mp3') !== false){
-				echo attachment_url_to_postid($link4, "\n";	
+				echo attachment_url_to_postid($link), "\n";
 			}
 		}
 			
