@@ -14,7 +14,10 @@ class MetaboxArquivosDiversos {
 	}
 	
 	public function add_custom_box() {
-		$post_ID = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'];
+		$post_ID = isset($_GET['post']) ? $_GET['post'] : (isset($_POST['post_ID']) ? $_POST['post_ID'] : null);
+		if ($post_ID == null ) {
+			return;
+		}
 		$page_template = get_page_template_slug( $post_ID );
 		if (in_array($page_template, $this->allowed_templates)) {
 			add_meta_box('pages_arquivos-diversos_metabox', __( 'Arquivos Diversos'),

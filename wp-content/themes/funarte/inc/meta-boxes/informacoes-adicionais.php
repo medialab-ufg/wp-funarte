@@ -6,6 +6,7 @@ class MetaboxMaisInformacoes {
 	use Singleton;
 	
 	protected $meta_key = 'mais_info';
+	protected $allowed_templates = ['page-tpl-box-verde-e-links.php'];
 	
 	protected function init() {
 		add_action('add_meta_boxes', array(&$this, 'add_custom_box'));
@@ -18,7 +19,11 @@ class MetaboxMaisInformacoes {
 	}
 
 	public function save_custom_box($post_id) {
-		global $post; 
+		global $post;
+		$page_template = get_page_template_slug( $post_id );
+		if (!in_array($page_template, $this->allowed_templates)) {
+			return $post_id;
+		}
 
 		if (empty($_POST)) {
 			return $post_id;
