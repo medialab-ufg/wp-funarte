@@ -3,9 +3,41 @@
 add_action('after_setup_theme', function() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'custom-header' );
+	
+	if (function_exists('tainacan_register_view_mode')) {
+		
+		tainacan_register_view_mode('AudioPlayers', [
+			'label' => 'Players de audio',
+			'icon' => '<span class="icon"><i class="mdi mdi-view-quilt mdi-24px"></i></span>',
+			'description' => 'Lista de players de áudio',
+			'dynamic_metadata' => false,
+			'template' => get_template_directory() . '/tainacan/audio-players-view-mode.php',
+		]);
+		
+	}
+	
+	
 });
 
-
+/**
+ * Retorna a URL do documento relacionado ao item atual 
+ * @param Object $post é o post do item. Vazio, pega o post atual do Loop 
+ *
+ */
+function funarte_get_document_url($post = null) {
+	$post = get_post($post);
+	
+	$item = new \Tainacan\Entities\Item($post);
+	
+	$document = $item->get_document();
+	
+	if ($item->get_document_type() == 'attachment') {
+		$document = wp_get_attachment_url($document);
+	}
+	
+	return $document;
+	
+}
 
 function funarte_load_part($name, $args) {
 	$THEME_FOLDER = get_template_directory();
