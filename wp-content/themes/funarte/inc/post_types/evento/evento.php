@@ -189,8 +189,11 @@ class Evento {
 		$mes = (empty($mes)) ? date('m') : (int)$mes;
 		$ano = (empty($ano)) ? date('Y') : (int)$ano;
 
-		$timestamp = mktime(0, 0, 0, 1, 1, $ano);
-		$dia_final = mktime(23, 59, 59, 12, date('t', $timestamp), 2200);
+		// $timestamp = mktime(0, 0, 0, 1, 1, $ano);
+		// $dia_final = mktime(23, 59, 59, 12, date('t', $timestamp), 2200);
+
+		$timestamp = mktime(0, 0, 0, $mes, 1, $ano);
+		$dia_final = mktime(23, 59, 59, $mes, date('t', $timestamp), $ano);
 
 		$params = array_merge(array(
 			'post_type' 	=> $this->POST_TYPE,
@@ -371,18 +374,57 @@ class Evento {
 	}
 
 	function ajax_get_events_by_month() {
-		$day = $_GET['mes'];
+		$month = $_GET['mes'];
 		$year = $_GET['ano'];
-		$response = [];
-		
-
-		if ( !is_numeric($day) || !is_numeric($year) ) {
+		if ( !is_numeric($month) || !is_numeric($year) ) {
 			wp_send_json_error("invalid parameters");
 		}
 
-		$eventos = $this->get_eventos_from_month($day, $year);
+		$timestamp = mktime(1, 1, 1, $month, 1, $year);
+		$days_in_month  = date('t', $timestamp);
+		$response = [];
+		
+		for($day=1; $day < $days_in_month; $day++) {
+			$response['events'][$day. '/' . sprintf("%'.02d", $month) . '/'. $year] = [];
+		}
 
-		wp_send_json($eventos, 200);
+		$events = $this->get_eventos_from_month($month, $year);
+
+		foreach ($events as $event) {
+			$local =  get_post_meta($event->ID, 'evento-local', true);
+
+			$inicio  = strtotime(get_post_meta($event->ID, 'evento-inicio', true));
+			$hora_inicio = date('H:i', $inicio);  
+			$dia_inicio  = date('d/m/Y',$inicio);
+
+			$fim 	= strtotime(get_post_meta($event->ID, 'evento-fim', true));
+			$hora_fim = date('H:i', $fim);  
+			$dia_fim 	= date('d/m/Y', $fim);
+
+			$multiplo = (bool)get_post_meta($event->ID, 'evento-multiplo', true);
+
+			if($multiplo) {
+				$day_point = $inicio;
+				while($day_point <= $fim) {
+					$dia_inicio  = date('d/m/Y', $day_point);
+					$response['events'][$dia_inicio][] = [
+						'ID' => $event->ID,
+						'title' => $event->post_title,
+						'local' => $local,
+						'hora' => ['inicio'=>$hora_inicio, 'fim' => $hora_fim]
+					];
+					$day_point = strtotime('+1 day', $day_point);
+				}
+			} else {
+				$response['events'][$dia_inicio][] = [
+					'ID' => $event->ID,
+					'title' => $event->post_title,
+					'local' => $local,
+					'hora' => ['inicio'=>$hora_inicio, 'fim' => $hora_fim]
+				];
+			}
+		}
+		wp_send_json($response, 200);
 	}
 }
 
