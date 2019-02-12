@@ -14,9 +14,9 @@
 		<div class="container">
 			<?php
 				$links = [
-					['link_name'=>'Agenda institucional do presidente'],
-					['link_name'=>get_the_title()]];
-				funarte_load_part('breadcrumb', ['links'=>$links]); 
+					['link_name'=>'Funarte', 'link_url'=>'/'],
+					['link_name'=>'Agenda institucional do presidente']];
+					funarte_load_part('breadcrumb', ['links'=>$links]); 
 			?>
 
 			<div class="box-title">
