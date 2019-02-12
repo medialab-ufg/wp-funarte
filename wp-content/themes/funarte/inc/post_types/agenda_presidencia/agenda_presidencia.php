@@ -11,6 +11,7 @@ class AgendaPresidencia {
 		add_action('init', array( &$this, "register_post_type" ));
 		add_action('add_meta_boxes', array(&$this, 'add_custom_box'));
 		add_action('save_post', array(&$this, 'save_custom_box'));
+		add_filter( 'wp_insert_post_data' , array(&$this, 'modify_post_title'), '99', 1 );
 	}
 
 	public function register_post_type() {
@@ -98,6 +99,14 @@ class AgendaPresidencia {
 		$data_agenda = $_POST["$this->prefix-data"];
 		update_post_meta($post_id, "$this->prefix-data", $data_agenda);
 	}
+
+	public function modify_post_title( $data ) {
+		if($data['post_type'] == $this->POST_TYPE && isset($_POST["$this->prefix-data"])) {
+			$title = "Agenda do dia: " . $_POST["$this->prefix-data"];
+			$data['post_title'] =  $title ; 
+		}
+		return $data; 
+}
 
 	public function get_post_type_name() {
 		return $this->POST_TYPE;
