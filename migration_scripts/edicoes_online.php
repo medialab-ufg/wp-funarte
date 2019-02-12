@@ -1,3 +1,4 @@
+
 <?php 
 
 #OBS - Gerar documentos anexados no TAINACAN - Seta o primeiro como document_id e os outros dois muda o post_parent e coloca o ID do item#
@@ -12,6 +13,7 @@ define( 'SHORTINIT', false );
 
 #define('ABSPATH', dirname(__FILE__) . '\wp\');
 
+/*
 require( 'C:\wamp\www\funarte\wp-blog-header.php');
 
 $collectionsRepo = \Tainacan\Repositories\Collections::get_instance();
@@ -23,9 +25,9 @@ $itemMetadataRepo = \Tainacan\Repositories\Item_Metadata::get_instance();
 ##Criando a coleção dos resgistros do Estúdio F##
 
 $collection = new \Tainacan\Entities\Collection();
-$collection->set_name('Estúdio F');
+$collection->set_name('Edições Online');
 $collection->set_status('publish');
-$collection->set_description('Coleção com os registros do Estúdio F.');
+$collection->set_description('Coleção com os registros do Edições Online');
 
 flush_rewrite_rules();
 
@@ -62,38 +64,18 @@ if ($collection->validate()) {
 					var_dump($erro);
 			}
 		}
-	}
-	
-	#Criando Metadado para 'Artista' verificar a necessidade de taxonomia.
-	$metadado = new \Tainacan\Entities\Metadatum();
-	$metadado->set_collection($insertedCollection);
-	$metadado->set_name('Artista');
-	$metadado->set_description('Nome do artista participante.');
-	$metadado->set_metadata_type('Tainacan\Metadata_Types\Text');
-	$metadado->set_status('publish');
-	$metadado->set_display('yes');
-	
-	if ($metadado->validate()){
-		$insertedMetadata = $metadataRepo->insert($metadado);
-	}else {
-		$erro = $metadado->get_errors();
-		var_dump($erro);
-	}
-	
-
+	}	
 }
-$collection = $collectionsRepo->fetch(['name'=>'Estúdio F'], 'OBJECT');
-$collection = $collection[0];
-
-
+*/
 ##Recuperando registros do site e adicionando à coleção.##
 
 
 require_once('wp-config.php');
 
 $posts = new WP_Query([
-    'cat' => 9,
-    'posts_per_page' => -1
+    'post_type' => 'edicao-online',
+    'posts_per_page' => -1,
+    
 ]);
 
 
@@ -104,21 +86,33 @@ function set_att_parent($id_att, $id_item) {
 	$wpdb->query( "UPDATE $wpdb->posts SET post_parent = $id_item WHERE ID = $id_att ");
 	
 }
+/*
+$collection = $collectionsRepo->fetch(['name'=>'Edições Online'], 'OBJECT');
+$collection = $collection[0];
+*/
 
 while ($posts->have_posts()) {
 	
 	$posts->the_post();
+	echo $post->post_title, "\n";
 	
-    $collection = $collectionsRepo->fetch(['name'=>'Estúdio F'], 'OBJECT');
-	$collection = $collection[0];
+	$att = $media = get_attached_media('');
+	
+	foreach ($att as $atch){
+		echo "Document ID - ", $atch->ID, "\n";
+	}
+	
+	$thumb_link = get_the_post_thumbnail();
+	preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $thumb_link, $matches);
+	$thumb = $matches[0];
+	echo "Thumb ID - ", attachment_url_to_postid($thumb[0]), "\n";
 
+	
+/*	
 	$item = new \Tainacan\Entities\Item();
 	$item->set_title($post->post_title);
 	$item->set_status('publish');
 	$item->set_collection($collection);
-	
-	
-
 	
 	if ($item->validate()) {
 		
@@ -153,21 +147,6 @@ while ($posts->have_posts()) {
 			echo var_dump($erro);
 		}
 
-		$metadatum = $metadataRepo->fetch(['name' => 'Artista'], 'OBJECT');
-		$metadatum = $metadatum[0];
-		$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
-		$itemMetadata->set_value(explode(" - ",$post->post_title)[1]);
-    
-		if ($itemMetadata->validate()) {
-						
-			$itemMetadataRepo->insert($itemMetadata);
-						
-		}else {
-			echo 'Erro no metadado ', $metadatum->get_name(), ' no item ', $post->post_title;
-			$erro = $itemMetadata->get_errors();
-			echo var_dump($erro);
-		}
-		
 		#Validando Item
 		if ($item->validate()) {
 	
@@ -189,8 +168,6 @@ while ($posts->have_posts()) {
 		die;
 	}
     
-
-
 #Documentos Anexados aos Posts (Audios)#
 
     #Verificando a existencia de documentos anexados ao post.
@@ -198,7 +175,6 @@ while ($posts->have_posts()) {
     $att = $media = get_attached_media('audio');
     
 	$count_att = 0;
-	$count_link = 0;
 
     if ($att) {
 		
@@ -207,6 +183,7 @@ while ($posts->have_posts()) {
 			echo $count_att, ' - ';
 			echo $atch->ID; #IDs dos documentos anexados ao post.
 			echo "\n";
+			
 			if ($count_att == 1){
 				
 				$item->set_document($atch->ID);
@@ -228,57 +205,14 @@ while ($posts->have_posts()) {
 					
 					$itemsRepo->insert($item);
 					echo "Salvando item com documento setado\n";
-					
-					
+									
 				} else{
 					echo 'Item não validado: ', $item->get_title();
 				}
 			}
 		}
- 
-    } else{
-		
-	#Verificando os posts com documentos anexados por link no conteúdo.
-		
-		$content = $post->post_content;
-		preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $content, $matches);
-		$links = $matches[0];
-		
-		foreach ($links as $link){
-			
-			
-			if (strpos($link, '.mp3') !== false){
-				$count_link++;
-				if ($count_link == 1){
-					
-					
-					$item->set_document(attachment_url_to_postid($link));
-					$item->set_document_type('attachment');
-					
-					if ($item->validate()){
-						$itemsRepo->insert($item);
-						echo "Salvando item com documento setado\n";
-					} else{
-						echo 'Item não validado: ', $item->get_title();
-					}
-				
-				}else{
-				
-					#wp_update_post(Array('ID' => attachment_url_to_postid($link), 'post_parent' => $item->get_id()));
-					set_att_parent(attachment_url_to_postid($link), $item->get_id());
-					
-					if ($item->validate()){
-						$itemsRepo->insert($item);
-						echo "Salvando item com documento setado\n";
-					} else{
-						echo 'Item não validado: ', $item->get_title();
-					}
-				}
-			}
-		}
-	}
-
-
+    }
+ */
 }
 
 
