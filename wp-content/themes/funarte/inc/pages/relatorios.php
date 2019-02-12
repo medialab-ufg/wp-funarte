@@ -26,8 +26,9 @@ class Relatorio {
 	}
 
 	public function save_custom_box($post_id) {
-		global $post; 
-		if ($post && $post->post_name != $this->PAGE_SLUG) {
+		global $post;
+		$slug = get_post( $post_id )->post_name;
+		if ($post == null || $slug != $this->PAGE_SLUG) {
 			return $post_id;
 		}
 		$this->save_meta_box_downloads($post_id);
