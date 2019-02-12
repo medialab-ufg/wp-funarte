@@ -189,42 +189,24 @@ class Evento {
 		$mes = (empty($mes)) ? date('m') : (int)$mes;
 		$ano = (empty($ano)) ? date('Y') : (int)$ano;
 
-		$timestamp = mktime(0, 0, 0, 1, 1, $ano);
-		$dia_final = mktime(23, 59, 59, 12, date('t', $timestamp), 2200);
+		$timestamp = mktime(0, 0, 0, $mes, 1, $ano);
+		$dia_final = mktime(23, 59, 59, $mes, date('t', $timestamp), $ano);
 
 		$params = array_merge(array(
 			'post_type' 	=> $this->POST_TYPE,
-			'meta_key'		=> 'evento-inicio',
-			'meta_compare'=> '>=',
-			'meta_value'	=>  date('Y-m-d H:i:s',mktime(23, 59, 59, 1 , 1,$ano)),
-			'ordeby' 			=> 'meta_value',
-			'order'				=> 'DESC',
-			'posts_per_page'	=> -1
+			'posts_per_page'	=> -1,
+			'meta_query' => array(
+				'relation' => 'AND',
+				'evento-inicio' => ['key'     => 'evento-fim',
+														'value'   => date('Y-m-d H:i:s',mktime(0, 0, 0, $mes, 1, $ano)),
+														'compare' => '>='],
+				'evento-fim'=> ['key'     => 'evento-inicio',
+												'value'   => date('Y-m-d H:i:s',mktime(23, 59, 59, $mes, date('t', $timestamp), $ano)),
+												'compare' => '<=']
+			),
+			'orderby' => ['evento-inicio' => 'ASC']
 		), $params);
 
-		$eventos = query_posts($params);
-		wp_reset_query();
-		
-		foreach ($eventos as $key => $evento) {
-			$evento->inicio = get_post_meta($evento->ID, 'evento-inicio', true);
-			$evento->fim = get_post_meta($evento->ID, 'evento-fim', true);
-			if (strtotime($evento->inicio) > $dia_final)
-				unset($eventos[$key]);
-		}
-
-		$ids = array();
-		foreach ($eventos as $evento)
-			$ids[] = $evento->ID;
-			
-		$params = array_merge(array(
-			'post_type'	=> $this->POST_TYPE,
-			'post__in'	=> $ids,
-			'meta_key'	=> 'evento-inicio',
-			'ordeby' 		=> 'meta_value',
-			'order'			=> 'ASC',
-			'posts_per_page'	=> -1
-		), $params);
-			
 		return query_posts($params);
 	}
 
@@ -371,18 +353,57 @@ class Evento {
 	}
 
 	function ajax_get_events_by_month() {
-		$day = $_GET['mes'];
+		$month = $_GET['mes'];
 		$year = $_GET['ano'];
-		$response = [];
-		
-
-		if ( !is_numeric($day) || !is_numeric($year) ) {
+		if ( !is_numeric($month) || !is_numeric($year) ) {
 			wp_send_json_error("invalid parameters");
 		}
 
-		$eventos = $this->get_eventos_from_month($day, $year);
+		$timestamp = mktime(1, 1, 1, $month, 1, $year);
+		$days_in_month  = date('t', $timestamp);
+		$response = [];
+		
+		for($day=1; $day < $days_in_month; $day++) {
+			$response['events'][$day. '/' . sprintf("%'.02d", $month) . '/'. $year] = [];
+		}
 
-		wp_send_json($eventos, 200);
+		$events = $this->get_eventos_from_month($month, $year);
+
+		foreach ($events as $event) {
+			$local =  get_post_meta($event->ID, 'evento-local', true);
+
+			$inicio  = strtotime(get_post_meta($event->ID, 'evento-inicio', true));
+			$hora_inicio = date('H:i', $inicio);  
+			$dia_inicio  = date('d/m/Y',$inicio);
+
+			$fim 	= strtotime(get_post_meta($event->ID, 'evento-fim', true));
+			$hora_fim = date('H:i', $fim);  
+			$dia_fim 	= date('d/m/Y', $fim);
+
+			$multiplo = (bool)get_post_meta($event->ID, 'evento-multiplo', true);
+
+			if($multiplo) {
+				$day_point = $inicio;
+				while($day_point <= $fim && $day_point <= mktime(23, 59, 59, $month, $days_in_month, $year)) {
+					$dia_inicio  = date('d/m/Y', $day_point);
+					$response['events'][$dia_inicio][] = [
+						'ID' => $event->ID,
+						'title' => $event->post_title,
+						'local' => $local,
+						'hora' => ['inicio'=>$hora_inicio, 'fim' => $hora_fim]
+					];
+					$day_point = strtotime('+1 day', $day_point);
+				}
+			} else {
+				$response['events'][$dia_inicio][] = [
+					'ID' => $event->ID,
+					'title' => $event->post_title,
+					'local' => $local,
+					'hora' => ['inicio'=>$hora_inicio, 'fim' => $hora_fim]
+				];
+			}
+		}
+		wp_send_json($response, 200);
 	}
 }
 
