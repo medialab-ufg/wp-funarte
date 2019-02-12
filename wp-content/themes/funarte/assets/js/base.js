@@ -867,8 +867,8 @@ var base = {
 					{
 						breakpoint: 992,
 						settings: {
-							slidesToShow: 1
-							variableWidth: false,
+							slidesToShow: 1,
+							variableWidth: false
 						}
 					}
 				]
