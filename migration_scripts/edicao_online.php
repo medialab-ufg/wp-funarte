@@ -18,3 +18,11 @@ function codex_book_init() {
     );
 
     register_post_type( 'edicao-online', $args );
+
+
+
+INSERIR SCRIPT AQUI
+
+
+
+}
