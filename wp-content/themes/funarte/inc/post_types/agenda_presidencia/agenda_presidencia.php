@@ -8,10 +8,20 @@ class AgendaPresidencia {
 	private $prefix = 'agenda-presidencia';
 
 	protected function init() {
+		add_action('pre_get_posts', array(&$this, 'pre_get_posts'));
 		add_action('init', array( &$this, "register_post_type" ));
 		add_action('add_meta_boxes', array(&$this, 'add_custom_box'));
 		add_action('save_post', array(&$this, 'save_custom_box'));
-		add_filter( 'wp_insert_post_data' , array(&$this, 'modify_post_title'), '99', 1 );
+		add_filter('wp_insert_post_data' , array(&$this, 'modify_post_title'), '99', 1 );
+	}
+
+	function pre_get_posts( $query ) {
+		if ( !is_admin() && $query->is_main_query()  && $query->get('post_type') == $this->POST_TYPE ) {
+			$dia = (isset($_GET['dia'])) ? $_GET['dia'] : date('d/m/Y');
+			$query->set( 'posts_per_page', 1 );
+			$query->set( 'meta_key', 'agenda-presidencia-data' );
+			$query->set( 'meta_value', $dia);
+		}
 	}
 
 	public function register_post_type() {
@@ -69,7 +79,7 @@ class AgendaPresidencia {
 		$nonce = wp_create_nonce(__FILE__);
 		
 		$data_agenda = get_post_meta($post->ID, "{$this->prefix}-data", true);
-		$data_agenda = $data_agenda ? $data_agenda : date('d/m/y');
+		$data_agenda = $data_agenda ? $data_agenda : date('d/m/Y');
 		?>
 			<input type="hidden" name="agenda_presidencia_nonce_custombox" id="agenda_presidencia_nonce_custombox" value="<?php echo $nonce; ?>" />
 			<label for="data"> Dia: </label>
@@ -102,8 +112,11 @@ class AgendaPresidencia {
 
 	public function modify_post_title( $data ) {
 		if($data['post_type'] == $this->POST_TYPE && isset($_POST["$this->prefix-data"])) {
-			$title = "Agenda do dia: " . $_POST["$this->prefix-data"];
+			$data_agenda = trim($_POST["$this->prefix-data"]);
+			$title = "Agenda do dia: $data_agenda";
 			$data['post_title'] =  $title ; 
+			$data_agenda = str_replace('/','_', $data_agenda);
+			$data['post_name'] = $data_agenda;
 		}
 		return $data; 
 }
