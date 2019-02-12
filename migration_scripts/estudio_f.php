@@ -12,12 +12,13 @@ define( 'SHORTINIT', false );
 
 #define('ABSPATH', dirname(__FILE__) . '\wp\');
 
-require_once('wp-blog-header.php');
+require( 'C:\wamp\www\funarte\wp-blog-header.php');
 
 $collectionsRepo = \Tainacan\Repositories\Collections::get_instance();
 $metadataRepo = \Tainacan\Repositories\Metadata::get_instance();
 $itemsRepo = \Tainacan\Repositories\Items::get_instance();
 $itemMetadataRepo = \Tainacan\Repositories\Item_Metadata::get_instance();
+
 
 ##Criando a coleção dos resgistros do Estúdio F##
 
@@ -25,6 +26,8 @@ $collection = new \Tainacan\Entities\Collection();
 $collection->set_name('Estúdio F');
 $collection->set_status('publish');
 $collection->set_description('Coleção com os registros do Estúdio F.');
+
+flush_rewrite_rules();
 
 if ($collection->validate()) {
 	$insertedCollection = $collectionsRepo->insert($collection);
@@ -76,34 +79,91 @@ if ($collection->validate()) {
 		$erro = $metadado->get_errors();
 		var_dump($erro);
 	}
+	
+
+}
+$collection = $collectionsRepo->fetch(['name'=>'Estúdio F'], 'OBJECT');
+$collection = $collection[0];
+
+
+##Recuperando registros do site e adicionando à coleção.##
+
+
+require_once('wp-config.php');
+
+$posts = new WP_Query([
+    'cat' => 9,
+    'posts_per_page' => -1
+]);
+
+
+function set_att_parent($id_att, $id_item) {
+	
+	global $wpdb;
+	
+	$wpdb->query( "UPDATE $wpdb->posts SET post_parent = $id_item WHERE ID = $id_att ");
+	
 }
 
-#Função para a Inserção dos Itens
-function item_insert($metadata_title, $content){
+while ($posts->have_posts()) {
 	
-	$collection = $collectionsRepo->fetch(['name'=>'Estúdio F'], 'OBJECT');
+	$posts->the_post();
+	
+    $collection = $collectionsRepo->fetch(['name'=>'Estúdio F'], 'OBJECT');
 	$collection = $collection[0];
 
 	$item = new \Tainacan\Entities\Item();
-	$item->set_title($metadata_title);
+	$item->set_title($post->post_title);
 	$item->set_status('publish');
 	$item->set_collection($collection);
+	
+	
 
+	
 	if ($item->validate()) {
 		
 		$item = $itemsRepo->insert($item);
-		$metadatum = $metadataRepo->fetch(['name' => $metadata_title], 'OBJECT');
+		$metadatum = $metadataRepo->fetch(['name' => 'Título'], 'OBJECT');
 		$metadatum = $metadatum[0];
 		$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
-		$itemMetadata->set_value($content);
+		$itemMetadata->set_value($post->post_title);
 		
-		#Validando ItemMetadata
 		if ($itemMetadata->validate()) {
 						
 			$itemMetadataRepo->insert($itemMetadata);
 						
 		}else {
-			echo 'Erro no metadado ', $metadatum->get_name(), ' no item ', 'Título';
+			echo 'Erro no metadado ', $metadatum->get_name(), ' no item ', $post->post_title;
+			$erro = $itemMetadata->get_errors();
+			echo var_dump($erro);
+		}
+		
+		$metadatum = $metadataRepo->fetch(['name' => 'Descrição'], 'OBJECT');
+		$metadatum = $metadatum[0];
+		$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
+		$itemMetadata->set_value($post->post_content);
+		
+		if ($itemMetadata->validate()) {
+						
+			$itemMetadataRepo->insert($itemMetadata);
+						
+		}else {
+			echo 'Erro no metadado ', $metadatum->get_name(), ' no item ', $post->post_title;
+			$erro = $itemMetadata->get_errors();
+			echo var_dump($erro);
+		}
+
+		$metadatum = $metadataRepo->fetch(['name' => 'Artista'], 'OBJECT');
+		$metadatum = $metadatum[0];
+		$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
+		$itemMetadata->set_value(explode(" - ",$post->post_title)[1]);
+    
+		if ($itemMetadata->validate()) {
+						
+			$itemMetadataRepo->insert($itemMetadata);
+						
+		}else {
+			echo 'Erro no metadado ', $metadatum->get_name(), ' no item ', $post->post_title;
 			$erro = $itemMetadata->get_errors();
 			echo var_dump($erro);
 		}
@@ -112,7 +172,7 @@ function item_insert($metadata_title, $content){
 		if ($item->validate()) {
 	
 			$item = $itemsRepo->insert($item);
-			echo 'Item ', 'Título', ' - inserted', "\n";
+			echo 'Item ', $post->post_title, ' - inserted', "\n";
 		}else{
 			echo 'Erro no preenchientos dos campos', "\n";
 			$errors = $item->get_errors();
@@ -128,35 +188,8 @@ function item_insert($metadata_title, $content){
 		echo  "\n\n";
 		die;
 	}
-	return $item;
-}
+    
 
-##Recuperando registros do site e adicionando à coleção.##
-require_once('wp-config.php');
-
-$posts = new WP_Query([
-    'cat' => 9,
-    'posts_per_page' => -1
-]);
-
-
-while ($posts->have_posts()) {
-    
-    $posts->the_post();
-    
-#Recuperando valores#
-    
-	#post->ID; #ID do post
-    #$post_link = get_permalink($post); #Link do Post
-    
-    #$post->post_title; #Título do Post *
-    item_insert('Título', $post->post_title);
-    
-    #$post->post_content; #Conteúdo do Post - !Verificar como remover parte indesejada do conteúdo.! *
-    item_insert('Descrição', $post->post_content);
-    
-    #explode(" - ", $title)[1]; #Artista *
-    item_insert('Artista',explode(" - ", $post->post_title)[1]);
 
 #Documentos Anexados aos Posts (Audios)#
 
@@ -174,6 +207,33 @@ while ($posts->have_posts()) {
 			echo $count_att, ' - ';
 			echo $atch->ID; #IDs dos documentos anexados ao post.
 			echo "\n";
+			if ($count_att == 1){
+				
+				$item->set_document($atch->ID);
+				$item->set_document_type('attachment');
+				
+				if ($item->validate()){
+					$itemsRepo->insert($item);
+					echo "Salvando item com documento setado\n";
+				} else{
+					echo 'Item não validado: ', $item->get_title();
+				}
+				
+			}else{
+				
+				set_att_parent($atch->ID, $item->get_id());
+				#wp_update_post(Array('ID' => $atch->ID, 'post_parent' => $item->get_id()));
+				
+				if ($item->validate()){
+					
+					$itemsRepo->insert($item);
+					echo "Salvando item com documento setado\n";
+					
+					
+				} else{
+					echo 'Item não validado: ', $item->get_title();
+				}
+			}
 		}
  
     } else{
@@ -189,13 +249,35 @@ while ($posts->have_posts()) {
 			
 			if (strpos($link, '.mp3') !== false){
 				$count_link++;
+				if ($count_link == 1){
+					
+					
+					$item->set_document(attachment_url_to_postid($link));
+					$item->set_document_type('attachment');
+					
+					if ($item->validate()){
+						$itemsRepo->insert($item);
+						echo "Salvando item com documento setado\n";
+					} else{
+						echo 'Item não validado: ', $item->get_title();
+					}
 				
-				echo $count_link, ' - ';
-				echo attachment_url_to_postid($link); #IDs dos documentos anexados ao post via link.
-				echo "\n";
+				}else{
+				
+					#wp_update_post(Array('ID' => attachment_url_to_postid($link), 'post_parent' => $item->get_id()));
+					set_att_parent(attachment_url_to_postid($link), $item->get_id());
+					
+					if ($item->validate()){
+						$itemsRepo->insert($item);
+						echo "Salvando item com documento setado\n";
+					} else{
+						echo 'Item não validado: ', $item->get_title();
+					}
+				}
 			}
-		}		
+		}
 	}
+
 
 }
 
