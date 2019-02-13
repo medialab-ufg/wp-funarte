@@ -4620,6 +4620,8 @@ ul.social-media-list {
 		page-break-inside: avoid;
 		break-inside: avoid;
 		display: block;
+
+		img { max-width: 100%; }
 	}
 
 	p {
