@@ -364,6 +364,9 @@ class Evento {
 		$events = $this->get_eventos_from_month($month, $year);
 
 		foreach ($events as $event) {
+			$cat = get_the_category($event->ID);
+			if($cat && isset($cat)) $cat = $cat[0];
+			else $cat = ['slug'=>'funarte', 'name'=>'funarte'];
 			$local =  get_post_meta($event->ID, 'evento-local', true);
 
 			$inicio  = strtotime(get_post_meta($event->ID, 'evento-inicio', true));
@@ -384,6 +387,7 @@ class Evento {
 						'ID' => $event->ID,
 						'title' => $event->post_title,
 						'local' => $local,
+						'cat' => $cat,
 						'hora' => ['inicio'=>$hora_inicio, 'fim' => $hora_fim]
 					];
 					$day_point = strtotime('+1 day', $day_point);
@@ -393,6 +397,7 @@ class Evento {
 					'ID' => $event->ID,
 					'title' => $event->post_title,
 					'local' => $local,
+					'cat' => $cat,
 					'hora' => ['inicio'=>$hora_inicio, 'fim' => $hora_fim]
 				];
 			}
