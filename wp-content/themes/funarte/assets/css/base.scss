@@ -3284,12 +3284,12 @@ ul.slick-dots {
 	padding: 10px;
 	position: relative;
 
-	strong {
+	a {
 		padding-right: 30px;
 		font-weight: 400;
 		font-size: .9rem;
-		color: #231E1F;
-		display: block;
+		color: #231E1F !important;
+		display: inline-block;
 	}
 
 	.audios-list__share {

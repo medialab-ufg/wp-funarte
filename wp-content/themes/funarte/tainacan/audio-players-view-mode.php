@@ -3,7 +3,7 @@
 	<?php while ( have_posts() ) : the_post(); ?>
 		<li>
 			<div class="audios-list__title">
-				<strong><?php the_title(); ?></strong>
+				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 				<!-- <button type="button" class="audios-list__share"><i class="mdi mdi-share-variant"></i></button> -->
 			</div>
 
