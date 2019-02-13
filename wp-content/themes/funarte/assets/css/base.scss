@@ -4613,6 +4613,7 @@ ul.social-media-list {
 	list-style-type: none;
 	column-count: 3;
 	column-gap: 60px;
+	-webkit-transform: translate3d(0, 0, 0);
 
 	li {
 		margin-bottom: 34px;
