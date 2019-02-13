@@ -48,6 +48,7 @@ $(document).ready(function() {
 	// Eventos
 	base.carrossel.iniciarCalendarioCompacto();
 	base.carrossel.iniciarCalendarioCompleto();
+	base.carrossel.iniciarCalendarioFormulario();
 	base.calendario.ativar();
 	base.calendario.ativarCompacto();
 	base.calendario.atualizaCarrosselCompacto();
@@ -490,8 +491,79 @@ var base = {
 			$carousel.addClass('active');
 		},
 
+		iniciarCalendarioFormulario: function() {
+			$('.carousel-calendar-box .form-filtro-calendario input.datepicker-field').on('change',function(event){ 
+				var data = $(this).val().split('/');
+				var url = window.location.href;
+				url = url.split('?')[0];
+				url += '?dia=' + data[0] + '&mes=' + data[1] + '&ano=' + data[2];
+				window.location.href = url;
+			});
+		},
+
 		iniciarCalendarioCompleto: function() {
 			var $carousel = $('.carousel-calendar-box');
+			var status = true;
+
+			function adicionarEventosMes(slick, pos, mes, ano) {
+				var request = $.ajax({
+					url: funarte.ajaxurl,
+					type: "GET",
+					data: { 'action':'get_events_by_month', 'mes':mes, 'ano':ano},
+					success: function(data) {
+						var html_el = '';
+						Object.keys(data.events).forEach(function(key, index){
+							eventos = data.events[key];
+							var days = ['DOM','SEG','TER','QUA','QUI','SEX','SAB'];
+							
+							var dia_semana = days[ ( new Date(key.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3"))).getDay() ];
+							var mes_ano = key.split("/")[0] + '/' + key.split("/")[1];
+
+							var html_evento = '';
+							for (var idx in eventos) {
+								var evento = eventos[idx];
+								html_evento = html_evento +
+									'<div class="carousel-calendar__event color-teatro"> \
+										<strong>' + evento.title + '</strong> \
+										<span class="carousel-calendar__pin">' + evento.local + '</span> \
+											<span class="carousel-calendar__time">das ' + evento.hora.inicio + ' às ' + evento.hora.fim + ' horas</span>  \
+									</div>';
+							}
+							html_evento = html_evento == '' ? '<strong>Nenhum evento</strong>' : html_evento;
+							html_el = html_el + '<li><div class="carousel-calendar__button"><button type="text">' + dia_semana + '<br>' + mes_ano + '</button> </div>' + html_evento +	'</li>';
+						});
+						slick.slickAdd(html_el, pos);
+						status = true;
+					},
+					error: function(e) {
+						status = true;
+					}
+				});
+			}
+
+			$('.carousel-calendar').on('afterChange', function(event, slick, currentSlide) {
+				if (slick.slideCount - currentSlide <= 7 && status) {
+					status = false;
+					var mes = parseInt($('.carousel-calendar').data('mes')) + 1;
+					var ano = parseInt($('.carousel-calendar').data('ano'));
+					if (mes == 13) { mes = 1; ano++;}
+					adicionarEventosMes(slick, slick.slideCount-1, mes, ano);
+					$('.carousel-calendar').data('mes', mes);
+					$('.carousel-calendar').data('ano', ano);
+				} else if (currentSlide <= 2  && status) {
+					// status = false;
+					// var mes = parseInt($('.carousel-calendar').data('mes')) - 1;
+					// var ano = parseInt($('.carousel-calendar').data('ano'));
+					// if (mes == 0) { mes = 12; ano--;}
+					// adicionarEventosMes(slick, 0, mes, ano);
+					// $('.carousel-calendar').data('mes', mes);
+					// $('.carousel-calendar').data('ano', ano);
+				}
+			});
+			
+			$('.carousel-calendar').on('init', function(event, slick){
+				slick.slickGoTo($('.carousel-calendar li.active').data('slick-index'));
+			});
 
 			$('.carousel-calendar').slick({
 				speed: 500,

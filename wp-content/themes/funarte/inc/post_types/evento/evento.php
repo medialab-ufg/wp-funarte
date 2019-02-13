@@ -352,19 +352,13 @@ class Evento {
 		
 	}
 
-	function ajax_get_events_by_month() {
-		$month = $_GET['mes'];
-		$year = $_GET['ano'];
-		if ( !is_numeric($month) || !is_numeric($year) ) {
-			wp_send_json_error("invalid parameters");
-		}
-
+	function get_prepared_events_by_month($month, $year) {
+		$response = [];
 		$timestamp = mktime(1, 1, 1, $month, 1, $year);
 		$days_in_month  = date('t', $timestamp);
-		$response = [];
 		
-		for($day=1; $day < $days_in_month; $day++) {
-			$response['events'][$day. '/' . sprintf("%'.02d", $month) . '/'. $year] = [];
+		for($day=1; $day <= $days_in_month; $day++) {
+			$response['events'][sprintf("%'.02d", $day) . '/' . sprintf("%'.02d", $month) . '/'. $year] = [];
 		}
 
 		$events = $this->get_eventos_from_month($month, $year);
@@ -403,6 +397,16 @@ class Evento {
 				];
 			}
 		}
+		return $response;
+	}
+
+	function ajax_get_events_by_month() {
+		$month = $_GET['mes'];
+		$year = $_GET['ano'];
+		if ( !is_numeric($month) || !is_numeric($year) ) {
+			wp_send_json_error("invalid parameters");
+		}
+		$response = $this->get_prepared_events_by_month($month, $year);
 		wp_send_json($response, 200);
 	}
 }
