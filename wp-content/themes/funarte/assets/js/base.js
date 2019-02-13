@@ -577,7 +577,7 @@ var base = {
 					// if (mes == 0) { mes = 12; ano--;}
 					// adicionarEventosMes(slick, 0, mes, ano);
 					// $('.carousel-calendar').data('mes', mes);
-					// $('.carousel-calendar').data('ano', ano);
+					// $('.carousel-calendar').data('ano', ano);//
 				}
 			});
 			
