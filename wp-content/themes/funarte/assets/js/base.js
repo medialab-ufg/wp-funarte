@@ -538,7 +538,7 @@ var base = {
 							for (var idx in eventos) {
 								var evento = eventos[idx];
 								html_evento = html_evento +
-									'<div class="carousel-calendar__event color-teatro"> \
+									'<div class="carousel-calendar__event color-'+ evento.cat.slug +'"> \
 										<strong>' + evento.title + '</strong> \
 										<span class="carousel-calendar__pin">' + evento.local + '</span> \
 											<span class="carousel-calendar__time">das ' + evento.hora.inicio + ' às ' + evento.hora.fim + ' horas</span>  \
