@@ -4621,7 +4621,10 @@ ul.social-media-list {
 		break-inside: avoid;
 		display: block;
 
-		img { max-width: 100%; }
+		img {
+			max-width: 100%;
+			display: block;
+		}
 	}
 
 	p {
