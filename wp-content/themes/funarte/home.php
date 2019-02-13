@@ -266,5 +266,3 @@ query_posts(array_merge(array(
 		</section>
 	</main>
 <?php get_footer(); ?>
-
-<script src="<?php echo get_theme_file_uri() . '/assets/js/plugins/musicplayer-min.js'; ?>"></script>

@@ -2,14 +2,19 @@
 	<ul class="audios-list">
 	<?php while ( have_posts() ) : the_post(); ?>
 		<li>
-			<div class="audios-list__box">
-				<button type="button" class="audios-list__play"><i class="mdi mdi-play-circle-outline"></i></button>
-				<ul class="audios-list__audio">
-					<li><a href="<?php echo funarte_get_document_url(); ?>"></a></li>
-				</ul>
+			<div class="audios-list__title">
+				<strong><?php the_title(); ?></strong>
+				<!-- <button type="button" class="audios-list__share"><i class="mdi mdi-share-variant"></i></button> -->
+			</div>
 
-				<div class="audios-list__title">
-					<strong><?php the_title(); ?></strong>
+			<?php $audioUrl = funarte_get_document_url(); ?>
+
+			<div class="audios-list__box <?php echo empty($audioUrl) ? '' : 'audios-list__has-audio'; ?>">
+				<button type="button" class="audios-list__play"><i class="mdi mdi-play-circle-outline"></i></button>
+				<div class="audios-list__audio">
+					<ul class="playlist">
+						<li><a href="<?php echo $audioUrl; ?>"></a></li>
+					</ul>
 				</div>
 
 				<div class="audios-list__columns">
