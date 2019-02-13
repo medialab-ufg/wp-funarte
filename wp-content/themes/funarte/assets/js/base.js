@@ -70,20 +70,15 @@ var base = {
 		},
 
 		ativarListaColecao: function() {
-			//setTimeout(function(){
-				console.log('ativou');
-				var $audioPlayer = $('.audios-list__play');
+			$('#items-list-results').on('click','.audios-list__play',function() {
+				var $this = $(this);
 
-				//if ($audioPlayer.length > 0) {
-					console.log('length');
-					$audioPlayer.on('click',function() {
-						console.log('click');
-						$(this).siblings('.audios-list__audio').musicPlayer({
-							elements: ['controls', 'time', 'volume', 'progress']
-						});
-					});
-				//}
-			//}, 3000);
+				$this.siblings('.audios-list__audio').musicPlayer({
+					elements: ['controls', 'time', 'volume', 'progress']
+				});
+
+				$this.parents('.audios-list__box').addClass('active');
+			});
 		}
 	},
 

@@ -3228,8 +3228,10 @@ ul.slick-dots {
 
 /* LISTAS */
 
+/* Lista de audios */
+
 .audios-list {
-	margin: 0 -15px;
+	margin: 0 -25px;
 	padding: 0;
 	display: flex;
 	flex-wrap: wrap;
@@ -3238,60 +3240,234 @@ ul.slick-dots {
 	li {
 		width: 50%;
 		margin-bottom: 50px;
-		padding: 0 15px;
+		padding: 0 25px;
 	}
 }
 .audios-list__box {
 	width: 100%;
 	position: relative;
 }
-
 .audios-list__play {
 	width: 100%;
 	height: 100%;
 	cursor: pointer;
-	display: block;
+	display: none;
 	overflow: hidden;
 	position: absolute;
 	top: 0;
 	left: 0;
 	border: none;
-	background: rgba(255,255,255,.5);
+	background: rgba(239, 239, 239,.7);
 
 	i {
-		font-size: 80px;
+		font-size: 120px;
 		color: $turquesa-1;
 		position: absolute;
-		top: 25px;
-		left: 21px;
+		top: 0;
+		left: 30px;
 	}
 }
+.audios-list__has-audio .audios-list__play { display: block; }
 .audios-list__audio {
 	position: absolute;
 	left: -999999px;
-}
 
+	li {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+
+		a { display: block; }
+	}
+}
+.audios-list__title {
+	padding: 10px;
+	position: relative;
+
+	a {
+		padding-right: 30px;
+		font-weight: 400;
+		font-size: .9rem;
+		color: #231E1F !important;
+		display: inline-block;
+	}
+
+	.audios-list__share {
+		width: 30px;
+		height: 30px;
+		cursor: pointer;
+		position: absolute;
+		top: 9px;
+		right: 8px;
+		border: none;
+		background: none;
+
+		i {
+			font-size: 20px;
+			color: $cinza-5;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+}
 .audios-list__columns {
 	display: flex;
 	justify-content: space-between;
 }
 .audios-list__image {
-	width: 120px;
-	height: 120px;
-	flex: 0 0 120px;
-	margin-right: 15px;
+	width: 180px;
+	height: 180px;
+	flex: 0 0 180px;
+	margin-right: 25px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 .audios-list__text {
 	width: 100%;
+	padding: 18px 20px 0 0;
 
 	p {
-		
+		margin: 0;
+		font-size: .7rem;
+		color: $cinza-5;
+		line-height: .9rem;
 	}
 }
 
+/* BOX COM O ÁUDIO ATIVADO */
+
+.audios-list__box.active {
+	.audios-list__play { display: none; }
+	.audios-list__audio {
+		position: static;
+		left: auto;
+	}
+
+	.audios-list__text p { margin: 0 0 40px; }
+
+	.player {
+		width: 100%;
+		height: 35px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		background-color: rgba(191, 191, 191,.9);
+
+		.controls {
+			.play,
+			.pause {
+				width: 18px;
+				height: 18px;
+				cursor: pointer;
+				display: block;
+				overflow: hidden;
+				outline: none !important;
+				position: absolute;
+				top: 9px;
+				left: 18px;
+				border-radius: 50%;
+				border: none;
+				background: $turquesa-1;
+
+				&.active { z-index: 4; }
+
+				&:after {
+					@include icon-css;
+					content: "\f40a";
+					font-size: 14px;
+					color: $branco;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%,-50%);
+				}
+			}
+			.play {
+				z-index: 2;
+
+				&.hidden { z-index: 0; }
+			}
+			.pause {
+				&.visible { z-index: 2; }
+				&:after { content: "\f3e4"; }
+			}
+		}
+
+		.timeHolder {
+			display: flex;
+			position: absolute;
+			top: 9px;
+			left: 249px;
+
+			.time-current,
+			.time-separator,
+			.time-duration {
+				font-size: 12px;
+				color: $cinza-6;
+			}
+		}
+
+		.progressbar {
+			width: 200px;
+			top: 16px;
+			right: auto;
+			left: 42px;
+		}
+
+		.volume {
+			width: 83px;
+			top: 11px;
+			right: 15px;
+
+			.volume-btn:after { color: $cinza-6; }
+
+			.volume-adjust { width: 60px; }
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.audios-list { margin: 0; }
+	.audios-list li {
+		width: 100%;
+		padding: 0;
+	}
+	.audios-list__box,
+	.audios-list__title {
+		max-width: 440px;
+		margin: 0 auto;
+	}
+}
+@media screen and (max-width: 500px) {
+	.audios-list li { margin-bottom: 35px; }
+	.audios-list__audio li { margin-bottom: 0; }
+	.audios-list__box,
+	.audios-list__title { max-width: 275px; }
+	.audios-list__image {
+		width: 125px;
+		height: 125px;
+		flex: 0 0 125px;
+		margin-right: 20px;
+	}
+	.audios-list__play i {
+		font-size: 83px;
+		left: 22px;
+	}
+	.audios-list__box.active {
+		.player {
+			.progressbar { width: 70px; }
+			.timeHolder { left: 120px; }
+			.volume {
+				width: 52px;
+
+				.volume-adjust { width: 30px; }
+			}
+		}
+	}
+}
 
 
 .box-simple-links {
@@ -4437,6 +4613,7 @@ ul.social-media-list {
 	list-style-type: none;
 	column-count: 3;
 	column-gap: 60px;
+	-webkit-transform: translate3d(0, 0, 0);
 
 	li {
 		margin-bottom: 34px;
@@ -4444,6 +4621,11 @@ ul.social-media-list {
 		page-break-inside: avoid;
 		break-inside: avoid;
 		display: block;
+
+		img {
+			max-width: 100%;
+			display: block;
+		}
 	}
 
 	p {

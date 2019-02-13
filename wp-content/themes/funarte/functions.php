@@ -25,6 +25,7 @@ add_action('after_setup_theme', function() {
  *
  */
 function funarte_get_document_url($post = null) {
+	
 	$post = get_post($post);
 	
 	$item = new \Tainacan\Entities\Item($post);
@@ -188,6 +189,7 @@ function extra_files() {
 	wp_enqueue_script('jquery-cdn', get_theme_file_uri() . '/assets/js/plugins/jquery-2.2.4.min.js', null, microtime(), true);
 	wp_enqueue_script('popper-cdn', get_theme_file_uri() . '/assets/js/plugins/popper.min.js', null, microtime(), true);
 	wp_enqueue_script('bootstrap-cdn-js', get_theme_file_uri() . '/assets/js/plugins/bootstrap.min.js', null, microtime(), true);
+	wp_enqueue_script('musicplayer-js', get_theme_file_uri() . '/assets/js/plugins/musicplayer-min.js', null, microtime(), true);
 	wp_enqueue_script('main-js', get_theme_file_uri() . '/assets/js/base.min.js', null, microtime(), true);
 	wp_localize_script('main-js', 'funarte', [
 		'ajaxurl' => admin_url('admin-ajax.php')
