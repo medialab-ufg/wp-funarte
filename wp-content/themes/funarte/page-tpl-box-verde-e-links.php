@@ -73,9 +73,6 @@ if(have_posts()) : the_post();
 							foreach ($arquivos as $arquivo):
 							?>
 								<li class="color-funarte">
-									<div class="link-area">
-										<a href="#">CEDOC</a>
-									</div>
 									<strong>
 										<?php echo $arquivo['descricao'];?>
 									</strong>
