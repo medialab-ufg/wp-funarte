@@ -1,4 +1,3 @@
-
 <?php 
 
 #OBS - Gerar documentos anexados no TAINACAN - Seta o primeiro como document_id e os outros dois muda o post_parent e coloca o ID do item#
@@ -13,7 +12,7 @@ define( 'SHORTINIT', false );
 
 #define('ABSPATH', dirname(__FILE__) . '\wp\');
 
-/*
+
 require( 'C:\wamp\www\funarte\wp-blog-header.php');
 
 $collectionsRepo = \Tainacan\Repositories\Collections::get_instance();
@@ -66,17 +65,8 @@ if ($collection->validate()) {
 		}
 	}	
 }
-*/
+
 ##Recuperando registros do site e adicionando à coleção.##
-
-
-require_once('wp-config.php');
-
-$posts = new WP_Query([
-    'post_type' => 'edicao-online',
-    'posts_per_page' => -1,
-    
-]);
 
 
 function set_att_parent($id_att, $id_item) {
@@ -86,29 +76,26 @@ function set_att_parent($id_att, $id_item) {
 	$wpdb->query( "UPDATE $wpdb->posts SET post_parent = $id_item WHERE ID = $id_att ");
 	
 }
-/*
+
 $collection = $collectionsRepo->fetch(['name'=>'Edições Online'], 'OBJECT');
 $collection = $collection[0];
-*/
+
+
+
+require_once('wp-config.php');
+
+
+$posts = new WP_Query([
+    'post_type' => 'edicao-online',
+    'posts_per_page' => -1,
+    
+]);
+
 
 while ($posts->have_posts()) {
 	
 	$posts->the_post();
-	echo $post->post_title, "\n";
-	
-	$att = $media = get_attached_media('');
-	
-	foreach ($att as $atch){
-		echo "Document ID - ", $atch->ID, "\n";
-	}
-	
-	$thumb_link = get_the_post_thumbnail();
-	preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $thumb_link, $matches);
-	$thumb = $matches[0];
-	echo "Thumb ID - ", attachment_url_to_postid($thumb[0]), "\n";
 
-	
-/*	
 	$item = new \Tainacan\Entities\Item();
 	$item->set_title($post->post_title);
 	$item->set_status('publish');
@@ -167,16 +154,33 @@ while ($posts->have_posts()) {
 		echo  "\n\n";
 		die;
 	}
-    
+   
+   
+	$thumb_link = get_the_post_thumbnail($post);
+	echo $thumb_link;
+	preg_match_all('#\bhttps?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#', $thumb_link, $matches);
+	$thumb = $matches[0];
+	
+	$item->set__thumbnail_id(attachment_url_to_postid($thumb[0]));
+	
+	if ($item->validate()){
+		$itemsRepo->insert($item);
+		echo "Salvando item com Thumbnail \n";
+	} else{
+		echo 'Item não validado: ', $item->get_title();
+	}
+
 #Documentos Anexados aos Posts (Audios)#
 
     #Verificando a existencia de documentos anexados ao post.
 
-    $att = $media = get_attached_media('audio');
+    $att = $media = get_attached_media('');
     
-	$count_att = 0;
+	
 
     if ($att) {
+		
+		$count_att = 0;
 		
 		foreach ($att as $atch) {
 			$count_att++;
@@ -212,9 +216,6 @@ while ($posts->have_posts()) {
 			}
 		}
     }
- */
+
 }
-
-
-
  ?>
