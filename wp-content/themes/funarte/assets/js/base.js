@@ -52,6 +52,9 @@ $(document).ready(function() {
 	base.calendario.ativar();
 	base.calendario.ativarCompacto();
 	base.calendario.atualizaCarrosselCompacto();
+
+	// Lista de coleções de áudios
+	base.audio.ativarListaColecao();
 });
 
 var base = {
@@ -64,6 +67,23 @@ var base = {
 					elements: ['controls', 'time', 'volume', 'progress']
 				});
 			}
+		},
+
+		ativarListaColecao: function() {
+			//setTimeout(function(){
+				console.log('ativou');
+				var $audioPlayer = $('.audios-list__play');
+
+				//if ($audioPlayer.length > 0) {
+					console.log('length');
+					$audioPlayer.on('click',function() {
+						console.log('click');
+						$(this).siblings('.audios-list__audio').musicPlayer({
+							elements: ['controls', 'time', 'volume', 'progress']
+						});
+					});
+				//}
+			//}, 3000);
 		}
 	},
 

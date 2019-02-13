@@ -3228,6 +3228,72 @@ ul.slick-dots {
 
 /* LISTAS */
 
+.audios-list {
+	margin: 0 -15px;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	list-style-type: none;
+
+	li {
+		width: 50%;
+		margin-bottom: 50px;
+		padding: 0 15px;
+	}
+}
+.audios-list__box {
+	width: 100%;
+	position: relative;
+}
+
+.audios-list__play {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: none;
+	background: rgba(255,255,255,.5);
+
+	i {
+		font-size: 80px;
+		color: $turquesa-1;
+		position: absolute;
+		top: 25px;
+		left: 21px;
+	}
+}
+.audios-list__audio {
+	position: absolute;
+	left: -999999px;
+}
+
+.audios-list__columns {
+	display: flex;
+	justify-content: space-between;
+}
+.audios-list__image {
+	width: 120px;
+	height: 120px;
+	flex: 0 0 120px;
+	margin-right: 15px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.audios-list__text {
+	width: 100%;
+
+	p {
+		
+	}
+}
+
+
+
 .box-simple-links {
 	margin-bottom: 100px;
 

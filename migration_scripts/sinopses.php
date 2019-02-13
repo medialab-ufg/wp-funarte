@@ -12,7 +12,6 @@ define( 'SHORTINIT', false );
 
 #define('ABSPATH', dirname(__FILE__) . '\wp\');
 
-
 require( 'C:\wamp\www\funarte\wp-blog-header.php');
 
 $collectionsRepo = \Tainacan\Repositories\Collections::get_instance();
@@ -24,9 +23,9 @@ $itemMetadataRepo = \Tainacan\Repositories\Item_Metadata::get_instance();
 ##Criando a coleção dos resgistros do Estúdio F##
 
 $collection = new \Tainacan\Entities\Collection();
-$collection->set_name('Edições Online');
+$collection->set_name('Sinopses');
 $collection->set_status('publish');
-$collection->set_description('Coleção com os registros do Edições Online');
+$collection->set_description('Coleção com os registros das Sinopses');
 
 flush_rewrite_rules();
 
@@ -63,7 +62,70 @@ if ($collection->validate()) {
 					var_dump($erro);
 			}
 		}
-	}	
+	}
+			
+	$metadado = new \Tainacan\Entities\Metadatum();
+	$metadado->set_collection($insertedCollection);
+	$metadado->set_name('Referência');
+	$metadado->set_description('Referência do Item.');
+	$metadado->set_metadata_type('Tainacan\Metadata_Types\Text');
+	$metadado->set_status('publish');
+	$metadado->set_display('yes');
+	
+	if ($metadado->validate()){
+		$insertedMetadata = $metadataRepo->insert($metadado);
+	}else {
+		$erro = $metadado->get_errors();
+		var_dump($erro);
+	}
+	
+	$metadado = new \Tainacan\Entities\Metadatum();
+	$metadado->set_collection($insertedCollection);
+	$metadado->set_name('Páginas');
+	$metadado->set_description('Quantidade de Páginas');
+	$metadado->set_metadata_type('Tainacan\Metadata_Types\Numeric');
+	$metadado->set_status('publish');
+	$metadado->set_display('yes');
+	
+	if ($metadado->validate()){
+		$insertedMetadata = $metadataRepo->insert($metadado);
+	}else {
+		$erro = $metadado->get_errors();
+		var_dump($erro);
+	}
+	
+	$metadado = new \Tainacan\Entities\Metadatum();
+	$metadado->set_collection($insertedCollection);
+	$metadado->set_name('Preço');
+	$metadado->set_description('Preço do Item');
+	$metadado->set_metadata_type('Tainacan\Metadata_Types\Numeric');
+	$metadado->set_status('publish');
+	$metadado->set_display('yes');
+	
+	if ($metadado->validate()){
+		$insertedMetadata = $metadataRepo->insert($metadado);
+	}else {
+		$erro = $metadado->get_errors();
+		var_dump($erro);
+	}
+	
+	
+	$metadado = new \Tainacan\Entities\Metadatum();
+	$metadado->set_collection($insertedCollection);
+	$metadado->set_name('Formato');
+	$metadado->set_description('Dimensões do Item');
+	$metadado->set_metadata_type('Tainacan\Metadata_Types\Text');
+	$metadado->set_status('publish');
+	$metadado->set_display('yes');
+	
+	if ($metadado->validate()){
+		$insertedMetadata = $metadataRepo->insert($metadado);
+	}else {
+		$erro = $metadado->get_errors();
+		var_dump($erro);
+	}
+	
+	
 }
 
 ##Recuperando registros do site e adicionando à coleção.##
@@ -77,18 +139,15 @@ function set_att_parent($id_att, $id_item) {
 	
 }
 
-$collection = $collectionsRepo->fetch(['name'=>'Edições Online'], 'OBJECT');
+$collection = $collectionsRepo->fetch(['name'=>'Sinopses'], 'OBJECT');
 $collection = $collection[0];
-
-
 
 require_once('wp-config.php');
 
 
 $posts = new WP_Query([
-    'post_type' => 'edicao-online',
+    'post_type' => 'sinopse',
     'posts_per_page' => -1,
-    
 ]);
 
 
@@ -96,6 +155,19 @@ while ($posts->have_posts()) {
 	
 	$posts->the_post();
 
+	echo $post->post_title, "\n";
+
+	$post_meta = get_post_meta($post->ID, $single = false);
+	
+	
+	
+	#echo $post_meta['sinopse-ref'][0], "--";
+	#echo $post_meta['sinopse-paginas'][0], "--";
+	#echo $post_meta['sinopse-preco'][0], "--";
+	#echo $post_meta['sinopse-formato'][0], "\n";
+	
+	#var_dump($post_meta);die;
+	
 	$item = new \Tainacan\Entities\Item();
 	$item->set_title($post->post_title);
 	$item->set_status('publish');
@@ -133,6 +205,70 @@ while ($posts->have_posts()) {
 			$erro = $itemMetadata->get_errors();
 			echo var_dump($erro);
 		}
+		
+		
+		$metadatum = $metadataRepo->fetch(['name' => 'Referência'], 'OBJECT');
+		$metadatum = $metadatum[0];
+		$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
+		$itemMetadata->set_value($post_meta['sinopse-ref'][0]);
+    
+		if ($itemMetadata->validate()) {
+						
+			$itemMetadataRepo->insert($itemMetadata);
+						
+		}else {
+			echo 'Erro no metadado ', $metadatum->get_name(), ' no item ', $post->post_title;
+			$erro = $itemMetadata->get_errors();
+			echo var_dump($erro);
+		}
+		
+		
+		$metadatum = $metadataRepo->fetch(['name' => 'Páginas'], 'OBJECT');
+		$metadatum = $metadatum[0];
+		$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
+		$itemMetadata->set_value($post_meta['sinopse-paginas'][0]);
+    
+		if ($itemMetadata->validate()) {
+						
+			$itemMetadataRepo->insert($itemMetadata);
+						
+		}else {
+			echo 'Erro no metadado ', $metadatum->get_name(), ' no item ', $post->post_title;
+			$erro = $itemMetadata->get_errors();
+			echo var_dump($erro);
+		}
+		
+		
+		$metadatum = $metadataRepo->fetch(['name' => 'Preço'], 'OBJECT');
+		$metadatum = $metadatum[0];
+		$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
+		$itemMetadata->set_value($post_meta['sinopse-preco'][0]);
+    
+		if ($itemMetadata->validate()) {
+						
+			$itemMetadataRepo->insert($itemMetadata);
+						
+		}else {
+			echo 'Erro no metadado ', $metadatum->get_name(), ' no item ', $post->post_title;
+			$erro = $itemMetadata->get_errors();
+			echo var_dump($erro);
+		}
+		
+		$metadatum = $metadataRepo->fetch(['name' => 'Formato'], 'OBJECT');
+		$metadatum = $metadatum[0];
+		$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
+		$itemMetadata->set_value($post_meta['sinopse-formato'][0]);
+    
+		if ($itemMetadata->validate()) {
+						
+			$itemMetadataRepo->insert($itemMetadata);
+						
+		}else {
+			echo 'Erro no metadado ', $metadatum->get_name(), ' no item ', $post->post_title;
+			$erro = $itemMetadata->get_errors();
+			echo var_dump($erro);
+		}
+		
 
 		#Validando Item
 		if ($item->validate()) {
@@ -175,8 +311,6 @@ while ($posts->have_posts()) {
     #Verificando a existencia de documentos anexados ao post.
 
     $att = $media = get_attached_media('');
-    
-	
 
     if ($att) {
 		
@@ -215,7 +349,10 @@ while ($posts->have_posts()) {
 				}
 			}
 		}
-    }
-
+   }
 }
+
+
+
  ?>
+
