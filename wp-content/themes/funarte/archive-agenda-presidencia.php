@@ -4,7 +4,7 @@
 ?>
 	<main role="main" class="mb-100">
 		<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
-		<div class="container">
+		<div class="container box-agenda">
 			<?php
 				$links = [
 					['link_name'=>'Funarte', 'link_url'=>'/'],
@@ -18,25 +18,28 @@
 
 			<div class="row justify-content-between">
 				<div class="col-md-4">
-					<aside class="content-aside">
-						Calendário
+					<aside class="aside">
+						<div class="datepicker-agenda"></div>
 					</aside>
 				</div>
-				<div class="col-md-7">
-					<aside class="content-aside">
+				<div class="col-md-8">
+					<section class="content">
 						<?php 
 							if(have_posts()): the_post();
 								$data_agenda = get_post_meta($post->ID, "agenda-presidencia-data", true);
-								echo "Eventos do dia $data_agenda";
+								echo "<p>Eventos do dia $data_agenda</p>";
 								the_content();
 							else:
-								echo "Não existe eventos para o dia $dia";
+								echo "<p>Não foi encontrado nenhum evento no dia $dia.</p>";
 							endif;
 						?>
-					</aside>
+					</section>
 				</div>
 			</div>
 		</div>
 	</main>
 <?php
 get_footer();
+?>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

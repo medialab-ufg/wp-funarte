@@ -55,6 +55,9 @@ $(document).ready(function() {
 
 	// Lista de coleções de áudios
 	base.audio.ativarListaColecao();
+
+	// Agenda do Presidente
+	base.calendario.ativarAgenda();
 });
 
 var base = {
@@ -83,8 +86,16 @@ var base = {
 	},
 
 	calendario: {
+		ativarAgenda: function() {
+			var $datepicker = $('.datepicker-agenda');
+
+			$datepicker.datepicker({
+				
+			});
+		},
+
 		ativar: function() {
-			if ($('.datepicker').length > 0) {
+			if ($('.datepicker,.datepicker-agenda').length > 0) {
 				( function( factory ) {
 					if ( typeof define === "function" && define.amd ) {
 						define( [ "../widgets/datepicker" ], factory );

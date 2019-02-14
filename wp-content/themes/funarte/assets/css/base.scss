@@ -4914,7 +4914,7 @@ ul.social-media-list {
 	padding-right: 22px !important;
 	border-radius: 0 !important;
 }
-.datepicker-compacto .ui-widget.ui-widget-content { border: none !important; }
+.ui-widget.ui-widget-content { border: none !important; }
 .ui-datepicker-month,
 .ui-datepicker-year {
 	font-weight: 400 !important;
@@ -5605,6 +5605,38 @@ ul.social-media-list {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+/* CARROSSEL DE CALENDÁRIO DE EVENTOS */
+
+.box-agenda {
+	.aside {
+		width: 100%;
+		max-width: 380px;
+		padding: 10px 30px 35px;
+		position: relative;
+		background-color: $branco;
+
+		&:after {
+			content: "";
+			width: 999999px;
+			height: 123%;
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 81%;
+			background-color: $turquesa-1;
+			z-index: -1;
+		}
+	}
+
+	.datepicker-agenda {
+		.ui-widget.ui-widget-content { padding: 0 !important; }
+		.ui-datepicker .ui-datepicker-header {
+			width: 85%;
+			margin: 0 auto;
+		}
+	}
 }
 
 /* PLAYER DE ÁUDIO */
