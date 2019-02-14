@@ -10,7 +10,9 @@
 			<?php $audioUrl = funarte_get_document_url(); ?>
 
 			<div class="audios-list__box <?php echo empty($audioUrl) ? '' : 'audios-list__has-audio'; ?>">
-				<button type="button" class="audios-list__play"><i class="mdi mdi-play-circle-outline"></i></button>
+				<div class="audios-list__play">
+					<button type="button"><i class="mdi mdi-play-circle-outline"></i></button>
+				</div>
 				<div class="audios-list__audio">
 					<ul class="playlist">
 						<li><a href="<?php echo $audioUrl; ?>"></a></li>
@@ -20,8 +22,8 @@
 				<div class="audios-list__columns">
 					<div class="audios-list__image" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);"></div>
 
-					<div class="audios-list__text">
-						<?php the_content(); ?>
+					<div class="audios-list__text base-tooltip" data-tooltip="<?php the_content(); ?>">
+						<?php the_excerpt(); ?>
 					</div>
 				</div>
 			</div>
