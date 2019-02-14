@@ -132,8 +132,10 @@
 
 						<ul class="box-acervo__metadata">
 							<li>
-								<h4 class="box-acervo__metadata-title"><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h4>
-								<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'tainacan-medium-full' ) ?>">
+								<div class="box-acervo__header">
+									<h4 class="box-acervo__metadata-title"><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h4>
+									<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'tainacan-medium-full' ) ?>">
+								</div>
 							</li>
 							<li>
 								<h4 class="box-acervo__metadata-title"><?php _e( 'Share', 'tainacan-interface' ); ?></h4>
