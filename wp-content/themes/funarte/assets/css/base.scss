@@ -3489,6 +3489,7 @@ ul.slick-dots {
 		}
 	}
 	.audios-list__box.active {
+		.audios-list__text { padding-bottom: 40px; }
 		.player {
 			.progressbar { width: 70px; }
 			.timeHolder { left: 120px; }

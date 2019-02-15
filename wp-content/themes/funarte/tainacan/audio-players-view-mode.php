@@ -20,7 +20,12 @@
 				</div>
 
 				<div class="audios-list__columns">
-					<div class="audios-list__image" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);"></div>
+					<?php $imagem = get_the_post_thumbnail_url();
+						if (empty($imagem)): ?>
+						<div class="audios-list__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/bkg/grafismo_funarte.png'; ?>);"></div>
+					<?php else: ?>
+						<div class="audios-list__image" style="background-image: url(<?php echo $imagem; ?>);"></div>
+					<?php endif; ?>
 
 					<div class="audios-list__text base-tooltip">
 						<span>

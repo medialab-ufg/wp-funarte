@@ -1,4 +1,4 @@
-<?php 
+<?php
 	get_header();
 	$dia = (isset($_GET['dia'])) ? $_GET['dia'] : date('d/m/Y');
 ?>
