@@ -55,28 +55,12 @@ $(document).ready(function() {
 
 	// Lista de coleções de áudios
 	base.audio.ativarListaColecao();
-	base.tooltip.ativarAudios();
 
 	// Agenda do Presidente
 	base.calendario.ativarAgenda();
 });
 
 var base = {
-	tooltip: {
-		ativarAudios: function() {
-			$('#items-list-results').on('mouseover','.base-tooltip',function() {
-				var $this = $(this),
-					text = $this.data('tooltip');
-
-				if ($('.box-tooltip').length <= 0) {
-					$this.append('<div class="box-tooltip">' + text + '</div>');
-				}
-			}).on('mouseleave','.base-tooltip',function() {
-				$(this).find('.box-tooltip').remove();
-			});
-		}
-	},
-
 	audio: {
 		ativar: function() {
 			var $audioPlayer = $('.audio-player');

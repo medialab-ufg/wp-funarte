@@ -22,8 +22,11 @@
 				<div class="audios-list__columns">
 					<div class="audios-list__image" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>);"></div>
 
-					<div class="audios-list__text base-tooltip" data-tooltip="<?php the_content(); ?>">
-						<?php the_excerpt(); ?>
+					<div class="audios-list__text base-tooltip">
+						<span>
+							<?php the_excerpt(); ?>
+							<span class="audios-list__tooltip"><?php the_content(); ?></span>
+						</span>
 					</div>
 				</div>
 			</div>
