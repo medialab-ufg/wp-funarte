@@ -251,6 +251,15 @@ noscript {
 
 	a { color: inherit; }
 }
+.title-h4--type-b {
+	margin: 0 0 13px;
+	font-weight: 700;
+	font-family: 'Sansita', sans-serif;
+	font-size: 1.5rem;
+	color: $turquesa-1;
+
+	a { color: inherit; }
+}
 .title-h5 {
 	margin: 0;
 	font-weight: 700;
@@ -5168,6 +5177,7 @@ ul.social-media-list {
 
 @media screen and (max-width: 1200px) {
 	.datepicker-box { display: block; }
+	.ui-datepicker-year { display: block; }
 	.box-calendario-sidebar {
 		width: 100%;
 		max-width: none;
@@ -5705,6 +5715,15 @@ ul.social-media-list {
 			width: 85%;
 			margin: 0 auto;
 		}
+	}
+}
+@media screen and (max-width: 992px) {
+	.box-agenda .datepicker-agenda .ui-datepicker .ui-datepicker-header { width: 203px; }
+}
+@media screen and (max-width: 768px) {
+	.box-agenda {
+		.datepicker-agenda .ui-datepicker .ui-datepicker-header { width: 100%; }
+		.aside { margin-bottom: 152px; }
 	}
 }
 

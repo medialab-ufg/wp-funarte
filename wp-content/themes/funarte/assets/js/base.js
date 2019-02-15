@@ -87,10 +87,20 @@ var base = {
 
 	calendario: {
 		ativarAgenda: function() {
-			var $datepicker = $('.datepicker-agenda');
+			var $datepicker = $('.datepicker-agenda'),
+				dataUrl;
 
 			if ($datepicker.length > 0) {
-				$datepicker.datepicker({});
+				$datepicker.datepicker({
+					onSelect: function(text, data) {
+						window.location = '/agenda-presidencia/?dia=' + text;
+					}
+				});
+
+				dataUrl = location.search.split('?dia=')[1];
+				if (dataUrl) {
+					$datepicker.datepicker('setDate',dataUrl);
+				}
 			}
 		},
 

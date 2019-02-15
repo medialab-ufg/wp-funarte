@@ -27,7 +27,7 @@
 						<?php 
 							if(have_posts()): the_post();
 								$data_agenda = get_post_meta($post->ID, "agenda-presidencia-data", true);
-								echo "<p>Eventos do dia $data_agenda</p>";
+								echo "<h3 class='title-h4--type-b'>Eventos do dia $data_agenda</h3>";
 								the_content();
 							else:
 								echo "<p>Não foi encontrado nenhum evento no dia $dia.</p>";
