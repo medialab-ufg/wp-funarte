@@ -969,7 +969,8 @@ var base = {
 					{
 						breakpoint: 1200,
 						settings: {
-							slidesToShow: 2
+							slidesToShow: 2,
+							slidesToScroll: 1,
 						}
 					},
 					{

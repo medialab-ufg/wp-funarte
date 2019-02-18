@@ -1668,6 +1668,8 @@ body.js .collapse__text { display: none; }
 	}
 }
 @media screen and (max-width:768px) {
+	.carousel-zoom .slick-active .link-area,
+	.carousel-zoom li .link-area { left: 17%; }
 	.box-carousel-zoom { margin-bottom: 50px; }
 	.carousel-zoom .slick-active,
 	.carousel-zoom li {
@@ -2347,25 +2349,42 @@ body.js .collapse__text { display: none; }
 				top: auto;
 				right: auto;
 
-				span { display: block; }
 				i { display: none; }
+				span {
+					display: block;
+
+					i { display: block; }
+				}
 			}
 
 			.navbar-toggler-icon {
-				background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='#2f2f2f' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+				width: 30px;
+				height: 30px;
+				position: relative;
+				overflow: hidden;
+				background: none;
+
+				.mdi-menu {
+					font-size: 32px;
+					color: $preto;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%,-50%);
+				}
 			}
 		}
 
 		.menu-wrapper {
 			width: 315px;
+			height: 100%;
 			margin: 0;
-			padding: 53px 0 0 0;
+			padding: 0;
 			position: fixed;
 			top: 0;
 			right: 0;
 			overflow-y: auto;
-			box-shadow: 0px 0px 51px 0px rgba(0,0,0,0.1);
-			background-color: $branco;
+			background: none;
 			transform: translate(105%,0);
 			transition: transform 200ms ease-in-out;
 			z-index: 999999;
@@ -2394,7 +2413,7 @@ body.js .collapse__text { display: none; }
 				z-index: 9999999;
 
 				span { display: none; }
-				i {
+				.mdi-close {
 					font-size: 30px;
 					color: $preto;
 					display: block;
@@ -2403,9 +2422,18 @@ body.js .collapse__text { display: none; }
 				&.collapsed { display: none; }
 
 				.navbar-toggler-icon {
-					background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='#2f2f2f' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+					
 				}
 			}
+		}
+
+		.menu-wrapper__scroll {
+			width: 100%;
+			padding: 53px 0 0 0;
+			position: relative;
+			box-shadow: 0px 0px 51px 0px rgba(0,0,0,0.1);
+			background-color: $branco;
+			z-index: 2;
 		}
 
 		.navbar-collapse {

@@ -64,37 +64,39 @@
 					<a href="#funarte-navigation-menu" id="funarte-navigation-menu" name="funarte-navigation-menu" class="sr-only">Início do menu de navegação</a>
 					<nav class="navbar navbar-expand-lg navbar-light navigation-menu" role="navigation">
 						<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
+							<span class="navbar-toggler-icon"><i class="mdi mdi-menu"></i></span>
 							<i class="mdi mdi-close"></i>
 						</button>
 
 						<div class="menu-wrapper">
-							<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-								<i class="mdi mdi-close"></i>
-							</button>
-							<?php
-								wp_nav_menu( array(
-									'theme_location'    => 'principal',
-									'depth'             => 2,
-									'container'         => 'div',
-									'container_class'   => 'collapse navbar-collapse',
-									'container_id'      => 'bs-example-navbar-collapse-1',
-									'menu_class'        => 'nav navbar-nav',
-									'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-									'walker'            => new WP_Bootstrap_Navwalker(),
-								) );
-							?>
+							<div class="menu-wrapper__scroll">
+								<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon"><i class="mdi mdi-menu"></i></span>
+									<i class="mdi mdi-close"></i>
+								</button>
+								<?php
+									wp_nav_menu( array(
+										'theme_location'    => 'principal',
+										'depth'             => 2,
+										'container'         => 'div',
+										'container_class'   => 'collapse navbar-collapse',
+										'container_id'      => 'bs-example-navbar-collapse-1',
+										'menu_class'        => 'nav navbar-nav',
+										'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+										'walker'            => new WP_Bootstrap_Navwalker(),
+									) );
+								?>
 
-							<ul class="areas-list">
-								<li><a class="color-circo <?php echo ($area!=null && $area->slug == 'circo') ? 'active' : ''; ?>" 	href="<?php echo get_term_link('circo', 'category'); ?>">Circo</a></li>
-								<li><a class="color-teatro <?php echo ($area!=null && $area->slug == 'teatro') ? 'active' : ''; ?>" href="<?php echo get_term_link('teatro', 'category'); ?>">Teatro</a></li>
-								<li><a class="color-danca <?php echo ($area!=null && $area->slug == 'danca') ? 'active' : ''; ?>" 	href="<?php echo get_term_link('danca', 'category'); ?>">Dança</a></li>
-								<li><a class="color-musica <?php echo ($area!=null && $area->slug == 'musica') ? 'active' : ''; ?>" href="<?php echo get_term_link('musica', 'category'); ?>">Música</a></li>
-								<li><a class="color-artes-integradas <?php echo ($area!=null && $area->slug == 'artes-integradas') ? 'active' : ''; ?>" href="<?php echo get_term_link('artes-integradas', 'category'); ?>">Artes integradas</a></li>
-								<li><a class="color-artes-visuais <?php echo ($area!=null && $area->slug == 'artes-visuais') ? 'active' : ''; ?>" href="<?php echo get_term_link('artes-visuais', 'category'); ?>">Artes visuais</a></li>
-								<!-- <li><a class="color-literatura <?php echo ($area!=null && $area->slug == 'literatura') ? 'active' : ''; ?>" href="<?php echo get_term_link('literatura', 'category'); ?>">Literatura</a></li> -->
-							</ul>
+								<ul class="areas-list">
+									<li><a class="color-circo <?php echo ($area!=null && $area->slug == 'circo') ? 'active' : ''; ?>" 	href="<?php echo get_term_link('circo', 'category'); ?>">Circo</a></li>
+									<li><a class="color-teatro <?php echo ($area!=null && $area->slug == 'teatro') ? 'active' : ''; ?>" href="<?php echo get_term_link('teatro', 'category'); ?>">Teatro</a></li>
+									<li><a class="color-danca <?php echo ($area!=null && $area->slug == 'danca') ? 'active' : ''; ?>" 	href="<?php echo get_term_link('danca', 'category'); ?>">Dança</a></li>
+									<li><a class="color-musica <?php echo ($area!=null && $area->slug == 'musica') ? 'active' : ''; ?>" href="<?php echo get_term_link('musica', 'category'); ?>">Música</a></li>
+									<li><a class="color-artes-integradas <?php echo ($area!=null && $area->slug == 'artes-integradas') ? 'active' : ''; ?>" href="<?php echo get_term_link('artes-integradas', 'category'); ?>">Artes integradas</a></li>
+									<li><a class="color-artes-visuais <?php echo ($area!=null && $area->slug == 'artes-visuais') ? 'active' : ''; ?>" href="<?php echo get_term_link('artes-visuais', 'category'); ?>">Artes visuais</a></li>
+									<!-- <li><a class="color-literatura <?php echo ($area!=null && $area->slug == 'literatura') ? 'active' : ''; ?>" href="<?php echo get_term_link('literatura', 'category'); ?>">Literatura</a></li> -->
+								</ul>
+							</div>
 						</div>
 					</nav>
 
