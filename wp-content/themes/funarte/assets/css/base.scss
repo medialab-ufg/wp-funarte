@@ -2223,6 +2223,9 @@ body.js .collapse__text { display: none; }
 		font-size: 1.15rem;
 		color: #303030;
 		transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+
+		&:hover,
+		&:focus { color: #898d8f; }
 	}
 
 	/* LISTA DE ÁREAS DO SITE */
