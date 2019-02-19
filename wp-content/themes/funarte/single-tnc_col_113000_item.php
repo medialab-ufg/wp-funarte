@@ -4,7 +4,7 @@
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container mb-100">
 		<div class="box-title">
-			<h2 class="title-h1">Acervo AAAAAAAAAAAAAAAA<span><?php echo tainacan_get_the_collection_name(); ?></span></h2>
+			<h2 class="title-h1">Acervo <span><?php echo tainacan_get_the_collection_name(); ?></span></h2>
 		</div>
 
 		<?php if ( have_posts() ) : ?>
@@ -31,7 +31,44 @@
 							<h3 class="title-content-items"><?php _e( 'Document', 'tainacan-interface' ); ?></h3>
 
 							<div class="box-tainacan-document">
-								<?php tainacan_the_document(); ?>
+								<div class="row justify-content-between">
+									<div class="col-md-6">
+										<div class="box-tainacan-document__data">
+											<strong>Descrição</strong>
+											<p>Filha de descendentes de italianos e americanos, essa  paulistana nasceu no último dia de 1947 já arrombando a festa de réveillon. Desde cedo mos-trou interesse pela música e, como boa “ovelha negra” da família, um belo dia resolveu mudar pra fazer tudo o que queria fazer. Aumenta que isso aí é rock and roll! Estúdio F Rita Lee está no ar.</p>
+										</div>
+
+										<div class="box-tainacan-document__data">
+											<strong>Miniatura</strong>
+											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/rita.png'; ?>" alt="Miniatura">
+										</div>
+									</div>
+									<div class="col-md-5">
+										<div class="box-tainacan-document__playlist">
+											<strong>Estúdio F - Rita Lee - Bloco 1 de 3</strong>
+											<div class="audio-player">
+												<ul class="playlist">
+													<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3'; ?>"></a></li>
+												</ul>
+											</div>
+
+											<strong>Estúdio F - Rita Lee - Bloco 2 de 3</strong>
+											<div class="audio-player">
+												<ul class="playlist">
+													<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3'; ?>"></a></li>
+												</ul>
+											</div>
+
+											<strong>Estúdio F - Rita Lee - Bloco 3 de 3</strong>
+											<div class="audio-player">
+												<ul class="playlist">
+													<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3'; ?>"></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<?php //tainacan_the_document(); ?>
 							</div>
 						<?php endif; ?>
 					</article>

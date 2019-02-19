@@ -4699,6 +4699,115 @@ ul.social-media-list {
 	text-align: center;
 }
 
+.box-tainacan-document__data {
+	margin-bottom: 30px;
+	text-align: left;
+
+	strong {
+		margin-bottom: 12px;
+		font-size: .9rem;
+		color: $preto;
+		display: block;
+	}
+	p {
+		font-size: .9rem;
+		color: $preto;
+	}
+	img {
+		max-width: 100%;
+		display: block;
+	}
+}
+
+.box-tainacan-document__playlist {
+	margin-bottom: 30px;
+	text-align: left;
+
+	strong {
+		margin-bottom: 15px;
+		font-size: .9rem;
+		color: $preto;
+		display: block;
+	}
+
+	.playlist {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+
+	.audio-player {
+		height: 19px;
+		margin: 0 0 66px;
+		position: relative;
+
+		.player { height: 100%; }
+
+		.controls {
+			width: auto;
+			height: auto;
+			position: static;
+			top: auto;
+			left: auto;
+		}
+
+		.controls .play,
+		.controls .pause {
+			width: 19px;
+			height: 19px;
+
+			&:after { font-size: 16px; }
+		}
+
+		.progressbar {
+			width: 172px;
+			top: 7px;
+			left: 25px;
+		}
+
+		.timeHolder {
+			top: 0;
+			left: 207px;
+
+			.time-current,
+			.time-duration,
+			.time-separator { font-size: 0.8rem; }
+		}
+
+		.volume {
+			width: 82px;
+			top: 2px;
+
+			.volume-btn:after { color: $cinza-6; }
+			.volume-adjust { width: 60px; }
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.box-tainacan-document__playlist {
+		.audio-player {
+			height: 34px;
+
+			.controls .play,
+			.controls .pause {
+				top: auto;
+				bottom: 0;
+			}
+
+			.progressbar {
+				width: 100%;
+				padding-left: 26px;
+				top: auto;
+				left: 0;
+				bottom: 7px;
+			}
+
+			.timeHolder { left: 25px; }
+		}
+	}
+}
+
 .box-acervo-info {
 	margin: 0;
 	padding: 0 0 100px;
@@ -4839,6 +4948,11 @@ ul.social-media-list {
 		border-right: none;
 		border-bottom: 20px solid transparent;
 		right: 0;
+
+		&.slick-disabled {
+			border-left: 20px solid $cinza-4;
+			background-color: transparent !important;
+		}
 	}
 	.control__prev {
 		border-top: 20px solid transparent;
