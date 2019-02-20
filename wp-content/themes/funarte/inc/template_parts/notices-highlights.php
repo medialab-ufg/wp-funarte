@@ -10,7 +10,7 @@ if(!isset($title) || !isset($items) || !isset($destaque)):
 	echo "<br><b> parameter not found! </b><br>";
 else:
 ?>
-<div class="box-notices-highlight mb-60">
+<div class="box-notices-highlight mb-100">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-md-6">

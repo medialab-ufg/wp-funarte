@@ -29,7 +29,7 @@ query_posts(array_merge(array(
 				funarte_load_part('breadcrumb', ['links'=>$links]); 
 			?>
 
-			<div class="box-title">
+			<!-- <div class="box-title">
 				<h2 class="title-h1 mb-50">Notícias<span>Mídias</span></h2>
 
 				<div class="box-forms">
@@ -207,7 +207,7 @@ query_posts(array_merge(array(
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="box-title">
 				<h2 class="title-h1 mb-30">Notícias<span>Recentes</span></h2>

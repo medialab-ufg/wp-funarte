@@ -66,117 +66,7 @@
 			funarte_load_part('carousel-highlights', $arg);
 			//FIM-CAROUSEL-HIGHLIGHTS
 		?>
-
-		<div class="row justify-content-between">
-			<!--//MAIS INFORMAÇÕES -->
-			<div class="col-md-7">
-				<div class="box-more-info">
-					<h2 class="title-h1">Mais Informações</h2>
-
-					<ul class="list-more-info">
-						<?php
-							$fields = array('coordenador','telefone1','telefone2','fax','email','endereco');
-							foreach ($fields as $field) {
-								${$field} = get_post_meta($post_area->ID, 'area_de_interesse-' . $field, true);
-							}
-						?>
-						<li>
-							<span><?php echo $coordenador; ?></span>
-
-							<?php if (!empty($telefone1) || !empty($fax) || !empty($email)) { ?>
-								<strong>Contatos:</strong>
-
-								<?php if (!empty($telefone1)) { ?>
-									<span>Tel: <?php echo $telefone1; ?></span>
-									<?php if (!empty($telefone2)) { ?>
-											<span><?php echo $telefone2; ?></span>
-									<?php } ?>
-								<?php } ?>
-
-								<?php if (!empty($fax)) { ?>
-									<span><strong>Fax:</strong> <?php echo $fax; ?></span>
-								<?php } ?>
-
-								<?php if (!empty($email)) { ?>
-									<span><strong>E-mail:</strong> <?php echo $email; ?></span>
-								<?php } ?>
-
-								<?php if (!empty($endereco)) { ?>
-									<strong>Endereço:</strong>
-									<span><?php echo $endereco; ?></span>
-								<?php } ?>
-							<?php } ?>
-						</li>
-						<li class="color-funarte">
-							<a href="<?php echo get_bloginfo('url') . '/estrutura'; ?>" class="link-more">Ver outros contatos</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!--//FIM MAIS INFORMAÇÕES -->
-
-			<!--//LINKS RELACIONADOS -->
-			<div class="col-md-4">
-				<div class="box-simple-links">
-					<h2 class="title-h1">Links relacionados</h2>
-
-					<ul class="list-simple-links">
-						<?php foreach ($links_relacionados as $link):?>
-							<li class="color-funarte">
-								<strong><?php echo $link->post_title; ?></strong>
-								<a class="link-more" target="_blank" href="<?php echo get_post_meta($link->ID, 'linkrelacionado-url', true); ?>">Visitar</a>
-							</li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-			</div>
-			<!--//FIM LINKS RELACIONADOS -->
-		</div>
 	</div>
-
-	<!-- ESPAÇO CULTURAL -->
-	<div class="container">
-		<div class='box-carousel-zoom'>
-			<?php $url_title = get_post_type_archive_link(\funarte\EspacoCultural::get_instance()->get_post_type());
-						$url_title .= '?area=' . $area->slug ;?>
-			<?php if ($url_title) : ?>
-				<h2 class="title-1"><a href="<?php echo $url_title; ?>">Espaços Culturais</a></h2>
-			<?php else : ?>
-				<h2 class="title-1">Espaços Culturais</h2>
-			<?php endif; ?>
-
-			<div class="carousel-zoom__wrapper">
-				<div class="carousel-zoom__control">
-					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
-					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
-				</div>
-
-				<ul class="carousel-zoom">
-				<?php
-					$contador = 0;
-					foreach ($espacos as $espaco) {
-						$estado = get_post_meta($espaco->ID, 'espaco-estado', true);
-						$area = (!isset($query['cat'])) ? get_single_category() : get_category($query['cat']);
-						$url_img = has_post_thumbnail($espaco->ID) ? get_the_post_thumbnail_url($espaco->ID) : funarte_get_img_default();
-				?>
-						<li class="color-funarte carousel-zoom__item-<?php echo $contador++%3; ?>">
-							<div class="link-area">
-								<strong><?php echo $estado ?></strong>
-							</div>
-							<div class="carousel-zoom__image" style="background-image: url('<?php echo $url_img ?>');"></div>
-
-							<div class="carousel-zoom__text">
-								<strong><?php echo esc_attr($espaco->post_title) ?></strong>
-								<p><?php echo \funarte\EspacoCultural::get_instance()->formata_endereco($espaco->ID) ?> - <?php echo get_post_meta($espaco->ID, 'espaco-telefone1', true) ?></p>
-								<a class="link-more" href="<?php echo get_permalink($espaco->ID) ?>">Ler mais</a>
-							</div>
-						</li>
-					<?php } ?>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<!-- FIM ESPAÇO CULTURAL -->
 
 	<!-- EDITAIS -->
 	<?php
@@ -254,8 +144,52 @@
 	</div>
 	<!-- FIM EVENTOS -->
 
+	<!-- ESPAÇO CULTURAL -->
 	<div class="container">
-		<section class="box-carousel-collection">
+		<div class='box-carousel-zoom mb-100'>
+			<?php $url_title = get_post_type_archive_link(\funarte\EspacoCultural::get_instance()->get_post_type());
+						$url_title .= '?area=' . $area->slug ;?>
+			<?php if ($url_title) : ?>
+				<h2 class="title-1"><a href="<?php echo $url_title; ?>">Espaços Culturais</a></h2>
+			<?php else : ?>
+				<h2 class="title-1">Espaços Culturais</h2>
+			<?php endif; ?>
+
+			<div class="carousel-zoom__wrapper">
+				<div class="carousel-zoom__control">
+					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
+				</div>
+
+				<ul class="carousel-zoom">
+				<?php
+					$contador = 0;
+					foreach ($espacos as $espaco) {
+						$estado = get_post_meta($espaco->ID, 'espaco-estado', true);
+						$area = (!isset($query['cat'])) ? get_single_category() : get_category($query['cat']);
+						$url_img = has_post_thumbnail($espaco->ID) ? get_the_post_thumbnail_url($espaco->ID) : funarte_get_img_default();
+				?>
+						<li class="color-funarte carousel-zoom__item-<?php echo $contador++%3; ?>">
+							<div class="link-area">
+								<strong><?php echo $estado ?></strong>
+							</div>
+							<div class="carousel-zoom__image" style="background-image: url('<?php echo $url_img ?>');"></div>
+
+							<div class="carousel-zoom__text">
+								<strong><?php echo esc_attr($espaco->post_title) ?></strong>
+								<p><?php echo \funarte\EspacoCultural::get_instance()->formata_endereco($espaco->ID) ?> - <?php echo get_post_meta($espaco->ID, 'espaco-telefone1', true) ?></p>
+								<a class="link-more" href="<?php echo get_permalink($espaco->ID) ?>">Ler mais</a>
+							</div>
+						</li>
+					<?php } ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- FIM ESPAÇO CULTURAL -->
+
+	<div class="container">
+		<section class="box-carousel-collection mb-100">
 			<?php $url_title = get_post_type_archive_link('tainacan-collection');
 						$url_title .= '?area=' . $area->slug ;?>
 			<?php if ($url_title) : ?>
@@ -267,8 +201,73 @@
 			<?php funarte_load_part('collections-carousel', ['collections' => $collections, 'area' => ['slug'=>$area->slug, 'name'=>$area->name]]); ?>
 			
 		</section>
-	</div>
 
+		<div class="row justify-content-between">
+			<!--//MAIS INFORMAÇÕES -->
+			<div class="col-md-7">
+				<div class="box-more-info mb-0">
+					<h2 class="title-h1">Mais Informações</h2>
+
+					<ul class="list-more-info">
+						<?php
+							$fields = array('coordenador','telefone1','telefone2','fax','email','endereco');
+							foreach ($fields as $field) {
+								${$field} = get_post_meta($post_area->ID, 'area_de_interesse-' . $field, true);
+							}
+						?>
+						<li>
+							<span><?php echo $coordenador; ?></span>
+
+							<?php if (!empty($telefone1) || !empty($fax) || !empty($email)) { ?>
+								<strong>Contatos:</strong>
+
+								<?php if (!empty($telefone1)) { ?>
+									<span>Tel: <?php echo $telefone1; ?></span>
+									<?php if (!empty($telefone2)) { ?>
+											<span><?php echo $telefone2; ?></span>
+									<?php } ?>
+								<?php } ?>
+
+								<?php if (!empty($fax)) { ?>
+									<span><strong>Fax:</strong> <?php echo $fax; ?></span>
+								<?php } ?>
+
+								<?php if (!empty($email)) { ?>
+									<span><strong>E-mail:</strong> <?php echo $email; ?></span>
+								<?php } ?>
+
+								<?php if (!empty($endereco)) { ?>
+									<strong>Endereço:</strong>
+									<span><?php echo $endereco; ?></span>
+								<?php } ?>
+							<?php } ?>
+						</li>
+						<li class="color-funarte">
+							<a href="<?php echo get_bloginfo('url') . '/estrutura'; ?>" class="link-more">Ver outros contatos</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--//FIM MAIS INFORMAÇÕES -->
+
+			<!--//LINKS RELACIONADOS -->
+			<div class="col-md-4">
+				<div class="box-simple-links mb-0">
+					<h2 class="title-h1">Links relacionados</h2>
+
+					<ul class="list-simple-links">
+						<?php foreach ($links_relacionados as $link):?>
+							<li class="color-funarte">
+								<strong><?php echo $link->post_title; ?></strong>
+								<a class="link-more" target="_blank" href="<?php echo get_post_meta($link->ID, 'linkrelacionado-url', true); ?>">Visitar</a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			</div>
+			<!--//FIM LINKS RELACIONADOS -->
+		</div>
+	</div>
 </main>
 	
 <?php get_footer();
