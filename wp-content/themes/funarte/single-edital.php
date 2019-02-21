@@ -44,7 +44,7 @@
 
 				<div class="row justify-content-between mb-100">
 					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
-						<div class="box-text <?php echo !empty($html_widget) ? '' : 'box-text--2-columns' ?>">
+						<div class="box-text">
 							<div class="box-text__text">
 								<?php the_content(); ?>
 							</div>
