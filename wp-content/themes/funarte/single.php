@@ -14,6 +14,19 @@ if(have_posts()) : the_post();
 
 			<div class="box-title">
 				<h2 class="title-h1">Funarte<span>Notícias</span></h2>
+				<div class="tooltip-social-media">
+					<button type="button"><i class="mdi mdi-share-variant"></i></button>
+					<ul>
+						<li><a href="#"><img src="" alt=""></a></li>
+						<li><a href="#"><img src="" alt=""></a></li>
+						<li><a href="#"><img src="" alt=""></a></li>
+						<li><a href="#"><img src="" alt=""></a></li>
+						<li><a href="#"><img src="" alt=""></a></li>
+						<li><a href="#"><img src="" alt=""></a></li>
+						<li><a href="#"><img src="" alt=""></a></li>
+						<li><a href="#"><img src="" alt=""></a></li>
+					</ul>
+				</div>
 			</div>
 
 			<?php

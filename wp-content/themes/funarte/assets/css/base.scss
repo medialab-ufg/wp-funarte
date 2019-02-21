@@ -914,6 +914,8 @@ noscript {
 		position: relative;
 		border-bottom: 4px solid $turquesa-1;
 
+		& > .container { overflow: hidden; }
+
 		ul {
 			margin: 0;
 			padding: 0;
