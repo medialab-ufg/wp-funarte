@@ -13,20 +13,21 @@ if(have_posts()) : the_post();
 			?>
 
 			<div class="box-title">
-				<h2 class="title-h1">Funarte<span>Notícias</span></h2>
-				<div class="tooltip-social-media">
-					<button type="button"><i class="mdi mdi-share-variant"></i></button>
-					<ul>
-						<li><a href="#"><img src="" alt=""></a></li>
-						<li><a href="#"><img src="" alt=""></a></li>
-						<li><a href="#"><img src="" alt=""></a></li>
-						<li><a href="#"><img src="" alt=""></a></li>
-						<li><a href="#"><img src="" alt=""></a></li>
-						<li><a href="#"><img src="" alt=""></a></li>
-						<li><a href="#"><img src="" alt=""></a></li>
-						<li><a href="#"><img src="" alt=""></a></li>
-					</ul>
-				</div>
+				<h2 class="title-h1">
+					Funarte
+					<span>Notícias</span>
+					<span class="tooltip-social-media">
+						<button type="button"><i class="mdi mdi-share-variant"></i></button>
+						<ul>
+							<li><a href="#" class="tooltip-social-media__facebook"><i class="mdi mdi-facebook"></i></a></li>
+							<li><a href="#" class="tooltip-social-media__twitter"><i class="mdi mdi-twitter"></i></a></li>
+							<li><a href="#" class="tooltip-social-media__linkedin"><i class="mdi mdi-linkedin"></i></a></li>
+							<li><a href="#" class="tooltip-social-media__pinterest"><i class="mdi mdi-pinterest"></i></a></li>
+							<li><a href="#" class="tooltip-social-media__whatsapp"><i class="mdi mdi-whatsapp"></i></a></li>
+							<li><a href="#" class="tooltip-social-media__email"><i>@</i></a></li>
+						</ul>
+					</span>
+				</h2>
 			</div>
 
 			<?php
