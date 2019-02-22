@@ -183,7 +183,7 @@
 							<?php if (!empty($eventos_dia)): ?>
 							<?php foreach ($eventos_dia as $evento) : ?>
 								<div class="carousel-calendar__event color-<?php echo $evento['cat']->slug; ?>">
-									<strong><?php echo $evento['title']; ?></strong>
+									<strong><a href="<?php echo get_permalink($evento['ID']);?>" title="<?php echo $evento['title']; ?>" ><?php echo $evento['title']; ?></a></strong>
 									<span class="carousel-calendar__pin"><?php echo $evento['local']; ?> </span>
 									<span class="carousel-calendar__time"><?php echo $evento['hora']['inicio'] . " às " . $evento['hora']['fim'] ; ?> </span>
 								</div>
