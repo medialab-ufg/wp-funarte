@@ -5,18 +5,23 @@ add_action('after_setup_theme', function() {
 	add_theme_support( 'custom-header' );
 	
 	if (function_exists('tainacan_register_view_mode')) {
-		
 		tainacan_register_view_mode('AudioPlayers', [
 			'label' => 'Players de audio',
-			'icon' => '<span class="icon"><i class="mdi mdi-view-quilt mdi-24px"></i></span>',
+			'icon' => '<span class="icon"><i class="mdi mdi-volume-high mdi-24px"></i></span>',
 			'description' => 'Lista de players de áudio',
 			'dynamic_metadata' => false,
 			'template' => get_template_directory() . '/tainacan/audio-players-view-mode.php',
 		]);
+
+		tainacan_register_view_mode('VideoPlayers', [
+			'label' => 'Players de video',
+			'icon' => '<span class="icon"><i class="mdi mdi-play-circle mdi-24px"></i></span>',
+			'description' => 'Lista de players de vídeo',
+			'dynamic_metadata' => false,
+			'template' => get_template_directory() . '/tainacan/video-players-view-mode.php',
+		]);
 		
 	}
-	
-	
 });
 
 /**
