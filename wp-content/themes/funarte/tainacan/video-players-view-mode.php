@@ -7,16 +7,22 @@
 				<!-- <button type="button" class="audios-list__share"><i class="mdi mdi-share-variant"></i></button> -->
 			</div>
 
-			<?php $audioUrl = funarte_get_document_url(); ?>
+			<?php $videoUrl = funarte_get_document_url(); ?>
 
-			<div class="audios-list__box <?php echo empty($audioUrl) ? '' : 'audios-list__has-audio'; ?>">
-				<div class="audios-list__play">
+			<div class="audios-list__box <?php echo empty($videoUrl) ? '' : 'audios-list__has-audio'; ?>">
+				<div class="audios-list__play videos-list__play">
 					<button type="button"><i class="mdi mdi-play-circle-outline"></i></button>
 				</div>
-				<div class="audios-list__audio">
-					<ul class="playlist">
-						<li><a href="<?php echo $audioUrl; ?>"></a></li>
-					</ul>
+				<div class="videos-list__video">
+					<?php
+						/*$videoUrlPrincipal = explode("?v=", $videoUrl);
+
+						if (empty($videoUrlPrincipal[1])) {
+							echo 'asdf: ' . $videoUrl;
+						} else {
+							echo '<iframe class="youtube-video" src="https://www.youtube.com/embed/' . $videoUrlPrincipal[1] . '" frameborder="0" allowfullscreen></iframe>';
+						}*/
+					?>
 				</div>
 
 				<div class="audios-list__columns">
