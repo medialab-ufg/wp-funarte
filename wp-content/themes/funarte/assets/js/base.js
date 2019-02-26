@@ -67,28 +67,25 @@ var base = {
 	video: {
 		ativar: function() {
 			$('#items-list-results').on('click','.videos-list__play button',function() {
-				var $this = $(this);
-				console.log($this);
+				var $this = $(this),
+					$box = $this.parent().siblings('.videos-list__video'),
+					video = $box.data('video');
 
-				$this.parent().siblings('.videos-list__video').videre({
-					video: {
-						quality: [
-							{
-								label: '720p',
-								src: 'https://vjs.zencdn.net/v/oceans.mp4?HD'
-							},
-							{
-								label: '360p',
-								src: 'https://vjs.zencdn.net/v/oceans.mp4?SD'
-							},
-							{
-								label: '240p',
-								src: 'https://vjs.zencdn.net/v/oceans.mp4?SD'
-							}
-						]
-					},
-					dimensions: 1280
-				});
+				if (video) {
+					$box.videre({
+						video: {
+							quality: [
+								{
+									label: '360p',
+									src: video
+								}
+							]
+						},
+						dimensions: 1280
+					});
+				} else {
+					$box.addClass('youtube-video');
+				}
 			});
 		}
 	},
