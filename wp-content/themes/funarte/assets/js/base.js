@@ -56,11 +56,43 @@ $(document).ready(function() {
 	// Lista de coleções de áudios
 	base.audio.ativarListaColecao();
 
+	// Lista de coleções de videos
+	base.video.ativar();
+
 	// Agenda do Presidente
 	base.calendario.ativarAgenda();
 });
 
 var base = {
+	video: {
+		ativar: function() {
+			$('#items-list-results').on('click','.videos-list__play button',function() {
+				var $this = $(this);
+				console.log($this);
+
+				$this.parent().siblings('.videos-list__video').videre({
+					video: {
+						quality: [
+							{
+								label: '720p',
+								src: 'https://vjs.zencdn.net/v/oceans.mp4?HD'
+							},
+							{
+								label: '360p',
+								src: 'https://vjs.zencdn.net/v/oceans.mp4?SD'
+							},
+							{
+								label: '240p',
+								src: 'https://vjs.zencdn.net/v/oceans.mp4?SD'
+							}
+						]
+					},
+					dimensions: 1280
+				});
+			});
+		}
+	},
+
 	audio: {
 		ativar: function() {
 			var $audioPlayer = $('.audio-player');
