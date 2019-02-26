@@ -202,6 +202,13 @@ function extra_files() {
 	
 	wp_enqueue_script('slick-js', get_theme_file_uri() . '/assets/js/plugins/slick.min.js', null, microtime(), true);
 	wp_enqueue_script('filters-js', get_theme_file_uri() . '/assets/js/filters.js', null, microtime(), true);
+
+	wp_enqueue_script( 'ptbr-jquery-ui-datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', null, microtime(), true );
+
+	// // You need styling for the datepicker. For simplicity I've linked to Google's hosted jQuery UI CSS.
+	wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
+	wp_enqueue_style( 'jquery-ui' );  
+
 }
 add_action('wp_enqueue_scripts','extra_files');
 

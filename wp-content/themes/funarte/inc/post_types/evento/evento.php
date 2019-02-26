@@ -14,8 +14,8 @@ class Evento {
 		add_action('wp_ajax_get_events_by_day', array(&$this, 'ajax_get_events_by_day'));
 		add_action('wp_ajax_nopriv_get_events_by_day', array(&$this, 'ajax_get_events_by_day'));
 		
-		add_action('wp_ajax_get_events_by_month', array(&$this, 'ajax_get_events_by_month'));
-		add_action('wp_ajax_nopriv_get_events_by_month', array(&$this, 'ajax_get_events_by_month'));
+		add_action('wp_ajax_get_events_by_period', array(&$this, 'ajax_get_events_by_period'));
+		add_action('wp_ajax_nopriv_get_events_by_period', array(&$this, 'ajax_get_events_by_period'));
 	}
 
 	public function register_post_type() {
@@ -262,6 +262,7 @@ class Evento {
 		return new \WP_Query($params);
 	}
 	
+	
 	/**
 	* Espera data no formato timestamp
 	*/
@@ -405,13 +406,104 @@ class Evento {
 		return $response;
 	}
 
-	function ajax_get_events_by_month() {
-		$month = $_GET['mes'];
-		$year = $_GET['ano'];
-		if ( !is_numeric($month) || !is_numeric($year) ) {
-			wp_send_json_error("invalid parameters");
+	/**
+	* Retorna todos os evenos que acontecem dentro de um intervalo
+	* 
+	* @param $center_date Objeto DateTime com a data central do intervalo 
+	* @param $length opcional. tamanho do intervalo pretendido 
+	* @return array 
+	*/
+	function get_events_by_period(\DateTime $center_date, $length_left = 15, $length_right = 15) {
+		$response = [];
+		$begin = clone $center_date;
+		$end = clone $center_date;
+		date_add($end,  date_interval_create_from_date_string($length_right." days"));
+		date_sub($begin,date_interval_create_from_date_string($length_left." days"));
+		
+		if ($length_right == 0)
+			$end->modify('yesterday');
+		
+			if ($length_left == 0)
+			$begin->modify('tomorrow');
+		
+
+		$end->modify('tomorrow')->modify('1 second ago');
+		$interval = \DateInterval::createFromDateString('1 day');
+		$period = new \DatePeriod($begin, $interval, $end);
+		foreach ($period as $dt) {
+			$date = date('d/m/Y', $dt->getTimestamp());
+			$response['events'][$date] = [];
 		}
-		$response = $this->get_prepared_events_by_month($month, $year);
+
+		$params = array(
+			'post_type' 	=> $this->POST_TYPE,
+			'posts_per_page'	=> -1,
+			'meta_query' => array(
+				'relation' => 'AND',
+				'evento-fim' => ['key'     => 'evento-fim',
+													'value'   => date('Y-m-d H:i:s', $begin->getTimestamp()),
+													'compare' => '>='],
+				'evento-inicio'=> ['key'     => 'evento-inicio',
+												'value'   => date('Y-m-d H:i:s', $end->getTimestamp()),
+												'compare' => '<=']
+			),
+			'orderby' => ['evento-inicio' => 'ASC']
+		);
+		
+		$events = query_posts($params);
+		foreach ($events as $event) {
+			$cat = get_the_category($event->ID);
+			if($cat && isset($cat)) $cat = $cat[0];
+			else $cat = ['slug'=>'funarte', 'name'=>'funarte'];
+			$local =  get_post_meta($event->ID, 'evento-local', true);
+
+			$inicio  = strtotime(get_post_meta($event->ID, 'evento-inicio', true));
+			$hora_inicio = date('H:i', $inicio);  
+			$dia_inicio  = date('d/m/Y',$inicio);
+
+			$fim_evento 	= strtotime(get_post_meta($event->ID, 'evento-fim', true));
+			$hora_fim = date('H:i', $fim_evento);  
+			$dia_fim 	= date('d/m/Y', $fim_evento);
+
+			$multiplo = (bool)get_post_meta($event->ID, 'evento-multiplo', true);
+
+			if($multiplo) {
+				$day_point = $inicio < $begin->getTimestamp() ? $begin->getTimestamp() : $inicio;
+				while($day_point <= $fim_evento && $day_point <= $end->getTimestamp() ) {
+					$dia_inicio  = date('d/m/Y', $day_point);
+					$response['events'][$dia_inicio][] = [
+						'ID' => $event->ID,
+						'title' => $event->post_title,
+						'local' => $local,
+						'cat' => $cat,
+						'hora' => ['inicio'=>$hora_inicio, 'fim' => $hora_fim]
+					];
+					$day_point = strtotime('+1 day', $day_point);
+				}
+			} else {
+				$response['events'][$dia_inicio][] = [
+					'ID' => $event->ID,
+					'title' => $event->post_title,
+					'local' => $local,
+					'cat' => $cat,
+					'hora' => ['inicio'=>$hora_inicio, 'fim' => $hora_fim]
+				];
+			}
+		}
+		return $response;
+	}
+
+	/**
+	* Espera data no formato timestamp
+	*/
+	function ajax_get_events_by_period() {
+		$day 		= $_GET['day'];
+		$left 	= isset($_GET['left']) ? $_GET['left'] : 15;
+		$rigth 	= isset($_GET['rigth']) ? $_GET['rigth'] : 15;
+		$timestamp = strtotime(str_replace("/", "-", $day));
+		$datestring = date('d-m-Y', $timestamp);
+		$date = new \DateTime($datestring);
+		$response = $this->get_events_by_period($date, $left, $rigth);
 		wp_send_json($response, 200);
 	}
 }
