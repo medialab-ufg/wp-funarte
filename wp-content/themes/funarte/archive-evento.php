@@ -159,9 +159,10 @@
 				$dia_corrente = (isset($_GET['dia'])) ? $_GET['dia'] : date('d');
 				$mes_corrente = (isset($_GET['mes'])) ? $_GET['mes'] : date('m');
 				$ano_corrente = (isset($_GET['ano'])) ? $_GET['ano'] : date('Y');
-				// $mes_corrente = date('m');
-				// $ano_corrente = date('Y');
-				$eventos = \funarte\Evento::get_instance()->get_prepared_events_by_month($mes_corrente, $ano_corrente);
+
+				$datestring = date('d-m-Y', strtotime("$dia_corrente-$mes_corrente-$ano_corrente"));
+				$date = new \DateTime($datestring);
+				$eventos = \funarte\Evento::get_instance()->get_events_by_period($date, 10, 10);
 				$days = ['DOM','SEG','TER','QUA','QUI','SEX','SAB'];
 			?>
 
@@ -170,9 +171,10 @@
 					<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
 					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
 				</div>
-				<ul class="carousel-calendar" data-mes="<?php echo $mes_corrente; ?>" data-ano="<?php echo $ano_corrente; ?>" >
+				<ul class="carousel-calendar">
+
 					<?php foreach ($eventos['events'] as $data => $eventos_dia): ?>
-						<li class="<?php echo $data == date('d/m/Y', strtotime("$dia_corrente-$mes_corrente-$ano_corrente")) ? 'active':''; ?>" >
+						<li class="<?php echo $data == date('d/m/Y', strtotime($datestring)) ? 'active':''; ?>" data-dia="<?php echo $data; ?>" >
 							<div class="carousel-calendar__button">
 								<?php
 									$data = str_replace('/', '-', $data);
@@ -181,15 +183,15 @@
 								<button type="text"><?php echo $dia_semana.'<br>'.substr($data, 0, 5); ?></button>
 							</div>
 							<?php if (!empty($eventos_dia)): ?>
-							<?php foreach ($eventos_dia as $evento) : ?>
-								<div class="carousel-calendar__event color-<?php echo $evento['cat']->slug; ?>">
-									<strong><a href="<?php echo get_permalink($evento['ID']);?>" title="<?php echo $evento['title']; ?>" ><?php echo $evento['title']; ?></a></strong>
-									<span class="carousel-calendar__pin"><?php echo $evento['local']; ?> </span>
-									<span class="carousel-calendar__time"><?php echo $evento['hora']['inicio'] . " às " . $evento['hora']['fim'] ; ?> </span>
-								</div>
-							<?php endforeach; ?>
+								<?php foreach ($eventos_dia as $evento) : ?>
+									<div class="carousel-calendar__event color-<?php echo $evento['cat']->slug; ?>">
+										<strong><a href="<?php echo get_permalink($evento['ID']);?>" title="<?php echo $evento['title']; ?>" ><?php echo $evento['title']; ?></a></strong>
+										<span class="carousel-calendar__pin"><?php echo $evento['local']; ?> </span>
+										<span class="carousel-calendar__time"><?php echo $evento['hora']['inicio'] . " às " . $evento['hora']['fim'] ; ?> </span>
+									</div>
+								<?php endforeach; ?>
 							<?php else: ?>
-									<strong>Nenhum evento</strong>
+								<strong>Nenhum evento</strong>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>
@@ -202,5 +204,3 @@
 <?php
 get_footer();
 ?>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

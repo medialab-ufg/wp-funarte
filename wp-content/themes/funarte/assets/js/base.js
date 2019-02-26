@@ -570,11 +570,12 @@ var base = {
 			var $carousel = $('.carousel-calendar-box');
 			var status = true;
 
-			function adicionarEventosMes(slick, pos, mes, ano) {
+			function adicionarEventosMes(slick, pos, params, addBefore) {
+				params.action = 'get_events_by_period';
 				var request = $.ajax({
 					url: funarte.ajaxurl,
 					type: "GET",
-					data: { 'action':'get_events_by_month', 'mes':mes, 'ano':ano},
+					data: params,
 					success: function(data) {
 						var html_el = '';
 						Object.keys(data.events).forEach(function(key, index){
@@ -595,9 +596,12 @@ var base = {
 									</div>';
 							}
 							html_evento = html_evento == '' ? '<strong>Nenhum evento</strong>' : html_evento;
-							html_el = html_el + '<li><div class="carousel-calendar__button"><button type="text">' + dia_semana + '<br>' + mes_ano + '</button> </div>' + html_evento +	'</li>';
+							html_el = html_el + '<li data-dia="' + key + '" ><div class="carousel-calendar__button"><button type="text">' + dia_semana + '<br>' + mes_ano + '</button> </div>' + html_evento +	'</li>';
 						});
-						slick.slickAdd(html_el, pos);
+						if(addBefore == true) {
+							slick.currentSlide = slick.currentSlide + params.left;
+						}
+						slick.slickAdd(html_el, pos, addBefore);
 						status = true;
 					},
 					error: function(e) {
@@ -607,22 +611,18 @@ var base = {
 			}
 
 			$('.carousel-calendar').on('afterChange', function(event, slick, currentSlide) {
-				if (slick.slideCount - currentSlide <= 7 && status) {
-					status = false;
-					var mes = parseInt($('.carousel-calendar').data('mes')) + 1;
-					var ano = parseInt($('.carousel-calendar').data('ano'));
-					if (mes == 13) { mes = 1; ano++;}
-					adicionarEventosMes(slick, slick.slideCount-1, mes, ano);
-					$('.carousel-calendar').data('mes', mes);
-					$('.carousel-calendar').data('ano', ano);
-				} else if (currentSlide <= 2  && status) {
-					// status = false;
-					// var mes = parseInt($('.carousel-calendar').data('mes')) - 1;
-					// var ano = parseInt($('.carousel-calendar').data('ano'));
-					// if (mes == 0) { mes = 12; ano--;}
-					// adicionarEventosMes(slick, 0, mes, ano);
-					// $('.carousel-calendar').data('mes', mes);
-					// $('.carousel-calendar').data('ano', ano);//
+				if (status == true ) {
+					if (slick.slideCount - slick.currentSlide <= 7) {
+						status = false;
+						var dia = $('.carousel-calendar li:last-of-type').data('dia');
+						var param = {day:dia, left:0, rigth:20};
+						adicionarEventosMes(slick, slick.slideCount-1, param, false);
+					} else if (slick.currentSlide <= 7) {
+						status = false;
+						var dia = $('.carousel-calendar li:first-of-type').data('dia');
+						var param = {day:dia, left:20, rigth:0};
+						adicionarEventosMes(slick, 0, param, true);
+					}
 				}
 			});
 			
@@ -632,7 +632,7 @@ var base = {
 
 			$('.carousel-calendar').slick({
 				speed: 500,
-				infinite: true,
+				infinite: false,
 				slidesToShow: 5,
 				slidesToScroll: 5,
 				centerMode: true,
