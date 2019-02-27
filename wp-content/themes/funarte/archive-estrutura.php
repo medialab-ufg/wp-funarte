@@ -4,7 +4,8 @@
 		'post_type' => \funarte\Estrutura::get_instance()->get_post_type(),
 		'posts_per_page' => -1,
 		'orderby' => 'menu_order',
-		'order' => 'ASC'
+		'order' => 'ASC',
+		'post_parent' => 0
 	));
 ?>
 
