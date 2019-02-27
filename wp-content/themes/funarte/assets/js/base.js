@@ -66,27 +66,83 @@ $(document).ready(function() {
 var base = {
 	video: {
 		ativar: function() {
-			$('#items-list-results').on('click','.videos-list__play button',function() {
+			var $boxPai = $('#items-list-results');
+
+			$boxPai.on('click','.videos-list__play button',function() {
 				var $this = $(this),
 					$box = $this.parent().siblings('.videos-list__video'),
-					video = $box.data('video');
+					video = $box.data('video'),
+					estrutura = '';
 
 				if (video) {
-					$box.videre({
-						video: {
-							quality: [
-								{
-									label: '360p',
-									src: video
-								}
-							]
-						},
-						dimensions: 1280
+					estrutura = '<video autoplay src="' + video + '" class="video-video"></video>\
+								<div class="video-bar">\
+									<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>\
+									<button type="button" class="video-pause"><i class="mdi mdi-pause"></i></button>\
+									<div class="video-current"></div>\
+									<div class="video-duration"></div>\
+									<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i></button>\
+									<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>\
+								</div>';
+					$box.html(estrutura);
+
+					// Play
+					$boxPai.on('click','.video-play',function() {
+						$(this).parents('.videos-list__video').find('video')[0].play();
 					});
+
+					// Pause
+					$boxPai.on('click','.video-pause',function() {
+						$(this).parents('.videos-list__video').find('video')[0].pause();
+					});
+
+					// Volume
+					$boxPai.on('click','.video-volume',function() {
+						var videoMute = $(this).parents('.videos-list__video').find('video')[0];
+
+						if (videoMute.muted == false ) {
+							videoMute.muted = true;
+						} else {
+							videoMute.muted = false;;
+						}
+					});
+
+					// Full Screen
+					$boxPai.on('click','.video-full',function() {
+						var videoFull = $(this).parents('.videos-list__video').find('video')[0];
+
+						if (videoFull.mozRequestFullScreen) {
+							videoFull.mozRequestFullScreen();
+						} else if (videoFull.webkitRequestFullScreen) {
+							videoFull.webkitRequestFullScreen();
+						}
+					});
+
+					// Tempo
+					var $timeVideo;
+					setInterval(function() {
+						$('.videos-list__video').each(function() {
+							var $this = $(this);
+
+							$timeVideo = $this.find('video').get(0);
+
+							if ($timeVideo != undefined) {
+								$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
+								$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
+							}
+						});
+					}, 500);
 				} else {
 					$box.addClass('youtube-video');
 				}
 			});
+		},
+
+		converterTempo : function (time) {
+			var base = this;
+
+			m=~~(time/60), s=~~(time % 60);
+			return (m<10?"0"+m:m)+':'+(s<10?"0"+s:s);
 		}
 	},
 

@@ -191,7 +191,7 @@ if (typeof Object.create !== "function") {
 
 			$('.vid-play-btn').unbind().click(function(){
 				console.log('clicked')
-				base.togglePlay();
+				base.togglePlay($(this));
 			});
 
 			$('.vid-toggle-layer').unbind()
@@ -389,17 +389,28 @@ if (typeof Object.create !== "function") {
 			});
 		},
 
-		togglePlay : function() {
+		togglePlay : function(elemento) {
 			var isPlaying = media.currentTime > 0 && !media.paused && !media.ended && media.readyState > 2;
 			if (!isPlaying){
 				media.play();
 
-				$('.vid-wrapper').removeClass('paused');
-				$('.vid-play-btn').find('i').removeClass('ion-ios-play').addClass('ion-ios-pause');
+				if (elemento != undefined) {
+					elemento.parents('.vid-wrapper').removeClass('paused');
+					elemento.find('i').removeClass('ion-ios-play').addClass('ion-ios-pause');
+				} else {
+					$('.vid-wrapper').removeClass('paused');
+					$('.vid-play-btn').find('i').removeClass('ion-ios-play').addClass('ion-ios-pause');
+				}
 			} else {
 
-				$('.vid-wrapper').addClass('paused').addClass('mouse-entered');
-				$('.vid-play-btn').find('i').addClass('ion-ios-play').removeClass('ion-ios-pause');
+				if (elemento != undefined) {
+					elemento.parents('.vid-wrapper').addClass('paused').addClass('mouse-entered');
+					elemento.find('i').addClass('ion-ios-play').removeClass('ion-ios-pause');
+				} else {
+					$('.vid-wrapper').addClass('paused').addClass('mouse-entered');
+					$('.vid-play-btn').find('i').addClass('ion-ios-play').removeClass('ion-ios-pause');
+				}
+
 				media.pause();
 			}
 		},
