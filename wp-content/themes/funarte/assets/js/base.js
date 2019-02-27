@@ -612,74 +612,113 @@ var base = {
 			$carousel.addClass('active');
 		},
 
+		atualizaCalendarioCompletoEventos: function() {
+			$('.loading').show();
+			$datepicker = $('.carousel-calendar-box .form-filtro-calendario input.datepicker-field');
+			if ($datepicker.length > 0) {
+				var selectedDate = $datepicker.datepicker( "getDate" );
+				if (!selectedDate) {
+					selectedDate = $('li.slick-center').data('dia');
+				} else {
+					selectedDate = $.datepicker.formatDate("dd/mm/yy", selectedDate);
+				}
+				var local = $('.carousel-calendar-box .form-filtro-calendario select.select_local').val();
+				var area  = $('.carousel-calendar-box .form-filtro-calendario select.select_area').val();
+				
+				var slick = $('.carousel-calendar').slick("getSlick");
+				var param = {day:selectedDate, left:10, rigth:10, local:local, area:area};
+				base.carrossel.adicionarEventos(slick, slick.slideCount-1, param, false, function(slick, count){
+					slick.currentSlide = 10;
+					for(var i = count - 1; i >=0 ; i--) {
+				 		slick.slickRemove(i);
+					}
+					$('.loading').hide();
+				});
+				
+			}
+		},
+
 		iniciarCalendarioFormulario: function() {
-			$('.carousel-calendar-box .form-filtro-calendario input.datepicker-field').on('change',function(event){ 
-				var data = $(this).val().split('/');
-				var url = window.location.href;
-				url = url.split('?')[0];
-				url += '?dia=' + data[0] + '&mes=' + data[1] + '&ano=' + data[2];
-				window.location.href = url;
+			$('.form-filtro-calendario').on('submit', function(event){
+				event.preventDefault();
+				base.carrossel.atualizaCalendarioCompletoEventos();
+			});
+		},
+
+		status: true,
+		adicionarEventos: function(slick, pos, params, addBefore, $callback) {
+			params.action = 'get_events_by_period';
+			var request = $.ajax({
+				url: funarte.ajaxurl,
+				type: "GET",
+				data: params,
+				success: function(data) {
+					var html_el = '';
+					Object.keys(data.events).forEach(function(key, index){
+						eventos = data.events[key];
+						var days = ['DOM','SEG','TER','QUA','QUI','SEX','SAB'];
+						
+						var dia_semana = days[ ( new Date(key.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3"))).getDay() ];
+						var mes_ano = key.split("/")[0] + '/' + key.split("/")[1];
+
+						var html_evento = '';
+						for (var idx in eventos) {
+							var evento = eventos[idx];
+							html_evento = html_evento +
+								'<div class="carousel-calendar__event color-'+ evento.cat.slug +'"> \
+									<a href="' + evento.permalink + '"><strong>' + evento.title + '</strong> </a> \
+									<span class="carousel-calendar__pin">' + evento.local + '</span> \
+										<span class="carousel-calendar__time">das ' + evento.hora.inicio + ' às ' + evento.hora.fim + ' horas</span>  \
+								</div>';
+						}
+						html_evento = html_evento == '' ? '<strong>Nenhum evento</strong>' : html_evento;
+						html_el = html_el + '<li data-dia="' + key + '" ><div class="carousel-calendar__button"><button type="text">' + dia_semana + '<br>' + mes_ano + '</button> </div>' + html_evento +	'</li>';
+					});
+					if(addBefore == true) {
+						slick.currentSlide = slick.currentSlide + params.left;
+					}
+					var count = slick.slideCount;
+					slick.slickAdd(html_el, pos, addBefore);
+					if($callback) $callback(slick, count);
+					
+					base.carrossel.status = true;
+					$('.box-calendar__control button.slick-arrow').removeClass("slick-disabled");
+					$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
+				},
+				error: function(e) {
+					
+					base.carrossel.status = true;
+					$('.box-calendar__control button.slick-arrow').removeClass("slick-disabled");
+					$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
+				}
 			});
 		},
 
 		iniciarCalendarioCompleto: function() {
 			var $carousel = $('.carousel-calendar-box');
-			var status = true;
-
-			function adicionarEventosMes(slick, pos, params, addBefore) {
-				params.action = 'get_events_by_period';
-				var request = $.ajax({
-					url: funarte.ajaxurl,
-					type: "GET",
-					data: params,
-					success: function(data) {
-						var html_el = '';
-						Object.keys(data.events).forEach(function(key, index){
-							eventos = data.events[key];
-							var days = ['DOM','SEG','TER','QUA','QUI','SEX','SAB'];
-							
-							var dia_semana = days[ ( new Date(key.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3"))).getDay() ];
-							var mes_ano = key.split("/")[0] + '/' + key.split("/")[1];
-
-							var html_evento = '';
-							for (var idx in eventos) {
-								var evento = eventos[idx];
-								html_evento = html_evento +
-									'<div class="carousel-calendar__event color-'+ evento.cat.slug +'"> \
-										<strong>' + evento.title + '</strong> \
-										<span class="carousel-calendar__pin">' + evento.local + '</span> \
-											<span class="carousel-calendar__time">das ' + evento.hora.inicio + ' às ' + evento.hora.fim + ' horas</span>  \
-									</div>';
-							}
-							html_evento = html_evento == '' ? '<strong>Nenhum evento</strong>' : html_evento;
-							html_el = html_el + '<li data-dia="' + key + '" ><div class="carousel-calendar__button"><button type="text">' + dia_semana + '<br>' + mes_ano + '</button> </div>' + html_evento +	'</li>';
-						});
-						if(addBefore == true) {
-							slick.currentSlide = slick.currentSlide + params.left;
-						}
-						slick.slickAdd(html_el, pos, addBefore);
-						status = true;
-					},
-					error: function(e) {
-						status = true;
-					}
-				});
-			}
 
 			$('.carousel-calendar').on('afterChange', function(event, slick, currentSlide) {
-				if (status == true ) {
+				if (base.carrossel.status == true ) {
 					if (slick.slideCount - slick.currentSlide <= 7) {
-						status = false;
+						
+						base.carrossel.status = false;
+						$('.box-calendar__control button.slick-arrow').addClass("slick-disabled");
+						$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
+						
 						var dia = $('.carousel-calendar li:last-of-type').data('dia');
 						var param = {day:dia, left:0, rigth:20};
-						adicionarEventosMes(slick, slick.slideCount-1, param, false);
+						base.carrossel.adicionarEventos(slick, slick.slideCount-1, param, false);
 					} else if (slick.currentSlide <= 7) {
-						status = false;
+						base.carrossel.status = false;
+						$('.box-calendar__control button.slick-arrow').addClass("slick-disabled");
+						$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
+						
 						var dia = $('.carousel-calendar li:first-of-type').data('dia');
 						var param = {day:dia, left:20, rigth:0};
-						adicionarEventosMes(slick, 0, param, true);
+						base.carrossel.adicionarEventos(slick, 0, param, true);
 					}
 				}
+				
 			});
 			
 			$('.carousel-calendar').on('init', function(event, slick){

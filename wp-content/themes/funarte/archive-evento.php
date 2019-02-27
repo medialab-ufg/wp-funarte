@@ -60,19 +60,6 @@
 					</fieldset>
 				</form>
 
-				<!--<form class="form-filtro-calendario" action="#" method="post">
-					<fieldset>
-						<legend>Formulário de filtro para o calendário</legend>
-
-						<select>
-							<option value="">Todos os eventos</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-						</select>
-					</fieldset>
-				</form> -->
-
 				<form class="form-filtro-calendario form-filtro-calendario--datepicker" action="#" method="post">
 					<fieldset>
 						<legend>Formulário de filtro para o calendário</legend>
@@ -101,66 +88,56 @@
 		</div>
 
 		<div class="carousel-calendar-box mb-100">
-			<div class="row">
-				<div class="col-md-2">
-					<form class="form-filtro-calendario" action="#" method="post">
-						<fieldset>
-							<legend>Formulário de filtro para o calendário</legend>
+			<form class="form-filtro-calendario" action="#" method="post">
+				<div class="row">
+					<fieldset class="col-md-2">
+						<legend>campo do filtro para o calendário por local</legend>
 
-							<select>
-								<option value="">Todos os eventos</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
-							</select>
-						</fieldset>
-					</form>
-				</div>
-				<div class="col-md-2">
-					<form class="form-filtro-calendario" action="#" method="post">
-						<fieldset>
-							<legend>Formulário de filtro para o calendário</legend>
+						<?php
+						wp_dropdown_categories([
+							'show_option_none' => 'Filtrar por local',
+							'option_none_value' => '',
+							'hide_empty' => true,
+							'orderby' => 'name',
+							'order' => 'ASC',
+							'class' => 'select_local',
+							'name' => 'local',
+							'taxonomy' => 'espacos-culturais'
+						]);
+						?>
+					</fieldset>
+						
+					<fieldset class="col-md-2">
+						<legend>campo do filtro para o calendário por área</legend>
+						<?php
+						wp_dropdown_categories(array(
+							'show_option_none' => 'Filtrar por área',
+							'option_none_value' => '',
+							'hide_empty' => true,
+							'id' => 'select-categoria',
+							'class' => 'select_area',
+							'name' => 'area',
+							'value_field' => 'slug'));
+						?>
+					</fieldset>
 
-							<select>
-								<option value="">Todos os locais</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
-							</select>
-						</fieldset>
-					</form>
-				</div>
-				<div class="col-md-2">
-					<form class="form-filtro-calendario" action="#" method="post">
-						<fieldset>
-							<legend>Formulário de filtro para o calendário</legend>
+					<fieldset class="col-md-2">
+						<legend>campo do filtro filtro para o calendário por data</legend>
+						<input type="text" class="datepicker datepicker-field">
+					</fieldset>
+					
+					<button type="submit">
+						<i class="mdi mdi-magnify active"></i>
+						<span class="sr-only">Pesquisar</span>
+					</button>
+					<img class="loading" style="display:none;" src="<?php echo get_template_directory_uri() . '/assets/img/ico/loading.gif'; ?>" />
 
-							<select>
-								<option value="">Filtrar por área</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
-							</select>
-						</fieldset>
-					</form>
 				</div>
-				<div class="col-md-2">
-					<form class="form-filtro-calendario" action="#" method="post">
-						<fieldset>
-							<legend>Formulário de filtro para o calendário</legend>
-
-							<input type="text" class="datepicker datepicker-field">
-						</fieldset>
-					</form>
-				</div>
-			</div>
+			</form>
+		
 
 			<?php
-				$dia_corrente = (isset($_GET['dia'])) ? $_GET['dia'] : date('d');
-				$mes_corrente = (isset($_GET['mes'])) ? $_GET['mes'] : date('m');
-				$ano_corrente = (isset($_GET['ano'])) ? $_GET['ano'] : date('Y');
-
-				$datestring = date('d-m-Y', strtotime("$dia_corrente-$mes_corrente-$ano_corrente"));
+				$datestring = (isset($_GET['dia'])) ? str_replace('/', '-', $_GET['dia']) : date('d-m-Y');
 				$date = new \DateTime($datestring);
 				$eventos = \funarte\Evento::get_instance()->get_events_by_period($date, 10, 10);
 				$days = ['DOM','SEG','TER','QUA','QUI','SEX','SAB'];
@@ -174,7 +151,7 @@
 				<ul class="carousel-calendar">
 
 					<?php foreach ($eventos['events'] as $data => $eventos_dia): ?>
-						<li class="<?php echo $data == date('d/m/Y', strtotime($datestring)) ? 'active':''; ?>" data-dia="<?php echo $data; ?>" >
+						<li class="calendar-slide <?php echo $data == date('d/m/Y', strtotime($datestring)) ? 'active':''; ?>" data-dia="<?php echo $data; ?>" >
 							<div class="carousel-calendar__button">
 								<?php
 									$data = str_replace('/', '-', $data);
@@ -185,7 +162,7 @@
 							<?php if (!empty($eventos_dia)): ?>
 								<?php foreach ($eventos_dia as $evento) : ?>
 									<div class="carousel-calendar__event color-<?php echo $evento['cat']->slug; ?>">
-										<strong><a href="<?php echo get_permalink($evento['ID']);?>" title="<?php echo $evento['title']; ?>" ><?php echo $evento['title']; ?></a></strong>
+										<strong><a href="<?php echo $evento['permalink'];?>" title="<?php echo $evento['title']; ?>" ><?php echo $evento['title']; ?></a></strong>
 										<span class="carousel-calendar__pin"><?php echo $evento['local']; ?> </span>
 										<span class="carousel-calendar__time"><?php echo $evento['hora']['inicio'] . " às " . $evento['hora']['fim'] ; ?> </span>
 									</div>

@@ -413,7 +413,7 @@ class Evento {
 	* @param $length opcional. tamanho do intervalo pretendido 
 	* @return array 
 	*/
-	function get_events_by_period(\DateTime $center_date, $length_left = 15, $length_right = 15) {
+	function get_events_by_period(\DateTime $center_date, $length_left = 15, $length_right = 15, $param = []) {
 		$response = [];
 		$begin = clone $center_date;
 		$end = clone $center_date;
@@ -435,9 +435,17 @@ class Evento {
 			$response['events'][$date] = [];
 		}
 
+
+		if (!empty($_GET['area'])) {
+			$area = get_category_by_name($_GET['area']);
+			if (!empty($area))
+				$cat = $area->term_id;
+		}
+
 		$params = array(
 			'post_type' 	=> $this->POST_TYPE,
 			'posts_per_page'	=> -1,
+			'cat' => isset($cat) ? $cat : null,
 			'meta_query' => array(
 				'relation' => 'AND',
 				'evento-fim' => ['key'     => 'evento-fim',
@@ -449,6 +457,15 @@ class Evento {
 			),
 			'orderby' => ['evento-inicio' => 'ASC']
 		);
+
+		if (isset($_GET['local']) && is_numeric($_GET['local'])) {
+			$extra_args = [];
+			$extra_args['tax_query'] = [[
+				'taxonomy' => 'espacos-culturais',
+				'terms' => (int) $_GET['local'],
+			]];
+			$params = array_merge($params, $extra_args);
+		}
 		
 		$events = query_posts($params);
 		foreach ($events as $event) {
@@ -473,6 +490,7 @@ class Evento {
 					$dia_inicio  = date('d/m/Y', $day_point);
 					$response['events'][$dia_inicio][] = [
 						'ID' => $event->ID,
+						'permalink' => get_permalink($event->ID),
 						'title' => $event->post_title,
 						'local' => $local,
 						'cat' => $cat,
@@ -483,6 +501,7 @@ class Evento {
 			} else {
 				$response['events'][$dia_inicio][] = [
 					'ID' => $event->ID,
+					'permalink' => get_permalink($event->ID),
 					'title' => $event->post_title,
 					'local' => $local,
 					'cat' => $cat,
@@ -498,12 +517,15 @@ class Evento {
 	*/
 	function ajax_get_events_by_period() {
 		$day 		= $_GET['day'];
-		$left 	= isset($_GET['left']) ? $_GET['left'] : 15;
+		$left 	= isset($_GET['left'])  ? $_GET['left']  : 15;
 		$rigth 	= isset($_GET['rigth']) ? $_GET['rigth'] : 15;
+		$local 	= isset($_GET['local']) ? $_GET['local'] : '';
+		$area 	= isset($_GET['area'])  ? $_GET['area']  : '';
+		
 		$timestamp = strtotime(str_replace("/", "-", $day));
 		$datestring = date('d-m-Y', $timestamp);
 		$date = new \DateTime($datestring);
-		$response = $this->get_events_by_period($date, $left, $rigth);
+		$response = $this->get_events_by_period($date, $left, $rigth, ['area' => $area, 'local' => $local]);
 		wp_send_json($response, 200);
 	}
 }
