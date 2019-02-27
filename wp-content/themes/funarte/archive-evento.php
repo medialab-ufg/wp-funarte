@@ -101,66 +101,42 @@
 		</div>
 
 		<div class="carousel-calendar-box mb-100">
-			<div class="row">
-				<div class="col-md-2">
-					<form class="form-filtro-calendario" action="#" method="post">
-						<fieldset>
-							<legend>Formulário de filtro para o calendário</legend>
+			<form class="form-filtro-calendario" action="#" method="post">
+				<div class="row">
+					<fieldset class="col-md-2">
+						<legend>campo do filtro para o calendário por local</legend>
+						<select class="local">
+							<option value="">Todos os locais</option>
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+						</select>
+					</fieldset>
+						
+					<fieldset class="col-md-2">
+						<legend>campo do filtro para o calendário por área</legend>
+						<?php
+						wp_dropdown_categories(array(
+							'show_option_none' => 'Filtrar por área',
+							'option_none_value' => '',
+							'hide_empty' => true,
+							'id' => 'select-categoria',
+							'class' => 'select_area',
+							'name' => 'area',
+							'value_field' => 'slug'));
+						?>
+					</fieldset>
 
-							<select>
-								<option value="">Todos os eventos</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
-							</select>
-						</fieldset>
-					</form>
+					<fieldset class="col-md-2">
+						<legend>campo do filtro filtro para o calendário por data</legend>
+						<input type="text" class="datepicker datepicker-field">
+					</fieldset>
 				</div>
-				<div class="col-md-2">
-					<form class="form-filtro-calendario" action="#" method="post">
-						<fieldset>
-							<legend>Formulário de filtro para o calendário</legend>
-
-							<select>
-								<option value="">Todos os locais</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
-							</select>
-						</fieldset>
-					</form>
-				</div>
-				<div class="col-md-2">
-					<form class="form-filtro-calendario" action="#" method="post">
-						<fieldset>
-							<legend>Formulário de filtro para o calendário</legend>
-
-							<select>
-								<option value="">Filtrar por área</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
-							</select>
-						</fieldset>
-					</form>
-				</div>
-				<div class="col-md-2">
-					<form class="form-filtro-calendario" action="#" method="post">
-						<fieldset>
-							<legend>Formulário de filtro para o calendário</legend>
-
-							<input type="text" class="datepicker datepicker-field">
-						</fieldset>
-					</form>
-				</div>
-			</div>
+			</form>
+		
 
 			<?php
-				$dia_corrente = (isset($_GET['dia'])) ? $_GET['dia'] : date('d');
-				$mes_corrente = (isset($_GET['mes'])) ? $_GET['mes'] : date('m');
-				$ano_corrente = (isset($_GET['ano'])) ? $_GET['ano'] : date('Y');
-
-				$datestring = date('d-m-Y', strtotime("$dia_corrente-$mes_corrente-$ano_corrente"));
+				$datestring = (isset($_GET['dia'])) ? str_replace('/', '-', $_GET['dia']) : date('d-m-Y');
 				$date = new \DateTime($datestring);
 				$eventos = \funarte\Evento::get_instance()->get_events_by_period($date, 10, 10);
 				$days = ['DOM','SEG','TER','QUA','QUI','SEX','SAB'];
