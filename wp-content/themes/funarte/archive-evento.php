@@ -125,6 +125,13 @@
 						<legend>campo do filtro filtro para o calendário por data</legend>
 						<input type="text" class="datepicker datepicker-field">
 					</fieldset>
+					
+					<button type="submit">
+						<i class="mdi mdi-magnify active"></i>
+						<span class="sr-only">Pesquisar</span>
+					</button>
+					<img class="loading" style="display:none;" src="<?php echo get_template_directory_uri() . '/assets/img/ico/loading.gif'; ?>" />
+
 				</div>
 			</form>
 		
@@ -144,7 +151,7 @@
 				<ul class="carousel-calendar">
 
 					<?php foreach ($eventos['events'] as $data => $eventos_dia): ?>
-						<li class="<?php echo $data == date('d/m/Y', strtotime($datestring)) ? 'active':''; ?>" data-dia="<?php echo $data; ?>" >
+						<li class="calendar-slide <?php echo $data == date('d/m/Y', strtotime($datestring)) ? 'active':''; ?>" data-dia="<?php echo $data; ?>" >
 							<div class="carousel-calendar__button">
 								<?php
 									$data = str_replace('/', '-', $data);
@@ -155,7 +162,7 @@
 							<?php if (!empty($eventos_dia)): ?>
 								<?php foreach ($eventos_dia as $evento) : ?>
 									<div class="carousel-calendar__event color-<?php echo $evento['cat']->slug; ?>">
-										<strong><a href="<?php echo get_permalink($evento['ID']);?>" title="<?php echo $evento['title']; ?>" ><?php echo $evento['title']; ?></a></strong>
+										<strong><a href="<?php echo $evento['permalink'];?>" title="<?php echo $evento['title']; ?>" ><?php echo $evento['title']; ?></a></strong>
 										<span class="carousel-calendar__pin"><?php echo $evento['local']; ?> </span>
 										<span class="carousel-calendar__time"><?php echo $evento['hora']['inicio'] . " às " . $evento['hora']['fim'] ; ?> </span>
 									</div>

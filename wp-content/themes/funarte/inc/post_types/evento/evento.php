@@ -490,6 +490,7 @@ class Evento {
 					$dia_inicio  = date('d/m/Y', $day_point);
 					$response['events'][$dia_inicio][] = [
 						'ID' => $event->ID,
+						'permalink' => get_permalink($event->ID),
 						'title' => $event->post_title,
 						'local' => $local,
 						'cat' => $cat,
@@ -500,6 +501,7 @@ class Evento {
 			} else {
 				$response['events'][$dia_inicio][] = [
 					'ID' => $event->ID,
+					'permalink' => get_permalink($event->ID),
 					'title' => $event->post_title,
 					'local' => $local,
 					'cat' => $cat,

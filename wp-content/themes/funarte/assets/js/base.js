@@ -557,6 +557,7 @@ var base = {
 		},
 
 		atualizaCalendarioCompletoEventos: function() {
+			$('.loading').show();
 			$datepicker = $('.carousel-calendar-box .form-filtro-calendario input.datepicker-field');
 			if ($datepicker.length > 0) {
 				var selectedDate = $datepicker.datepicker( "getDate" );
@@ -569,27 +570,27 @@ var base = {
 				var area  = $('.carousel-calendar-box .form-filtro-calendario select.select_area').val();
 				
 				var slick = $('.carousel-calendar').slick("getSlick");
-				slick.removeSlide(0, true, true);
 				var param = {day:selectedDate, left:10, rigth:10, local:local, area:area};
-				base.carrossel.adicionarEventos(slick, 0, param, false);
-				slick.currentSlide = 11;
+				base.carrossel.adicionarEventos(slick, slick.slideCount-1, param, false, function(slick, count){
+					slick.currentSlide = 10;
+					for(var i = count - 1; i >=0 ; i--) {
+				 		slick.slickRemove(i);
+					}
+					$('.loading').hide();
+				});
+				
 			}
 		},
 
 		iniciarCalendarioFormulario: function() {
-			$('.carousel-calendar-box .form-filtro-calendario input.datepicker-field').on('change',function(event) {
-				base.carrossel.atualizaCalendarioCompletoEventos();
-			});
-			$('.carousel-calendar-box .form-filtro-calendario select.select_area').on('change',function(event) {
-				base.carrossel.atualizaCalendarioCompletoEventos();
-			});
-			$('.carousel-calendar-box .form-filtro-calendario select.select_local').on('change',function(event) {
+			$('.form-filtro-calendario').on('submit', function(event){
+				event.preventDefault();
 				base.carrossel.atualizaCalendarioCompletoEventos();
 			});
 		},
 
 		status: true,
-		adicionarEventos: function(slick, pos, params, addBefore) {
+		adicionarEventos: function(slick, pos, params, addBefore, $callback) {
 			params.action = 'get_events_by_period';
 			var request = $.ajax({
 				url: funarte.ajaxurl,
@@ -609,7 +610,7 @@ var base = {
 							var evento = eventos[idx];
 							html_evento = html_evento +
 								'<div class="carousel-calendar__event color-'+ evento.cat.slug +'"> \
-									<strong>' + evento.title + '</strong> \
+									<a href="' + evento.permalink + '"><strong>' + evento.title + '</strong> </a> \
 									<span class="carousel-calendar__pin">' + evento.local + '</span> \
 										<span class="carousel-calendar__time">das ' + evento.hora.inicio + ' às ' + evento.hora.fim + ' horas</span>  \
 								</div>';
@@ -620,11 +621,19 @@ var base = {
 					if(addBefore == true) {
 						slick.currentSlide = slick.currentSlide + params.left;
 					}
+					var count = slick.slideCount;
 					slick.slickAdd(html_el, pos, addBefore);
+					if($callback) $callback(slick, count);
+					
 					base.carrossel.status = true;
+					$('.box-calendar__control button.slick-arrow').removeClass("slick-disabled");
+					$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
 				},
 				error: function(e) {
+					
 					base.carrossel.status = true;
+					$('.box-calendar__control button.slick-arrow').removeClass("slick-disabled");
+					$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
 				}
 			});
 		},
@@ -635,17 +644,25 @@ var base = {
 			$('.carousel-calendar').on('afterChange', function(event, slick, currentSlide) {
 				if (base.carrossel.status == true ) {
 					if (slick.slideCount - slick.currentSlide <= 7) {
+						
 						base.carrossel.status = false;
+						$('.box-calendar__control button.slick-arrow').addClass("slick-disabled");
+						$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
+						
 						var dia = $('.carousel-calendar li:last-of-type').data('dia');
 						var param = {day:dia, left:0, rigth:20};
 						base.carrossel.adicionarEventos(slick, slick.slideCount-1, param, false);
 					} else if (slick.currentSlide <= 7) {
 						base.carrossel.status = false;
+						$('.box-calendar__control button.slick-arrow').addClass("slick-disabled");
+						$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
+						
 						var dia = $('.carousel-calendar li:first-of-type').data('dia');
 						var param = {day:dia, left:20, rigth:0};
 						base.carrossel.adicionarEventos(slick, 0, param, true);
 					}
 				}
+				
 			});
 			
 			$('.carousel-calendar').on('init', function(event, slick){
