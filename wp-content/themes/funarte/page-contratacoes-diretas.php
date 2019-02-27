@@ -127,7 +127,7 @@ get_header();
 			</ul>
 			<?php echo get_pagination(); ?>
 		<?php else: ?>
-			Nenhuma licitação encontrada
+			Nenhum resultado encontrado.
 		<?php endif;?>
 	</div>
 </main>

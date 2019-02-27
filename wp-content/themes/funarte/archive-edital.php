@@ -118,7 +118,7 @@ get_header();
 		<?php else:?>
 			<div class="content-tab">
 				<div class="container">
-					Não existe editais.
+					Não existem editais.
 				</div>
 			</div>
 		<?php endif;?>
