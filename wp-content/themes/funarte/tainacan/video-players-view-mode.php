@@ -10,20 +10,18 @@
 			<?php $videoUrl = funarte_get_document_url(); ?>
 
 			<div class="audios-list__box <?php echo empty($videoUrl) ? '' : 'audios-list__has-audio'; ?>">
-				<div class="audios-list__play videos-list__play">
+				<div class="videos-list__play">
 					<button type="button"><i class="mdi mdi-play-circle-outline"></i></button>
 				</div>
-				<div class="videos-list__video">
-					<?php
-						/*$videoUrlPrincipal = explode("?v=", $videoUrl);
+				<?php
+					$videoUrlPrincipal = explode("?v=", $videoUrl);
 
-						if (empty($videoUrlPrincipal[1])) {
-							echo 'asdf: ' . $videoUrl;
-						} else {
-							echo '<iframe class="youtube-video" src="https://www.youtube.com/embed/' . $videoUrlPrincipal[1] . '" frameborder="0" allowfullscreen></iframe>';
-						}*/
-					?>
-				</div>
+					if (empty($videoUrlPrincipal[1])) {
+						echo '<div class="videos-list__video" data-video="' . $videoUrl . '"></div>';
+					} else {
+						echo '<div class="videos-list__video"><iframe src="https://www.youtube.com/embed/' . $videoUrlPrincipal[1] . '" frameborder="0" allowfullscreen></iframe></div>';
+					}
+				?>
 
 				<div class="audios-list__columns">
 					<?php $imagem = get_the_post_thumbnail_url();
