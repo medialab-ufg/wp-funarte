@@ -565,7 +565,7 @@ var base = {
 				} else {
 					selectedDate = $.datepicker.formatDate("dd/mm/yy", selectedDate);
 				}
-				var local = $('.carousel-calendar-box .form-filtro-calendario select.local').val();
+				var local = $('.carousel-calendar-box .form-filtro-calendario select.select_local').val();
 				var area  = $('.carousel-calendar-box .form-filtro-calendario select.select_area').val();
 				
 				var slick = $('.carousel-calendar').slick("getSlick");
@@ -583,14 +583,13 @@ var base = {
 			$('.carousel-calendar-box .form-filtro-calendario select.select_area').on('change',function(event) {
 				base.carrossel.atualizaCalendarioCompletoEventos();
 			});
-			$('.carousel-calendar-box .form-filtro-calendario select.local').on('change',function(event) {
+			$('.carousel-calendar-box .form-filtro-calendario select.select_local').on('change',function(event) {
 				base.carrossel.atualizaCalendarioCompletoEventos();
 			});
 		},
 
 		status: true,
 		adicionarEventos: function(slick, pos, params, addBefore) {
-			console.log(params);
 			params.action = 'get_events_by_period';
 			var request = $.ajax({
 				url: funarte.ajaxurl,

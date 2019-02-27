@@ -60,19 +60,6 @@
 					</fieldset>
 				</form>
 
-				<!--<form class="form-filtro-calendario" action="#" method="post">
-					<fieldset>
-						<legend>Formulário de filtro para o calendário</legend>
-
-						<select>
-							<option value="">Todos os eventos</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-						</select>
-					</fieldset>
-				</form> -->
-
 				<form class="form-filtro-calendario form-filtro-calendario--datepicker" action="#" method="post">
 					<fieldset>
 						<legend>Formulário de filtro para o calendário</legend>
@@ -105,12 +92,19 @@
 				<div class="row">
 					<fieldset class="col-md-2">
 						<legend>campo do filtro para o calendário por local</legend>
-						<select class="local">
-							<option value="">Todos os locais</option>
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
-						</select>
+
+						<?php
+						wp_dropdown_categories([
+							'show_option_none' => 'Filtrar por local',
+							'option_none_value' => '',
+							'hide_empty' => true,
+							'orderby' => 'name',
+							'order' => 'ASC',
+							'class' => 'select_local',
+							'name' => 'local',
+							'taxonomy' => 'espacos-culturais'
+						]);
+						?>
 					</fieldset>
 						
 					<fieldset class="col-md-2">

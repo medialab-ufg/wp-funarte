@@ -457,6 +457,15 @@ class Evento {
 			),
 			'orderby' => ['evento-inicio' => 'ASC']
 		);
+
+		if (isset($_GET['local']) && is_numeric($_GET['local'])) {
+			$extra_args = [];
+			$extra_args['tax_query'] = [[
+				'taxonomy' => 'espacos-culturais',
+				'terms' => (int) $_GET['local'],
+			]];
+			$params = array_merge($params, $extra_args);
+		}
 		
 		$events = query_posts($params);
 		foreach ($events as $event) {
