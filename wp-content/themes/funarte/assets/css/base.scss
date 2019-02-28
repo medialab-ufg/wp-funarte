@@ -3745,9 +3745,7 @@ ul.slick-dots {
 		}
 	}
 
-	.vid-info-layer,
-	.vid-quality-selector { display: none; }
-	.vid-controls-bottom {
+	.video-bar {
 		width: 100%;
 		height: 35px;
 		position: absolute;
@@ -3755,7 +3753,8 @@ ul.slick-dots {
 		bottom: 0;
 		background-color: rgba(191, 191, 191,.9);
 	}
-	.vid-play-btn {
+	.video-play,
+	.video-pause {
 		width: 18px;
 		height: 18px;
 		margin: 0;
@@ -3770,35 +3769,28 @@ ul.slick-dots {
 		border: none;
 		background-color: $turquesa-1;
 
-		.ion-ios-play,
-		.ion-ios-pause {
-			&:after {
-				@include icon-css;
-				content: "\f40a";
-				font-size: 16px;
-				color: $branco;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%,-50%);
-			}
+		&.inativo { z-index: -2; }
+
+		i {
+			font-size: 16px;
+			color: $branco;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
 		}
-		.ion-ios-play:after { content: "\f40a"; }
-		.ion-ios-pause:after { content: "\f3e4"; }
 	}
-	.vid-progress {
+
+	.video-progress {
 		width: 169px;
 		height: 4px;
 		cursor: pointer;
 		position: absolute;
 		top: 15px;
 		left: 42px;
+		background-color: $branco;
 
-		.progress-bg {
-			height: 100%;
-			background-color: $branco;
-		}
-		.progress-fg {
+		.video-progress__bar {
 			height: 100%;
 			position: absolute;
 			top: 0;
@@ -3807,17 +3799,17 @@ ul.slick-dots {
 			background-color: $turquesa-1;
 		}
 	}
-	.vid-current-time,
-	.vid-duration {
+	.video-current,
+	.video-duration {
 		font-size: 12px;
 		color: $cinza-6;
 		position: absolute;
 		top: 8px;
 	}
-	.vid-current-time {
+	.video-current {
 		left: 219px;
 	}
-	.vid-duration {
+	.video-duration {
 		left: 260px;
 
 		&:after {
@@ -3827,60 +3819,48 @@ ul.slick-dots {
 			left: -8px;
 		}
 	}
-	.vid-volume-container {
-		.vid-volume-control {
-			cursor: pointer;
-			position: absolute;
-			top: 15px;
-			left: 312px;
-			border: none;
-			background: none;
+	.video-volume {
+		cursor: pointer;
+		position: absolute;
+		top: 15px;
+		left: 312px;
+		border: none;
+		background: none;
 
-			.ion-android-volume-up,
-			.ion-android-volume-down,
-			.ion-android-volume-off {
-				&:after {
-					@include icon-css;
-					font-size: 18px;
-					color: $cinza-6;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%,-50%);
-				}
-			}
-			.ion-android-volume-up {
-				&:after { content: "\f57e"; }
-			}
-			.ion-android-volume-down {
-				&:after { content: "\f580"; }
-			}
-			.ion-android-volume-off {
-				&:after { content: "\f75e"; }
-			}
-			.ion-android-volume-mute {
-				&:after { content: "\f75e"; }
-			}
+		.mdi-volume-mute { display: none; }
+
+		&.muted {
+			.mdi-volume-high { display: none; }
+			.mdi-volume-mute { display: block; }
 		}
-		.vid-volume-slider {
-			width: 60px !important;
-			height: 4px;
-			padding: 0 !important;
-			cursor: pointer;
+
+		i {
+			font-size: 18px;
+			color: $cinza-6;
 			position: absolute;
-			top: 15px;
-			left: 330px;
-			background-color: $turquesa-1 !important;
-
-			&.ui-slider { background-color: $branco !important; }
-
-			.ui-slider-range {
-				height: 100% !important;
-				background-color: $turquesa-1 !important;
-			}
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
 		}
 	}
-	.vid-request-fullscreen {
+	// .vid-volume-slider {
+	// 	width: 60px !important;
+	// 	height: 4px;
+	// 	padding: 0 !important;
+	// 	cursor: pointer;
+	// 	position: absolute;
+	// 	top: 15px;
+	// 	left: 330px;
+	// 	background-color: $turquesa-1 !important;
+
+	// 	&.ui-slider { background-color: $branco !important; }
+
+	// 	.ui-slider-range {
+	// 		height: 100% !important;
+	// 		background-color: $turquesa-1 !important;
+	// 	}
+	// }
+	.video-full {
 		cursor: pointer;
 		position: absolute;
 		top: 17px;
@@ -3888,9 +3868,7 @@ ul.slick-dots {
 		border: none;
 		background: none;
 
-		&:after {
-			@include icon-css;
-			content: "\f293";
+		i {
 			font-size: 20px;
 			color: $cinza-6;
 			position: absolute;
@@ -3921,10 +3899,10 @@ ul.slick-dots {
 			.vid-volume-control { left: 202px; }
 		}
 
-		.vid-duration { left: 160px; }
-		.vid-current-time { left: 119px; }
+		.video-duration { left: 160px; }
+		.video-current { left: 119px; }
 
-		.vid-progress { width: 69px; }
+		.video-progress { width: 69px; }
 	}
 }
 

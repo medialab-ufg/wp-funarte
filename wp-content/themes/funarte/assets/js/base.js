@@ -75,35 +75,62 @@ var base = {
 					estrutura = '';
 
 				if (video) {
+					$('video').each(function() {
+						$(this)[0].pause();
+					});
+
+					$('.video-play').removeClass('inativo');
+					$('.video-pause').addClass('inativo');
+
 					estrutura = '<video autoplay src="' + video + '" class="video-video"></video>\
 								<div class="video-bar">\
 									<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>\
 									<button type="button" class="video-pause"><i class="mdi mdi-pause"></i></button>\
+									<div class="video-progress"><div class="video-progress__bar"></div></div>\
 									<div class="video-current"></div>\
 									<div class="video-duration"></div>\
-									<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i></button>\
+									<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>\
 									<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>\
 								</div>';
 					$box.html(estrutura);
 
 					// Play
-					$boxPai.on('click','.video-play',function() {
-						$(this).parents('.videos-list__video').find('video')[0].play();
+					$boxPai.on('click','.video-play',function(event) {
+						event.stopImmediatePropagation();
+
+						$('video').each(function() {
+							$(this)[0].pause();
+						});
+						$('.video-play').removeClass('inativo');
+						$('.video-pause').addClass('inativo');
+
+						var $this = $(this);
+
+						$this.addClass('inativo').parents('.videos-list__video').find('video')[0].play();
+						$this.siblings('.video-pause').removeClass('inativo');
 					});
 
 					// Pause
-					$boxPai.on('click','.video-pause',function() {
-						$(this).parents('.videos-list__video').find('video')[0].pause();
+					$boxPai.on('click','.video-pause',function(event) {
+						event.stopImmediatePropagation();
+						var $this = $(this);
+
+						$this.addClass('inativo').parents('.videos-list__video').find('video')[0].pause();
+						$this.siblings('.video-play').removeClass('inativo');
 					});
 
 					// Volume
-					$boxPai.on('click','.video-volume',function() {
-						var videoMute = $(this).parents('.videos-list__video').find('video')[0];
+					$boxPai.on('click','.video-volume',function(event) {
+						event.stopImmediatePropagation();
+						var $this = $(this),
+							videoMute = $this.parents('.videos-list__video').find('video')[0];
 
 						if (videoMute.muted == false ) {
 							videoMute.muted = true;
+							$this.addClass('muted');
 						} else {
-							videoMute.muted = false;;
+							videoMute.muted = false;
+							$this.removeClass('muted');
 						}
 					});
 
@@ -129,12 +156,54 @@ var base = {
 							if ($timeVideo != undefined) {
 								$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
 								$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
+								$this.find('.video-progress__bar').css('width',(Math.floor(100 / $timeVideo.duration) * $timeVideo.currentTime + '%'));
+
+								if ($timeVideo.currentTime == $timeVideo.duration) {
+									$this.find('.video-progress__bar').css('width','100%');
+									$this.find('.video-play').removeClass('inativo');
+									$this.find('.video-pause').addClass('inativo');
+								}
 							}
 						});
 					}, 500);
+
+					// Barra de progresso
+					$boxPai.on('click','.video-progress',function(event) {
+						var $this = $(this),
+							offset = $this.offset(),
+							eixoX = event.pageX - offset.left,
+							$video = $this.parent().siblings('video')[0],
+							valorMaximo = $video.duration,
+							valorFinal = eixoX * valorMaximo / $this.width();
+
+						$video.currentTime = valorFinal;
+						$this.find('.video-progress__bar').css('width',eixoX);
+					});
 				} else {
 					$box.addClass('youtube-video');
 				}
+			});
+
+			// Pausa todos os videos ao mudar a visualizacao
+			$('#items-list-area').on('click','.dropdown-item',function(event) {
+				event.stopImmediatePropagation();
+
+				$('video').each(function() {
+					$(this)[0].pause();
+				});
+
+				$('.video-play').removeClass('inativo');
+				$('.video-pause').addClass('inativo');
+			});
+
+			// Pausa todos os videos ao mudar o filtro
+			$('#filters-desktop-aside').on('change','select',function() {
+				$('video').each(function() {
+					$(this)[0].pause();
+				});
+
+				$('.video-play').removeClass('inativo');
+				$('.video-pause').addClass('inativo');
 			});
 		},
 
