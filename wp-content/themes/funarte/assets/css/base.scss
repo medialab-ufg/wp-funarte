@@ -3711,6 +3711,14 @@ ul.slick-dots {
 	.videos-list__video { max-height: 137.5px; }
 }
 
+/* NOVO ÁUDIO */
+
+.audios-list__box.audio-component.video-active .videos-list__video {
+	height: 180px;
+
+	video { opacity: 0; }
+}
+
 /* VARIAÇÃO PARA LISTA DE VÍDEOS */
 
 .videos-list__video {
@@ -3885,6 +3893,15 @@ ul.slick-dots {
 	}
 
 	.audios-list__box.video-active .audios-list__text { display: none; }
+
+	.audios-list__box.audio-component.video-active {
+		.videos-list__video {
+			height: 100%;
+			max-height: none;
+		}
+
+		.audios-list__text { display: block; }
+	}
 }
 
 /* TOOLTIP */

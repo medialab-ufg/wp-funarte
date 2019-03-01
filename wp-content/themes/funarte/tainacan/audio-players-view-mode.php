@@ -7,17 +7,15 @@
 				<!-- <button type="button" class="audios-list__share"><i class="mdi mdi-share-variant"></i></button> -->
 			</div>
 
-			<?php $audioUrl = funarte_get_document_url(); ?>
+			<?php $videoUrl = funarte_get_document_url(); ?>
 
-			<div class="audios-list__box <?php echo empty($audioUrl) ? '' : 'audios-list__has-audio'; ?>">
-				<div class="audios-list__play">
+			<div class="audios-list__box audio-component <?php echo empty($videoUrl) ? '' : 'audios-list__has-audio'; ?>">
+				<div class="videos-list__play">
 					<button type="button"><i class="mdi mdi-play-circle-outline"></i></button>
 				</div>
-				<div class="audios-list__audio">
-					<ul class="playlist">
-						<li><a href="<?php echo $audioUrl; ?>"></a></li>
-					</ul>
-				</div>
+				<?php
+					echo '<div class="videos-list__video" data-video="' . $videoUrl . '"></div>';
+				?>
 
 				<div class="audios-list__columns">
 					<?php $imagem = get_the_post_thumbnail_url();

@@ -225,25 +225,25 @@ var base = {
 
 	audio: {
 		ativar: function() {
-			var $audioPlayer = $('.audio-player');
+			// var $audioPlayer = $('.audio-player');
 
-			if ($audioPlayer.length > 0) {
-				$audioPlayer.musicPlayer({
-					elements: ['controls', 'time', 'volume', 'progress']
-				});
-			}
+			// if ($audioPlayer.length > 0) {
+			// 	$audioPlayer.musicPlayer({
+			// 		elements: ['controls', 'time', 'volume', 'progress']
+			// 	});
+			// }
 		},
 
 		ativarListaColecao: function() {
-			$('#items-list-results').on('click','.audios-list__play button',function() {
-				var $this = $(this);
+			// $('#items-list-results').on('click','.audios-list__play button',function() {
+			// 	var $this = $(this);
 
-				$this.parent().siblings('.audios-list__audio').musicPlayer({
-					elements: ['controls', 'time', 'volume', 'progress']
-				});
+			// 	$this.parent().siblings('.audios-list__audio').musicPlayer({
+			// 		elements: ['controls', 'time', 'volume', 'progress']
+			// 	});
 
-				$this.parents('.audios-list__box').addClass('active');
-			});
+			// 	$this.parents('.audios-list__box').addClass('active');
+			// });
 		}
 	},
 
