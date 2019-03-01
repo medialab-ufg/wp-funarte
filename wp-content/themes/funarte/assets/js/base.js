@@ -86,13 +86,19 @@ var base = {
 								<div class="video-bar">\
 									<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>\
 									<button type="button" class="video-pause"><i class="mdi mdi-pause"></i></button>\
-									<div class="video-progress"><div class="video-progress__bar"></div></div>\
+									<div class="video-progress">\
+										<div class="video-progress__background">\
+											<div class="video-progress__bar"></div>\
+										</div>\
+									</div>\
 									<div class="video-current"></div>\
 									<div class="video-duration"></div>\
 									<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>\
 									<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>\
 								</div>';
 					$box.html(estrutura);
+
+					$this.parents('.audios-list__box').addClass('video-active');
 
 					// Play
 					$boxPai.on('click','.video-play',function(event) {
@@ -168,13 +174,15 @@ var base = {
 					}, 500);
 
 					// Barra de progresso
-					$boxPai.on('click','.video-progress',function(event) {
+					$boxPai.on('click','.video-progress__background',function(event) {
 						var $this = $(this),
 							offset = $this.offset(),
 							eixoX = event.pageX - offset.left,
-							$video = $this.parent().siblings('video')[0],
+							$video = $this.parents('.video-bar').siblings('video')[0],
 							valorMaximo = $video.duration,
 							valorFinal = eixoX * valorMaximo / $this.width();
+
+						console.log('event.pageX: ',event.pageX);
 
 						$video.currentTime = valorFinal;
 						$this.find('.video-progress__bar').css('width',eixoX);
