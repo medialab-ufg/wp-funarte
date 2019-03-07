@@ -3714,9 +3714,14 @@ ul.slick-dots {
 /* NOVO ÁUDIO */
 
 .audios-list__box.audio-component.video-active .videos-list__video {
-	height: 180px;
+	height: 35px;
+	top: auto;
+	bottom: 0;
 
-	video { opacity: 0; }
+	video {
+		height: 35px !important;
+		opacity: 0;
+	}
 }
 
 /* VARIAÇÃO PARA LISTA DE VÍDEOS */
@@ -3895,12 +3900,10 @@ ul.slick-dots {
 	.audios-list__box.video-active .audios-list__text { display: none; }
 
 	.audios-list__box.audio-component.video-active {
-		.videos-list__video {
-			height: 100%;
-			max-height: none;
+		.audios-list__text {
+			padding-bottom: 35px;
+			display: block;
 		}
-
-		.audios-list__text { display: block; }
 	}
 }
 
@@ -4475,6 +4478,11 @@ aside .list-bidding--type-b {
 		& + a { margin: 0 0 0 5px; }
 	}
 }
+
+.pagination-previous,
+.pagination-next,
+.pagination-link,
+.pagination-ellipsis { margin: 0 !important; }
 
 /***
 * BARRA LATERAL
