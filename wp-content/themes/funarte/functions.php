@@ -194,7 +194,6 @@ function extra_files() {
 	wp_enqueue_script('jquery-cdn', get_theme_file_uri() . '/assets/js/plugins/jquery-2.2.4.min.js', null, microtime(), true);
 	wp_enqueue_script('popper-cdn', get_theme_file_uri() . '/assets/js/plugins/popper.min.js', null, microtime(), true);
 	wp_enqueue_script('bootstrap-cdn-js', get_theme_file_uri() . '/assets/js/plugins/bootstrap.min.js', null, microtime(), true);
-	wp_enqueue_script('musicplayer-js', get_theme_file_uri() . '/assets/js/plugins/musicplayer-min.js', null, microtime(), true);
 	wp_enqueue_script('main-js', get_theme_file_uri() . '/assets/js/base.min.js', null, microtime(), true);
 	wp_localize_script('main-js', 'funarte', [
 		'ajaxurl' => admin_url('admin-ajax.php')
@@ -205,9 +204,8 @@ function extra_files() {
 
 	wp_enqueue_script( 'ptbr-jquery-ui-datepicker', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js', null, microtime(), true );
 
-	// // You need styling for the datepicker. For simplicity I've linked to Google's hosted jQuery UI CSS.
-	wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
-	wp_enqueue_style( 'jquery-ui' );  
+	wp_register_style( 'jquery-ui', 'https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
+	wp_enqueue_style( 'jquery-ui' );
 
 }
 add_action('wp_enqueue_scripts','extra_files');

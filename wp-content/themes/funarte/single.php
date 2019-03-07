@@ -1,4 +1,7 @@
 <?php
+global $wp;
+$pagina = home_url( $wp->request );
+
 get_header();
 if(have_posts()) : the_post();
 ?>
@@ -18,14 +21,18 @@ if(have_posts()) : the_post();
 					<span>Notícias</span>
 					<span class="tooltip-social-media">
 						<button type="button"><i class="mdi mdi-share-variant"></i></button>
-						<ul>
-							<li><a href="#" class="tooltip-social-media__facebook"><i class="mdi mdi-facebook"></i></a></li>
-							<li><a href="#" class="tooltip-social-media__twitter"><i class="mdi mdi-twitter"></i></a></li>
-							<li><a href="#" class="tooltip-social-media__linkedin"><i class="mdi mdi-linkedin"></i></a></li>
-							<li><a href="#" class="tooltip-social-media__pinterest"><i class="mdi mdi-pinterest"></i></a></li>
-							<li><a href="#" class="tooltip-social-media__whatsapp"><i class="mdi mdi-whatsapp"></i></a></li>
-							<li><a href="#" class="tooltip-social-media__email"><i>@</i></a></li>
-						</ul>
+						<span class="tooltip-social-media__box">
+							<ul>
+								<li><a href="http://www.facebook.com/sharer.php?u=<?php echo $pagina; ?>" class="tooltip-social-media__facebook" target="_blank"><i class="mdi mdi-facebook"></i></a></li>
+								<li><a href="http://twitter.com/share?url=<?php echo $pagina; ?>" class="tooltip-social-media__twitter" target="_blank"><i class="mdi mdi-twitter"></i></a></li>
+								<li class="whatsapp-item"><a href="whatsapp://send?text=<?php echo $pagina; ?>" data-action="share/whatsapp/share" class="tooltip-social-media__whatsapp" target="_blank"><i class="mdi mdi-whatsapp"></i></a></li>
+							</ul>
+							<!-- <ul>
+								<li><a href="#" class="tooltip-social-media__linkedin" target="_blank"><i class="mdi mdi-linkedin"></i></a></li>
+								<li><a href="#" class="tooltip-social-media__pinterest" target="_blank"><i class="mdi mdi-pinterest"></i></a></li>
+								<li><a href="#" class="tooltip-social-media__email" target="_blank"><i>@</i></a></li>
+							</ul> -->
+						</span>
 					</span>
 				</h2>
 			</div>

@@ -690,7 +690,7 @@ var base = {
 		},
 
 		atualizaCalendarioCompletoEventos: function() {
-			$('.loading').show();
+			$('.form-filtro-calendario').addClass('form-loading');
 			$datepicker = $('.carousel-calendar-box .form-filtro-calendario input.datepicker-field');
 			if ($datepicker.length > 0) {
 				var selectedDate = $datepicker.datepicker( "getDate" );
@@ -709,7 +709,7 @@ var base = {
 					for(var i = count - 1; i >=0 ; i--) {
 				 		slick.slickRemove(i);
 					}
-					$('.loading').hide();
+					$('.form-filtro-calendario').removeClass('form-loading');
 				});
 				
 			}

@@ -125,11 +125,13 @@
 						<legend>campo do filtro filtro para o calendário por data</legend>
 						<input type="text" class="datepicker datepicker-field">
 					</fieldset>
-					
-					<button type="submit">
-						<i class="mdi mdi-magnify active"></i>
-						<span class="sr-only">Pesquisar</span>
-					</button>
+
+					<fieldset class="col-md-2">
+						<button type="submit">
+							<i class="mdi mdi-magnify active"></i>
+							<span class="sr-only">Pesquisar</span>
+						</button>
+					</fieldset>
 					<img class="loading" style="display:none;" src="<?php echo get_template_directory_uri() . '/assets/img/ico/loading.gif'; ?>" />
 
 				</div>

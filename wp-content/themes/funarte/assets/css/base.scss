@@ -449,13 +449,11 @@ noscript {
 		}
 	}
 
-	ul {
-		width: 172px;
+	.tooltip-social-media__box {
+		width: auto;
+		max-width: 172px;
 		margin: 0;
 		padding: 10px;
-		display: flex;
-		flex-wrap: wrap;
-		list-style-type: none;
 		position: absolute;
 		top: 47px;
 		left: 50%;
@@ -479,11 +477,21 @@ noscript {
 			background-color: $branco;
 			transform: translate(-50%,0) rotate(45deg);
 		}
+	}
+
+	ul {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-flow: row nowrap;
+		list-style-type: none;
 
 		li {
 			width: 50px;
 			height: 50px;
 			padding: 10px;
+			flex: 0 0 50px;
 		}
 
 		a {
@@ -511,7 +519,7 @@ noscript {
 
 	&:focus,
 	&:hover {
-		ul {
+		.tooltip-social-media__box {
 			opacity: 1;
 			z-index: 2;
 			transform: translate(-50%,0);
@@ -522,9 +530,9 @@ noscript {
 .title-h1 .tooltip-social-media { padding: 0; }
 .tooltip-social-media__facebook { background-color: #395897; }
 .tooltip-social-media__twitter { background-color: #37A0F1; }
+.tooltip-social-media__whatsapp { background-color: #97C96C; }
 .tooltip-social-media__linkedin { background-color: #2577B5; }
 .tooltip-social-media__pinterest { background-color: #BC071B; }
-.tooltip-social-media__whatsapp { background-color: #97C96C; }
 .tooltip-social-media__email {
 	background-color: $cinza-4;
 
@@ -535,6 +543,11 @@ noscript {
 		font-size: 18px !important;
 		line-height: 18px;
 	}
+}
+.whatsapp-item { display: none; }
+
+@media screen and (max-width: 768px) {
+	.whatsapp-item { display: block; }
 }
 
 /* BOTÕES */
@@ -5511,8 +5524,9 @@ ul.social-media-list {
 
 /* CALENDÁRIO COMPACTO COM CARROSSEL */
 
+.box-calendario-sidebar .datepicker-compacto .ui-widget.ui-widget-content { width: auto !important; }
 .ui-widget.ui-widget-content {
-	width: auto !important;
+	width: 320px !important;
 	padding-left: 22px !important;
 	padding-right: 22px !important;
 	border-radius: 0 !important;
@@ -5541,7 +5555,7 @@ ul.social-media-list {
 
 	&:hover {
 		border: none !important;
-		background-color: $turquesa-1 !important;
+		background: $turquesa-1 !important;
 	}
 
 	span { display: none !important; }
@@ -5999,6 +6013,8 @@ ul.social-media-list {
 /* CALENDÁRIO COMPLETO */
 
 .form-filtro-calendario {
+	position: relative;
+
 	input[type=text],
 	select {
 		width: 100%;
@@ -6015,6 +6031,61 @@ ul.social-media-list {
 			padding-right: 30px;
 			background: url("../img/ico/ico-calendar.png") 95% 50% no-repeat;
 		}
+	}
+
+	input[type=submit],
+	button[type=submit] {
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		display: block;
+		position: relative;
+		overflow: hidden;
+		border: none;
+		background: $turquesa-1;
+
+		i {
+			font-size: 30px;
+			color: $branco;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+
+	&.form-loading {
+		&:after {
+			content: "";
+			width: 100%;
+			height: 100%;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: rgba(255,255,255,.7);
+			z-index: 2;
+		}
+
+		img.loading {
+			width: 32px;
+			height: 32px;
+			display: block !important;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			z-index: 4;
+		}
+	}
+
+}
+
+@media screen and (max-width: 768px) {
+	.form-filtro-calendario {
+
+		input[type=submit],
+		button[type=submit] { width: 100%; }
 	}
 }
 
