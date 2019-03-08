@@ -9,9 +9,7 @@
 			<a href="/evento">Agenda cultural</a>
 		</div>
 
-		<div class="box-title">
-			<h2 class="title-h1">Agenda cultural <span>Eventos do dia</span></h2>
-		</div>
+		<?php funarte_load_part('box-title', ['titles'=>['Agenda cultural', 'Eventos do dia']]); ?>
 
 		<div class="datepicker-box mb-100">
 			<div class="box-calendario-sidebar">
@@ -83,9 +81,7 @@
 			</div>
 		</div>
 
-		<div class="box-title">
-			<h2 class="title-h1">Agenda cultural <span>Calendário</span></h2>
-		</div>
+		<?php funarte_load_part('box-title', ['titles'=>['Agenda cultural', 'Calendário']]); ?>
 
 		<div class="carousel-calendar-box mb-100">
 			<form class="form-filtro-calendario" action="#" method="post">

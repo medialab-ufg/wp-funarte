@@ -19,15 +19,9 @@ if(have_posts()) : the_post();
 				['link_name'=>'Representações Regionais','link_url'=>'/regional'],
 				['link_name'=>get_the_title()]];
 			funarte_load_part('breadcrumb', ['links'=>$links]); 
-		?>
-
-		<div class="box-title">
-			<h2 class="title-h1">Funarte <span>Representações Regionais</span></h2>
-		</div>
-
-		<?php $imagem = get_the_post_thumbnail( get_the_ID(),'large'); ?>
-
-		<?php funarte_load_part('title-page', ['title'=> get_the_title(), 
+			funarte_load_part('box-title', ['titles'=>['Funarte', 'Representações Regionais']]);
+			$imagem = get_the_post_thumbnail( get_the_ID(),'large'); 
+			funarte_load_part('title-page', ['title'=> get_the_title(), 
 																						'img'  => get_the_post_thumbnail_url(get_the_ID() ),
 																						'tags'=> [['slug' => 'funarte', 'name' => get_post_meta($post->ID, "regional-cidade", true)]]]); ?>
 

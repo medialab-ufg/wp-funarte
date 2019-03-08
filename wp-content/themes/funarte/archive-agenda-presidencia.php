@@ -10,11 +10,8 @@
 					['link_name'=>'Funarte', 'link_url'=>'/'],
 					['link_name'=>'Agenda institucional do presidente']];
 					funarte_load_part('breadcrumb', ['links'=>$links]); 
+					funarte_load_part('box-title', ['titles'=>['Funarte', 'Agenda institucional do presidente']]);
 			?>
-
-			<div class="box-title">
-				<h2 class="title-h1">Funarte <span>Agenda institucional do presidente</span></h2>
-			</div>
 
 			<div class="row justify-content-between">
 				<div class="col-md-4">

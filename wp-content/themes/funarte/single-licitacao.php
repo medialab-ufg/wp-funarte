@@ -12,17 +12,6 @@
 			<div class="container">
 
 				<?php
-					$links = [
-						['link_name'=>'Licitação','link_url'=>'/licitacao'],
-						['link_name'=>get_the_title()]];
-					funarte_load_part('breadcrumb', ['links'=>$links]); 
-				?>
-
-				<div class="box-title">
-					<h2 class="title-h1">Funarte <span>Licitações</span></h2>
-				</div>
-
-				<?php
 					$tags = [];
 					$categoria_modalidade = wp_get_object_terms($post->ID, \funarte\taxModalidade::get_instance()->get_name());
 					if ($categoria_modalidade[0]->slug != "inexigibilidade" and $categoria_modalidade[0]->slug != "dispensa") {
@@ -32,8 +21,12 @@
 												];
 						}
 					}
-				?>
-				<?php funarte_load_part('title-page', [	'title'=> get_the_title(),
+					$links = [
+						['link_name'=>'Licitação','link_url'=>'/licitacao'],
+						['link_name'=>get_the_title()]];
+					funarte_load_part('breadcrumb', ['links'=>$links]); 
+					funarte_load_part('box-title', ['titles'=>['Funarte', 'Licitações']]);
+					funarte_load_part('title-page', [	'title'=> get_the_title(),
 																								'img'  => false,
 																								'tags'=> $tags]); ?>
 

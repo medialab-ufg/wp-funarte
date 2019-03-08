@@ -8,11 +8,6 @@
 		<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 		<div class="container">
 			<?php 
-				$links = [
-					['link_name'=>'Agenda','link_url'=>'/evento'],
-					['link_name'=>get_the_title()]];
-				funarte_load_part('breadcrumb', ['links'=>$links]);
-
 				$areas = get_the_category();
 				$tags = [];
 				foreach ($areas as $area):
@@ -20,13 +15,13 @@
 										'name'=> $area->name,
 										'url_area'=> home_url() . '/category/' . $area->slug];
 				endforeach;
-			?>
 
-			<div class="box-title">
-				<h2 class="title-h1">Agenda cultural</h2>
-			</div>
-
-			<?php funarte_load_part('title-page', [	'title'=> get_the_title(),
+				$links = [
+					['link_name'=>'Agenda','link_url'=>'/evento'],
+					['link_name'=>get_the_title()]];
+				funarte_load_part('breadcrumb', ['links'=>$links]);
+				funarte_load_part('box-title', ['titles'=>['Agenda cultural']]);
+				funarte_load_part('title-page', [	'title'=> get_the_title(),
 																					'date_pub' => get_the_time(get_option('date_format')),
 																					'img'  => get_the_post_thumbnail_url(),
 																					'tags'=> $tags]); ?>
