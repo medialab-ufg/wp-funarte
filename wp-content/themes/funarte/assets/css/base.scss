@@ -1547,6 +1547,7 @@ body.js .collapse__text { display: none; }
 }
 
 .carousel-zoom__wrapper {
+	height: 414px;
 	margin-top: 60px;
 	position: relative;
 
@@ -1625,6 +1626,7 @@ body.js .collapse__text { display: none; }
 			background-repeat: no-repeat;
 			background-size: cover;
 			transition: width 500ms ease-in-out, height 500ms ease-in-out;
+			z-index: 2;
 		}
 	}
 
@@ -1668,7 +1670,7 @@ body.js .collapse__text { display: none; }
 	position: relative;
 	overflow: hidden;
 	background-color: $turquesa-1;
-	z-index: -1;
+	z-index: 0;
 	transition: width 500ms ease-in-out, height 500ms ease-in-out, padding 500ms ease-in-out, margin 250ms ease-in-out;
 
 	strong {
@@ -1888,7 +1890,11 @@ body.js .collapse__text { display: none; }
 		}
 	}
 
-	.carousel-zoom__wrapper:after { display: none; }
+	.carousel-zoom__wrapper {
+		height: auto;
+
+		&:after { display: none; }
+	}
 	.carousel-zoom__control { right: 13%; }
 	.carousel-zoom .slick-dots {
 		width: 326px;

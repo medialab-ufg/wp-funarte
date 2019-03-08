@@ -1166,6 +1166,7 @@ var base = {
 				nextArrow: $carousel.find('.control__next'),
 				variableWidth: true,
 				dots: true,
+				initialSlide: 1,
 				responsive: [
 					{
 						breakpoint: 1200,
