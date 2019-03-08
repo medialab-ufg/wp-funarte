@@ -62,6 +62,23 @@ query_posts($params);
 					</fieldset>
 				</form>
 
+				<form class="form-area form-filtro form-filtro--espaco-cultural" action="#" method="post">
+					<fieldset>
+						<legend>Ffltrar por área</legend>
+						<?php
+						wp_dropdown_categories(array(
+							'show_option_none' => 'Filtrar por área',
+							'option_none_value' => '',
+							'hide_empty' => true,
+							'id' => 'select-categoria',
+							'class' => 'select_area',
+							'name' => 'area',
+							'value_field' => 'slug',
+							'selected' => (isset($area->slug)) ? $area->slug : null));
+						?>
+					</fieldset>
+				</form>
+
 				<form class="form-filtro form-filtro--espaco-cultural">
 					<fieldset>
 						<legend>Formulário de filtro de espaço</legend>
