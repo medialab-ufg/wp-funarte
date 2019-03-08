@@ -155,18 +155,14 @@
 	<!-- FIM ESPAÇO CULTURAL -->
 
 	<div class="container">
-		<section class="box-carousel-collection mb-100">
-			<?php $url_title = get_post_type_archive_link('tainacan-collection');
-						$url_title .= '?area=' . $area->slug ;?>
-			<?php if ($url_title) : ?>
-				<h2 class="title-1  mb-65"><a href="<?php echo $url_title; ?>">Acervo</a></h2>
-			<?php else : ?>
-				<h2 class="title-1 mb-65">Acervo</h2>
-			<?php endif; ?>
 
-			<?php funarte_load_part('collections-carousel', ['collections' => $collections, 'area' => ['slug'=>$area->slug, 'name'=>$area->name]]); ?>
-			
-		</section>
+		<!-- ACERVO -->
+		<?php 
+			$url_title = get_post_type_archive_link('tainacan-collection');
+			$url_title .= '?area=' . $area->slug;
+			funarte_load_part('collections-carousel', ['title'=>'Acervo', 'url_title'=>$url_title, 'collections' => $collections, 'area' => ['slug'=>$area->slug, 'name'=>$area->name]]); 
+		?>
+		<!-- FIM ACERVO -->
 
 		<div class="row justify-content-between">
 			<!--//MAIS INFORMAÇÕES -->
