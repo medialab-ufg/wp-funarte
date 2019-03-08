@@ -3,9 +3,7 @@
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 	<div class="container mb-100">
-		<div class="box-title">
-			<h2 class="title-h1">Acervo <span><?php echo tainacan_get_the_collection_name(); ?></span></h2>
-		</div>
+		<?php funarte_load_part('box-title', ['titles'=>['Acervo', tainacan_get_the_collection_name()]]); ?>
 
 		<?php if ( have_posts() ) : ?>
 			<?php do_action( 'tainacan-interface-single-item-top' ); ?>

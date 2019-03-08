@@ -22,11 +22,8 @@ endif;
 		<?php
 			$links = [['link_name'=>get_the_title()]];
 			funarte_load_part('breadcrumb', ['links'=>$links]); 
+			funarte_load_part('box-title', ['titles'=>['Funarte', get_the_title()]]); 
 		?>
-
-		<div class="box-title">
-			<h2 class="title-h1">Funarte<span><?php the_title(); ?></span></h2>
-		</div>
 
 		<div class="row justify-content-between mb-100">
 			<div class="col-md-7">

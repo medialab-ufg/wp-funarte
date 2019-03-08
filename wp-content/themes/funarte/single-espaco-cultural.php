@@ -29,13 +29,10 @@ if (have_posts()): the_post();
 				$links = [
 					['link_name'=>'Espaços Culturais','link_url'=>'/espaco-cultural'],
 					['link_name'=>get_the_title()]];
-				funarte_load_part('breadcrumb', ['links'=>$links]); 
+				funarte_load_part('breadcrumb', ['links'=>$links]);
+				funarte_load_part('box-title', ['titles'=>['Funarte', 'Espaços Culturais']]);
 			?>
 
-			<div class="box-title">
-				<h2 class="title-h1">Funarte<span>Espaços Culturais</span></h2>
-			</div>
-			
 			<?php
 				$areas = get_the_category();
 				$tags = [];

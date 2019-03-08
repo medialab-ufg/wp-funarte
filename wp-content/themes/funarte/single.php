@@ -12,30 +12,14 @@ if(have_posts()) : the_post();
 				$links = [
 					['link_name'=>'Notícias','link_url'=>'/noticias'],
 					['link_name'=>get_the_title()]];
-				funarte_load_part('breadcrumb', ['links'=>$links]); 
+				funarte_load_part('breadcrumb', ['links'=>$links]);
+				$social_list = "<ul>
+													<li><a href='http://www.facebook.com/sharer.php?u=$pagina' class='tooltip-social-media__facebook' target='_blank'><i class='mdi mdi-facebook'></i></a></li>
+													<li><a href='http://twitter.com/share?url=$pagina' class='tooltip-social-media__twitter' target='_blank'><i class='mdi mdi-twitter'></i></a></li>
+													<li class='whatsapp-item'><a href='whatsapp://send?text=$pagina' data-action='share/whatsapp/share' class='tooltip-social-media__whatsapp' target='_blank'><i class='mdi mdi-whatsapp'></i></a></li>
+												</ul>";
+				funarte_load_part('box-title', ['titles'=>['Funarte', 'Notícias'], 'social_list' => $social_list ]); 
 			?>
-
-			<div class="box-title">
-				<h2 class="title-h1">
-					Funarte
-					<span>Notícias</span>
-					<span class="tooltip-social-media">
-						<button type="button"><i class="mdi mdi-share-variant"></i></button>
-						<span class="tooltip-social-media__box">
-							<ul>
-								<li><a href="http://www.facebook.com/sharer.php?u=<?php echo $pagina; ?>" class="tooltip-social-media__facebook" target="_blank"><i class="mdi mdi-facebook"></i></a></li>
-								<li><a href="http://twitter.com/share?url=<?php echo $pagina; ?>" class="tooltip-social-media__twitter" target="_blank"><i class="mdi mdi-twitter"></i></a></li>
-								<li class="whatsapp-item"><a href="whatsapp://send?text=<?php echo $pagina; ?>" data-action="share/whatsapp/share" class="tooltip-social-media__whatsapp" target="_blank"><i class="mdi mdi-whatsapp"></i></a></li>
-							</ul>
-							<!-- <ul>
-								<li><a href="#" class="tooltip-social-media__linkedin" target="_blank"><i class="mdi mdi-linkedin"></i></a></li>
-								<li><a href="#" class="tooltip-social-media__pinterest" target="_blank"><i class="mdi mdi-pinterest"></i></a></li>
-								<li><a href="#" class="tooltip-social-media__email" target="_blank"><i>@</i></a></li>
-							</ul> -->
-						</span>
-					</span>
-				</h2>
-			</div>
 
 			<?php
 				$imagem = get_the_post_thumbnail( );

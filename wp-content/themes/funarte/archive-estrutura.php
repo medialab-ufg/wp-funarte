@@ -16,12 +16,9 @@
 		<?php
 			$links = [
 				['link_name'=>'Contatos']];
-			funarte_load_part('breadcrumb', ['links'=>$links]); 
+			funarte_load_part('breadcrumb', ['links'=>$links]);
+			funarte_load_part('box-title', ['titles'=>['Contatos', 'Informações']]);
 		?>
-
-		<div class="box-title">
-			<h2 class="title-h1">Contatos <span>Informações</span></h2>
-		</div>
 
 		<div class="list-boxes-info">
 			<?php if(have_posts()): while(have_posts()): the_post(); ?>
