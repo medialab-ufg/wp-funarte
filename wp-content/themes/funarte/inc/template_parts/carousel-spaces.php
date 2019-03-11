@@ -25,6 +25,9 @@ else:
 				</div>
 
 				<ul class="carousel-zoom">
+					<li class="carousel-zoom__item">
+						<div class="carousel-zoom__image"></div>
+					</li>
 				<?php
 					$contador = 0;
 					foreach ($espacos as $espaco) :
@@ -44,6 +47,9 @@ else:
 							</div>
 						</li>
 					<?php endforeach; ?>
+					<li class="carousel-zoom__item">
+						<div class="carousel-zoom__image"></div>
+					</li>
 				</ul>
 			</div>
 		</div>

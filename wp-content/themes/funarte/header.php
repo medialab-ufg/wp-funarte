@@ -70,6 +70,24 @@
 
 						<div class="menu-wrapper">
 							<div class="menu-wrapper__scroll">
+								<div class="box-searchform">
+									<form role="search" method="get" class="searchform" action="<?php echo home_url( '/' ); ?>">
+										<fieldset>
+											<legend>Formulário de busca</legend>
+											<strong>Busca</strong>
+											<label class="sr-only" for="s">Digite o que procura</label>
+											<input type="text" value="" name="s" id="s1">
+
+											<div class="box-buttons">
+												<button class="searchcancel" type="button">Cancelar</button>
+												<input type="submit" id="searchsubmit1" value="Pesquisar">
+											</div>
+										</fieldset>
+									</form>
+
+									<button type="button" class="searchform-button"><i class="mdi mdi-magnify"></i><i class="mdi mdi-close"></i></button>
+								</div>
+
 								<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
 									<span class="navbar-toggler-icon"><i class="mdi mdi-menu"></i></span>
 									<i class="mdi mdi-close"></i>
@@ -99,6 +117,7 @@
 							</div>
 						</div>
 					</nav>
+					<div class="background-menu"></div>
 
 					<?php get_search_form(); ?>
 				</div>

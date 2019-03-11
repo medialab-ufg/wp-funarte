@@ -612,6 +612,8 @@ var base = {
 				.parents('.navigation-menu')
 				.find('.menu-wrapper')
 				.toggleClass('active');
+
+				$('body').toggleClass('menu-mobile-active');
 			});
 		}
 	},
@@ -1230,26 +1232,24 @@ var base = {
 
 	busca: {
 		manipular: function() {
-			var $box = $('.box-searchform');
-
 			$('#s').on('focus',function() {
-				$box.addClass('active');
+				$(this).parents('.box-searchform').addClass('active');
 			});
 
 			$('#searchsubmit').on('blur',function() {
-				$box.removeClass('active');
+				$(this).parents('.box-searchform').removeClass('active');
 			});
 
 			$('.searchform-button').on('click',function() {
-				$box.toggleClass('active');
+				$(this).parents('.box-searchform').toggleClass('active');
 			});
 
-			$box.on('click',function(e) {
+			$('.box-searchform').on('click',function(e) {
 				e.stopPropagation();
 			});
 
 			$('body,.searchcancel').on('click',function() {
-				$box.removeClass('active');
+				$('.box-searchform').removeClass('active');
 			});
 		}
 	},
