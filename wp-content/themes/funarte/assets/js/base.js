@@ -956,12 +956,20 @@ var base = {
 		iniciarDestaques: function() {
 			var $carousel = $('.box-carousel-highlights');
 
+			$('.carousel-highlights').on('init', function(event, slick) {
+				var $caption = $('.carousel-highlights__captions'),
+					largura = ($('.hidden__caption-0').outerWidth() + 50),
+					padding = 20;
+
+				$caption.css('width',largura + (padding * 2));
+			});
+
 			$('.carousel-highlights').slick({
 				speed: 1000,
 				fade: true,
 				infinite: true,
-				autoplay: false,
-				autoplaySpeed: 2000,
+				autoplay: true,
+				autoplaySpeed: 4000,
 				slidesToShow: 1,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
@@ -970,7 +978,7 @@ var base = {
 			})
 			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 				var $caption = $('.carousel-highlights__captions'),
-					largura = $('.hidden__caption-' + nextSlide).outerWidth(),
+					largura = ($('.hidden__caption-' + nextSlide).outerWidth() + 50),
 					padding = 20;
 
 				$caption.css('width',largura + (padding * 2));

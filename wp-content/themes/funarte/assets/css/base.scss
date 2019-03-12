@@ -2943,7 +2943,7 @@ main { width: 100%; }
 }
 .carousel-highlights__captions {
 	width: 90%;
-	max-width: 80%;
+	max-width: 90%;
 	margin-left: 35px;
 	padding: 6px 20px 14px;
 	position: absolute;
@@ -3039,57 +3039,61 @@ ul.slick-dots {
 		&.slick-active button { background-color: $turquesa-1; }
 	}
 }
-@media screen and (max-width:767px) {
-	.slick-dotted.slick-slider { margin-bottom: 0; }
-	.box-carousel-highlights:after { display: none; }
+@media screen and (max-width:1200px) {
 	.carousel-highlights {
 		& > li,
-		.slick-slide { padding: 0; }
+		.slick-slide { padding: 0 40px 65px 0; }
+	}
+	.carousel-highlights__control { width: 40px; }
+	ul.slick-dots { width: 40px; }
+}
+@media screen and (max-width:992px) {
+	.carousel-highlights__captions { max-width: 86%; }
+}
+@media screen and (max-width:768px) {
+	.carousel-highlights__captions { max-width: 82%; }
+}
+@media screen and (max-width:600px) {
+	.box-carousel-highlights { overflow: hidden; }
+	.carousel-highlights {
+		.slick-slide,
+		& > li { padding: 0 40px 0 0; }
 	}
 	.carousel-highlights__captions {
-		width: 100%;
-		max-width: 100%;
-		margin: 0;
-		position: static;
+		max-width: 70%;
+		margin: -10% 0 7% 7%;
+		position: relative;
 		right: auto;
 		bottom: auto;
 	}
-	ul.slick-dots {
-		width: auto;
-		padding: 0;
-		max-height: none;
-		display: flex !important;
-		right: 50%;
-		bottom: 10px;
-		transform: translate(50%,0);
-
-		li {
-			margin: 0;
-			padding: 0;
-
-			& + li { margin: 0 0 0 10px; }
-		}
+	.slick-dotted.slick-slider { margin-bottom: 0; }
+	.box-carousel-highlights:after {
+		width: 70%;
+		height: 1000px;
+		top: 25%;
+		right: -20px;
+		bottom: auto;
 	}
 	.carousel-highlights__control {
-		width: 0;
-		height: 0;
-		position: static;
-		right: auto;
 		bottom: auto;
+		top: 26%;
+	}
+	ul.slick-dots {
+		max-height: 110px;
+		padding: 0;
+		display: flex !important;
+		flex-flow: column wrap;
+		bottom: auto;
+		top: 0;
 
-		button {
-			left: auto;
-			z-index: 2;
-			transform: translate(0,-50%);
-			background-color: $turquesa-1;
-		}
-		.control__prev {
-			top: 50%;
-			left: 10px;
-		}
-		.control__next {
-			top: 50%;
-			right: 10px;
+		li {
+			width: auto;
+			height: auto;
+			margin: 0 0 5px;
+			padding: 0 0 0 5px;
+			display: block;
+
+			& + li { margin-top: 0; }
 		}
 	}
 }
