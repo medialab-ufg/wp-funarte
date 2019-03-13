@@ -621,6 +621,18 @@ noscript {
 		li + li { margin-left: 25px; }
 	}
 }
+
+.link-area__type {
+	margin-left: 10px;
+	font-style: normal;
+	font-weight: 700;
+	font-family: 'Roboto', sans-serif;
+	font-size: .9rem;
+	color: $turquesa-1;
+	text-transform: uppercase;
+	display: inline-block;
+}
+
 .link-more {
 	margin-top: 42px;
 	padding: 0 13px 0 0;
@@ -652,6 +664,7 @@ noscript {
 			&:after { background-color: $turquesa-1; }
 		}
 		span { background-color: $turquesa-1; }
+		.link-area__type { color: $turquesa-1; }
 	}
 	.link-more { color: $turquesa-1; }
 }
@@ -664,6 +677,7 @@ noscript {
 			&:after { background-color: $vermelho-1; }
 		}
 		span { background-color: $vermelho-1; }
+		.link-area__type { color: $vermelho-1; }
 	}
 	.link-more { color: $vermelho-1; }
 }
@@ -676,6 +690,7 @@ noscript {
 			&:after { background-color: $verde-1; }
 		}
 		span { background-color: $verde-1; }
+		.link-area__type { color: $verde-1; }
 	}
 	.link-more { color: $verde-1; }
 }
@@ -688,6 +703,7 @@ noscript {
 			&:after { background-color: $amarelo-1; }
 		}
 		span { background-color: $amarelo-1; }
+		.link-area__type { color: $amarelo-1; }
 	}
 	.link-more { color: $amarelo-1; }
 }
@@ -700,6 +716,7 @@ noscript {
 			&:after { background-color: $verde-1; }
 		}
 		span { background-color: $verde-1; }
+		.link-area__type { color: $verde-1; }
 	}
 	.link-more { color: $verde-1; }
 }
@@ -712,6 +729,7 @@ noscript {
 			&:after { background-color: $roxo-1; }
 		}
 		span { background-color: $roxo-1; }
+		.link-area__type { color: $roxo-1; }
 	}
 	.link-more { color: $roxo-1; }
 }
@@ -724,6 +742,7 @@ noscript {
 			&:after { background-color: $azul-1; }
 		}
 		span { background-color: $azul-1; }
+		.link-area__type { color: $azul-1; }
 	}
 	.link-more { color: $azul-1; }
 }
@@ -736,6 +755,7 @@ noscript {
 			&:after { background-color: $laranja-1; }
 		}
 		span { background-color: $laranja-1; }
+		.link-area__type { color: $laranja-1; }
 	}
 	.link-more { color: $laranja-1; }
 }
@@ -748,6 +768,7 @@ noscript {
 			&:after { background-color: $turquesa-3; }
 		}
 		span { background-color: $turquesa-3; }
+		.link-area__type { color: $turquesa-3; }
 	}
 	.link-more { color: $turquesa-3; }
 }

@@ -75,8 +75,8 @@ get_header();
 			</div>
 			<div class="container">
 				<ul class="list-tabs__main">
-					<li class="<?php if($status=='todos') echo 'active'; ?>">		 <a data-status="todos" class="link-tabs" href="#">Todos</a></li>
-					<li class="<?php if($status=='aberto') echo 'active'; ?>">	 <a data-status="aberto" class="link-tabs" href="#">Inscrições abertas</a></li>
+					<li class="<?php if($status=='todos') echo 'active'; ?>"><a data-status="todos" class="link-tabs" href="#">Todos</a></li>
+					<li class="<?php if($status=='aberto') echo 'active'; ?>"><a data-status="aberto" class="link-tabs" href="#">Inscrições abertas</a></li>
 					<li class="<?php if($status=='avaliacao') echo 'active'; ?>"><a data-status="avaliacao" class="link-tabs" href="#">Em avaliação</a></li>
 					<li class="<?php if($status=='resultado') echo 'active'; ?>"><a data-status="resultado" class="link-tabs" href="#">Resultados</a></li>
 				</ul>
