@@ -136,7 +136,8 @@ class Edital {
 		$hoje = date('Y-m-d');
 		$query = array(
 			'post_type' => $this->POST_TYPE,
-			'posts_per_page' => -1
+			'posts_per_page' => -1,
+			'post_parent' => 0
 		);
 		
 		switch ($status) {

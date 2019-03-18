@@ -32,10 +32,12 @@ if(have_posts()) : the_post();
 				endforeach;
 			?>
 
-			<?php funarte_load_part('title-page', ['title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ),
-																						'tags'=> $tags]); ?>
-
-			<div class="box-text box-text--2-columns mb-100">
+			<?php 
+				funarte_load_part('title-page', ['title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ), 'tags'=> $tags]);
+				$qtd_columns = get_post_meta( get_the_ID(), "post-quantity-columns")[0];
+				$show_two_columns_class = (isset($qtd_columns) && $qtd_columns == "2") ? 'box-text--2-columns' : '' ;
+			?>
+			<div class="box-text <?php echo $show_two_columns_class; ?> mb-100">
 				<div class="box-text__text">
 					<?php the_content(); ?>
 				</div>
