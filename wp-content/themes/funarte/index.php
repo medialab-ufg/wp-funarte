@@ -1,6 +1,22 @@
 <?php
-	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : 'todos';
 	get_header();
+	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : 'todos';
+	if($type == 'noticias') {
+		$params = array(
+			'post_type' => 'post',
+			'orderby' => 'title',
+			'order' => 'ASC'
+		);
+		query_posts($params);
+	} else if ($type == 'itens') {
+		$post_type_collections = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+		$params = array(
+			'post_type' => $post_type_collections,
+			'orderby' => 'title',
+			'order' => 'ASC'
+		);
+		query_posts($params);
+	}
 ?>
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
@@ -8,12 +24,12 @@
 
 		<?php
 			$links = [
-				['link_name'=>'Nome da página lorem ipsum']];
+				['link_name'=>'Itens Relacionados']];
 			funarte_load_part('breadcrumb', ['links'=>$links]); 
 		?>
 
 		<div class="box-title">
-			<h2 class="title-h1">Nome da página lorem ipsum</h2>
+			<h2 class="title-h1">Itens Relacionados</h2>
 		</div>
 
 		<section class="box-tabs">
@@ -26,7 +42,7 @@
 				<div class="container">
 					<ul class="list-tabs__main">
 						<li class="<?php if($type=='todos') echo 'active'; ?>"><a data-type="todos" class="link-tabs" href="#">Todos</a></li>
-						<li class="<?php if($type=='itens') echo 'active'; ?>"><a data-type="itens" class="link-tabs" href="&tipo=itens">Itens</a></li>
+						<li class="<?php if($type=='itens') echo 'active'; ?>"><a data-type="itens" class="link-tabs" href="./&tipo=itens">Itens</a></li>
 						<li class="<?php if($type=='noticias') echo 'active'; ?>"><a data-type="noticias" class="link-tabs" href="&tipo=noticias">Notícias</a></li>
 					</ul>
 				</div>
@@ -73,5 +89,20 @@
 		</section>
 	</div>
 </main>
+
+<script>
+	window.onload = function() {
+		$(".link-tabs").on("click", function(e) {
+			var searchParams = new URLSearchParams(window.location.search);
+			var args = {};
+			for(var key of searchParams.keys()) {
+				args[key] = searchParams.get(key);
+			}
+			args['type'] = this.dataset.type;
+			applyFilters(args);
+			e.preventDefault();
+		});
+	}
+</script>
 
 <?php get_footer();
