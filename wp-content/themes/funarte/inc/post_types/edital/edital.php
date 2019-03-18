@@ -39,11 +39,14 @@ class Edital {
 			'query_var' => true,
 			'can_export' => true,
 			'has_archive' => true,
+			'hierarchical' => true,
 			'show_in_menu' => true,
 			'capability_type' => 'post',
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
+			'supports' => array(
+				'title', 'editor', 'page-attributes', ),
 			'taxonomies' => [
 				taxCategoria::get_instance()->get_name(),
 				taxEditais::get_instance()->get_name(),

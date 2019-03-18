@@ -47,6 +47,26 @@
 						<div class="box-text">
 							<div class="box-text__text">
 								<?php the_content(); ?>
+
+								<?php
+									$arg = array(
+										'post_parent' => get_the_ID(),
+										'post_type'   => \funarte\Edital::get_instance()->get_post_type(),
+										'numberposts' => -1);
+									$filhos = get_children($arg);
+									if(!empty($filhos)): ?>
+										<?php foreach($filhos as $filho): ?>
+										<div>
+											<strong><?php echo $filho->post_title; ?></strong>
+											<?php 
+												$content = $filho->post_content; 
+												$content = apply_filters('the_content', $content);
+												echo $content;
+											?>
+										</div>
+										<?php endforeach; ?>
+									<?php endif ?>
+
 							</div>
 
 							<!-- VERIFICAR O USO DESTE BLOCO -->
