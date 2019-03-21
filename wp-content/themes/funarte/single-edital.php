@@ -56,12 +56,12 @@
 									$filhos = get_children($arg);
 									if(!empty($filhos)): ?>
 										<?php foreach($filhos as $filho): ?>
-										<div>
-											<strong><?php echo $filho->post_title; ?></strong>
+										<div class="box-edital-filho">
+											<h4 class="box-edital-filho__title"><?php echo $filho->post_title; ?> <span><?php echo '(' . get_the_date('d/m/Y', strtotime($recent['post_date'])) . ')'; ?></span></h4>
 											<?php 
 												$content = $filho->post_content; 
 												$content = apply_filters('the_content', $content);
-												echo $content;
+												echo '<div class="box-edital-filho__content">' . $content . '</div>';
 											?>
 										</div>
 										<?php endforeach; ?>
