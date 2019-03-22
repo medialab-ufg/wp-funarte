@@ -1,6 +1,6 @@
 <?php
 	use \funarte\taxModalidade;
-	
+	$pagina = home_url( $wp->request );
 	$modalidade = wp_get_post_terms( $post->ID, taxModalidade::get_instance()->get_name());
 	$modalidade = $modalidade[0];
 	$ano = get_post_meta($post->ID, 'licitacao-ano', true);
@@ -21,11 +21,16 @@
 												];
 						}
 					}
+					$social_list = "<ul>
+													<li><a href='http://www.facebook.com/sharer.php?u=$pagina' class='tooltip-social-media__facebook' target='_blank'><i class='mdi mdi-facebook'></i></a></li>
+													<li><a href='http://twitter.com/share?url=$pagina' class='tooltip-social-media__twitter' target='_blank'><i class='mdi mdi-twitter'></i></a></li>
+													<li class='whatsapp-item'><a href='whatsapp://send?text=$pagina' data-action='share/whatsapp/share' class='tooltip-social-media__whatsapp' target='_blank'><i class='mdi mdi-whatsapp'></i></a></li>
+												</ul>";
 					$links = [
 						['link_name'=>'Licitação','link_url'=>'/licitacao'],
 						['link_name'=>get_the_title()]];
-					funarte_load_part('breadcrumb', ['links'=>$links]); 
-					funarte_load_part('box-title', ['titles'=>['Funarte', 'Licitações']]);
+					funarte_load_part('breadcrumb', ['links'=>$links]);
+					funarte_load_part('box-title', ['titles'=>['Funarte', 'Licitações'],'social_list' => $social_list]);
 					funarte_load_part('title-page', [	'title'=> get_the_title(),
 																								'img'  => false,
 																								'tags'=> $tags]); ?>

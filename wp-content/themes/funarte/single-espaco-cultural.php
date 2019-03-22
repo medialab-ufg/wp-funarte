@@ -1,6 +1,8 @@
 <?php
 
 get_header();
+$pagina = home_url( $wp->request );
+
 if (have_posts()): the_post();
 	$estado = get_post_meta($post->ID, 'espaco-estado', true);
 	$prefix = 'espaco';
@@ -30,7 +32,12 @@ if (have_posts()): the_post();
 					['link_name'=>'Espaços Culturais','link_url'=>'/espaco-cultural'],
 					['link_name'=>get_the_title()]];
 				funarte_load_part('breadcrumb', ['links'=>$links]);
-				funarte_load_part('box-title', ['titles'=>['Funarte', 'Espaços Culturais']]);
+				$social_list = "<ul>
+													<li><a href='http://www.facebook.com/sharer.php?u=$pagina' class='tooltip-social-media__facebook' target='_blank'><i class='mdi mdi-facebook'></i></a></li>
+													<li><a href='http://twitter.com/share?url=$pagina' class='tooltip-social-media__twitter' target='_blank'><i class='mdi mdi-twitter'></i></a></li>
+													<li class='whatsapp-item'><a href='whatsapp://send?text=$pagina' data-action='share/whatsapp/share' class='tooltip-social-media__whatsapp' target='_blank'><i class='mdi mdi-whatsapp'></i></a></li>
+												</ul>";
+				funarte_load_part('box-title', ['titles'=>['Funarte', 'Espaços Culturais'], 'social_list' => $social_list]);
 			?>
 
 			<?php
