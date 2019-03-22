@@ -60,67 +60,71 @@ if (have_posts()): the_post();
 							<?php the_content(); ?>
 						</div>
 
-						<div class="box-carousel-events">
-							<h4 class="title-5">Próximos eventos no local</h4>
-							<div class="carousel-events__wrapper">
-								<div class="carousel-events__control">
-									<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
-									<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
-								</div>
-								<ul class="carousel-events">
-									<?php
-									$evento_post_type = \funarte\Evento::get_instance();
-									//$espaco_tax = get_term_by('slug', $post->post_name , \funarte\taxEspacosCulturais::get_instance()->get_name());
-									$espaco_tax = wp_get_post_terms( get_the_ID(), \funarte\taxEspacosCulturais::get_instance()->get_name());
-									if(!empty($espaco)):
-										$params = array(
-											'mes' => date('m'),
-											'ano' => date('Y'),
-											'colunas' => 5
-										);
+						<?php
+							$evento_post_type = \funarte\Evento::get_instance();
+							$espaco_tax = wp_get_post_terms( get_the_ID(), \funarte\taxEspacosCulturais::get_instance()->get_name());
+							if(!empty($espaco)):
+								$params = array(
+									'mes' => date('m'),
+									'ano' => date('Y'),
+									'colunas' => 5
+								);
 
-										$query = array(
-											'paged' => false,
-											'post_type' => 'evento',
-											'orderby' => 'meta_value',
-											'order' => 'ASC',
-											//$espaco->taxonomy => $espaco->slug,
-											$espaco_tax[0]->taxonomy => $espaco_tax[0]->slug
-										);
+								if(isset($espaco_tax) && !empty($espaco_tax)) {
+									$query = array(
+										'paged' => false,
+										'post_type' => 'evento',
+										'orderby' => 'meta_value',
+										'order' => 'ASC',
+										'tax_query' => [
+											[ 'taxonomy'=> \funarte\taxEspacosCulturais::get_instance()->get_name(), 
+												'field' => 'slug',
+												'terms'   => $espaco_tax[0]->slug]
+										]
+									);
+								}
 
-										$eventos = $evento_post_type->get_eventos_from_month($params['mes'], $params['ano'], $query);
-										if (empty($eventos)) {
-											$eventos = $evento_post_type->get_last_eventos($query);
-										}
-										if (have_posts()):
-											while (have_posts()):
-												the_post();
-												$area = get_the_category($post->ID);
-												$evento = new stdClass();
-												$evento->inicio = strtotime('00:00:00', strtotime(get_post_meta(get_the_ID(), 'evento-inicio', true)));
-												$evento->fim = strtotime('23:59:59', strtotime(get_post_meta(get_the_ID(), 'evento-fim', true)));
-												$evento->local = get_post_meta(get_the_ID(), 'evento-local', true);
-												$evento->hora_inicio = strtotime(get_post_meta(get_the_ID(), 'evento-inicio', true));
-												if (($evento->fim >= time())): ?>
-													<li>
-														<div class="link-area">
-															<a class="color-<?php echo $area[0]->slug; ?>" href="#"><?php echo $area[0]->name; ?></a>
-														</div>
-														<?php if (has_post_thumbnail()): ?>
-															<img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-														<?php endif; ?>
-														<strong><?php the_title(); ?></strong>
-													</li>
+								$eventos = $evento_post_type->get_eventos_from_month($params['mes'], $params['ano'], $query);
+								if (empty($eventos)) {
+									$eventos = $evento_post_type->get_last_eventos($query);
+								}
+
+								if (!empty($eventos)): ?>
+									<div class="box-carousel-events">
+										<h4 class="title-5">Próximos eventos no local</h4>
+										<div class="carousel-events__wrapper">
+											<div class="carousel-events__control">
+												<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
+												<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
+											</div>
+											<ul class="carousel-events">
 												<?php
-												endif;
-											endwhile;
-										endif;
-									endif;
-									wp_reset_query();
-									?>
-								</ul>
-							</div>
-						</div>
+												foreach ($eventos as $evento):
+													$area = get_the_category($post->ID);
+													$evento->inicio = strtotime('00:00:00', strtotime(get_post_meta($evento->ID, 'evento-inicio', true)));
+													$evento->fim = strtotime('23:59:59', strtotime(get_post_meta($evento->ID, 'evento-fim', true)));
+													$evento->local = get_post_meta($evento->ID, 'evento-local', true);
+													$evento->hora_inicio = strtotime(get_post_meta($evento->ID, 'evento-inicio', true));
+													if (($evento->fim >= time())): ?>
+														<li>
+															<div class="link-area">
+																<a class="color-<?php echo $area[0]->slug; ?>" href="#"><?php echo $area[0]->name; ?></a>
+															</div>
+															<?php if (has_post_thumbnail($evento->ID)): ?>
+																<img src="<?php echo get_the_post_thumbnail_url($evento->ID); ?>" alt="<?php echo $evento->post_title; ?>">
+															<?php endif; ?>
+															<strong><?php echo $evento->post_title; ?></strong>
+														</li> 
+													<?php 
+													endif;
+												endforeach; ?>
+											</ul>
+										</div>
+									</div>
+								<?php endif;
+							endif;
+							wp_reset_query();
+						?>
 					</div>
 				</div>
 				
