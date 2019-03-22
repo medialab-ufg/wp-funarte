@@ -7,7 +7,7 @@
 ?>
 <?php if ($collections->have_posts()): $x = 1; ?>
 	<section class="box-carousel-collection mb-100">
-		<?php if ($url_title) : ?>
+		<?php if (isset($url_title)) : ?>
 			<h2 class="title-1  mb-65"><a href="<?php echo $url_title; ?>"> <?php echo $title; ?> </a></h2>
 		<?php else : ?>
 			<h2 class="title-1 mb-65"><?php echo $title; ?></h2>

@@ -24,6 +24,22 @@ add_action('after_setup_theme', function() {
 	}
 });
 
+add_action('pre_get_posts', 'tax_pre_get_posts');
+function tax_pre_get_posts($query) {
+	if (!$query->is_tax() || !$query->is_main_query())
+		return;
+
+	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : 'todos';
+	if($type == 'noticias') {
+		$post_type = 'post';
+		$query->set( 'post_type',  $post_type);
+	} else if ($type == 'itens') {
+		$post_type_collections = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
+		$post_type = $post_type_collections;
+		$query->set( 'post_type',  $post_type);
+	}
+}
+
 /**
  * Retorna a URL do documento relacionado ao item atual 
  * @param Object $post é o post do item. Vazio, pega o post atual do Loop 

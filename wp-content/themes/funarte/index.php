@@ -1,22 +1,6 @@
 <?php
 	get_header();
 	$type = (isset($_GET['type']) && !empty($_GET['type'])) ? $_GET['type'] : 'todos';
-	if($type == 'noticias') {
-		$params = array(
-			'post_type' => 'post',
-			'orderby' => 'title',
-			'order' => 'ASC'
-		);
-		query_posts($params);
-	} else if ($type == 'itens') {
-		$post_type_collections = \Tainacan\Repositories\Repository::get_collections_db_identifiers();
-		$params = array(
-			'post_type' => $post_type_collections,
-			'orderby' => 'title',
-			'order' => 'ASC'
-		);
-		query_posts($params);
-	}
 ?>
 <main role="main">
 	<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
