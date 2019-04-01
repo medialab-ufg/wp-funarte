@@ -125,22 +125,16 @@
 
 	<div class="container">
 		<section class="box-carousel-collection">
-		<?php $url_title = get_post_type_archive_link('tainacan-collection'); ?>
-		<?php if ($url_title) : ?>
-			<h2 class="title-1  mb-65"><a href="<?php echo $url_title; ?>">Acervo</a></h2>
-		<?php else : ?>
-			<h2 class="title-1 mb-65">Acervo</h2>
-		<?php endif; ?>
-		
-			
+		<?php 
+			$url_title = get_post_type_archive_link('tainacan-collection');
 
-			<?php $collections = new WP_Query([
+			$collections = new WP_Query([
 				'post_type' => 'tainacan-collection',
 				'posts_per_page' => -1
-			]); ?>
+			]);
 			
-			<?php funarte_load_part('collections-carousel', ['collections' => $collections]); ?>
-			
+			funarte_load_part('collections-carousel', ['collections' => $collections, 'url_title' => $url_title, 'title' =>'Acervo']);
+		?>
 		</section>
 	</div>
 </main>

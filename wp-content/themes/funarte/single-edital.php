@@ -2,6 +2,7 @@
 	get_header();
 	$edital = \funarte\Edital::get_instance();
 	$status = $edital->get_edital_status($post->ID);
+	$pagina = home_url( $wp->request );
 
 	if (have_posts()) { the_post(); ?>
 		<main role="main">
@@ -13,11 +14,14 @@
 						['link_name'=>'Editais','link_url'=>'/edital'],
 						['link_name'=>get_the_title()]];
 					funarte_load_part('breadcrumb', ['links'=>$links]); 
-				?>
 
-				<div class="box-title">
-					<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/edital'; ?>">Editais</a> <a href="<?php echo get_bloginfo('url') . '/editais/?status=' . $status; ?>"><span><?php echo $edital->get_edital_status_name($post->ID); ?></span></a></h2>
-				</div>
+					$social_list = "<ul>
+													<li><a href='http://www.facebook.com/sharer.php?u=$pagina' class='tooltip-social-media__facebook' target='_blank'><i class='mdi mdi-facebook'></i></a></li>
+													<li><a href='http://twitter.com/share?url=$pagina' class='tooltip-social-media__twitter' target='_blank'><i class='mdi mdi-twitter'></i></a></li>
+													<li class='whatsapp-item'><a href='whatsapp://send?text=$pagina' data-action='share/whatsapp/share' class='tooltip-social-media__whatsapp' target='_blank'><i class='mdi mdi-whatsapp'></i></a></li>
+												</ul>";
+					funarte_load_part('box-title', ['titles'=>['Editais', $edital->get_edital_status_name($post->ID)], 'social_list' => $social_list ]); 
+				?>
 
 				<?php
 					$areas = get_the_category();

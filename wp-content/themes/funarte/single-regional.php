@@ -1,5 +1,7 @@
 <?php
 get_header();
+$pagina = home_url( $wp->request );
+
 $fields = array('coordenador', 'rua', 'numero', 'complemento', 'fax', 'email',
 			'bairro', 'cidade', 'cep', 'telefone1', 'telefone2', 'contatos');
 foreach ($fields as $field) {
@@ -15,7 +17,12 @@ if(have_posts()) : the_post();
 				['link_name'=>'Representações Regionais','link_url'=>'/regional'],
 				['link_name'=>get_the_title()]];
 			funarte_load_part('breadcrumb', ['links'=>$links]); 
-			funarte_load_part('box-title', ['titles'=>['Funarte', 'Representações Regionais']]);
+			$social_list = "<ul>
+													<li><a href='http://www.facebook.com/sharer.php?u=$pagina' class='tooltip-social-media__facebook' target='_blank'><i class='mdi mdi-facebook'></i></a></li>
+													<li><a href='http://twitter.com/share?url=$pagina' class='tooltip-social-media__twitter' target='_blank'><i class='mdi mdi-twitter'></i></a></li>
+													<li class='whatsapp-item'><a href='whatsapp://send?text=$pagina' data-action='share/whatsapp/share' class='tooltip-social-media__whatsapp' target='_blank'><i class='mdi mdi-whatsapp'></i></a></li>
+												</ul>";
+			funarte_load_part('box-title', ['titles'=>['Funarte', 'Representações Regionais'], 'social_list' => $social_list]);
 			$imagem = get_the_post_thumbnail( get_the_ID(),'large'); 
 			funarte_load_part('title-page', ['title'=> get_the_title(), 
 																					'img'  => get_the_post_thumbnail_url(get_the_ID() ),

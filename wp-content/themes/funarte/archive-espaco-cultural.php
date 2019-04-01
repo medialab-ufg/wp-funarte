@@ -12,6 +12,7 @@ if (isset($_GET['estado']) && !empty($_GET['estado']))
 		if (!empty($area)) 
 			$cat = $area->term_id;
 	} else {
+		$cat = null;
 		$area = get_the_category()[0];
 	}
 
@@ -74,7 +75,7 @@ query_posts($params);
 							'class' => 'select_area',
 							'name' => 'area',
 							'value_field' => 'slug',
-							'selected' => (isset($area->slug)) ? $area->slug : null));
+							'selected' => (isset($cat)) ? $area->slug : null));
 						?>
 					</fieldset>
 				</form>
