@@ -6712,6 +6712,117 @@ ul.social-media-list {
 }
 
 /***
+* PÁGINA ERRO 404
+***/
+
+.box-error-404 {
+	margin: 70px 0 100px 160px;
+
+	strong {
+		width: 100%;
+		max-width: 590px;
+		min-height: 150px;
+		padding: 34px 60px;
+		font-weight: 400;
+		font-family: 'Sansita', sans-serif;
+		font-size: 2.8rem;
+		color: $branco;
+		line-height: normal;
+		display: block;
+		background-color: $turquesa-1;
+	}
+}
+.box-error-404__title {
+	width: 100%;
+	max-width: 690px;
+	min-height: 355px;
+	margin: -45px 0 0 140px;
+	padding: 62px 10px 62px 140px;
+	font-weight: 400;
+	font-family: 'Sansita', sans-serif;
+	font-size: 4.07rem;
+	color: $cinza-6;
+	line-height: normal;
+	background-color: $cinza-2;
+
+	span {
+		margin: -60px 0 0 40px;
+		font-size: 10.7rem;
+		display: block;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.box-error-404 {
+		margin: 70px 0 100px 80px;
+
+		strong {
+			max-width: 500px;
+			min-height: 133px;
+			padding: 34px 50px;
+			font-size: 2.5rem;
+		}
+	}
+	.box-error-404__title {
+		max-width: 600px;
+		min-height: 300px;
+		margin: -45px 0 0 130px;
+		font-size: 3.4rem;
+
+		span { font-size: 9.1rem; }
+	}
+}
+@media screen and (max-width: 768px) {
+	.box-error-404 {
+		margin: 70px 0 100px 35px;
+
+		strong { max-width: 530px; }
+	}
+	.box-error-404__title {
+		max-width: 575px;
+		margin: -20px 0 0 65px;
+
+		span { margin: -60px 0 0 35px; }
+	}
+}
+@media screen and (max-width: 580px) {
+	.box-error-404 {
+		margin: 70px 0 100px 20px;
+
+		strong {
+			max-width: 290px;
+			min-height: 150px;
+			padding: 19px 35px;
+			font-size: 1.9rem;
+		}
+	}
+	.box-error-404__title {
+		max-width: 290px;
+		min-height: 210px;
+		margin: -30px 0 0 30px;
+		padding: 19px 10px 19px 50px;
+		font-size: 2.5rem;
+
+		span {
+			margin: -24px 0 0 35px;
+			font-size: 6.3rem;
+		}
+	}
+}
+@media screen and (max-width: 350px) {
+	.box-error-404 {
+		margin: 70px 0 100px 0;
+
+		strong { max-width: 260px; }
+	}
+	.box-error-404__title {
+		max-width: 250px;
+
+		span { font-size: 5rem; }
+	}
+}
+
+/***
 * MARGENS
 ***/
 
