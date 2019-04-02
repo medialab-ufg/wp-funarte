@@ -25,12 +25,12 @@ get_header();
 
 		<?php
 			$links = [
-				['link_name'=>'Editais']];
+				['link_name'=>'Editais/Chamamentos']];
 			funarte_load_part('breadcrumb', ['links'=>$links]); 
 		?>
 
 		<div class="box-title">
-			<h2 class="title-h1">Editais</h2>
+			<h2 class="title-h1">Editais/Chamamentos</h2>
 
 			<div class="box-forms">
 				<form class="form-area" action="#" method="post">

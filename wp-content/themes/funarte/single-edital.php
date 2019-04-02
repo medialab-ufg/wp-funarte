@@ -11,7 +11,7 @@
 
 				<?php 
 					$links = [
-						['link_name'=>'Editais','link_url'=>'/edital'],
+						['link_name'=>'Editais/Chamamentos','link_url'=>'/edital'],
 						['link_name'=>get_the_title()]];
 					funarte_load_part('breadcrumb', ['links'=>$links]); 
 
@@ -20,7 +20,7 @@
 													<li><a href='http://twitter.com/share?url=$pagina' class='tooltip-social-media__twitter' target='_blank'><i class='mdi mdi-twitter'></i></a></li>
 													<li class='whatsapp-item'><a href='whatsapp://send?text=$pagina' data-action='share/whatsapp/share' class='tooltip-social-media__whatsapp' target='_blank'><i class='mdi mdi-whatsapp'></i></a></li>
 												</ul>";
-					funarte_load_part('box-title', ['titles'=>['Editais', $edital->get_edital_status_name($post->ID)], 'social_list' => $social_list ]); 
+					funarte_load_part('box-title', ['titles'=>['Editais/Chamamentos', $edital->get_edital_status_name($post->ID)], 'social_list' => $social_list ]); 
 				?>
 
 				<?php
