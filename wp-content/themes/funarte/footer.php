@@ -33,22 +33,23 @@
 				<div class="columns__lists">
 					<div class="columns__column-a links-list links-list--collapse">
 						<strong>Áreas artísticas:</strong>
-						<ul>
-							<li><a href="/category/teatro/">Teatro</a></li>
-							<li><a href="/category/circo/">Circo</a></li>
-							<li><a href="/category/danca/">Dança</a></li>
-							<li><a href="/category/literatura/">Literatura</a></li>
-							<li><a href="/category/musica/">Música</a></li>
-							<li><a href="/category/artes-visuais/">Artes visuais</a></li>
-							<li><a href="/category/artes-integradas/">Artes integradas</a></li>
-						</ul>
+						<?php
+							wp_nav_menu( array(
+									'theme_location'    => 'rodape-coluna-1',
+									'depth'             => 1,
+									'container'         => '',
+									'container_class'   => '',
+									'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+									'walker'            => new WP_Bootstrap_Navwalker(),
+								) );
+						?>
 					</div>
 					
 					<div class="columns__column-a links-list links-list--collapse">
 						<strong>Funarte:</strong>
 						<?php
 							wp_nav_menu( array(
-									'theme_location'    => 'rodape',
+									'theme_location'    => 'rodape-coluna-2',
 									'depth'             => 1,
 									'container'         => '',
 									'container_class'   => '',
@@ -60,13 +61,16 @@
 
 					<div class="columns__column-a links-list links-list--collapse">
 						<strong>Acervos:</strong>
-						<ul>
-							<li><a href="#">Arquivos permanentes</a></li>
-							<li><a href="#">Arquivos privados</a></li>
-							<li><a href="#">Audiovisual</a></li>
-							<li><a href="#">Bibliotecas</a></li>
-							<li><a href="#">Funarte</a></li>
-						</ul>
+						<?php
+							wp_nav_menu( array(
+									'theme_location'    => 'rodape-coluna-3',
+									'depth'             => 1,
+									'container'         => '',
+									'container_class'   => '',
+									'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+									'walker'            => new WP_Bootstrap_Navwalker(),
+								) );
+						?>
 					</div>
 				</div>
 			</div>

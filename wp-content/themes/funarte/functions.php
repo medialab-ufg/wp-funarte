@@ -236,7 +236,9 @@ add_action('admin_enqueue_scripts', 'add_files_admin');
 
 register_nav_menus( array(
 	'principal' => __( 'Menu Principal', 'funarte' ),
-	'rodape' => __( 'Rodapé', 'funarte' )
+	'rodape-coluna-1' => __( 'Rodapé coluna 1', 'funarte' ),
+	'rodape-coluna-2' => __( 'Rodapé coluna 2', 'funarte' ),
+	'rodape-coluna-3' => __( 'Rodapé coluna 3', 'funarte' )
 ) );
 
 function get_post_files($postID = null, $params = array(), $exclude = '/^(image\/(jpeg|png|gif)|audio\/)/') {

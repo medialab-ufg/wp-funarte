@@ -4767,6 +4767,8 @@ aside .list-bidding--type-b {
 			font-size: .9rem;
 			color: $branco;
 			display: inline;
+
+			&:hover { text-decoration: underline; }
 		}
 	}
 
