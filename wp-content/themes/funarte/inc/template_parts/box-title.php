@@ -26,5 +26,9 @@ else:
 				</span>
 			<?php endif; ?>
 		</h2>
+
+		<?php if ( isset($licitacao_url) ): ?>
+			<a href="<?php echo $licitacao_url; ?>" class="box-title__link" target="_blank">Acompanhar licitação</a>
+		<?php endif; ?>
 	</div>
 <?php endif; ?>

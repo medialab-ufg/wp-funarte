@@ -30,7 +30,11 @@
 						['link_name'=>'Licitação','link_url'=>'/licitacao'],
 						['link_name'=>get_the_title()]];
 					funarte_load_part('breadcrumb', ['links'=>$links]);
-					funarte_load_part('box-title', ['titles'=>['Funarte', 'Licitações'],'social_list' => $social_list]);
+
+					$licitacao_numero = get_post_meta(get_the_ID(), 'licitacao-numero')[0]; //TODO MELHORAR
+					$licitacao_numero = str_replace('/','',$licitacao_numero);
+
+					funarte_load_part('box-title', ['titles'=>['Funarte', 'Licitações'],'social_list' => $social_list, 'licitacao_url' => 'http://comprasnet.gov.br/ConsultaLicitacoes/download/download_editais_detalhe.asp?coduasg=403201&modprp=5&numprp='.$licitacao_numero]);
 					funarte_load_part('title-page', [	'title'=> get_the_title(),
 																								'img'  => false,
 																								'tags'=> $tags]); ?>
