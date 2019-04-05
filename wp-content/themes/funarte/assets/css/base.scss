@@ -6713,6 +6713,48 @@ ul.social-media-list {
 	.audio-player { margin: 37px 0 0; }
 }
 
+/*
+* BOX DE MÍDIAS SOCIAIS
+*/
+
+.box-social-media {
+	margin: 0 -40px;
+	display: flex;
+	justify-content: space-between;
+}
+.box-social-media__box-twitter,
+.box-social-media__box-facebook,
+.box-social-media__box-instagram {
+	width: 100%;
+	max-width: 340px;
+	margin: 0 auto 50px;
+	padding: 0 40px;
+
+	.box-social-media__box-scroll {
+		width: 100%;
+		max-height: 500px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+}
+.box-social-media__box-instagram img {
+	width: 100%;
+	margin-bottom: 10px;
+	display: block;
+	border: 1px solid rgba(0,0,0,.2);
+}
+.box-social-media__box + .box-social-media__box { margin-top: 20px; }
+
+@media screen and (max-width: 992px) {
+	.box-social-media {
+		margin: 0;
+		display: block;
+	}
+	.box-social-media__box-facebook,
+	.box-social-media__box-instagram,
+	.box-social-media__box-twitter { padding: 0; }
+}
+
 /***
 * PÁGINA ERRO 404
 ***/

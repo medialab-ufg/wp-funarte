@@ -10,6 +10,7 @@ $(document).ready(function() {
 	base.scroll.observarRolagem();
 	base.scroll.manipularElemento();
 	base.collapse.manipularColuna();
+	base.instagram.ativarFeed();
 
 	// Home
 	base.carrossel.iniciarDestaques();
@@ -64,6 +65,22 @@ $(document).ready(function() {
 });
 
 var base = {
+	instagram: {
+		ativarFeed: function() {
+			var feed = new Instafeed({
+				clientId: '3c600d4399004ec191c6f96130af5c93',
+				accessToken: '289181919.3c600d4.76b5b17c6da94742be36bc1465a1e41d',
+				get: 'user',
+				userId: 289181919,
+				target: 'instagram-feed',
+				limit: 3,
+				resolution: 'standard_resolution',
+				template: '<div class="box-social-media__box"><a href="{{link}}" target="_blank"><img src="{{image}}"/></a><strong>{{caption}}</strong></div>'
+			});
+			feed.run();
+		}
+	},
+
 	video: {
 		ativar: function() {
 			var $boxPai = $('#items-list-results');
