@@ -8,27 +8,6 @@ get_header();
 
 		<div class="box-title">
 			<h2 class="title-h1 mb-50">Notícias<span>Mídias</span></h2>
-
-			<div class="box-forms">
-				<form class="form-area" action="#" method="get">
-					<fieldset>
-						<legend>Formulário de seleção de área</legend>
-
-						<select name="area" id="select-categoria" class="select_area">
-							<option value="" selected="selected">Filtrar por área</option>
-							<option class="level-0" value="funarte">Funarte</option>
-							<option class="level-0" value="artes-integradas">Artes Integradas</option>
-							<option class="level-0" value="artes-visuais">Artes Visuais</option>
-							<option class="level-0" value="circo">Circo</option>
-							<option class="level-0" value="danca">Dança</option>
-							<option class="level-0" value="literatura">Literatura</option>
-							<option class="level-0" value="musica">Música</option>
-							<option class="level-0" value="teatro">Teatro</option>
-							<option class="level-0" value="estudio-f">Estúdio F</option>
-						</select>
-					</fieldset>
-				</form>
-			</div>
 		</div>
 
 		<div class="box-carousels-news">
@@ -203,11 +182,7 @@ get_header();
 					</div>
 					<div id="fb-root"></div>
 					<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.2"></script>
-					<div class="fb-page" data-href="https://www.facebook.com/funarte" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-						<blockquote cite="https://www.facebook.com/funarte" class="fb-xfbml-parse-ignore">
-							<a href="https://www.facebook.com/funarte">Funarte</a>
-						</blockquote>
-					</div>
+					<div class="fb-page" data-href="https://www.facebook.com/funarte" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/funarte" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/funarte">Funarte</a></blockquote></div>
 				</div>
 			</div>
 
