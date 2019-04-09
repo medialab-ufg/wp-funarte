@@ -44,10 +44,11 @@
 					$DS = DIRECTORY_SEPARATOR;
 					$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'widget' . $DS;
 					require_once($META_FOLDER . 'arquivos-relacionados.php');
+					$edicoes = $edital->get_edital_editions($post->ID);
 				?>
 
 				<div class="row justify-content-between mb-100">
-					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
+					<div class="<?php echo ( !empty($html_widget) || !empty($edicoes) ) ? 'col-md-7' : 'col-md-12' ?>">
 						<div class="box-text">
 							<div class="box-text__text">
 								<?php the_content(); ?>
@@ -61,7 +62,10 @@
 									if(!empty($filhos)): ?>
 										<?php foreach($filhos as $filho): ?>
 										<div class="box-edital-filho">
-											<h4 class="box-edital-filho__title"><?php echo $filho->post_title; ?> <span><?php echo '(' . get_the_date('d/m/Y', strtotime($recent['post_date'])) . ')'; ?></span></h4>
+											<h4 class="box-edital-filho__title">
+												<?php echo $filho->post_title; ?> 
+												<span><?php echo '(' . get_the_time(get_option('date_format'), $filho) . ')'; ?></span>
+											</h4>
 											<?php 
 												$content = $filho->post_content; 
 												$content = apply_filters('the_content', $content);
@@ -125,11 +129,31 @@
 							</div> -->
 						</div>
 					</div>
-					<?php if (!empty($html_widget)): ?>
-						<div class="col-md-4">
-							<aside class="content-aside">
-								<?php echo $html_widget; ?>
-							</aside>
+					<?php if ( !empty($html_widget) || !empty($edicoes) ): ?>
+						<div class="col-md-4 row">
+							<?php if (!empty($html_widget)): ?>
+								<div class="col-md-12">
+									<aside class="content-aside">
+										<?php echo $html_widget; ?>
+									</aside>
+								</div>
+							<?php endif; ?>
+
+							<?php if( !empty($edicoes)): ?>
+								<div class="col-md-12">
+									<div class="box-simple-links mb-0">
+										<h2 class="title-h1">Outras Edições</h2>
+										<ul class="list-simple-links">
+											<?php foreach ( $edicoes as $edital_rel ): ?>
+												<li class="color-funarte">
+													<strong><?php echo $edital_rel->post_title; ?></strong>
+													<a class="link-more" target="_blank" title="<?php echo $edital_rel->post_title; ?>" href="<?php echo get_the_permalink($edital_rel->ID); ?>">Visitar</a>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								</div>
+							<?php endif; ?>
 						</div>
 					<?php endif; ?>
 				</div>
