@@ -61,7 +61,10 @@
 									if(!empty($filhos)): ?>
 										<?php foreach($filhos as $filho): ?>
 										<div class="box-edital-filho">
-											<h4 class="box-edital-filho__title"><?php echo $filho->post_title; ?> <span><?php echo '(' . get_the_date('d/m/Y', strtotime($recent['post_date'])) . ')'; ?></span></h4>
+											<h4 class="box-edital-filho__title">
+												<?php echo $filho->post_title; ?> 
+												<span><?php echo '(' . get_the_time(get_option('date_format'), $filho) . ')'; ?></span>
+											</h4>
 											<?php 
 												$content = $filho->post_content; 
 												$content = apply_filters('the_content', $content);
@@ -133,6 +136,23 @@
 						</div>
 					<?php endif; ?>
 				</div>
+
+				<div class="row justify-content-between mb-100">
+				 <?php 
+					 $edicoes = $edital->get_edital_editions($post->ID);
+					 if (have_posts()):
+						?> <ul> <?php
+						while (have_posts()):
+							the_post();
+							?>
+								<li><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a></li>
+							<?php
+						endwhile;
+						?> </ul> <?php
+					endif;
+				 ?>
+				</div>
+
 			</div>
 		</main>
 	<?php }
