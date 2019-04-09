@@ -247,17 +247,18 @@ class Edital {
 			$rel_edital = (array)wp_get_object_terms($editalID, taxEditais::get_instance()->get_name());
 			if (!empty($rel_edital)) {
 				$rel_edital = get_term(end($rel_edital), taxEditais::get_instance()->get_name());
-			}
 
-			$params = array_merge(array(
-				'post__not_in' => array($editalID),
-				'post_type' => $this->POST_TYPE,
-				taxEditais::get_instance()->get_name() => $rel_edital->slug,
-				'orderby' => 'date',
-				'order' => 'DESC'
-			), $params);
-			$posts = query_posts($params);
-			return $posts;
+				$params = array_merge(array(
+					'post__not_in' => array($editalID),
+					'post_type' => $this->POST_TYPE,
+					taxEditais::get_instance()->get_name() => $rel_edital->slug,
+					'orderby' => 'date',
+					'order' => 'DESC'
+				), $params);
+				$posts = query_posts($params);
+				wp_reset_query();
+				return $posts;
+			}
 		}
 		return null;
 	}

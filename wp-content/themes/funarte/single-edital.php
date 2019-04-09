@@ -44,10 +44,11 @@
 					$DS = DIRECTORY_SEPARATOR;
 					$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'widget' . $DS;
 					require_once($META_FOLDER . 'arquivos-relacionados.php');
+					$edicoes = $edital->get_edital_editions($post->ID);
 				?>
 
 				<div class="row justify-content-between mb-100">
-					<div class="<?php echo !empty($html_widget) ? 'col-md-7' : 'col-md-12' ?>">
+					<div class="<?php echo ( !empty($html_widget) || !empty($edicoes) ) ? 'col-md-7' : 'col-md-12' ?>">
 						<div class="box-text">
 							<div class="box-text__text">
 								<?php the_content(); ?>
@@ -128,33 +129,34 @@
 							</div> -->
 						</div>
 					</div>
-					<?php if (!empty($html_widget)): ?>
-						<div class="col-md-4">
-							<aside class="content-aside">
-								<?php echo $html_widget; ?>
-							</aside>
+					<?php if ( !empty($html_widget) || !empty($edicoes) ): ?>
+						<div class="col-md-4 row">
+							<?php if (!empty($html_widget)): ?>
+								<div class="col-md-12">
+									<aside class="content-aside">
+										<?php echo $html_widget; ?>
+									</aside>
+								</div>
+							<?php endif; ?>
+
+							<?php if( !empty($edicoes)): ?>
+								<div class="col-md-12">
+									<div class="box-simple-links mb-0">
+										<h2 class="title-h1">Outras Edições</h2>
+										<ul class="list-simple-links">
+											<?php foreach ( $edicoes as $edital_rel ): ?>
+												<li class="color-funarte">
+													<strong><?php echo $edital_rel->post_title; ?></strong>
+													<a class="link-more" target="_blank" title="<?php echo $edital_rel->post_title; ?>" href="<?php echo get_the_permalink($edital_rel->ID); ?>">Visitar</a>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								</div>
+							<?php endif; ?>
 						</div>
 					<?php endif; ?>
 				</div>
-
-				<strong> Outras edições </strong>
-				<div class="row mb-100">
-				 <?php 
-					 $edicoes = $edital->get_edital_editions($post->ID);
-					 if (have_posts()):
-						?> 						
-						<ul> <?php
-						while (have_posts()):
-							the_post();
-							?>
-								<li><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a></li>
-							<?php
-						endwhile;
-						?> </ul> <?php
-					endif;
-				 ?>
-				</div>
-
 			</div>
 		</main>
 	<?php }
