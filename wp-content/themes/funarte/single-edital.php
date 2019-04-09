@@ -137,11 +137,13 @@
 					<?php endif; ?>
 				</div>
 
-				<div class="row justify-content-between mb-100">
+				<strong> Outras edições </strong>
+				<div class="row mb-100">
 				 <?php 
 					 $edicoes = $edital->get_edital_editions($post->ID);
 					 if (have_posts()):
-						?> <ul> <?php
+						?> 						
+						<ul> <?php
 						while (have_posts()):
 							the_post();
 							?>
