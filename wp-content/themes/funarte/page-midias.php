@@ -1,5 +1,7 @@
 <?php
 get_header();
+$audios = \funarte\MidiaAudio::get_instance()->get_audios();
+$videos = \funarte\MidiaVideo::get_instance()->get_videos();
 ?>
 
 <main role="main">
@@ -17,92 +19,31 @@ get_header();
 					<button type="button" class="control__next slick-arrow"><i class="mdi mdi-chevron-down"></i></button>
 				</div>
 
-				<ul class="carousel-audio">
-					<li>
-						<div class="box-carousel-audio__row-1">
-							<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
-							<div class="box-carousel-audio__info">
-								<div class="link-area">
-									<a class="color-funarte" href="#">Podcast</a>
+				<?php if ( ! empty($videos) ): ?>
+					<ul class="carousel-audio">
+						<?php foreach($videos as $video): ?>
+							<?php $url = get_post_meta($video->ID, 'midia-video-url', true); ?>
+							<li>
+								<div class="box-carousel-audio__row-1">
+									<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
+									<div class="box-carousel-audio__info">
+										<div class="link-area">
+											<a class="color-funarte" href="#">Vídeo</a>
+										</div>
+										<strong><?php echo $video->post_title; ?></strong>
+										<p><?php echo $url; ?></p>
+									</div>
 								</div>
-								<strong>Lorem ipsum dolor sit amet, consectetuer adi</strong>
-
-								<div class="audio-player">
-									<ul class="playlist">
-										<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3' ?>);"></a></li>
-									</ul>
+								<div class="box-carousel-audio__row-2">
+									<?php 
+										$string = (strlen($video->post_content) > 200) ? substr($video->post_content,0,200).'...' : $video->post_content;
+										echo $string;
+									?>
 								</div>
-							</div>
-						</div>
-						<div class="box-carousel-audio__row-2">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
-							<a class="link-more" href="#">Ler mais</a>
-						</div>
-					</li>
-					<li>
-						<div class="box-carousel-audio__row-1">
-							<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
-							<div class="box-carousel-audio__info">
-								<div class="link-area">
-									<a class="color-funarte" href="#">Podcast</a>
-								</div>
-								<strong>2 Lorem ipsum dolor sit amet, consectetuer adi</strong>
-
-								<div class="audio-player">
-									<ul class="playlist">
-										<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3' ?>);"></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="box-carousel-audio__row-2">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.  ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in</p>
-							<a class="link-more" href="#">Ler mais</a>
-						</div>
-					</li>
-					<li>
-						<div class="box-carousel-audio__row-1">
-							<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
-							<div class="box-carousel-audio__info">
-								<div class="link-area">
-									<a class="color-funarte" href="#">Podcast</a>
-								</div>
-								<strong>3 Lorem ipsum dolor sit amet, consectetuer adi</strong>
-
-								<div class="audio-player">
-									<ul class="playlist">
-										<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3' ?>);"></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="box-carousel-audio__row-2">
-							<p>Lorem ipsum dolor sit amet</p>
-							<a class="link-more" href="#">Ler mais</a>
-						</div>
-					</li>
-					<li>
-						<div class="box-carousel-audio__row-1">
-							<div class="box-carousel-audio__image" style="background-image: url(<?php echo get_template_directory_uri() . '/assets/img/fke/audio_001.jpg' ?>);"></div>
-							<div class="box-carousel-audio__info">
-								<div class="link-area">
-									<a class="color-funarte" href="#">Podcast</a>
-								</div>
-								<strong>4 Lorem ipsum dolor sit amet, consectetuer adi</strong>
-
-								<div class="audio-player">
-									<ul class="playlist">
-										<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3' ?>);"></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="box-carousel-audio__row-2">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi-dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita-tion ullamco laboris.Lorem ipsum dolor sit</p>
-							<a class="link-more" href="#">Ler mais</a>
-						</div>
-					</li>
-				</ul>
+							</li>
+						<?php endforeach;?>
+					</ul>
+				<?php endif; ?>
 			</div>
 
 			<div class="box-bidding box-bidding--type-b">
@@ -111,57 +52,20 @@ get_header();
 					<button type="button" class="control__next slick-arrow"><i class="mdi mdi-chevron-down"></i></button>
 				</div>
 
-				<ul class="list-bidding--type-b box-bidding--type-b__carousel">
-					<li class="color-funarte">
-						<div class="link-area">
-							<a href="#">Facebook</a>
-						</div>
-						<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
-						<a class="link-more" href="#">Ler mais</a>
-					</li>
-					<li class="color-funarte">
-						<div class="link-area">
-							<a href="#">Twitter</a>
-						</div>
-						<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
-						<a class="link-more" href="#">Ler mais</a>
-					</li>
-					<li class="color-funarte">
-						<div class="link-area">
-							<a href="#">Facebook</a>
-						</div>
-						<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
-						<a class="link-more" href="#">Ler mais</a>
-					</li>
-					<li class="color-funarte">
-						<div class="link-area">
-							<a href="#">Facebook</a>
-						</div>
-						<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
-						<a class="link-more" href="#">Ler mais</a>
-					</li>
-					<li class="color-funarte">
-						<div class="link-area">
-							<a href="#">Twitter</a>
-						</div>
-						<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
-						<a class="link-more" href="#">Ler mais</a>
-					</li>
-					<li class="color-funarte">
-						<div class="link-area">
-							<a href="#">Facebook</a>
-						</div>
-						<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
-						<a class="link-more" href="#">Ler mais</a>
-					</li>
-					<li class="color-funarte">
-						<div class="link-area">
-							<a href="#">Facebook</a>
-						</div>
-						<strong>Título lorem ipsum sit dolor amet, con-sectetur adispicing elit, sed do</strong>
-						<a class="link-more" href="#">Ler mais</a>
-					</li>
-				</ul>
+				<?php if ( ! empty($audios) ): ?>
+					<ul class="list-bidding--type-b box-bidding--type-b__carousel">
+						<?php foreach($audios as $audio): ?>
+							<?php $url = get_post_meta($audio->ID, 'midia-audio-url', true); ?>
+							<li class="color-funarte">
+								<div class="link-area">
+									<a class="color-funarte">Áudio</a>
+								</div>
+								<strong><?php echo $audio->post_title; ?></strong>
+								<a class="link-more" href="<?php echo $url; ?>" target="_blank">Ler mais</a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
 			</div>
 		</div>
 
