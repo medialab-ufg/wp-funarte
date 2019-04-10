@@ -1488,12 +1488,13 @@ body.js .collapse__text { display: none; }
 	.box-highlight .box-highlight__image {
 		width: 345px;
 		height: 193px;
-		margin: 20px 0 35px;
+		margin: 20px 0 35px -32%;
 		padding: 13px 0 0;
 		border: none;
 	}
 }
-@media screen and (max-width:768px) {
+@media screen and (max-width:992px) {
+	.box-highlight .box-highlight__image { margin: 20px 0 35px; }
 	.box-notices-highlight:after { display: none; }
 	.box-carousel-notices {
 		position: relative;
@@ -2165,11 +2166,7 @@ body.js .collapse__text { display: none; }
 	.slick-track { transition: unset !important; }
 }
 
-
-@media screen and (max-width:1200px) {
-	.box-carousel-notices .carousel-notices { padding: 0 40px 0 0; }
-}
-@media screen and (max-width:768px) {
+@media screen and (max-width:992px) {
 	.box-carousel-notices {
 		.carousel-notices__wrapper {
 			margin-bottom: 30px;
