@@ -35,7 +35,7 @@ else:
 										</a>
 										<span><?php echo $item['tag_subname_area']; ?></span>
 									</div>
-									<h3 class="title-4"><?php echo $item['title']; ?></h3>
+									<h3 class="title-4 title-4--type-b"><?php echo $item['title']; ?></h3>
 									<a href="<?php echo $item['url']; ?>" class="link-more">Ler mais</a>
 								</li>
 							<?php endforeach; ?>

@@ -198,7 +198,7 @@ class Edital {
 		if (($now > $meta['inscricoes_inicio']) && ($now < $meta['inscricoes_fim']))
 			return 'aberto';
 		elseif (($now > $meta['inscricoes_fim']) && !$meta['resultado'])
-			return 'avaliacao';
+			return 'avaliação';
 		else
 			return 'resultado';
 		return false;

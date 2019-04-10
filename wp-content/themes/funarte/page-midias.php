@@ -86,11 +86,7 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 					</div>
 					<div id="fb-root"></div>
 					<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.2"></script>
-					<div class="fb-page" data-href="https://www.facebook.com/funarte" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-						<blockquote cite="https://www.facebook.com/funarte" class="fb-xfbml-parse-ignore">
-							<a href="https://www.facebook.com/funarte">Funarte</a>
-						</blockquote>
-					</div>
+					<div class="fb-page" data-href="https://www.facebook.com/funarte" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/funarte" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/funarte">Funarte</a></blockquote></div>
 				</div>
 			</div>
 
