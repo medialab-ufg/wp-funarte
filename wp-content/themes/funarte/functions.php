@@ -328,6 +328,8 @@ require_once('inc/post_types/sinopse/sinopse.php');
 require_once('inc/post_types/regional/regional.php');
 require_once('inc/post_types/licitacao/licitacao.php');
 require_once('inc/post_types/estrutura/estrutura.php');
+require_once('inc/post_types/midia_audio/midia_audio.php');
+require_once('inc/post_types/midia_video/midia_video.php');
 require_once('inc/post_types/destaque_home/destaque_home.php');
 require_once('inc/post_types/edicao_online/edicao_online.php');
 require_once('inc/post_types/area_interesse/area_interesse.php');
