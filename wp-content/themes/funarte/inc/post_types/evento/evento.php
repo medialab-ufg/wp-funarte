@@ -16,6 +16,8 @@ class Evento {
 		
 		add_action('wp_ajax_get_events_by_period', array(&$this, 'ajax_get_events_by_period'));
 		add_action('wp_ajax_nopriv_get_events_by_period', array(&$this, 'ajax_get_events_by_period'));
+		
+		add_action('wp_ajax_evento_create_related_post', array(&$this, 'ajax_create_related_post'));
 	}
 
 	public function register_post_type() {
@@ -510,6 +512,82 @@ class Evento {
 			}
 		}
 		return $response;
+	}
+	
+	public function get_evento_related_post_metabox_content($event_id) {
+		$post_id = get_post_meta($event_id, '_related_post', true);
+		$event_status = get_post_status($event_id);
+		if ($post_id) {
+			$post = get_post($post_id);
+			$return = $post->post_title . ' ( ';
+			$return .= '<a href="' . get_edit_post_link($post_id) . '" target="_blank">Editar</a>';
+			if ($post->post_status == 'publish') {
+				$return .= ' | <a href="' . get_permalink($post_id) . '" target="_blank">Ver</a>';
+			}
+			
+			$return .= ' )';
+			
+			return $return;
+			
+		} elseif ( $event_status == 'publish' ) {
+			return '<input type="button" class="button" value="Criar notícia relacionada" id="criar-noticia-relacionada" />';
+		} else {
+			return '<input type="button" class="button" disabled="disabled" value="Criar notícia relacionada" id="criar-noticia-relacionada" /><br/><small>É preciso publicar o evento primeiro</small>';
+		}
+	}
+	
+	public function ajax_create_related_post() {
+		$event_id = $_GET['event_id'];
+		$this->create_related_post($event_id);
+		echo $this->get_evento_related_post_metabox_content($event_id);
+		die;
+	}
+	
+	public function create_related_post($event_id) {
+		$event = get_post($event_id);
+		
+		$content = $event->post_content;
+		
+		$box = "\n\n";
+		
+		$box .= '<strong>Informações ao público:</strong>';
+		$box .= "\n";
+		if ($ev_tel = get_post_meta($event_id, 'evento-telefone', true)) {
+				$box .= '<span>' . $ev_tel . '</span>';
+				$box .= "\n";
+		}
+		if ($ev_email = get_post_meta($event_id, 'evento-email', true)) {
+			$box .= '<a href="mailto:' . $ev_email . '">' . $ev_email . '</a>';
+			$box .= "\n";
+		}
+		if ($ev_site = get_post_meta($event_id, 'evento-link', true)) {
+			$box .= '<a href="' . $ev_site . '" rel="nofollow">' . $ev_site . '</a>';
+			$box .= "\n";
+		}
+		
+		if ($ev_local = get_post_meta($event_id, 'evento-local', true)){
+			$box .= '<span><b>Local:</b></span>';
+			$box .= "\n";
+			$box .= '<span>' . $ev_local . '</span>';
+			$box .= "\n";
+		}
+		
+		$content .= $box;
+		
+		$post = [
+			'post_title' => $event->post_title,
+			'post_status' => 'draft',
+			'post_content' => $content
+		];
+		
+		$new_post = wp_insert_post($post);
+		
+		if (is_int($new_post)) {
+			update_post_meta($event_id, '_related_post', $new_post);
+			return $new_post;
+		}
+		return false;
+		
 	}
 
 	/**
