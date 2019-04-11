@@ -13,6 +13,7 @@ else:
 	$col = 0; 
 	$ul = "";
 	$li = "";
+	$visible = "";
 	$flag = true;
 	foreach ($items as $item):
 		if (isset($item['url_img']) && $item['url_img'] != null ):
@@ -22,32 +23,25 @@ else:
 		endif;
 
 		$tag_url = isset($item['tag_url_area']) ? $item['tag_url_area'] : '#';
-		$li .= "<li class='color-" . $item['tag_class_area'] . "'>
+		$visible = $col < $number_cols ? " visible" : "";
+		$col++;
+		$li .= "<li class='color-" . $item['tag_class_area'] . $visible . "'>
 							<div class='link-area'>
 								<a href='$tag_url'>" . $item['tag_name_area'] . "</a>
 							</div>
-							<div class='box-news__image' style='background-image: url($url_img);'></div>
-							<h3 class='news-title'>" . $item['title'] . "</h3>
+							<a href='" . $item['url'] . "'><span class='box-news__image' style='background-image: url($url_img);'></span></a>
+							<h3 class='news-title'><a href='" . $item['url'] . "'>" . $item['title'] . "</a></h3>
 							<span>" . $item['content'] . "</span>
 							<a href='" . $item['url'] . "' class='link-more'>Ler mais</a>
 						</li>";
-		if($col++ == $number_cols-1) {
-			//<!-- SÓ A PRIMEIRA UL VEM COM A CLASSE VISIBLE -->
-			if ($flag) {
-				$ul .= "<ul class='box-news__list visible'>$li</ul>";
-				$flag = false;
-			}	else {
-				$ul .= "<ul class='box-news__list'>$li</ul>";;
-			}
-			$li = "";
-			$col = 0; 
-		}
 	endforeach;
 ?>
 	<section class="box-news mb-100">
 		<div class="container">
 			<h2 class="title-1 mb-44"><a href="<?php echo $more_news_url;?>">Notícias</a></h2>
-			<?php echo $ul; ?>
+			<ul class="box-news__list">
+				<?php echo $li; ?>
+			</ul>
 			<a href="<?php echo $more_news_url;?>" class="box-news__load"><i class="mdi mdi-chevron-down"></i><i class="mdi mdi-plus"></i><span class="sr-only">Ver mais</span></a>
 		</div>
 	</section>

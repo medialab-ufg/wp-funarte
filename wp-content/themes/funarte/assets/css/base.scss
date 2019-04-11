@@ -1320,7 +1320,6 @@ body.js .collapse__text { display: none; }
 	}
 
 	.box-news__list {
-		max-height: 0;
 		margin: 0 -30px;
 		padding: 0;
 		display: flex;
@@ -1328,15 +1327,24 @@ body.js .collapse__text { display: none; }
 		flex-wrap: wrap;
 		list-style-type: none;
 		overflow: hidden;
-		transition: max-height 1000ms ease-in-out;
-
-		&:first-of-type,
-		&.visible { max-height: 5000px; }
 
 		& > li {
 			width: 33.33%;
-			padding: 36px 30px 22px;
+			max-height: 0;
+			padding: 0;
+			overflow: hidden;
 			position: relative;
+			transition: max-height 1000ms ease-in-out, padding 200ms ease-in-out;
+
+			&.visible {
+				max-height: 5000px;
+				padding: 36px 30px 22px;
+			}
+		}
+
+		&.box-news__list--interna > li {
+			max-height: 5000px;
+			padding: 36px 30px 22px;
 		}
 
 		img {
@@ -1367,6 +1375,7 @@ body.js .collapse__text { display: none; }
 	width: 350px;
 	height: 208px;
 	margin: 0 auto 13px;
+	display: block;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -1378,22 +1387,44 @@ body.js .collapse__text { display: none; }
 		height: 166px;
 	}
 }
-@media screen and (max-width:991px) {
+@media screen and (max-width:1024px) {
+	.box-news .box-news__list {
+		justify-content: center;
+
+		li {
+			width: 50%;
+			max-width: 390px;
+		}
+	}
 	.box-news__image {
-		width: 200px;
-		height: 119px;
+		width: 330px;
+		height: 195px;
 	}
 }
 @media screen and (max-width:768px) {
+	.box-news .box-news__list li { max-width: 300px; }
 	.box-news__image {
 		width: 240px;
-		height: 143px;
+		height: 142px;
 	}
 }
-@media screen and (max-width:570px) {
+@media screen and (max-width:576px) {
+	.box-news {
+		.link-area { left: 10px; }
+		.box-news__list {
+			margin: 0;
+
+			li {
+				width: 100%;
+				max-width: 275px;
+
+				&.visible { padding: 36px 0 22px; }
+			}
+		}
+	}
 	.box-news__image {
 		width: 275px;
-		height: 164px;
+		height: 162px;
 	}
 }
 
@@ -1433,10 +1464,6 @@ body.js .collapse__text { display: none; }
 			transform: translate(-50%,-50%) rotate(2160deg);
 		}
 	}
-}
-
-@media screen and (max-width:768px) {
-	.box-news .box-news__list li { width: 100%; }
 }
 
 .box-notices-highlight {
