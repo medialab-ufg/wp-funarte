@@ -3183,7 +3183,7 @@ ul.slick-dots {
 		max-width: 400px;
 		padding: 203px 50px 30px 130px;
 		position: relative;
-		transition: width 1s ease-in-out;
+		transition: width 1s ease-in-out, padding 1s ease-in-out, max-width 1s ease-in-out;
 	}
 
 	.carousel-schedule__wrapper,
@@ -3191,10 +3191,11 @@ ul.slick-dots {
 		width: 100%;
 		padding: 0 50px 0 0;
 		position: relative;
+		transition: width 1s ease-in-out, padding 1s ease-in-out, max-width 1s ease-in-out;
 	}
+
 	.carousel-schedule__wrapper {
 		margin-top: -50px;
-		//overflow: hidden;
 
 		&:after {
 			content: "";
@@ -3209,19 +3210,26 @@ ul.slick-dots {
 	}
 
 	.title-2 {
-		min-height: 46px;
+		max-width: 250px;
+		height: 138px;
 		margin-left: -80px;
 		padding-left: 80px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		overflow: hidden;
+		transition: width 1s ease-in-out, padding 1s ease-in-out, margin 1s ease-in-out;
 	}
 	hr {
 		width: 100%;
+		max-width: 150%;
 		height: 4px;
 		margin: 30px 0;
 		display: block;
-		transition: width 1s ease-in-out;
+		transition: width 1s ease-in-out, max-width 1s ease-in-out, padding 1s ease-in-out, margin 1s ease-in-out, transform 1s ease-in-out;
 	}
 	&.barra-larga hr {
-		animation: esticar 2s;
+		animation: esticar 1s;
 	}
 	.color-funarte {
 		.title-2,
@@ -3274,6 +3282,7 @@ ul.slick-dots {
 		position: absolute;
 		top: -31px;
 		left: -80px;
+		transition: transform 1000ms ease-in-out;
 
 		strong {
 			width: 50px;
@@ -3287,6 +3296,7 @@ ul.slick-dots {
 			left: 0;
 			border-radius: 50%;
 			background-color: $branco;
+			transition: color 1000ms ease-in-out, background-color 1000ms ease-in-out;
 		}
 	}
 
@@ -3368,7 +3378,7 @@ ul.slick-dots {
 			background-color: $laranja-1;
 		}
 
-		.carousel-schedule__date { left: 0; }
+		.carousel-schedule__date { transform: translate(80px,0); }
 
 		img {
 			display: none;
@@ -3391,16 +3401,21 @@ ul.slick-dots {
 			width: 100%;
 			display: flex;
 			justify-content: space-between;
+			transition: width 1000ms ease-in-out, padding 1000ms ease-in-out;
 		}
 		.carousel-schedule__column-1 {
 			width: 39%;
 			padding-left: 80px;
+			transition: width 1000ms ease-in-out, padding 1000ms ease-in-out;
 		}
 		.carousel-schedule__column-2 {
 			width: 42%;
 			padding-right: 50px;
+			transition: width 1000ms ease-in-out, padding 1000ms ease-in-out;
 		}
 	}
+
+	.slick-track { transition: transform 1000ms ease-in-out !important; }
 }
 .carousel-schedule__control {
 	width: 30px;
@@ -3501,74 +3516,6 @@ ul.slick-dots {
 		}
 	}
 	.carousel-schedule__thumb { display: none; }
-
-
-	// .box-carousel-schedule {
-	// 	.carousel-schedule__wrapper:after { right: 46%; }
-	// 	.carousel-schedule {
-	// 		& > li,
-	// 		.slick-slide {
-	// 			max-width: 360px;
-
-	// 			.title-2 { width: 100%; }
-	// 		}
-	// 		li.active {
-	// 			max-width: 360px;
-
-	// 			.title-2 { width: 100%; }
-
-	// 			img {
-	// 				max-width: none;
-	// 				width: 100%;
-	// 			}
-
-	// 			.carousel-schedule__row { display: block; }
-
-	// 			.carousel-schedule__column-1,
-	// 			.carousel-schedule__column-2 {
-	// 				width: 100%;
-	// 				padding: 0;
-	// 			}
-	// 			.carousel-schedule__column-2 { margin-top: 20px; }
-	// 		}
-	// 	}
-	// }
-}
-@media screen and (max-width: 767px) {
-	// .box-carousel-schedule {
-	// 	.carousel-schedule__control {
-	// 		bottom: 50%;
-	// 		transform: translate(0,50%);
-	// 	}
-
-	// 	.carousel-schedule {
-	// 		margin: 0;
-	// 		padding: 0;
-	// 		background-color: $cinza-2;
-
-	// 		& > li,
-	// 		.slick-slide,
-	// 		li.active {
-	// 			width: auto;
-	// 			max-width: none;
-	// 			padding: 80px 50px 30px;
-
-	// 			.title-2 { margin: 0; }
-
-	// 			.carousel-schedule__date { left: 0; }
-	// 			.carousel-schedule__wrapper:after { display: none; }
-
-	// 			img {
-	// 				width: 100%;
-	// 				margin-bottom: 50px;
-	// 				display: block;
-	// 				position: static;
-	// 				top: auto;
-	// 				right: auto;
-	// 			}
-	// 		}
-	// 	}
-	// }
 }
 
 @keyframes esticar {
@@ -3577,7 +3524,7 @@ ul.slick-dots {
 		transform: translate(0,0);
 	}
 	10% { transform: translate(20%,0); }
-	30% { width: 200%; }
+	30% { width: 110%; }
 	80% { transform: translate(0,0); }
 	100% { width: 100%; }
 }

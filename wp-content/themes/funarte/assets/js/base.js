@@ -1050,7 +1050,7 @@ var base = {
 			var $carousel = $('.box-carousel-schedule');
 
 			$('.carousel-schedule').slick({
-				speed: 2000,
+				speed: 1000,
 				infinite: false,
 				slidesToShow: 2,
 				slidesToScroll: 1,
