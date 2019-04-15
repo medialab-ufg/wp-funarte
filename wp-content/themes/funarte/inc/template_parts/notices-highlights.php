@@ -13,7 +13,7 @@ else:
 <div class="box-notices-highlight mb-100">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-md-6">
+			<div class="col-xs-12 col-lg-6">
 				<section class="box-carousel-notices">
 					<?php if (isset($url_title)): ?>
 						<h2 class="title-1 mb-60"><a href="<?php echo $url_title; ?>"><?php echo $title ?></a></h2>
@@ -43,8 +43,8 @@ else:
 					</div>
 				</section>
 			</div>
-				<div class="col-xs-12 col-md-6">
-					<section class="box-highlight color-circo">
+				<div class="col-xs-12 col-lg-6">
+					<section class="box-highlight color-<?php echo $destaque['tag_class_area']; ?>">
 						<h2 class="title-1">Destaque</h2>
 						<div class="box-highlight__image" style="background-image: url(<?php echo $destaque['img_url'] ?>);"></div>
 						<div class="link-area">

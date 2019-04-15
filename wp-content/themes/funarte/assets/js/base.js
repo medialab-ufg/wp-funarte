@@ -67,17 +67,21 @@ $(document).ready(function() {
 var base = {
 	instagram: {
 		ativarFeed: function() {
-			var feed = new Instafeed({
-				clientId: '3c600d4399004ec191c6f96130af5c93',
-				accessToken: '289181919.3c600d4.76b5b17c6da94742be36bc1465a1e41d',
-				get: 'user',
-				userId: 289181919,
-				target: 'instagram-feed',
-				limit: 3,
-				resolution: 'standard_resolution',
-				template: '<div class="box-social-media__box"><a href="{{link}}" target="_blank"><img src="{{image}}"/></a><strong>{{caption}}</strong></div>'
-			});
-			feed.run();
+			var $target = ('#instagram-feed');
+
+			if ($target.length > 0) {
+				var feed = new Instafeed({
+					clientId: '3c600d4399004ec191c6f96130af5c93',
+					accessToken: '289181919.3c600d4.76b5b17c6da94742be36bc1465a1e41d',
+					get: 'user',
+					userId: 289181919,
+					target: 'instagram-feed',
+					limit: 3,
+					resolution: 'standard_resolution',
+					template: '<div class="box-social-media__box"><a href="{{link}}" target="_blank"><img src="{{image}}"/></a><strong>{{caption}}</strong></div>'
+				});
+				feed.run();
+			}
 		}
 	},
 
@@ -639,12 +643,12 @@ var base = {
 		visualizar: function() {
 			$('.box-news__load').on('click',function() {
 				var $this = $(this),
-					$proxima = $this.siblings('ul.visible:last').next('ul');
+					$proxima = $this.siblings('.box-news__list').find('li.visible:last').nextAll('li:lt(3)');
 
 				if ($proxima.length > 0) {
 					$proxima.addClass('visible');
 
-					if ($proxima.next('ul').length == 0) {
+					if ($this.siblings('.box-news__list').find('li.visible:last').next('li').length == 0) {
 						$this.addClass('active');
 					}
 
@@ -1046,7 +1050,7 @@ var base = {
 			var $carousel = $('.box-carousel-schedule');
 
 			$('.carousel-schedule').slick({
-				speed: 2000,
+				speed: 1000,
 				infinite: false,
 				slidesToShow: 2,
 				slidesToScroll: 1,

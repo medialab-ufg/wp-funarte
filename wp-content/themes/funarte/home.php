@@ -55,7 +55,7 @@ query_posts(array_merge(array(
 
 		<section class="box-news">
 			<div class="container">
-				<ul class='box-news__list visible'>
+				<ul class='box-news__list box-news__list--interna'>
 					<?php if (have_posts()) :	while (have_posts()) : 
 						the_post();
 						$area = get_the_category()[0];

@@ -57,6 +57,11 @@
 			</tr>
 		</table>
 		
+		<h3>Notícia Relacionada</h3>
+		<div id="related_post_container">
+			<?php echo $this->get_evento_related_post_metabox_content($post->ID); ?>
+		</div>
+		
 		<script type="text/javascript">
 		jQuery(document).ready(function() {
 			// Data de início
@@ -98,6 +103,14 @@
 				jQuery('#horaInicio').parent().parent().fadeIn();
 				jQuery('#horaFim').parent().parent().fadeIn();
 				jQuery('tr.msg-horas').fadeIn();
+			});
+			// Criando post relacionado
+			jQuery('#criar-noticia-relacionada').click(function() {
+				jQuery(this).attr('disabled', 'disabled');
+				jQuery(this).val('Criando...');
+				jQuery.get(ajaxurl, {action: 'evento_create_related_post', event_id: jQuery('#post_ID').val()}, function(data) {
+					jQuery('#related_post_container').html(data);
+				});
 			});
 		});
 		</script>
