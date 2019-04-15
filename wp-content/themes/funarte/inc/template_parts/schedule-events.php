@@ -41,6 +41,7 @@ else:
 		</div>
 
 		<ul class="carousel-schedule">
+			<li></li>
 			<?php $id=0;foreach ($items as $item): $id++;?>
 				<li class="color-<?php echo $item['tag_class_area']; ?> <?php echo $id==2? 'active' : ''; ?>">
 					<img src="<?php echo $item['url_img']; ?>" alt="<?php echo $item['title']; ?>">
@@ -64,6 +65,7 @@ else:
 					</div>
 				</li>
 			<?php endforeach; ?>
+			<li></li>
 		</ul>
 	</div>
 </section>

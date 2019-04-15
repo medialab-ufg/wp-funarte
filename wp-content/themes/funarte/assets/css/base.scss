@@ -3226,10 +3226,7 @@ ul.slick-dots {
 		height: 4px;
 		margin: 30px 0;
 		display: block;
-		transition: width 1s ease-in-out, max-width 1s ease-in-out, padding 1s ease-in-out, margin 1s ease-in-out, transform 1s ease-in-out;
-	}
-	&.barra-larga hr {
-		animation: esticar 1s;
+		transition: width 1s ease-in-out, transform 400ms ease-in-out;
 	}
 	.color-funarte {
 		.title-2,
@@ -3300,8 +3297,15 @@ ul.slick-dots {
 		}
 	}
 
-	img,
-	p { display: none; }
+	img { display: none; }
+	p {
+		height: 0;
+		margin: 0;
+		overflow: hidden;
+		opacity: 0;
+		z-index: -2;
+		transition: opacity 200ms ease-in-out, z-index 0s 200ms ease-in-out, height 0s 200ms ease-in-out;
+	}
 
 	.carousel-schedule__time,
 	.carousel-schedule__local {
@@ -3388,19 +3392,32 @@ ul.slick-dots {
 		}
 
 		p {
-			margin: 0;
+			width: 240px;
+			height: 112px;
 			font-size: .9rem;
 			color: $cinza-6;
 			line-height: 1rem;
 			display: block;
+			position: absolute;
+			top: 0;
+			right: 50px;
+			opacity: 1;
+			z-index: 2;
+			transition: opacity 200ms ease-in-out;
 		}
 
-		hr { width: 70%; }
+		.link-more { margin-top: 132px; }
+
+		hr {
+			width: 70%;
+			transition: width 1s ease-in-out, transform 400ms ease-in-out;
+		}
 
 		.carousel-schedule__row {
 			width: 100%;
 			display: flex;
 			justify-content: space-between;
+			position: relative;
 			transition: width 1000ms ease-in-out, padding 1000ms ease-in-out;
 		}
 		.carousel-schedule__column-1 {
@@ -3473,7 +3490,7 @@ ul.slick-dots {
 	&.visible {
 		opacity: 1;
 		z-index: 2;
-		transition: opacity 2s ease-in-out;
+		transition: opacity 1s ease-in-out;
 	}
 }
 
@@ -3516,17 +3533,6 @@ ul.slick-dots {
 		}
 	}
 	.carousel-schedule__thumb { display: none; }
-}
-
-@keyframes esticar {
-	0% {
-		width: 100%;
-		transform: translate(0,0);
-	}
-	10% { transform: translate(20%,0); }
-	30% { width: 110%; }
-	80% { transform: translate(0,0); }
-	100% { width: 100%; }
 }
 
 /* LISTAS */

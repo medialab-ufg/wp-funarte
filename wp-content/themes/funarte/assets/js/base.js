@@ -1050,7 +1050,7 @@ var base = {
 			var $carousel = $('.box-carousel-schedule');
 
 			$('.carousel-schedule').slick({
-				speed: 1000,
+				speed: 500,
 				infinite: false,
 				slidesToShow: 2,
 				slidesToScroll: 1,
@@ -1059,6 +1059,7 @@ var base = {
 				nextArrow: $carousel.find('.control__prev'),
 				adaptiveHeight: true,
 				variableWidth: true,
+				initialSlide: 1,
 				responsive: [
 					{
 						breakpoint: 992,
@@ -1079,10 +1080,17 @@ var base = {
 					.find('.carousel-schedule__image-' + (nextSlide + 1))
 					.addClass('visible');
 
-				$carousel.addClass('barra-larga');
+				$('.box-carousel-schedule .color-artes-visuais hr').css({
+					'width':'150%',
+					'transform': 'translate(20%,0)'
+				});
 			})
 			.on('afterChange', function() {
-				$carousel.removeClass('barra-larga');
+				$('.box-carousel-schedule .color-artes-visuais hr').css({
+					'width':'100%',
+					'transform': 'translate(0,0)'
+				});
+				$('.box-carousel-schedule li.slick-active+.slick-active hr').css('width','70%');
 			});
 		},
 
