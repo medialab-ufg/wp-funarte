@@ -7,7 +7,7 @@
 	<main role="main">
 		<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 		<div class="container">
-			<?php 
+			<?php
 				$areas = get_the_category();
 				$tags = [];
 				foreach ($areas as $area):
@@ -15,6 +15,12 @@
 										'name'=> $area->name,
 										'url_area'=> home_url() . '/category/' . $area->slug];
 				endforeach;
+				$data_inicio = strtotime(get_post_meta(get_the_ID(), 'evento-inicio', true));
+				$data_fim = strtotime(get_post_meta(get_the_ID(), 'evento-fim', true));
+				$hora_inicio = date_i18n('H:i', $data_inicio);
+				$hora_fim = date_i18n('H:i', $data_fim);
+				$dia_inteiro = (bool)get_post_meta(get_the_ID(), 'evento-diainteiro', true);
+				$multiplo= (bool)get_post_meta(get_the_ID(), 'evento-multiplo', true);
 
 				$links = [
 					['link_name'=>'Agenda','link_url'=>'/evento'],
@@ -49,6 +55,25 @@
 									<a href="<?php echo $ev_site; ?>" rel="nofollow"><?php echo $ev_site; ?></a>
 								<?php endif; ?>
 							</div>
+
+							<?php if ($multiplo): ?>
+								<span><b>Dias:</b></span>
+								<span>De <?php echo date_i18n('j \d\e F', $data_inicio);?> a <?php echo date_i18n('j \d\e F \d\e Y', $data_fim) ?></span>
+							<?php else: ?>
+								<span><b>Dia:/<b></span>
+								<span><?php echo date_i18n('j \d\e F \d\e Y', $data_inicio) ?></strong></span>
+							<?php endif; ?>
+
+							<?php if ($dia_inteiro) : ?>
+								<span><b>Horário:</b></span>
+								<span>Evento de dia inteiro</span>
+							<?php elseif (!$multiplo && ($hora_inicio == $hora_fim)) : ?>
+								<span><b>Horário:</b></span>
+								<span><?php echo $hora_inicio; ?></span>
+							<?php else: ?>
+								<span><b>Horário:</b></span>
+								<span><?php echo $hora_inicio; ?> às <?php echo $hora_fim; ?></span>
+							<?php endif; ?>
 
 							<?php if ($ev_local = get_post_meta(get_the_ID(), 'evento-local', true)): ?>
 								<span><b>Local:</b></span>
