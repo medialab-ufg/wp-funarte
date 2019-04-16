@@ -60,7 +60,7 @@
 								<span><b>Dias:</b></span>
 								<span>De <?php echo date_i18n('j \d\e F', $data_inicio);?> a <?php echo date_i18n('j \d\e F \d\e Y', $data_fim) ?></span>
 							<?php else: ?>
-								<span><b>Dia:/<b></span>
+								<span><b>Dia:</b></span>
 								<span><?php echo date_i18n('j \d\e F \d\e Y', $data_inicio) ?></strong></span>
 							<?php endif; ?>
 
