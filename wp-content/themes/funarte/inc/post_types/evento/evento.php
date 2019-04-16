@@ -545,7 +545,14 @@ class Evento {
 	
 	public function create_related_post($event_id) {
 		$event = get_post($event_id);
-		
+
+		$data_inicio	= strtotime(get_post_meta($event_id, 'evento-inicio', true));
+		$data_fim			= strtotime(get_post_meta($event_id, 'evento-fim', true));
+		$hora_inicio	= date_i18n('H:i', $data_inicio);
+		$hora_fim			= date_i18n('H:i', $data_fim);
+		$dia_inteiro	= (bool)get_post_meta($event_id, 'evento-diainteiro', true);
+		$multiplo			= (bool)get_post_meta($event_id, 'evento-multiplo', true);
+
 		$content = $event->post_content;
 		
 		$box = "\n\n";
@@ -569,6 +576,30 @@ class Evento {
 			$box .= '<span><b>Local:</b></span>';
 			$box .= "\n";
 			$box .= '<span>' . $ev_local . '</span>';
+			$box .= "\n";
+		}
+
+		if ($multiplo) {
+			$box .= '<span><b>Dias: </b></span>';
+			$box .= '<span>De ' . date_i18n('j \d\e F', $data_inicio) . ' a ' . date_i18n('j \d\e F \d\e Y', $data_fim) . '</span>';
+			$box .= "\n";
+		} else {
+			$box .= '<span><b>Dia:</b></span>';
+			$box .= '<span>' . date_i18n('j \d\e F \d\e Y', $data_inicio) . '</strong></span>';
+			$box .= "\n";
+		}
+
+		if ($dia_inteiro) {
+			$box .= '<span><b>Horário: </b></span>';
+			$box .= '<span>Evento de dia inteiro</span>';
+			$box .= "\n";
+		} elseif (!$multiplo && ($hora_inicio == $hora_fim)) {
+			$box .= '<span><b>Horário: </b></span>';
+			$box .= '<span>' . $hora_inicio . '</span>';
+			$box .= "\n";
+		} else {
+			$box .= '<span><b>Horário: </b></span>';
+			$box .= '<span>' . $hora_inicio . ' às ' . $hora_fim . '</span>';
 			$box .= "\n";
 		}
 		
