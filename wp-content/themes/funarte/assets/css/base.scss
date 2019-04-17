@@ -4224,17 +4224,17 @@ ul.slick-dots {
 			padding: 20px 25px 2px;
 			border-top: 1px solid $cinza-3;
 		}
+
+		& > strong {
+			font-family: 'Sansita', sans-serif;
+			font-size: .9rem;
+			color: $cinza-6;
+			line-height: 1rem;
+			display: block;
+		}
 	}
 
 	.link-area { margin-bottom: 21px; }
-
-	strong {
-		font-family: 'Sansita', sans-serif;
-		font-size: .9rem;
-		color: $cinza-6;
-		line-height: 1rem;
-		display: block;
-	}
 
 	.link-more { margin-top: 17px; }
 }
@@ -4311,7 +4311,7 @@ aside .list-bidding--type-b {
 
 			.link-area { margin-bottom: 0; }
 
-			strong {
+			& > strong {
 				font-size: 1.3rem;
 				line-height: 1.5rem;
 			}
