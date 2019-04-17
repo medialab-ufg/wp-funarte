@@ -3821,7 +3821,8 @@ ul.slick-dots {
 
 /* NOVO ÁUDIO */
 
-.audios-list__box.audio-component.video-active .videos-list__video {
+.audios-list__box.audio-component.video-active .videos-list__video,
+.video-list__type-audio .video-player {
 	height: 35px;
 	top: auto;
 	bottom: 0;
@@ -3829,6 +3830,22 @@ ul.slick-dots {
 	video {
 		height: 35px !important;
 		opacity: 0;
+	}
+}
+.video-list__type-audio .video-player {
+	height: 35px !important;
+
+	.video-bar { background: none; }
+	.video-progress .video-progress__background { background-color: #eee; }
+
+	.video-pause,
+	.video-play { left: 0; }
+	.video-full { right: 0; }
+	.video-volume { right: 30px; }
+	.video-duration { right: 60px; }
+	.video-current { right: 102px; }
+	.video-progress {
+		padding: 0 160px 0 27px;
 	}
 }
 
