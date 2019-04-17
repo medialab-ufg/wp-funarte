@@ -68,11 +68,10 @@ $(document).ready(function() {
 var base = {
 	instagram: {
 		ativarFeed: function() {
-			var $target = ('#instagram-feed');
+			var $target = $('#instagram-feed');
 
 			if ($target.length > 0) {
 				var feed = new Instafeed({
-					//clientId: '3c600d4399004ec191c6f96130af5c93',
 					accessToken: funarte.instagram.access_token,//'289181919.3c600d4.76b5b17c6da94742be36bc1465a1e41d',
 					get: 'user',
 					userId: funarte.instagram.user_id,//289181919
