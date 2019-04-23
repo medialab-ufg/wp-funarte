@@ -42,26 +42,62 @@
 										</div>
 									</div>
 									<div class="col-md-5">
-										<div class="box-tainacan-document__playlist">
-											<strong>Estúdio F - Rita Lee - Bloco 1 de 3</strong>
-											<div class="audio-player">
-												<ul class="playlist">
-													<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3'; ?>"></a></li>
-												</ul>
-											</div>
+										<div class="video-list video-list__type-audio">
+											<div class="box-tainacan-document__playlist">
+												<strong>Estúdio F - Rita Lee - Bloco 1 de 3</strong>
 
-											<strong>Estúdio F - Rita Lee - Bloco 2 de 3</strong>
-											<div class="audio-player">
-												<ul class="playlist">
-													<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3'; ?>"></a></li>
-												</ul>
-											</div>
+												<div class="video-player mb-60">
+													<video autoplay src="http://localhost.funarte/wp-content/uploads/2019/02/sound.mp3" class="video-video"></video>
+													<div class="video-bar">
+														<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
+														<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
+														<div class="video-progress">
+															<div class="video-progress__background">
+																<div class="video-progress__bar"></div>
+															</div>
+														</div>
+														<div class="video-current"></div>
+														<div class="video-duration"></div>
+														<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>
+														<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
+													</div>
+												</div>
 
-											<strong>Estúdio F - Rita Lee - Bloco 3 de 3</strong>
-											<div class="audio-player">
-												<ul class="playlist">
-													<li><a href="<?php echo get_template_directory_uri() . '/assets/audio/sound.mp3'; ?>"></a></li>
-												</ul>
+												<strong>Estúdio F - Rita Lee - Bloco 2 de 3</strong>
+												<div class="video-player mb-60">
+													<video autoplay src="http://localhost.funarte/wp-content/uploads/2019/02/sound.mp3" class="video-video"></video>
+													<div class="video-bar">
+														<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
+														<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
+														<div class="video-progress">
+															<div class="video-progress__background">
+																<div class="video-progress__bar"></div>
+															</div>
+														</div>
+														<div class="video-current"></div>
+														<div class="video-duration"></div>
+														<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>
+														<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
+													</div>
+												</div>
+
+												<strong>Estúdio F - Rita Lee - Bloco 3 de 3</strong>
+												<div class="video-player mb-60">
+													<video autoplay src="http://localhost.funarte/wp-content/uploads/2019/02/sound.mp3" class="video-video"></video>
+													<div class="video-bar">
+														<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
+														<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
+														<div class="video-progress">
+															<div class="video-progress__background">
+																<div class="video-progress__bar"></div>
+															</div>
+														</div>
+														<div class="video-current"></div>
+														<div class="video-duration"></div>
+														<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>
+														<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>

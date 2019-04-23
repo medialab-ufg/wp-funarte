@@ -40,10 +40,6 @@ function theme_options_page_callback_function() {
 				</div>
 
 				<h3>Dados da conta do Instagram</h3>
-				<!-- <div class="span-6 last">
-		  		<label for="instagram-client-id"><strong>Client ID</strong></label>
-		  		<input type="text" id="instagram-client-id" class="text" name="theme_options[instagram][client_id]" value="<?php echo htmlspecialchars($options['instagram']['client_id']); ?>"/>
-				</div> -->
 				<div class="span-6 last">
 		  		<label for="instagram-access-token"><strong>Access token</strong></label>
 		  		<input type="text" id="instagram-access-token" class="text" name="theme_options[instagram][access_token]" value="<?php echo htmlspecialchars($options['instagram']['access_token']); ?>"/>

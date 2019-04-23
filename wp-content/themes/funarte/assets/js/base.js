@@ -70,7 +70,7 @@ var base = {
 		ativarFeed: function() {
 			var $target = $('#instagram-feed');
 
-			if ($target.length > 0) {
+			if (($target.length > 0) && (funarte.instagram.access_token != '') && (funarte.instagram.user_id != '')) {
 				var feed = new Instafeed({
 					accessToken: funarte.instagram.access_token,//'289181919.3c600d4.76b5b17c6da94742be36bc1465a1e41d',
 					get: 'user',
