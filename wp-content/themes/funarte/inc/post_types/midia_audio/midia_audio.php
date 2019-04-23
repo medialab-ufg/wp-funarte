@@ -44,8 +44,7 @@ class MidiaAudio {
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
-			'supports' => array(
-				'title', 'editor', ),
+			'supports' => array('title'),
 			'taxonomies' => [
 				taxTag::get_instance()->get_name(),
 				taxCategoria::get_instance()->get_name(),
