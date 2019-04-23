@@ -776,7 +776,7 @@ var base = {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				vertical: true,
-				//adaptiveHeight: true,
+				adaptiveHeight: true,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
 			});

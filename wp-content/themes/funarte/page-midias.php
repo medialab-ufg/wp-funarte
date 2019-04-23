@@ -31,20 +31,31 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 											<div class="link-area">
 												<a class="color-funarte" href="#">Vídeo</a>
 											</div>
-											<video autoplay src="<?php echo $url; ?>" class="video-video"></video>
-											<div class="video-bar">
-												<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
-												<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
-												<div class="video-progress">
-													<div class="video-progress__background">
-														<div class="video-progress__bar"></div>
+											<?php
+												$youtube = explode('?v=', $url);
+												if ( ! empty($youtube[1]) ):
+											?>
+
+												<iframe class="video-player__youtube" src="https://www.youtube.com/embed/<?php echo $youtube[1]; ?>" frameborder="0" allowfullscreen></iframe>
+
+											<?php else: ?>
+
+												<video autoplay src="<?php echo $url; ?>" class="video-video"></video>
+												<div class="video-bar">
+													<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
+													<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
+													<div class="video-progress">
+														<div class="video-progress__background">
+															<div class="video-progress__bar"></div>
+														</div>
 													</div>
+													<div class="video-current"></div>
+													<div class="video-duration"></div>
+													<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>
+													<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
 												</div>
-												<div class="video-current"></div>
-												<div class="video-duration"></div>
-												<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>
-												<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
-											</div>
+
+											<?php endif; ?>
 										</div>
 									</div>
 									<div class="box-carousel-audio__row-2">
@@ -53,7 +64,7 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 
 											<?php 
 												$string = (strlen($video->post_content) > 200) ? substr($video->post_content,0,200).'...' : $video->post_content;
-												echo $string;
+												echo '<p>' . $string . '</p>';
 											?>
 										</div>
 									</div>

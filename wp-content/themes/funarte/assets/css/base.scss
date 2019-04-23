@@ -3882,6 +3882,13 @@ ul.slick-dots {
 		}
 	}
 
+	.video-player__youtube {
+		width: 100% !important;
+		height: 374px !important;
+		max-height: 374px !important;
+		display: block;
+	}
+
 	.video-bar {
 		width: 100%;
 		height: 35px;
@@ -4044,6 +4051,8 @@ ul.slick-dots {
 		}
 
 		video { max-height: 137.5px; }
+
+		.video-player__youtube { height: 137.5px !important; }
 	}
 
 	.audios-list__box.video-active .audios-list__text { display: none; }
@@ -6415,13 +6424,20 @@ ul.social-media-list {
 		display: block;
 	}
 }
-.box-carousel-audio .box-carousel-audio__info p { height: auto; }
+.box-carousel-audio .box-carousel-audio__info p {
+	height: auto;
+	min-height: 51px;
+}
 .box-carousel-audio__image {
 	height: 374px;
 	flex: 0 0 372px;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+@media screen and (max-width: 1200px) {
+	.box-carousel-audio .box-carousel-audio__info p { min-height: 68px; }
 }
 
 /* CARROSSEL DE CALENDÁRIO DE EVENTOS */
