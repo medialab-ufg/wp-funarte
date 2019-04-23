@@ -34,7 +34,7 @@
 			<input type="checkbox" id="destaque-secundario" name="destaque[secundario]" <?php if($secundario) { echo 'checked = "checked"';} ?> /><label for="destaque-secundario">Destaque como Secundário</label><br />
 		</td>
 	</tr>
-	<tr>
+	<!-- <tr>
 		<td width="15%">
 			<label for="destaque-posicao">Posição</label>
 		</td>
@@ -42,7 +42,7 @@
 			<input type="radio" id="destaque-posicao-1" name="destaque[posicao]" value="1" <?php if($posicao == 1) {echo 'checked == "checked"';} ?> /><label for="destaque-posicao-1">Destaque principal com imagem </label><br />
 			<input type="radio" id="destaque-posicao-2" name="destaque[posicao]" value="2" <?php if($posicao == 2) {echo 'checked == "checked"';} ?>/><label for="destaque-posicao-2">Destaque lateral</label>
 		</td>
-	</tr>
+	</tr> -->
 	<tr>
 		<td width="15%">
 			<label for="destaque-posicao">Onde abrir</label>

@@ -142,10 +142,10 @@ class DestaqueHome {
 		foreach ($destaques as $k => &$destaque) {
 			$destaque->posicao = (int)get_post_meta($destaque->ID, 'destaque-posicao', true);
 			$destaque->url = get_post_meta($destaque->ID, 'destaque-url', true);
-			if ($destaque->posicao != $posicao) {
-				unset($destaques[$k]);
-				continue;
-			}
+			// if ($destaque->posicao != $posicao) {
+			// 	unset($destaques[$k]);
+			// 	continue;
+			// }
 			if ($i++ > $limite) {
 				unset($destaques[$k]);
 			}
