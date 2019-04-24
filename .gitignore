@@ -6,3 +6,7 @@ package-lock.json
 .htaccess
 wp-content/plugins/tainacan-nightly.zip
 wp-content/plugins/classic-editor
+wp-content/plugins/tainacan
+wp-content/plugins/jetpack
+wp-content/plugins/google-analytics-for-wordpress
+wp-content/languages

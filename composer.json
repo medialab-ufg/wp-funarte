@@ -9,19 +9,17 @@
         }
     ],
     "require": {
-        "johnpbloch/wordpress": "5.0.*",
-        "wpackagist-plugin/classic-editor": "1.*"
+        "johnpbloch/wordpress": "5.1.*",
+        "wpackagist-plugin/classic-editor": "1.*",
+        "wpackagist-plugin/tainacan": "0.*",
+		"wpackagist-plugin/google-analytics-for-wordpress": "7.6.*",
+		"wpackagist-plugin/jetpack": "*"
     },
     "extra": {
         "wordpress-install-dir": "wp",
         "installer-paths": {
             "wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
         }
-    },
-    "scripts": {    
-        "post-install-cmd": [
-            "./get_tainacan.sh"
-        ]
     }
 }
 
