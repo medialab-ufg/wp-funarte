@@ -1,7 +1,8 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^wp-content\/uploads\/?(.*)$ "http\:\/\/www.funarte.gov.br\/wp-content\/uploads\/$1" [R=302,L]
+# Descomente as linhas abaixo para o ambiente de desenvolvimento puxar imagens do ar
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule ^wp-content\/uploads\/?(.*)$ "http\:\/\/www.funarte.gov.br\/wp-content\/uploads\/$1" [R=302,L]
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
