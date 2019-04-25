@@ -81,6 +81,8 @@ Agora você está com todas as bibliotecas e classes necessárias para o funcion
 
 # Outras informações:
 
+** Isso não é necessário para ambiente de produção, apenas para ambiente de desenvolvimento **
+
 ## Compilando **sass** e **javascript**
 #### Ativar o automatizador de tarefas
 
