@@ -12,8 +12,10 @@
         "johnpbloch/wordpress": "5.1.*",
         "wpackagist-plugin/classic-editor": "1.*",
         "wpackagist-plugin/tainacan": "0.*",
-		"wpackagist-plugin/google-analytics-for-wordpress": "7.6.*",
-		"wpackagist-plugin/jetpack": "*"
+        "wpackagist-plugin/google-analytics-for-wordpress": "7.6.*",
+        "wpackagist-plugin/jetpack": "*",
+        "wpackagist-plugin/wp-mail-smtp": "*"
+	    
     },
     "extra": {
         "wordpress-install-dir": "wp",
