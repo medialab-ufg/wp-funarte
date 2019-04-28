@@ -1,3 +1,24 @@
+<?php 
+$item = tainacan_get_item();
+$bloco1 = wp_get_attachment_url($item->get_document());
+$bloco1_post = get_post($item->get_document());
+$bloco1_title = $bloco1_post->post_title;
+$attachments = get_attached_media( 'audio' );
+
+$bloco2= false;
+$bloco3 = false;
+if (is_array($attachments) && sizeof($attachments) > 0) {
+	$_bl1 = array_shift($attachments);
+	$bloco2 = wp_get_attachment_url($_bl1->ID);
+	$bloco2_title = $_bl1->post_title;
+}
+if (is_array($attachments) && sizeof($attachments) > 0) {
+	$_bl2 = array_shift($attachments);
+	$bloco3 = wp_get_attachment_url($_bl2->ID);
+	$bloco3_title = $_bl2->post_title;
+}
+?>
+
 <?php get_header(); ?>
 
 <main role="main">
@@ -26,28 +47,71 @@
 				<div class="tainacan-single-post collection-single-item">
 					<article role="article" id="post_<?php the_ID()?>" <?php post_class()?>>
 						<?php if ( tainacan_has_document() ) : ?>
-							<h3 class="title-content-items"><?php _e( 'Document', 'tainacan-interface' ); ?></h3>
+							<h3 class="title-content-items">Conteúdo</h3>
 
 							<div class="box-tainacan-document">
 								<div class="row justify-content-between">
 									<div class="col-md-6">
+										
+										<ul class="box-acervo__social-media-list">
+											<?php if ( true == get_theme_mod( 'tainacan_facebook_share', true ) ) : ?> 
+												<li>
+													<a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="item-card-link--sharing" target="_blank">
+														<img src="<?php echo get_template_directory_uri() . '/assets/img/ico/facebook-circle.png'; ?>" alt="">
+													</a>
+												</li>
+											<?php endif; ?>
+											<?php if ( true == get_theme_mod( 'tainacan_twitter_share', true ) ) : ?> 
+												<?php
+												$twitter_option = get_option( 'tainacan_twitter_user' );
+												$via = ! empty( $twitter_option ) ? '&amp;via=' . esc_attr( get_option( 'tainacan_twitter_user' ) ) : '';
+												?>
+												<li>
+													<a href="http://twitter.com/share?url=<?php the_permalink(); ?>&amp;text=<?php the_title_attribute(); ?><?php echo $via; ?>" target="_blank" class="item-card-link--sharing">
+														<img src="<?php echo get_template_directory_uri() . '/assets/img/ico/twitter-circle.png'; ?>" alt="">
+													</a>
+												</li>
+											<?php endif; ?>
+											<?php if ( true == get_theme_mod( 'tainacan_google_share', true ) ) : ?> 
+												<li>
+													<a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" target="_blank" class="item-card-link--sharing">
+														<img src="<?php echo get_template_directory_uri() . '/assets/img/ico/google-plus-circle.png'; ?>" alt="">
+													</a>
+												</li>
+											<?php endif; ?>
+										</ul>
+										
+										<br/>
+										<?php if (has_post_thumbnail()): ?>
+											<div class="box-tainacan-document__data">
+												<h4 class="box-acervo__metadata-title"><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h4>
+												<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'tainacan-medium-full' ) ?>">
+											</div>
+										<?php endif; ?>	
+										
 										<div class="box-tainacan-document__data">
-											<strong>Descrição</strong>
-											<p>Filha de descendentes de italianos e americanos, essa  paulistana nasceu no último dia de 1947 já arrombando a festa de réveillon. Desde cedo mos-trou interesse pela música e, como boa “ovelha negra” da família, um belo dia resolveu mudar pra fazer tudo o que queria fazer. Aumenta que isso aí é rock and roll! Estúdio F Rita Lee está no ar.</p>
+											<?php
+												$args = array(
+													'before_title' => '<strong class="box-acervo__metadata-title">',
+													'after_title' => '</strong>',
+													'before_value' => '<p>',
+													'after_value' => '</p>',
+													'exclude_title' => true
+												);
+												//$field = null;
+												tainacan_the_metadata( $args );
+											?>
 										</div>
 
-										<div class="box-tainacan-document__data">
-											<strong>Miniatura</strong>
-											<img src="<?php echo get_template_directory_uri() . '/assets/img/fke/rita.png'; ?>" alt="Miniatura">
-										</div>
+										
 									</div>
 									<div class="col-md-5">
 										<div class="video-list video-list__type-audio">
 											<div class="box-tainacan-document__playlist">
-												<strong>Estúdio F - Rita Lee - Bloco 1 de 3</strong>
+												<strong><?php echo $bloco1_title; ?></strong>
 
 												<div class="video-player mb-60">
-													<video autoplay src="http://localhost.funarte/wp-content/uploads/2019/02/sound.mp3" class="video-video"></video>
+													<video autoplay src="<?php echo $bloco1; ?>" class="video-video"></video>
 													<div class="video-bar">
 														<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
 														<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
@@ -62,42 +126,53 @@
 														<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
 													</div>
 												</div>
+												
+												<?php if ($bloco2): ?>
+													
+													<strong><?php echo $bloco2_title; ?></strong>
 
-												<strong>Estúdio F - Rita Lee - Bloco 2 de 3</strong>
-												<div class="video-player mb-60">
-													<video autoplay src="http://localhost.funarte/wp-content/uploads/2019/02/sound.mp3" class="video-video"></video>
-													<div class="video-bar">
-														<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
-														<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
-														<div class="video-progress">
-															<div class="video-progress__background">
-																<div class="video-progress__bar"></div>
+													<div class="video-player mb-60">
+														<video autoplay src="<?php echo $bloco2; ?>" class="video-video"></video>
+														<div class="video-bar">
+															<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
+															<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
+															<div class="video-progress">
+																<div class="video-progress__background">
+																	<div class="video-progress__bar"></div>
+																</div>
 															</div>
+															<div class="video-current"></div>
+															<div class="video-duration"></div>
+															<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>
+															<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
 														</div>
-														<div class="video-current"></div>
-														<div class="video-duration"></div>
-														<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>
-														<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
 													</div>
-												</div>
+													
+												<?php endif; ?>
+												
+												<?php if ($bloco3): ?>
+													
+													<strong><?php echo $bloco3_title; ?></strong>
 
-												<strong>Estúdio F - Rita Lee - Bloco 3 de 3</strong>
-												<div class="video-player mb-60">
-													<video autoplay src="http://localhost.funarte/wp-content/uploads/2019/02/sound.mp3" class="video-video"></video>
-													<div class="video-bar">
-														<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
-														<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
-														<div class="video-progress">
-															<div class="video-progress__background">
-																<div class="video-progress__bar"></div>
+													<div class="video-player mb-60">
+														<video autoplay src="<?php echo $bloco3; ?>" class="video-video"></video>
+														<div class="video-bar">
+															<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
+															<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
+															<div class="video-progress">
+																<div class="video-progress__background">
+																	<div class="video-progress__bar"></div>
+																</div>
 															</div>
+															<div class="video-current"></div>
+															<div class="video-duration"></div>
+															<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>
+															<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
 														</div>
-														<div class="video-current"></div>
-														<div class="video-duration"></div>
-														<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>
-														<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>
 													</div>
-												</div>
+													
+												<?php endif; ?>
+
 											</div>
 										</div>
 									</div>
@@ -108,53 +183,6 @@
 					</article>
 				</div>
 
-
-				<?php if ( tainacan_has_document() ) : ?>
-					<div class="tainacan-border"></div>
-				<?php endif; ?>
-
-				<?php
-					$attachment = array_values(
-						get_children(
-							array(
-								'post_parent' => $post->ID,
-								'post_type' => 'attachment',
-								'post_mime_type' => 'image',
-								'order' => 'ASC',
-								'numberposts'  => -1,
-							)
-						)
-					);
-				?>
-
-				<?php if ( ! empty( $attachment ) ) : ?>
-
-					<section class="box-carousel-attachments">
-						<h3 class="box-carousel-attachments__title"><?php _e( 'Attachments', 'tainacan-interface' ); ?></h3>
-
-						<div class="box-carousel-attachments__wrapper">
-							<div class="box-carousel__control">
-								<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
-								<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
-							</div>
-
-							<ul class="carousel-attachments">
-								<?php foreach ( $attachment as $attachment ) { ?>
-									<li>
-										<a href="<?php echo $attachment->guid; ?>" target="_BLANK" style="background-image: url(<?php echo wp_get_attachment_image_url( $attachment->ID, 'tainacan-interface-item-attachments' ); ?>);"></a>
-									</li>
-								<?php }
-								?>
-							</ul>
-						</div>
-					</section>
-
-					<div class="tainacan-title my-5">
-						<div class="border-bottom border-silver tainacan-title-page" style="border-width: 1px !important;">
-						</div>
-					</div>
-
-				<?php endif; ?>
 
 
 				<?php
@@ -201,55 +229,6 @@
 					<article role="article">
 						<?php do_action( 'tainacan-interface-single-item-metadata-begin' ); ?>
 
-						<ul class="box-acervo__metadata">
-							<li>
-								<div class="box-acervo__header">
-									<h4 class="box-acervo__metadata-title"><?php _e( 'Thumbnail', 'tainacan-interface' ); ?></h4>
-									<img src="<?php echo get_the_post_thumbnail_url( get_the_ID(), 'tainacan-medium-full' ) ?>">
-								</div>
-							</li>
-							<li>
-								<h4 class="box-acervo__metadata-title"><?php _e( 'Share', 'tainacan-interface' ); ?></h4>
-
-								<ul class="box-acervo__social-media-list">
-									<?php if ( true == get_theme_mod( 'tainacan_facebook_share', true ) ) : ?> 
-										<li>
-											<a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" class="item-card-link--sharing" target="_blank">
-												<img src="<?php echo get_template_directory_uri() . '/assets/img/ico/facebook-circle.png'; ?>" alt="">
-											</a>
-										</li>
-									<?php endif; ?>
-									<?php if ( true == get_theme_mod( 'tainacan_twitter_share', true ) ) : ?> 
-										<?php
-										$twitter_option = get_option( 'tainacan_twitter_user' );
-										$via = ! empty( $twitter_option ) ? '&amp;via=' . esc_attr( get_option( 'tainacan_twitter_user' ) ) : '';
-										?>
-										<li>
-											<a href="http://twitter.com/share?url=<?php the_permalink(); ?>&amp;text=<?php the_title_attribute(); ?><?php echo $via; ?>" target="_blank" class="item-card-link--sharing">
-												<img src="<?php echo get_template_directory_uri() . '/assets/img/ico/twitter-circle.png'; ?>" alt="">
-											</a>
-										</li>
-									<?php endif; ?>
-									<?php if ( true == get_theme_mod( 'tainacan_google_share', true ) ) : ?> 
-										<li>
-											<a href="https://plus.google.com/share?url=<?php the_permalink(); ?>" target="_blank" class="item-card-link--sharing">
-												<img src="<?php echo get_template_directory_uri() . '/assets/img/ico/google-plus-circle.png'; ?>" alt="">
-											</a>
-										</li>
-									<?php endif; ?>
-								</ul>
-							</li>
-							<?php
-								$args = array(
-									'before_title' => '<li><h4 class="box-acervo__metadata-title">',
-									'after_title' => '</h4>',
-									'before_value' => '<p>',
-									'after_value' => '</p></li>',
-								);
-								//$field = null;
-								tainacan_the_metadata( $args );
-							?>
-						</ul>
 					</article>
 				</div>
 
