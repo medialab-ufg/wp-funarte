@@ -32,11 +32,11 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 												<a class="color-funarte" href="#">Vídeo</a>
 											</div>
 											<?php
-												$youtube = explode('?v=', $url);
-												if ( ! empty($youtube[1]) ):
+												$youtube = get_youtube_video_ID($url);
+												if ( $youtube != false ):
 											?>
 
-												<iframe class="video-player__youtube" src="https://www.youtube.com/embed/<?php echo $youtube[1]; ?>" frameborder="0" allowfullscreen></iframe>
+												<iframe class="video-player__youtube" src="https://www.youtube.com/embed/<?php echo $youtube; ?>" frameborder="0" allowfullscreen></iframe>
 
 											<?php else: ?>
 
