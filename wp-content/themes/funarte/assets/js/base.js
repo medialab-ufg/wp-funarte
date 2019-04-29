@@ -684,9 +684,22 @@ var base = {
 					.addClass('active')
 					.siblings('li')
 					.removeClass('active');
-
+				
+				//history.pushState('',target, target);
+				
 				return false;
 			});
+			
+			// $( window ).on( 'hashchange', function( e ) {
+			// 	$(window.location.hash + '-trigger').click();
+			// 	$(window.location.hash + '-trigger').html('asdasd');
+			// } );
+			
+			var current = window.location.hash;
+			if (current) {
+				$(current + '-trigger').click();
+			}
+			
 		}
 	},
 
