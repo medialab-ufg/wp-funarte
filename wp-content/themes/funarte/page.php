@@ -6,18 +6,18 @@ get_header(); the_post();
 
 		<?php
 			$links = [['link_name'=>get_the_title()]];
-			funarte_load_part('breadcrumb', ['links'=>$links]); 
-		?>
-
-		<div class="box-title">
-			<h2 class="title-h1"><?php the_title(); ?></h2>
-		</div>
-		<?php
+			funarte_load_part('breadcrumb', ['links'=>$links]);
 			if(has_post_thumbnail()) {
-				post_thumbnail(get_the_ID(), array('width' => 380, 'height' => 280));
+				funarte_load_part('title-page', ['title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( )]);
+			} else {
+				funarte_load_part('title-page', ['title'=> get_the_title(), 'img'  => []]);
 			}
-			the_content();
 		?>
+		<div class="box-text mb-100">
+			<div class="box-text__text">
+				<?php the_content(); ?>
+			</div>
+		</div>
 	</div>
 </main>
 	
