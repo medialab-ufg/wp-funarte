@@ -974,6 +974,15 @@ noscript {
 		span { color: inherit !important; }
 		strong span { font-size: 1.4rem; }
 	}
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+		border-collapse: collapse;
+	}
+	&:after {
+			clear: both;
+	}
 }
 .box-text__table {
 	width: 100%;
