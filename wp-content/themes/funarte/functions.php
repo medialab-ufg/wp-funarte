@@ -302,6 +302,9 @@ function funarte_support_old_urls() {
 }
 add_action('init', 'funarte_support_old_urls');
 
+add_action('init', function() {
+	register_taxonomy_for_object_type( 'category', 'page' );
+});
 
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/assets/lib/class-wp-bootstrap-navwalker.php';
