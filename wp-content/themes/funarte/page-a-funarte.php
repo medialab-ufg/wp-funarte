@@ -119,7 +119,7 @@ if(isset($options['url_dados_abertos'])) {
 										$THEME_FOLDER = get_template_directory();
 										$DS = DIRECTORY_SEPARATOR;
 										$META_FOLDER = $THEME_FOLDER . $DS . 'inc' . $DS . 'widget' . $DS;
-										require_once($META_FOLDER . 'arquivos-relacionados.php');
+										include($META_FOLDER . 'arquivos-relacionados.php');
 									?>
 									
 								</div>
