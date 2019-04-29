@@ -14,12 +14,11 @@
 					<button type="button"><i class="mdi mdi-play-circle-outline"></i></button>
 				</div>
 				<?php
-					$videoUrlPrincipal = explode("?v=", $videoUrl);
-
-					if (empty($videoUrlPrincipal[1])) {
+					$youtube = get_youtube_video_ID($videoUrl);
+					if ($youtube == false) {
 						echo '<div class="videos-list__video" data-video="' . $videoUrl . '"></div>';
 					} else {
-						echo '<div class="videos-list__video"><iframe src="https://www.youtube.com/embed/' . $videoUrlPrincipal[1] . '" frameborder="0" allowfullscreen></iframe></div>';
+						echo '<div class="videos-list__video"><iframe src="https://www.youtube.com/embed/' . $youtube . '" frameborder="0" allowfullscreen></iframe></div>';
 					}
 				?>
 

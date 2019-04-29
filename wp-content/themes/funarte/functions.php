@@ -39,6 +39,13 @@ function tax_pre_get_posts($query) {
 	}
 }
 
+function get_youtube_video_ID($url) { 
+	if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+		return $match[1];
+	}
+	return false;
+}
+
 /**
  * Retorna a URL do documento relacionado ao item atual 
  * @param Object $post é o post do item. Vazio, pega o post atual do Loop 
