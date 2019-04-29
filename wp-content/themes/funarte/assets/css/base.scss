@@ -1277,6 +1277,8 @@ noscript {
 	}
 }
 
+.box-data .box-info__collapse .collapse__text:before { display: none; }
+
 @media screen and (max-width:991px) {
 	.box-info__collapse .collapse__text {
 		column-count: 1;
@@ -7271,3 +7273,25 @@ body.contraste {
 }
 
 .slick-disabled { background-color: $cinza-4 !important; }
+img.alignleft {
+	max-width: 100%;
+	height: auto;
+	margin-right: 30px;
+	margin-bottom: 30px;
+	display: block;
+	float: left;
+}
+img.alignright {
+	max-width: 100%;
+	height: auto;
+	margin-left: 30px;
+	margin-bottom: 30px;
+	display: block;
+	float: right;
+}
+img.aligncenter {
+	max-width: 100%;
+	height: auto;
+	margin: 0 auto 30px;
+	display: block;
+}

@@ -4,7 +4,10 @@ $arg = array(
 	'post_parent' => get_the_ID(),
 	'post_type'   => 'page',
 	'numberposts' => -1,
-	'post_status' => 'any');
+	'post_status' => 'any',
+	'orderby' => 'menu_order',
+	'order' => 'ASC'
+	);
 
 $contents = [];
 $filhos = get_children($arg);
