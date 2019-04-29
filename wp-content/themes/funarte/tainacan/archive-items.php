@@ -11,7 +11,7 @@
 			
 		</div>
 		
-		<p>
+		<p class="collection-description">
 			<?php echo apply_filters('the_content', tainacan_get_the_collection_description()); ?>
 		</p>
 
