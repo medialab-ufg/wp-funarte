@@ -4,7 +4,7 @@
 			<div class="footer__columns">
 				<div class="columns__options">
 					<div class="columns__column-b links-list">
-						<div class="box-form-newsletter">
+						<!-- <div class="box-form-newsletter">
 							<strong>Assine nossa newsletter:</strong>
 							<form class="form-newsletter" action="#" method="post">
 								<fieldset>
@@ -17,14 +17,14 @@
 									</div>
 								</fieldset>
 							</form>
-						</div>
+						</div> -->
 
 						<div class="box-social-media-list">
 							<strong>Redes sociais:</strong>
 							<ul class="social-media-list">
-								<li><a href="#"><i class="mdi mdi-facebook"></i></a></li>
-								<li><a href="#"><i class="mdi mdi-twitter"></i></a></li>
-								<li><a href="#"><i class="mdi mdi-instagram"></i></a></li>
+								<li><a href="https://pt-br.facebook.com/funarte/"><i class="mdi mdi-facebook"></i></a></li>
+								<li><a href="https://twitter.com/Funarte"><i class="mdi mdi-twitter"></i></a></li>
+								<li><a href="https://www.instagram.com/funarteoficial/"><i class="mdi mdi-instagram"></i></a></li>
 							</ul>
 						</div>
 					</div>
