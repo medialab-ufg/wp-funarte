@@ -86,7 +86,7 @@
 					<a class="logo-footer-vertical-2" href="http://www.brasil.gov.br/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/gov_vertical.svg'; ?>" alt="Ministério da Cidadania - Pátria Amada Brasil - Governo Federal"></a>
 				</div>
 
-				<a class="logo-footer-3" href="<?php echo site_url() . '/acessoainformacao/'; ?>" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/informacao.svg'; ?>" alt="Acesso à informação"></a>
+				<a class="logo-footer-3" href="<?php echo home_url() . '/acessoainformacao/'; ?>" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/lgo/informacao.svg'; ?>" alt="Acesso à informação"></a>
 			</div>
 		</div>
 	</footer>
