@@ -29,7 +29,7 @@ endif;
 			<!-- BOX-TABS--ACTIVE: CLASSE UTILIZADA PARA ATIVAR A TROCA DE ABAS VIA JS -->
 			<section class="box-tabs box-tabs--active">
 				<!-- LIST-TABS-ON: CLASSE UTILIZADA PARA ATIVAR O CARROSSEL DE ABAS -->
-				<div class="list-tabs list-tabs--on-off">
+				<div class="list-tabs list-tabs--on">
 					<div class="box-tabs__control">
 						<button type="button" class="control__next"><i class="mdi mdi-chevron-right"></i></button>
 						<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
