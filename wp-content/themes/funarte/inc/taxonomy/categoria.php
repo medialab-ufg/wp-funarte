@@ -10,7 +10,7 @@ class taxCategoria {
 	}
 
 	protected function init() {
-		//add_action('init', array( &$this, "register_taxonomy" ), 9);
+		add_action('init', array( &$this, "register_taxonomy" ), 9);
 	}
 
 	public function register_taxonomy() {
