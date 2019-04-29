@@ -696,7 +696,7 @@ var base = {
 			// } );
 			
 			var current = window.location.hash;
-			if (current) {
+			if (current && current.includes('content-tab')) {
 				$(current + '-trigger').click();
 			}
 			
