@@ -65,7 +65,7 @@ query_posts($params);
 
 				<form class="form-area form-filtro form-filtro--espaco-cultural" action="#" method="post">
 					<fieldset>
-						<legend>Ffltrar por área</legend>
+						<legend>Filtrar por área</legend>
 						<?php
 						wp_dropdown_categories(array(
 							'show_option_none' => 'Filtrar por área',
