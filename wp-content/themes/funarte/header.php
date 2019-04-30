@@ -9,6 +9,10 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 
 		<script type="text/javascript"> var templateUrl = '<?= get_bloginfo("template_url"); ?>'; </script>
+		
+		<title>
+			<?php echo get_bloginfo('name'); ?>
+		</title>
 
 		<?php wp_head(); ?>
 	</head>
