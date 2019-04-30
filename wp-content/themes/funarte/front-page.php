@@ -10,7 +10,7 @@
 	}
 	$query_news = ['post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'orderby' => 'date', 'order' => 'DESC'];
 	$noticias = query_posts($query_news);
-	$destaques = \funarte\DestaqueHome::get_instance()->get_destaques('home', 1, 6);
+	$destaques = \funarte\DestaqueHome::get_instance()->get_destaques('home', 1, 5);
 	$destaque_secundario = \funarte\DestaqueHome::get_instance()->get_destaque_secundario();
 	$editais = \funarte\Edital::get_instance()->get_editais('todos');
 ?>
