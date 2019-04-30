@@ -54,7 +54,7 @@
 						continue;
 					}
 
-					$img_url = get_the_post_thumbnail_url($destaque->ID);
+					$img_url = get_the_post_thumbnail_url($destaque->ID, 'funarte-destaques');
 					$url = get_post_meta($destaque->ID, 'destaque-url', true);
 					$items[] = ['img_url'		=> $img_url,
 	 							'title'			=> $destaque->post_title,

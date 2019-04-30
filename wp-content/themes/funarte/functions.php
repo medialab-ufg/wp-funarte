@@ -22,6 +22,9 @@ add_action('after_setup_theme', function() {
 		]);
 		
 	}
+	
+	add_image_size( 'funarte-destaques', 1120, 420, ['center', 'top'] );
+	
 });
 
 add_action('pre_get_posts', 'tax_pre_get_posts');

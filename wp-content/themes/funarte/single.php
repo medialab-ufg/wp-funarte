@@ -35,7 +35,7 @@ if(have_posts()) : the_post();
 			<?php 
 				funarte_load_part('title-page', [
 					'title'=> get_the_title(), 
-					'img'  => get_the_post_thumbnail_url( ), 
+					'img'  => get_the_post_thumbnail_url( get_the_ID(), 'funarte-medium' ), 
 					'tags'=> $tags,
 					'date_pub' => get_the_date()
 				]);

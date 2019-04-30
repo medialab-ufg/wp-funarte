@@ -132,7 +132,7 @@ if (is_array($attachments) && sizeof($attachments) > 0) {
 													<strong><?php echo $bloco2_title; ?></strong>
 
 													<div class="video-player mb-60">
-														<video autoplay src="<?php echo $bloco2; ?>" class="video-video"></video>
+														<video src="<?php echo $bloco2; ?>" class="video-video"></video>
 														<div class="video-bar">
 															<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
 															<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
@@ -155,7 +155,7 @@ if (is_array($attachments) && sizeof($attachments) > 0) {
 													<strong><?php echo $bloco3_title; ?></strong>
 
 													<div class="video-player mb-60">
-														<video autoplay src="<?php echo $bloco3; ?>" class="video-video"></video>
+														<video src="<?php echo $bloco3; ?>" class="video-video"></video>
 														<div class="video-bar">
 															<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
 															<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
