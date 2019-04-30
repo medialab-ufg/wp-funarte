@@ -24,7 +24,7 @@
 						
 						<li class="color-funarte carousel-collection__reverse">
 							<div class="link-area">
-								<a href="#">Funarte</a>
+								<strong>Funarte</strong>
 							</div>
 							
 							<p><a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">Acervo Sergio Britto</a></p>
@@ -35,7 +35,7 @@
 						
 						<li class="color-funarte">
 							<div class="link-area">
-								<a href="#">Funarte</a>
+								<strong>Funarte</strong>
 							</div>
 							
 							<p><a target="_blank" href="http://portais.funarte.gov.br/brasilmemoriadasartes">Brasil Memória das Artes</a></p>
@@ -47,7 +47,7 @@
 						
 						<li class="color-funarte carousel-collection__reverse">
 							<div class="link-area">
-								<a href="#">Funarte</a>
+								<strong>Funarte</strong>
 							</div>
 							
 							<p><a target="_blank" href="http://cedoc.funarte.gov.br/sophia_web/">Catálogo CEDOC</a></p>
@@ -69,10 +69,16 @@
 								$area_ = $area;
 							}
 							$image = has_post_thumbnail()? get_the_post_thumbnail_url()  : funarte_get_img_default($area_['slug']);
+							$link_area = get_category_link( $area_['ID'] );
 						?>
 						<li class="color-<?php echo $area_['slug']; if (($x % 2) != 0) echo ' carousel-collection__reverse'; ?> ">
 							<div class="link-area">
-								<a href="#"><?php echo $area_['name'];?></a>
+								<?php if( empty($link_area)) : ?>
+									<strong><?php echo $area_['name'];?></strong>
+								<?php else : ?>
+									<a href="<?php echo $link_area; ?>"><?php echo $area_['name'];?></a>
+								<?php endif;?>
+								
 							</div>
 							<p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
 							<a href="<?php the_permalink(); ?>">

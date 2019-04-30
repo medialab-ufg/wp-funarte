@@ -13,7 +13,8 @@ if (isset($_GET['estado']) && !empty($_GET['estado']))
 			$cat = $area->term_id;
 	} else {
 		$cat = null;
-		$area = get_the_category()[0];
+		//$area = get_the_category()[0];
+		$area = null;
 	}
 
 $params = array(
@@ -107,10 +108,19 @@ query_posts($params);
 							?>
 
 							<div class="list-soft__image <?php echo empty($thumbnail) ? 'no-image' : '' ?>" style="background-image: url(<?php echo $thumbnail ?>);">
-								<?php
-									if (!empty($area)): ?>
+								<?php if (!empty($area)): ?>
 									<div class="link-area">
 										<a class="<?php echo 'color-' . $area->slug; ?>" href="<?php echo get_category_link( $area->term_id ); ?>"><?php echo $area->name; ?></a>
+									</div>
+								<?php else:
+									$area_tmp = get_area_class(get_the_ID());
+								?>
+									<div class="link-area">
+										<?php if( isset($area_tmp['ID']) ): ?>
+											<a class="<?php echo 'color-' . $area_tmp['slug']; ?>" href="<?php echo get_category_link( $area_tmp['ID'] ); ?>"><?php echo $area_tmp['name']; ?></a>
+										<?php else: ?>
+											<strong class="<?php echo 'color-' . $area_tmp['slug']; ?>"><?php echo $area_tmp['name']; ?></strong>
+										<?php endif; ?>
 									</div>
 								<?php endif; ?>
 							</div>
