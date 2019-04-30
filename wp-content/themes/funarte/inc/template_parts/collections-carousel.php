@@ -9,7 +9,7 @@
 	<section class="box-carousel-collection mb-100">
 		<?php if (isset($url_title)) : ?>
 			<h2 class="title-1  mb-65"><a href="<?php echo $url_title; ?>"> <?php echo $title; ?> </a></h2>
-		<?php else : ?>
+		<?php elseif (isset($title)) : ?>
 			<h2 class="title-1 mb-65"><?php echo $title; ?></h2>
 		<?php endif; ?> 
 		<div class="box-carousel-collection">

@@ -30,6 +30,12 @@ else :
 		<?php endif; ?>
 
 		<h3 class="title-page"><?php the_title(); ?></h3>
+		
+		<?php if (get_the_subtitle()): ?>
+			<p class="subtitle">
+				<?php the_subtitle(); ?>
+			</p>
+		<?php endif; ?>
 	</div>
 
 	<?php if (!empty($img)): ?>
