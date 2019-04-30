@@ -39,7 +39,7 @@
 							</div>
 							
 							<p><a href="http://funarte.gov.br/brasilmemoriadasartes">Brasil Memória das Artes</a></p>
-							<a href="http://funarte.gov.br/brasilmemoriadasartes">
+							<a href="http://www.funarte.gov.br/brasilmemoriadasartes">
 								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/bkg/grafismo_funarte.png' ?>);"></div>
 							</a>
 							
