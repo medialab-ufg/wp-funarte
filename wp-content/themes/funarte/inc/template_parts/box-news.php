@@ -22,12 +22,17 @@ else:
 			$url_img = funarte_get_img_default($item['tag_class_area']);
 		endif;
 
-		$tag_url = isset($item['tag_url_area']) ? $item['tag_url_area'] : '#';
+		if( isset($item['tag_url_area']) && !empty($item['tag_url_area']) ) {
+			$tag_url = "<a href='" . $item['tag_url_area'] . "'>" . $item['tag_name_area'] . "</a>";
+		} else {
+			$tag_url = "<strong>" . $item['tag_name_area'] . "</strong>";
+		}
+		
 		$visible = $col < $number_cols ? " visible" : "";
 		$col++;
 		$li .= "<li class='color-" . $item['tag_class_area'] . $visible . "'>
 							<div class='link-area'>
-								<a href='$tag_url'>" . $item['tag_name_area'] . "</a>
+								$tag_url
 							</div>
 							<a href='" . $item['url'] . "'><span class='box-news__image' style='background-image: url($url_img);'></span></a>
 							<h3 class='news-title'><a href='" . $item['url'] . "'>" . $item['title'] . "</a></h3>

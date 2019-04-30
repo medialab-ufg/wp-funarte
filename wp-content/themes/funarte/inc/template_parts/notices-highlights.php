@@ -29,10 +29,16 @@ else:
 							<?php foreach ($items as $item): ?>
 								<li>
 									<div class="link-area">
-										<?php $tag_url = isset($item['tag_url_area']) ? $item['tag_url_area'] : '#';?>
-										<a class="color-<?php echo $item['tag_class_area']; ?>" href="<?php echo $tag_url; ?>">
-											<?php echo $item['tag_name_area']; ?>
-										</a>
+										<?php if( isset($item['tag_url_area']) && !empty($item['tag_url_area']) ):
+											$tag_url = isset($item['tag_url_area']) ? $item['tag_url_area'] : '#'; ?>
+											<a class="color-<?php echo $item['tag_class_area']; ?>" href="<?php echo $tag_url; ?>">
+												<?php echo $item['tag_name_area']; ?>
+											</a>
+										<?php else: ?>
+											<strong class="color-<?php echo $item['tag_class_area']; ?>">
+												<?php echo $item['tag_name_area']; ?>
+											</strong>
+										<?php endif; ?>
 										<span><?php echo $item['tag_subname_area']; ?></span>
 									</div>
 									<h3 class="title-4 title-4--type-b"><?php echo $item['title']; ?></h3>

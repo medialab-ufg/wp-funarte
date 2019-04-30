@@ -69,10 +69,12 @@
 	<?php
 		$items = [];
 		foreach ($noticias as $noticia) {
-			$area = get_the_category($noticia->ID);
-			$items[] = ['tag_class_area'=>$area[0]->slug,
-									'tag_name_area' =>$area[0]->name,
-									'tag_url_area'=>get_category_link( $area[0]->cat_ID ),
+			$area = get_area_class($noticia->ID);
+			$link_area = $area['ID'] != null ? get_category_link( $area['ID'] ) : '';
+			//$area = get_the_category($noticia->ID);
+			$items[] = ['tag_class_area'=>$area['slug'],//$area[0]->slug,
+									'tag_name_area' =>$area['name'],//$area[0]->name,
+									'tag_url_area'=>$link_area,
 									'tag_subname_area'=>'',
 									'title' => $noticia->post_title,
 									'url'=> get_permalink($noticia->ID),

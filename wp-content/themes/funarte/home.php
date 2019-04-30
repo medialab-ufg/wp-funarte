@@ -58,11 +58,16 @@ query_posts(array_merge(array(
 				<ul class='box-news__list box-news__list--interna'>
 					<?php if (have_posts()) :	while (have_posts()) : 
 						the_post();
-						$area = get_the_category()[0];
+						$area = get_area_class(get_the_ID());
+						//$area = get_the_category()[0];
 						?>
-						<li class='color-<?php echo $area->slug; ?>'>
+						<li class='color-<?php echo $area['slug']; ?>'>
 							<div class='link-area'>
-								<a href="<?php echo home_url() . '/category/' . $area->slug; ?>"><?php echo $area->name; ?></a>
+								<?php if( isset($area['ID']) ): ?>
+									<a class="<?php echo 'color-' . $area['slug']; ?>" href="<?php echo get_category_link( $area['ID'] ); ?>"><?php echo $area['name']; ?></a>
+								<?php else: ?>
+									<strong class="<?php echo 'color-' . $area['slug']; ?>"><?php echo $area['name']; ?></strong>
+								<?php endif; ?>
 							</div>
 							
 							<a href='<?php the_permalink();  ?>'>
