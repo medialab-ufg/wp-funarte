@@ -113,10 +113,11 @@ function get_area_class($postID = null) {
 	if (is_null($postID)) return false;
 	
 	$cat = get_the_category($postID);
-	if (empty($cat) )
-		return ['slug'=>'funarte', 'name'=>'funarte'];
-	else 
-		return ['slug'=>$cat[0]->slug, 'name'=>$cat[0]->name];
+	if (empty($cat) || count($cat) > 1 )
+		return ['ID'=>null, 'slug'=>'funarte', 'name'=>'funarte'];
+	else {
+		return ['ID'=>$cat[0]->term_id, 'slug'=>$cat[0]->slug, 'name'=>$cat[0]->name];
+	}
 }
 
 function get_pagination() {

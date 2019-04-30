@@ -41,22 +41,24 @@
 	<?php
 		$items = [];
 		foreach ($editais as $edital) {
-			$area = get_the_category($edital->ID);
-			$items[] = ['tag_class_area'=>$area[0]->slug,
-									'tag_name_area'=>$area[0]->name,
-									'tag_url_area'=>get_category_link( $area[0]->cat_ID ),
+			//$area = get_the_category($edital->ID);
+			$area = get_area_class($edital->ID);
+			$items[] = ['tag_class_area'=>$area['slug'],//$area[0]->slug,
+									'tag_name_area'=>$area['name'],//$area[0]->name,
+									'tag_url_area'=>get_category_link( $area['ID'] ),//$area[0]->cat_ID ),
 									'tag_subname_area'=>\funarte\Edital::get_instance()->get_edital_status($edital->ID),
 									'title' => $edital->post_title ,
 									'url'=>get_permalink($edital->ID)];
 		}
-		$area = get_the_category($destaque_secundario->ID);
+		
+		$area = get_area_class($destaque_secundario->ID);
 		$arg = ['title'=> 'Editais', 'url_title'=> get_post_type_archive_link(\funarte\Edital::get_instance()->get_post_type()),
 											'items' => $items,
 											'destaque' => [
 														'url'=> get_post_meta($destaque_secundario->ID, 'destaque-url', true),
 														'title'=> $destaque_secundario->post_title,
-														'tag_name_area'=>$area[0]->name,
-														'tag_class_area'=>$area[0]->slug,
+														'tag_name_area'=>$area['name'], //$area[0]->name,
+														'tag_class_area'=>$area['slug'], //$area[0]->slug,
 														'content'=> $destaque_secundario->post_content,
 														'img_url'=> get_the_post_thumbnail_url($destaque_secundario->ID)]
 		];
