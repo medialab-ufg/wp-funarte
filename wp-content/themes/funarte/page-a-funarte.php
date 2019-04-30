@@ -107,7 +107,7 @@ if(isset($options['url_dados_abertos'])) {
 							<div class="row justify-content-between">
 								<div class="col-md-6">
 									
-									<h3><?php the_title(); ?></h3>
+									<h3 class="title-h4 content-tab__title"><?php the_title(); ?></h3>
 							
 									<?php the_content(); ?>
 								
