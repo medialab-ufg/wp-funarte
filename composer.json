@@ -14,7 +14,8 @@
         "wpackagist-plugin/tainacan": "0.*",
         "wpackagist-plugin/google-analytics-for-wordpress": "7.6.*",
         "wpackagist-plugin/jetpack": "*",
-        "wpackagist-plugin/wp-mail-smtp": "*"
+        "wpackagist-plugin/wp-mail-smtp": "*",
+        "wpackagist-plugin/sucuri-scanner": "*"
 	    
     },
     "extra": {
