@@ -43,7 +43,7 @@ class LinkRelacionado {
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
-			'supports' => array('title'),
+			'supports' => array('title','page-attributes'),
 			'taxonomies' => [
 				taxCategoria::get_instance()->get_name()
 			]
