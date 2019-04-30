@@ -119,7 +119,8 @@ class DestaqueHome {
 			'post_type' => $this->POST_TYPE,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
-			'posts_per_page' => -1
+			'posts_per_page' => -1,
+			'meta_query' => array('key' => '_thumbnail_id')
 		), $params);
 		
 		switch ($area) {
