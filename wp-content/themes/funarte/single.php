@@ -22,7 +22,7 @@ if(have_posts()) : the_post();
 			?>
 
 			<?php
-				$imagem = get_the_post_thumbnail( );
+				$imagem = get_the_post_thumbnail( get_the_ID(), 'funarte-medium' );
 				$areas = get_the_category();
 				$tags = [];
 				foreach ($areas as $area):

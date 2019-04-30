@@ -22,6 +22,9 @@ add_action('after_setup_theme', function() {
 		]);
 		
 	}
+	
+	add_image_size( 'funarte-medium', 450, 324, true );
+	
 });
 
 add_action('pre_get_posts', 'tax_pre_get_posts');
