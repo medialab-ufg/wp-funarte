@@ -211,6 +211,7 @@ function extra_files() {
 	//wp_enqueue_style('material-design-icons-cdn-style', get_theme_file_uri() . '/assets/css/plugins/materialdesignicons.min.css', null, microtime());
 	wp_enqueue_style('material-design-icons-cdn-style', 'https://cdn.materialdesignicons.com/2.8.94/css/materialdesignicons.min.css', null, microtime());
 	wp_enqueue_style('main-style', get_theme_file_uri() . '/assets/css/base.min.css', null, microtime());
+	wp_enqueue_style('extra-style', get_theme_file_uri() . '/assets/css/extra_css.css', null, microtime());
 
 	// Javascript
 	wp_enqueue_script('jquery-cdn', get_theme_file_uri() . '/assets/js/plugins/jquery-2.2.4.min.js', null, microtime(), true);
