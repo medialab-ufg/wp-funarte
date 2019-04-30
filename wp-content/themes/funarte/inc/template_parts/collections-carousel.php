@@ -27,8 +27,8 @@
 								<a href="#">Funarte</a>
 							</div>
 							
-							<p><a href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">Acervo Sergio Britto</a></p>
-							<a href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">
+							<p><a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">Acervo Sergio Britto</a></p>
+							<a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">
 								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/sergio-britto.jpg' ?>);"></div>
 							</a>
 						</li>
@@ -38,8 +38,8 @@
 								<a href="#">Funarte</a>
 							</div>
 							
-							<p><a href="http://funarte.gov.br/brasilmemoriadasartes">Brasil Memória das Artes</a></p>
-							<a href="http://www.funarte.gov.br/brasilmemoriadasartes">
+							<p><a target="_blank" href="http://funarte.gov.br/brasilmemoriadasartes">Brasil Memória das Artes</a></p>
+							<a target="_blank" href="http://www.funarte.gov.br/brasilmemoriadasartes">
 								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/BMA.png' ?>);"></div>
 							</a>
 							
@@ -50,8 +50,8 @@
 								<a href="#">Funarte</a>
 							</div>
 							
-							<p><a href="http://cedoc.funarte.gov.br/sophia_web/">Catálogo CEDOC</a></p>
-							<a href="http://cedoc.funarte.gov.br/sophia_web/">
+							<p><a target="_blank" href="http://cedoc.funarte.gov.br/sophia_web/">Catálogo CEDOC</a></p>
+							<a target="_blank" href="http://cedoc.funarte.gov.br/sophia_web/">
 								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/CEDOC.png' ?>);"></div>
 							</a>
 							
