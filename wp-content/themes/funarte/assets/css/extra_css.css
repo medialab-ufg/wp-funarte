@@ -22,3 +22,17 @@
     display: inline-block;
 }
 .box-title-page .subtitle { margin-top: 25px; }
+.box-tabs .content-tab__content h2 {
+	margin: 0 0 27px;
+	font-weight: 400;
+	font-family: Sansita,sans-serif;
+	font-size: 1.7rem;
+	color: #2f9187;
+}
+.box-tabs .content-tab__content h3 {
+	margin: 0 0 27px;
+	font-weight: 400;
+	font-family: Sansita,sans-serif;
+	font-size: 1.8rem;
+	color: #2f9187;
+}
