@@ -41,3 +41,4 @@
 .box-tabs .content-tab__content > strong { margin-bottom: 15px; }
 .carousel-highlights img { min-height: 70px; }
 .pagination, .pagination-list { flex-wrap: nowrap; }
+.header h1 { height: 32px; }
