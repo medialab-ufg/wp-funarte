@@ -27,7 +27,7 @@
 
 					<div class="audios-list__text base-tooltip">
 						<span>
-							<?php the_excerpt(); ?>
+							<a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a>
 							<span class="audios-list__tooltip"><?php the_content(); ?></span>
 						</span>
 					</div>
