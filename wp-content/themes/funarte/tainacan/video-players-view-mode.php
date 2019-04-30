@@ -31,8 +31,8 @@
 					<?php endif; ?>
 
 					<div class="audios-list__text base-tooltip">
+						<a class="audios-list__text-link" href="<?php the_permalink(); ?>"></a>
 						<span>
-							<a class="audios-list__text-link" href="<?php the_permalink(); ?>"></a>
 							<a href="<?php the_permalink(); ?>">
 								<?php the_excerpt(); ?>
 							</a>

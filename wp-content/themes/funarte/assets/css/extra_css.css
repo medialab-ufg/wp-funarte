@@ -39,3 +39,4 @@
 .box-tabs .content-tab__content > p,
 .box-tabs .content-tab__content > span,
 .box-tabs .content-tab__content > strong { margin-bottom: 15px; }
+.carousel-highlights img { min-height: 70px; }
