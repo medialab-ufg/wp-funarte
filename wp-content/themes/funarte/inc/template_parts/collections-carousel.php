@@ -9,7 +9,7 @@
 	<section class="box-carousel-collection mb-100">
 		<?php if (isset($url_title)) : ?>
 			<h2 class="title-1  mb-65"><a href="<?php echo $url_title; ?>"> <?php echo $title; ?> </a></h2>
-		<?php else : ?>
+		<?php elseif (isset($title)) : ?>
 			<h2 class="title-1 mb-65"><?php echo $title; ?></h2>
 		<?php endif; ?> 
 		<div class="box-carousel-collection">
@@ -19,6 +19,48 @@
 					<button type="button" class="control__prev"><i class="mdi mdi-chevron-left"></i></button>
 				</div>
 				<ul class="carousel-collection">
+					
+					<?php // if... ?>
+						
+						<li class="color-funarte carousel-collection__reverse">
+							<div class="link-area">
+								<a href="#">Funarte</a>
+							</div>
+							
+							<p><a href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">Acervo Sergio Britto</a></p>
+							<a href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">
+								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/sergio-britto.jpg' ?>);"></div>
+							</a>
+						</li>
+						
+						<li class="color-funarte">
+							<div class="link-area">
+								<a href="#">Funarte</a>
+							</div>
+							
+							<p><a href="http://funarte.gov.br/brasilmemoriadasartes">Brasil Memória das Artes</a></p>
+							<a href="http://www.funarte.gov.br/brasilmemoriadasartes">
+								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/BMA.png' ?>);"></div>
+							</a>
+							
+						</li>
+						
+						<li class="color-funarte carousel-collection__reverse">
+							<div class="link-area">
+								<a href="#">Funarte</a>
+							</div>
+							
+							<p><a href="http://cedoc.funarte.gov.br/sophia_web/">Catálogo CEDOC</a></p>
+							<a href="http://cedoc.funarte.gov.br/sophia_web/">
+								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/CEDOC.png' ?>);"></div>
+							</a>
+							
+						</li>
+						
+					<?php //endif; ?>
+					
+					
+					
 					<?php while ($collections->have_posts()): $collections->the_post(); $x++; ?>
 						<?php
 							if (!isset($area)) {
@@ -33,7 +75,9 @@
 								<a href="#"><?php echo $area_['name'];?></a>
 							</div>
 							<p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-							<div class="carousel-collection__image" style="background-image: url(<?php echo $image ?>);"></div>
+							<a href="<?php the_permalink(); ?>">
+								<div class="carousel-collection__image" style="background-image: url(<?php echo $image ?>);"></div>
+							</a>
 						</li>
 					<?php endwhile; ?>
 				</ul>

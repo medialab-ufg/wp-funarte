@@ -18,7 +18,7 @@
 							</li>
 							<li class="list-inline-item float-right title-back">
 								<a href="javascript:history.go(-1)">
-									<?php _e( 'Back', 'tainacan-interface' ); ?>
+									Voltar
 								</a>
 							</li>
 						</ul>
@@ -28,7 +28,7 @@
 				<div class="tainacan-single-post collection-single-item">
 					<article role="article" id="post_<?php the_ID()?>" <?php post_class()?>>
 						<?php if ( tainacan_has_document() ) : ?>
-							<h3 class="title-content-items"><?php _e( 'Document', 'tainacan-interface' ); ?></h3>
+							<h3 class="title-content-items">Documento</h3>
 
 							<div class="box-tainacan-document">
 								<?php tainacan_the_document(); ?>

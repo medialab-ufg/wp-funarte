@@ -13,7 +13,7 @@
 		?>
 
 		<div class="box-title">
-			<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/collections'; ?>">Acervo</a> <span>Permanente</span></h2>
+			<h2 class="title-h1"><a href="<?php echo get_bloginfo('url') . '/collections'; ?>">Acervo</a> <!-- <span>Permanente</span> --></h2>
 		</div>
 
 		<?php funarte_load_part('collections-carousel', ['collections' => $wp_query]); ?>

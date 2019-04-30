@@ -33,7 +33,12 @@ if(have_posts()) : the_post();
 			?>
 
 			<?php 
-				funarte_load_part('title-page', ['title'=> get_the_title(), 'img'  => get_the_post_thumbnail_url( ), 'tags'=> $tags]);
+				funarte_load_part('title-page', [
+					'title'=> get_the_title(), 
+					'img'  => get_the_post_thumbnail_url( ), 
+					'tags'=> $tags,
+					'date_pub' => get_the_date()
+				]);
 				$qtd_columns = get_post_meta( get_the_ID(), "post-quantity-columns");
 				$show_two_columns_class = (isset($qtd_columns[0]) && $qtd_columns[0] == "2") ? 'box-text--2-columns' : '' ;
 			?>

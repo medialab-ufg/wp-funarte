@@ -64,16 +64,21 @@ query_posts(array_merge(array(
 							<div class='link-area'>
 								<a href="<?php echo home_url() . '/category/' . $area->slug; ?>"><?php echo $area->name; ?></a>
 							</div>
-
-							<?php 
-								if (has_post_thumbnail()):
-							?>
-									<div class="box-news__image" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');"></div>
-							<?php else:?>
-									<div class="box-news__image" style="background-image: url('<?php echo funarte_get_img_default($area->slug); ?>');"></div>
-							<?php endif; ?>
-
-							<h3 class='news-title'><?php the_title(); ?></h3>
+							
+							<a href='<?php the_permalink();  ?>'>
+								<?php 
+									if (has_post_thumbnail()):
+								?>
+										<div class="box-news__image" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');"></div>
+								<?php else:?>
+										<div class="box-news__image" style="background-image: url('<?php echo funarte_get_img_default($area->slug); ?>');"></div>
+								<?php endif; ?>
+							</a>
+							<h3 class='news-title'>
+								<a href='<?php the_permalink();  ?>'>
+									<?php the_title(); ?>
+								</a>
+							</h3>
 							<?php the_excerpt(); ?>
 							<a href='<?php the_permalink();  ?>' class='link-more'>Ler mais</a>
 						</li>
