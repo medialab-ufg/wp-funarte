@@ -40,7 +40,7 @@
 							
 							<p><a href="http://funarte.gov.br/brasilmemoriadasartes">Brasil Memória das Artes</a></p>
 							<a href="http://www.funarte.gov.br/brasilmemoriadasartes">
-								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/bkg/grafismo_funarte.png' ?>);"></div>
+								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/BMA.png' ?>);"></div>
 							</a>
 							
 						</li>
@@ -52,7 +52,7 @@
 							
 							<p><a href="http://cedoc.funarte.gov.br/sophia_web/">Catálogo CEDOC</a></p>
 							<a href="http://cedoc.funarte.gov.br/sophia_web/">
-								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/bkg/grafismo_funarte.png' ?>);"></div>
+								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/CEDOC.png' ?>);"></div>
 							</a>
 							
 						</li>
