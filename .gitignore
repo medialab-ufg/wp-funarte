@@ -9,4 +9,6 @@ wp-content/plugins/classic-editor
 wp-content/plugins/tainacan
 wp-content/plugins/jetpack
 wp-content/plugins/google-analytics-for-wordpress
+wp-content/plugins/wp-mail-smtp
+wp-content/plugins/sucuri-scanner
 wp-content/languages
