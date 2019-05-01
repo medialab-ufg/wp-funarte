@@ -38,7 +38,7 @@
 		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
 	}
 
-	$query_links_relacionados = ['cat' => (int)$area->term_id, 'post_type' => \funarte\LinkRelacionado::get_instance()->get_post_type(), 'posts_per_page' => 5];
+	$query_links_relacionados = ['cat' => (int)$area->term_id, 'orderby' => 'menu_order', 'order' => 'ASC', 'post_type' => \funarte\LinkRelacionado::get_instance()->get_post_type(), 'posts_per_page' => -1];
 	$links_relacionados = query_posts($query_links_relacionados);
 ?>
 
