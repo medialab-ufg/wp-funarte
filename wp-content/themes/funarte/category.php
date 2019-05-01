@@ -30,7 +30,7 @@
 	$editais = \funarte\Edital::get_instance()->get_editais('todos', $query);
 
 	$query_news = ['cat' => (int)$area->term_id, 'post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'orderby' => 'date', 'order' => 'DESC'];
-	$noticias = query_posts($query_news);
+	$noticias = new WP_Query($query_news);
 
 	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'cat' => (int)$area->term_id, 'posts_per_page' => 10 ];
 	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'),date('Y'), $query_eventos);
@@ -39,7 +39,7 @@
 	}
 
 	$query_links_relacionados = ['cat' => (int)$area->term_id, 'orderby' => 'menu_order', 'order' => 'ASC', 'post_type' => \funarte\LinkRelacionado::get_instance()->get_post_type(), 'posts_per_page' => -1];
-	$links_relacionados = query_posts($query_links_relacionados);
+	$links_relacionados = new WP_Query($query_links_relacionados);
 ?>
 
 <main role="main" class="mb-100">
@@ -95,18 +95,20 @@
 	<!-- NOTICIAS -->
 	<?php
 		$items = [];
-		foreach ($noticias as $noticia) {
+		while ($noticias->have_posts()) {
+			$noticias->the_post();
 			$items[] = ['tag_class_area'=>$area->slug,
 									'tag_name_area' =>$area->name,
 									'tag_url_area' => get_category_link( $area->cat_ID ),
 									'tag_subname_area'=>'',
-									'title' => $noticia->post_title,
-									'url'=> get_permalink($noticia->ID),
-									'content'=> get_the_excerpt($noticia->ID),
-									'url_img'=> get_the_post_thumbnail_url($noticia->ID) ? get_the_post_thumbnail_url($noticia->ID) : null];
+									'title' => get_the_title(),
+									'url'=> get_permalink(),
+									'content'=> get_the_excerpt(),
+									'url_img'=> get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : null];
 		}
 		$arg = ['items' => $items, 'more_news_url' => '/noticias?area=' . $area->name];
 		funarte_load_part('box-news', $arg);
+		wp_reset_postdata();
 	?>
 	<!-- FIM NOTICIAS -->
 
@@ -218,12 +220,13 @@
 					<h2 class="title-h1">Links relacionados</h2>
 
 					<ul class="list-simple-links">
-						<?php foreach ($links_relacionados as $link):?>
+						<?php while ($links_relacionados->have_posts()): $links_relacionados->the_post(); ?>
 							<li class="color-funarte">
-								<strong><?php echo $link->post_title; ?></strong>
-								<a class="link-more" target="_blank" href="<?php echo get_post_meta($link->ID, 'linkrelacionado-url', true); ?>">Visitar</a>
+								<strong><?php echo the_title(); ?></strong>
+								<a class="link-more" target="_blank" href="<?php echo get_post_meta(get_the_ID(), 'linkrelacionado-url', true); ?>">Visitar</a>
 							</li>
-						<?php endforeach; ?>
+						<?php endwhile; ?>
+						<?php wp_reset_postdata(); ?>
 					</ul>
 				</div>
 			</div>
