@@ -52,11 +52,17 @@ else:
 				<div class="col-xs-12 col-lg-6">
 					<section class="box-highlight color-<?php echo $destaque['tag_class_area']; ?>">
 						<h2 class="title-1">Destaque</h2>
-						<div class="box-highlight__image" style="background-image: url(<?php echo $destaque['img_url'] ?>);"></div>
+						<a href="<?php echo $destaque['url'];?>">
+							<div class="box-highlight__image" style="background-image: url(<?php echo $destaque['img_url'] ?>);"></div>
+						</a>
 						<div class="link-area">
 							<strong class="color-<?php echo $destaque['tag_class_area']; ?>" href="#"><?php echo $destaque['tag_name_area']; ?></strong>
 						</div>
-						<h3 class="title-3"><?php echo $destaque['title']; ?></h3>
+						<h3 class="title-3">
+							<a href="<?php echo $destaque['url'];?>">
+								<?php echo $destaque['title']; ?>
+							</a>
+						</h3>
 						<p><?php echo $destaque['content']; ?></p>
 						<a href="<?php echo $destaque['url'];?>" class="link-more">Ler mais</a>
 					</section>
