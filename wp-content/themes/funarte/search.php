@@ -4,7 +4,7 @@ get_header();
 $info_extra = true;
 
 $search_helper = \funarte\Search::get_instance();
-$order_param = isset($_GET['ordenar']) ? $_GET['ordenar'] : '';
+$order_param = isset($_GET['ordenar']) ? $_GET['ordenar'] : 'date_desc';
 
 ?>
 

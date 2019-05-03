@@ -25,6 +25,9 @@ class Search {
 				$wp_query->set('cat', $_GET['area']);
 			}
 			
+			$wp_query->set('orderby', 'date');
+			$wp_query->set('order', 'DESC');
+			
 			if (isset($_GET['ordenar'])) {
 				switch ($_GET['ordenar']) {
 					case 'title':
