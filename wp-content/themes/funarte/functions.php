@@ -23,6 +23,7 @@ add_action('after_setup_theme', function() {
 		
 	}
 	
+	add_image_size( 'funarte-medium', 450, 310, true );
 	add_image_size( 'funarte-destaques', 1120, 420, ['center', 'top'] );
 	
 });
