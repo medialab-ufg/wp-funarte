@@ -38,25 +38,35 @@ if(have_posts()) : the_post();
 					</div>
 					
 					<div class="box-text">
-						<h4 class="title-5--type-b">Próximos eventos no local</h4>
+						
 						<?php //jogar isso para um widget?
 						$regional = wp_get_post_terms( get_the_ID(), \funarte\taxRegional::get_instance()->get_name());
 						if(!empty($regional)):
 							$query = array(
 								'paged' => false,
 								'post_type' => 'evento',
-								'orderby' => 'meta_value',
+								'orderby' => 'meta_inicio',
 								'order' => 'ASC',
 								$regional[0]->taxonomy => $regional[0]->slug,
 								'post__not_in' => array(get_the_ID()),
-								'meta_key'	 => 'evento-inicio',
-								'meta_compare' 		=> '<',
-								'meta_value' => date('Y-m-d'),
+								'meta_query' => [
+									'meta_inicio' => [
+										'key' => 'evento-inicio',
+										'compare' => 'EXISTS',
+									],
+									[
+										'key' => 'evento-fim',
+										'compare' => '>=',
+										'value' => date('Y-m-d')
+									],
+									'relation' => 'AND'
+								],
 								'posts_per_page' => 4
 							);
 							$the_query = new WP_Query( $query );
 							if ( $the_query->have_posts() ) :
 							?>
+								<h4 class="title-5--type-b">Próximos eventos</h4>
 								<ul class="list-bidding--type-b">
 									<?php
 									while ( $the_query->have_posts() ):
@@ -79,8 +89,7 @@ if(have_posts()) : the_post();
 									?>
 								</ul>
 							<?php
-							else :
-								echo "nenhum evento";
+							
 							endif;
 							wp_reset_postdata();
 						endif;
