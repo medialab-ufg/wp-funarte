@@ -389,7 +389,7 @@ noscript {
 		max-width: 480px;
 		max-height: 332px;
 	}
-	
+
 	.subtitle {
 		margin: 25px 0 0;
 		font-family: 'Sansita', sans-serif;
@@ -397,7 +397,7 @@ noscript {
 		font-size: 1.12rem;
 		margin-top: 20px;
 	}
-	
+
 }
 .box-title-page--image {
 	width: 91%;
@@ -1549,14 +1549,17 @@ body.js .collapse__text { display: none; }
 .box-highlight {
 	padding: 0 0 20px;
 
-	.box-highlight__image {
-		width: 744px;
-		height: 420px;
+	.box-highlight__image-wrapper {
 		margin: 0 0 35px -32%;
 		padding: 84px 0 0;
-		display: block;
 		border: 7px solid $branco;
+		border-right: none;
 		background-color: $branco;
+	}
+
+	.box-highlight__image {
+		width: 744px;
+		height: 510px;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -1576,15 +1579,23 @@ body.js .collapse__text { display: none; }
 
 @media screen and (max-width:1200px) {
 	.box-highlight .box-highlight__image {
-		width: 345px;
-		height: 193px;
-		margin: 20px 0 35px -32%;
-		padding: 13px 0 0;
-		border: none;
+		width: 607px;
+		height: 416px;
 	}
 }
 @media screen and (max-width:992px) {
-	.box-highlight .box-highlight__image { margin: 20px 0 35px; }
+	.box-highlight .box-highlight__image-wrapper {
+		margin-left: auto;
+		margin-right: auto;
+		padding: 40px 0 0;
+		border-left: none;
+	}
+
+	.box-highlight .box-highlight__image {
+		width: 550px;
+		height: 377px;
+	}
+
 	.box-notices-highlight:after { display: none; }
 	.box-carousel-notices {
 		position: relative;
@@ -1602,7 +1613,19 @@ body.js .collapse__text { display: none; }
 		}
 	}
 }
-@media screen and (max-width:390px) {
+@media screen and (max-width:768px) {
+	.box-highlight .box-highlight__image {
+		width: 540px;
+		height: 370px;
+	}
+}
+@media screen and (max-width:575px) {
+	.box-highlight .box-highlight__image {
+		width: 385px;
+		height: 264px;
+	}
+}
+@media screen and (max-width:430px) {
 	.box-highlight .box-highlight__image {
 		width: 275px;
 		height: 155px;
@@ -4768,7 +4791,7 @@ aside .list-bidding--type-b {
 	}
 }
 .box-list-links {
-	ul { 
+	ul {
 		width: 90%;
 		margin: -28px auto 0;
 		padding: 57px 0 40px;

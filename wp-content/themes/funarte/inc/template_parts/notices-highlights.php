@@ -4,7 +4,7 @@
  * items: array of item
  * 			item: one array = ['tag_class_area'=>'', 'tag_name_area'=>'', 'tag_url_area'=>'', 'tag_subname_area'=>'', 'title' => '' , 'url'=>'']
  * destaque: ['tag_class_area'=>'', 'tag_name_area'=>'', 'url'=>'', 'content'=>'', 'title'=>'', 'img_url'=>'']
- * 
+ *
  */
 if(!isset($title) || !isset($items) || !isset($destaque)):
 	echo "<br><b> parameter not found! </b><br>";
@@ -53,7 +53,9 @@ else:
 					<section class="box-highlight color-<?php echo $destaque['tag_class_area']; ?>">
 						<h2 class="title-1">Destaque</h2>
 						<a href="<?php echo $destaque['url'];?>">
-							<div class="box-highlight__image" style="background-image: url(<?php echo $destaque['img_url'] ?>);"></div>
+							<div class="box-highlight__image-wrapper">
+								<div class="box-highlight__image" style="background-image: url(<?php echo $destaque['img_url'] ?>);"></div>
+							</div>
 						</a>
 						<div class="link-area">
 							<strong class="color-<?php echo $destaque['tag_class_area']; ?>" href="#"><?php echo $destaque['tag_name_area']; ?></strong>
