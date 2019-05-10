@@ -96,13 +96,7 @@
 						<?php
 							$mes = date('m');
 							$ano = date('Y');
-							$mes = 2;
-							$ano = 2016;
 							$query = [
-								'paged' => false,
-								'post_type' => \funarte\Evento::get_instance()->get_post_type(),
-								'orderby' => 'meta_value',
-								'order' => 'ASC',
 								'posts_per_page'	=> 5
 							];
 							$cat = (isset($query['cat'])) ? get_category($query['cat']) : null;

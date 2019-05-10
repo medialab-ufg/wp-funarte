@@ -32,7 +32,7 @@
 	$query_news = ['cat' => (int)$area->term_id, 'post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'orderby' => 'date', 'order' => 'DESC'];
 	$noticias = new WP_Query($query_news);
 
-	$query_eventos = ['paged' => false, 'post_type' => 'evento', 'orderby' => 'meta_value', 'order' => 'ASC', 'cat' => (int)$area->term_id, 'posts_per_page' => 10 ];
+	$query_eventos = ['cat' => (int)$area->term_id, 'posts_per_page' => 10 ];
 	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'),date('Y'), $query_eventos);
 	if (empty($eventos)) {
 		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);

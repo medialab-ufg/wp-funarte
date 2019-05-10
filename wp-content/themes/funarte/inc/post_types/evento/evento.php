@@ -213,14 +213,27 @@ class Evento {
 	}
 
 	public function get_last_eventos($params = array()) {
-		$params = array_merge(array(
-			'post_type' 	=> $this->POST_TYPE,
-			'meta_key'		=> 'evento-inicio',
-			'meta_compare'=> '<',
-			'ordeby' 			=> 'meta_value',
-			'order'				=> 'DESC',
-			'posts_per_page' 	=> 5
-		), $params);
+		
+		$query = array(
+			'paged' => false,
+			'post_type' => 'evento',
+			'orderby' => 'meta_inicio',
+			'order' => 'ASC',
+			'meta_query' => [
+				'meta_inicio' => [
+					'key' => 'evento-inicio',
+					'compare' => 'EXISTS',
+				],
+				[
+					'key' => 'evento-fim',
+					'compare' => '>=',
+					'value' => date('Y-m-d')
+				],
+				'relation' => 'AND'
+			]
+		);
+		
+		$params = array_merge($query, $params);
 		return query_posts($params);
 	}
 	

@@ -72,10 +72,6 @@ if (have_posts()): the_post();
 
 								if(isset($espaco_tax) && !empty($espaco_tax)) {
 									$query = array(
-										'paged' => false,
-										'post_type' => 'evento',
-										'orderby' => 'meta_value',
-										'order' => 'ASC',
 										'tax_query' => [
 											[ 'taxonomy'=> \funarte\taxEspacosCulturais::get_instance()->get_name(), 
 												'field' => 'slug',
