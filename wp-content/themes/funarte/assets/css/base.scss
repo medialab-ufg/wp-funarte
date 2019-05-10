@@ -3096,7 +3096,7 @@ main { width: 100%; }
 
 	img {
 		width: 100%;
-		min-height: 70px;
+		min-height: 230px;
 		display: block;
 	}
 }
@@ -3217,6 +3217,8 @@ ul.slick-dots {
 	.carousel-highlights {
 		.slick-slide,
 		& > li { padding: 0 40px 0 0; }
+
+		img { min-height: 70px; }
 	}
 	.carousel-highlights__captions {
 		max-width: 70%;
