@@ -422,6 +422,8 @@ noscript {
 
 	img {
 		width: 100%;
+		object-fit: contain;
+		object-position: right;
 	}
 }
 .box-title-page__caption {
