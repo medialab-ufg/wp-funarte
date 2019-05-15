@@ -402,7 +402,7 @@ noscript {
 .box-title-page--image {
 	width: 91%;
 	padding: 0;
-	margin-bottom: 172px;
+	margin-bottom: 100px;
 	display: flex;
 	justify-content: space-between;
 
@@ -415,19 +415,19 @@ noscript {
 .box-title-page__thumb {
 	width: 100%;
 	max-width: 500px;
-	margin-bottom: -140px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 
 	img {
-		// width: 100%;
 		object-fit: contain;
 		object-position: right;
 	}
 }
 .box-title-page__caption {
 	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
 	text-align: right;
 	display: block;
 }
