@@ -74,7 +74,7 @@ query_posts(array_merge(array(
 								<?php 
 									if (has_post_thumbnail()):
 								?>
-										<div class="box-news__image" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');"></div>
+										<div class="box-news__image" style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'funarte-medium'); ?>');"></div>
 								<?php else:?>
 										<div class="box-news__image" style="background-image: url('<?php echo funarte_get_img_default($area->slug); ?>');"></div>
 								<?php endif; ?>
