@@ -323,15 +323,14 @@ var base = {
 			// Barra de progresso
 			$boxPai.on('click','.video-progress__background',function(event) {
 				var $this = $(this),
-					offset = $this.offset(),
-					eixoX = event.pageX - offset.left,
-					$video = $this.parents('.video-bar').siblings('video')[0],
-					valorMaximo = $video.duration,
-					valorFinal = eixoX * valorMaximo / $this.width();
-
-				console.log('event.pageX: ',event.pageX);
+						offset = $this.offset(),
+						eixoX = event.pageX - offset.left,
+						$video = $this.parents('.video-bar').siblings('video')[0],
+						valorMaximo = $video.duration,
+						valorFinal = eixoX * valorMaximo / $this.width();
 
 				$video.currentTime = valorFinal;
+				console.log('eixoX: ',eixoX);
 				$this.find('.video-progress__bar').css('width',eixoX);
 			});
 		}
