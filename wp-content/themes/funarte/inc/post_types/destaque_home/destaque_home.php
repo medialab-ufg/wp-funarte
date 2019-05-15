@@ -75,6 +75,7 @@ class DestaqueHome {
 		$posicao = get_post_meta($post->ID, 'destaque-posicao', true);
 		$target = get_post_meta($post->ID, 'destaque-target', true);
 		$secundario = get_post_meta($post->ID, 'destaque-secundario', true);
+		$secundario_area = get_post_meta($post->ID, 'destaque-secundario_area', true);
 	
 		$THEME_FOLDER = get_template_directory();
 		$DS = DIRECTORY_SEPARATOR;
@@ -103,7 +104,7 @@ class DestaqueHome {
 			update_post_meta($post_id, 'destaque-' . $field, $value);
 		}
 		// Checkboxes (podem não existir no post)
-		$fields = array('home_site', 'home_area', 'secundario');
+		$fields = array('home_site', 'home_area', 'secundario', 'secundario_area');
 		foreach ($fields as $field) {
 			$value = (isset($data[$field]) && !empty($data[$field])) ? 1 : 0;
 			update_post_meta($post_id, 'destaque-' . $field, $value);
@@ -162,22 +163,18 @@ class DestaqueHome {
 			'posts_per_page' => 1
 		), $params);
 
-		$meta_query = array('meta_query' => array(
-			array('key' => 'destaque-secundario', 'value'   => '1')
-		));
+		
 
 		switch ($area) {
 			case 'home':
-				$meta_query['meta_query'][] = array(
-					'meta_key' => 'destaque-home_site',
-					'meta_value' => '1'
-				);
+			$meta_query = array('meta_query' => array(
+				array('key' => 'destaque-secundario', 'value'   => '1'),
+			));
 				break;
 			case 'area':
-				$meta_query['meta_query'][] = array(
-					'meta_key' => 'destaque-home_area',
-					'meta_value' => '1'
-				);
+			$meta_query = array('meta_query' => array(
+				array('key' => 'destaque-secundario_area', 'value'   => '1'),
+			));
 				break;
 		}
 		$params = array_merge($params, $meta_query);
