@@ -310,6 +310,8 @@ var base = {
 						$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
 						$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
 						$this.find('.video-progress__bar').css('width',(Math.floor(100 / $timeVideo.duration) * $timeVideo.currentTime + '%'));
+						console.log('$timeVideo.duration: ',$timeVideo.duration);
+						console.log('$timeVideo.currentTime: ',$timeVideo.currentTime);
 
 						if ($timeVideo.currentTime == $timeVideo.duration) {
 							$this.find('.video-progress__bar').css('width','100%');
@@ -330,7 +332,6 @@ var base = {
 						valorFinal = eixoX * valorMaximo / $this.width();
 
 				$video.currentTime = valorFinal;
-				console.log('eixoX: ',eixoX);
 				$this.find('.video-progress__bar').css('width',eixoX);
 			});
 		}
