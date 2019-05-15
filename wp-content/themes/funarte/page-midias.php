@@ -40,7 +40,7 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 
 											<?php else: ?>
 
-												<video autoplay src="<?php echo $url; ?>" class="video-video"></video>
+												<video src="<?php echo $url; ?>" class="video-video"></video>
 												<div class="video-bar">
 													<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
 													<button type="button" class="video-pause inativo"><i class="mdi mdi-pause"></i></button>
@@ -62,7 +62,7 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 										<div class="box-carousel-audio__info">
 											<strong><?php echo $video->post_title; ?></strong>
 
-											<?php 
+											<?php
 												$string = (strlen($video->post_content) > 200) ? substr($video->post_content,0,200).'...' : $video->post_content;
 												echo '<p>' . $string . '</p>';
 											?>
