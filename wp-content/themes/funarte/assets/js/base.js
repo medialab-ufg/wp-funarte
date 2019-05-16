@@ -311,10 +311,9 @@ var base = {
 							$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
 							$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
 							var resultado = Math.floor(100 / $timeVideo.duration) * $timeVideo.currentTime + '%';
+							console.log('resultado: ',resultado);
 							$this.find('.video-progress__bar').css('width',(resultado));
-
-							console.log('$timeVideo.duration: ',$timeVideo.duration);
-							console.log('$timeVideo.currentTime: ',$timeVideo.currentTime);
+							console.log('barra atualizada');
 
 							if ($timeVideo.currentTime == $timeVideo.duration) {
 								$this.find('.video-progress__bar').css('width','100%');
