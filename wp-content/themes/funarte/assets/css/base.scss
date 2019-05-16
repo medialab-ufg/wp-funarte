@@ -3087,17 +3087,52 @@ main { width: 100%; }
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	position: relative;
+	overflow: hidden;
 
 	& > li,
 	.slick-slide {
 		padding: 0 50px 65px 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+	}
+
+	& > li:first-child,
+	.slick-slide:first-child {
 		position: relative;
+		top: auto;
+		left: auto;
+		z-index: 2;
 	}
 
 	img {
 		width: 100%;
 		min-height: 230px;
 		display: block;
+	}
+}
+body.js {
+	.carousel-highlights {
+		position: static;
+		overflow: visible;
+
+		& > li,
+		.slick-slide {
+			position: relative;
+			top: auto;
+			left: auto;
+			z-index: auto;
+		}
+
+		& > li:first-child,
+		.slick-slide:first-child {
+			position: relative;
+			top: auto;
+			left: auto;
+			z-index: auto;
+		}
 	}
 }
 .carousel-highlights__captions {
