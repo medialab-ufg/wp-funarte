@@ -71,6 +71,7 @@
 		foreach ($noticias as $noticia) {
 			$area = get_area_class($noticia->ID);
 			$link_area = $area['ID'] != null ? get_category_link( $area['ID'] ) : '';
+			$img = get_the_post_thumbnail_url($noticia->ID, 'funarte-medium');
 			//$area = get_the_category($noticia->ID);
 			$items[] = ['tag_class_area'=>$area['slug'],//$area[0]->slug,
 									'tag_name_area' =>$area['name'],//$area[0]->name,
@@ -79,7 +80,7 @@
 									'title' => $noticia->post_title,
 									'url'=> get_permalink($noticia->ID),
 									'content'=> get_the_excerpt($noticia->ID),
-									'url_img'=> get_the_post_thumbnail_url($noticia->ID) ? get_the_post_thumbnail_url($noticia->ID) : null];
+									'url_img'=> $img ? $img : null];
 		}
 		$arg = ['items' => $items, 'more_news_url' => '/noticias'];
 		funarte_load_part('box-news', $arg);

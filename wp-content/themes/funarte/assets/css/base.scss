@@ -386,8 +386,8 @@ noscript {
 
 	img {
 		width: auto;
-		max-width: 480px;
-		max-height: 332px;
+		max-width: 500px;
+		max-height: 350px;
 	}
 
 	.subtitle {
@@ -402,7 +402,7 @@ noscript {
 .box-title-page--image {
 	width: 91%;
 	padding: 0;
-	margin-bottom: 172px;
+	margin-bottom: 100px;
 	display: flex;
 	justify-content: space-between;
 
@@ -414,20 +414,20 @@ noscript {
 .box-title-page__text { padding: 30px 50px 42px; }
 .box-title-page__thumb {
 	width: 100%;
-	max-width: 480px;
-	margin-bottom: -140px;
+	max-width: 500px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 
 	img {
-		width: 100%;
 		object-fit: contain;
 		object-position: right;
 	}
 }
 .box-title-page__caption {
 	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
 	text-align: right;
 	display: block;
 }
@@ -1437,8 +1437,8 @@ body.js .collapse__text { display: none; }
 	}
 }
 .box-news__image {
-	width: 350px;
-	height: 208px;
+	width: 345px;
+	height: 241px;
 	margin: 0 auto 13px;
 	display: block;
 	background-size: cover;
@@ -1449,7 +1449,7 @@ body.js .collapse__text { display: none; }
 @media screen and (max-width:1199px) {
 	.box-news__image {
 		width: 280px;
-		height: 166px;
+		height: 195px;
 	}
 }
 @media screen and (max-width:1024px) {
@@ -1463,14 +1463,14 @@ body.js .collapse__text { display: none; }
 	}
 	.box-news__image {
 		width: 330px;
-		height: 195px;
+		height: 230px;
 	}
 }
 @media screen and (max-width:768px) {
 	.box-news .box-news__list li { max-width: 300px; }
 	.box-news__image {
 		width: 240px;
-		height: 142px;
+		height: 167px;
 	}
 }
 @media screen and (max-width:576px) {
@@ -1489,7 +1489,7 @@ body.js .collapse__text { display: none; }
 	}
 	.box-news__image {
 		width: 275px;
-		height: 162px;
+		height: 192px;
 	}
 }
 
@@ -1560,8 +1560,8 @@ body.js .collapse__text { display: none; }
 	}
 
 	.box-highlight__image {
-		width: 744px;
-		height: 510px;
+		width: 745px;
+		height: 521px;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -1582,7 +1582,7 @@ body.js .collapse__text { display: none; }
 @media screen and (max-width:1200px) {
 	.box-highlight .box-highlight__image {
 		width: 607px;
-		height: 416px;
+		height: 424px;
 	}
 }
 @media screen and (max-width:992px) {
@@ -1595,7 +1595,7 @@ body.js .collapse__text { display: none; }
 
 	.box-highlight .box-highlight__image {
 		width: 550px;
-		height: 377px;
+		height: 385px;
 	}
 
 	.box-notices-highlight:after { display: none; }
@@ -1618,19 +1618,19 @@ body.js .collapse__text { display: none; }
 @media screen and (max-width:768px) {
 	.box-highlight .box-highlight__image {
 		width: 540px;
-		height: 370px;
+		height: 378px;
 	}
 }
 @media screen and (max-width:575px) {
 	.box-highlight .box-highlight__image {
 		width: 385px;
-		height: 264px;
+		height: 269px;
 	}
 }
 @media screen and (max-width:430px) {
 	.box-highlight .box-highlight__image {
 		width: 275px;
-		height: 155px;
+		height: 192px;
 	}
 }
 
