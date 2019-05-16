@@ -6513,6 +6513,7 @@ ul.social-media-list {
 	}
 }
 .box-carousel-audio__row-1 {
+	height: 403px;
 	margin: 0;
 	display: flex;
 	justify-content: space-between;
@@ -6520,7 +6521,10 @@ ul.social-media-list {
 	border: 8px solid $branco;
 	border-top: 21px solid $branco;
 }
-.box-carousel-audio__row-2 { padding: 0 15% 0 8px; }
+.box-carousel-audio__row-2 {
+	height: 135px;
+	padding: 0 15% 0 8px;
+}
 .box-carousel-audio__info {
 	padding: 10px 25px;
 

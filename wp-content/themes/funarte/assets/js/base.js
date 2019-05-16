@@ -203,8 +203,6 @@ var base = {
 							valorMaximo = $video.duration,
 							valorFinal = eixoX * valorMaximo / $this.width();
 
-						console.log('event.pageX: ',event.pageX);
-
 						$video.currentTime = valorFinal;
 						$this.find('.video-progress__bar').css('width',eixoX);
 					});
@@ -323,13 +321,11 @@ var base = {
 			// Barra de progresso
 			$boxPai.on('click','.video-progress__background',function(event) {
 				var $this = $(this),
-					offset = $this.offset(),
-					eixoX = event.pageX - offset.left,
-					$video = $this.parents('.video-bar').siblings('video')[0],
-					valorMaximo = $video.duration,
-					valorFinal = eixoX * valorMaximo / $this.width();
-
-				console.log('event.pageX: ',event.pageX);
+						offset = $this.offset(),
+						eixoX = event.pageX - offset.left,
+						$video = $this.parents('.video-bar').siblings('video')[0],
+						valorMaximo = $video.duration,
+						valorFinal = eixoX * valorMaximo / $this.width();
 
 				$video.currentTime = valorFinal;
 				$this.find('.video-progress__bar').css('width',eixoX);
@@ -468,13 +464,13 @@ var base = {
 					}
 				});
 			}
-			
+
 			$('.datepicker-compacto-filtro').change(function() {
 				base.calendario.atualizaCarrosselCompacto();
 			});
-			
+
 		},
-		
+
 		atualizaCarrosselCompacto: function() {
 			var estrutura = '<ul class="calendario-carousel">',
 				$box = $('.box-calendario'),
@@ -487,24 +483,24 @@ var base = {
 				if (!selectedDate) {
 					return;
 				}
-				
+
 				selectedDate = selectedDate.getTime() / 1000; //js timestamp is in miliseconds
-				
+
 				var local = $('#datepicker-compacto-filtro-local').val();
 				var area = $('#datepicker-compacto-filtro-area').val();
-				
+
 				var query = 'day=' + selectedDate;
-				
+
 				if (local) {
 					query += '&local=' + local;
 				}
-				
+
 				if (area) {
 					query += '&area=' + area;
 				}
-				
-				
-				
+
+
+
 				$.ajax({
 					type: "GET",
 					url: funarte.ajaxurl + '?action=get_events_by_day&' + query,
@@ -525,13 +521,13 @@ var base = {
 							dataFinalSeparada;
 
 						$.each(slides,function(i, slide) {
-							
+
 							dataInicialSeparada = slide.dataInicial.split('/');
 							dataFinalSeparada = slide.dataFinal.split('/');
 
 							mesInicial = base.calendario.transformarMes(dataInicialSeparada[1]);
 							mesFinal = base.calendario.transformarMes(dataFinalSeparada[1]);
-							
+
 							var dataString = dataInicialSeparada[0] + '/' + mesInicial;
 							if (slide.dataInicial != slide.dataFinal) {
 								dataString += ' - ' + dataFinalSeparada[0] + '/' + mesFinal;
@@ -559,7 +555,7 @@ var base = {
 										</li>';
 
 							contador++;
-							
+
 						});
 
 						if (contador <= 0) {
@@ -684,22 +680,22 @@ var base = {
 					.addClass('active')
 					.siblings('li')
 					.removeClass('active');
-				
+
 				//history.pushState('',target, target);
-				
+
 				return false;
 			});
-			
+
 			// $( window ).on( 'hashchange', function( e ) {
 			// 	$(window.location.hash + '-trigger').click();
 			// 	$(window.location.hash + '-trigger').html('asdasd');
 			// } );
-			
+
 			var current = window.location.hash;
 			if (current && current.includes('content-tab')) {
 				$(current + '-trigger').click();
 			}
-			
+
 		}
 	},
 
@@ -789,7 +785,7 @@ var base = {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				vertical: true,
-				adaptiveHeight: true,
+				adaptiveHeight: false,
 				prevArrow: $carousel.find('.control__prev'),
 				nextArrow: $carousel.find('.control__next'),
 			});
@@ -830,7 +826,7 @@ var base = {
 				}
 				var local = $('.carousel-calendar-box .form-filtro-calendario select.select_local').val();
 				var area  = $('.carousel-calendar-box .form-filtro-calendario select.select_area').val();
-				
+
 				var slick = $('.carousel-calendar').slick("getSlick");
 				var param = {day:selectedDate, left:10, rigth:10, local:local, area:area};
 				base.carrossel.adicionarEventos(slick, slick.slideCount-1, param, false, function(slick, count){
@@ -840,7 +836,7 @@ var base = {
 					}
 					$('.form-filtro-calendario').removeClass('form-loading');
 				});
-				
+
 			}
 		},
 
@@ -863,7 +859,7 @@ var base = {
 					Object.keys(data.events).forEach(function(key, index){
 						eventos = data.events[key];
 						var days = ['DOM','SEG','TER','QUA','QUI','SEX','SAB'];
-						
+
 						var dia_semana = days[ ( new Date(key.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3"))).getDay() ];
 						var mes_ano = key.split("/")[0] + '/' + key.split("/")[1];
 
@@ -886,13 +882,13 @@ var base = {
 					var count = slick.slideCount;
 					slick.slickAdd(html_el, pos, addBefore);
 					if($callback) $callback(slick, count);
-					
+
 					base.carrossel.status = true;
 					$('.box-calendar__control button.slick-arrow').removeClass("slick-disabled");
 					$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
 				},
 				error: function(e) {
-					
+
 					base.carrossel.status = true;
 					$('.box-calendar__control button.slick-arrow').removeClass("slick-disabled");
 					$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
@@ -906,11 +902,11 @@ var base = {
 			$('.carousel-calendar').on('afterChange', function(event, slick, currentSlide) {
 				if (base.carrossel.status == true ) {
 					if (slick.slideCount - slick.currentSlide <= 7) {
-						
+
 						base.carrossel.status = false;
 						$('.box-calendar__control button.slick-arrow').addClass("slick-disabled");
 						$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
-						
+
 						var dia = $('.carousel-calendar li:last-of-type').data('dia');
 						var param = {day:dia, left:0, rigth:20};
 						base.carrossel.adicionarEventos(slick, slick.slideCount-1, param, false);
@@ -918,15 +914,15 @@ var base = {
 						base.carrossel.status = false;
 						$('.box-calendar__control button.slick-arrow').addClass("slick-disabled");
 						$('.box-calendar__control button.slick-arrow').attr("disabled", !base.carrossel.status);
-						
+
 						var dia = $('.carousel-calendar li:first-of-type').data('dia');
 						var param = {day:dia, left:20, rigth:0};
 						base.carrossel.adicionarEventos(slick, 0, param, true);
 					}
 				}
-				
+
 			});
-			
+
 			$('.carousel-calendar').on('init', function(event, slick){
 				slick.slickGoTo($('.carousel-calendar li.active').data('slick-index'));
 			});
