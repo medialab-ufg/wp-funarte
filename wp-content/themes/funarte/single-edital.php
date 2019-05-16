@@ -1,4 +1,4 @@
-<?php 
+<?php
 	get_header();
 	$edital = \funarte\Edital::get_instance();
 	$status = $edital->get_edital_status($post->ID);
@@ -9,18 +9,18 @@
 			<a href="#content" id="content" name="content" class="sr-only">Início do conteúdo</a>
 			<div class="container">
 
-				<?php 
+				<?php
 					$links = [
 						['link_name'=>'Editais/Chamamentos','link_url'=>'/edital'],
 						['link_name'=>get_the_title()]];
-					funarte_load_part('breadcrumb', ['links'=>$links]); 
+					funarte_load_part('breadcrumb', ['links'=>$links]);
 
 					$social_list = "<ul>
 													<li><a href='http://www.facebook.com/sharer.php?u=$pagina' class='tooltip-social-media__facebook' target='_blank'><i class='mdi mdi-facebook'></i></a></li>
 													<li><a href='http://twitter.com/share?url=$pagina' class='tooltip-social-media__twitter' target='_blank'><i class='mdi mdi-twitter'></i></a></li>
 													<li class='whatsapp-item'><a href='whatsapp://send?text=$pagina' data-action='share/whatsapp/share' class='tooltip-social-media__whatsapp' target='_blank'><i class='mdi mdi-whatsapp'></i></a></li>
 												</ul>";
-					funarte_load_part('box-title', ['titles'=>['Editais/Chamamentos', $edital->get_edital_status_name($post->ID)], 'social_list' => $social_list ]); 
+					funarte_load_part('box-title', ['titles'=>['Editais/Chamamentos', $edital->get_edital_status_name($post->ID)], 'social_list' => $social_list ]);
 				?>
 
 				<?php
@@ -32,7 +32,7 @@
 											'url_area'=> home_url() . '/category/' . $area->slug];
 					endforeach;
 				?>
-				
+
 				<?php funarte_load_part('title-page', [	'title'=> get_the_title(),
 																								'date_pub' => get_the_time(get_option('date_format')),
 																								'img'  => get_the_post_thumbnail_url(),
@@ -63,11 +63,11 @@
 										<?php foreach($filhos as $filho): ?>
 										<div class="box-edital-filho">
 											<h4 class="box-edital-filho__title">
-												<?php echo $filho->post_title; ?> 
+												<?php echo $filho->post_title; ?>
 												<span><?php echo '(' . get_the_time(get_option('date_format'), $filho) . ')'; ?></span>
 											</h4>
-											<?php 
-												$content = $filho->post_content; 
+											<?php
+												$content = $filho->post_content;
 												$content = apply_filters('the_content', $content);
 												echo '<div class="box-edital-filho__content">' . $content . '</div>';
 											?>
@@ -130,28 +130,45 @@
 						</div>
 					</div>
 					<?php if ( !empty($html_widget) || !empty($edicoes) ): ?>
-						<div class="col-md-4 row">
-							<?php if (!empty($html_widget)): ?>
-								<div class="col-md-12">
-									<aside class="content-aside">
-										<?php echo $html_widget; ?>
-									</aside>
+						<div class="col-md-4">
+							<div class="box-data">
+								<h4 class="title-5">Informações</h4>
+
+								<div class="box-data__row">
+									<strong>Informações ao público:</strong>
+
+									<span>Lorem Ipsum</span>
+
+									<span>Lorem Ipsum</span>
+
+									<a href="#">Lorem</a>
+
+									<a href="#" rel="nofollow">Lorem Lorem</a>
 								</div>
+
+								<div class="box-data__row">
+									<span><b>Local:</b></span>
+									<span>Lorem</span>
+								</div>
+							</div>
+
+							<?php if (!empty($html_widget)): ?>
+								<aside class="content-aside">
+									<?php echo $html_widget; ?>
+								</aside>
 							<?php endif; ?>
 
 							<?php if( !empty($edicoes)): ?>
-								<div class="col-md-12">
-									<div class="box-simple-links mb-0">
-										<h2 class="title-h1">Outras Edições</h2>
-										<ul class="list-simple-links">
-											<?php foreach ( $edicoes as $edital_rel ): ?>
-												<li class="color-funarte">
-													<strong><?php echo $edital_rel->post_title; ?></strong>
-													<a class="link-more" target="_blank" title="<?php echo $edital_rel->post_title; ?>" href="<?php echo get_the_permalink($edital_rel->ID); ?>">Visitar</a>
-												</li>
-											<?php endforeach; ?>
-										</ul>
-									</div>
+								<div class="box-simple-links mb-0">
+									<h2 class="title-h1">Outras Edições</h2>
+									<ul class="list-simple-links">
+										<?php foreach ( $edicoes as $edital_rel ): ?>
+											<li class="color-funarte">
+												<strong><?php echo $edital_rel->post_title; ?></strong>
+												<a class="link-more" target="_blank" title="<?php echo $edital_rel->post_title; ?>" href="<?php echo get_the_permalink($edital_rel->ID); ?>">Visitar</a>
+											</li>
+										<?php endforeach; ?>
+									</ul>
 								</div>
 							<?php endif; ?>
 						</div>
