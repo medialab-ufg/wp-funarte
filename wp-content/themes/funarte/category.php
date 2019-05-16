@@ -97,6 +97,7 @@
 		$items = [];
 		while ($noticias->have_posts()) {
 			$noticias->the_post();
+			$img = get_the_post_thumbnail_url(get_the_ID(), 'funarte-medium');
 			$items[] = ['tag_class_area'=>$area->slug,
 									'tag_name_area' =>$area->name,
 									'tag_url_area' => get_category_link( $area->cat_ID ),
@@ -104,7 +105,7 @@
 									'title' => get_the_title(),
 									'url'=> get_permalink(),
 									'content'=> get_the_excerpt(),
-									'url_img'=> get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : null];
+									'url_img'=> $img ? $img : null];
 		}
 		$arg = ['items' => $items, 'more_news_url' => '/noticias?area=' . $area->name];
 		funarte_load_part('box-news', $arg);
