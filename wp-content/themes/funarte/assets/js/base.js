@@ -89,9 +89,7 @@ var base = {
 		ativar: function() {
 			var $boxPai = $('#items-list-results');
 
-			console.log('$boxPai: ',$boxPai);
 			if ($boxPai.length > 0) {
-				console.log('Dentro do if do pai');
 				$boxPai.on('click','.videos-list__play button',function() {
 					var $this = $(this),
 						$box = $this.parent().siblings('.videos-list__video'),
@@ -248,10 +246,7 @@ var base = {
 		ativarAvulso: function() {
 			$boxPai = $('.video-list');
 
-			console.log('$boxPaiAvulso: ',$boxPai);
-
 			if ($boxPai.length > 0) {
-				console.log('Dentro do if do pai avulso ');
 				// Play
 				$boxPai.on('click','.video-play',function(event) {
 					event.stopImmediatePropagation();
@@ -316,6 +311,9 @@ var base = {
 							$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
 							$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
 							$this.find('.video-progress__bar').css('width',(Math.floor(100 / $timeVideo.duration) * $timeVideo.currentTime + '%'));
+
+							console.log('$timeVideo.duration: ',$timeVideo.duration);
+							console.log('$timeVideo.currentTime: ',$timeVideo.currentTime);
 
 							if ($timeVideo.currentTime == $timeVideo.duration) {
 								$this.find('.video-progress__bar').css('width','100%');
