@@ -3785,7 +3785,7 @@ ul.slick-dots {
 	&.active,
 	&.video-active {
 		.audios-list__play,
-		.videos-list__play { display: none; }
+		.videos-list__play { display: none!important; }
 		.audios-list__audio {
 			position: static;
 			left: auto;

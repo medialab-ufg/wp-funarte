@@ -310,7 +310,8 @@ var base = {
 						if ($timeVideo != undefined) {
 							$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
 							$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
-							$this.find('.video-progress__bar').css('width',(Math.floor(100 / $timeVideo.duration) * $timeVideo.currentTime + '%'));
+							var resultado = Math.floor(100 / $timeVideo.duration) * $timeVideo.currentTime + '%';
+							$this.find('.video-progress__bar').css('width',(resultado));
 
 							console.log('$timeVideo.duration: ',$timeVideo.duration);
 							console.log('$timeVideo.currentTime: ',$timeVideo.currentTime);
