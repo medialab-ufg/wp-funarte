@@ -217,7 +217,7 @@ class Edital {
 				return 'Em avaliação';
 				break;
 			case 'resultado':
-				return 'Resultado';
+				return 'Resultado publicado';
 				break;
 		}
 		return null;

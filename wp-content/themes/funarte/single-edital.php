@@ -48,7 +48,7 @@
 				?>
 
 				<div class="row justify-content-between mb-100">
-					<div class="<?php echo ( !empty($html_widget) || !empty($edicoes) ) ? 'col-md-7' : 'col-md-12' ?>">
+					<div class="col-md-7">
 						<div class="box-text">
 							<div class="box-text__text">
 								<?php the_content(); ?>
@@ -76,81 +76,58 @@
 									<?php endif ?>
 
 							</div>
-
-							<!-- VERIFICAR O USO DESTE BLOCO -->
-
-							<!-- <div class="box-text__info">
-								<div class="resultado">
-									<h3>
-										<span><?php echo $edital->get_edital_status_name($post->ID); ?></span>
-										<?php if ($status == 'aberto') { ?>
-											<span class="interrogacao">
-												<a href="#" title="Ajuda">?</a>
-												<div class="box-guia">
-													<p>Fique atento ao prazo final e inscreva-se a tempo. Estamos esperando seu projeto.</p>
-												</div>
-											</span>
-										<?php } elseif ($status == 'avaliacao') { ?>
-											<span class="interrogacao">
-												<a href="#" title="Ajuda">?</a>
-												<div class="box-guia">
-													<p>Após o fim do prazo para inscrições, uma comissão julgadora avalia as propostas recebidas. Em seguida, a lista de projetos classificados será divulgada neste portal.</p>
-												</div>
-											</span>
-										<?php } elseif ($status == 'resultado') { ?>
-											<span class="interrogacao">
-												<a href="#" title="Ajuda">?</a>
-												<div class="box-guia">
-													<p>Já foi divulgada a relação dos projetos classificados. Os proponentes contemplados devem proceder às próximas etapas previstas pelo edital (ex.: envio de documentação).</p>
-												</div>
-											</span>
-										<?php } ?>
-									</h3>
-									<?php
-									if ($status == 'aberto') {
-										$meta = array(
-											'inscricoes' => array(
-												'inicio' => strtotime(get_post_meta($post->ID, 'edital-inscricoes_inicio', true)),
-												'fim' => strtotime(get_post_meta($post->ID, 'edital-inscricoes_fim', true))
-											),
-											'prorrogado' => (bool)get_post_meta($post->ID, 'edital-prorrogado', true),
-											'resultado' => (bool)get_post_meta($post->ID, 'edital-resultado', true)
-										);
-									?>
-									<div class="descricao">
-										<?php if ($meta['prorrogado']) { ?>
-										<span class="fundo-amarelo">Prorrogado</span>
-										<?php } ?>
-										<span>Início: <strong><?php echo date('d/m/Y', $meta['inscricoes']['inicio']); ?></strong></span>
-										<span>Término: <strong><?php echo date('d/m/Y', $meta['inscricoes']['fim']); ?></strong></span>
-									</div>
-									<?php } ?>
-								</div>
-							</div> -->
+							
 						</div>
 					</div>
-					<?php if ( !empty($html_widget) || !empty($edicoes) ): ?>
-						<div class="col-md-4">
-							<div class="box-data">
-								<h4 class="title-5">Informações</h4>
-
-								<div class="box-data__row">
-									<strong>Informações ao público:</strong>
-
-									<span>Lorem Ipsum</span>
-
-									<span>Lorem Ipsum</span>
-
-									<a href="#">Lorem</a>
-
-									<a href="#" rel="nofollow">Lorem Lorem</a>
-								</div>
-
-								<div class="box-data__row">
-									<span><b>Local:</b></span>
-									<span>Lorem</span>
-								</div>
+					
+					<div class="col-md-4">
+					
+						<div class="box-data">
+							<h4 class="title-5">Informações</h4>
+							<div class="box-data__row">
+							<span><b><?php echo $edital->get_edital_status_name($post->ID); ?>: </b>
+								<?php if ($status == 'aberto') { ?>
+									Fique atento ao prazo final e inscreva-se a tempo. Estamos esperando seu projeto.
+								<?php } elseif ($status == 'avaliacao') { ?>
+									Após o fim do prazo para inscrições, uma comissão julgadora avalia as propostas recebidas. Em seguida, a lista de projetos classificados será divulgada neste portal.
+								<?php } elseif ($status == 'resultado') { ?>
+										Já foi divulgada a relação dos projetos classificados. Os proponentes contemplados devem proceder às próximas etapas previstas pelo edital (ex.: envio de documentação).
+								<?php } ?>
+							</span>
 							</div>
+							
+							<div class="box-data__row">
+								
+								<?php
+								if ($status == 'aberto') {
+									$meta = array(
+										'inscricoes' => array(
+											'inicio' => strtotime(get_post_meta($post->ID, 'edital-inscricoes_inicio', true)),
+											'fim' => strtotime(get_post_meta($post->ID, 'edital-inscricoes_fim', true))
+										),
+										'prorrogado' => (bool)get_post_meta($post->ID, 'edital-prorrogado', true),
+										'resultado' => (bool)get_post_meta($post->ID, 'edital-resultado', true)
+									);
+									?>
+
+									<span>
+										<strong>Inscrições <?php if ($meta['prorrogado']) echo 'prorrogadas'; ?></strong>
+									</span>
+									<span>
+										<b>Início:</b> <?php echo date('d/m/Y', $meta['inscricoes']['inicio']); ?>
+									</span>
+									<span>
+										<b>Término:</b> <?php echo date('d/m/Y', $meta['inscricoes']['fim']); ?>
+									</span>
+
+								<?php } ?>
+							</div>
+
+						</div>
+					
+						<?php if ( !empty($html_widget) || !empty($edicoes) ): ?>
+						
+							
 
 							<?php if (!empty($html_widget)): ?>
 								<aside class="content-aside">
@@ -171,8 +148,9 @@
 									</ul>
 								</div>
 							<?php endif; ?>
-						</div>
-					<?php endif; ?>
+						
+						<?php endif; ?>
+					</div>
 				</div>
 			</div>
 		</main>
