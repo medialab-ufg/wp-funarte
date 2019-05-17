@@ -26,7 +26,7 @@ query_posts(array_merge(array(
 
 			<?php
 				$links = [['link_name'=>'Notícias']];
-				funarte_load_part('breadcrumb', ['links'=>$links]); 
+				funarte_load_part('breadcrumb', ['links'=>$links]);
 			?>
 
 			<div class="box-title">
@@ -56,7 +56,7 @@ query_posts(array_merge(array(
 		<section class="box-news">
 			<div class="container">
 				<ul class='box-news__list box-news__list--interna'>
-					<?php if (have_posts()) :	while (have_posts()) : 
+					<?php if (have_posts()) :	while (have_posts()) :
 						the_post();
 						$area = get_area_class(get_the_ID());
 						//$area = get_the_category()[0];
@@ -69,9 +69,9 @@ query_posts(array_merge(array(
 									<strong class="<?php echo 'color-' . $area['slug']; ?>"><?php echo $area['name']; ?></strong>
 								<?php endif; ?>
 							</div>
-							
+
 							<a href='<?php the_permalink();  ?>'>
-								<?php 
+								<?php
 									if (has_post_thumbnail()):
 								?>
 										<div class="box-news__image" style="background-image: url('<?php echo get_the_post_thumbnail_url(get_the_ID(), 'funarte-medium'); ?>');"></div>
@@ -84,10 +84,18 @@ query_posts(array_merge(array(
 									<?php the_title(); ?>
 								</a>
 							</h3>
-							<?php the_excerpt(); ?>
+
+							<?php if (get_the_subtitle()): ?>
+								<p class="news-subtitle">
+									<?php echo wp_trim_words(get_the_subtitle(),11); ?>
+								</p>
+							<?php endif; ?>
+
+							<p><?php echo wp_trim_words(get_the_excerpt(),21); ?></p>
+
 							<a href='<?php the_permalink();  ?>' class='link-more'>Ler mais</a>
 						</li>
-					<?php 
+					<?php
 					endwhile;
 					echo get_pagination();
 					endif; ?>

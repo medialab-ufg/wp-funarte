@@ -188,6 +188,15 @@ noscript {
 	color: $cinza-6;
 	display: block;
 }
+.news-subtitle {
+	margin-bottom: 13px;
+	font-weight: 600;
+	font-family: Roboto,sans-serif;
+	font-style: italic;
+	font-size: .88rem;
+	color: $cinza-6;
+	display: block;
+}
 .title-h1 {
 	margin: 0;
 	padding: 0 0 0 17px;
@@ -3821,7 +3830,7 @@ ul.slick-dots {
 	&.active,
 	&.video-active {
 		.audios-list__play,
-		.videos-list__play { display: none!important; }
+		.videos-list__play { display: none; }
 		.audios-list__audio {
 			position: static;
 			left: auto;
