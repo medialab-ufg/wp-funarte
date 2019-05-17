@@ -89,149 +89,151 @@ var base = {
 		ativar: function() {
 			var $boxPai = $('#items-list-results');
 
-			$boxPai.on('click','.videos-list__play button',function() {
-				var $this = $(this),
-					$box = $this.parent().siblings('.videos-list__video'),
-					video = $box.data('video'),
-					estrutura = '';
+			if ($boxPai.length > 0) {
+				$boxPai.on('click','.videos-list__play button',function() {
+					var $this = $(this),
+						$box = $this.parent().siblings('.videos-list__video'),
+						video = $box.data('video'),
+						estrutura = '';
 
-				if (video) {
+					if (video) {
+						$('video').each(function() {
+							$(this)[0].pause();
+						});
+
+						$('.video-play').removeClass('inativo');
+						$('.video-pause').addClass('inativo');
+
+						estrutura = '<video autoplay src="' + video + '" class="video-video"></video>\
+									<div class="video-bar">\
+										<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>\
+										<button type="button" class="video-pause"><i class="mdi mdi-pause"></i></button>\
+										<div class="video-progress">\
+											<div class="video-progress__background">\
+												<div class="video-progress__bar"></div>\
+											</div>\
+										</div>\
+										<div class="video-current"></div>\
+										<div class="video-duration"></div>\
+										<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>\
+										<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>\
+									</div>';
+						$box.html(estrutura);
+
+						$this.parents('.audios-list__box').addClass('video-active');
+
+						// Play
+						$boxPai.on('click','.video-play',function(event) {
+							event.stopImmediatePropagation();
+
+							$('video').each(function() {
+								$(this)[0].pause();
+							});
+							$('.video-play').removeClass('inativo');
+							$('.video-pause').addClass('inativo');
+
+							var $this = $(this);
+
+							$this.addClass('inativo').parents('.videos-list__video').find('video')[0].play();
+							$this.siblings('.video-pause').removeClass('inativo');
+						});
+
+						// Pause
+						$boxPai.on('click','.video-pause',function(event) {
+							event.stopImmediatePropagation();
+							var $this = $(this);
+
+							$this.addClass('inativo').parents('.videos-list__video').find('video')[0].pause();
+							$this.siblings('.video-play').removeClass('inativo');
+						});
+
+						// Volume
+						$boxPai.on('click','.video-volume',function(event) {
+							event.stopImmediatePropagation();
+							var $this = $(this),
+								videoMute = $this.parents('.videos-list__video').find('video')[0];
+
+							if (videoMute.muted == false ) {
+								videoMute.muted = true;
+								$this.addClass('muted');
+							} else {
+								videoMute.muted = false;
+								$this.removeClass('muted');
+							}
+						});
+
+						// Full Screen
+						$boxPai.on('click','.video-full',function() {
+							var videoFull = $(this).parents('.videos-list__video').find('video')[0];
+
+							if (videoFull.mozRequestFullScreen) {
+								videoFull.mozRequestFullScreen();
+							} else if (videoFull.webkitRequestFullScreen) {
+								videoFull.webkitRequestFullScreen();
+							}
+						});
+
+						// Tempo
+						var $timeVideo;
+						setInterval(function() {
+							$('.videos-list__video').each(function() {
+								var $this = $(this);
+
+								$timeVideo = $this.find('video').get(0);
+
+								if ($timeVideo != undefined) {
+									$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
+									$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
+									$this.find('.video-progress__bar').css('width',(Math.floor((100 / $timeVideo.duration) * $timeVideo.currentTime) + '%'));
+
+									if ($timeVideo.currentTime == $timeVideo.duration) {
+										$this.find('.video-progress__bar').css('width','100%');
+										$this.find('.video-play').removeClass('inativo');
+										$this.find('.video-pause').addClass('inativo');
+									}
+								}
+							});
+						}, 500);
+
+						// Barra de progresso
+						$boxPai.on('click','.video-progress__background',function(event) {
+							var $this = $(this),
+								offset = $this.offset(),
+								eixoX = event.pageX - offset.left,
+								$video = $this.parents('.video-bar').siblings('video')[0],
+								valorMaximo = $video.duration,
+								valorFinal = eixoX * valorMaximo / $this.width();
+
+							$video.currentTime = valorFinal;
+							$this.find('.video-progress__bar').css('width',eixoX);
+						});
+					} else {
+						$box.addClass('youtube-video');
+					}
+				});
+
+				// Pausa todos os videos ao mudar a visualizacao
+				$('#items-list-area').on('click','.dropdown-item',function(event) {
+					event.stopImmediatePropagation();
+
 					$('video').each(function() {
 						$(this)[0].pause();
 					});
 
 					$('.video-play').removeClass('inativo');
 					$('.video-pause').addClass('inativo');
-
-					estrutura = '<video autoplay src="' + video + '" class="video-video"></video>\
-								<div class="video-bar">\
-									<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>\
-									<button type="button" class="video-pause"><i class="mdi mdi-pause"></i></button>\
-									<div class="video-progress">\
-										<div class="video-progress__background">\
-											<div class="video-progress__bar"></div>\
-										</div>\
-									</div>\
-									<div class="video-current"></div>\
-									<div class="video-duration"></div>\
-									<button type="button" class="video-volume"><i class="mdi mdi-volume-high"></i><i class="mdi mdi-volume-mute"></i></button>\
-									<button type="button" class="video-full"><i class="mdi mdi-fullscreen"></i></button>\
-								</div>';
-					$box.html(estrutura);
-
-					$this.parents('.audios-list__box').addClass('video-active');
-
-					// Play
-					$boxPai.on('click','.video-play',function(event) {
-						event.stopImmediatePropagation();
-
-						$('video').each(function() {
-							$(this)[0].pause();
-						});
-						$('.video-play').removeClass('inativo');
-						$('.video-pause').addClass('inativo');
-
-						var $this = $(this);
-
-						$this.addClass('inativo').parents('.videos-list__video').find('video')[0].play();
-						$this.siblings('.video-pause').removeClass('inativo');
-					});
-
-					// Pause
-					$boxPai.on('click','.video-pause',function(event) {
-						event.stopImmediatePropagation();
-						var $this = $(this);
-
-						$this.addClass('inativo').parents('.videos-list__video').find('video')[0].pause();
-						$this.siblings('.video-play').removeClass('inativo');
-					});
-
-					// Volume
-					$boxPai.on('click','.video-volume',function(event) {
-						event.stopImmediatePropagation();
-						var $this = $(this),
-							videoMute = $this.parents('.videos-list__video').find('video')[0];
-
-						if (videoMute.muted == false ) {
-							videoMute.muted = true;
-							$this.addClass('muted');
-						} else {
-							videoMute.muted = false;
-							$this.removeClass('muted');
-						}
-					});
-
-					// Full Screen
-					$boxPai.on('click','.video-full',function() {
-						var videoFull = $(this).parents('.videos-list__video').find('video')[0];
-
-						if (videoFull.mozRequestFullScreen) {
-							videoFull.mozRequestFullScreen();
-						} else if (videoFull.webkitRequestFullScreen) {
-							videoFull.webkitRequestFullScreen();
-						}
-					});
-
-					// Tempo
-					var $timeVideo;
-					setInterval(function() {
-						$('.videos-list__video').each(function() {
-							var $this = $(this);
-
-							$timeVideo = $this.find('video').get(0);
-
-							if ($timeVideo != undefined) {
-								$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
-								$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
-								$this.find('.video-progress__bar').css('width',(Math.floor(100 / $timeVideo.duration) * $timeVideo.currentTime + '%'));
-
-								if ($timeVideo.currentTime == $timeVideo.duration) {
-									$this.find('.video-progress__bar').css('width','100%');
-									$this.find('.video-play').removeClass('inativo');
-									$this.find('.video-pause').addClass('inativo');
-								}
-							}
-						});
-					}, 500);
-
-					// Barra de progresso
-					$boxPai.on('click','.video-progress__background',function(event) {
-						var $this = $(this),
-							offset = $this.offset(),
-							eixoX = event.pageX - offset.left,
-							$video = $this.parents('.video-bar').siblings('video')[0],
-							valorMaximo = $video.duration,
-							valorFinal = eixoX * valorMaximo / $this.width();
-
-						$video.currentTime = valorFinal;
-						$this.find('.video-progress__bar').css('width',eixoX);
-					});
-				} else {
-					$box.addClass('youtube-video');
-				}
-			});
-
-			// Pausa todos os videos ao mudar a visualizacao
-			$('#items-list-area').on('click','.dropdown-item',function(event) {
-				event.stopImmediatePropagation();
-
-				$('video').each(function() {
-					$(this)[0].pause();
 				});
 
-				$('.video-play').removeClass('inativo');
-				$('.video-pause').addClass('inativo');
-			});
+				// Pausa todos os videos ao mudar o filtro
+				$('#filters-desktop-aside').on('change','select',function() {
+					$('video').each(function() {
+						$(this)[0].pause();
+					});
 
-			// Pausa todos os videos ao mudar o filtro
-			$('#filters-desktop-aside').on('change','select',function() {
-				$('video').each(function() {
-					$(this)[0].pause();
+					$('.video-play').removeClass('inativo');
+					$('.video-pause').addClass('inativo');
 				});
-
-				$('.video-play').removeClass('inativo');
-				$('.video-pause').addClass('inativo');
-			});
+			}
 		},
 
 		converterTempo : function (time) {
@@ -244,92 +246,94 @@ var base = {
 		ativarAvulso: function() {
 			$boxPai = $('.video-list');
 
-			// Play
-			$boxPai.on('click','.video-play',function(event) {
-				event.stopImmediatePropagation();
+			if ($boxPai.length > 0) {
+				// Play
+				$boxPai.on('click','.video-play',function(event) {
+					event.stopImmediatePropagation();
 
-				// Pausando todos os outros players
-				$('video').each(function() {
-					$(this)[0].pause();
-				});
-				$('.video-play').removeClass('inativo');
-				$('.video-pause').addClass('inativo');
+					// Pausando todos os outros players
+					$('video').each(function() {
+						$(this)[0].pause();
+					});
+					$('.video-play').removeClass('inativo');
+					$('.video-pause').addClass('inativo');
 
-				var $this = $(this);
-
-				$this.addClass('inativo').parents('.video-player').find('video')[0].play();
-				$this.siblings('.video-pause').removeClass('inativo');
-			});
-
-			// Pause
-			$boxPai.on('click','.video-pause',function(event) {
-				event.stopImmediatePropagation();
-				var $this = $(this);
-
-				$this.addClass('inativo').parents('.video-player').find('video')[0].pause();
-				$this.siblings('.video-play').removeClass('inativo');
-			});
-
-			// Volume
-			$boxPai.on('click','.video-volume',function(event) {
-				event.stopImmediatePropagation();
-				var $this = $(this),
-					videoMute = $this.parents('.video-player').find('video')[0];
-
-				if (videoMute.muted == false ) {
-					videoMute.muted = true;
-					$this.addClass('muted');
-				} else {
-					videoMute.muted = false;
-					$this.removeClass('muted');
-				}
-			});
-
-			// Full Screen
-			$boxPai.on('click','.video-full',function() {
-				var videoFull = $(this).parents('.video-player').find('video')[0];
-
-				if (videoFull.mozRequestFullScreen) {
-					videoFull.mozRequestFullScreen();
-				} else if (videoFull.webkitRequestFullScreen) {
-					videoFull.webkitRequestFullScreen();
-				}
-			});
-
-			// Tempo
-			var $timeVideo;
-			setInterval(function() {
-				$('.video-player').each(function() {
 					var $this = $(this);
 
-					$timeVideo = $this.find('video').get(0);
+					$this.addClass('inativo').parents('.video-player').find('video')[0].play();
+					$this.siblings('.video-pause').removeClass('inativo');
+				});
 
-					if ($timeVideo != undefined) {
-						$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
-						$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
-						$this.find('.video-progress__bar').css('width',(Math.floor(100 / $timeVideo.duration) * $timeVideo.currentTime + '%'));
+				// Pause
+				$boxPai.on('click','.video-pause',function(event) {
+					event.stopImmediatePropagation();
+					var $this = $(this);
 
-						if ($timeVideo.currentTime == $timeVideo.duration) {
-							$this.find('.video-progress__bar').css('width','100%');
-							$this.find('.video-play').removeClass('inativo');
-							$this.find('.video-pause').addClass('inativo');
-						}
+					$this.addClass('inativo').parents('.video-player').find('video')[0].pause();
+					$this.siblings('.video-play').removeClass('inativo');
+				});
+
+				// Volume
+				$boxPai.on('click','.video-volume',function(event) {
+					event.stopImmediatePropagation();
+					var $this = $(this),
+						videoMute = $this.parents('.video-player').find('video')[0];
+
+					if (videoMute.muted == false ) {
+						videoMute.muted = true;
+						$this.addClass('muted');
+					} else {
+						videoMute.muted = false;
+						$this.removeClass('muted');
 					}
 				});
-			}, 500);
 
-			// Barra de progresso
-			$boxPai.on('click','.video-progress__background',function(event) {
-				var $this = $(this),
-						offset = $this.offset(),
-						eixoX = event.pageX - offset.left,
-						$video = $this.parents('.video-bar').siblings('video')[0],
-						valorMaximo = $video.duration,
-						valorFinal = eixoX * valorMaximo / $this.width();
+				// Full Screen
+				$boxPai.on('click','.video-full',function() {
+					var videoFull = $(this).parents('.video-player').find('video')[0];
 
-				$video.currentTime = valorFinal;
-				$this.find('.video-progress__bar').css('width',eixoX);
-			});
+					if (videoFull.mozRequestFullScreen) {
+						videoFull.mozRequestFullScreen();
+					} else if (videoFull.webkitRequestFullScreen) {
+						videoFull.webkitRequestFullScreen();
+					}
+				});
+
+				// Tempo
+				var $timeVideo;
+				setInterval(function() {
+					$('.video-player').each(function() {
+						var $this = $(this);
+
+						$timeVideo = $this.find('video').get(0);
+
+						if ($timeVideo != undefined) {
+							$this.find('.video-duration').text(base.video.converterTempo($timeVideo.duration));
+							$this.find('.video-current').text(base.video.converterTempo($timeVideo.currentTime));
+							$this.find('.video-progress__bar').css('width',((Math.floor(100 / $timeVideo.duration) * $timeVideo.currentTime) + '%'));
+
+							if ($timeVideo.currentTime == $timeVideo.duration) {
+								$this.find('.video-progress__bar').css('width','100%');
+								$this.find('.video-play').removeClass('inativo');
+								$this.find('.video-pause').addClass('inativo');
+							}
+						}
+					});
+				}, 500);
+
+				// Barra de progresso
+				$boxPai.on('click','.video-progress__background',function(event) {
+					var $this = $(this),
+							offset = $this.offset(),
+							eixoX = event.pageX - offset.left,
+							$video = $this.parents('.video-bar').siblings('video')[0],
+							valorMaximo = $video.duration,
+							valorFinal = eixoX * valorMaximo / $this.width();
+
+					$video.currentTime = valorFinal;
+					$this.find('.video-progress__bar').css('width',eixoX);
+				});
+			}
 		}
 	},
 
