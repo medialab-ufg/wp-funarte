@@ -46,7 +46,7 @@ class Edital {
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
 			'supports' => array(
-				'title', 'editor', 'page-attributes', ),
+				'title', 'editor', 'page-attributes', 'thumbnail' ),
 			'taxonomies' => [
 				taxCategoria::get_instance()->get_name(),
 				taxEditais::get_instance()->get_name(),
@@ -217,7 +217,7 @@ class Edital {
 				return 'Em avaliação';
 				break;
 			case 'resultado':
-				return 'Resultado';
+				return 'Resultado publicado';
 				break;
 		}
 		return null;
