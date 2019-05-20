@@ -27,6 +27,12 @@ else:
 		} else {
 			$tag_url = "<strong>" . $item['tag_name_area'] . "</strong>";
 		}
+
+		if (get_the_subtitle()):
+			$subtitle = wp_trim_words(get_the_subtitle(),15);
+		endif;
+
+		$content = wp_trim_words(get_the_excerpt(),25);
 		
 		$visible = $col < $number_cols ? " visible" : "";
 		$col++;
@@ -36,7 +42,8 @@ else:
 							</div>
 							<a href='" . $item['url'] . "'><span class='box-news__image' style='background-image: url($url_img);'></span></a>
 							<h3 class='news-title'><a href='" . $item['url'] . "'>" . $item['title'] . "</a></h3>
-							<span>" . $item['content'] . "</span>
+							<p class='news-subtitle'>" . $subtitle . "</p>
+							<span>" . $content . "</span>
 							<a href='" . $item['url'] . "' class='link-more'>Ler mais</a>
 						</li>";
 	endforeach;
