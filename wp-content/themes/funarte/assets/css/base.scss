@@ -78,7 +78,10 @@ body {
 }
 
 
-p { line-height: 1.2rem; }
+p {
+	font-size: .88rem;
+	line-height: 1rem;
+}
 form legend {
 	width: 1px;
 	height: 1px;
@@ -182,19 +185,22 @@ noscript {
 	a { color: inherit; }
 }
 .news-title {
-	margin-bottom: 13px;
+	margin-bottom: 6px;
+	font-weight: 700;
 	font-family: 'Sansita', sans-serif;
-	font-size: 1.4rem;
+	font-size: 1.25rem;
 	color: $cinza-6;
+	line-height: 1.15;
 	display: block;
 }
 .news-subtitle {
-	margin-bottom: 13px;
+	margin-bottom: 20px;
 	font-weight: 600;
 	font-family: Roboto,sans-serif;
 	font-style: italic;
 	font-size: .88rem;
 	color: $cinza-6;
+	line-height: 1rem;
 	display: block;
 }
 .title-h1 {
@@ -1441,9 +1447,7 @@ body.js .collapse__text { display: none; }
 			display: block;
 		}
 
-		.link-more {
-			margin-top: 12px;
-		}
+		.link-more { margin-top: 2px; }
 	}
 }
 .box-news__image {
