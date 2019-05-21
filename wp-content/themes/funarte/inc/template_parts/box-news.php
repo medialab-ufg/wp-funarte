@@ -36,8 +36,8 @@ else:
 							</div>
 							<a href='" . $item['url'] . "'><span class='box-news__image' style='background-image: url($url_img);'></span></a>
 							<h3 class='news-title'><a href='" . $item['url'] . "'>" . $item['title'] . "</a></h3>
-							<p class='news-subtitle'>" . $subtitle . "</p>
-							<p>" . $content . "</p>
+							<p class='news-subtitle'>" . $item['subtitle'] . "</p>
+							<p>" . $item['content'] . "</p>
 							<a href='" . $item['url'] . "' class='link-more'>Ler mais</a>
 						</li>";
 	endforeach;
