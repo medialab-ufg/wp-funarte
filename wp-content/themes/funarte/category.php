@@ -96,7 +96,15 @@
 	<?php
 		$items = [];
 		while ($noticias->have_posts()) {
+			
 			$noticias->the_post();
+			
+			$subtitle = '';
+			if (get_the_subtitle()) {
+				$subtitle = wp_trim_words(get_the_subtitle(),13);
+			}
+			
+			$content = wp_trim_words(get_the_excerpt(),25);
 			$img = get_the_post_thumbnail_url(get_the_ID(), 'funarte-medium');
 			$items[] = ['tag_class_area'=>$area->slug,
 									'tag_name_area' =>$area->name,
@@ -104,7 +112,8 @@
 									'tag_subname_area'=>'',
 									'title' => get_the_title(),
 									'url'=> get_permalink(),
-									'content'=> get_the_excerpt(),
+									'content'=> $content,
+									'subtitle' => $subtitle,
 									'url_img'=> $img ? $img : null];
 		}
 		$arg = ['items' => $items, 'more_news_url' => '/noticias?area=' . $area->name];
