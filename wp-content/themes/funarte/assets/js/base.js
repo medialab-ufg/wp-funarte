@@ -1125,7 +1125,7 @@ var base = {
 
 			if (itens > 4) {
 				$('.carousel-collection').slick({
-					speed: 1000,
+					speed: 500,
 					infinite: false,
 					slidesToShow: 4,
 					slidesToScroll: 4,
@@ -1133,6 +1133,13 @@ var base = {
 					nextArrow: $carousel.find('.control__next'),
 					adaptiveHeight: true,
 					responsive: [
+						{
+							breakpoint: 1200,
+							settings: {
+								slidesToShow: 3,
+								slidesToScroll: 3
+							}
+						},
 						{
 							breakpoint: 768,
 							settings: {
@@ -1183,7 +1190,7 @@ var base = {
 					.find('.visible')
 					.removeClass('visible')
 					.end()
-					.find('.carousel-schedule__image-' + (nextSlide + 1))
+					.find('.carousel-schedule__image-' + nextSlide)
 					.addClass('visible');
 
 				$('.box-carousel-schedule .color-artes-visuais hr').css({
