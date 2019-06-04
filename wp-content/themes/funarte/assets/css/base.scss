@@ -3158,16 +3158,26 @@ body.js {
 	max-width: 90%;
 	margin-left: 35px;
 	padding: 6px 20px 14px;
+	text-align: right;
 	position: absolute;
 	right: 85px;
 	bottom: 20px;
-	background-color: #f1f1f1;
 	z-index: 2;
-	transition: width 1s ease-in-out;
+	
+	.carousel-highlights__box {
+		width: 10px;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-color: #f1f1f1;
+		z-index: -1;
+		transition: width 600ms ease-in-out;
+	}
 
 	.carousel-highlights__caption { display: none; }
 
-	.carousel-highlights__caption.visible { display: block; }
+	.carousel-highlights__caption.visible { display: inline; }
 
 	.hidden__caption {
 		position: absolute;
@@ -3178,14 +3188,14 @@ body.js {
 		font-family: 'Sansita', sans-serif;
 		font-size: 1.3rem;
 		text-align: right;
-		display: block;
+		display: inline-block;
 	}
 
 	span {
 		margin-top: -4px;
 		font-size: 1rem;
 		text-align: right;
-		display: block;
+		display: inline-block;
 
 		* { font-size: 1rem; }
 	}

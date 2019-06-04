@@ -1091,8 +1091,8 @@ var base = {
 			var $carousel = $('.box-carousel-highlights');
 
 			$('.carousel-highlights').on('init', function(event, slick) {
-				var $caption = $('.carousel-highlights__captions'),
-					largura = ($('.hidden__caption-0').outerWidth() + 50),
+				var $caption = $('.carousel-highlights__box'),
+					largura = ($('.carousel-highlights__caption-0').outerWidth()),
 					padding = 20;
 
 				$caption.css('width',largura + (padding * 2));
@@ -1111,13 +1111,13 @@ var base = {
 				adaptiveHeight: true
 			})
 			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-				var $caption = $('.carousel-highlights__captions'),
-					largura = ($('.hidden__caption-' + nextSlide).outerWidth() + 50),
+				var $caption = $('.carousel-highlights__box'),
+					largura = ($('.carousel-highlights__caption-' + nextSlide).outerWidth()),
 					padding = 20;
 
 				$caption.css('width',largura + (padding * 2));
 
-				$caption
+				$('.carousel-highlights__captions')
 					.find('.visible')
 					.removeClass('visible')
 					.end()
