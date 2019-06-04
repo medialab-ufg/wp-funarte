@@ -1224,7 +1224,7 @@ noscript {
 .list-tabs--on {
 	padding: 0 40px;
 
-	.box-tabs__control { display: block; }
+	.box-tabs__control.active { display: block; }
 }
 
 @media screen and (max-width:1100px) {

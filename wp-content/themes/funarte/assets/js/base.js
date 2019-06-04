@@ -1024,31 +1024,38 @@ var base = {
 
 		iniciarTabsOn: function() {
 			var $boxCarousel = $('.list-tabs--on'),
-				$carousel = $boxCarousel.find('.list-tabs__main');
+				$carousel = $boxCarousel.find('.list-tabs__main'),
+				itens = $carousel.find('a');
 
-			$carousel.slick({
-				speed: 1000,
-				infinite: false,
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				prevArrow: $boxCarousel.find('.control__prev'),
-				nextArrow: $boxCarousel.find('.control__next'),
-				adaptiveHeight: true,
-				responsive: [
-					{
-						breakpoint: 1200,
-						settings: {
-							slidesToShow: 2
+			if (itens.length > 2) {
+				$carousel.on('init', function(event, slick, currentSlide, nextSlide) {
+					$boxCarousel.find('.box-tabs__control').addClass('active');
+				});
+
+				$carousel.slick({
+					speed: 1000,
+					infinite: false,
+					slidesToShow: 3,
+					slidesToScroll: 1,
+					prevArrow: $boxCarousel.find('.control__prev'),
+					nextArrow: $boxCarousel.find('.control__next'),
+					adaptiveHeight: true,
+					responsive: [
+						{
+							breakpoint: 1200,
+							settings: {
+								slidesToShow: 2
+							}
+						},
+						{
+							breakpoint: 992,
+							settings: {
+								slidesToShow: 1
+							}
 						}
-					},
-					{
-						breakpoint: 992,
-						settings: {
-							slidesToShow: 1
-						}
-					}
-				]
-			});
+					]
+				});
+			}
 		},
 
 		iniciarImagens: function() {
