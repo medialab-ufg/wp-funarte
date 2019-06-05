@@ -54,7 +54,7 @@ else:
 						<hr>
 						<div class="carousel-schedule__row">
 							<div class="carousel-schedule__column-1">
-								<span class="carousel-schedule__time">inicia as: <?php echo $item['schedule']; ?></span>
+								<span class="carousel-schedule__time">inicia às: <?php echo $item['schedule']; ?></span>
 								<span class="carousel-schedule__local"><?php echo $item['local']; ?></span>
 							</div>
 							<div class="carousel-schedule__column-2">
