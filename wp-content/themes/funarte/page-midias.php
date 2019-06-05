@@ -24,7 +24,10 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 					<div class="video-list">
 						<ul class="carousel-audio">
 							<?php foreach($videos as $video): ?>
-								<?php $url = get_post_meta($video->ID, 'midia-video-url', true); ?>
+								<?php 
+									$url = get_post_meta($video->ID, 'midia-video-url', true); 
+									$thumbnail_video = get_the_post_thumbnail_url( $video->ID,'medium') ? get_the_post_thumbnail_url( $video->ID,'medium') : funarte_get_img_default('funarte');
+								?>
 								<li>
 									<div class="box-carousel-audio__row-1">
 										<div class="video-player">
@@ -40,7 +43,7 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 
 											<?php else: ?>
 
-												<img src="<?php echo get_template_directory_uri() . '/assets/img/bkg/grafismo_artes_integradas.png'; ?>" alt="Vídeo" class="video-player__thumb">
+												<img src="<?php echo $thumbnail_video; ?>" alt="Vídeo" class="video-player__thumb">
 												<video src="<?php echo $url; ?>" class="video-video"></video>
 												<div class="video-bar">
 													<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
