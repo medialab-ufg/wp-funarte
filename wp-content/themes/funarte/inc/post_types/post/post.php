@@ -20,6 +20,7 @@ class Post {
 		global $post;
 		$nonce = wp_create_nonce(__FILE__);
 		$qtd_columns = get_post_meta($post->ID, 'post-quantity-columns', true);
+		$destacar_home = get_post_meta($post->ID, 'destacar-home', true);
 		if (!isset($qtd_columns) || empty($qtd_columns) || $qtd_columns == "") {
 			$qtd_columns = '1';
 		}
@@ -30,6 +31,10 @@ class Post {
 			<option value='2'  <?php if($qtd_columns == '2' ) { echo "selected"; } ?> >duas colunas</option>
 			<option value='1' <?php if($qtd_columns == '1') { echo "selected"; }?>>uma coluna</option>
 		</select>
+		<div style="margin: 0 auto; margin-top: 10px;">
+			<input type="checkbox" style="margin-left: 5px;" name="destacar-home" id="destacar-home" <?php if((boolean)$destacar_home){ echo 'checked="checked"'; } ?> />
+			<label for="destacar-home"> Exibir na home? </label>
+		</div>
 		<?php
 	}
 
@@ -40,7 +45,6 @@ class Post {
 		}
 		$this->save_post_custom_box($post_id);
 	}
-
 
 	private function save_post_custom_box($post_id) {
 		if (empty($_POST))
@@ -60,6 +64,7 @@ class Post {
 
 		$qtd_columns = $_POST['post-quantity-columns'];
 		update_post_meta($post_id, 'post-quantity-columns', $qtd_columns);
+		update_post_meta($post_id, 'destacar-home', (int)((isset($_POST['destacar-home'])) && ($_POST['destacar-home'] == 'on')));
 	}
 
 	public function extra_files() {
