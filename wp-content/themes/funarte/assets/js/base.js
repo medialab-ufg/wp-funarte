@@ -134,6 +134,8 @@ var base = {
 
 							var $this = $(this);
 
+							$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
+
 							$this.addClass('inativo').parents('.videos-list__video').find('video')[0].play();
 							$this.siblings('.video-pause').removeClass('inativo');
 						});
@@ -164,13 +166,16 @@ var base = {
 
 						// Full Screen
 						$boxPai.on('click','.video-full',function() {
-							var videoFull = $(this).parents('.videos-list__video').find('video')[0];
+							var $this = $(this),
+								videoFull = $this.parents('.videos-list__video').find('video')[0];
 
 							if (videoFull.mozRequestFullScreen) {
 								videoFull.mozRequestFullScreen();
 							} else if (videoFull.webkitRequestFullScreen) {
 								videoFull.webkitRequestFullScreen();
 							}
+
+							$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
 						});
 
 						// Tempo
@@ -260,6 +265,8 @@ var base = {
 
 					var $this = $(this);
 
+					$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
+
 					$this.addClass('inativo').parents('.video-player').find('video')[0].play();
 					$this.siblings('.video-pause').removeClass('inativo');
 				});
@@ -290,13 +297,16 @@ var base = {
 
 				// Full Screen
 				$boxPai.on('click','.video-full',function() {
-					var videoFull = $(this).parents('.video-player').find('video')[0];
+					var $this = $(this),
+						videoFull = $this.parents('.video-player').find('video')[0];
 
 					if (videoFull.mozRequestFullScreen) {
 						videoFull.mozRequestFullScreen();
 					} else if (videoFull.webkitRequestFullScreen) {
 						videoFull.webkitRequestFullScreen();
 					}
+
+					$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
 				});
 
 				// Tempo

@@ -4200,6 +4200,17 @@ ul.slick-dots {
 	top: auto;
 	left: auto;
 
+	.video-player__thumb {
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		&.video-active { display: none; }
+	}
+
 	video {
 		height: 374px !important;
 		max-height: 374px;
@@ -4209,6 +4220,7 @@ ul.slick-dots {
 		position: absolute;
 		top: -21px;
 		left: 10px;
+		z-index: 2;
 	}
 }
 

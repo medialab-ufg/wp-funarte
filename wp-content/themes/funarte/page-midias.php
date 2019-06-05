@@ -40,6 +40,7 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 
 											<?php else: ?>
 
+												<img src="<?php echo get_template_directory_uri() . '/assets/img/bkg/grafismo_artes_integradas.png'; ?>" alt="Vídeo" class="video-player__thumb">
 												<video src="<?php echo $url; ?>" class="video-video"></video>
 												<div class="video-bar">
 													<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
