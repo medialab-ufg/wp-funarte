@@ -24,7 +24,10 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 					<div class="video-list">
 						<ul class="carousel-audio">
 							<?php foreach($videos as $video): ?>
-								<?php $url = get_post_meta($video->ID, 'midia-video-url', true); ?>
+								<?php 
+									$url = get_post_meta($video->ID, 'midia-video-url', true); 
+									$thumbnail_video = get_the_post_thumbnail_url( $video->ID,'medium') ? get_the_post_thumbnail_url( $video->ID,'medium') : '';
+								?>
 								<li>
 									<div class="box-carousel-audio__row-1">
 										<div class="video-player">
@@ -40,6 +43,10 @@ $videos = \funarte\MidiaVideo::get_instance()->get_videos();
 
 											<?php else: ?>
 
+												<?php if ($thumbnail_video): ?>
+													<img src="<?php echo $thumbnail_video; ?>" alt="Vídeo" class="video-player__thumb">
+												<?php endif; ?>
+												
 												<video src="<?php echo $url; ?>" class="video-video"></video>
 												<div class="video-bar">
 													<button type="button" class="video-play"><i class="mdi mdi-play"></i></button>
