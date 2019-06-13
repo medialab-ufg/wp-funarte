@@ -8,7 +8,7 @@
 	if (empty($eventos)) {
 		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
 	}
-	$query_news = ['post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'meta_key' => 'destacar-home',	'meta_value' => 1, 'orderby' => 'date', 'order' => 'DESC'];
+	$query_news = ['post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'meta_query' => [['key' => 'nao-destacar-home', 'compare' => 'NOT EXISTS']], 'orderby' => 'date', 'order' => 'DESC'];
 	$noticias = query_posts($query_news);
 	$destaques = \funarte\DestaqueHome::get_instance()->get_destaques('home', 1, 5);
 	$destaque_secundario = \funarte\DestaqueHome::get_instance()->get_destaque_secundario();

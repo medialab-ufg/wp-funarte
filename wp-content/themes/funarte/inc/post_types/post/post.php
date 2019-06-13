@@ -20,7 +20,7 @@ class Post {
 		global $post;
 		$nonce = wp_create_nonce(__FILE__);
 		$qtd_columns = get_post_meta($post->ID, 'post-quantity-columns', true);
-		$destacar_home = get_post_meta($post->ID, 'destacar-home', true);
+		$nao_destacar_home = get_post_meta($post->ID, 'nao-destacar-home', true);
 		if (!isset($qtd_columns) || empty($qtd_columns) || $qtd_columns == "") {
 			$qtd_columns = '1';
 		}
@@ -32,8 +32,8 @@ class Post {
 			<option value='1' <?php if($qtd_columns == '1') { echo "selected"; }?>>uma coluna</option>
 		</select>
 		<div style="margin: 0 auto; margin-top: 10px;">
-			<input type="checkbox" style="margin-left: 5px;" name="destacar-home" id="destacar-home" <?php if((boolean)$destacar_home){ echo 'checked="checked"'; } ?> />
-			<label for="destacar-home"> Exibir na home? </label>
+			<input type="checkbox" style="margin-left: 5px;" name="nao-destacar-home" id="nao-destacar-home" <?php if((boolean)$nao_destacar_home){ echo 'checked="checked"'; } ?> />
+			<label for="nao-destacar-home">Não exibir na home? </label>
 		</div>
 		<?php
 	}
@@ -64,7 +64,11 @@ class Post {
 
 		$qtd_columns = $_POST['post-quantity-columns'];
 		update_post_meta($post_id, 'post-quantity-columns', $qtd_columns);
-		update_post_meta($post_id, 'destacar-home', (int)((isset($_POST['destacar-home'])) && ($_POST['destacar-home'] == 'on')));
+		
+		if ( isset($_POST['nao-destacar-home']) && ($_POST['nao-destacar-home'] == 'on') )
+			update_post_meta($post_id, 'nao-destacar-home', true);
+		else 
+			delete_post_meta( $post_id, 'nao-destacar-home');
 	}
 
 	public function extra_files() {
