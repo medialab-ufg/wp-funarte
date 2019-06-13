@@ -134,6 +134,8 @@ var base = {
 
 							var $this = $(this);
 
+							$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
+
 							$this.addClass('inativo').parents('.videos-list__video').find('video')[0].play();
 							$this.siblings('.video-pause').removeClass('inativo');
 						});
@@ -164,13 +166,16 @@ var base = {
 
 						// Full Screen
 						$boxPai.on('click','.video-full',function() {
-							var videoFull = $(this).parents('.videos-list__video').find('video')[0];
+							var $this = $(this),
+								videoFull = $this.parents('.videos-list__video').find('video')[0];
 
 							if (videoFull.mozRequestFullScreen) {
 								videoFull.mozRequestFullScreen();
 							} else if (videoFull.webkitRequestFullScreen) {
 								videoFull.webkitRequestFullScreen();
 							}
+
+							$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
 						});
 
 						// Tempo
@@ -260,6 +265,8 @@ var base = {
 
 					var $this = $(this);
 
+					$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
+
 					$this.addClass('inativo').parents('.video-player').find('video')[0].play();
 					$this.siblings('.video-pause').removeClass('inativo');
 				});
@@ -290,13 +297,16 @@ var base = {
 
 				// Full Screen
 				$boxPai.on('click','.video-full',function() {
-					var videoFull = $(this).parents('.video-player').find('video')[0];
+					var $this = $(this),
+						videoFull = $this.parents('.video-player').find('video')[0];
 
 					if (videoFull.mozRequestFullScreen) {
 						videoFull.mozRequestFullScreen();
 					} else if (videoFull.webkitRequestFullScreen) {
 						videoFull.webkitRequestFullScreen();
 					}
+
+					$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
 				});
 
 				// Tempo
@@ -1024,31 +1034,38 @@ var base = {
 
 		iniciarTabsOn: function() {
 			var $boxCarousel = $('.list-tabs--on'),
-				$carousel = $boxCarousel.find('.list-tabs__main');
+				$carousel = $boxCarousel.find('.list-tabs__main'),
+				itens = $carousel.find('a');
 
-			$carousel.slick({
-				speed: 1000,
-				infinite: false,
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				prevArrow: $boxCarousel.find('.control__prev'),
-				nextArrow: $boxCarousel.find('.control__next'),
-				adaptiveHeight: true,
-				responsive: [
-					{
-						breakpoint: 1200,
-						settings: {
-							slidesToShow: 2
+			if (itens.length > 2) {
+				$carousel.on('init', function(event, slick, currentSlide, nextSlide) {
+					$boxCarousel.find('.box-tabs__control').addClass('active');
+				});
+
+				$carousel.slick({
+					speed: 1000,
+					infinite: false,
+					slidesToShow: 3,
+					slidesToScroll: 1,
+					prevArrow: $boxCarousel.find('.control__prev'),
+					nextArrow: $boxCarousel.find('.control__next'),
+					adaptiveHeight: true,
+					responsive: [
+						{
+							breakpoint: 1200,
+							settings: {
+								slidesToShow: 2
+							}
+						},
+						{
+							breakpoint: 992,
+							settings: {
+								slidesToShow: 1
+							}
 						}
-					},
-					{
-						breakpoint: 992,
-						settings: {
-							slidesToShow: 1
-						}
-					}
-				]
-			});
+					]
+				});
+			}
 		},
 
 		iniciarImagens: function() {
@@ -1084,8 +1101,8 @@ var base = {
 			var $carousel = $('.box-carousel-highlights');
 
 			$('.carousel-highlights').on('init', function(event, slick) {
-				var $caption = $('.carousel-highlights__captions'),
-					largura = ($('.hidden__caption-0').outerWidth() + 50),
+				var $caption = $('.carousel-highlights__box'),
+					largura = ($('.carousel-highlights__caption-0').outerWidth()),
 					padding = 20;
 
 				$caption.css('width',largura + (padding * 2));
@@ -1104,13 +1121,13 @@ var base = {
 				adaptiveHeight: true
 			})
 			.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-				var $caption = $('.carousel-highlights__captions'),
-					largura = ($('.hidden__caption-' + nextSlide).outerWidth() + 50),
+				var $caption = $('.carousel-highlights__box'),
+					largura = ($('.carousel-highlights__caption-' + nextSlide).outerWidth()),
 					padding = 20;
 
 				$caption.css('width',largura + (padding * 2));
 
-				$caption
+				$('.carousel-highlights__captions')
 					.find('.visible')
 					.removeClass('visible')
 					.end()
@@ -1125,7 +1142,7 @@ var base = {
 
 			if (itens > 4) {
 				$('.carousel-collection').slick({
-					speed: 1000,
+					speed: 500,
 					infinite: false,
 					slidesToShow: 4,
 					slidesToScroll: 4,
@@ -1133,6 +1150,13 @@ var base = {
 					nextArrow: $carousel.find('.control__next'),
 					adaptiveHeight: true,
 					responsive: [
+						{
+							breakpoint: 1200,
+							settings: {
+								slidesToShow: 3,
+								slidesToScroll: 3
+							}
+						},
 						{
 							breakpoint: 768,
 							settings: {
@@ -1183,7 +1207,7 @@ var base = {
 					.find('.visible')
 					.removeClass('visible')
 					.end()
-					.find('.carousel-schedule__image-' + (nextSlide + 1))
+					.find('.carousel-schedule__image-' + nextSlide)
 					.addClass('visible');
 
 				$('.box-carousel-schedule .color-artes-visuais hr').css({

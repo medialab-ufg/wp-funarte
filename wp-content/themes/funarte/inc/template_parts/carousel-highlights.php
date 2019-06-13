@@ -29,12 +29,9 @@ else:
 		?>
 			<div class="carousel-highlights__caption carousel-highlights__caption-<?php echo $id; ?> <?php echo $id == 0 ? 'visible' : ''; ?>">
 				<strong><a href="<?php echo $item['url'];?>" title="<?php echo $item['title'];?>"><?php echo $item['title'];?></a></strong>
+				<br>
 				<span><a href="<?php echo $item['url'];?>" title="<?php echo $item['title'];?>"><?php echo $item['descricao'];?></a></span>
-			</div>
-
-			<div class="hidden__caption hidden__caption-<?php echo $id; ?>">
-				<strong><a href="<?php echo $item['url'];?>" title="<?php echo $item['title'];?>"><?php echo $item['title'];?></a></strong>
-				<span><a href="<?php echo $item['url'];?>" title="<?php echo $item['title'];?>"><?php echo $item['descricao'];?></a></span>
+				<div class="carousel-highlights__box"></div>
 			</div>
 		<?php
 			$id++;
