@@ -50,7 +50,7 @@ function subtitle_save($postID) {
  * @return string
  */
 function get_the_subtitle( $id = 0 ) {
-	$post = &get_post($id);
+	$post = get_post($id);
 
 	$id = isset($post->ID) ? $post->ID : (int) $id;
 
