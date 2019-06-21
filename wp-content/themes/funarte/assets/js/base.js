@@ -134,7 +134,7 @@ var base = {
 
 							var $this = $(this);
 
-							$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
+							$this.parents('.video-player').addClass('active').find('.video-player__thumb').addClass('video-active');
 
 							$this.addClass('inativo').parents('.videos-list__video').find('video')[0].play();
 							$this.siblings('.video-pause').removeClass('inativo');
@@ -147,6 +147,7 @@ var base = {
 
 							$this.addClass('inativo').parents('.videos-list__video').find('video')[0].pause();
 							$this.siblings('.video-play').removeClass('inativo');
+							$this.parents('.video-player').removeClass('active');
 						});
 
 						// Volume
@@ -195,6 +196,7 @@ var base = {
 										$this.find('.video-progress__bar').css('width','100%');
 										$this.find('.video-play').removeClass('inativo');
 										$this.find('.video-pause').addClass('inativo');
+										$this.removeClass('active');
 									}
 								}
 							});
@@ -265,7 +267,7 @@ var base = {
 
 					var $this = $(this);
 
-					$this.parents('.video-player').find('.video-player__thumb').addClass('video-active');
+					$this.parents('.video-player').addClass('active').find('.video-player__thumb').addClass('video-active');
 
 					$this.addClass('inativo').parents('.video-player').find('video')[0].play();
 					$this.siblings('.video-pause').removeClass('inativo');
@@ -278,6 +280,7 @@ var base = {
 
 					$this.addClass('inativo').parents('.video-player').find('video')[0].pause();
 					$this.siblings('.video-play').removeClass('inativo');
+					$this.parents('.video-player').removeClass('active');
 				});
 
 				// Volume
@@ -326,6 +329,7 @@ var base = {
 								$this.find('.video-progress__bar').css('width','100%');
 								$this.find('.video-play').removeClass('inativo');
 								$this.find('.video-pause').addClass('inativo');
+								$this.removeClass('active');
 							}
 						}
 					});
