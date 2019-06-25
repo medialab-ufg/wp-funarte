@@ -135,14 +135,20 @@
 				if (($inicio <= time()) && ($fim >= time())) {
 					$day = date_i18n('d');
 					$month = date_i18n('F');
+					$month_mumber = date_i18n('m');
+					$year = date_i18n('Y');
 				} else {
 					$day = date_i18n('d', $inicio);
 					$month = date_i18n('F', $inicio);
+					$month_mumber = date_i18n('m', $inicio);
+					$year = date_i18n('Y', $inicio);
 				}
 				$url_img = has_post_thumbnail($evento->ID) ? get_the_post_thumbnail_url($evento->ID,'medium_large') : funarte_get_img_default($area->slug);
 				$items[] = ['url' => get_permalink($evento->ID),
  										'day'=> $day,
 										'month'=> $month,
+										'month_mumber' => $month_mumber,
+										'year' => $year,
 										'local' => $local,
 										'title' => $evento->post_title,
 										'url_img' => $url_img,
