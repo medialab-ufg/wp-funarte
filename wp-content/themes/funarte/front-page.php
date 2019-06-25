@@ -1,11 +1,11 @@
 	<?php
 	get_header();
 
-	$query_eventos = ['posts_per_page' => 20];
-	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'), date('Y'), $query_eventos);
+	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'), date('Y'));
 	// para desenvolvimento e testes deixamos fixo no ano passado onde há mais eventos
 	// $eventos = \funarte\Evento::get_instance()->get_eventos_from_month(10, 2018, $query_eventos);
 	if (empty($eventos)) {
+		$query_eventos = ['posts_per_page' => 20];
 		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
 	}
 	$query_news = ['post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'meta_query' => [['key' => 'nao-destacar-home', 'compare' => 'NOT EXISTS']], 'orderby' => 'date', 'order' => 'DESC'];
