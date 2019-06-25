@@ -32,11 +32,11 @@
 	$query_news = ['cat' => (int)$area->term_id, 'post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'orderby' => 'date', 'order' => 'DESC'];
 	$noticias = new WP_Query($query_news);
 
-	$query_eventos = ['cat' => (int)$area->term_id];
-	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'),date('Y'), $query_eventos);
+	$query_eventos = ['cat' => (int)$area->term_id, 'posts_per_page' => 20 ];
+	$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
 	if (empty($eventos)) {
-		$query_eventos = ['cat' => (int)$area->term_id, 'posts_per_page' => 20 ];
-		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
+		$query_eventos = ['cat' => (int)$area->term_id];
+		$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'),date('Y'), $query_eventos);
 	}
 
 	$query_links_relacionados = ['cat' => (int)$area->term_id, 'orderby' => 'menu_order', 'order' => 'ASC', 'post_type' => \funarte\LinkRelacionado::get_instance()->get_post_type(), 'posts_per_page' => -1];
@@ -153,7 +153,7 @@
 										'local' => $local,
 										'title' => $evento->post_title,
 										'url_img' => $url_img,
-										'content' => 	get_the_excerpt($evento->ID),
+										'content' => 	$evento->post_excerpt,
  										'schedule' => date_i18n('H:i', $schedule),
 										 'tag_class_area'=>$area->slug];
 			}
