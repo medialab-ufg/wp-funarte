@@ -2,11 +2,9 @@
 	get_header();
 
 	$query_eventos = ['posts_per_page' => 20];
-	$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'), date('Y'), $query_eventos);
-	// para desenvolvimento e testes deixamos fixo no ano passado onde há mais eventos
-	// $eventos = \funarte\Evento::get_instance()->get_eventos_from_month(10, 2018, $query_eventos);
+	$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
 	if (empty($eventos)) {
-		$eventos = \funarte\Evento::get_instance()->get_last_eventos($query_eventos);
+		$eventos = \funarte\Evento::get_instance()->get_eventos_from_month(date('m'), date('Y'));
 	}
 	$query_news = ['post_type' => 'post', 'posts_per_page' => 9, 'paged' => false, 'meta_query' => [['key' => 'nao-destacar-home', 'compare' => 'NOT EXISTS']], 'orderby' => 'date', 'order' => 'DESC'];
 	$noticias = query_posts($query_news);
@@ -108,18 +106,24 @@
 				if (($inicio <= time()) && ($fim >= time())) {
 					$day = date_i18n('d');
 					$month = date_i18n('M');
+					$month_mumber = date_i18n('m');
+					$year = date_i18n('Y');
 				} else {
 					$day = date_i18n('d', $inicio);
 					$month = date_i18n('M', $inicio);
+					$month_mumber = date_i18n('m', $inicio);
+					$year = date_i18n('Y', $inicio);
 				}
 				$url_img = has_post_thumbnail($evento->ID) ? get_the_post_thumbnail_url($evento->ID,'medium_large') : funarte_get_img_default($area->slug);
 				$items[] = ['url' => get_permalink($evento->ID),
  										'day'=> $day,
 										'month'=> $month,
+										'month_mumber' => $month_mumber,
+										'year' => $year,
 										'local' => $local,
 										'title' => $evento->post_title,
 										'url_img' => $url_img,
-										'content' => 	get_the_excerpt($evento->ID),
+										'content' => 	$evento->post_excerpt,
  										'schedule' => date_i18n('H:i', $schedule),
  										'tag_class_area'=>$area->slug];
 			}
