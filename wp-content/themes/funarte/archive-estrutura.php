@@ -49,10 +49,13 @@
 
 												$netos = FUNARTE_get_childrens_estrutura($filho_ID);
 												
-												foreach($netos as $neto):
-											?>
+												if( !empty($netos) ): ?>
 													<button class="collapse__button" type="button">Exibir a estrutura de <?php echo $filho->post_title; ?></button>
 													<div class="collapse__text">
+												<?php endif;
+												
+												foreach($netos as $neto): ?>
+													<div class="text__block">
 														<?php
 															echo '<strong>' . $neto->post_title . '</strong>';
 															$content = $neto->post_content; 
@@ -60,8 +63,11 @@
 															echo $content;
 														?>
 													</div>
-											<?php endforeach;
-											?>
+												<?php endforeach;
+
+												if( !empty($netos) ): ?>
+													</div>
+												<?php endif; ?>
 										</div>
 									<?php endforeach; ?>
 								</div>

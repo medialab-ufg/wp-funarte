@@ -1379,6 +1379,8 @@ noscript {
 				display: block;
 			}
 			p { margin-bottom: -5px; }
+
+			.text__block + .text__block { margin-top: 12px; }
 		}
 	}
 }
