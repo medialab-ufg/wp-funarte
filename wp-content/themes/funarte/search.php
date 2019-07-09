@@ -62,7 +62,7 @@ $order_param = isset($_GET['ordenar']) ? $_GET['ordenar'] : 'date_desc';
 
 	<div class="container">
 		<aside>
-			<button type="button" class="box-list-links__button"><i class="mdi mdi-chevron-left"></i><i class="mdi mdi-chevron-right"></i></button>
+			<button type="button" class="box-list-links__button active"><i class="mdi mdi-chevron-left"></i><i class="mdi mdi-chevron-right"></i></button>
 			<div class="box-list-links active">
 				<h3 class="title-6 box-list-links__title">Tipos de resultados</h3>
 				

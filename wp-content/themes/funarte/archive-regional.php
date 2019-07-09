@@ -20,7 +20,7 @@ get_header();
 				<?php
 					$imagem = get_the_post_thumbnail_url( get_the_ID(),'medium');
 				?>
-				<div class="list-bidding__image" style="background-image: url(<?php echo !empty($imagem) ? $imagem : funarte_get_img_default('funarte'); ?>);"></div>
+				<a href="<?php the_permalink(); ?>" class="list-bidding__image" style="background-image: url(<?php echo !empty($imagem) ? $imagem : funarte_get_img_default('funarte'); ?>);"></a>
 
 				<div class="list-bidding__text">
 					<div class="link-area">

@@ -673,9 +673,20 @@ var base = {
 
 	menuLateral: {
 		exibir: function() {
-			$('.box-list-links__button').on('click',function() {
+			$('.box-list-links__button').on('click',function(e) {
+				e.stopPropagation();
+
 				$('.box-list-links').toggleClass('active');
 				$(this).toggleClass('active');
+			});
+
+			$('.box-list-links').on('click',function(e) {
+				e.stopPropagation();
+			});
+
+			$('body').on('click',function() {
+				$('.box-list-links').removeClass('active');
+				$('.box-list-links__button').removeClass('active');
 			});
 		}
 	},

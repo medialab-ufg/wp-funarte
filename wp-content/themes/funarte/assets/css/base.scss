@@ -5321,9 +5321,11 @@ aside .list-bidding--type-b {
 @media screen and (max-width: 768px) {
 	.form-multi {
 		width: 100%;
-		display: block;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
 
-		fieldset { margin: 25px; }
+		fieldset { margin: 10px 5px; }
 	}
 }
 @media screen and (max-width: 550px) {
