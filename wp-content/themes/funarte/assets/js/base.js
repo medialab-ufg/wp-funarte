@@ -1058,9 +1058,9 @@ var base = {
 				});
 
 				$carousel.slick({
-					speed: 1000,
+					speed: 500,
 					infinite: false,
-					slidesToShow: 3,
+					slidesToShow: 4,
 					slidesToScroll: 1,
 					prevArrow: $boxCarousel.find('.control__prev'),
 					nextArrow: $boxCarousel.find('.control__next'),
@@ -1069,11 +1069,17 @@ var base = {
 						{
 							breakpoint: 1200,
 							settings: {
-								slidesToShow: 2
+								slidesToShow: 3
 							}
 						},
 						{
 							breakpoint: 992,
+							settings: {
+								slidesToShow: 2
+							}
+						},
+						{
+							breakpoint: 767,
 							settings: {
 								slidesToShow: 1
 							}

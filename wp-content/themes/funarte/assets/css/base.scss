@@ -1155,7 +1155,7 @@ noscript {
 				width: 100%;
 				height: 100%;
 				min-height: 50px;
-				padding: 9px 40px 5px;
+				padding: 18px 18px 22px;
 				font-family: 'Sansita', sans-serif;
 				font-size: 1.5rem;
 				color: $turquesa-1;
@@ -1201,11 +1201,24 @@ noscript {
 		display: none;
 
 		h2 {
-			margin: 0 0 27px;
+			margin: 0 0 52px;
+			padding-left: 17px;
 			font-weight: 400;
 			font-family: Sansita,sans-serif;
 			font-size: 1.8rem;
-			color: #2f9187;
+			color: $turquesa-1;
+			position: relative;
+
+			&:after {
+				content: "";
+				width: 6px;
+				height: 100%;
+				display: block;
+				position: absolute;
+				top: 9px;
+				left: 0;
+				background-color: $turquesa-1;
+			}
 		}
 
 		h3 {
@@ -1213,7 +1226,7 @@ noscript {
 			font-weight: 400;
 			font-family: Sansita,sans-serif;
 			font-size: 1.5rem;
-			color: #2f9187;
+			color: $turquesa-1;
 		}
 
 		p,
@@ -1221,6 +1234,41 @@ noscript {
 		& > strong { margin-bottom: 15px; }
 
 		&.active { display: block; }
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+
+			li {
+				margin-left: 48px;
+				padding-left: 48px;
+				position: relative;
+
+				&:before {
+					content: "\f1da";
+					color: $turquesa-1;
+					font: normal normal normal 24px/1 "Material Design Icons";
+					font-size: 25px;
+					text-rendering: auto;
+					line-height: inherit;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+					display: inline-block;
+					position: absolute;
+					top: -6px;
+					left: 0;
+				}
+
+				& + li {
+					margin-top: 27px;
+					padding-top: 26px;
+					border-top: 1px solid $cinza-4;
+
+					&:before { top: 20px; }
+				}
+			}
+		}
 	}
 }
 .list-tabs--on {
@@ -4621,8 +4669,18 @@ aside .list-bidding--type-b {
 		top: -15px;
 		left: 0;
 	}
+
+	& > a {
+		width: 100%;
+		height: 100%;
+		text-indent: -99999px;
+		display: block;
+		overflow: hidden;
+	}
 }
 .list-soft__text {
+	width: 100%;
+
 	.title-h5 { margin-bottom: 34px; }
 
 	p {
@@ -5319,7 +5377,9 @@ aside .list-bidding--type-b {
 }
 
 @media screen and (max-width: 768px) {
-	.form-multi {
+	.form-multi,
+	.form-area,
+	.form-filtro {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -5327,6 +5387,8 @@ aside .list-bidding--type-b {
 
 		fieldset { margin: 10px 5px; }
 	}
+	.form-area,
+	.form-filtro { margin-top: 0 !important; }
 }
 @media screen and (max-width: 550px) {
 	.box-forms {

@@ -86,8 +86,8 @@ query_posts($params);
 						<legend>Formulário de filtro de espaço</legend>
 
 						<div class="form-group">
-							<label class="sr-only" for="filtro-espaco-texto">Pesquisar espaço</label>
-							<input type="text" id="filtro-espaco-texto" class='input_search' placeholder="Pesquisar espaços" value="<?php echo $busca; ?>">
+							<label class="sr-only" for="filtro-espaco-texto">Pesquisar</label>
+							<input type="text" id="filtro-espaco-texto" class='input_search' placeholder="Pesquisar" value="<?php echo $busca; ?>">
 							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
 						</div>
 					</fieldset>
@@ -108,6 +108,7 @@ query_posts($params);
 							?>
 
 							<div class="list-soft__image <?php echo empty($thumbnail) ? 'no-image' : '' ?>" style="background-image: url(<?php echo $thumbnail ?>);">
+								<a href="<?php the_permalink(); ?>"></a>
 								<?php if (!empty($area)): ?>
 									<div class="link-area">
 										<a class="<?php echo 'color-' . $area->slug; ?>" href="<?php echo get_category_link( $area->term_id ); ?>"><?php echo $area->name; ?></a>
@@ -141,9 +142,10 @@ query_posts($params);
 						</div>
 					</div>
 				<?php endwhile; ?>
-				<?php echo get_pagination(); ?>
 			</div>
 		</section>
+
+		<?php echo get_pagination(); ?>
 	</div>
 	<?php endif;?>
 </main>
