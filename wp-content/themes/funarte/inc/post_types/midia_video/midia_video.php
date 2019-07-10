@@ -44,7 +44,7 @@ class MidiaVideo {
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
-			'supports' => array('title','thumbnail'),
+			'supports' => array('title','thumbnail', 'revisions'),
 			'taxonomies' => [
 				taxTag::get_instance()->get_name(),
 				taxCategoria::get_instance()->get_name(),

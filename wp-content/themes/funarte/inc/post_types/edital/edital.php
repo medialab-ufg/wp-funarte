@@ -46,7 +46,7 @@ class Edital {
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
 			'supports' => array(
-				'title', 'editor', 'page-attributes', 'thumbnail' ),
+				'title', 'editor', 'page-attributes', 'thumbnail', 'revisions' ),
 			'taxonomies' => [
 				taxCategoria::get_instance()->get_name(),
 				taxEditais::get_instance()->get_name(),

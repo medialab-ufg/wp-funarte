@@ -52,7 +52,7 @@ class Evento {
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => true,
-			'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'permalink'),
+			'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'permalink', 'revisions'),
 			'taxonomies' => array(
 				taxEspacosCulturais::get_instance()->get_name(),
 				taxCategoria::get_instance()->get_name(),

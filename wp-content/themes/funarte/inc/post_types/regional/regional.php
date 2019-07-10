@@ -43,7 +43,7 @@ class Regional {
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
-			'supports' => array('title', 'editor', 'thumbnail', 'permalink'),
+			'supports' => array('title', 'editor', 'thumbnail', 'permalink', 'revisions'),
 			'taxonomies' => [
 				taxRegional::get_instance()->get_name(),
 				taxTag::get_instance()->get_name()
