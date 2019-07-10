@@ -57,7 +57,7 @@ class Licitacao {
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
-			'supports' => array('title', 'editor', 'excerpt', 'permalink'),
+			'supports' => array('title', 'editor', 'excerpt', 'permalink', 'revisions'),
 			'taxonomies' => [
 				taxTag::get_instance()->get_name(),
 				taxModalidade::get_instance()->get_name()

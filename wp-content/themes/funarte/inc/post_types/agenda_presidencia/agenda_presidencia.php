@@ -55,7 +55,7 @@ class AgendaPresidencia {
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
-			'supports' => array('editor')
+			'supports' => array('editor', 'revisions')
 		);
 
 		register_post_type($this->POST_TYPE, $post_type_args);
