@@ -56,8 +56,8 @@ get_header();
 					<fieldset>
 						<legend>Formulário de filtro de editais</legend>
 						<div class="form-group">
-							<label class="sr-only" for="filtro-editais-texto">Pesquisar editais</label>
-							<input type="text" id="filtro-editais-texto" class="input_search" placeholder="Pesquisar editais" value="<?php echo $busca;?>">
+							<label class="sr-only" for="filtro-editais-texto">Pesquisar</label>
+							<input type="text" id="filtro-editais-texto" class="input_search" placeholder="Pesquisar" value="<?php echo $busca;?>">
 							<button type="submit"><i class="mdi mdi-magnify"></i><span class="sr-only">Pesquisar</span></button>
 						</div>
 					</fieldset>

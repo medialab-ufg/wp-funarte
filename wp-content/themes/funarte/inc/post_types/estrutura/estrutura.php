@@ -43,7 +43,7 @@ class Estrutura {
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
 			'supports' => array(
-				'title', 'editor', 'page-attributes', ),
+				'title', 'editor', 'page-attributes', 'revisions'),
 			'taxonomies' => [
 				taxEstrutura::get_instance()->get_name(),
 				taxTag::get_instance()->get_name()

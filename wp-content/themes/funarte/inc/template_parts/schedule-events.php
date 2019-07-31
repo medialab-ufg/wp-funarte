@@ -1,4 +1,15 @@
 <?php
+function cmp_schedule_events($a, $b) {
+	$c_a = $a['year'] . '-' . $a['month_mumber'] . '-' . $a['day'];
+	$c_b = $b['year'] . '-' . $b['month_mumber'] . '-' . $b['day'];
+
+	$time_a = strtotime($c_a);
+	$time_b = strtotime($c_b);
+
+	if($time_a == $time_b)
+		return 0;
+	return ($time_a < $time_b) ? -1 : 1;
+}
 /**
  * items: array of item
  *	item: one array = ['tag_class_area'=>'',
@@ -15,6 +26,7 @@ if(!isset($items)):
 	echo "<br><b> parameter not found! </b><br>";
 else:
 	$id = 0;
+usort($items, "cmp_schedule_events");
 ?>
 <section class="box-carousel-schedule mb-100">
 	<?php $url_title = get_post_type_archive_link(\funarte\Evento::get_instance()->get_post_type()); ?>

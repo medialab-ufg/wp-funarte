@@ -52,7 +52,7 @@ class Evento {
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => true,
 			'exclude_from_search' => true,
-			'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'permalink'),
+			'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments', 'permalink', 'revisions'),
 			'taxonomies' => array(
 				taxEspacosCulturais::get_instance()->get_name(),
 				taxCategoria::get_instance()->get_name(),
@@ -206,7 +206,9 @@ class Evento {
 												'value'   => date('Y-m-d H:i:s',mktime(23, 59, 59, $mes, date('t', $timestamp), $ano)),
 												'compare' => '<=']
 			),
-			'orderby' => ['evento-inicio' => 'ASC']
+			'order'			=> 'ASC',
+			'orderby' 	=> 'meta_value',
+			'meta_key'	=> 'evento-inicio'
 		), $params);
 
 		return query_posts($params);
@@ -217,8 +219,9 @@ class Evento {
 		$query = array(
 			'paged' => false,
 			'post_type' => 'evento',
-			'orderby' => 'meta_inicio',
+			'orderby' => 'meta_value',
 			'order' => 'ASC',
+			'meta_key' => 'evento-inicio',
 			'meta_query' => [
 				'meta_inicio' => [
 					'key' => 'evento-inicio',
