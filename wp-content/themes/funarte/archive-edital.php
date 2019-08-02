@@ -95,11 +95,16 @@ get_header();
 								$areas = get_the_category();
 								if (!empty($areas)): ?>
 								<div class="link-area">
-									<?php foreach ($areas as $area): ?>
-										<a class="<?php echo 'color-' . $area->category_nicename; ?>" href="<?php echo get_category_link( $area->cat_ID ); ?>"><?php echo $area->name; ?></a>
-									<?php endforeach; ?>
+									<?php if ( count($areas) > 1 ): ?>
+										<strong class="color-multicategoria">Multicategoria</strong>
+									<?php else: ?>
+										<a class="<?php echo 'color-' . $areas[0]->category_nicename; ?>" href="<?php echo get_category_link( $areas[0]->cat_ID ); ?>"><?php echo $areas[0]->name; ?></a>
+									<?php endif; ?>
+
+									<em class="list-notices-text__date">Publicado em <?php the_date(); ?></em>
 								</div>
 							<?php endif; ?>
+
 							<h3 class="title-h5">
 								<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>">
 									<?php the_title(); ?>
