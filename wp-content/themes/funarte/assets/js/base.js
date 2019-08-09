@@ -555,9 +555,11 @@ var base = {
 											<h3 class="box-calendario__data" data-inicial="' + slide.dataInicial + '" data-final="' + slide.dataFinal + '">' + dataString + '</h3>\
 											<h4 class="box-calendario__titulo">' + slide.titulo + '</h4>\
 											<hr>\
-											<div class="box-calendario__imagem" style="background-image: url(' + slide.imagem + ');">\
-												<div class="link-area">\
-													<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
+											<div class="wrapper-box-calendario__imagem">\
+												<div class="box-calendario__imagem" style="background-image: url(' + slide.imagem + ');">\
+													<div class="link-area">\
+														<a href="' + slide.areaLink + '">' + slide.areaSlug + '</a>\
+													</div>\
 												</div>\
 											</div>\
 											<div class="box-calendario__linha">\

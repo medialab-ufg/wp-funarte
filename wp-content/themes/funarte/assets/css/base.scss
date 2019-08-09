@@ -3373,10 +3373,6 @@ ul.slick-dots {
 		right: -20px;
 		bottom: auto;
 	}
-	.carousel-highlights__control {
-		bottom: auto;
-		top: 26%;
-	}
 	ul.slick-dots {
 		max-height: 110px;
 		padding: 0;
@@ -3394,6 +3390,10 @@ ul.slick-dots {
 
 			& + li { margin-top: 0; }
 		}
+	}
+	.box-calendario-main .slick-dots {
+		flex-flow: row;
+		top: auto;
 	}
 }
 
@@ -6475,9 +6475,13 @@ ul.social-media-list {
 	}
 	.box-calendario__titulo { padding-left: 0; }
 	.box-calendario .calendario-carousel li hr { margin: 0 0 24px; }
+	.wrapper-box-calendario__imagem {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+	}
 	.box-calendario__imagem {
 		margin-bottom: 20px;
-		text-align: right;
 		position: relative;
 		top: auto;
 		right: auto;
