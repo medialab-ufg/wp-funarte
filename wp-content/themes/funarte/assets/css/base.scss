@@ -5209,7 +5209,26 @@ aside .list-bidding--type-b {
 }
 .box-logo-footer-vertical { display: none; }
 
+.box-logos-footer {
+	min-width: 280px;
+	display: flex;
+	justify-content: space-between;
+}
+
 .logo-footer-3 {
+	max-width: 109px;
+	margin-left: 30px;
+	flex: 1;
+	display: flex;
+	align-items: center;
+
+	img {
+		width: 100%;
+		display: block;
+	}
+}
+
+.logo-footer-4 {
 	max-width: 109px;
 	margin-left: 30px;
 	flex: 1;
@@ -5315,7 +5334,7 @@ aside .list-bidding--type-b {
 		display: block;
 
 		img {
-			width: 100%;
+			width: 152px;
 			display: block;
 		}
 
@@ -5332,7 +5351,12 @@ aside .list-bidding--type-b {
 		}
 	}
 
-	.logo-footer-3 { margin: 33px 0 0; }
+	.logo-footer-3,
+	.logo-footer-4 { margin: 33px 0 0; }
+	.box-logos-footer {
+		min-width: auto;
+		display: block;
+	}
 }
 
 /***
