@@ -80,7 +80,7 @@ body {
 
 p {
 	font-size: .88rem;
-	line-height: 1rem;
+	line-height: 1.25rem;
 }
 form legend {
 	width: 1px;
@@ -1239,6 +1239,20 @@ noscript {
 	.content-tab__content {
 		display: none;
 
+		&.content-tab__content--two-columns {
+			column-count: 2;
+			column-gap: 4.16666667%;
+			column-gap: 4.16666667vw;
+			
+			p {
+				break-inside: avoid;
+			}
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+		}
+
 		h2 {
 			margin: 0 0 52px;
 			padding-left: 17px;
@@ -1325,6 +1339,9 @@ noscript {
 }
 @media screen and (max-width:767px) {
 	.box-tabs .content-tab { padding: 120px 15px 100px; }
+	.box-tabs .content-tab__content.content-tab__content--two-columns {
+		column-count: 1;
+	}
 	.box-tabs--type-b .container { max-width: none; }
 }
 @media screen and (max-width:600px) {
