@@ -2,33 +2,6 @@
 		<a href="#footer" id="footer" name="footer" class="sr-only">Início do rodapé</a>
 		<div class="container">
 			<div class="footer__columns">
-				<div class="columns__options">
-					<div class="columns__column-b links-list">
-						<!-- <div class="box-form-newsletter">
-							<strong>Assine nossa newsletter:</strong>
-							<form class="form-newsletter" action="#" method="post">
-								<fieldset>
-									<legend>Formulário de cadastro de email</legend>
-
-									<div class="form-group">
-										<label class="sr-only" for="newsletter-email">Digite seu email</label>
-										<input type="text" id="newsletter-email">
-										<button type="submit"><i class="mdi mdi-arrow-right"></i></button>
-									</div>
-								</fieldset>
-							</form>
-						</div> -->
-
-						<div class="box-social-media-list">
-							<strong>Redes sociais:</strong>
-							<ul class="social-media-list">
-								<li><a href="https://pt-br.facebook.com/funarte/"><i class="mdi mdi-facebook"></i></a></li>
-								<li><a href="https://twitter.com/Funarte"><i class="mdi mdi-twitter"></i></a></li>
-								<li><a href="https://www.instagram.com/funarteoficial/"><i class="mdi mdi-instagram"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
 
 				<div class="columns__lists">
 					<div class="columns__column-a links-list links-list--collapse">
@@ -36,20 +9,6 @@
 						<?php
 							wp_nav_menu( array(
 									'theme_location'    => 'rodape-coluna-1',
-									'depth'             => 1,
-									'container'         => '',
-									'container_class'   => '',
-									'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-									'walker'            => new WP_Bootstrap_Navwalker(),
-								) );
-						?>
-					</div>
-					
-					<div class="columns__column-a links-list links-list--collapse">
-						<strong>Funarte:</strong>
-						<?php
-							wp_nav_menu( array(
-									'theme_location'    => 'rodape-coluna-2',
 									'depth'             => 1,
 									'container'         => '',
 									'container_class'   => '',
@@ -72,7 +31,56 @@
 								) );
 						?>
 					</div>
+
+					<div class="columns__column-a links-list links-list--collapse">
+						<strong>Funarte:</strong>
+						<?php
+							wp_nav_menu( array(
+									'theme_location'    => 'rodape-coluna-2',
+									'depth'             => 1,
+									'container'         => '',
+									'container_class'   => '',
+									'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+									'walker'            => new WP_Bootstrap_Navwalker(),
+								) );
+						?>
+					</div>
 				</div>
+
+				<div class="columns__options">
+					<div class="columns__column-b links-list">
+						<strong>Redes sociais:</strong>
+						<div class="columns__social-iframes">
+							<div>
+								<p>Facebook:</p>
+								<iframe 
+									src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffunarte&tabs=timeline&width=255&height=400&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId" 
+									width="255" 
+									height="400" 
+									style="border:none;overflow:hidden" 
+									scrolling="no" 
+									frameborder="0" 
+									allowTransparency="true" 
+									allow="encrypted-media">
+								</iframe>
+							</div>
+							<div>
+								<p>Twitter:</p>
+								<a class="twitter-timeline" data-lang="pt" data-width="255" data-height="400" href="https://twitter.com/Funarte?ref_src=twsrc%5Etfw">
+									Tweets da Funarte
+								</a> 
+								<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+							</div>
+						</div>
+						<div class="box-social-media-list">
+							<ul class="social-media-list">
+								<li><a href="https://pt-br.facebook.com/funarte/"><i class="mdi mdi-facebook"></i></a></li>
+								<li><a href="https://twitter.com/Funarte"><i class="mdi mdi-twitter"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
 			</div>
 
 			<div class="footer__logos">
