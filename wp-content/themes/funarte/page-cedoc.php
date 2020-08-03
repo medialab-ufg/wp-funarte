@@ -9,7 +9,9 @@ $arg = array(
 	'post_parent' => get_the_ID(),
 	'post_type'   => 'page',
 	'numberposts' => -1,
-	'post_status' => 'any');
+	'post_status' => 'any',
+	'order'		  => 'ASC',
+	'orderby' 	  => 'menu_order');
 
 $contents = [];
 $filhos = get_children($arg);
@@ -30,6 +32,7 @@ endif;
 		?>
 
 		<div class="mb-100">
+			
 			<!-- BOX-TABS--ACTIVE: CLASSE UTILIZADA PARA ATIVAR A TROCA DE ABAS VIA JS -->
 			<section class="box-tabs box-tabs--active">
 				<!-- LIST-TABS-ON: CLASSE UTILIZADA PARA ATIVAR O CARROSSEL DE ABAS -->
@@ -69,8 +72,34 @@ endif;
 						endforeach;
 					?>
 				</div>
+
 			</section>
 		</div>
+
+		<!-- ACERVO -->
+		<div class="mb-100">
+			<?php
+				$collections = new WP_Query([
+					'post_type' => 'tainacan-collection',
+					'posts_per_page' => -1
+				]); 
+				$url_title = get_post_type_archive_link('tainacan-collection');
+				funarte_load_part('collections-carousel', ['title'=>'Acervo CEDOC', 'url_title'=>$url_title, 'collections' => $collections ]); 
+				wp_reset_postdata();
+			?>
+		</div>
+		<!-- FIM ACERVO -->
+		
+		<div class="mb-100">
+			<h2 class="title-h1">Avisos</h2>
+			<section class="cedoc-avisos">
+				<div class="content-tab">
+					<div class="content-tab__content content-tab__content--two-columns">
+						<?php the_content(); ?>
+					</div>
+				</div>
+			</section>
+		</div> 
 	</div>
 </main>
 	
