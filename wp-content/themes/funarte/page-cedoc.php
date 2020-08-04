@@ -84,14 +84,13 @@ endif;
 					'posts_per_page' => -1
 				]); 
 				$url_title = get_post_type_archive_link('tainacan-collection');
-				funarte_load_part('collections-carousel', ['title'=>'Acervo CEDOC', 'url_title'=>$url_title, 'collections' => $collections ]); 
+				funarte_load_part('collections-carousel', ['title'=>'Acervo CEDOC', 'collections' => $collections ]); 
 				wp_reset_postdata();
 			?>
 		</div>
 		<!-- FIM ACERVO -->
 		
 		<div class="mb-100">
-			<h2 class="title-h1">Avisos</h2>
 			<section class="cedoc-avisos">
 				<div class="content-tab">
 					<div class="content-tab__content content-tab__content--two-columns">
