@@ -177,9 +177,9 @@
 
 		<!-- ACERVO -->
 		<?php 
-			$url_title = get_post_type_archive_link('tainacan-collection');
-			$url_title .= '?area=' . $area->slug;
-			funarte_load_part('collections-carousel', ['title'=>'Acervo', 'url_title'=>$url_title, 'collections' => $collections, 'area' => ['slug'=>$area->slug, 'name'=>$area->name]]); 
+			// $url_title = get_post_type_archive_link('tainacan-collection');
+			// $url_title .= '?area=' . $area->slug;
+			// funarte_load_part('collections-carousel', ['title'=>'Acervo', 'url_title'=>$url_title, 'collections' => $collections, 'area' => ['slug'=>$area->slug, 'name'=>$area->name]]); 
 		?>
 		<!-- FIM ACERVO -->
 

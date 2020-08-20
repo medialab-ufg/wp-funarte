@@ -20,72 +20,85 @@
 				</div>
 				<ul class="carousel-collection">
 					
-					<?php // if... ?>
-						
+					<?php if ( is_page_template('page-cedoc.php') ) : ?>
+
 						<li class="color-funarte carousel-collection__reverse">
 							<div class="link-area">
-								<strong>Funarte</strong>
+								<strong>CEDOC</strong>
 							</div>
 							
-							<p><a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">Acervo Sergio Britto</a></p>
-							<a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">
-								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/sergio-britto.jpg' ?>);"></div>
-							</a>
-						</li>
-						
-						<li class="color-funarte">
-							<div class="link-area">
-								<strong>Funarte</strong>
-							</div>
-							
-							<p><a target="_blank" href="http://portais.funarte.gov.br/brasilmemoriadasartes">Brasil Memória das Artes</a></p>
-							<a target="_blank" href="http://portais.funarte.gov.br/brasilmemoriadasartes">
-								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/BMA.png' ?>);"></div>
-							</a>
-							
-						</li>
-						
-						<li class="color-funarte carousel-collection__reverse">
-							<div class="link-area">
-								<strong>Funarte</strong>
-							</div>
-							
-							<p><a target="_blank" href="http://cedoc.funarte.gov.br/sophia_web/">Catálogo CEDOC</a></p>
+							<p><a target="_blank" href="http://cedoc.funarte.gov.br/sophia_web/">Catálogo CEDOC (Sophia Biblioteca)</a></p>
 							<a target="_blank" href="http://cedoc.funarte.gov.br/sophia_web/">
 								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/CEDOC.png' ?>);"></div>
 							</a>
 							
 						</li>
-						
-					<?php //endif; ?>
-					
-					
-					
-					<?php while ($collections->have_posts()): $collections->the_post(); $x++; ?>
-						<?php
-							if (!isset($area)) {
-								$area_ = get_area_class(get_the_ID());
-							} else {
-								$area_ = $area;
-							}
-							$image = has_post_thumbnail()? get_the_post_thumbnail_url()  : funarte_get_img_default($area_['slug']);
-							$link_area = get_category_link( $area_['ID'] );
-						?>
-						<li class="color-<?php echo $area_['slug']; if (($x % 2) != 0) echo ' carousel-collection__reverse'; ?> ">
+
+						<li class="color-funarte carousel-collection__reverse">
 							<div class="link-area">
-								<?php if( empty($link_area)) : ?>
-									<strong><?php echo $area_['name'];?></strong>
-								<?php else : ?>
-									<a href="<?php echo $link_area; ?>"><?php echo $area_['name'];?></a>
-								<?php endif;?>
-								
+								<strong>CEDOC</strong>
 							</div>
-							<p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-							<a href="<?php the_permalink(); ?>">
-								<div class="carousel-collection__image" style="background-image: url(<?php echo $image ?>);"></div>
+							
+							<p><a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">Acervo Sergio Britto (Sophia Acervo)</a></p>
+							<a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">
+								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/sergio-britto.jpg' ?>);"></div>
 							</a>
 						</li>
-					<?php endwhile; ?>
+
+						<li class="color-funarte carousel-collection__reverse">
+							<div class="link-area">
+								<strong>CEDOC</strong>
+							</div>
+							
+							<p><a target="_blank" href="https://atom.funarte.gov.br/">Acervos Privados (Atom)</a></p>
+							<a target="_blank" href="https://atom.funarte.gov.br/">
+								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/ATOM.png' ?>);"></div>
+							</a>
+							
+						</li>
+						
+					<?php else : ?>
+						
+						<?php while ($collections->have_posts()): $collections->the_post(); $x++; ?>
+							<?php
+								if (!isset($area)) {
+									$area_ = get_area_class(get_the_ID());
+								} else {
+									$area_ = $area;
+								}
+								$image = has_post_thumbnail()? get_the_post_thumbnail_url()  : funarte_get_img_default($area_['slug']);
+								$link_area = get_category_link( $area_['ID'] );
+							?>
+							<li class="color-<?php echo $area_['slug']; if (($x % 2) != 0) echo ' carousel-collection__reverse'; ?> ">
+								<div class="link-area">
+									<?php if( empty($link_area)) : ?>
+										<strong><?php echo $area_['name'];?></strong>
+									<?php else : ?>
+										<a href="<?php echo $link_area; ?>"><?php echo $area_['name'];?></a>
+									<?php endif;?>
+									
+								</div>
+								<p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+								<a href="<?php the_permalink(); ?>">
+									<div class="carousel-collection__image" style="background-image: url(<?php echo $image ?>);"></div>
+								</a>
+							</li>
+						<?php endwhile; ?>
+						
+						<li class="color-funarte carousel-collection__reverse">
+							<div class="link-area">
+								<strong>Funarte</strong>
+							</div>
+							
+							<p><a target="_blank" href="cedoc">CEDOC Digital</a></p>
+							<a target="_blank" href="cedoc">
+								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/CEDOC_digital.png' ?>);"></div>
+							</a>
+							
+						</li>
+
+					<?php endif; ?>
+
 				</ul>
 			</div>
 		</div>
