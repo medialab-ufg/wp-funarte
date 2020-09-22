@@ -27,7 +27,7 @@
 								<strong>CEDOC</strong>
 							</div>
 							
-							<p><a target="_blank" href="http://cedoc.funarte.gov.br/sophia_web/">Catálogo CEDOC (Sophia Biblioteca)</a></p>
+							<p><a target="_blank" href="http://cedoc.funarte.gov.br/sophia_web/">Catálogo CEDOC</a></p>
 							<a target="_blank" href="http://cedoc.funarte.gov.br/sophia_web/">
 								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/CEDOC.png' ?>);"></div>
 							</a>
@@ -39,7 +39,7 @@
 								<strong>CEDOC</strong>
 							</div>
 							
-							<p><a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">Acervo Sergio Britto (Sophia Acervo)</a></p>
+							<p><a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">Acervo Sergio Britto Digital</a></p>
 							<a target="_blank" href="<?php echo home_url('sobre-o-acervo-sergio-britto-digital'); ?>">
 								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/sergio-britto.jpg' ?>);"></div>
 							</a>
@@ -50,7 +50,7 @@
 								<strong>CEDOC</strong>
 							</div>
 							
-							<p><a target="_blank" href="https://atom.funarte.gov.br/">Acervos Privados (Atom)</a></p>
+							<p><a target="_blank" href="https://atom.funarte.gov.br/">Arquivos Privados</a></p>
 							<a target="_blank" href="https://atom.funarte.gov.br/">
 								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/ATOM.png' ?>);"></div>
 							</a>
