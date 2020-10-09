@@ -19,5 +19,8 @@
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.1",
     "gulp-watch": "^5.0.1"
+  },
+  "dependencies": {
+    "notify-send": "^0.1.2"
   }
 }
