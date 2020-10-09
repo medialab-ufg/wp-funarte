@@ -71,13 +71,14 @@
 			$link_area = $area['ID'] != null ? get_category_link( $area['ID'] ) : '';
 			$img = get_the_post_thumbnail_url($noticia->ID, 'funarte-medium');
 			//$area = get_the_category($noticia->ID);
+			$content = get_post_meta($noticia->ID, 'subtitle', true);
 			$items[] = ['tag_class_area'=>$area['slug'],//$area[0]->slug,
 									'tag_name_area' =>$area['name'],//$area[0]->name,
 									'tag_url_area'=>$link_area,
 									'tag_subname_area'=>'',
 									'title' => $noticia->post_title,
 									'url'=> get_permalink($noticia->ID),
-									'content'=> get_the_excerpt($noticia->ID),
+									'content'=> $content != false ? $content : '',
 									'url_img'=> $img ? $img : null];
 		}
 		$arg = ['items' => $items, 'more_news_url' => '/noticias'];
