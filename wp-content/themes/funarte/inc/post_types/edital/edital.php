@@ -195,10 +195,10 @@ class Edital {
 			'resultado' => (bool)get_post_meta($editalID, 'edital-resultado', true),
 		);
 		$now = time();
-		if (($now > $meta['inscricoes_inicio']) && ($now < $meta['inscricoes_fim']))
-			return 'aberto';
-		elseif (($now > $meta['inscricoes_fim']) && !$meta['resultado'])
+		if (($now > $meta['inscricoes_fim']) && !$meta['resultado'])
 			return 'avaliação';
+		elseif ($now <= $meta['inscricoes_fim'])
+			return 'aberto';
 		else
 			return 'resultado';
 		return false;
