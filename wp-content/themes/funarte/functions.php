@@ -365,6 +365,7 @@ require_once('inc/tainacan/tainacan_taxonomy_categoria.php');
 // includes metaboxes 
 require_once('inc/meta-boxes/informacoes-adicionais.php');
 require_once('inc/meta-boxes/metabox-arquivos-diversos.php');
+require_once('inc/meta-boxes/metabox-lista-manual-colecoes.php');
 
 // subtitle
 require_once('inc/subtitle.php');
