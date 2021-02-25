@@ -140,7 +140,8 @@
 
 			$collections = new WP_Query([
 				'post_type' => 'tainacan-collection',
-				'posts_per_page' => -1
+				'posts_per_page' => -1,
+				'category__not_in' => get_cat_ID('cedoc')
 			]);
 			
 			funarte_load_part('collections-carousel', ['collections' => $collections, 'url_title' => $url_title, 'title' =>'Acervo']);
