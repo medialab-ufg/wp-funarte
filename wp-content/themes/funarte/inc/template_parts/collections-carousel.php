@@ -22,7 +22,7 @@
 					
 					<?php if ( is_page_template('page-cedoc.php') ) :
 						global $post;
-						$meta_key = 'cedoc-lista-colecao';
+						$meta_key = 'arcevo-lista-colecao';
 						$item_list = get_post_meta($post->ID, $meta_key, true);
 						$i = 1;
 						if ( !empty($item_list) && isset($item_list['colecoes']) ) :
@@ -46,6 +46,7 @@
 							<?php
 								if (!isset($area)) {
 									$area_ = get_area_class(get_the_ID());
+									if($area_['slug'] == 'cedoc') continue;
 								} else {
 									$area_ = $area;
 								}
@@ -66,21 +67,27 @@
 									<div class="carousel-collection__image" style="background-image: url(<?php echo $image ?>);"></div>
 								</a>
 							</li>
-						<?php endwhile; ?>
+						<?php
+						endwhile;
 						
-						<li class="color-funarte carousel-collection__reverse">
-							<div class="link-area">
-								<strong>Funarte</strong>
-							</div>
-							
-							<p><a target="_blank" href="cedoc">CEDOC Digital</a></p>
-							<a target="_blank" href="cedoc">
-								<div class="carousel-collection__image" style="background-image: url(<?php echo get_stylesheet_directory_uri() . '/assets/img/CEDOC_digital.png' ?>);"></div>
-							</a>
-							
-						</li>
-					<?php endif; ?>
-
+						global $post;
+						$meta_key = 'arcevo-lista-colecao';
+						$item_list = get_post_meta(get_option('page_on_front'), $meta_key, true);
+						if ( !empty($item_list) && isset($item_list['colecoes']) ) :
+							foreach ($item_list['colecoes'] as $item) : ?>
+								<li class="color-funarte <?php if ((++$x % 2) != 0) echo ' carousel-collection__reverse'; ?>">
+									<div class="link-area">
+										<strong>FUNARTE</strong>
+									</div>
+									<p><a target="_blank" href="<?php echo $item['url'];?>"><?php echo $item['nome'];?></a></p>
+									<a target="_blank" href="<?php echo $item['url'];?>">
+										<div class="carousel-collection__image" style="background-image: url(<?php echo $item['url_imagem'] ?>);"></div>
+									</a>
+								</li>
+							<?php endforeach;
+						endif;
+					endif;
+					?>
 				</ul>
 			</div>
 		</div>

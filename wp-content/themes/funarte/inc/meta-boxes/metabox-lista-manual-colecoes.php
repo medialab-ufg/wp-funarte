@@ -5,7 +5,7 @@ namespace Funarte;
 class MetaboxListaManualColecoes {
 	use Singleton;
 	
-	protected $meta_key = 'cedoc-lista-colecao';
+	protected $meta_key = 'arcevo-lista-colecao';
 	protected $allowed_templates = ['page-cedoc.php'];
 	
 	protected function init() {
@@ -19,7 +19,8 @@ class MetaboxListaManualColecoes {
 			return;
 		}
 		$page_template = get_page_template_slug( $post_ID );
-		if (in_array($page_template, $this->allowed_templates)) {
+		$is_front_page = $post_ID == get_option( 'page_on_front' );
+		if ($is_front_page || in_array($page_template, $this->allowed_templates)) {
 			add_meta_box('pages_link-lista-colecao_metabox', __( 'Lista de coleções'),
 				array(&$this, 'meta_box'), 'page', 'advanced', 'high');
 		}
@@ -27,7 +28,8 @@ class MetaboxListaManualColecoes {
 
 	public function save_custom_box($post_id) {
 		$page_template = get_page_template_slug( $post_id );
-		if (!in_array($page_template, $this->allowed_templates)) {
+		$is_front_page = $post_id == get_option( 'page_on_front' );
+		if (!$is_front_page && !in_array($page_template, $this->allowed_templates)) {
 			return $post_id;
 		}
 
